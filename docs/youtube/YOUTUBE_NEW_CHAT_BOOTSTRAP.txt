@@ -1,0 +1,28 @@
+# MEMORIELA YouTube New Chat Bootstrap
+
+新しいチャットでYouTube作業を再開するときは、次をそのまま使用できます。
+
+```text
+GitHubの Pin-Gin/MEMORIELA を確認し、
+docs/youtube/README.md を起点に
+YOUTUBE_CHANNEL_MASTER.md
+YOUTUBE_PRODUCTION_RULES.md
+YOUTUBE_VIDEO_BRIEF_TEMPLATE.md
+YOUTUBE_PUBLISH_CHECKLIST.md
+を読み込んで、MEMORIELA公式YouTubeの現行ルールに従って作業を続けてください。
+
+YURAが動画に登場する場合は、Pin-Gin/AI-Friend の
+docs/assistant-context/YURA_START_HERE.md
+から必要なProject YURA正本も実際に確認し、
+人格・Visual Identity・設定をYouTube都合で再定義しないでください。
+
+Gitの現行状態と私の最新の明示的な確定判断を優先し、
+新しい決定がない限り既存ルールを維持してください。
+```
+
+短縮形:
+
+```text
+GitのMEMORIELA YouTube正本を読み込んで、現行ルールから続けて。
+YURAが出るならAI-Friend側のYURA_START_HEREも確認して。
+```
