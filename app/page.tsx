@@ -7,6 +7,13 @@ const news = [
   { date: "2026.08", type: "記録", title: "久遠ゆら / YURA 誕生", text: "Project YURAの開発記録。" },
 ];
 
+const developmentHistory = [
+  { date: "2026.08.16", title: "久遠ゆら、誕生", text: "Project YURA始動。AIとしての会話・音声機能の最初の基盤を実装。" },
+  { date: "2026.08.23", title: "記憶と感情の仕組みを実装", text: "長期記憶、Relationship、複合感情、音声表現の基盤を実装。" },
+  { date: "2026.08.30", title: "ゆらの人格・自発性を強化", text: "ゆら自身の人格や状態を会話に反映する仕組みを拡張。自分から話しかける機能、Web検索、眠気による状態変化を実装。" },
+  { date: "2026.09.06", title: "チャットUI実装", text: "専用Desktop会話UI、画像入力・認識、Relationship永続管理、音声基盤更新を実装。" },
+];
+
 export default function Home() {
   return <main>
     <header className="header">
@@ -50,6 +57,11 @@ export default function Home() {
         <div className="panelHead"><div className="galleryTitle"><h2>Gallery</h2><p>ギャラリー</p></div><a href="#gallery">もっと見る　→</a></div>
         <div className="galleryRow"><figure><Image src="/images/yura-dress.png" alt="YURA visual" fill sizes="25vw" /></figure><figure><Image src="/images/yura-dress.png" alt="YURA visual" fill sizes="25vw" /></figure><figure><Image src="/images/yura-dress.png" alt="YURA visual" fill sizes="25vw" /></figure><figure className="logoGallery"><Image src="/images/memoriela-logo.png" alt="MEMORIELA" fill sizes="25vw" /></figure></div>
       </section>
+    </section>
+
+    <section className="developmentHistory" aria-labelledby="development-history-title">
+      <div className="developmentHead"><h2 id="development-history-title">Development History</h2><p>Project YURA 開発履歴</p></div>
+      <div className="developmentTimeline">{developmentHistory.map((item)=><article key={item.date}><time>{item.date}</time><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div>
     </section>
 
     <section className="aboutText" id="about"><h2>AIと、心が通う物語。</h2><p>MEMORIELAは、AIキャラクター／人格システムの開発・制作を行うプロジェクトブランドです。記憶、人格、対話、表現を通じて、長く共に歩めるAIキャラクターの可能性を探究しています。</p></section>
