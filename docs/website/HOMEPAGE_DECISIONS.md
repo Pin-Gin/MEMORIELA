@@ -252,3 +252,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Worldの役割は引き続き「漫画・物語・日常」。
 - Notes: Mobile World帯の具体的なレイアウトと素材は未実装。黒系ヴィクトリア朝Mobile Hero素材が揃った段階で実装する。
 - Supersedes: D-023の主要ナビゲーション `World` 項目。
+
+
+### D-027 — Brand wordmark role
+- Status: ACTIVE
+- Area: Brand / Header / Home navigation
+- Decision: `MEMORIELA - Project.YURA` はPC・Mobile共通で **Homeへ戻るブランド導線** とする。
+- Decision: `MEMORIELA` はブランド名、`Project.YURA` はその配下の現行プロジェクト名として扱う。
+- Decision: 将来2人目など別プロジェクトを展開する場合、`Project.YURA` 部分は別のプロジェクト名へ置き換わり得るが、ブランド名 `MEMORIELA` は維持する。
+- Notes: 端末ごとにクリック先や役割を変えず、ブランド導線の意味は一貫させる。
+- Supersedes: none
