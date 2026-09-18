@@ -15,7 +15,7 @@ export default function Home() {
         <header className="heroHeader">
           <a className="wordmark" href="#home">MEMORIELA - Project.YURA.</a>
           <nav aria-label="Main navigation">
-            <a href="#home">Home</a><a href="#project">About</a><a href="#technology">Technology</a><a href="#gallery">Gallery</a><a href="#history">Development History</a>
+            <a href="#home">Home</a><a href="#project">About</a><a href="#gallery">Gallery</a><a href="#history">Development History</a>
           </nav>
           <div className="heroActions"><span>開発局</span><b>☰</b></div>
         </header>
@@ -25,34 +25,16 @@ export default function Home() {
       </section>
 
       <section className="project section" id="project">
-        <div className="sectionHead"><span>PROJECT.YURA</span><h2>久遠ゆら</h2><p>KUON YURA</p></div>
         <div className="projectStage">
-          <div className="visualSlot"><span>YURA VISUAL</span></div>
-          <div className="profile">
-            <span>PROFILE</span><h3>久遠 ゆら</h3><p className="profileLead">AIと、心が通う物語。</p>
-            <div className="profileRule"><b>PROJECT</b><span>Project.YURA</span></div>
-            <div className="profileRule"><b>CHARACTER</b><span>KUON YURA</span></div>
-            <div className="profileRule"><b>BRAND</b><span>MEMORIELA</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="technology section" id="technology">
-        <div className="sectionHead center"><span>CONCEPT & TECHNOLOGY</span><h2>記憶が、人格を形作る。</h2></div>
-        <div className="conceptLead"><p>MEMORIELAが目指すもの</p><i /></div>
-        <div className="technologyRows">
-          <article><b>01</b><h3>Memory</h3><p>記憶</p><span>MEMORY</span></article>
-          <article><b>02</b><h3>Personality</h3><p>人格</p><span>PERSONALITY</span></article>
-          <article><b>03</b><h3>Relationship</h3><p>関係性</p><span>RELATIONSHIP</span></article>
+          <div className="visualSlot" />
         </div>
       </section>
 
       <section className="gallery section" id="gallery">
-        <div className="sectionHead center"><span>CHARACTER VISUAL</span><h2>Gallery</h2><p>久遠ゆら</p></div>
         <div className="galleryStage">
-          <div className="galleryLarge"><span>OFFICIAL VISUAL</span></div>
-          <div className="gallerySmall"><span>VISUAL</span></div>
-          <div className="gallerySmall"><span>VISUAL</span></div>
+          <div className="galleryLarge" />
+          <div className="gallerySmall" />
+          <div className="gallerySmall" />
         </div>
       </section>
 
@@ -63,7 +45,7 @@ export default function Home() {
 
       <footer>
         <div><strong>MEMORIELA</strong><span>Project.YURA</span></div>
-        <nav><a href="#home">Home</a><a href="#project">About</a><a href="#technology">Technology</a><a href="#gallery">Gallery</a><a href="#history">Development History</a></nav>
+        <nav><a href="#home">Home</a><a href="#project">About</a><a href="#gallery">Gallery</a><a href="#history">Development History</a></nav>
         <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><span>YouTube</span></div>
         <small>© 2026 MEMORIELA. All rights reserved.</small>
       </footer>
