@@ -88,3 +88,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
   - 2026.09.03 — サイトデザイン リニューアル
   - 2026.08.28 — Project.YURA 進捗報告
 - Supersedes: D-005の「3項目程度」の表示密度。D-008の下寄せ位置は維持。
+
+
+### D-010 — Desktop Hero HOME.png
+- Status: ACTIVE
+- Area: Homepage Hero
+- Decision: `public/images/HOME.png` をホームページHeroの背景画像として使用する。
+- Rendering: Hero全面に `cover` で表示し、ナビゲーションとLATEST TOPICSはHTML/CSSのオーバーレイとして維持する。
+- Notes: HOME.png自体は編集・再生成しない。
+- Supersedes: Heroの仮グラデーション背景。
