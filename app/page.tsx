@@ -43,7 +43,7 @@ export default function Home() {
               <b>Development History</b>
               <span>これまでの開発記録を見る</span>
             </div>
-            <i>→</i>
+            <i aria-hidden="true" />
           </a>
         </aside>
 
