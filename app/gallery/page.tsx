@@ -4,7 +4,6 @@ export default function GalleryPage() {
       <header className="subpageHeader">
         <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
         <nav aria-label="Main navigation">
-            <a href="/concept">Concept</a>
             <a href="/about">About</a>
             <a href="/technology">Technology</a>
             <a className="active" href="/gallery">Gallery</a>
