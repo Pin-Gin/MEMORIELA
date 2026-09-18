@@ -232,3 +232,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: 参考画像そのものや、参考画像内のロゴ・文言・装飾をそのままWebへ貼り付けるのではなく、現在の正式ナビゲーション・ブランド表記・公式素材で再構成する。
 - Notes: 黒系ヴィクトリア朝の正式Mobile Hero素材は未提供のため、現時点では仕様FIXのみ。画像生成は行わない。
 - Supersedes: Mobile Heroの旧「白系ドレス姿を使用する」方向性。
+
+
+### D-025 — Mobile wordmark contrast
+- Status: ACTIVE
+- Area: Homepage / Mobile Header
+- Decision: Mobile版では、黒を基調とした背景と金系装飾に対してブランドロゴ / ワードマークの文字色を**白**にする。
+- Decision: 白文字でロゴを強調し、黒＋金のヴィクトリア朝デザインの中で視認性とブランド存在感を確保する。
+- Notes: ロゴ画像自体の加工・再生成は行わず、正式素材またはCSSで白表現できる範囲で実装する。
+- Supersedes: Mobile参考画像上の黒文字ロゴ表現。
