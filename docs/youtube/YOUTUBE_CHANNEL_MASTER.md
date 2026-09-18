@@ -8,11 +8,14 @@ Adopted: 2026-09-18
 - Brand: `MEMORIELA`
 - Project: `Project YURA`
 - Main character: `久遠ゆら / YURA`
-- Channel name: `MEMORIELA - Project.YURA`
+- Official channel name: `MEMORIELA開発局`
 - Target handle: `@MEMORIELA`
-- Handle status: **取得予定 / 未確保（2026-09-18時点）**
+- Handle status: **確保済み（2026-09-18）**
 - Official website: `memoriela.com`
 - Official X: `@MEMORIELA_JP`
+- X display-name policy: `MEMORIELA - Project.YURA`（`Project YURA` の識別・検索上の事情を踏まえたX向け表記）
+
+YouTube公式チャンネル名は `MEMORIELA開発局` を正本とし、X向け表記 `MEMORIELA - Project.YURA` をYouTubeへ自動適用しません。
 
 Brand copy currently used by MEMORIELA:
 
