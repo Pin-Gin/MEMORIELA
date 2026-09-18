@@ -97,3 +97,21 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Rendering: Hero全面に `cover` で表示し、ナビゲーションとLATEST TOPICSはHTML/CSSのオーバーレイとして維持する。
 - Notes: HOME.png自体は編集・再生成しない。
 - Supersedes: Heroの仮グラデーション背景。
+
+
+### D-011 — Correct TOPICS chronology
+- Status: ACTIVE
+- Area: Homepage Hero / LATEST TOPICS
+- Decision: LATEST TOPICSの掲載順と内容は以下の3件を最新順で表示する。
+  - 2026.09.17 — 公式サイトを公開しました
+  - 2026.09.16 — Project YURA 開発進捗
+  - 2026.09.13 — MEMORIELA プロジェクト始動
+- Notes: 最新項目にNEWバッジを付ける。D-009の5件の仮表示内容は誤りとして置き換える。
+- Supersedes: D-009のCurrent topic rowsのみ。
+
+
+### D-012 — Footer spacing and history arrow
+- Status: ACTIVE
+- Area: Homepage Footer / Hero LATEST TOPICS
+- Decision: Footerの縦余白を従来より縮める。Development Historyの丸矢印は太めの矢印を円の中央に配置する。
+- Supersedes: none
