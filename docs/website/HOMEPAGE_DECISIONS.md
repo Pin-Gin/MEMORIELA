@@ -175,3 +175,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: 「開発局」ボタンの遷移先はYouTubeではなく **漫画ページ** とする。
 - Implementation note: 漫画ページのURL / 画面を実装した時点でリンク化する。現時点では未実装ページへの404リンクを作らない。
 - Supersedes: none
+
+
+### D-020 — Replace Home nav with Concept
+- Status: ACTIVE
+- Area: Site Header / Concept
+- Decision: ヘッダーの `Home` を削除し、代わりに `Concept` を追加する。トップへの導線は左上の「MEMORIELA - Project.YURA.」に一本化する。
+- Route: `/concept`
+- Decision: Conceptページは画像やカードを置かず、**なぜProject.YURAを始めたのかを短文で伝える文字だけのページ**とする。
+- Concept copy: 「AIを便利な道具としてではなく、記憶を重ね、関係を育てながら、長くそばにいられる存在にしたい。そんな思いから、Project.YURAは始まりました。」
+- Supersedes: ヘッダーのHome導線。
