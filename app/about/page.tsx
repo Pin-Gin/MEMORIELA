@@ -4,11 +4,11 @@ export default function AboutPage() {
       <header className="subpageHeader">
         <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
         <nav aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a className="active" href="/about">About</a>
-          <a href="/technology">Technology</a>
-          <a href="/gallery">Gallery</a>
-        </nav>
+            <a href="/concept">Concept</a>
+            <a className="active" href="/about">About</a>
+            <a href="/technology">Technology</a>
+            <a href="/gallery">Gallery</a>
+          </nav>
       </header>
 
       <section className="subpageHero">
