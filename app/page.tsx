@@ -14,11 +14,13 @@ export default function Home() {
         <header className="heroHeader">
           <a className="wordmark" href="/">MEMORIELA - Project.YURA</a>
           <nav aria-label="Main navigation">
-            <a href="/about">About</a>
-            <a href="/technology">Technology</a>
-            <a href="/gallery">Gallery</a>
-          </nav>
-          <div className="heroActions"><a href="/contact">Contact</a><b>☰</b></div>
+          <a href="/about">About</a>
+          <a href="/technology">Technology</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/contact">Contact</a>
+          <a href="/world">World</a>
+        </nav>
+          <div className="heroActions"><a className="mobileContact" href="/contact">Contact</a><b>☰</b></div>
         </header>
 
         <aside className="heroTopics" aria-label="Latest topics">
@@ -52,6 +54,13 @@ export default function Home() {
         </div>
       </section>
 
+      <nav className="mobilePrimaryNav" aria-label="Mobile primary navigation">
+        <a href="/about">About</a>
+        <a href="/technology">Technology</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/news">News</a>
+      </nav>
+
       <footer>
         <div><strong>MEMORIELA</strong><span>Project.YURA</span></div>
         <nav>
@@ -59,6 +68,7 @@ export default function Home() {
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
           <a href="/contact">Contact</a>
+          <a href="/world">World</a>
         </nav>
         <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><a href={youtubeUrl} target="_blank" rel="noreferrer">YouTube</a></div>
         <small>© 2026 MEMORIELA. All rights reserved.</small>
