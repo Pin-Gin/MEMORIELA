@@ -36,16 +36,21 @@ Purpose: 新しいチャットでもMEMORIELA公式ホームページの設計�
 
 公開記録として「公式ビジュアル + 開発履歴」を組み合わせることを重視する。
 
-## 2. トップページ骨格 — 合意済み
+## 2. トップページ骨格 — 最新FIX
 
-トップページは以下の6ブロックを基本構造とする。
+2026-09-19の最新決定により、トップページは情報を詰め込まず、以下を基本構造とする。
 
 1. **Hero / MEMORIELA開発局**
-2. **Project.YURA / 久遠ゆら**
-3. **Technology / Concept**
-4. **Gallery / Character Visual**
-5. **Development History**
-6. **Footer / Official**
+2. **Development History**
+3. **Footer / Official**
+
+以下はトップページから削除し、ヘッダーナビから遷移する独立ページで表現する。
+
+- **About / Project.YURA / 久遠ゆら** → `/about`
+- **Technology / Concept** → `/technology`
+- **Gallery / Character Visual** → `/gallery`
+
+Hero右上に置いていた「つくろう、ずっとそばに。 / Creating a future with you.」の文字はトップページから削除する。
 
 ### 廃止・統合
 
@@ -53,7 +58,7 @@ Purpose: 新しいチャットでもMEMORIELA公式ホームページの設計�
 - Newsの役割はHero内の **LATEST TOPICS** に吸収する。
 - 開発日記を別途作らない。
 - 開発記録は **Development Historyへ集約**する。
-- Aboutなど既存セクションで役割が重複するものはMASTER整理時に統廃合対象とする。
+- About / Technology / Gallery はトップページ内セクションではなく、ヘッダー遷移先ページとして扱う。
 
 ## 3. Hero / MEMORIELA開発局 — 方針FIX
 
@@ -106,11 +111,11 @@ Development Historyとは役割を分離する。
 
 TOPICSは直近3件程度を想定し、詳細な開発説明を重複させない。
 
-## 5. Project.YURA / 久遠ゆら — 方針FIX
+## 5. About / Project.YURA / 久遠ゆら — 独立ページ方針FIX
 
 表記は今後 **`Project.YURA`** を使用する。
 
-このセクションの役割は、技術説明ではなく **「久遠ゆら本人を知ってもらう公式キャラクタープロフィール」**。
+このページ（`/about`）の役割は、技術説明ではなく **「久遠ゆら本人を知ってもらう公式キャラクタープロフィール」**。トップページには同内容を置かない。
 
 ### 基本構成
 
@@ -139,9 +144,9 @@ TOPICSは直近3件程度を想定し、詳細な開発説明を重複させな�
 
 技術・思想はTechnology / Conceptへ送る。
 
-## 6. Technology / Concept — 次回検討箇所
+## 6. Technology / Concept — 独立ページ
 
-このセクションはまだ詳細FIX前。
+この内容は `/technology` で表現する。トップページには置かない。詳細内容はまだFIX前。
 
 役割の方向性:
 - MEMORIELA / Project.YURAが「何を作っているのか」を外部向けに説明する。
@@ -150,9 +155,9 @@ TOPICSは直近3件程度を想定し、詳細な開発説明を重複させな�
 
 **新チャットではここからMASTER仕様検討を再開する。**
 
-## 7. Gallery / Character Visual — 方向性
+## 7. Gallery / Character Visual — 独立ページ
 
-- 久遠ゆらの公式ビジュアルを「魅せる」場所。
+- `/gallery` で久遠ゆらの公式ビジュアルを「魅せる」。トップページにはGalleryブロックを置かない。
 - ドレス姿を掲載可能。
 - 将来的に衣装、表情、3D、Live2D、公式イラスト等を追加できる。
 - Project.YURAセクションのプロフィール用途とは役割を分ける。
