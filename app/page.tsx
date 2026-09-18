@@ -11,13 +11,14 @@ export default function Home() {
     <main>
       <section className="hero" id="home">
         <header className="heroHeader">
-          <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
+          <a className="wordmark" href="/">MEMORIELA - Project.YURA</a>
           <nav aria-label="Main navigation">
             <a href="/about">About</a>
             <a href="/technology">Technology</a>
             <a href="/gallery">Gallery</a>
+            <a href="/world">World</a>
           </nav>
-          <div className="heroActions"><span>開発局</span><b>☰</b></div>
+          <div className="heroActions"><a href="/contact">Contact</a><b>☰</b></div>
         </header>
 
         <aside className="heroTopics" aria-label="Latest topics">
@@ -54,10 +55,11 @@ export default function Home() {
       <footer>
         <div><strong>MEMORIELA</strong><span>Project.YURA</span></div>
         <nav>
-          <a href="/">Home</a>
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
+          <a href="/world">World</a>
+          <a href="/contact">Contact</a>
         </nav>
         <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><span>YouTube</span></div>
         <small>© 2026 MEMORIELA. All rights reserved.</small>
