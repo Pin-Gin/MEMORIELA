@@ -123,3 +123,11 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: FooterはD-012よりさらに縦幅を縮める。Development Historyの丸矢印は参照画像に合わせ、円内中央に太めの水平線＋矢尻で描画する。Hero左上の「MEMORIELA - Project.YURA.」は背景と同化しないよう白文字＋控えめなシャドウで表示する。
 - Implementation note: Desktop footer `min-height: 150px`、padding `28px 6vw 38px`。
 - Supersedes: D-012のFooter余白と矢印の詳細のみ更新。
+
+
+### D-014 — Official site publication date and Hero nav contrast
+- Status: ACTIVE
+- Area: Homepage Hero / LATEST TOPICS
+- Decision: 「公式サイトを公開しました」の日付は **2026.09.19** とする。
+- Decision: Hero画像上のヘッダーナビ文字は白にし、従来より約2px大きい **15px** で表示する。背景との同化防止として控えめなシャドウを付ける。
+- Supersedes: D-011の公式サイト公開日 2026.09.17、および旧Heroナビ文字サイズ・色。
