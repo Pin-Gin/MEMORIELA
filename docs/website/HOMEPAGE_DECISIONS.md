@@ -282,3 +282,14 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: `World` はMobile版の4分割ナビには置かず、その下の大きなWorld帯から `/world` へ遷移する。
 - Decision: Desktopでは最新情報への入口はHero内 `LATEST TOPICS` と、その「一覧を見る →」から `/news` へ遷移する導線を使用する。
 - Supersedes: D-026のうち、Newsを端末共通の主要ナビゲーションとして解釈し得る部分。
+
+
+### D-030 — Exact desktop/mobile navigation split
+- Status: ACTIVE
+- Area: Desktop Header / Mobile homepage navigation
+- Decision: Desktop版の主要ナビゲーションは **About / Technology / Gallery / Contact / World** の5項目とする。
+- Decision: Mobile版ホームの4分割帯は **About / Technology / Gallery / News** とする。Newsは旧Worldの位置に置く。
+- Decision: Mobile版のWorldは4分割帯に置かず、別の大きなWorld帯から `/world` へ遷移する。
+- Decision: DesktopではNewsを主要ナビゲーションに表示せず、HeroのLATEST TOPICSおよび「一覧を見る →」から `/news` へ入る。
+- Implementation: PC / Mobileの切り替えは接続元情報やサーバー側UA判定ではなく、画面幅に応じたCSS media queryで行う。HomeのMobile 4分割帯はスマホ幅でのみ表示する。
+- Supersedes: D-029、およびD-023/D-026の主要ナビゲーション配置詳細。
