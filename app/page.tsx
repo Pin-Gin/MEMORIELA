@@ -21,11 +21,6 @@ export default function Home() {
           <div className="heroActions"><span>開発局</span><b>☰</b></div>
         </header>
 
-        <div className="heroLeftCopy">
-          <p>AIと。<br/>生きる。<br/>創る。<br/>そして、<br/>あなたと歩む。</p>
-          <small>MEMORIELA<br/>Project.YURA</small>
-        </div>
-
         <aside className="heroTopics" aria-label="Latest topics">
           <div className="heroTopicsHead"><span>LATEST</span><b>TOPICS</b></div>
           <div className="heroTopicsList">
@@ -41,7 +36,6 @@ export default function Home() {
         <div className="heroBottom">
           <span># Project.YURA　｜　# 開発局　｜　# AI × Creativity</span>
           <b>SCROLL</b>
-          <span>いつかじゃない、いま、ここから。</span>
         </div>
       </section>
 
