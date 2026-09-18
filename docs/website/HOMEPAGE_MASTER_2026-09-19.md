@@ -41,7 +41,7 @@ Purpose: 新しいチャットでもMEMORIELA公式ホームページの設計�
 2026-09-19の最新決定により、トップページは情報を詰め込まず、以下を基本構造とする。
 
 1. **Hero / MEMORIELA開発局**
-2. **TOPICS / 最新情報**
+2. **Hero内 LATEST TOPICS 小窓**
 3. **Footer / Official**
 
 以下はトップページから削除し、ヘッダーナビから遷移する独立ページで表現する。
@@ -69,7 +69,7 @@ Heroは「MEMORIELA開発局」の世界観を最初に見せる場所。
 
 - 採用済み方向性: **ゆら + Pin銀 + 開発環境 / 開発局の横長一枚ビジュアル**。
 - 以前の検討で採用した「開発局らしい横長Heroイメージ」を構図の基準とする。
-- **TOPICSはHero内に置かず、Hero直後の独立セクションとして配置する。**
+- 右側に **LATEST TOPICS の小窓** を配置する。
 - Hero内のナビや更新可能な文字情報は画像へ焼き込まず、原則HTML/CSS側で実装する。
 - PC Heroはこの方向性をFIX候補とし、大幅な再検討を増やさない。
 
@@ -77,7 +77,7 @@ Heroは「MEMORIELA開発局」の世界観を最初に見せる場所。
 
 - 縦長画面を活かし、**ドレス姿の久遠ゆら**をHeroとして使用する方向。
 - PC画像を無理に縦トリミングしない。
-- TOPICSはHero直後の独立セクションとして、Mobileでも縦方向に自然に読めるレイアウトにする。
+- LATEST TOPICSはMobileではHero下部または画像下へ自然に再配置する。
 
 ### Tablet
 
@@ -91,9 +91,9 @@ Heroは「MEMORIELA開発局」の世界観を最初に見せる場所。
 - CSS media query / responsive image / `<picture>` 等、画面幅ベースで切り替える。
 - 現時点の正式構想は Desktop / Tablet / Mobile の3表情。ただし公開必須素材はDesktop + Mobile。
 
-## 4. TOPICS — 役割FIX
+## 4. LATEST TOPICS — 役割FIX
 
-TOPICSはHero直後のトップページ内セクションとして置く**直近のお知らせ**。
+LATEST TOPICSは**Hero内右側の小窓**として置く直近のお知らせ。
 
 Development Historyとは役割を分離する。
 
@@ -107,10 +107,10 @@ Development Historyとは役割を分離する。
 
 ### Development Historyとの違い
 
-- **TOPICS = 外向けのお知らせ / 最新情報**
+- **LATEST TOPICS = 外向けのお知らせ / 最新情報**
 - **Development History = Project.YURAで実際に完成・実装されたものの正式な時系列記録**
 
-TOPICSは直近3件程度を想定し、詳細な開発説明を重複させない。
+LATEST TOPICSは直近3件程度を想定し、詳細な開発説明を重複させない。
 
 ## 5. About / Project.YURA / 久遠ゆら — 独立ページ方針FIX
 
@@ -233,7 +233,7 @@ MEMORIELAホームページ作業を新チャットで再開する場合:
 - Technology / Conceptの具体的内容・レイアウト
 - Galleryの具体的レイアウト
 - Footerの具体的デザインとYouTubeリンク配置
-- TOPICSの最終UI
+- LATEST TOPICS小窓の最終UI
 - Mobile Heroの最終素材 / 配置
 - Tablet専用ラフHeroを公開前に用意するか
 - 各セクションの具体的コピー
