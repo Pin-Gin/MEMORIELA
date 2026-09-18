@@ -7,7 +7,7 @@ export default function AboutPage() {
           <a className="active" href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a href="/world">World</a>
+          <a href="/news">News</a>
           <a href="/contact">Contact</a>
         </nav>
       </header>
