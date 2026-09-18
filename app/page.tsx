@@ -26,28 +26,22 @@ export default function Home() {
           <small>MEMORIELA<br/>Project.YURA</small>
         </div>
 
+        <aside className="heroTopics" aria-label="Latest topics">
+          <div className="heroTopicsHead"><span>LATEST</span><b>TOPICS</b></div>
+          <div className="heroTopicsList">
+            {topics.map((item) => (
+              <article key={item.date + item.title}>
+                <time>{item.date}</time>
+                <p>{item.title}</p>
+              </article>
+            ))}
+          </div>
+        </aside>
+
         <div className="heroBottom">
           <span># Project.YURA　｜　# 開発局　｜　# AI × Creativity</span>
           <b>SCROLL</b>
           <span>いつかじゃない、いま、ここから。</span>
-        </div>
-      </section>
-
-      <section className="topicsSection section" id="topics">
-        <div className="sectionHead center">
-          <span>MEMORIELA</span>
-          <h2>TOPICS</h2>
-          <p>最新情報</p>
-        </div>
-
-        <div className="topicsList">
-          {topics.map((item) => (
-            <article key={item.date + item.title}>
-              <time>{item.date}</time>
-              <h3>{item.title}</h3>
-              <span>→</span>
-            </article>
-          ))}
         </div>
       </section>
 
