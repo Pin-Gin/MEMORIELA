@@ -71,3 +71,20 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: DesktopのLATEST TOPICS小窓を、D-005で下げた量のおよそ2回分さらに下へ移動する。3項目が見える程度のサイズは維持する。
 - Implementation note: CSSの基準位置は `top: 74%` とする。
 - Supersedes: D-005の位置指定のみ更新。サイズ条件は継続。
+
+
+### D-009 — Hero LATEST TOPICS reference design
+- Status: ACTIVE
+- Area: Homepage Hero
+- Decision: Hero右側のLATEST TOPICS小窓は、ユーザー提示の参照画像に合わせた構成とする。
+- Visual: 濃紺〜チャコールの半透明背景、角丸、大きめの白文字、薄い区切り線。
+- Header: 左に「LATEST TOPICS」、右に「一覧を見る →」。
+- Topics: 5件表示。最新項目には「NEW」バッジ。
+- Footer inside card: 区切り線の下に「Development History」「これまでの開発記録を見る」と丸い矢印ボタンを配置し、`/history` へ遷移する。
+- Current topic rows:
+  - 2026.09.16 — 久遠ゆら 公式ビジュアル公開
+  - 2026.09.11 — 久遠ゆら 公式ビジュアル正式決定
+  - 2026.09.06 — チャットUI実装
+  - 2026.09.03 — サイトデザイン リニューアル
+  - 2026.08.28 — Project.YURA 進捗報告
+- Supersedes: D-005の「3項目程度」の表示密度。D-008の下寄せ位置は維持。
