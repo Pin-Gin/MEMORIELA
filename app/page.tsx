@@ -1,7 +1,7 @@
 const xUrl = "https://x.com/MEMORIELA_JP";
 
 const topics = [
-  { date: "2026.09.17", title: "公式サイトを公開しました", isNew: true },
+  { date: "2026.09.19", title: "公式サイトを公開しました", isNew: true },
   { date: "2026.09.16", title: "Project YURA 開発進捗" },
   { date: "2026.09.13", title: "MEMORIELA プロジェクト始動" },
 ];
