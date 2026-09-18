@@ -33,7 +33,6 @@ export default function Home() {
 
       <section className="hero" id="home">
         <div className="heroVisual">
-          <Image src="/images/yura-dress.png" alt="久遠ゆら / YURA" fill priority sizes="100vw" />
         </div>
         <div className="heroShade" />
         <div className="heroBrand">
@@ -59,7 +58,6 @@ export default function Home() {
         </div>
         <div className="projectLayout">
           <div className="projectVisual placeholderVisual">
-            <Image src="/images/yura-dress.png" alt="久遠ゆら / YURA" fill sizes="45vw" />
           </div>
           <div className="profileCard">
             <p className="eyebrow">KUON YURA</p>
@@ -94,7 +92,7 @@ export default function Home() {
           <h2>Gallery</h2>
         </div>
         <div className="galleryGrid">
-          <figure className="galleryMain"><Image src="/images/yura-dress.png" alt="久遠ゆら official visual" fill sizes="60vw" /></figure>
+          <figure className="galleryMain" />
           <div className="gallerySlots">
             <div className="gallerySlot"><span>VISUAL 02</span></div>
             <div className="gallerySlot"><span>VISUAL 03</span></div>
