@@ -16,7 +16,6 @@ export default function HistoryPage() {
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a className="active" href="/history">Development History</a>
         </nav>
       </header>
 
