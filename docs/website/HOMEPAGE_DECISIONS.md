@@ -262,3 +262,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: 将来2人目など別プロジェクトを展開する場合、`Project.YURA` 部分は別のプロジェクト名へ置き換わり得るが、ブランド名 `MEMORIELA` は維持する。
 - Notes: 端末ごとにクリック先や役割を変えず、ブランド導線の意味は一貫させる。
 - Supersedes: none
+
+
+### D-028 — Official YouTube link
+- Status: ACTIVE
+- Area: Homepage Footer / Official links
+- Decision: Footerの `YouTube` を、MEMORIELA公式YouTubeチャンネルへの外部リンクとして有効化する。
+- Channel: `MEMORIELA開発局`
+- URL: `https://youtube.com/@MEMORIELA`
+- Notes: 新しいタブで開く。
+- Supersedes: Footerの未リンク `YouTube` 表示。
