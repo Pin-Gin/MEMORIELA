@@ -194,3 +194,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: 同文言の重複を避けるため、Aboutページのプロフィール内にあった「AIと、心が通う物語。」は削除する。
 - Notes: 「を」まで含める表記を正式採用する。
 - Supersedes: Technologyページの旧見出し「記憶が、人格を形作る。」およびAbout内の旧コピー。
+
+
+### D-022 — Absorb Concept into Technology
+- Status: ACTIVE
+- Area: Site Header / Technology / About
+- Decision: standaloneの `Concept` ページとヘッダー項目は廃止し、Conceptの役割をTechnologyへ吸収する。
+- Decision: 「なぜProject.YURAを始めたのか」という短文はTechnologyページ内で、主見出し「AIと、心が通う物語を。」とMemory / Personality / Relationshipの間をつなぐ説明として使用する。
+- Decision: ヘッダーは `About / Technology / Gallery` とし、トップへの導線は左上の「MEMORIELA - Project.YURA.」に残す。
+- Notes: Aboutで世界観を見せる案は方向性候補。具体的な世界観コピー・構成は未FIXのため、このDecisionでは実装しない。
+- Supersedes: D-020のstandalone ConceptページとヘッダーConcept項目。
