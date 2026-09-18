@@ -115,3 +115,11 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Area: Homepage Footer / Hero LATEST TOPICS
 - Decision: Footerの縦余白を従来より縮める。Development Historyの丸矢印は太めの矢印を円の中央に配置する。
 - Supersedes: none
+
+
+### D-013 — Footer compactness, history arrow, and wordmark contrast
+- Status: ACTIVE
+- Area: Homepage Footer / Hero Header / Hero LATEST TOPICS
+- Decision: FooterはD-012よりさらに縦幅を縮める。Development Historyの丸矢印は参照画像に合わせ、円内中央に太めの水平線＋矢尻で描画する。Hero左上の「MEMORIELA - Project.YURA.」は背景と同化しないよう白文字＋控えめなシャドウで表示する。
+- Implementation note: Desktop footer `min-height: 150px`、padding `28px 6vw 38px`。
+- Supersedes: D-012のFooter余白と矢印の詳細のみ更新。
