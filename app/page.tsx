@@ -1,8 +1,11 @@
 const xUrl = "https://x.com/MEMORIELA_JP";
 
 const topics = [
-  { date: "2026.09.17", title: "MEMORIELA 公式サイト公開" },
-  { date: "2026.09.16", title: "久遠ゆら 公式ビジュアル公開" },
+  { date: "2026.09.16", title: "久遠ゆら 公式ビジュアル公開", isNew: true },
+  { date: "2026.09.11", title: "久遠ゆら 公式ビジュアル正式決定" },
+  { date: "2026.09.06", title: "チャットUI実装" },
+  { date: "2026.09.03", title: "サイトデザイン リニューアル" },
+  { date: "2026.08.28", title: "Project.YURA 進捗報告" },
 ];
 
 export default function Home() {
@@ -22,15 +25,28 @@ export default function Home() {
         </header>
 
         <aside className="heroTopics" aria-label="Latest topics">
-          <div className="heroTopicsHead"><span>LATEST</span><b>TOPICS</b></div>
+          <div className="heroTopicsHead">
+            <b>LATEST TOPICS</b>
+            <span>一覧を見る →</span>
+          </div>
+
           <div className="heroTopicsList">
             {topics.map((item) => (
               <article key={item.date + item.title}>
                 <time>{item.date}</time>
                 <p>{item.title}</p>
+                {item.isNew && <strong>NEW</strong>}
               </article>
             ))}
           </div>
+
+          <a className="historyLink" href="/history" aria-label="Development History">
+            <div>
+              <b>Development History</b>
+              <span>これまでの開発記録を見る</span>
+            </div>
+            <i>→</i>
+          </a>
         </aside>
 
         <div className="heroBottom">
