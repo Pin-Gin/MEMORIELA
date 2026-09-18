@@ -7,7 +7,6 @@ export default function ContactPage() {
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a href="/news">News</a>
           <a className="active" href="/contact">Contact</a>
         </nav>
       </header>
