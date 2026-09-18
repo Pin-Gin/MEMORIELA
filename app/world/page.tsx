@@ -7,7 +7,7 @@ export default function WorldPage() {
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a className="active" href="/world">World</a>
+          <a href="/news">News</a>
           <a href="/contact">Contact</a>
         </nav>
       </header>
