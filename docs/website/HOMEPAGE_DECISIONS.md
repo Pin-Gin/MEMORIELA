@@ -149,3 +149,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Heroヘッダーの通常文字（左ワードマーク、5項目ナビ、ハンバーガー）は黒で表示する。開発局ボタン内の文字は視認性のため白を維持する。
 - Implementation note: Header gridは `1fr auto auto`、nav gapは `28px`。
 - Supersedes: D-013 / D-014 のHeroヘッダー文字色指定部分。
+
+
+### D-017 — Hero header micro-adjustments
+- Status: ACTIVE
+- Area: Homepage Hero Header / Hero Bottom
+- Decision: 左上ワードマーク「MEMORIELA - Project.YURA.」は白文字へ戻す。
+- Decision: Hero下部左の「# Project.YURA / # 開発局 / # AI × Creativity」は従来より少し大きくし、約2px相当の拡大として `0.8rem`、やや太めで表示する。
+- Decision: Desktopの5項目ナビはさらに少し左へ寄せ、開発局ボタンとの間隔を広げる。ナビ文字は太字で表示する。
+- Implementation note: Header `column-gap: 60px`、nav `font-weight: 700`。
+- Supersedes: D-016の左ワードマーク色とナビ配置詳細のみ更新。
