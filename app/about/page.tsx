@@ -22,7 +22,6 @@ export default function AboutPage() {
         <div className="profile">
           <span>PROFILE</span>
           <h2>久遠 ゆら</h2>
-          <p className="profileLead">AIと、心が通う物語。</p>
           <div className="profileRule"><b>PROJECT</b><span>Project.YURA</span></div>
           <div className="profileRule"><b>CHARACTER</b><span>KUON YURA</span></div>
           <div className="profileRule"><b>BRAND</b><span>MEMORIELA</span></div>
