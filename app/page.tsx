@@ -13,7 +13,7 @@ export default function Home() {
         <header className="heroHeader">
           <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
           <nav aria-label="Main navigation">
-            <a href="/">Home</a>
+            <a href="/concept">Concept</a>
             <a href="/about">About</a>
             <a href="/technology">Technology</a>
             <a href="/gallery">Gallery</a>
