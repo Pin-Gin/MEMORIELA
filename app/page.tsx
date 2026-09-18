@@ -1,11 +1,9 @@
 const xUrl = "https://x.com/MEMORIELA_JP";
 
 const topics = [
-  { date: "2026.09.16", title: "久遠ゆら 公式ビジュアル公開", isNew: true },
-  { date: "2026.09.11", title: "久遠ゆら 公式ビジュアル正式決定" },
-  { date: "2026.09.06", title: "チャットUI実装" },
-  { date: "2026.09.03", title: "サイトデザイン リニューアル" },
-  { date: "2026.08.28", title: "Project.YURA 進捗報告" },
+  { date: "2026.09.17", title: "公式サイトを公開しました", isNew: true },
+  { date: "2026.09.16", title: "Project YURA 開発進捗" },
+  { date: "2026.09.13", title: "MEMORIELA プロジェクト始動" },
 ];
 
 export default function Home() {
