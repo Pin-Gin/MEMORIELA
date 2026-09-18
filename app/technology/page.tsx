@@ -2,12 +2,14 @@ export default function TechnologyPage() {
   return (
     <main className="subpage">
       <header className="subpageHeader">
-        <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
+        <a className="wordmark" href="/">MEMORIELA - Project.YURA</a>
         <nav aria-label="Main navigation">
-            <a href="/about">About</a>
-            <a className="active" href="/technology">Technology</a>
-            <a href="/gallery">Gallery</a>
-          </nav>
+          <a href="/about">About</a>
+          <a className="active" href="/technology">Technology</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/world">World</a>
+          <a href="/contact">Contact</a>
+        </nav>
       </header>
 
       <section className="subpageHero center">
