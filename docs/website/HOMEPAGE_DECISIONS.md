@@ -131,3 +131,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: 「公式サイトを公開しました」の日付は **2026.09.19** とする。
 - Decision: Hero画像上のヘッダーナビ文字は白にし、従来より約2px大きい **15px** で表示する。背景との同化防止として控えめなシャドウを付ける。
 - Supersedes: D-011の公式サイト公開日 2026.09.17、および旧Heroナビ文字サイズ・色。
+
+
+### D-015 — Hero image horizontal position
+- Status: ACTIVE
+- Area: Homepage Hero
+- Decision: DesktopのHOME.pngは、久遠ゆらの頭がヘッダーナビの2項目目付近の下に来るイメージになるよう、画像全体を少し右へ寄せる。
+- Implementation note: Hero背景を疑似要素で描画し、`translateX(3vw)` と軽い拡大で端の欠けを防ぐ。
+- Notes: HOME.png自体は編集しない。LATEST TOPICS、ヘッダー、その他の配置は変更しない。
+- Supersedes: D-010のHero背景位置詳細のみ。
