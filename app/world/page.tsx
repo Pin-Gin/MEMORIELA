@@ -8,6 +8,7 @@ export default function WorldPage() {
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
           <a href="/contact">Contact</a>
+          <a className="active" href="/world">World</a>
         </nav>
       </header>
 
