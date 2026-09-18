@@ -140,3 +140,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Implementation note: Hero背景を疑似要素で描画し、`translateX(3vw)` と軽い拡大で端の欠けを防ぐ。
 - Notes: HOME.png自体は編集しない。LATEST TOPICS、ヘッダー、その他の配置は変更しない。
 - Supersedes: D-010のHero背景位置詳細のみ。
+
+
+### D-016 — Hero header nav alignment and text color
+- Status: ACTIVE
+- Area: Homepage Hero Header
+- Decision: Desktopの5項目ナビゲーションは中央固定ではなく、開発局ボタン側へ寄せて配置する。
+- Decision: Heroヘッダーの通常文字（左ワードマーク、5項目ナビ、ハンバーガー）は黒で表示する。開発局ボタン内の文字は視認性のため白を維持する。
+- Implementation note: Header gridは `1fr auto auto`、nav gapは `28px`。
+- Supersedes: D-013 / D-014 のHeroヘッダー文字色指定部分。
