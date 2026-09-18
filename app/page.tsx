@@ -16,7 +16,7 @@ export default function Home() {
             <a href="/about">About</a>
             <a href="/technology">Technology</a>
             <a href="/gallery">Gallery</a>
-            <a href="/world">World</a>
+            <a href="/news">News</a>
           </nav>
           <div className="heroActions"><a href="/contact">Contact</a><b>☰</b></div>
         </header>
@@ -24,7 +24,7 @@ export default function Home() {
         <aside className="heroTopics" aria-label="Latest topics">
           <div className="heroTopicsHead">
             <b>LATEST TOPICS</b>
-            <span>一覧を見る →</span>
+            <a href="/news">一覧を見る →</a>
           </div>
 
           <div className="heroTopicsList">
@@ -58,7 +58,7 @@ export default function Home() {
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a href="/world">World</a>
+          <a href="/news">News</a>
           <a href="/contact">Contact</a>
         </nav>
         <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><span>YouTube</span></div>
