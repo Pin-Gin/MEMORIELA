@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const xUrl = "https://x.com/MEMORIELA_JP";
 
 const topics = [
@@ -19,9 +17,6 @@ export default function Home() {
   return (
     <main>
       <header className="header">
-        <a className="brand" href="#home" aria-label="MEMORIELA home">
-          <Image src="/images/memoriela-logo.png" alt="MEMORIELA" width={520} height={260} priority />
-        </a>
         <nav aria-label="Main navigation">
           <a href="#project">Project.YURA</a>
           <a href="#technology">Technology</a>
@@ -118,10 +113,6 @@ export default function Home() {
       </section>
 
       <footer id="official">
-        <div className="footerBrand">
-          <Image src="/images/memoriela-logo.png" alt="MEMORIELA" width={520} height={260} />
-          <p>Memory shapes personality.</p>
-        </div>
         <div className="footerLinks">
           <a href="#project">Project.YURA</a>
           <a href={xUrl} target="_blank" rel="noreferrer">Official X</a>
