@@ -221,3 +221,14 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Routes: `/about`, `/technology`, `/gallery`, `/world`, `/contact`
 - Notes: Contactの具体的なメールアドレス / フォーム仕様は未FIX。現時点では問い合わせページのみ用意する。
 - Supersedes: D-019の「開発局 → 漫画」導線、およびD-022のヘッダー3項目構成。
+
+
+### D-024 — Mobile homepage direction
+- Status: ACTIVE
+- Area: Homepage / Mobile
+- Decision: スマホ版ホームページは、2026-09-19にユーザー提示の縦長MEMORIELA参考画像を**レイアウト・情報設計の基準**として採用する。
+- Decision: Desktop版の白寄りの開発局Heroとは明確に差別化し、Mobile版は**黒を基調としたヴィクトリア朝テイスト**を前面に出す。
+- Decision: Mobile Heroのメインビジュアルは、参考画像にある白系ドレスのまま使用せず、黒を主役にしたヴィクトリア朝衣装の久遠ゆらへ差し替える。
+- Decision: 参考画像そのものや、参考画像内のロゴ・文言・装飾をそのままWebへ貼り付けるのではなく、現在の正式ナビゲーション・ブランド表記・公式素材で再構成する。
+- Notes: 黒系ヴィクトリア朝の正式Mobile Hero素材は未提供のため、現時点では仕様FIXのみ。画像生成は行わない。
+- Supersedes: Mobile Heroの旧「白系ドレス姿を使用する」方向性。
