@@ -204,3 +204,20 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: ヘッダーは `About / Technology / Gallery` とし、トップへの導線は左上の「MEMORIELA - Project.YURA.」に残す。
 - Notes: Aboutで世界観を見せる案は方向性候補。具体的な世界観コピー・構成は未FIXのため、このDecisionでは実装しない。
 - Supersedes: D-020のstandalone ConceptページとヘッダーConcept項目。
+
+
+### D-023 — Final primary navigation roles
+- Status: ACTIVE
+- Area: Site Header / Primary navigation / Brand wordmark
+- Decision: サイトの主要導線は以下とする。
+  - `MEMORIELA - Project.YURA` → Home
+  - `About` → 久遠ゆら + 世界観
+  - `Technology` → 思想 + 技術
+  - `Gallery` → ビジュアル
+  - `World` → 漫画・物語・日常
+  - `Contact` → お問い合わせ
+- Decision: 旧「開発局」ボタンは `Contact` に置き換える。漫画への導線は `World` に集約する。
+- Decision: ブランド表記は **MEMORIELA - Project.YURA** とし、末尾のピリオドは付けない。
+- Routes: `/about`, `/technology`, `/gallery`, `/world`, `/contact`
+- Notes: Contactの具体的なメールアドレス / フォーム仕様は未FIX。現時点では問い合わせページのみ用意する。
+- Supersedes: D-019の「開発局 → 漫画」導線、およびD-022のヘッダー3項目構成。
