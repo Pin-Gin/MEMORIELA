@@ -241,3 +241,14 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: 白文字でロゴを強調し、黒＋金のヴィクトリア朝デザインの中で視認性とブランド存在感を確保する。
 - Notes: ロゴ画像自体の加工・再生成は行わず、正式素材またはCSSで白表現できる範囲で実装する。
 - Supersedes: Mobile参考画像上の黒文字ロゴ表現。
+
+
+### D-026 — News entry and World band
+- Status: ACTIVE
+- Area: Primary navigation / Mobile homepage
+- Decision: スマホ版にはDesktopのLATEST TOPICS小窓を置かないため、主要ナビゲーションの `World` 項目を `News` に置き換え、最新情報への入口とする。
+- Decision: `News` は `/news` へ遷移し、DesktopのLATEST TOPICS内「一覧を見る →」も同じ `/news` へ接続する。
+- Decision: `World` は主要ナビゲーション項目から外し、Mobileホーム下部の大きな帯から入る導線とする。
+- Decision: Worldの役割は引き続き「漫画・物語・日常」。
+- Notes: Mobile World帯の具体的なレイアウトと素材は未実装。黒系ヴィクトリア朝Mobile Hero素材が揃った段階で実装する。
+- Supersedes: D-023の主要ナビゲーション `World` 項目。
