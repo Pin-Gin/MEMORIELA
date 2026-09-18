@@ -8,7 +8,6 @@ export default function AboutPage() {
           <a className="active" href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a href="/#history">Development History</a>
         </nav>
       </header>
 
