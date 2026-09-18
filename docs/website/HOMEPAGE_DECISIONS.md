@@ -41,3 +41,11 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Area: MEMORIELA website workflow
 - Decision: ホームページ作業中は新規画像生成を行わない。画像生成禁止を解除した明示的な別依頼がない限り `image_gen` を使わない。
 - Supersedes: none
+
+
+### D-005 — Hero LATEST TOPICS size and position
+- Status: ACTIVE
+- Area: Homepage Hero
+- Decision: DesktopのLATEST TOPICS小窓は、従来より少し下へ配置し、**3項目が見える程度の高さ**を確保する。
+- Notes: TOPICSの役割・Hero内右側の小窓というD-001は維持する。表示内容が2件しかない場合でも、3件分を想定したサイズ設計にする。
+- Supersedes: D-001の配置・サイズ詳細のみ更新。D-001の役割と配置先は継続。
