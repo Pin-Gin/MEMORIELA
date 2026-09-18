@@ -17,7 +17,6 @@ export default function Home() {
             <a href="/about">About</a>
             <a href="/technology">Technology</a>
             <a href="/gallery">Gallery</a>
-            <a href="/history">Development History</a>
           </nav>
           <div className="heroActions"><span>開発局</span><b>☰</b></div>
         </header>
@@ -60,7 +59,6 @@ export default function Home() {
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a href="/history">Development History</a>
         </nav>
         <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><span>YouTube</span></div>
         <small>© 2026 MEMORIELA. All rights reserved.</small>
