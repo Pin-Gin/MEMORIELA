@@ -1,4 +1,5 @@
 const xUrl = "https://x.com/MEMORIELA_JP";
+const youtubeUrl = "https://youtube.com/@MEMORIELA";
 
 const topics = [
   { date: "2026.09.19", title: "公式サイトを公開しました", isNew: true },
@@ -61,7 +62,7 @@ export default function Home() {
           <a href="/news">News</a>
           <a href="/contact">Contact</a>
         </nav>
-        <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><span>YouTube</span></div>
+        <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><a href={youtubeUrl} target="_blank" rel="noreferrer">YouTube</a></div>
         <small>© 2026 MEMORIELA. All rights reserved.</small>
       </footer>
     </main>
