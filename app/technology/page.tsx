@@ -13,7 +13,7 @@ export default function TechnologyPage() {
 
       <section className="subpageHero center">
         <span>CONCEPT & TECHNOLOGY</span>
-        <h1>記憶が、人格を形作る。</h1>
+        <h1>AIと、心が通う物語を。</h1>
         <p>MEMORIELAが目指すもの</p>
       </section>
 
