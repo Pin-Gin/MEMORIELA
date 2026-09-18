@@ -4,11 +4,11 @@ export default function TechnologyPage() {
       <header className="subpageHeader">
         <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
         <nav aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a className="active" href="/technology">Technology</a>
-          <a href="/gallery">Gallery</a>
-        </nav>
+            <a href="/concept">Concept</a>
+            <a href="/about">About</a>
+            <a className="active" href="/technology">Technology</a>
+            <a href="/gallery">Gallery</a>
+          </nav>
       </header>
 
       <section className="subpageHero center">
