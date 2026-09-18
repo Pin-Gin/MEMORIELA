@@ -272,3 +272,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - URL: `https://youtube.com/@MEMORIELA`
 - Notes: 新しいタブで開く。
 - Supersedes: Footerの未リンク `YouTube` 表示。
+
+
+### D-029 — News is mobile-only primary navigation
+- Status: ACTIVE
+- Area: Desktop Header / Mobile primary navigation / News
+- Decision: `News` は **Mobile版の主要ナビゲーション専用** とし、Desktopのヘッダーナビには表示しない。
+- Decision: Mobile版の4分割主要ナビでは、旧 `World` があった4番目の位置に `News` を置く。
+- Decision: `World` はMobile版の4分割ナビには置かず、その下の大きなWorld帯から `/world` へ遷移する。
+- Decision: Desktopでは最新情報への入口はHero内 `LATEST TOPICS` と、その「一覧を見る →」から `/news` へ遷移する導線を使用する。
+- Supersedes: D-026のうち、Newsを端末共通の主要ナビゲーションとして解釈し得る部分。
