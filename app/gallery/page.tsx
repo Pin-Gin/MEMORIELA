@@ -7,7 +7,6 @@ export default function GalleryPage() {
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a className="active" href="/gallery">Gallery</a>
-          <a href="/news">News</a>
           <a href="/contact">Contact</a>
         </nav>
       </header>
