@@ -13,7 +13,6 @@ export default function NewsPage() {
           <a href="/about">About</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
-          <a className="active" href="/news">News</a>
           <a href="/contact">Contact</a>
         </nav>
       </header>
