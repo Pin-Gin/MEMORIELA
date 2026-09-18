@@ -159,3 +159,19 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Desktopの5項目ナビはさらに少し左へ寄せ、開発局ボタンとの間隔を広げる。ナビ文字は太字で表示する。
 - Implementation note: Header `column-gap: 60px`、nav `font-weight: 700`。
 - Supersedes: D-016の左ワードマーク色とナビ配置詳細のみ更新。
+
+
+### D-018 — Header history removal and arrow centering
+- Status: ACTIVE
+- Area: Site Header / Hero LATEST TOPICS
+- Decision: ヘッダーナビから `Development History` を削除する。Development Historyへの主導線はLATEST TOPICS小窓内に残す。
+- Decision: LATEST TOPICS内の丸矢印は、円の中心基準で水平線と矢尻を配置し、視覚的な右寄りを解消する。
+- Supersedes: D-002の「Development Historyをヘッダーから遷移」の部分、およびD-013の矢印位置詳細。
+
+
+### D-019 — 開発局 destination
+- Status: ACTIVE
+- Area: Homepage Hero Header
+- Decision: 「開発局」ボタンの遷移先はYouTubeではなく **漫画ページ** とする。
+- Implementation note: 漫画ページのURL / 画面を実装した時点でリンク化する。現時点では未実装ページへの404リンクを作らない。
+- Supersedes: none
