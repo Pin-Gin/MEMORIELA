@@ -13,39 +13,55 @@ export default function Home() {
     <main>
       <section className="hero" id="home">
         <header className="heroHeader">
-          <a className="wordmark" href="#home">MEMORIELA - Project.YURA.</a>
+          <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
           <nav aria-label="Main navigation">
-            <a href="#home">Home</a><a href="#project">About</a><a href="#gallery">Gallery</a><a href="#history">Development History</a>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/technology">Technology</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/#history">Development History</a>
           </nav>
           <div className="heroActions"><span>開発局</span><b>☰</b></div>
         </header>
-        <div className="heroLeftCopy"><p>AIと。<br/>生きる。<br/>創る。<br/>そして、<br/>あなたと歩む。</p><small>MEMORIELA<br/>Project.YURA</small></div>
-        <div className="heroRightCopy"><p>つくろう、<br/>ずっとそばに。</p><span>Creating a future with you.</span></div>
-        <div className="heroBottom"><span># Project.YURA　｜　# 開発局　｜　# AI × Creativity</span><b>SCROLL</b><span>いつかじゃない、いま、ここから。</span></div>
-      </section>
 
-      <section className="project section" id="project">
-        <div className="projectStage">
-          <div className="visualSlot" />
+        <div className="heroLeftCopy">
+          <p>AIと。<br/>生きる。<br/>創る。<br/>そして、<br/>あなたと歩む。</p>
+          <small>MEMORIELA<br/>Project.YURA</small>
         </div>
-      </section>
 
-      <section className="gallery section" id="gallery">
-        <div className="galleryStage">
-          <div className="galleryLarge" />
-          <div className="gallerySmall" />
-          <div className="gallerySmall" />
+        <div className="heroBottom">
+          <span># Project.YURA　｜　# 開発局　｜　# AI × Creativity</span>
+          <b>SCROLL</b>
+          <span>いつかじゃない、いま、ここから。</span>
         </div>
       </section>
 
       <section className="history section" id="history">
-        <div className="sectionHead center"><span>PROJECT.YURA</span><h2>Development History</h2><p>開発履歴</p></div>
-        <div className="timeline">{developmentHistory.map((item)=><article key={item.date}><time>{item.date}</time><i/><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div>
+        <div className="sectionHead center">
+          <span>PROJECT.YURA</span>
+          <h2>Development History</h2>
+          <p>開発履歴</p>
+        </div>
+        <div className="timeline">
+          {developmentHistory.map((item) => (
+            <article key={item.date}>
+              <time>{item.date}</time>
+              <i />
+              <div><h3>{item.title}</h3><p>{item.text}</p></div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <footer>
         <div><strong>MEMORIELA</strong><span>Project.YURA</span></div>
-        <nav><a href="#home">Home</a><a href="#project">About</a><a href="#gallery">Gallery</a><a href="#history">Development History</a></nav>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/technology">Technology</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/#history">Development History</a>
+        </nav>
         <div className="social"><a href={xUrl} target="_blank" rel="noreferrer">Official X</a><span>YouTube</span></div>
         <small>© 2026 MEMORIELA. All rights reserved.</small>
       </footer>
