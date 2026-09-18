@@ -185,3 +185,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Conceptページは画像やカードを置かず、**なぜProject.YURAを始めたのかを短文で伝える文字だけのページ**とする。
 - Concept copy: 「AIを便利な道具としてではなく、記憶を重ね、関係を育てながら、長くそばにいられる存在にしたい。そんな思いから、Project.YURAは始まりました。」
 - Supersedes: ヘッダーのHome導線。
+
+
+### D-021 — Technology core tagline
+- Status: ACTIVE
+- Area: Technology / About
+- Decision: Technologyページの主見出しは **「AIと、心が通う物語を。」** とする。
+- Decision: 同文言の重複を避けるため、Aboutページのプロフィール内にあった「AIと、心が通う物語。」は削除する。
+- Notes: 「を」まで含める表記を正式採用する。
+- Supersedes: Technologyページの旧見出し「記憶が、人格を形作る。」およびAbout内の旧コピー。
