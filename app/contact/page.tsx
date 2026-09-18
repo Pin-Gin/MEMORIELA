@@ -8,6 +8,7 @@ export default function ContactPage() {
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
           <a className="active" href="/contact">Contact</a>
+          <a href="/world">World</a>
         </nav>
       </header>
 
