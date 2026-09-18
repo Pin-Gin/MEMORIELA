@@ -41,7 +41,7 @@ Purpose: 新しいチャットでもMEMORIELA公式ホームページの設計�
 2026-09-19の最新決定により、トップページは情報を詰め込まず、以下を基本構造とする。
 
 1. **Hero / MEMORIELA開発局**
-2. **Development History**
+2. **TOPICS / 最新情報**
 3. **Footer / Official**
 
 以下はトップページから削除し、ヘッダーナビから遷移する独立ページで表現する。
@@ -49,16 +49,17 @@ Purpose: 新しいチャットでもMEMORIELA公式ホームページの設計�
 - **About / Project.YURA / 久遠ゆら** → `/about`
 - **Technology / Concept** → `/technology`
 - **Gallery / Character Visual** → `/gallery`
+- **Development History** → `/history`
 
 Hero右上に置いていた「つくろう、ずっとそばに。 / Creating a future with you.」の文字はトップページから削除する。
 
 ### 廃止・統合
 
 - 現在の独立した **Newsセクションは廃止方向**。
-- Newsの役割はHero内の **LATEST TOPICS** に吸収する。
+- Newsの役割はトップページの **TOPICS** に吸収する。
 - 開発日記を別途作らない。
 - 開発記録は **Development Historyへ集約**する。
-- About / Technology / Gallery はトップページ内セクションではなく、ヘッダー遷移先ページとして扱う。
+- About / Technology / Gallery / Development History はトップページ内セクションではなく、ヘッダー遷移先ページとして扱う。
 
 ## 3. Hero / MEMORIELA開発局 — 方針FIX
 
@@ -92,7 +93,7 @@ Heroは「MEMORIELA開発局」の世界観を最初に見せる場所。
 
 ## 4. LATEST TOPICS — 役割FIX
 
-LATEST TOPICSはHero右側（Mobileでは適切な縦配置）に置く**直近のお知らせ**。
+TOPICSはHero直後のトップページ内セクションとして置く**直近のお知らせ**。
 
 Development Historyとは役割を分離する。
 
@@ -106,7 +107,7 @@ Development Historyとは役割を分離する。
 
 ### Development Historyとの違い
 
-- **LATEST TOPICS = 外向けのお知らせ / 最新情報**
+- **TOPICS = 外向けのお知らせ / 最新情報**
 - **Development History = Project.YURAで実際に完成・実装されたものの正式な時系列記録**
 
 TOPICSは直近3件程度を想定し、詳細な開発説明を重複させない。
@@ -163,8 +164,9 @@ TOPICSは直近3件程度を想定し、詳細な開発説明を重複させな�
 - Project.YURAセクションのプロフィール用途とは役割を分ける。
 - 同じ画像を意味なく繰り返し配置しない。
 
-## 8. Development History — 固定ルール
+## 8. Development History — 独立ページ / 固定ルール
 
+- `/history` で表現する。トップページには置かない。
 - Project.YURAの正式な開発履歴。
 - **実装済み / 完了済みのみ掲載。**
 - 未実装・計画・研究のみの内容は掲載しない。
