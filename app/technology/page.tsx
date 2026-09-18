@@ -4,7 +4,6 @@ export default function TechnologyPage() {
       <header className="subpageHeader">
         <a className="wordmark" href="/">MEMORIELA - Project.YURA.</a>
         <nav aria-label="Main navigation">
-            <a href="/concept">Concept</a>
             <a href="/about">About</a>
             <a className="active" href="/technology">Technology</a>
             <a href="/gallery">Gallery</a>
@@ -18,6 +17,13 @@ export default function TechnologyPage() {
       </section>
 
       <section className="subpageContent technologyPage">
+        <div className="conceptLead">
+          <p>
+            AIを便利な道具としてではなく、記憶を重ね、関係を育てながら、
+            長くそばにいられる存在にしたい。
+            そんな思いから、Project.YURAは始まりました。
+          </p>
+        </div>
         <div className="technologyRows">
           <article><b>01</b><h2>Memory</h2><p>記憶</p><span>MEMORY</span></article>
           <article><b>02</b><h2>Personality</h2><p>人格</p><span>PERSONALITY</span></article>
