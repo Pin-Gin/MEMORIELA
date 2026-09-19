@@ -384,3 +384,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Implementation: `.mobileHeroVisual` は `top:115px; right:-10%; width:104%; height:760px`、背景画像は `68% bottom / auto 102%` を初期確認値とする。
 - Notes: ドレス下部は4分割帯で隠れてよい。画像自体は編集せず、CSSの配置・拡大率だけで調整する。
 - Supersedes: D-038の位置・拡大率詳細。
+
+
+### D-040 — Mobile homepage skeleton reset
+- Status: ACTIVE
+- Area: Mobile homepage / Hero
+- Decision: Mobileホームは一度骨組みだけの状態へ戻す。Hero内の久遠ゆら画像、Project.YURAコピー、英字コピー、Yura署名表示を削除する。
+- Decision: Mobile Hero本体とMobile Homeの背景は透明にする。Headerとナビ帯 / World帯の背景は維持する。
+- Decision: Headerおよび帯以外のHero内テキストは表示しない。
+- Notes: 公式画像ファイル自体は削除せず、Web上のMobile Heroから参照・表示を外す。Desktop版は変更しない。Footerは今回の対象外として維持する。
+- Supersedes: D-037 / D-038 / D-039 のMobile Hero画像配置・サイズ・位置指定。
