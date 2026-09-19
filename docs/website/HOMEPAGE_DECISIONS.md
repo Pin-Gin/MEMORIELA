@@ -357,3 +357,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Desktopホームの通常ナビは `Characters / Technology / Gallery / World` とし、その右に `Contact` ボタン、さらにハンバーガーを配置する。
 - Notes: Contactの遷移先は引き続き `/contact`。Mobile HomeのContact配置は変更しない。
 - Supersedes: D-035のDesktop主要ナビ表記のうち、Contactの配置方法のみ。
+
+
+### D-037 — Mobile Hero official YURA asset installed
+- Status: ACTIVE
+- Area: Mobile homepage / Hero visual
+- Decision: 更新済みの正式素材 `public/images/yura-dress.png` を、Mobile Heroのメインビジュアルとして配置する。
+- Implementation: まずは現在の骨組みに `contain` で差し込み、実機表示を確認してから位置・拡大率・トリミングを微調整する。
+- Notes: 画像自体の編集・生成は行わない。今回の目的は骨組みへ実画像をはめて全体バランスを確認すること。
+- Supersedes: D-031の「黒ヴィクトリア朝Hero素材は未提供」というAsset constraint。
