@@ -107,7 +107,6 @@ export default function Home() {
           </div>
           <div className="mobileWorldCopy">
             <span>MEMORIELA WORLD</span>
-            <h2>World</h2>
             <p>漫画・物語・日常</p>
             <b>詳しく見る　→</b>
           </div>
