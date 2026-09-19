@@ -7,19 +7,26 @@ const topics = [
   { date: "2026.09.13", title: "MEMORIELA プロジェクト始動" },
 ];
 
+const mobileNavItems = [
+  { href: "/about", icon: "◇", label: "About", sub: "久遠ゆら" },
+  { href: "/technology", icon: "✦", label: "Technology", sub: "テクノロジー" },
+  { href: "/gallery", icon: "▣", label: "Gallery", sub: "ビジュアル" },
+  { href: "/news", icon: "◎", label: "News", sub: "最新情報" },
+];
+
 export default function Home() {
   return (
     <main>
-      <section className="hero" id="home">
+      <section className="hero desktopHero" id="home">
         <header className="heroHeader">
           <a className="wordmark" href="/">MEMORIELA - Project.YURA</a>
           <nav aria-label="Main navigation">
-          <a href="/about">About</a>
-          <a href="/technology">Technology</a>
-          <a href="/gallery">Gallery</a>
-          <a href="/contact">Contact</a>
-          <a href="/world">World</a>
-        </nav>
+            <a href="/about">About</a>
+            <a href="/technology">Technology</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/contact">Contact</a>
+            <a href="/world">World</a>
+          </nav>
           <div className="heroActions"><a className="mobileContact" href="/contact">Contact</a><b>☰</b></div>
         </header>
 
@@ -54,12 +61,58 @@ export default function Home() {
         </div>
       </section>
 
-      <nav className="mobilePrimaryNav" aria-label="Mobile primary navigation">
-        <a href="/about">About</a>
-        <a href="/technology">Technology</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/news">News</a>
-      </nav>
+      <section className="mobileHome" aria-label="MEMORIELA mobile home">
+        <section className="mobileHero">
+          <header className="mobileHeroHeader">
+            <a className="mobileWordmark" href="/">
+              <strong>MEMORIELA</strong>
+              <span>Project.YURA</span>
+            </a>
+            <div className="mobileHeroActions">
+              <a href="/contact">Contact</a>
+              <b aria-hidden="true">☰</b>
+            </div>
+          </header>
+
+          <div className="mobileHeroVisual" aria-hidden="true">
+            <i className="mobileHeroFrame" />
+          </div>
+
+          <div className="mobileHeroCopy">
+            <span>MEMORIELA</span>
+            <h1>Project.YURA</h1>
+            <p>Memories live with you.</p>
+            <a href="/about">Project YURAへ <b>→</b></a>
+          </div>
+
+          <div className="mobileHeroSignature" aria-hidden="true">
+            <em>Yura</em>
+            <span>KUON YURA</span>
+          </div>
+        </section>
+
+        <nav className="mobilePrimaryNav" aria-label="Mobile primary navigation">
+          {mobileNavItems.map((item) => (
+            <a href={item.href} key={item.href}>
+              <i aria-hidden="true">{item.icon}</i>
+              <strong>{item.label}</strong>
+              <span>{item.sub}</span>
+            </a>
+          ))}
+        </nav>
+
+        <a className="mobileWorldBand" href="/world">
+          <div className="mobileWorldVisual" aria-hidden="true">
+            <span>MEMORIELA</span>
+          </div>
+          <div className="mobileWorldCopy">
+            <span>MEMORIELA WORLD</span>
+            <h2>World</h2>
+            <p>漫画・物語・日常</p>
+            <b>詳しく見る　→</b>
+          </div>
+        </a>
+      </section>
 
       <footer>
         <div><strong>MEMORIELA</strong><span>Project.YURA</span></div>
