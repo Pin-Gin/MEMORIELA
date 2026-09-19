@@ -326,3 +326,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Implementation: Mobile World帯の左右比率は `44 / 56` から `34 / 66` へ変更する。
 - Notes: `MEMORIELA WORLD` の小ラベル、`漫画・物語・日常`、`詳しく見る →` は維持する。
 - Supersedes: D-032のWorld帯内部レイアウト詳細のみ。
+
+
+### D-034 — Mobile About label and duplicate CTA removal
+- Status: ACTIVE
+- Area: Mobile homepage / About
+- Decision: Mobile Hero内の `Project YURAへ` ボタンは、4分割帯の `About` と遷移先が重複するため削除する。
+- Decision: Mobile 4分割帯の `About` の補助表記は `久遠ゆら` から **`キャラクター`** へ変更する。
+- Decision: Aboutの遷移先は久遠ゆら単独ではなく、キャラクターを扱うページとして構成し、久遠ゆらに加えて **Pin銀** も含める方向で進める。
+- Notes: Aboutページ本文の具体的な構成・デザインは、遷移先ページを仕上げる工程で決定する。今回の変更はHome骨組みのみ。
+- Supersedes: D-023のAboutを久遠ゆら単独中心として読める部分、およびD-031のMobile Hero内Project.YURA導線。
