@@ -24,10 +24,9 @@ export default function Home() {
             <a href="/characters">Characters</a>
             <a href="/technology">Technology</a>
             <a href="/gallery">Gallery</a>
-            <a href="/contact">Contact</a>
             <a href="/world">World</a>
           </nav>
-          <div className="heroActions"><a className="mobileContact" href="/contact">Contact</a><b>☰</b></div>
+          <div className="heroActions"><a href="/contact">Contact</a><b>☰</b></div>
         </header>
 
         <aside className="heroTopics" aria-label="Latest topics">
