@@ -8,7 +8,7 @@ const topics = [
 ];
 
 const mobileNavItems = [
-  { href: "/about", icon: "◇", label: "About", sub: "久遠ゆら" },
+  { href: "/about", icon: "◇", label: "About", sub: "キャラクター" },
   { href: "/technology", icon: "✦", label: "Technology", sub: "テクノロジー" },
   { href: "/gallery", icon: "▣", label: "Gallery", sub: "ビジュアル" },
   { href: "/news", icon: "◎", label: "News", sub: "最新情報" },
@@ -82,7 +82,6 @@ export default function Home() {
             <span>MEMORIELA</span>
             <h1>Project.YURA</h1>
             <p>Memories live with you.</p>
-            <a href="/about">Project YURAへ <b>→</b></a>
           </div>
 
           <div className="mobileHeroSignature" aria-hidden="true">
