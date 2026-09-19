@@ -306,3 +306,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: イメージ図内の文章は最終FIXではなく、Mobile Homeのコピーは後から調整可能とする。
 - Asset constraint: 黒を主役にしたヴィクトリア朝衣装の久遠ゆら正式素材はまだ未提供。白系ドレスを代用せず、Hero/Worldのビジュアル領域は構造だけ先に実装する。画像生成は行わない。
 - Supersedes: D-024/D-026/D-030のMobileレイアウト詳細を、この骨組みに合わせて具体化する。黒＋金、白ワードマーク、Mobile News、World帯の役割は継続。
+
+
+### D-032 — Mobile footer and World band compactness
+- Status: ACTIVE
+- Area: Mobile homepage / World band / Footer
+- Decision: Mobile Footerは情報量を減らさず、Desktop版に近い密度へコンパクト化する。Mobileではブランド情報を左、Official X / YouTubeを右へ配置し、縦方向の余白を縮める。
+- Decision: Mobileの大きなWorld帯は、現状より明確に短くし、見せ場を残したまま従来高の約75〜80%程度を基準とする。
+- Decision: Mobile HeaderのMEMORIELA表示は現時点では文字のまま維持し、正式ロゴ差し替えは別工程で行う。
+- Notes: 今回は骨組み・余白・高さのみ調整し、コピー内容や画像素材は変更しない。
+- Supersedes: D-031のMobile Footer / World帯のサイズ詳細のみ。
