@@ -8,7 +8,7 @@ const topics = [
 ];
 
 const mobileNavItems = [
-  { href: "/about", icon: "◇", label: "About", sub: "キャラクター" },
+  { href: "/characters", icon: "◇", label: "Characters", sub: "キャラクター" },
   { href: "/technology", icon: "✦", label: "Technology", sub: "テクノロジー" },
   { href: "/gallery", icon: "▣", label: "Gallery", sub: "ビジュアル" },
   { href: "/news", icon: "◎", label: "News", sub: "最新情報" },
@@ -21,7 +21,7 @@ export default function Home() {
         <header className="heroHeader">
           <a className="wordmark" href="/">MEMORIELA - Project.YURA</a>
           <nav aria-label="Main navigation">
-            <a href="/about">About</a>
+            <a href="/characters">Characters</a>
             <a href="/technology">Technology</a>
             <a href="/gallery">Gallery</a>
             <a href="/contact">Contact</a>
@@ -115,7 +115,7 @@ export default function Home() {
       <footer>
         <div><strong>MEMORIELA</strong><span>Project.YURA</span></div>
         <nav>
-          <a href="/about">About</a>
+          <a href="/characters">Characters</a>
           <a href="/technology">Technology</a>
           <a href="/gallery">Gallery</a>
           <a href="/contact">Contact</a>
