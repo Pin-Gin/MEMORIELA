@@ -293,3 +293,16 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: DesktopではNewsを主要ナビゲーションに表示せず、HeroのLATEST TOPICSおよび「一覧を見る →」から `/news` へ入る。
 - Implementation: PC / Mobileの切り替えは接続元情報やサーバー側UA判定ではなく、画面幅に応じたCSS media queryで行う。HomeのMobile 4分割帯はスマホ幅でのみ表示する。
 - Supersedes: D-029、およびD-023/D-026の主要ナビゲーション配置詳細。
+
+
+### D-031 — Mobile homepage reference skeleton
+- Status: ACTIVE
+- Area: Mobile homepage
+- Decision: 2026-09-19にユーザーが再提示した縦長イメージ図を、Mobileホームの**骨組みをそのまま再現する基準**とする。
+- Order: Mobile Header → 大きなHero / Project.YURA導線 → 4分割ナビ帯 → 大きなWorld帯 → Footer。
+- Decision: 4分割ナビ帯は `About / Technology / Gallery / News`。Worldはこの帯には置かず、その下の大きなWorld帯から `/world` へ接続する。
+- Decision: Desktopホームは既存構成を維持し、Mobileのみ別レイアウトとしてCSS media queryで切り替える。
+- Decision: イメージ図そのものをWebへ貼り付けず、HTML/CSSと正式素材で再構成する。
+- Decision: イメージ図内の文章は最終FIXではなく、Mobile Homeのコピーは後から調整可能とする。
+- Asset constraint: 黒を主役にしたヴィクトリア朝衣装の久遠ゆら正式素材はまだ未提供。白系ドレスを代用せず、Hero/Worldのビジュアル領域は構造だけ先に実装する。画像生成は行わない。
+- Supersedes: D-024/D-026/D-030のMobileレイアウト詳細を、この骨組みに合わせて具体化する。黒＋金、白ワードマーク、Mobile News、World帯の役割は継続。
