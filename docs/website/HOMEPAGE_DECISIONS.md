@@ -336,3 +336,15 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Aboutの遷移先は久遠ゆら単独ではなく、キャラクターを扱うページとして構成し、久遠ゆらに加えて **Pin銀** も含める方向で進める。
 - Notes: Aboutページ本文の具体的な構成・デザインは、遷移先ページを仕上げる工程で決定する。今回の変更はHome骨組みのみ。
 - Supersedes: D-023のAboutを久遠ゆら単独中心として読める部分、およびD-031のMobile Hero内Project.YURA導線。
+
+
+### D-035 — About becomes Characters
+- Status: ACTIVE
+- Area: Primary navigation / Character page
+- Decision: 主要ナビゲーションの `About` は **`Characters`** に変更する。
+- Decision: 正式ルートは `/characters` とし、旧 `/about` は互換性のため `/characters` へリダイレクトする。
+- Decision: Charactersは久遠ゆら単独ではなく、**MEMORIELA / Project.YURAに登場するキャラクターをまとめる入口**として扱う。
+- Decision: 現時点で久遠ゆらに加えて **Pin銀** を掲載対象に含め、将来2人目以降のキャラクター追加にも対応できる役割とする。
+- Decision: Desktop主要ナビは `Characters / Technology / Gallery / Contact / World`、Mobile 4分割帯は `Characters / Technology / Gallery / News` とする。
+- Notes: Charactersページ本文の最終レイアウトとPin銀の具体的な見せ方は、遷移先ページを仕上げる工程で決定する。
+- Supersedes: D-023 / D-030 / D-034 の `About` 表記・役割・ルート。
