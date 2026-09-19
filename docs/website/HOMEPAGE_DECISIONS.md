@@ -316,3 +316,13 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Mobile HeaderのMEMORIELA表示は現時点では文字のまま維持し、正式ロゴ差し替えは別工程で行う。
 - Notes: 今回は骨組み・余白・高さのみ調整し、コピー内容や画像素材は変更しない。
 - Supersedes: D-031のMobile Footer / World帯のサイズ詳細のみ。
+
+
+### D-033 — Mobile World band copy and visual width
+- Status: ACTIVE
+- Area: Mobile homepage / World band
+- Decision: Mobile World帯の大見出し `World` は削除する。Worldの役割は `漫画・物語・日常` の表示で担保する。
+- Decision: World帯全体の高さは維持しつつ、左側の画像 / ビジュアル領域だけを横方向に狭める。
+- Implementation: Mobile World帯の左右比率は `44 / 56` から `34 / 66` へ変更する。
+- Notes: `MEMORIELA WORLD` の小ラベル、`漫画・物語・日常`、`詳しく見る →` は維持する。
+- Supersedes: D-032のWorld帯内部レイアウト詳細のみ。
