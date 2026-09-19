@@ -348,3 +348,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Decision: Desktop主要ナビは `Characters / Technology / Gallery / Contact / World`、Mobile 4分割帯は `Characters / Technology / Gallery / News` とする。
 - Notes: Charactersページ本文の最終レイアウトとPin銀の具体的な見せ方は、遷移先ページを仕上げる工程で決定する。
 - Supersedes: D-023 / D-030 / D-034 の `About` 表記・役割・ルート。
+
+
+### D-036 — Desktop Contact action button
+- Status: ACTIVE
+- Area: Desktop homepage header
+- Decision: Desktopホームの `Contact` は通常ナビ文字ではなく、従来どおり右側の独立したアクションボタンとして表示する。
+- Decision: Desktopホームの通常ナビは `Characters / Technology / Gallery / World` とし、その右に `Contact` ボタン、さらにハンバーガーを配置する。
+- Notes: Contactの遷移先は引き続き `/contact`。Mobile HomeのContact配置は変更しない。
+- Supersedes: D-035のDesktop主要ナビ表記のうち、Contactの配置方法のみ。
