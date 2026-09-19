@@ -366,3 +366,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Implementation: まずは現在の骨組みに `contain` で差し込み、実機表示を確認してから位置・拡大率・トリミングを微調整する。
 - Notes: 画像自体の編集・生成は行わない。今回の目的は骨組みへ実画像をはめて全体バランスを確認すること。
 - Supersedes: D-031の「黒ヴィクトリア朝Hero素材は未提供」というAsset constraint。
+
+
+### D-038 — Mobile YURA vertical position
+- Status: ACTIVE
+- Area: Mobile homepage / Hero visual
+- Decision: Mobile Heroの久遠ゆらは、頭頂部がヘッダーに隠れない位置まで下げる。
+- Implementation: `.mobileHeroVisual` の基準位置を `top: 104px` とする。
+- Notes: 拡大率と横位置は維持し、今回は縦位置のみ調整する。
+- Supersedes: D-037の初期配置および直前のHero位置調整の縦位置詳細。
