@@ -73,20 +73,6 @@ export default function Home() {
             </div>
           </header>
 
-          <div className="mobileHeroVisual" aria-hidden="true">
-            <i className="mobileHeroFrame" />
-          </div>
-
-          <div className="mobileHeroCopy">
-            <span>MEMORIELA</span>
-            <h1>Project.YURA</h1>
-            <p>Memories live with you.</p>
-          </div>
-
-          <div className="mobileHeroSignature" aria-hidden="true">
-            <em>Yura</em>
-            <span>KUON YURA</span>
-          </div>
         </section>
 
         <nav className="mobilePrimaryNav" aria-label="Mobile primary navigation">
