@@ -375,3 +375,12 @@ Purpose: ユーザーと明示的にFIXしたホームページ仕様だけを�
 - Implementation: `.mobileHeroVisual` の基準位置を `top: 104px` とする。
 - Notes: 拡大率と横位置は維持し、今回は縦位置のみ調整する。
 - Supersedes: D-037の初期配置および直前のHero位置調整の縦位置詳細。
+
+
+### D-039 — Retuned mobile YURA asset scale
+- Status: ACTIVE
+- Area: Mobile homepage / Hero visual
+- Decision: 差し替え後の `public/images/yura-dress.png` に合わせ、Mobile Heroの久遠ゆらを以前より少し縮小し、頭頂部に余白を確保する。
+- Implementation: `.mobileHeroVisual` は `top:115px; right:-10%; width:104%; height:760px`、背景画像は `68% bottom / auto 102%` を初期確認値とする。
+- Notes: ドレス下部は4分割帯で隠れてよい。画像自体は編集せず、CSSの配置・拡大率だけで調整する。
+- Supersedes: D-038の位置・拡大率詳細。
