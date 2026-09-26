@@ -1,8 +1,4 @@
-node_modules/
-.next/
-out/
+__pycache__/
+*.pyc
 .env*
 !.env.example
-.DS_Store
-*.log
-.vercel
