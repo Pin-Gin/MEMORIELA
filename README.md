@@ -1,14 +1,19 @@
 # MEMORIELA
 
-MEMORIELA / Project YURAの画像制作資産・仕様のメインリポジトリ。
+MEMORIELAの小説制作・設定管理・Visual制作リポジトリ。
 
-作業は [YURA_START_HERE](docs/assistant-context/YURA_START_HERE.md) から開始する。
+## Start
+小説・設定・執筆作業は [NOVEL_START_HERE.md](NOVEL_START_HERE.md) から開始する。
 
-- YURA、Pin-Gin、Backgroundの制作資料を保持する。
-- 旧ホームページ、AI-Friendアプリ開発環境、Unityテスト、YURA 3Dディレクトリは廃止。
-- 現在のYURA masterと髪型masterは移行元のバイト列をそのまま保持。画像の差し替えはOwnerの配置連絡後に行う。
-- Pin-GinのPNGは移行元でも未配置。文書に記載された未配置状態を維持し、画像確認済みとは扱わない。
-- 画像復元Bridgeの生成・検証用Pythonツールと専用CIのみを保持する。
+## Current Authority
+- `characters/`: 小説世界の人物・経歴・家族・関係
+- `story/`: 作品の核、時系列、Knowledge State
+- `manuscript/`: 各話の原稿と制作メモ
+- `rules/`: 執筆・Canon管理ルール
+- `docs/assistant-context/creation/`: 画像・Visual制作
+- `visuals/`: 小説側から参照するVisual決定事項
 
-移行元: Pin-Gin/AI-Friend の aded1686。移行はOwnerの開発環境終了指示による。
-旧リポジトリの履歴は現行の制作Authorityとして利用しない。
+旧AI版Project.YURAの人格・経歴・生活設定は現行小説Authorityではない。
+久遠ゆらの既存Visual Identityは小説版へ継承し、Creation側の現行Visual Authorityとして使用する。
+
+作者はユーザー。AIは壁打ち、QA、整合性確認、POV/情報開示確認、演出稿→小説稿変換補助、添削・校正を担当する。
