@@ -18,6 +18,20 @@ Purpose: MEMORIELA における一ノ瀬栞の画像生成時に、BODY / FACE /
 - Default full-body validation framing: front-facing standing full body, head-to-toe visible, white background, barefoot
 - Changing canvas size, outfit or pose must not redefine the protected 7.5-head BODY proportion.
 
+
+## 1A. Default generation layout — FIXED
+
+Unless the user explicitly requests a side view, back view, turnaround, character sheet, comparison sheet, or multi-view layout:
+
+- generate **exactly one Shiori**
+- use **one image / one figure**
+- default to a **front-facing full-body standing view**
+- do **not** render front + side + back together
+- do **not** render a character sheet or turnaround
+- SIDE / BACK rules in this document are continuity constraints only; they must **not** be interpreted as instructions to display additional views
+- if multiple images are requested, generate each image separately unless the user explicitly asks for a combined canvas
+
+
 ---
 
 ## 2. BODY geometry — FIXED
