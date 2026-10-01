@@ -19,11 +19,11 @@ YURA always uses **Matte Natural Anime** unless the user explicitly requests a o
 - restrained gloss
 
 ## Skin
-- bright fair skin
-- slightly white-leaning is acceptable
-- blood color / blush remains subtle
+- **bright fair skin**
+- **ほんの少し白寄り**
+- **ごく薄い自然な血色**
+- **白飛びしない**
 - do not force pink / orange warmth
-- no paper-white clipping
 - no plastic / waxy / wet gloss
 - no pores or photographic microtexture
 
