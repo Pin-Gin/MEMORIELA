@@ -4,7 +4,7 @@ Status: **PROTECTED NORMAL-DOWN HAIR SUB-SPEC / CURRENT DEFAULT HAIRSTYLE IMPLEM
 Current Revision: **v1.0**
 Adopted: 2026-09-15
 Character: 久遠ゆら / YURA
-Parent HAIR authority: `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+Parent HAIR authority: `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 Applies to: YURAの通常時の下ろし髪、立ち絵、日常CG、衣装差分、公開用ビジュアル、Normal Super-Long検証
 
 ---
@@ -31,18 +31,18 @@ Normal Super-Long は、YURAの髪をアレンジしていない通常状態の�
 
 YURA HAIR domain の親正本は:
 
-`docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+`visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 
 本書はその値を変更せず、**Normal Super-Long / normal down style の具体的なシルエット・分布・正面 / 背面挙動を固定する sub-spec** とする。
 
 競合時:
 
-- core hair color / source length / total mass / texture / bangs / face framing / gravity → `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- core hair color / source length / total mass / texture / bangs / face framing / gravity → `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 - normal down-style silhouette / front-back distribution / default presentation → 本書
-- ponytail / chignon / half-up / braid等のarrangement topology → `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
-- rendering grammar → `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+- ponytail / chignon / half-up / braid等のarrangement topology → `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+- rendering grammar → `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
 
-本書は `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md` を置き換えない。
+本書は `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md` を置き換えない。
 
 ---
 
@@ -202,7 +202,7 @@ Normal Super-Long は `ふわっと横へ大きく広がる髪` ではない。
 
 ## 12. Rendering relationship
 
-Normal Super-Long は `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md` に従う。
+Normal Super-Long は `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md` に従う。
 
 - 高品質2Dアニメイラスト
 - grouped / illustrated hair locks
@@ -281,7 +281,7 @@ Normal Super-Long の視覚基準候補を生成する場合、原則として�
 
 生成された強い候補は **Normal Super-Long visual reference candidate** として評価できる。
 
-ただし、Normal Super-Long候補を採用しただけでは `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` を自動的に置き換えない。whole-character MASTER差し替えには別途明示的なユーザー承認が必要。
+ただし、Normal Super-Long候補を採用しただけでは `visuals/yura/identity/master/VISUAL_MASTER.png` を自動的に置き換えない。whole-character MASTER差し替えには別途明示的なユーザー承認が必要。
 
 ---
 
@@ -299,11 +299,11 @@ Normal Super-Long の視覚基準候補を生成する場合、原則として�
 
 本仕様の変更時は最低限次を再確認する。
 
-- `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-- `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
-- `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
-- `docs/assistant-context/creation/yura/qa/GENERATION_QA.md`
+- `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+- `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+- `visuals/yura/qa/GENERATION_QA.md`
 - `YURA_STATE_SNAPSHOT.md`
-- `docs/assistant-context/creation/yura/START_HERE.md`
+- `visuals/yura/START_HERE.md`
 
 Normal Super-Long以外の髪型差分は、本仕様を無理に拡張せず、それぞれのarrangement rule / future visual referenceで扱う。
