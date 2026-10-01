@@ -16,7 +16,7 @@ YURA画像生成の標準手順は以下とする。
 
 原則として、構図・ポーズ・接触・家具・複数条件を含むYURA生成では、この確認ステップを省略しない。
 
-新しいチャットでは、生成前に `docs/assistant-context/YURA_START_HERE.md` と `docs/assistant-context/creation/yura/START_HERE.md` を読み、現在の正本状態を復元してから本フローを使用する。
+新しいチャットでは、生成前に `docs/assistant-context/YURA_START_HERE.md` と `visuals/yura/START_HERE.md` を読み、現在の正本状態を復元してから本フローを使用する。
 
 ## 2. Step 1 — User rough request
 
@@ -169,7 +169,7 @@ PoseMy.Art / OpenPose / 3D画像がある場合:
 
 簡易服化するときも元3Dポーズの関節・支持点・接触点・重心・体幹の傾き・手足の前後・カメラを変えない。
 
-詳細は `docs/assistant-context/creation/yura/generation/pose/POSE_GENERATION_GUIDELINE.md` を正本とする。
+詳細は `visuals/yura/generation/pose/POSE_GENERATION_GUIDELINE.md` を正本とする。
 
 ## 7. Rewrite output style
 
@@ -206,9 +206,9 @@ Assistantは、複雑ポーズを安定化するためにユーザーの意図�
 
 ## 10. Relationship to generation template
 
-具体的な入力欄は `docs/assistant-context/creation/yura/generation/GENERATION_TEMPLATE.txt` を使用する。
+具体的な入力欄は `visuals/yura/generation/GENERATION_TEMPLATE.txt` を使用する。
 
-複雑ポーズの物理ルールは `docs/assistant-context/creation/yura/generation/pose/POSE_GENERATION_GUIDELINE.md` を使用する。
+複雑ポーズの物理ルールは `visuals/yura/generation/pose/POSE_GENERATION_GUIDELINE.md` を使用する。
 
 本書は、**生成前にどう会話を進めるか**を規定する。
 
