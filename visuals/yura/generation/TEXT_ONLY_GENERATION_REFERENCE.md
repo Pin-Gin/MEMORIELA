@@ -10,40 +10,40 @@ Purpose: 画像参照を必須にせず、承認済みのYURAの顔・髪・描�
 
 Canonical neutral visual master:
 
-- repository image: `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+- repository image: `visuals/yura/identity/master/VISUAL_MASTER.png`
 - Git blob SHA: `2c99257f5ae8c2c878f649dd97474d6860a8d689`
 - gen_id: `e942a217-75fd-4154-88cc-6c0f74e99d82`
-- manifest: `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+- manifest: `visuals/yura/identity/master/VISUAL_MASTER.md`
 - exported PNG SHA-256: `bddf347cd38c1a38e8154b06d9e3d01a8dd3d585991903fa464aa7924966ccf2`
 
 This is the preferred whole-character visual cross-check and the approved visual anchor for the Normal Super-Long baseline. When repository-image inspection is available, inspect the committed PNG before formal derivative generation. Text specs remain authoritative for exact geometry / continuity rules.
 
 Current HAIR relationship:
 
-The current MASTER was generated after adoption of formal HAIR v1.3 + Normal Super-Long v1.0 and is aligned with that baseline. `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md` still owns HAIR core; `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` owns the ordinary unarranged down-style implementation; the MASTER is their preferred whole-character visual cross-check.
+The current MASTER was generated after adoption of formal HAIR v1.3 + Normal Super-Long v1.0 and is aligned with that baseline. `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md` still owns HAIR core; `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` owns the ordinary unarranged down-style implementation; the MASTER is their preferred whole-character visual cross-check.
 
 ## 1. Authority / read order
 
 Before ordinary YURA full-body generation:
 
-1. `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
-2. `docs/assistant-context/creation/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md` — recover / verify current visual MASTER
+1. `visuals/yura/identity/master/VISUAL_MASTER.md`
+2. `visuals/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md` — recover / verify current visual MASTER
 3. inspect the verified current MASTER representation
-4. `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-5. `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
-6. `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-7. `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
-8. `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-9. `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` when no alternate arrangement is requested / ordinary YURA hair is intended
-9. `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+4. `visuals/yura/identity/body/BODY_MASTER.md`
+5. `visuals/yura/identity/body/BODY_SPEC.md`
+6. `visuals/yura/identity/face/FACE_SPEC.md`
+7. `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+8. `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+9. `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` when no alternate arrangement is requested / ordinary YURA hair is intended
+9. `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
 10. this file
-11. `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` when ponytail / chignon / half-up / braid or another arrangement is involved
-12. `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` when `ハーフアップ + 編み込み強め` / `Strong Braided Half-Up` is explicitly requested
-13. `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md` for MASTER / BODY / HAIR controlled validation
-14. `docs/assistant-context/creation/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md` when outfit generation is involved
+11. `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` when ponytail / chignon / half-up / braid or another arrangement is involved
+12. `visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` when `ハーフアップ + 編み込み強め` / `Strong Braided Half-Up` is explicitly requested
+13. `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md` for MASTER / BODY / HAIR controlled validation
+14. `visuals/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md` when outfit generation is involved
 15. current scene / outfit request
 
-Normal generation uses current branch authorities only. If direct image inspection is unavailable, follow `docs/assistant-context/creation/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md`; do not substitute an arbitrary derivative or deleted Git revision.
+Normal generation uses current branch authorities only. If direct image inspection is unavailable, follow `visuals/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md`; do not substitute an arbitrary derivative or deleted Git revision.
 
 ## 2. Priority order
 
@@ -73,12 +73,12 @@ Normal generation uses current branch authorities only. If direct image inspecti
 - YURA-specific protected eye signature: **an extremely small teardrop-like notch on the lower-right edge of the pupil**
 - the notch is a discreet identity / provenance-supporting cue, not a conspicuous symbol and not a technical watermark
 - close-up assets should preserve it intentionally; full-body assets must not enlarge it merely to force visibility
-- silver-white super-long hair following `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-- ordinary unarranged hairstyle = `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+- silver-white super-long hair following `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- ordinary unarranged hairstyle = `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
 - refined / soft / approachable adult impression
 
-Exact facial geometry follows `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`.
-Protected pupil-signature behavior follows `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`.
+Exact facial geometry follows `visuals/yura/identity/face/FACE_SPEC.md`.
+Protected pupil-signature behavior follows `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`.
 
 ## 4. Approved BODY block
 
@@ -106,7 +106,7 @@ Magic phrase:
 
 `153cmの小柄・華奢 体格比で胸はやや豊かめ`
 
-Outfit exposure / coverage is not part of this BODY anchor. Resolve clothing structure and normal context-appropriate exposure through `docs/assistant-context/creation/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md` and the current outfit request.
+Outfit exposure / coverage is not part of this BODY anchor. Resolve clothing structure and normal context-appropriate exposure through `visuals/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md` and the current outfit request.
 
 ## 5. Canvas / scale invariance — mandatory
 
@@ -134,10 +134,10 @@ Portrait invariance validation:
 ## 6. Hair block — formal v1.3 + Normal Super-Long v1.0
 
 Current HAIR authority:
-`docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+`visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 
 Current default normal-down implementation:
-`docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+`visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
 
 Protected core baseline:
 
@@ -192,7 +192,7 @@ Anti-drift guard:
 
 ### Low Chignon specialized route
 
-If the request explicitly specifies `ローシニヨン` / `low chignon` / `full low chignon`, apply `docs/assistant-context/creation/yura/identity/hair/styles/LOW_CHIGNON_SPEC.md`.
+If the request explicitly specifies `ローシニヨン` / `low chignon` / `full low chignon`, apply `visuals/yura/identity/hair/styles/LOW_CHIGNON_SPEC.md`.
 
 Key lock:
 - rear-center lower-head placement
@@ -204,7 +204,7 @@ Key lock:
 
 ### Strong Braided Half-Up specialized route
 
-If the request explicitly specifies `ハーフアップ + 編み込み強め` / `ハーフアップ＋編み込み強め` / `強めの編み込みハーフアップ` / `Strong Braided Half-Up`, apply `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`, read `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`, and inspect paired `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png` when repository-image inspection is available. Use gen_id `0336bd46-16bf-4d17-823b-73d6204cba31` as the protected hairstyle topology visual anchor.
+If the request explicitly specifies `ハーフアップ + 編み込み強め` / `ハーフアップ＋編み込み強め` / `強めの編み込みハーフアップ` / `Strong Braided Half-Up`, apply `visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`, read `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`, and inspect paired `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png` when repository-image inspection is available. Use gen_id `0336bd46-16bf-4d17-823b-73d6204cba31` as the protected hairstyle topology visual anchor.
 
 Key lock:
 - principal ends remain natural waistline to slightly below
@@ -219,7 +219,7 @@ Key lock:
 
 When a ponytail, low chignon, half-up, bun or braid is explicitly requested:
 
-- apply `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+- apply `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
 - source total hair mass remains slightly above standard
 - source super-long length is not silently deleted
 - a ponytail reflects the source length / mass
@@ -249,9 +249,9 @@ Avoid photoreal / semi-photoreal portraits, 3D CGI, waxy PBR skin, pores, wet ph
 
 ### Controlled validation clothing
 
-For MASTER / BODY / HAIR validation, apply `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md`.
+For MASTER / BODY / HAIR validation, apply `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md`.
 
-Use only the neutral positive clothing block from `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md`:
+Use only the neutral positive clothing block from `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md`:
 
 - **plain pale opaque sleeveless top**
 - **plain pale opaque simple shorts**
