@@ -8,15 +8,15 @@ Purpose: YURA画像生成における用途別の標準アスペクト比・構�
 
 Parent layout authority:
 
-`docs/assistant-context/creation/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md`
+`visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md`
 
 BODY authorities:
 
-- `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+- `visuals/yura/identity/body/BODY_MASTER.md`
+- `visuals/yura/identity/body/BODY_SPEC.md`
 
 This file is a protected operational sub-spec of the framing / margin domain.
-It does **not** replace `docs/assistant-context/creation/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` and never owns BODY geometry.
+It does **not** replace `visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` and never owns BODY geometry.
 
 ---
 
@@ -243,7 +243,7 @@ Examples:
 
 ## 8. Relationship to Framing & Margin Spec
 
-`docs/assistant-context/creation/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` remains the layout domain owner.
+`visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` remains the layout domain owner.
 
 This sub-spec owns only:
 
