@@ -1,0 +1,38 @@
+{
+  "format_version": 1,
+  "role": "non-authoritative text transport bridge for ChatGPT visual recovery",
+  "authority": "VISUAL_MASTER.png remains the canonical visual artifact; bridge files are cache only",
+  "source": {
+    "path": "docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png",
+    "bytes": 1314826,
+    "width": 941,
+    "height": 1672,
+    "sha256": "bddf347cd38c1a38e8154b06d9e3d01a8dd3d585991903fa464aa7924966ccf2",
+    "git_blob_sha1": "2c99257f5ae8c2c878f649dd97474d6860a8d689"
+  },
+  "base64_line_width": 76,
+  "previews": [
+    {
+      "name": "full",
+      "base64_path": "docs/assistant-context/creation/yura/identity/master/bridge/FULL.jpg.b64.txt",
+      "mime_type": "image/jpeg",
+      "decoded_bytes": 43686,
+      "decoded_sha256": "8b15c00ec8c858867056d3c4377599ff3c9bfd9b6f983a482972eecba380f66d",
+      "width": 540,
+      "height": 960,
+      "jpeg_quality": 88,
+      "purpose": "whole-character identity / body / hair / overall-balance visual recovery"
+    },
+    {
+      "name": "portrait",
+      "base64_path": "docs/assistant-context/creation/yura/identity/master/bridge/PORTRAIT.jpg.b64.txt",
+      "mime_type": "image/jpeg",
+      "decoded_bytes": 51205,
+      "decoded_sha256": "a7689938450dd8e37d92bb14261aa2f7b424051e4fb8ef9535d08c3fb35d354b",
+      "width": 602,
+      "height": 668,
+      "jpeg_quality": 88,
+      "purpose": "face / eye / upper-hair visual recovery; protected text specs still own exact micro-details"
+    }
+  ]
+}
