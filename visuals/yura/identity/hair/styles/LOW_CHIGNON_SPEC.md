@@ -7,10 +7,10 @@ Character: 久遠ゆら / YURA
 Operational name: **Low Chignon / ローシニヨン**
 
 Parent HAIR authority:
-`docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+`visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 
 Arrangement authority:
-`docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+`visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
 
 This file defines the protected implementation of YURA's normal full Low Chignon.
 It does not replace HAIR v1.3.
@@ -217,7 +217,7 @@ For controlled Low Chignon MASTER-candidate generation:
 - bare feet
 - plain white / warm-white background
 - use current protected FACE / BODY / EYE / RENDERING unchanged
-- use `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md`
+- use `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md`
 - no text / logo / labels / difference sheet
 - intended visual change = hairstyle arrangement only
 
