@@ -8,10 +8,10 @@ Operational name: **Strong Braided Half-Up**
 Purpose: YURAの「ハーフアップ + 編み込み強め」を、Normal Super-Longの元長・総毛量を崩さず安定生成するための専用正式仕様。
 
 Parent HAIR authority:
-`docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+`visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 
 Arrangement authority:
-`docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+`visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
 
 This file narrows one specific arrangement only. It does not replace HAIR v1.3 or the general arrangement guideline.
 
@@ -29,7 +29,7 @@ Representative triggers:
 - `強めの編み込みハーフアップ`
 - `Strong Braided Half-Up`
 
-単に `ハーフアップ` とだけ指定された場合は本仕様を自動適用せず、まず `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` の通常Half-Upルールを使用する。
+単に `ハーフアップ` とだけ指定された場合は本仕様を自動適用せず、まず `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` の通常Half-Upルールを使用する。
 
 ---
 
@@ -248,7 +248,7 @@ General:
 
 ## 9. Rendering
 
-Follow `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`.
+Follow `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`.
 
 - high-quality 2D anime illustration
 - grouped illustrated silver-white locks
@@ -312,7 +312,7 @@ Do not inject detailed anatomy-specific negative wording into the image prompt.
 ### 10.4 Validation clothing lock
 
 Validation clothing authority:
-`docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md`
+`visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md`
 
 MASTER候補では衣装デザインを自由生成しない。
 
@@ -349,7 +349,7 @@ If any of those materially drift, classify that domain separately and do not com
 The visual MASTER for Strong Braided Half-Up is **ADOPTED / PROTECTED / CURRENT**.
 
 Visual MASTER manifest:
-`docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
+`visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
 
 Approved gen_id:
 `0336bd46-16bf-4d17-823b-73d6204cba31`
@@ -361,7 +361,7 @@ Approved gen_id:
 ### Current approved hairstyle visual MASTER
 
 - gen_id: `0336bd46-16bf-4d17-823b-73d6204cba31`
-- manifest: `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
+- manifest: `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
 - status: **PROTECTED / CURRENT**
 - user approval: `正解！！！` / `マスタにしよう! 編み込みが不自然じゃない`
 
@@ -373,7 +373,7 @@ Approved because the front-view braid topology reads naturally and does not expo
 - user assessment: hair-length / mass control succeeded
 - status: **VALIDATION EVIDENCE ONLY / NOT VISUAL MASTER**
 
-Do not use either hairstyle artifact as a replacement for the whole-character `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`.
+Do not use either hairstyle artifact as a replacement for the whole-character `visuals/yura/identity/master/VISUAL_MASTER.png`.
 
 ---
 
@@ -383,7 +383,7 @@ PASS requires:
 
 - FACE / expression remains neutral-to-soft and consistent with current YURA baseline
 - BODY presentation remains within current protected baseline without compensation
-- validation clothing passes `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md` and remains plain pale opaque sleeveless top + plain pale opaque simple shorts
+- validation clothing passes `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md` and remains plain pale opaque sleeveless top + plain pale opaque simple shorts
 - source silver-white Super-Long identity preserved
 - principal ends remain around waistline to slightly below
 - only longest fine tips may approach upper-buttock boundary
