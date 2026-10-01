@@ -719,6 +719,79 @@ Use the approved neutral MASTER and strongest accepted batch asset as cross-chec
 
 ---
 
+## Dynamic Pose QA Gate — mandatory for significant movement
+
+Apply this gate whenever the requested image contains meaningful movement beyond neutral standing.
+
+Evaluate each item independently:
+
+### DP-1 Identity
+
+PASS only if:
+- FACE identity is preserved
+- iris remains protected blue-gray
+- hair remains silver-white
+- adult readability is preserved
+
+### DP-2 BODY geometry
+
+PASS only if:
+- 7.25-head system remains plausible for the projected pose
+- segment lengths remain canonical
+- shoulder / ribcage / waist / pelvis relationships are preserved
+- bust volume is not incorrectly reduced by torso rotation
+- thighs / calves / arms are not thickened merely due to crouch / foreshortening
+
+### DP-3 Joint / skeleton
+
+PASS only if:
+- joint directions are anatomically plausible
+- no impossible elbow / knee / wrist / ankle / neck configuration
+- apparent shortening is projection, not segment redesign
+
+### DP-4 Support / contact / load
+
+PASS only if:
+- support points are physically coherent
+- contact compression is local and plausible
+- hidden limbs do not carry unexplained load
+- seated / squat compression does not become permanent BODY redesign
+
+### DP-5 Hair conservation
+
+PASS only if:
+- source Normal Super-Long mass remains conserved
+- principal source length remains protected
+- longest-tip upper limit remains protected
+- hair movement follows gravity / contact
+- pose does not silently shorten or delete source mass
+
+### DP-6 Camera / perspective
+
+PASS only if:
+- perspective explains apparent size changes
+- camera behavior does not force anatomy distortion
+- framing does not alter BODY proportions
+
+### DP-7 Limb / hand / foot artifacts
+
+FAIL if:
+- extra / missing limb
+- extra / missing major hand or foot
+- impossible duplication
+- materially broken hand / foot attachment
+- severe structural artifact
+
+### Dynamic Pose PASS rule
+
+A significant-motion derivative passes only when all applicable DP gates pass.
+
+If one gate fails:
+- retry or repair the pose / projection / contact layer
+- do **not** modify protected YURA canon to fit the failed output
+
+---
+
 ## 17. Logging rule
 
 Routine QA PASS results do not need to be added to project history.
