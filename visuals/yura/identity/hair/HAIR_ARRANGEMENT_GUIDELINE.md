@@ -12,7 +12,7 @@ This file does **not** redefine YURA's protected HAIR core.
 
 Current protected HAIR core authority:
 
-- `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 
 Normal generation must not recover superseded HAIR rules from Git history.
 
@@ -150,7 +150,7 @@ Physics:
 ## 7. Low chignon / ローシニヨン
 
 Protected specialized implementation:
-`docs/assistant-context/creation/yura/identity/hair/styles/LOW_CHIGNON_SPEC.md`
+`visuals/yura/identity/hair/styles/LOW_CHIGNON_SPEC.md`
 
 When the user requests ordinary `ローシニヨン` / `low chignon` / `full low chignon`, apply that protected sub-spec in addition to this general arrangement guideline.
 
@@ -231,10 +231,10 @@ Default:
 
 When the request includes `ハーフアップ + 編み込み強め`, `ハーフアップ＋編み込み強め`, `強めの編み込みハーフアップ`, `髪型：ハーフアップ ＋ 編み込み強め`, or `Strong Braided Half-Up`, apply:
 
-`docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
+`visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
 
 Current visual MASTER for this arrangement:
-`docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md` / gen_id `0336bd46-16bf-4d17-823b-73d6204cba31`
+`visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md` / gen_id `0336bd46-16bf-4d17-823b-73d6204cba31`
 
 That sub-spec fixes:
 - source Super-Long length limits
@@ -281,7 +281,7 @@ Unless explicitly overridden:
 
 For an arrangement request:
 
-1. `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md` core
+1. `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md` core
 2. arrangement family
 3. exact anatomical gather position
 4. gathered vs loose sections
@@ -323,4 +323,4 @@ Do not silently change:
 - low-chignon full containment
 - protected face-framing preservation
 
-Core HAIR values remain owned only by `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`.
+Core HAIR values remain owned only by `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`.
