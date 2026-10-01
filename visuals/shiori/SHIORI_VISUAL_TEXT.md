@@ -192,17 +192,31 @@ Common:
 
 ## 9. Rendering baseline — FIXED
 
+Project-wide rendering authority:
+- `visuals/CHARACTER_RENDERING_STYLE.md`
+- style: **Matte Natural Anime / マット・ナチュラルアニメ**
+
+栞の全画像生成で、上記共通Rendering Styleを必ず適用する。
+
+Character-specific rendering anchors:
 - high-quality 2D anime illustration
 - delicate, clean line art
 - low-to-medium contrast
-- soft cel / grouped shading
-- fair skin with shallow illustrated shading
-- hair rendered as grouped blue-black masses with fine strand accents
-- eyes detailed but non-photorealistic
-- avoid photoreal skin microtexture
-- avoid PBR / realistic CGI material response
-- avoid 3D-render-like anatomy
-- white / warm-white neutral validation background
+- blue-black hair color and grouped hair identity must remain stable
+- pale blue-gray / faint-lavender eyes remain detailed but non-photorealistic
+- white / warm-white neutral validation background when doing validation
+
+Shared rendering requirements include:
+- restrained gloss
+- soft matte surface
+- slightly natural body volume
+- slightly natural hair grouping / flow
+- soft cel + natural soft shading
+- **「少しリアル」＝写実化ではない**
+- no photorealism / semi-photorealism
+- no PBR / realistic CGI
+- no plastic or glossy skin
+- no photographic microtexture
 
 ---
 
