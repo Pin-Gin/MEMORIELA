@@ -18,6 +18,13 @@ Status: **PROTECTED / CURRENT**
 - chin: **small and softly rounded**
 - no extreme V-line
 
+## Ears
+- In front-facing standing illustrations, the ears may be **partially occluded by hair**.
+- Ears are **not a primary identity judgment item**.
+- Ear size and visible amount are **secondary consistency items**.
+- Do not move surrounding hair or enlarge / over-describe the ears merely to make them easier to see.
+- Partial occlusion and slight left-right visibility differences are acceptable when they read naturally.
+
 ## Eyes
 Exact color and pupil signature are controlled by `../eyes/EYE_SPEC.md`.
 
