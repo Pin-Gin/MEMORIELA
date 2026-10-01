@@ -23,34 +23,34 @@ Outfit generation must add styling layers without redesigning YURA herself.
 
 Before generating a YURA outfit derivative:
 
-1. `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
-2. inspect `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` when repository-image inspection is available
-3. `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-4. `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
-5. `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-6. `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
-7. `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-8. `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
-9. `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+1. `visuals/yura/identity/master/VISUAL_MASTER.md`
+2. inspect `visuals/yura/identity/master/VISUAL_MASTER.png` when repository-image inspection is available
+3. `visuals/yura/identity/body/BODY_MASTER.md`
+4. `visuals/yura/identity/body/BODY_SPEC.md`
+5. `visuals/yura/identity/face/FACE_SPEC.md`
+6. `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+7. `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+8. `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+9. `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
 10. this guideline
-11. `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md` when the task is MASTER / BODY / FACE-full-body / HAIR controlled validation
+11. `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md` when the task is MASTER / BODY / FACE-full-body / HAIR controlled validation
 12. current outfit / scene request
 
-If a ponytail / chignon / half-up / braid or another arrangement is requested, also apply `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`.
+If a ponytail / chignon / half-up / braid or another arrangement is requested, also apply `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`.
 
 Do not reconstruct YURA from conversational memory alone or from an arbitrary older derivative.
 
-If direct master-image inspection is unavailable, follow `docs/assistant-context/creation/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md` before concluding the MASTER cannot be viewed. Never substitute an arbitrary generated image or deleted Git revision as identity authority.
+If direct master-image inspection is unavailable, follow `visuals/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md` before concluding the MASTER cannot be viewed. Never substitute an arbitrary generated image or deleted Git revision as identity authority.
 
 
 ## 3. Current canonical master
 
 Current neutral visual master:
 
-- repository image: `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+- repository image: `visuals/yura/identity/master/VISUAL_MASTER.png`
 - Git blob SHA: `2c99257f5ae8c2c878f649dd97474d6860a8d689`
 - gen_id: `e942a217-75fd-4154-88cc-6c0f74e99d82`
-- manifest: `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+- manifest: `visuals/yura/identity/master/VISUAL_MASTER.md`
 - role: canonical neutral full-body whole-character identity reference + approved Normal Super-Long visual anchor
 
 The current MASTER was generated after formal HAIR v1.3 + Normal Super-Long v1.0 adoption and is aligned with that baseline.
@@ -82,7 +82,7 @@ Canvas or outfit changes must never alter BODY proportions.
 For MASTER / BODY / FACE-full-body / HAIR controlled validation, ordinary outfit freedom is suspended.
 
 Authority:
-`docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md`
+`visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md`
 
 Use the fixed neutral validation-clothing generation wording:
 
@@ -96,7 +96,7 @@ If clothing materially changes apparent anatomy, classify that after generation 
 ## 4B. Outfit / BODY geometry separation — PROTECTED
 
 Authority:
-`docs/assistant-context/creation/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
 
 Changing outfit never authorizes changing YURA's underlying BODY.
 
@@ -225,7 +225,7 @@ If a new canvas is needed, scale the whole character uniformly and adjust negati
 
 ## 9. Hair continuity
 
-Follow `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`.
+Follow `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`.
 
 For ordinary down-hair back views:
 
@@ -236,7 +236,7 @@ For ordinary down-hair back views:
 - do not spread the hair sideways merely to expose waist / back garment construction
 - do not lengthen the main mass to mid-buttock or thigh merely because the garment is long
 
-For arrangements, preserve source super-long length / total mass according to `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`.
+For arrangements, preserve source super-long length / total mass according to `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`.
 
 ## 10. Identity consistency over outfit consistency
 
@@ -267,13 +267,13 @@ Generated labels, signatures, profile text, biography, measurements, likes / dis
 
 Every outfit generation should conceptually contain:
 
-1. **Neutral master identity** — `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md` + visual cross-check of `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` when available
-2. **BODY** — `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md` + `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
-3. **Face / Eye** — `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md` + `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
-4. **Hair** — `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-5. **Hair arrangement**, when applicable — `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
-6. **Rendering** — `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
-7. **Practical assembly** — `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+1. **Neutral master identity** — `visuals/yura/identity/master/VISUAL_MASTER.md` + visual cross-check of `visuals/yura/identity/master/VISUAL_MASTER.png` when available
+2. **BODY** — `visuals/yura/identity/body/BODY_MASTER.md` + `visuals/yura/identity/body/BODY_SPEC.md`
+3. **Face / Eye** — `visuals/yura/identity/face/FACE_SPEC.md` + `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+4. **Hair** — `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+5. **Hair arrangement**, when applicable — `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+6. **Rendering** — `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+7. **Practical assembly** — `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
 8. **Outfit / context-appropriate exposure rules** — this document
 9. **Current requested design / scene**
 
