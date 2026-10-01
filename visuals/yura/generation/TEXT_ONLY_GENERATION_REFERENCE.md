@@ -53,9 +53,10 @@ Normal generation uses current branch authorities only. If direct image inspecti
 4. adult readability
 5. protected HAIR v1.3 geometry / mass / gravity
 6. protected Normal Super-Long implementation when ordinary down hair is intended
-7. 2D rendering grammar
-8. outfit / scene
-9. decorative presentation effects
+7. YURA-specific 2D rendering grammar
+8. project-wide Matte Natural Anime rendering layer
+9. outfit / scene
+10. decorative presentation effects
 
 ## 3. Core identity
 
@@ -79,6 +80,29 @@ Normal generation uses current branch authorities only. If direct image inspecti
 
 Exact facial geometry follows `visuals/yura/identity/face/FACE_SPEC.md`.
 Protected pupil-signature behavior follows `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`.
+
+## 3A. Protected color lock — mandatory
+
+These colors are Identity, not styling:
+
+- iris: **blue-gray with restrained saturation**
+- pupil: very dark blue-gray / deep gray, close to black
+- hair: **silver-white**
+- skin: healthy bright fair skin
+
+Do not let Matte Natural Anime, warm/cool scene lighting, outfit palette, background palette, or cinematic color grading recolor these identity anchors.
+
+Eye-color anti-drift cue:
+
+`YURA's irises must remain clearly blue-gray with restrained saturation. Do not shift them to amber, brown, hazel, purple, vivid blue, or cyan. Lighting may affect highlights only; it must not change the perceived base iris color.`
+
+Hair-color anti-drift cue:
+
+`Keep YURA's hair silver-white. Do not reinterpret it as blonde, beige, lavender, gray-purple, or metallic white.`
+
+A derivative with visibly non-blue-gray irises is an Identity FAIL.
+
+---
 
 ## 4. Approved BODY block
 
