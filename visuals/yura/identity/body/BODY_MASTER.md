@@ -14,7 +14,7 @@ Character: 久遠ゆら / YURA
 
 Current canonical neutral visual master:
 
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+- `visuals/yura/identity/master/VISUAL_MASTER.md`
 - gen_id: `e942a217-75fd-4154-88cc-6c0f74e99d82`
 
 The VISUAL MASTER is the preferred whole-character appearance reference, while this BODY MASTER remains authoritative for body geometry.
@@ -86,9 +86,9 @@ The following are not BODY identity:
 
 For ordinary full-body generation:
 
-1. `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+1. `visuals/yura/identity/master/VISUAL_MASTER.md`
 2. this BODY MASTER
-3. `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+3. `visuals/yura/identity/body/BODY_SPEC.md`
 4. current FACE / HAIRSTYLE / RENDERING specs
 5. outfit / pose / scene request
 
@@ -134,7 +134,7 @@ Do not replace or materially alter this BODY MASTER without explicit user approv
 
 For single-domain-only changes such as outfit-only / hair-only / background-only / expression-only, and for exact-preservation / controlled validation tasks, apply:
 
-`docs/assistant-context/creation/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
 
 The derivative layer never authorizes BODY change.
 
