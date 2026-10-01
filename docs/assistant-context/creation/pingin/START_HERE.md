@@ -75,7 +75,7 @@ Do not:
 - promote a derivative image to MASTER automatically
 
 When YURA + Pin-Gin appear together:
-- YURA → `creation/yura/START_HERE.md`
+- YURA → `visuals/yura/START_HERE.md`
 - Pin-Gin → this file
 - Background → `creation/background/START_HERE.md`
 
