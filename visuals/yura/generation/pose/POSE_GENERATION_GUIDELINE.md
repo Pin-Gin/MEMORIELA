@@ -15,21 +15,21 @@ Applies to: 久遠ゆら / YURA の立ち絵・座り・寄りかかり・寝姿
 
 ポーズ生成では、Project / Image Generation Governanceのdomain ownershipを前提として次の現行正本を使用します。
 
-1. `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
-2. `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
-3. `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-4. `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
-5. `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-6. `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
-7. `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-8. `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
-9. `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
-10. `docs/assistant-context/creation/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
+1. `visuals/yura/identity/master/VISUAL_MASTER.md`
+2. `visuals/yura/identity/master/VISUAL_MASTER.png`
+3. `visuals/yura/identity/body/BODY_MASTER.md`
+4. `visuals/yura/identity/body/BODY_SPEC.md`
+5. `visuals/yura/identity/face/FACE_SPEC.md`
+6. `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+7. `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+8. `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+9. `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+10. `visuals/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
 11. 本書
-12. `docs/assistant-context/creation/yura/generation/GENERATION_TEMPLATE.txt`
+12. `visuals/yura/generation/GENERATION_TEMPLATE.txt`
 13. 現在のユーザー指示 / PoseMy.Art / Daz等の構造参照
 
-ポニーテール、シニヨン、ハーフアップ、編み込み等の髪型アレンジが同時にある場合は `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を併用します。通常生成ではGit履歴上の旧HAIR仕様を取得しません。
+ポニーテール、シニヨン、ハーフアップ、編み込み等の髪型アレンジが同時にある場合は `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を併用します。通常生成ではGit履歴上の旧HAIR仕様を取得しません。
 
 
 ## 3. Core principle — visible structure first
@@ -268,7 +268,7 @@ YURA画像生成では、原則としてユーザーのラフな指示をその�
 
 その後、ユーザーの認識確認を得て生成します。
 
-詳細は `docs/assistant-context/creation/yura/generation/PROMPT_REWRITE_WORKFLOW.md` に従います。
+詳細は `visuals/yura/generation/PROMPT_REWRITE_WORKFLOW.md` に従います。
 
 ユーザーが明示的に即時生成を依頼した場合は確認表示を省略できますが、CANON LOCK / protected domain rulesは維持します。
 
