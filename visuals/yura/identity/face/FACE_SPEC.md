@@ -3,11 +3,11 @@
 Status: **PROTECTED FACE SPECIFICATION / CURRENT FACE DOMAIN AUTHORITY**
 Current Revision: **v0.1**
 Started: 2026-09-11
-Authority aligned: 2026-09-13 — status / authority metadata synchronized with `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+Authority aligned: 2026-09-13 — status / authority metadata synchronized with `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
 Purpose: 久遠ゆらの顔の再現性を最大化し、生成ごとの別人化・年齢感・輪郭・目鼻口の揺れを極限まで減らすための現行FACE正本。
 
-> このファイルは `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md` における現行の **FACE geometry domain authority** です。
-> BODY / scale は `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md` / `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`、protected pupil signature は `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`、描画文法は `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md` を正とします。
+> このファイルは `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md` における現行の **FACE geometry domain authority** です。
+> BODY / scale は `visuals/yura/identity/body/BODY_MASTER.md` / `visuals/yura/identity/body/BODY_SPEC.md`、protected pupil signature は `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`、描画文法は `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md` を正とします。
 > 本書内に残る `provisional` / `pending validation` 等の局所表記は、将来の微調整余地・検証成熟度を示すものであり、本書自体の現在のFACE authorityを無効化しません。
 > 別個の `YURA FACE MASTER` 画像は現時点で必須ではなく、未作成であることは本テキスト正本の権限を下げません。
 
@@ -16,7 +16,7 @@ Purpose: 久遠ゆらの顔の再現性を最大化し、生成ごとの別人�
 - Character: 久遠ゆら
 - Adult woman, apparent age: early twenties
 - Height: 153 cm
-- Body proportion target: **7.25 heads tall**, protected by `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+- Body proportion target: **7.25 heads tall**, protected by `visuals/yura/identity/body/BODY_SPEC.md`
 - FACE generation must preserve the current BODY authority rather than redefining body scale from this file.
 - Face consistency target: reduce generative variation as far as practical by combining this protected FACE specification, current visual master, body authority, hairstyle specification, eye-signature specification, and reference-based generation when appropriate.
 - Exact pixel-identical reproduction from text alone is not assumed possible.
@@ -127,7 +127,7 @@ Status: **CURRENT PROTECTED BASELINE / FURTHER CONTROLLED VALIDATION MAY REFINE 
 - Do not turn the pupil into a heart, star, obvious logo, or conspicuous fantasy symbol.
 - This feature is intended as a visual identity marker / provenance-supporting design cue, not as a technical anti-copy mechanism.
 
-The separately protected authority for this identifying detail is `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`.
+The separately protected authority for this identifying detail is `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`.
 
 ### 2.9 Eye highlights — selected direction A
 
