@@ -74,6 +74,24 @@ BACK view:
 - 骨盤・ヒップは自然な成人女性の幅を維持。
 - 正面での脚長比率を維持。
 
+### 2.2 Dynamic pose preservation — MANDATORY
+
+When the requested image contains meaningful movement beyond the neutral standing baseline, read and apply:
+
+- `visuals/shiori/SHIORI_POSE_GENERATION_GUIDELINE.md`
+
+Core rule:
+
+`動的ポーズでは栞のBODYを再設計せず、固定された栞BODYを関節回転・重心移動・接触変形だけでポーズさせる。`
+
+For twist / 3/4 / side:
+- chest frontal area may reduce by projection
+- actual bust volume must remain unchanged
+- preserve side depth / forward projection
+- represent the far side through overlap / perspective rather than deleting volume
+
+Apply Matte Natural Anime only after BODY / pose / camera / contact / hair / glasses have been resolved.
+
 ---
 
 ## 3. FACE — FIXED
