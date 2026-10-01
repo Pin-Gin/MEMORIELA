@@ -6,13 +6,13 @@ Updated: 2026-09-20 — Git recovery + reference/pixel preservation gates
 Applies to: YURA protected visual MASTERs and any YURA production task whose identity depends on a protected visual reference.
 
 Parent authority:
-`docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+`visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
 
 Canonical neutral MASTER manifest:
-`docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+`visuals/yura/identity/master/VISUAL_MASTER.md`
 
 Canonical Git transport fallback:
-`docs/assistant-context/creation/yura/identity/master/bridge/BRIDGE_PROTOCOL.md`
+`visuals/yura/identity/master/bridge/BRIDGE_PROTOCOL.md`
 
 Purpose: 新規チャットや別コンテキストでも、YURAのproduction visualをcurrent Git branchから復元し、実画像を視覚確認してから生成する。
 
@@ -68,10 +68,10 @@ Before any production image-generation tool call:
 - if visual recovery state != `GIT_VERIFIED`, **DO NOT GENERATE**;
 - continue the Git recovery procedure;
 - if Git recovery fails, return **`BLOCKED — GIT VISUAL MASTER NOT VERIFIED`**;
-- after `GIT_VERIFIED`, run the reference-input preflight defined by `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`;
+- after `GIT_VERIFIED`, run the reference-input preflight defined by `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`;
 - if the imminent tool call cannot guarantee approved identity-reference routing, return **`BLOCKED — REFERENCE INPUT NOT GUARANTEED`**;
 - only set final state = `REFERENCE_INPUT_GUARANTEED` immediately before a tool call whose reference inputs satisfy that preflight;
-- if exact-preservation mode applies, continue through `docs/assistant-context/creation/yura/generation/preservation/PIXEL_PRESERVATION_PROTOCOL.md`;
+- if exact-preservation mode applies, continue through `visuals/yura/generation/preservation/PIXEL_PRESERVATION_PROTOCOL.md`;
 - if immutable protected pixels cannot be guaranteed unchanged, return **`BLOCKED — PROTECTED PIXELS CANNOT BE GUARANTEED`**.
 
 ---
@@ -81,8 +81,8 @@ Before any production image-generation tool call:
 For the neutral MASTER read:
 
 1. `YURA_START_HERE.md`
-2. `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
-3. `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+2. `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+3. `visuals/yura/identity/master/VISUAL_MASTER.md`
 4. current task-specific protected owner / sub-spec as needed
 
 Capture current metadata when available:
@@ -114,7 +114,7 @@ If the environment can visually retrieve the current canonical repository PNG:
 
 If direct repository-image inspection is unavailable:
 
-1. read `docs/assistant-context/creation/yura/identity/master/bridge/BRIDGE_PROTOCOL.md`;
+1. read `visuals/yura/identity/master/bridge/BRIDGE_PROTOCOL.md`;
 2. read the current Bridge manifest;
 3. compare Bridge `source.path` and `source.git_blob_sha1` to the current MASTER;
 4. use the Bridge only on exact source match;
@@ -140,7 +140,7 @@ The Bridge is a Git transport/cache derivative, not a second MASTER.
 
 Authority remains:
 
-**current Git `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`**
+**current Git `visuals/yura/identity/master/VISUAL_MASTER.png`**
 + **current protected BODY / FACE / EYE / HAIR / RENDERING owners**
 
 The Bridge exists only to recover observable pixels when the Git connector cannot expose the canonical PNG directly.
