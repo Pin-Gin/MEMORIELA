@@ -3,7 +3,7 @@
   "role": "non-authoritative text transport bridge for ChatGPT visual recovery",
   "authority": "VISUAL_MASTER.png remains the canonical visual artifact; bridge files are cache only",
   "source": {
-    "path": "docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png",
+    "path": "visuals/yura/identity/master/VISUAL_MASTER.png",
     "bytes": 1314826,
     "width": 941,
     "height": 1672,
@@ -14,7 +14,7 @@
   "previews": [
     {
       "name": "full",
-      "base64_path": "docs/assistant-context/creation/yura/identity/master/bridge/FULL.jpg.b64.txt",
+      "base64_path": "visuals/yura/identity/master/bridge/FULL.jpg.b64.txt",
       "mime_type": "image/jpeg",
       "decoded_bytes": 43686,
       "decoded_sha256": "8b15c00ec8c858867056d3c4377599ff3c9bfd9b6f983a482972eecba380f66d",
@@ -25,7 +25,7 @@
     },
     {
       "name": "portrait",
-      "base64_path": "docs/assistant-context/creation/yura/identity/master/bridge/PORTRAIT.jpg.b64.txt",
+      "base64_path": "visuals/yura/identity/master/bridge/PORTRAIT.jpg.b64.txt",
       "mime_type": "image/jpeg",
       "decoded_bytes": 51205,
       "decoded_sha256": "a7689938450dd8e37d92bb14261aa2f7b424051e4fb8ef9535d08c3fb35d354b",
