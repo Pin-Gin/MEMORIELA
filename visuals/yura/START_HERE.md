@@ -1,33 +1,34 @@
-# MEMORIELA — YURA Creation START HERE
+# 久遠ゆら Visual START HERE
 
 Status: **CANONICAL YURA VISUAL ENTRYPOINT**
 
-久遠ゆらの画像生成・編集・Visual Identity・採否判定・生成QAの入口。
+Purpose: MEMORIELAの挿絵・漫画・立ち絵で、久遠ゆらを同一人物として安定生成するための入口。
 
-## Canon Boundary
-小説版久遠ゆらの人物設定Authority:
-- `../../../../characters/YURA.md`
-- `../../../../story/STORY_CORE.md`
+## Read order
+通常生成:
+1. `identity/master/YURA_VISUAL_MASTER.md`
+2. `identity/body/BODY_SPEC.md`
+3. `identity/face/FACE_SPEC.md`
+4. `identity/eyes/EYE_SPEC.md`
+5. `identity/hair/HAIR_SPEC.md`
+6. `identity/rendering/YURA_RENDERING_SPEC.md`
+7. `../CHARACTER_RENDERING_STYLE.md`
+8. `generation/GENERATION_RULES.md`
 
-旧AI版YURAの人格・経歴・生活設定は継承しない。
-本Domainでは、既存のVisual Identityを小説版ゆらへ継承する。
+必要時のみ:
+- 動的ポーズ → `generation/POSE_RULES.md`
+- 衣装変更 → `generation/OUTFIT_RULES.md`
+- 検証生成 → `qa/VALIDATION_CLOTHING.md` + `qa/GENERATION_QA.md`
 
-## Mandatory Visual Authority
-用途に応じて `AUTHORITY_INDEX.md` から必要資料だけを読む。
-主要Authority:
-- `identity/master/VISUAL_MASTER.md`
-- `identity/master/VISUAL_MASTER.png`
-- BODY / FACE / EYE / HAIR / RENDERING
-- `generation/IMAGE_GENERATION_GOVERNANCE.md`
-- `qa/GENERATION_QA.md`
+## Authority rule
+Visual Masterはwhole-character visual anchor。BODY / FACE / EYE / HAIRは各領域の固定仕様。YURA RenderingはYURA固有補正。Matte Natural AnimeはMEMORIELA共通描画タッチ。Outfit / pose / expression / sceneは派生レイヤーでありIdentityを再設計しない。
 
-## Production Rule
-既存Visual Authorityを使う通常生成はDerivativeとして扱い、Masterを暗黙に変更しない。
-Visual Identity自体を変更する場合は作者の明示承認を必要とする。
+## Default generation rule
+- exactly one YURA per image
+- default hair: Normal Super-Long
+- userが明示しない限り髪型差分を勝手に適用しない
+- 検証時は白背景・検証服・裸足
+- 未承認生成物をVisual Masterへ自動昇格しない
 
-## Reference Gate
-生成途中、失敗、未承認候補、任意の過去チャット画像を正式Referenceへ自動昇格しない。
-正式Visual Masterが必要な作業では現行GitのMasterを使用する。
-
-## Novel Consistency
-衣装、年齢、場面、時系列、人物関係など物語依存情報はNovel Authorityと矛盾させない。
+## Novel boundary
+年齢、人物関係、時系列、制服、場面設定など物語Canonは `characters/` / `story/` を正とする。このVisual Domainは人物の外見と生成安定性のみを扱う。
