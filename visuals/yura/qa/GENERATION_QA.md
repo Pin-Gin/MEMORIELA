@@ -8,7 +8,7 @@ Purpose: YURA画像生成後の評価を、感覚的な「良い / 悪い」で�
 
 Parent authority:
 
-`docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+`visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
 
 Project-wide authority:
 
@@ -230,8 +230,8 @@ A visually indistinguishable result is still not exact-preservation PASS without
 
 Primary authority:
 
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+- `visuals/yura/identity/master/VISUAL_MASTER.md`
+- `visuals/yura/identity/master/VISUAL_MASTER.png`
 
 Supporting protected domain specs remain authoritative inside their own domains.
 
@@ -258,8 +258,8 @@ Do not use this Gate to override a more precise BODY / FACE / HAIR ruling.
 
 Authority:
 
-- `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+- `visuals/yura/identity/body/BODY_MASTER.md`
+- `visuals/yura/identity/body/BODY_SPEC.md`
 
 Protected anchors include:
 
@@ -300,8 +300,8 @@ For strict BODY-preservation / single-domain-only operations, "plausible" is not
 
 Authorities:
 
-- FACE geometry: `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-- pupil signature: `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+- FACE geometry: `visuals/yura/identity/face/FACE_SPEC.md`
+- pupil signature: `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
 
 Check when observable:
 
@@ -334,8 +334,8 @@ Visible eye color that materially departs from the protected blue-gray identity 
 
 Authority:
 
-- `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-- arrangement topology when applicable: `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+- `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- arrangement topology when applicable: `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
 
 ### Protected core checks
 
@@ -400,7 +400,7 @@ Formal v1.2 and v1.3 DRAFT are historical only and must not be used as current G
 
 Authority:
 
-- `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+- `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
 
 Check:
 
@@ -446,7 +446,7 @@ Check only requested derivative variables:
 - requested room variant
 - specified exposure direction
 
-Outfit-specific rules follow `docs/assistant-context/creation/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`.
+Outfit-specific rules follow `visuals/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`.
 Background/room rules do not derive from YURA identity QA. Route Background continuity through `docs/assistant-context/creation/background/START_HERE.md`; non-authoritative legacy room material is not a QA authority.
 
 FAIL examples:
@@ -465,7 +465,7 @@ This Gate may FAIL while Gates 1–5 PASS. That means YURA is correct; the deriv
 
 Authority:
 
-- `docs/assistant-context/creation/yura/generation/pose/POSE_GENERATION_GUIDELINE.md`
+- `visuals/yura/generation/pose/POSE_GENERATION_GUIDELINE.md`
 - current approved structured pose interpretation
 
 Check:
@@ -759,7 +759,7 @@ Future material QA changes require explicit user approval and Git logging.
 ## Validation-clothing comparison condition — 2026-09-19
 
 Authority:
-`docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md`
+`visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md`
 
 For MASTER / BODY / HAIR controlled validation:
 
