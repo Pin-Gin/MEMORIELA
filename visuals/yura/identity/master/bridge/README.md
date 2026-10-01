@@ -4,7 +4,7 @@ Status: GENERATED / NON-AUTHORITATIVE TRANSPORT CACHE
 
 Canonical source:
 
-`docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+`visuals/yura/identity/master/VISUAL_MASTER.png`
 
 Source Git blob SHA-1 at generation:
 
