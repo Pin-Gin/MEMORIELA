@@ -4,15 +4,15 @@ Status: **PROTECTED RENDERING SPECIFICATION / CURRENT RENDERING DOMAIN AUTHORITY
 Current Revision: **v0.1**
 Started: 2026-09-11
 Validated: 2026-09-11
-Authority aligned: 2026-09-13 — status / authority metadata synchronized with `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
-Purpose: 久遠ゆらを「誰として描くか」と「どう描くか」を分離し、参照画像なしでもYURAらしい2Dアニメイラスト描画を再現するための描画仕様。
+Authority aligned: 2026-09-13 — status / authority metadata synchronized with `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+Purpose: 久遠ゆらを「誰として描くか」と「どう描くか」を分離し、参照画像なしでもYURAらしい2Dアニメイラスト描画を再現するための描画仕様。\n\nProject-wide base rendering authority: `visuals/CHARACTER_RENDERING_STYLE.md`（Matte Natural Anime / マット・ナチュラルアニメ）。本書はその共通基準に対するYURA固有の追加制約・上書きのみを定義し、競合時はYURA固有のより厳しい2D/anime制約を優先する。
 
 > このファイルは **rendering style only** を定義する現行のprotected domain authorityである。
-> 顔形状・目鼻口・額・肌色などのidentity geometryは `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md` を正とする。
-> 瞳孔のprotected signatureは `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md` を正とする。
-> 髪型構造は `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md` を正とする。通常生成では旧HAIR revisionをGit履歴から取得しない。
-> 身体比率・人体寸法は `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md` / `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md` を正とし、このファイルから再定義しない。
-> 実用生成の統合入口は `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md` とする。
+> 顔形状・目鼻口・額・肌色などのidentity geometryは `visuals/yura/identity/face/FACE_SPEC.md` を正とする。
+> 瞳孔のprotected signatureは `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md` を正とする。
+> 髪型構造は `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md` を正とする。通常生成では旧HAIR revisionをGit履歴から取得しない。
+> 身体比率・人体寸法は `visuals/yura/identity/body/BODY_MASTER.md` / `visuals/yura/identity/body/BODY_SPEC.md` を正とし、このファイルから再定義しない。
+> 実用生成の統合入口は `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md` とする。
 
 Text-only validation success:
 
@@ -68,7 +68,7 @@ Target impression:
 - 頬、顎下、首、鼻周辺に必要最小限の陰影を置く。
 - 写真的なsubsurface scattering、湿った肌艶、毛穴、微細な凹凸、3Dレンダー的なスペキュラは避ける。
 - ハイライトは狭いテカりではなく、柔らかな面として扱う。
-- 色白・健康的な血色は `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md` の仕様に従う。
+- 色白・健康的な血色は `visuals/yura/identity/face/FACE_SPEC.md` の仕様に従う。
 
 ### 3.2 Nose
 
@@ -98,8 +98,8 @@ Target impression:
 
 ただし眼球自体を写実化しない。
 
-- `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md` の青灰色、虹彩構造、ハイライト、瞳孔意匠を維持する。
-- protected pupil signatureは `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md` に従う。
+- `visuals/yura/identity/face/FACE_SPEC.md` の青灰色、虹彩構造、ハイライト、瞳孔意匠を維持する。
+- protected pupil signatureは `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md` に従う。
 - 虹彩グラデーションは丁寧にしてよい。
 - 外周は少し濃い青灰色だが、黒いコンタクトレンズ状リングにしない。
 - 白目は真っ白ではなく、周囲の光に馴染むわずかな暖色 / 灰色を許容。
@@ -123,7 +123,7 @@ YURAの銀白髪は、写真の髪ではなく**イラスト化された毛束�
 - 髪の影も大きく整理された形にする。
 - 毛先は自然に分かれるが、ノイズ状の細毛を増やしすぎない。
 - 柔らかく軽い質感を保つ。
-- hairstyle geometry自体は `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md` を正とする。
+- hairstyle geometry自体は `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md` を正とする。
 
 ### Back-view continuity rule
 
@@ -171,7 +171,7 @@ Target:
 
 ## 9. Body rendering extension
 
-Current `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md` / `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md` のBODY geometryへ、この描画文法をそのまま全身適用する。
+Current `visuals/yura/identity/body/BODY_MASTER.md` / `visuals/yura/identity/body/BODY_SPEC.md` のBODY geometryへ、この描画文法をそのまま全身適用する。
 
 - anatomical proportions may be carefully controlled, but rendering remains illustrated.
 - 肩、鎖骨、胸郭、腰、膝、足首などを写実的な筋骨格レンダーで彫り込みすぎない。
@@ -256,9 +256,9 @@ Validation conditions intentionally used **no image reference**.
 
 Current application authorities:
 
-1. `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-2. `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-3. this `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+1. `visuals/yura/identity/face/FACE_SPEC.md`
+2. `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+3. this `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
 
 The original text-only validation is retained only as evidence for the selected rendering grammar; current HAIR geometry always comes from the current HAIR domain owner.
 
@@ -294,7 +294,7 @@ The calibration image therefore remains **evidence / troubleshooting reference o
 
 For ordinary generation, first read:
 
-`docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+`visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
 
 That file assembles the FACE, EYE, HAIR and RENDERING layers into a reusable generation baseline and contains the explicit back-view hair rule.
 
