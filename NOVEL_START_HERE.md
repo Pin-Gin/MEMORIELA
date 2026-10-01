@@ -17,6 +17,7 @@
 人物を扱う場合は characters/ の該当人物を読む。
 話数を扱う場合は manuscript/ の該当話数と、必要に応じて story/TIMELINE.md / KNOWLEDGE_STATE.md を読む。
 ゆらの画像制作では既存 docs/assistant-context/creation/yura/identity 以下をVisual Authorityとして参照する。
+キャラクター画像生成では、キャラクター固有Visual Authorityに加えて `visuals/CHARACTER_RENDERING_STYLE.md` を必ず読み、MEMORIELA共通の描画タッチ **Matte Natural Anime / マット・ナチュラルアニメ** を適用する。
 
 ## AIの役割
 作者はユーザーである。AIは壁打ち、初見読者QA、ストーリー/整合性/POV/情報開示QA、演出稿から小説稿への変換補助、添削・校正を担当する。
