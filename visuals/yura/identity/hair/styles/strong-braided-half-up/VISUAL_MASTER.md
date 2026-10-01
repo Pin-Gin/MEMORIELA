@@ -14,7 +14,7 @@ Approved generation:
 - source canvas: approximately 9:16 portrait
 - exported pixel size: **941 × 1672**
 - exported PNG SHA256: `52b27de36e76ba378b741375fe6d875138dcb243ed52c08f495ef2c6c9a45466`
-- repository image: `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png`
+- repository image: `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png`
 - local placement: **CONFIRMED BY USER 2026-09-19**
 - repository commit/push of the PNG is handled by the local/main workflow
 - until the PNG is visible in Git, gen_id + SHA256 remain the canonical artifact identifiers
@@ -29,9 +29,9 @@ This artifact is the approved visual anchor for the Strong Braided Half-Up arran
 
 When YURA generation requests Strong Braided Half-Up / ハーフアップ＋編み込み強め:
 
-1. read this file: `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
-2. read `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
-3. inspect the paired repository image `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png` whenever repository-image inspection is available
+1. read this file: `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
+2. read `visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
+3. inspect the paired repository image `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png` whenever repository-image inspection is available
 4. use the PNG only as the **hairstyle topology visual anchor**
 5. keep whole-character identity / FACE / BODY / EYE / RENDERING authority with their protected owners and current whole-character MASTER
 
@@ -41,7 +41,7 @@ This mirrors the current whole-character / Normal Super-Long visual-reference pa
 **MD manifest → paired PNG visual inspection → protected domain text specs.**
 
 It does **not** replace the current whole-character neutral YURA MASTER:
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+- `visuals/yura/identity/master/VISUAL_MASTER.png`
 - gen_id `e942a217-75fd-4154-88cc-6c0f74e99d82`
 
 The whole-character MASTER remains the primary overall identity anchor.
@@ -107,25 +107,25 @@ Luxury:
 ## 4. Authority relationship
 
 Parent HAIR authority:
-`docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+`visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 
 General arrangement authority:
-`docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+`visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
 
 Specialized protected text spec:
-`docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
+`visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
 
 Whole-character identity:
-`docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md` + `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+`visuals/yura/identity/master/VISUAL_MASTER.md` + `visuals/yura/identity/master/VISUAL_MASTER.png`
 
 BODY:
-`docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md` + `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+`visuals/yura/identity/body/BODY_MASTER.md` + `visuals/yura/identity/body/BODY_SPEC.md`
 
 FACE:
-`docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
+`visuals/yura/identity/face/FACE_SPEC.md`
 
 Rendering:
-`docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+`visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
 
 This visual MASTER does not override protected FACE / BODY / EYE / RENDERING values.
 
@@ -159,7 +159,7 @@ For future controlled Strong Braided Half-Up validation:
 
 - use this artifact as the hairstyle topology visual reference
 - keep current YURA FACE / BODY / EYE / RENDERING authorities protected
-- use `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md` for neutral controlled validation
+- use `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md` for neutral controlled validation
 - do not infer BODY canon from minor clothing / pose rendering variation in this hairstyle image
 - do not expose hidden rear structure merely to compare it
 
