@@ -210,6 +210,30 @@ Owner:
 
 3D references control pose structure only, never YURA identity / BODY / FACE / EYE / HAIR / RENDERING.
 
+### 3.10A Dynamic Pose Preservation — mandatory
+
+Owner:
+- `visuals/yura/generation/pose/POSE_GENERATION_GUIDELINE.md`
+
+Whenever the requested pose includes meaningful motion beyond the neutral standing baseline, the **Dynamic Pose Preservation Rule** in the pose guideline is mandatory.
+
+This includes twist, seated, squat / crouch, kneeling, strong forward / backward lean, large lateral lean, reaching, dynamic stepping / running, and other poses with material joint / weight / perspective change.
+
+Required principle:
+
+`動的ポーズではYURAのBODYを再設計せず、固定されたYURA BODYを関節回転・重心移動・接触変形だけでポーズさせる。`
+
+The dynamic-pose route must preserve:
+- identity
+- BODY geometry
+- segment lengths / base widths / base volumes
+- perspective/body separation
+- contact-vs-redesign separation
+- Normal Super-Long source length / mass
+- rendering-last order
+
+Dynamic pose output must pass the dedicated post-generation Dynamic Pose QA.
+
 ### 3.11 Generation conversation / rewrite
 
 Owner:
@@ -378,8 +402,9 @@ Derivative variables never authorize protected-domain drift.
 12. `visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` when layout matters
 13. `visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md` when selecting MASTER / standing / smartphone / X-SNS / background output behavior
 14. `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md` when MASTER / BODY / FACE-full-body / HAIR controlled validation is intended
-15. task-specific guidelines
-16. current request
+15. `visuals/yura/generation/pose/POSE_GENERATION_GUIDELINE.md` whenever pose / motion is present; for significant motion, apply its Dynamic Pose Preservation Rule
+16. task-specific guidelines
+17. current request
 
 When accepting / publishing / reusing / retrying output, additionally apply `visuals/yura/qa/GENERATION_QA.md`.
 
@@ -407,6 +432,16 @@ Compile requested outfit / accessories / explicit hairstyle arrangement / expres
 ### Block C — PHYSICAL POSE
 
 Resolve body/head orientation, shoulders/torso/pelvis, limbs, support/contact/load, center of gravity and front/back ordering.
+
+If the pose contains significant movement, **Dynamic Pose Preservation is mandatory before proceeding to camera/layout**.
+
+Use Skeleton Transform Only:
+- rotate / translate canonical segments
+- preserve segment lengths / widths / base volumes
+- separate foreshortening from anatomy
+- separate contact deformation from BODY redesign
+- preserve torso / bust / pelvis continuity through twist
+- preserve Normal Super-Long source length / mass through movement
 
 ### Block D — CAMERA / LAYOUT
 
