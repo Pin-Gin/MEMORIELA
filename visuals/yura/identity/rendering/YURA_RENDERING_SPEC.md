@@ -33,14 +33,16 @@ To reduce rendering drift between generations, preserve the following visible co
 - white-background scenes must still preserve readable contour and soft form separation without blowing out the character
 - natural volume is expressed by diffuse light-and-shadow structure, not by reflective surface treatment
 
-## Skin
-- **bright fair skin**
-- **ほんの少し白寄り**
-- **ごく薄い自然な血色**
-- **白飛びしない**
-- do not force pink / orange warmth
+## Skin rendering
+Skin identity / base color authority:
+`../skin/SKIN_SPEC.md`
+
+This rendering layer controls surface treatment only:
+- preserve the color defined by SKIN_SPEC
+- soft / dry-matte surface
 - no plastic / waxy / wet gloss
 - no pores or photographic microtexture
+- do not recolor the skin through lighting or rendering style
 
 ## Hair
 - silver-white identity must remain stable
