@@ -4,10 +4,10 @@ Status: **CANONICAL / MANDATORY EXACT-PRESERVATION EXECUTION PROTOCOL**
 Adopted: 2026-09-20
 Character: 久遠ゆら / YURA
 Parent authority:
-`docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+`visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
 
 Protected BODY geometry companion protocol:
-`docs/assistant-context/creation/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
 
 Purpose: 「差分なし」「変更しない」「維持」「寸分の狂いなし」「完全一致」等の要求を、プロンプト上の努力目標ではなく、画像生成・画像編集の実行可否を決めるFail-Closed条件として扱う。
 
@@ -53,7 +53,7 @@ Exact preservation source must be the current approved production source resolve
 
 For neutral YURA:
 
-- canonical source = current `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`;
+- canonical source = current `visuals/yura/identity/master/VISUAL_MASTER.png`;
 - Bridge FULL / PORTRAIT may recover / inspect the MASTER, but do not become independent canon;
 - generated outputs, rejected candidates, prior derivatives, chat attachments, 3D references and memory are not exact-preservation identity sources unless explicitly promoted through protected Git change control.
 
