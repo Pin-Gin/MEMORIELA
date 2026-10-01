@@ -293,6 +293,43 @@ Outfit exposure is not part of this BODY anchor.
 
 ---
 
+## 4A. YURA IDENTITY FIRST — rendering / scene must never recolor identity
+
+For every YURA generation, protected identity is resolved **before** project-wide rendering, outfit, lighting, background, or scene styling.
+
+Mandatory priority:
+
+1. current YURA Visual Master / protected domain specs
+2. YURA FACE / EYE / BODY / HAIR identity locks
+3. YURA-specific rendering constraints
+4. project-wide `visuals/CHARACTER_RENDERING_STYLE.md`
+5. outfit / pose / expression / background / lighting
+
+The shared Matte Natural Anime style is a rendering layer only. It must never reinterpret or recolor protected YURA identity.
+
+### Protected color locks
+
+- iris = **blue-gray with restrained saturation**
+- pupil = very dark blue-gray / deep gray, close to black
+- hair = **silver-white**
+- skin = healthy bright fair skin
+
+Scene lighting may shift local illumination subtly, but the base identity color must remain unmistakable.
+Warm lighting must not turn the iris amber / brown / hazel / violet.
+Cool lighting must not turn the iris vivid blue / cyan.
+Rendering style must not turn silver-white hair into beige / blonde / lavender.
+
+If the generated eye color does not read as YURA blue-gray, classify as **IDENTITY FAIL** and reject rather than accepting it as a style variation.
+
+### Reference precedence
+
+When the current canonical Visual Master is available and the execution surface can bind it reliably, it is the preferred whole-character identity reference.
+The Visual Master and protected specs jointly outrank the shared rendering style.
+
+If the execution surface cannot guarantee that the current canonical Master is the identity reference, the existing EXPLICIT REFERENCE GATE applies and production generation is blocked.
+
+---
+
 ## 5. Normal derivative variables
 
 Normally variable per image:
