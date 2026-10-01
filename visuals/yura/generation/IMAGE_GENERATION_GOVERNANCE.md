@@ -12,13 +12,13 @@ Project-wide reasoning authority:
 `docs/assistant-context/AI_BEHAVIOR_CONTROL.md`
 
 Canonical post-generation QA:
-`docs/assistant-context/creation/yura/qa/GENERATION_QA.md`
+`visuals/yura/qa/GENERATION_QA.md`
 
 Exact-preservation execution protocol:
-`docs/assistant-context/creation/yura/generation/preservation/PIXEL_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/PIXEL_PRESERVATION_PROTOCOL.md`
 
 Protected BODY geometry execution protocol:
-`docs/assistant-context/creation/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
 
 ---
 
@@ -78,8 +78,8 @@ Important:
 ### 3.1 Whole-character identity / visual cross-check
 
 Owners:
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+- `visuals/yura/identity/master/VISUAL_MASTER.md`
+- `visuals/yura/identity/master/VISUAL_MASTER.png`
 
 Current approved MASTER:
 
@@ -92,8 +92,8 @@ A more precise protected domain spec overrides incidental details in the MASTER 
 ### 3.2 BODY / anatomy / proportion / scale
 
 Owners:
-- `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+- `visuals/yura/identity/body/BODY_MASTER.md`
+- `visuals/yura/identity/body/BODY_SPEC.md`
 
 Own:
 - 153 cm scale concept
@@ -110,24 +110,24 @@ Outfit, camera, canvas, pose, scene, 3D reference and margin never redefine BODY
 ### 3.3 FACE geometry / adult identity
 
 Owner:
-- `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
+- `visuals/yura/identity/face/FACE_SPEC.md`
 
 ### 3.4 Protected pupil / eye signature
 
 Owner:
-- `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+- `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
 
 Owns the lower-right pupil-edge notch and resolution-aware visibility behavior.
 
 ### 3.5 HAIR core geometry / continuity
 
 Owner:
-- `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
 
 Owns silver-white color, protected super-long source length, source mass, fine / soft strands, bangs, face framing, restrained lateral spread, gravity / contact behavior and back-view continuity.
 
 Protected normal-down sub-spec:
-- `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+- `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
 
 Role:
 - applies when no alternate arrangement is requested
@@ -136,24 +136,24 @@ Role:
 - does not alter parent HAIR v1.3 core values
 
 Current visual cross-check for the approved Normal Super-Long baseline:
-- current `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` / gen_id `e942...`
+- current `visuals/yura/identity/master/VISUAL_MASTER.png` / gen_id `e942...`
 
 Validation workflow:
-- `docs/assistant-context/creation/yura/qa/templates/NORMAL_SUPER_LONG_VALIDATION_TEMPLATE.md`
+- `visuals/yura/qa/templates/NORMAL_SUPER_LONG_VALIDATION_TEMPLATE.md`
 
 
 ### 3.6 Hair arrangement topology
 
 Owner:
-- `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+- `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
 
 Protected specialized sub-specs:
-- `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` — applies only when Strong Braided Half-Up / ハーフアップ＋編み込み強め is explicitly requested
-- `docs/assistant-context/creation/yura/identity/hair/styles/LOW_CHIGNON_SPEC.md` — applies when ordinary Low Chignon / ローシニヨン is explicitly requested
+- `visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` — applies only when Strong Braided Half-Up / ハーフアップ＋編み込み強め is explicitly requested
+- `visuals/yura/identity/hair/styles/LOW_CHIGNON_SPEC.md` — applies when ordinary Low Chignon / ローシニヨン is explicitly requested
 
 Current hairstyle visual MASTER:
-- manifest: `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
-- paired image: `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png`
+- manifest: `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.md`
+- paired image: `visuals/yura/identity/hair/styles/strong-braided-half-up/VISUAL_MASTER.png`
 - gen_id `0336bd46-16bf-4d17-823b-73d6204cba31`
 - when repository-image inspection is available, inspect the paired PNG for Strong Braided Half-Up generation
 
@@ -168,17 +168,17 @@ Current production priority:
 ### 3.7 RENDERING grammar
 
 Owner:
-- `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+- `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
 
 ### 3.8 Practical integrated text assembly
 
 Owner:
-- `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+- `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
 
 ### 3.9 Outfit
 
 Owner:
-- `docs/assistant-context/creation/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
+- `visuals/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
 
 Current baseline:
 - named garment identity takes priority
@@ -189,7 +189,7 @@ Current baseline:
 ### 3.9A Controlled validation clothing
 
 Protected sub-spec:
-- `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md`
+- `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md`
 
 Applies to MASTER / BODY / FACE-full-body / HAIR controlled validation and hairstyle MASTER candidates.
 
@@ -206,19 +206,19 @@ A validation-clothing mismatch must never be repaired by rewriting BODY canon.
 ### 3.10 Pose / contact / load / 3D reference
 
 Owner:
-- `docs/assistant-context/creation/yura/generation/pose/POSE_GENERATION_GUIDELINE.md`
+- `visuals/yura/generation/pose/POSE_GENERATION_GUIDELINE.md`
 
 3D references control pose structure only, never YURA identity / BODY / FACE / EYE / HAIR / RENDERING.
 
 ### 3.11 Generation conversation / rewrite
 
 Owner:
-- `docs/assistant-context/creation/yura/generation/PROMPT_REWRITE_WORKFLOW.md`
+- `visuals/yura/generation/PROMPT_REWRITE_WORKFLOW.md`
 
 ### 3.12 Structured generation input
 
 Owner:
-- `docs/assistant-context/creation/yura/generation/GENERATION_TEMPLATE.txt`
+- `visuals/yura/generation/GENERATION_TEMPLATE.txt`
 
 ### 3.13 Room / environment routing
 
@@ -233,10 +233,10 @@ Legacy room material under `creation/background/reference-materials/` is non-aut
 ### 3.14 Framing / margin / use-case layout
 
 Owner:
-- `docs/assistant-context/creation/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md`
+- `visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md`
 
 Protected operational sub-spec:
-- `docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`
+- `visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`
 
 The parent owns framing / margin / Quiet Zone / BODY-safe adaptation.
 The Profile A–E sub-spec owns named use-case routing and profile defaults:
@@ -253,7 +253,7 @@ Explicit user ratio / placement may override a profile's default ratio while the
 ### 3.15 Post-generation QA
 
 Owner:
-- `docs/assistant-context/creation/yura/qa/GENERATION_QA.md`
+- `visuals/yura/qa/GENERATION_QA.md`
 
 QA judges against domain owners and applicable protected sub-specs; it does not invent new canon.
 
@@ -323,28 +323,28 @@ Derivative variables never authorize protected-domain drift.
 3. `docs/assistant-context/YURA_START_HERE.md`
 4. `YURA_STATE_SNAPSHOT.md`
 5. this governance
-6. `docs/assistant-context/creation/yura/START_HERE.md`
+6. `visuals/yura/START_HERE.md`
 
 ### 6.2 Ordinary YURA image generation
 
 1. this governance
-2. `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
-3. inspect `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` when available
-4. `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-5. `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
-6. `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-7. `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
-8. `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-9. `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` when no alternate arrangement is requested
-10. `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
-11. `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
-12. `docs/assistant-context/creation/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` when layout matters
-13. `docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md` when selecting MASTER / standing / smartphone / X-SNS / background output behavior
-14. `docs/assistant-context/creation/yura/qa/VALIDATION_CLOTHING_SPEC.md` when MASTER / BODY / FACE-full-body / HAIR controlled validation is intended
+2. `visuals/yura/identity/master/VISUAL_MASTER.md`
+3. inspect `visuals/yura/identity/master/VISUAL_MASTER.png` when available
+4. `visuals/yura/identity/body/BODY_MASTER.md`
+5. `visuals/yura/identity/body/BODY_SPEC.md`
+6. `visuals/yura/identity/face/FACE_SPEC.md`
+7. `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+8. `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+9. `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` when no alternate arrangement is requested
+10. `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+11. `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+12. `visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` when layout matters
+13. `visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md` when selecting MASTER / standing / smartphone / X-SNS / background output behavior
+14. `visuals/yura/qa/VALIDATION_CLOTHING_SPEC.md` when MASTER / BODY / FACE-full-body / HAIR controlled validation is intended
 15. task-specific guidelines
 16. current request
 
-When accepting / publishing / reusing / retrying output, additionally apply `docs/assistant-context/creation/yura/qa/GENERATION_QA.md`.
+When accepting / publishing / reusing / retrying output, additionally apply `visuals/yura/qa/GENERATION_QA.md`.
 
 ---
 
@@ -384,7 +384,7 @@ Resolve:
 - negative space
 - margin / Quiet Zone
 
-Use `docs/assistant-context/creation/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` + `docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`.
+Use `visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` + `visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`.
 Never change anatomy for layout.
 
 ### Block E — REFERENCE ISOLATION
@@ -420,7 +420,7 @@ Protect against:
 
 Before **any YURA production image-generation tool call**, apply:
 
-`docs/assistant-context/creation/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md`
+`visuals/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md`
 
 Rules:
 
@@ -478,7 +478,7 @@ Required preflight fields:
 
 For ordinary neutral YURA production, identity authority is limited to:
 
-- the current canonical `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`; or
+- the current canonical `visuals/yura/identity/master/VISUAL_MASTER.png`; or
 - when direct Git PNG transport is unavailable, the current source-SHA-matched Git Bridge FULL + PORTRAIT recovered from that same MASTER.
 
 FULL and PORTRAIT are transport views of the same canonical MASTER. They are not independent authorities.
@@ -540,7 +540,7 @@ The phrase **"strongest prior candidate as rollback"** means QA comparison / rol
 
 When the user requires any protected region to remain unchanged — including "差分なし", "変更なし", "維持", "固定", "寸分の狂いなし", "完全一致" or equivalent — apply:
 
-`docs/assistant-context/creation/yura/generation/preservation/PIXEL_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/PIXEL_PRESERVATION_PROTOCOL.md`
 
 In exact-preservation mode, a protected region that is not authorized to change is **not a generative variable**.
 
@@ -575,7 +575,7 @@ Visual similarity is not proof of preservation.
 ## 7E. PROTECTED BODY GEOMETRY GATE — derivative/body-separation blocker
 
 Apply:
-`docs/assistant-context/creation/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
 
 Derivative authorization never authorizes BODY change.
 
@@ -610,7 +610,7 @@ After execution, if BODY equality cannot be verified:
 
 ### Current production MASTER
 
-`docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` / `e942...` is the primary whole-character production visual reference and the approved Normal Super-Long visual anchor.
+`visuals/yura/identity/master/VISUAL_MASTER.png` / `e942...` is the primary whole-character production visual reference and the approved Normal Super-Long visual anchor.
 
 Precise domain specs still override incidental artifact details in the MASTER inside their own domains.
 
@@ -673,7 +673,7 @@ A retry is a correction, not a fresh redesign.
 
 ## 11. Mandatory post-generation QA
 
-Material outputs intended for acceptance, publication, reuse, UI assets, derivative reference, or further iteration use `docs/assistant-context/creation/yura/qa/GENERATION_QA.md`.
+Material outputs intended for acceptance, publication, reuse, UI assets, derivative reference, or further iteration use `visuals/yura/qa/GENERATION_QA.md`.
 
 Canonical Gates remain:
 
@@ -703,10 +703,10 @@ To materially alter protected canon:
 4. update protected sub-spec if implementation routing changes
 5. update this governance if routing / anchors changed
 6. sync `YURA_STATE_SNAPSHOT.md`
-7. sync `docs/assistant-context/creation/yura/START_HERE.md`
+7. sync `visuals/yura/START_HERE.md`
 8. record historical reasoning when useful
 9. ensure `YURA_START_HERE.md` still routes correctly
-10. conceptually run `docs/assistant-context/creation/yura/AI_CONTROL.md`
+10. conceptually run `visuals/yura/AI_CONTROL.md`
 11. keep QA aligned
 
 Do not leave finalized canon change solely in chat memory.
