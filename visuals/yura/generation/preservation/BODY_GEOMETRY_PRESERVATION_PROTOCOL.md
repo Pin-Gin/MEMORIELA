@@ -5,11 +5,11 @@ Adopted: 2026-09-20
 Character: 久遠ゆら / YURA
 
 Parent authority:
-`docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+`visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
 
 Protected BODY authorities:
-- `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+- `visuals/yura/identity/body/BODY_MASTER.md`
+- `visuals/yura/identity/body/BODY_SPEC.md`
 
 Purpose: 衣装・背景・髪・表情・小物などの派生変更が、YURAの承認済みBODY geometryを再解釈・再生成・変形することを防ぐ。特に「服だけ変更」「髪だけ変更」「差分なし」等で、変更対象の見た目とBODYの変更権限を混同しないためのFail-Closed実行規則。
 
