@@ -10,7 +10,7 @@ Character: 久遠ゆら / YURA
 
 The current canonical neutral YURA visual master is:
 
-- repository image: `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
+- repository image: `visuals/yura/identity/master/VISUAL_MASTER.png`
 - Git blob SHA: `2c99257f5ae8c2c878f649dd97474d6860a8d689`
 - generation id: `e942a217-75fd-4154-88cc-6c0f74e99d82`
 - explicit user approval: **「はい、完璧すぎる これスーパーロングのマスタ画像にします!」**
@@ -18,7 +18,7 @@ The current canonical neutral YURA visual master is:
 - exported PNG SHA-256: `bddf347cd38c1a38e8154b06d9e3d01a8dd3d585991903fa464aa7924966ccf2`
 - role: **neutral full-body whole-character visual identity master + approved Normal Super-Long visual anchor**
 
-The repository PNG above is the primary whole-character **production** visual artifact. Before formal YURA derivative generation, recover and inspect the current MASTER through `docs/assistant-context/creation/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md` using the current Git artifact directly when possible or the current source-SHA-matched Git Bridge when direct PNG inspection is unavailable. Do not reconstruct YURA from chat memory or an arbitrary derivative.
+The repository PNG above is the primary whole-character **production** visual artifact. Before formal YURA derivative generation, recover and inspect the current MASTER through `visuals/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md` using the current Git artifact directly when possible or the current source-SHA-matched Git Bridge when direct PNG inspection is unavailable. Do not reconstruct YURA from chat memory or an arbitrary derivative.
 
 The current MASTER is aligned with the protected formal HAIR v1.3 / Normal Super-Long v1.0 direction and is the current whole-character visual anchor.
 
@@ -78,8 +78,8 @@ The simple inner top / shorts are validation clothing only and are not canonical
 
 BODY authority remains:
 
-- `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+- `visuals/yura/identity/body/BODY_MASTER.md`
+- `visuals/yura/identity/body/BODY_SPEC.md`
 
 Current protected anchors include:
 
@@ -104,12 +104,12 @@ Canvas or aspect-ratio changes must use whole-character uniform scaling / transl
 
 Interpret this MASTER together with:
 
-- `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-- `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
-- `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-- `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
-- `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
-- `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+- `visuals/yura/identity/face/FACE_SPEC.md`
+- `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+- `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+- `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+- `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
 
 Current protected appearance includes:
 
@@ -126,7 +126,7 @@ Current protected appearance includes:
 
 ### Eye-signature resolution rule
 
-The protected lower-right pupil-edge teardrop-like notch remains governed by `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`.
+The protected lower-right pupil-edge teardrop-like notch remains governed by `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`.
 
 This full-body MASTER is not required to visibly prove that micro-detail at small display scale. If the notch cannot be responsibly resolved in the full-body artifact, treat it as scale-limited / NOT OBSERVABLE rather than removing it from canon or enlarging it unnaturally.
 
@@ -138,8 +138,8 @@ Unlike the previous neutral MASTER, the current MASTER was generated after adopt
 
 For ordinary non-arranged YURA hair:
 
-- `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md` owns HAIR core
-- `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` owns the normal down-hair baseline
+- `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md` owns HAIR core
+- `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` owns the normal down-hair baseline
 - this MASTER is the preferred visual cross-check for that approved combination
 
 ---
@@ -150,13 +150,13 @@ Before ordinary YURA derivative generation:
 
 1. read this manifest
 2. treat the **current Git branch** as the only ordinary production identity environment
-3. inspect the current `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` directly when technically possible
-4. otherwise follow `docs/assistant-context/creation/yura/identity/master/bridge/BRIDGE_PROTOCOL.md` and complete FULL + PORTRAIT fetch / decode / decoded-hash verification / actual visual inspection
+3. inspect the current `visuals/yura/identity/master/VISUAL_MASTER.png` directly when technically possible
+4. otherwise follow `visuals/yura/identity/master/bridge/BRIDGE_PROTOCOL.md` and complete FULL + PORTRAIT fetch / decode / decoded-hash verification / actual visual inspection
 5. reach production visual state `GIT_VERIFIED`
 6. apply current protected BODY / FACE / EYE / HAIR / RENDERING specs
-7. for default non-arranged hair, apply `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+7. for default non-arranged hair, apply `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
 8. apply outfit / pose / expression / scene only as derivative layers
-9. evaluate material outputs through `docs/assistant-context/creation/yura/qa/GENERATION_QA.md`
+9. evaluate material outputs through `visuals/yura/qa/GENERATION_QA.md`
 
 Do not use an older neutral master, rejected candidate, ornate legacy master, or arbitrary derivative as a competing production identity source.
 
@@ -166,7 +166,7 @@ Do not use an older neutral master, rejected candidate, ornate legacy master, or
 
 This MASTER is PROTECTED.
 
-Do not replace `e942a217-75fd-4154-88cc-6c0f74e99d82` or the current `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` without explicit user approval.
+Do not replace `e942a217-75fd-4154-88cc-6c0f74e99d82` or the current `visuals/yura/identity/master/VISUAL_MASTER.png` without explicit user approval.
 
 A future replacement must record:
 
