@@ -261,7 +261,7 @@ Avoid:
 
 For outfit-only / hair-only / background-only / expression-only and other single-domain changes, controlled validation, or exact-preservation tasks, apply:
 
-`docs/assistant-context/creation/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
 
 The BODY values in this file remain protected underneath derivative pixels.
 
