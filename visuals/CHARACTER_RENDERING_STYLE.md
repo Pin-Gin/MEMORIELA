@@ -4,145 +4,265 @@ Status: **CANONICAL / MANDATORY / PROJECT-WIDE**
 
 Style name: **Matte Natural Anime / マット・ナチュラルアニメ**
 
-Purpose: MEMORIELA のキャラクター画像生成で共通適用する標準レンダリングスタイルを定義する。
+Purpose:
+MEMORIELAに登場するすべてのキャラクター画像で、
+共通の描画タッチ・陰影・表面質感・コントラスト・写実度を維持する。
+
+本書はキャラクター固有のBODY / FACE / EYE / HAIR / SKIN / GLASSES /
+outfit / pose等を定義しない。
+
+キャラクター固有差は各キャラクターのVisual Authorityが支配し、
+本書は**全キャラクター共通のレンダリング品質と質感**を支配する。
 
 ---
 
-## 1. Mandatory application
+## 1. Core definition
 
-MEMORIELA でキャラクター画像を生成する場合、特別な明示指示がない限り本スタイルを**必ず適用する**。
+**高品質2Dアニメイラストを基礎に、
+光沢を抑えたマットな表面感と、
+わずかに自然寄りの立体・陰影・毛束表現を加える。**
 
-対象:
-- Visual Master 候補
-- 立ち絵
-- 私服
-- 制服
-- 日常シーン
-- 室内 / 屋外シーン
-- 表情差分
-- 髪型差分
-- SNS 用画像
-- 3D 再構築用の 2D 参照画像
-- その他のキャラクター派生画像
-
-キャラクター固有の BODY / FACE / EYES / HAIR / GLASSES / outfit / pose 等は各キャラクター Visual Authority が支配し、本書は**描画タッチ・表面質感・陰影・実在感の程度**を支配する。
-
----
-
-## 2. Core definition
-
-**高品質2Dアニメイラストを基礎に、光沢を抑えたマットな表面感と、わずかに自然寄りの立体・陰影・毛束表現を加える。**
-
-アニメキャラクターとしての顔立ち、目、輪郭、プロポーション、線画、造形は維持する。
+- アニメキャラクターとしての造形を維持する。
+- 写実化・半実写化しない。
+- 完全なフラットセル塗りにも寄せすぎない。
+- 強い光沢ではなく、柔らかな明暗差で立体を表現する。
+- **全体をしっとり柔らかく見せる。**
+- キャラクターごとに描画タッチを変えない。
 
 **「少しリアル」＝写実化ではない。**
 
-狙いは写真・半実写・3DCGへ寄せることではなく、**アニメ表現の中で自然さを一段だけ増やすこと**。
+アニメ表現の中で、
+立体・光・毛束・布の自然さを一段だけ増やす。
 
 ---
 
-## 3. Matte surface — FIXED
+## 2. Line — FIXED
 
-- 光沢は控えめ。
-- 肌、髪、衣服をテカテカさせない。
-- 強い鏡面ハイライトを常用しない。
-- プラスチック、ビニール、濡れたような表面感にしない。
-- 塗りはしっとり落ち着いた印象。
-- 全体の表面感は柔らかい。
-- コントラストは低〜中程度。
+- 線画は細く繊細。
+- クリーンな2Dアニメ線を維持する。
+- 黒く重いアウトラインにしない。
+- 顔・髪・BODY・衣服で線の強さを急変させない。
+- 線画を消すほどペインタリーにしない。
+- 線だけで立体を作らず、塗りと陰影も併用する。
+- キャラクターごとに線密度・線幅・線の主張を変えない。
+
+---
+
+## 3. Shading — FIXED
+
+- **soft cel / grouped shading** を基礎とする。
+- 弱い拡散グラデーションを適度に混ぜる。
+- 影境界は硬くしすぎず、自然に柔らかくつなぐ。
+- 完全なフラットセル塗りにはしない。
+- 強い立体陰影・深すぎる影・劇的な陰影を標準にしない。
+- BODYや顔の立体感は、穏やかな明暗差で表現する。
+- 光と影によってキャラクター固有のBODY geometryを変更しない。
+- キャラクターごとに陰影ロジックを変えない。
+
+---
+
+## 4. Contrast / brightness — FIXED
+
+- 全体コントラストは **低〜中程度**。
+- 極端な黒つぶれを作らない。
+- 明部を過度に持ち上げて白飛びさせない。
+- 明るい背景でもキャラクターの輪郭と立体が自然に読める状態を維持する。
+- 生成ごとに極端に淡く／濃くならない。
+- キャラクターごとにコントラスト帯を変えない。
+- 全体の空気感は落ち着いて柔らかく保つ。
+
+---
+
+## 5. Surface quality — FIXED
+
+全体の表面感は **マット寄り** とする。
+
+- 肌・髪・衣服をテカテカさせない。
+- 強い鏡面反射を標準にしない。
+- プラスチック・ビニール・ワックス・濡れたような表面にしない。
+- 立体感は光沢ではなく、明暗差・厚み・重なりで表現する。
 - ハイライトは形状説明に必要な範囲に抑える。
-- 肌の発光感、過剰な艶、油膜状の反射を避ける。
+- ハイライトは細く鋭いものより、広く弱いものを優先する。
+- **全体をしっとり柔らかく見せる。**
 
 ---
 
-## 4. Slight natural realism — FIXED
+## 6. Skin rendering — FIXED
 
-### 4.1 Skin / body
+肌色そのものは各キャラクターの `SKIN_SPEC` を正とする。
 
-- 肌や身体の立体は、完全な平面アニメ塗りより自然寄り。
-- 肩、胸郭、腕、腰、骨盤、太腿、膝、ふくらはぎ等のボリュームを自然な光と影で表現する。
-- BODY geometry は各キャラクターの正本を優先し、陰影によって体型を変更しない。
-- 筋肉や骨格を写実的に強調しすぎない。
-- 毛穴、産毛、血管、肌荒れ等の写真級マイクロテクスチャは描かない。
+共通レンダリングとして:
 
-### 4.2 Face
-
-- アニメ的な顔立ちを維持する。
-- 鼻、頬、顎、首周りにごく軽い自然な立体感を加える。
-- 目の造形・比率はアニメ基準のまま。
-- 実写顔、半実写顔、ファッション広告的な写実顔へ寄せない。
-
-### 4.3 Hair
-
-- アニメ的な大きな毛束構成を維持する。
-- 毛束の重なり、厚み、重力方向、自然な毛流れをやや現実寄りにする。
-- 細い毛のアクセントは使用してよいが、一本一本をフォトリアルに描き込まない。
-- 過剰な艶リング、ガラス状ハイライト、金属的な光沢を避ける。
+- 肌表面はなめらかで、さらっとしたマット寄り。
+- 自然な立体感は柔らかな光と影で表現する。
+- 強い艶・濡れ感・油膜感・ワックス感を出さない。
+- 肌を発光体のように見せない。
+- 毛穴・産毛・血管・肌荒れ等の写真級マイクロテクスチャを描かない。
+- 写実的な皮膚質感へ寄せない。
+- 顔・腕・脚など部位によって質感を大きく変えない。
 
 ---
 
-## 5. Shading — FIXED
+## 7. Hair rendering — FIXED
 
-- セル塗り一辺倒にはしない。
-- soft cel / grouped shading を基礎とする。
-- 影の境界を部分的に柔らかくし、自然なグラデーションを適度に混ぜる。
-- 光源方向と立体に整合した陰影を使う。
-- 強いHDR感、映画的な過剰コントラスト、極端なリムライトを標準にはしない。
-- シーン照明が暖色・寒色でも、キャラクター固有色を失わせない。
-
----
-
-## 6. Line / color treatment — FIXED
-
-- 繊細でクリーンな2D線画。
-- 線を硬く黒々としすぎない。
-- 線画が消えるほどペインタリーにしない。
-- 彩度は必要以上に上げない。
-- キャラクター固有の髪色・瞳色・肌色を維持。
-- 全体は落ち着きのある、柔らかい色調。
+- アニメ的な大きな毛束構造を優先する。
+- 毛束の重なり・厚み・明暗差・毛流れで質感を表現する。
+- 細い毛のアクセントは補助的に使用する。
+- 一本一本をフォトリアルに描き込まない。
+- 強い艶リングを標準にしない。
+- 細く鋭いガラス状ハイライトを多用しない。
+- 金属的な光沢にしない。
+- ハイライトは広く弱く、毛束の面に沿って柔らかく表現する。
+- キャラクター差は髪色・毛量・髪型で表現し、
+  レンダリング差では表現しない。
 
 ---
 
-## 7. Explicit prohibitions
+## 8. Clothing rendering — FIXED
 
-以下は標準スタイルからの逸脱とする。
+- 基本の布質感はマット寄り。
+- 布の厚み・皺・重なりは自然に表現する。
+- サテン・シルク・ビニール・ラバーのような強い反射を
+  指定なしで付与しない。
+- 衣服の立体感は自然な皺と陰影で表現する。
+- 過剰な皺密度で情報量を増やしすぎない。
+- BODY geometryを衣服の陰影で変更して見せない。
+- キャラクターごとに衣服のレンダリング品質を変えない。
+
+※ 衣装設定として明示的に光沢素材が指定された場合は、
+素材固有の反射を許容するが、
+作品全体の描画タッチから逸脱しない。
+
+---
+
+## 9. Lighting behavior — FIXED
+
+ライティングの色・方向・強さはシーンによって変化してよい。
+
+ただしライティングは:
+
+- キャラクター固有色を別の色へ再定義しない。
+- 表面質感を別のレンダリングスタイルへ変えない。
+- 強いHDR感を標準にしない。
+- 極端なリムライトを標準にしない。
+- ハイライトを過剰に増やさない。
+- シーンが変わっても Matte Natural Anime の質感を維持する。
+
+光源条件が変わっても、
+**全体をしっとり柔らかく見せる基本質感は維持する。**
+
+---
+
+## 10. Slight natural realism — boundary
+
+許容する自然さ:
+
+- 肩・胸郭・腕・腰・骨盤・脚などの柔らかな立体感
+- 顔の頬・鼻・顎・首周りの軽い自然な陰影
+- 毛束の厚み・重なり・重力方向
+- 布の自然な皺・厚み
+- 柔らかな光の回り込み
+
+許容しない方向:
 
 - photorealism
 - semi-photoreal portrait rendering
 - live-action look
+- realistic CGI
 - PBR material rendering
-- realistic 3DCG / game-engine look
-- plastic / waxy skin
+- game-engine rendering
+- photographic skin
+- photographic hair
+- realistic pore / lip texture
+
+---
+
+## 11. Multi-character consistency — MANDATORY
+
+MEMORIELAの複数キャラクターを同一画面に配置した場合、
+以下のレンダリング特性をキャラクターごとに変えてはならない。
+
+- 線画の細さ・密度・主張
+- soft cel の基本強度
+- 拡散陰影の柔らかさ
+- コントラスト帯
+- ハイライト強度
+- 表面のマット感
+- 描画密度
+- 写実度
+- 光沢の基本強度
+
+キャラクター差は以下で表現する:
+
+- FACE
+- BODY
+- EYE
+- HAIR
+- SKIN color
+- GLASSES
+- outfit
+- expression
+- pose
+
+**Rendering Styleそのものをキャラクター差として使用しない。**
+
+---
+
+## 12. Rendering stability lock — MANDATORY
+
+BODY / FACE / EYE / HAIR / SKIN / outfit / pose / expression /
+scene等を変更・修正しても、
+共通Rendering Styleを再解釈しない。
+
+局所修正時も以下を維持する:
+
+- line delicacy
+- shading softness
+- contrast range
+- highlight strength
+- matte surface impression
+- rendering density
+- realism level
+
+一つの領域を修正するために、
+画像全体の描画タッチを変更しない。
+
+---
+
+## 13. Explicit prohibitions
+
+標準状態では以下を禁止する。
+
 - glossy / wet-looking skin
+- plastic / waxy skin
 - excessive specular highlights
-- pore-level skin detail
-- photographic hair strand rendering
 - metallic-looking hair
+- glass-like hair highlights
+- photographic hair strand field
+- pore-level skin detail
 - heavy HDR
 - excessively hard cel shadows
 - overly flat no-volume cel rendering
+- character-specific rendering-style drift
+- generation-to-generation rendering-style drift
 
 ---
 
-## 8. Short invocation block
+## 14. Authority rule
 
-画像生成時に短く指定する場合:
+Project-wide character rendering order:
 
-`マット・ナチュラルアニメ。高品質2Dアニメを基礎に、光沢を抑えたしっとり柔らかなマット質感。肌とBODYは自然寄りの立体感、髪はアニメ的な大きな毛束を維持しつつ重なり・厚み・毛流れをやや現実寄りにする。soft cel を基礎に柔らかな自然陰影を適度に混ぜる。少しリアルだが写実化しない。半実写、PBR、3DCG、プラスチック肌、過剰な艶、写真級マイクロテクスチャは禁止。`
+1. character Visual Master / Visual Authority
+2. character-specific Identity Specs
+3. requested pose / outfit / expression / scene
+4. **this CHARACTER_RENDERING_STYLE**
+5. scene lighting adaptation
 
----
+本書はキャラクター固有Identityを上書きしない。
 
-## 9. Authority rule
+ただし、
+**線・陰影・コントラスト・表面質感・写実度については
+本書をMEMORIELA全キャラクター共通の正本とする。**
 
-Project-wide character image generation order:
-
-1. character canon
-2. character Visual Master / Visual Text
-3. **this Rendering Style**
-4. user-requested outfit / pose / hairstyle / expression / background / scene
-
-本書はキャラクター固有のIdentityを上書きしない。
-ただし描画タッチに関しては本書を MEMORIELA 共通の正本とする。
-
-ユーザーが明示的に別のタッチを依頼した場合のみ、その単発生成では style derivative を許容する。
-その派生画像が新しい標準スタイルになることはない。
+個別キャラクター側で、
+本書と重複するRendering Styleを再定義しない。
