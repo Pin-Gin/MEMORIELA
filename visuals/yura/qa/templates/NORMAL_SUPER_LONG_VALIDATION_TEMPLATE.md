@@ -3,9 +3,9 @@
 Status: **ACTIVE VALIDATION TEMPLATE / NOT A CANON OWNER**
 Created: 2026-09-15
 Character: 久遠ゆら / YURA
-Primary Normal-style authority: `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
-Parent HAIR authority: `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-QA authority: `docs/assistant-context/creation/yura/qa/GENERATION_QA.md`
+Primary Normal-style authority: `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+Parent HAIR authority: `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+QA authority: `visuals/yura/qa/GENERATION_QA.md`
 Purpose: Normal Super-Longを他の変数から分離して生成・比較・採否判定するための固定テスト条件。
 
 ---
@@ -44,21 +44,21 @@ Purpose: Normal Super-Longを他の変数から分離して生成・比較・採
 
 ### FACE / EYE
 
-- current `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
+- current `visuals/yura/identity/face/FACE_SPEC.md`
 - blue-gray eye identity
-- current `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+- current `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
 - full-bodyでpupil notchが解像できない場合は拡大しない
 
 ### HAIR
 
-- `docs/assistant-context/creation/yura/identity/hair/HAIRSTYLE_SPEC.md`
-- `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+- `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md`
+- `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
 - no ponytail / bun / chignon / half-up / braid
 - no hair ornament
 
 ### RENDERING
 
-- `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+- `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
 - high-quality 2D anime illustration
 - low PBR / low CGI
 - grouped illustrated hair locks
@@ -220,7 +220,7 @@ Validation generationでは次を禁止する。
 
 ## 9. Hair-specific validation checklist
 
-Use `PASS / FAIL / NOT OBSERVABLE / N/A` semantics from `docs/assistant-context/creation/yura/qa/GENERATION_QA.md`.
+Use `PASS / FAIL / NOT OBSERVABLE / N/A` semantics from `visuals/yura/qa/GENERATION_QA.md`.
 
 ### Length
 
@@ -311,8 +311,8 @@ Possible role:
 
 It does **not** automatically replace:
 
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+- `visuals/yura/identity/master/VISUAL_MASTER.png`
+- `visuals/yura/identity/master/VISUAL_MASTER.md`
 
 If the user later explicitly chooses to replace the whole-character neutral MASTER, handle that as a separate MASTER change-control event.
 
