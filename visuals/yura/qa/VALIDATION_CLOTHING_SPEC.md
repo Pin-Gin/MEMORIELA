@@ -13,9 +13,9 @@ This file defines **validation clothing only**.
 It does not define YURA's ordinary fashion or public outfit canon.
 
 Parent authorities:
-- BODY → `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md` + `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
-- OUTFIT → `docs/assistant-context/creation/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
-- whole-character cross-check → `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+- BODY → `visuals/yura/identity/body/BODY_MASTER.md` + `visuals/yura/identity/body/BODY_SPEC.md`
+- OUTFIT → `visuals/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
+- whole-character cross-check → `visuals/yura/identity/master/VISUAL_MASTER.md`
 
 ---
 
@@ -123,7 +123,7 @@ The protected BODY specification remains authoritative and post-generation QA de
 Validation clothing is a measurement condition, not BODY authorization.
 
 For strict A/B comparison / BODY-preservation runs, apply:
-`docs/assistant-context/creation/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
+`visuals/yura/generation/preservation/BODY_GEOMETRY_PRESERVATION_PROTOCOL.md`
 
 Required behavior:
 
@@ -223,7 +223,7 @@ Do not rewrite BODY canon to fit a clothing-confounded image.
 
 ## 8. Relationship to Strong Braided Half-Up
 
-`docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` must use this file for MASTER-candidate validation clothing.
+`visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` must use this file for MASTER-candidate validation clothing.
 
 The hairstyle-only change rule becomes:
 
