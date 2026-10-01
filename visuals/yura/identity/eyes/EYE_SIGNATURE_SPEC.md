@@ -10,11 +10,11 @@ Purpose: YURA固有の瞳内識別意匠を、通常のFACE細部より一段上
 
 ## 1. Authority
 
-This specification protects the YURA-specific pupil signature originally defined in `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md` section 2.8.
+This specification protects the YURA-specific pupil signature originally defined in `visuals/yura/identity/face/FACE_SPEC.md` section 2.8.
 
 The signature is part of YURA's visual identity and must not be silently removed, mirrored, enlarged into a decorative symbol, or replaced by another pupil motif.
 
-It does not replace the full eye geometry in `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`; it elevates the identifying pupil detail to a separately protected rule.
+It does not replace the full eye geometry in `visuals/yura/identity/face/FACE_SPEC.md`; it elevates the identifying pupil detail to a separately protected rule.
 
 ## 2. Protected signature geometry
 
@@ -154,7 +154,7 @@ Any future revision must record:
 - explicit user approval
 - exact geometry / orientation change
 - reason for the change
-- relationship to `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
+- relationship to `visuals/yura/identity/face/FACE_SPEC.md`
 - impact on existing standing CG / close-up / promotional assets
 
 ## 10. Revision record
@@ -164,7 +164,7 @@ Any future revision must record:
 - explicit user approval: Owner decision 2026-09-25 — adopt the protruding form (dark teardrop-like part extending from the pupil edge into the iris), recorded as the formal interpretation of the signature
 - exact geometry / orientation change: none to size / orientation / application / subtlety; §2.2 fixes the form (polarity) of the existing "teardrop-like notch" wording
 - reason: during the YURA 3D test-model production (`YURA3D-TEST-20260925-01`) the §2 wording supported both a protrusion and an indentation reading, and the MASTER cannot resolve the detail; both forms were shown to the Owner as decision evidence (test renders, not authority)
-- relationship to `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`: FACE §2.8 wording unchanged; this file remains the protected authority for its interpretation
+- relationship to `visuals/yura/identity/face/FACE_SPEC.md`: FACE §2.8 wording unchanged; this file remains the protected authority for its interpretation
 - impact on existing standing CG / close-up / promotional assets: not audited by this revision
 
 ### v1.1 — 2026-09-25
@@ -172,5 +172,5 @@ Any future revision must record:
 - explicit user approval: Owner decision 2026-09-25 — orientation = lower-right as seen by the viewer; application = both eyes
 - exact geometry / orientation change: none to size / shape / subtlety; §2.1 fixes the reference frame (viewer-relative, neutral front-facing face) and application (both eyes) of the existing "lower-right" wording
 - reason: orientation ambiguity reported during YURA 3D test-model pre-production audit (historical 3D production OPEN-001; 3D documents retired by Owner request)
-- relationship to `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`: FACE §2.8 "lower-right edge of the pupil" wording unchanged; this file remains the protected authority for its interpretation
+- relationship to `visuals/yura/identity/face/FACE_SPEC.md`: FACE §2.8 "lower-right edge of the pupil" wording unchanged; this file remains the protected authority for its interpretation
 - impact on existing standing CG / close-up / promotional assets: not audited by this revision
