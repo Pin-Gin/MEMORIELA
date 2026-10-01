@@ -3,19 +3,19 @@
 Status: **PROTECTED GIT PRODUCTION VISUAL-RECOVERY PATH**
 Adopted: 2026-09-13
 Updated: 2026-09-20 — Git-production-only routing restored
-Purpose: GitHub connector が current canonical `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png` の存在・Git blob SHAを確認できてもPNG binaryを直接視覚入力へ渡せない環境で、Git current branchからYURAの視覚参照を復元する。
+Purpose: GitHub connector が current canonical `visuals/yura/identity/master/VISUAL_MASTER.png` の存在・Git blob SHAを確認できてもPNG binaryを直接視覚入力へ渡せない環境で、Git current branchからYURAの視覚参照を復元する。
 
 Parent operational protocol:
 
-`docs/assistant-context/creation/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md`
+`visuals/yura/generation/VISUAL_ASSET_DISCOVERY_PROTOCOL.md`
 
 Parent authorities:
 
-- `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
-- `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`
+- `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+- `visuals/yura/identity/master/VISUAL_MASTER.md`
 - `YURA_START_HERE.md`
 
-Canonical source remains the **current** artifact identified by `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`.
+Canonical source remains the **current** artifact identified by `visuals/yura/identity/master/VISUAL_MASTER.md`.
 This protocol never creates a second MASTER.
 
 ---
@@ -43,9 +43,9 @@ Do not trust any hardcoded “current MASTER SHA” written outside the current 
 
 Every recovery attempt must:
 
-1. read `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md`;
+1. read `visuals/yura/identity/master/VISUAL_MASTER.md`;
 2. obtain the current canonical repository path and current Git blob SHA;
-3. read `docs/assistant-context/creation/yura/identity/master/bridge/MANIFEST.json`;
+3. read `visuals/yura/identity/master/bridge/MANIFEST.json`;
 4. compare manifest `source.path` and `source.git_blob_sha1` with the current MASTER;
 5. use the Bridge only when they match exactly.
 
