@@ -5,7 +5,9 @@ Current Revision: **v0.1**
 Started: 2026-09-11
 Validated: 2026-09-11
 Authority aligned: 2026-09-13 — status / authority metadata synchronized with `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
-Purpose: 久遠ゆらを「誰として描くか」と「どう描くか」を分離し、参照画像なしでもYURAらしい2Dアニメイラスト描画を再現するための描画仕様。\n\nProject-wide base rendering authority: `visuals/CHARACTER_RENDERING_STYLE.md`（Matte Natural Anime / マット・ナチュラルアニメ）。本書はその共通基準に対するYURA固有の追加制約・上書きのみを定義し、競合時はYURA固有のより厳しい2D/anime制約を優先する。
+Purpose: 久遠ゆらを「誰として描くか」と「どう描くか」を分離し、参照画像なしでもYURAらしい2Dアニメイラスト描画を再現するための描画仕様。
+
+Project-wide base rendering authority: `visuals/CHARACTER_RENDERING_STYLE.md`（Matte Natural Anime / マット・ナチュラルアニメ）。本書はその共通基準に対するYURA固有の追加制約・上書きのみを定義し、競合時はYURA固有のより厳しい2D/anime制約を優先する。
 
 > このファイルは **rendering style only** を定義する現行のprotected domain authorityである。
 > 顔形状・目鼻口・額・肌色などのidentity geometryは `visuals/yura/identity/face/FACE_SPEC.md` を正とする。
@@ -13,6 +15,28 @@ Purpose: 久遠ゆらを「誰として描くか」と「どう描くか」を�
 > 髪型構造は `visuals/yura/identity/hair/HAIRSTYLE_SPEC.md` を正とする。通常生成では旧HAIR revisionをGit履歴から取得しない。
 > 身体比率・人体寸法は `visuals/yura/identity/body/BODY_MASTER.md` / `visuals/yura/identity/body/BODY_SPEC.md` を正とし、このファイルから再定義しない。
 > 実用生成の統合入口は `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md` とする。
+
+## 0. Shared-style relationship — protected
+
+Project-wide base rendering authority:
+- `visuals/CHARACTER_RENDERING_STYLE.md`
+- style: **Matte Natural Anime / マット・ナチュラルアニメ**
+
+YURA applies the shared style only **after YURA identity has been resolved**.
+
+The shared style may control matte surface, softness, shading behavior, and slight natural volume, but it may not change:
+- FACE geometry
+- blue-gray iris identity
+- protected pupil signature
+- silver-white hair identity
+- BODY geometry / 7.25-head system
+- age readability
+
+When a shared rendering instruction and a YURA-specific identity/rendering rule conflict, **the YURA-specific rule wins**.
+
+For YURA, "slightly natural / 少しリアル" means only restrained natural volume and shading inside a clearly 2D anime rendering. It never authorizes semi-realistic facial reconstruction, realistic eye recoloring, photographic hair, or CGI-like material behavior.
+
+---
 
 Text-only validation success:
 
