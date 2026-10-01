@@ -2,74 +2,48 @@
 
 Status: **PROTECTED YURA-SPECIFIC RENDERING LAYER**
 
-Project-wide base:
+Project-wide rendering authority:
 `../../../CHARACTER_RENDERING_STYLE.md`
 
-YURA always uses **Matte Natural Anime** unless the user explicitly requests a one-off style derivative.
-
-## YURA-specific anchors
-- clearly high-quality 2D anime illustration
-- delicate low-contrast line art
-- soft cel / grouped shading
-- shallow natural skin volume
-- simplified anime nose / lips
-- blue-gray detailed non-photoreal eyes
-- grouped silver-white hair locks with limited fine-strand accents
-- low-to-medium contrast
-- restrained gloss
-- **Matte Natural Anime is the primary visual target, not a loose preference**
-
-## Matte reproducibility lock — mandatory
-To reduce rendering drift between generations, preserve the following visible conditions:
-
-- specular highlights on **skin / hair / clothing are minimal**
-- form is described primarily by **soft cel + soft diffuse shading**, not by gloss
-- skin reads as **soft, dry-matte, and calm**, never wet / oily / waxy
-- hair texture is expressed through **grouped locks, overlap, thickness, and value separation**
-- do not use a strong anime gloss ring, glass-like streaks, or metallic sheen on hair
-- clothing must remain matte; do not reinterpret plain validation clothing as satin, silk, vinyl, or glossy sports fabric
-- highlights should be **broad and weak**, not narrow, sharp, high-contrast specular streaks
-- overall contrast remains **low to medium**
-- white-background scenes must still preserve readable contour and soft form separation without blowing out the character
-- natural volume is expressed by diffuse light-and-shadow structure, not by reflective surface treatment
-
-## Skin rendering
-Skin identity / base color authority:
+Skin authority:
 `../skin/SKIN_SPEC.md`
 
-This rendering layer controls surface treatment only:
-- preserve the color defined by SKIN_SPEC
-- soft / dry-matte surface
-- no plastic / waxy / wet gloss
-- no pores or photographic microtexture
-- do not recolor the skin through lighting or rendering style
+## Purpose
 
-## Hair
-- silver-white identity must remain stable
-- grouped anime locks first
-- fine accents second
-- texture comes from lock overlap / depth / soft value separation
-- no photographic strand field
-- no metallic or glass-like shine
-- no dominant gloss ring
-- do not increase gloss when correcting hair length / volume / pose
+This file defines only YURA-specific rendering behavior that is not already defined by the Visual Master, protected Identity Specs, or the project-wide Matte Natural Anime style.
 
-## Rendering priority
-1. YURA Identity / BODY
-2. pose / camera
-3. hair physical placement
-4. clothing response
-5. **Matte Natural Anime rendering last**
+Do not duplicate BODY / FACE / EYE / HAIR / SKIN identity definitions here.
 
-Rendering describes structure; it does not redesign anatomy or recolor identity.
+## YURA rendering rule
 
-A targeted retry for BODY / FACE / EYE / HAIR / outfit / pose must **not silently change the rendering grammar**. Preserve the same matte surface, line delicacy, contrast range, diffuse shading behavior, and gloss level unless the user explicitly requests a style change.
+YURA uses the project-wide **Matte Natural Anime** rendering style unless the user explicitly requests a one-off style derivative.
 
-## Prohibited
-- photorealism
-- semi-photoreal portrait
-- realistic CGI / PBR
-- glossy plastic skin
-- heavy HDR
-- photographic hair
-- realistic pore / lip texture
+Rendering may describe visible form, but must not:
+- redesign YURA's BODY
+- alter FACE geometry
+- recolor EYE / HAIR / SKIN identity
+- change source hair length or mass
+- change outfit structure
+- reinterpret YURA as another character
+
+## Targeted retry stability
+
+When retrying a failed BODY / FACE / EYE / HAIR / SKIN / outfit / pose domain:
+- preserve the current rendering grammar
+- do not silently change line treatment
+- do not silently change shading behavior
+- do not silently change gloss level
+- do not silently change overall contrast
+
+Only the failed domain should be corrected unless the user explicitly requests a rendering change.
+
+## Authority
+
+For generation:
+1. current YURA Visual Master PNG
+2. protected Identity Specs
+3. requested pose / camera / outfit / expression / scene
+4. this YURA-specific rendering layer
+5. project-wide Matte Natural Anime rendering style
+
+This file does not override higher-priority identity authority.
