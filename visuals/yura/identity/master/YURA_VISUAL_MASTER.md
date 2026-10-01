@@ -36,6 +36,7 @@ Interpret this Master together with:
 - `../eyes/EYE_SPEC.md`
 - `../hair/HAIR_SPEC.md`
 - `../hair/styles/NORMAL_SUPER_LONG.md`
+- `../skin/SKIN_SPEC.md`
 - `../rendering/YURA_RENDERING_SPEC.md`
 - `../../../CHARACTER_RENDERING_STYLE.md`
 
@@ -264,6 +265,7 @@ It does **not** replace:
 - EYE_SPEC
 - HAIR_SPEC
 - NORMAL_SUPER_LONG
+- SKIN_SPEC
 - YURA_RENDERING_SPEC
 
 If this image description and a precise protected domain rule differ, the precise protected domain rule remains authoritative.
@@ -283,16 +285,19 @@ Do not silently edit this description to fit a failed derivative generation.
 Use this Master as the visual cross-check for YURA generation.
 
 Normal generation order:
-1. this Master
-2. BODY
-3. FACE
-4. EYE
-5. HAIR
-6. requested pose / camera
-7. outfit
-8. expression
-9. scene
-10. Matte Natural Anime rendering
+1. current YURA Visual Master PNG
+2. this Master manifest / transcription
+3. BODY
+4. FACE
+5. EYE
+6. HAIR + NORMAL_SUPER_LONG
+7. SKIN
+8. requested pose / camera
+9. outfit
+10. expression
+11. scene
+12. YURA-specific rendering
+13. Matte Natural Anime rendering
 
 Derivative generations must not redefine the protected identity.
 
