@@ -46,6 +46,197 @@ AI画像生成では、見えない関節・隠れた手・複数物体の接触
 - 隠れてよい部分
 - 手前 / 奥の重なり順
 
+## 3A. Dynamic Pose Preservation Rule — PROTECTED / MANDATORY
+
+Applies whenever the requested image includes meaningful body movement beyond the neutral standing baseline, including but not limited to:
+
+- torso twist
+- seated pose
+- squat / crouch
+- kneeling
+- large forward bend / backward lean
+- strong lateral lean
+- reaching
+- stepping / running / dynamic walking
+- large arm or leg extension
+- furniture contact / load-bearing pose
+- other poses that materially change joint orientation, weight distribution, or perspective
+
+For all such generations, the following ten rules are mandatory.
+
+### 1. Identity Lock
+
+Do not change because of pose:
+
+- FACE identity
+- blue-gray irises
+- silver-white hair
+- 153 cm scale concept
+- exact 7.25-head BODY system
+- shoulder width
+- ribcage scale
+- bust volume / relationship to frame
+- waist width
+- pelvis / hip scale
+- baseline arm thickness
+- baseline thigh / calf thickness
+
+Pose is a derivative layer and does not authorize character redesign.
+
+### 2. Skeleton Transform Only
+
+Express the pose primarily through:
+
+- position
+- rotation
+- joint angle
+- relative segment orientation
+- center-of-mass shift
+- contact / support
+
+Applicable segments include head, neck, shoulders, upper arms, forearms, torso, pelvis, thighs, lower legs and feet.
+
+Do not change each segment's canonical length, width, or base volume merely to make the pose fit the canvas.
+
+### 3. Pose Reference = pose only
+
+When using Unity / 3D mannequin / PoseMy.Art / Daz / OpenPose / depth / normal or similar references, extract only:
+
+- joint placement
+- skeletal orientation
+- center of gravity
+- support / contact points
+- load direction
+- camera position / angle / perspective
+
+Do not copy the reference model's:
+
+- face
+- BODY proportions
+- bust / waist / pelvis
+- limb thickness
+- hair
+- clothing
+- materials
+- lighting
+- rendering style
+
+### 4. Perspective Lock
+
+Before generation, define camera behavior separately from BODY.
+
+For large movements, first resolve:
+
+- camera height
+- camera distance
+- viewing direction
+- focal-length / perspective character
+- pitch / yaw / roll when relevant
+
+Do not thicken / shorten body parts just to fill the frame.
+Do not use anatomy deformation as a substitute for perspective.
+
+### 5. Foreshortening ≠ BODY change
+
+Apparent shortening or enlargement caused by projection is not a BODY redesign.
+
+- a limb pointing toward camera may look shorter, but canonical segment length remains unchanged
+- a near hand / foot may project larger, but base anatomy remains unchanged
+- squat / crouch must not inflate thighs or calves
+- perspective compression must not rewrite shoulder / torso / pelvis widths
+
+### 6. Torso Twist Lock
+
+During torso rotation:
+
+- change shoulder and pelvis orientation
+- preserve ribcage width / depth relationship
+- preserve waist width
+- preserve bust volume
+- preserve pelvis scale
+
+Do not shrink bust volume merely because less frontal surface is visible.
+Do not widen the ribcage to explain the twist.
+
+### 7. Seated / Squat Lock
+
+For seated / crouched / kneeling poses:
+
+Allowed:
+- plausible soft-tissue compression at contact points
+- plausible thigh / hip contact deformation
+- clothing fold / compression changes
+- perspective-driven overlap
+
+Not allowed:
+- pelvis redesign
+- hip-width redesign
+- permanent thigh / calf thickening
+- shortening legs to make the pose easier
+- BODY proportion change disguised as contact deformation
+
+Separate **contact deformation** from **BODY redesign**.
+
+### 8. Hair Conservation
+
+Pose may change the physical placement of Normal Super-Long hair through:
+
+- gravity
+- body contact
+- furniture contact
+- local flow
+- overlap / occlusion
+
+But the following remain protected:
+
+- source total hair mass
+- standard-to-slightly-above-standard total volume
+- fine / soft strand quality
+- principal length baseline
+- maximum tip boundary
+- Normal Super-Long source topology
+
+Do not shorten the hair because the character is seated.
+Do not route most back hair forward merely because of a forward bend.
+Do not reduce source mass to reveal joints / clothing.
+Do not lengthen the principal mass because the body is crouched.
+
+### 9. Rendering Last
+
+Resolve in this order:
+
+1. YURA Identity / BODY
+2. skeleton pose
+3. camera / perspective
+4. contact / load
+5. hair physical placement
+6. outfit physical response
+7. **Matte Natural Anime rendering**
+
+Rendering style must describe the resolved structure; it must not reinterpret anatomy.
+
+### 10. Dynamic Pose QA
+
+After generation, evaluate independently:
+
+- FACE / identity
+- BODY geometry
+- joint plausibility
+- support / contact / load
+- hair conservation
+- camera / perspective
+- hands / feet / limb count / artifact state
+
+If a material failure occurs, retry the **pose / projection / contact layer only** where possible.
+
+Do not repair a pose failure by changing YURA's MASTER, BODY, FACE, EYE, HAIR, or Rendering canon.
+
+### Dynamic-pose generation principle
+
+**動的ポーズではYURAのBODYを再設計せず、固定されたYURA BODYを関節回転・重心移動・接触変形だけでポーズさせる。**
+
+This rule is mandatory for all significant-motion YURA generations.
+
 ## 4. Ambiguous words must be decomposed
 
 以下のような曖昧語だけで生成しません。
