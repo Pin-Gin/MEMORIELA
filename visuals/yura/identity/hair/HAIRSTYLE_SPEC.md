@@ -14,11 +14,11 @@ Applies to: 久遠ゆら / YURA の画像生成・立ち絵・表情差分・衣
 
 通常の下ろし髪 / arrangement指定のない基本髪型は、本書のコア値を具体化した protected sub-spec:
 
-`docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+`visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
 
 を併用します。このsub-specは本書を置き換えず、Normal Super-Longのシルエット・正面 / 背面分布・通常時の具体的な見え方のみを固定します。
 
-ポニーテール、ローシニヨン、ハーフアップ、編み込み等の派生アレンジ構造は `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を併用します。本書が髪のコアを所有し、アレンジガイドは結び位置・収束・収納・重力・カメラ投影のみを所有します。`ハーフアップ + 編み込み強め` / `Strong Braided Half-Up` が明示された場合は、さらに protected specialized sub-spec `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` を必ず適用します。
+ポニーテール、ローシニヨン、ハーフアップ、編み込み等の派生アレンジ構造は `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を併用します。本書が髪のコアを所有し、アレンジガイドは結び位置・収束・収納・重力・カメラ投影のみを所有します。`ハーフアップ + 編み込み強め` / `Strong Braided Half-Up` が明示された場合は、さらに protected specialized sub-spec `visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md` を必ず適用します。
 
 ---
 
@@ -128,7 +128,7 @@ YURAにおける `スーパーロング` は、一般的なカテゴリ名だけ
 
 通常の下ろし髪の具体的な見え方・Iライン寄りシルエット・正面 / 背面の主毛量分布・毛先処理は:
 
-`docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+`visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
 
 を併用します。
 
@@ -165,7 +165,7 @@ YURAにおける `スーパーロング` は、一般的なカテゴリ名だけ
 
 ポニーテール、ローシニヨン、ハーフアップ、団子、編み込み等の構造は:
 
-`docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+`visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
 
 を正本として併用します。
 
@@ -180,7 +180,7 @@ YURAにおける `スーパーロング` は、一般的なカテゴリ名だけ
 
 特に **まとめ髪だからという理由で、元の長さや総毛量を消失させてはならない**。
 
-Production priority update: Normal Super-Longの視覚基準は確立済み。2026-09-19に **Strong Braided Half-Up** の正式テキスト仕様化とvisual-master候補制作を明示的に再開した。専用正本は `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`。Strong Braided Half-Upのvisual MASTERは未採用 / 制作中。Low Chignon / Mid Ponytail / Low Ponytailのvisual-master productionは引き続きOctober 2026以降を予定する。
+Production priority update: Normal Super-Longの視覚基準は確立済み。2026-09-19に **Strong Braided Half-Up** の正式テキスト仕様化とvisual-master候補制作を明示的に再開した。専用正本は `visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`。Strong Braided Half-Upのvisual MASTERは未採用 / 制作中。Low Chignon / Mid Ponytail / Low Ponytailのvisual-master productionは引き続きOctober 2026以降を予定する。
 
 ---
 
@@ -218,7 +218,7 @@ Production priority update: Normal Super-Longの視覚基準は確立済み。20
 9. 上品・柔らかい・大人っぽい全体印象
 10. 派生アレンジ / 装飾
 
-通常の下ろし髪では、上記に加えて `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` のfront / back distributionとI-line silhouetteを適用する。
+通常の下ろし髪では、上記に加えて `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` のfront / back distributionとI-line silhouetteを適用する。
 
 ---
 
@@ -228,24 +228,24 @@ Production priority update: Normal Super-Longの視覚基準は確立済み。20
 
 `銀白色のスーパーロングヘア。主な毛先は自然なウエストライン付近〜わずかに下まで届き、最長の細い毛先のみ腰の上部〜上臀部手前まで許容する。主要毛量を臀部中央や太ももまで伸ばさない。一本一本は細く柔らかいが、総毛量は標準よりやや多め。長さの自重で頭頂〜上部は自然に落ち着き、中間〜背中には十分な密度を残す。横方向にはあまり広がらず、重力に従って背中側へ縦方向に自然に落ちる。毛先へ向かって徐々に量が抜け、軽く繊細に収束する。細い髪質を少ない毛量として解釈しない。前髪は薄めのロングバングで中央付近から自然に左右へ流し、頬に沿う長めのサイドバングと柔らかなレイヤーを残す。身体・衣服・家具との接触を無視して浮遊させない。まとめ髪の場合も元の総毛量と長さを勝手に減らさない。`
 
-通常の下ろし髪では、さらに `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` のPrompt baseline / anti-drift guardを適用する。
+通常の下ろし髪では、さらに `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` のPrompt baseline / anti-drift guardを適用する。
 
 ---
 
 ## 12. Relationship to other authorities
 
-- whole-character appearance cross-check → `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.md` + `docs/assistant-context/creation/yura/identity/master/VISUAL_MASTER.png`
-- BODY → `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md` + `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
-- FACE → `docs/assistant-context/creation/yura/identity/face/FACE_SPEC.md`
-- EYE SIGNATURE → `docs/assistant-context/creation/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
+- whole-character appearance cross-check → `visuals/yura/identity/master/VISUAL_MASTER.md` + `visuals/yura/identity/master/VISUAL_MASTER.png`
+- BODY → `visuals/yura/identity/body/BODY_MASTER.md` + `visuals/yura/identity/body/BODY_SPEC.md`
+- FACE → `visuals/yura/identity/face/FACE_SPEC.md`
+- EYE SIGNATURE → `visuals/yura/identity/eyes/EYE_SIGNATURE_SPEC.md`
 - HAIR core → **this file**
-- normal down-style / Normal Super-Long implementation → `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
-- Normal Super-Long validation conditions → `docs/assistant-context/creation/yura/qa/templates/NORMAL_SUPER_LONG_VALIDATION_TEMPLATE.md`
-- hair arrangements → `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
-- Strong Braided Half-Up specialized implementation → `docs/assistant-context/creation/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
-- RENDERING → `docs/assistant-context/creation/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
-- practical integrated generation → `docs/assistant-context/creation/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
-- OUTFIT → `docs/assistant-context/creation/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
+- normal down-style / Normal Super-Long implementation → `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md`
+- Normal Super-Long validation conditions → `visuals/yura/qa/templates/NORMAL_SUPER_LONG_VALIDATION_TEMPLATE.md`
+- hair arrangements → `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md`
+- Strong Braided Half-Up specialized implementation → `visuals/yura/identity/hair/styles/strong-braided-half-up/SPEC.md`
+- RENDERING → `visuals/yura/identity/rendering/RENDERING_STYLE_SPEC.md`
+- practical integrated generation → `visuals/yura/generation/TEXT_ONLY_GENERATION_REFERENCE.md`
+- OUTFIT → `visuals/yura/generation/outfit/OUTFIT_GENERATION_GUIDELINE.md`
 
 If the current visual MASTER artifact visually differs from this more precise HAIR specification, **this file controls the HAIR domain** until a later explicitly approved MASTER replacement is adopted.
 
