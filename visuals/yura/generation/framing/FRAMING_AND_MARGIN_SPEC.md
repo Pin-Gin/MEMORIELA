@@ -9,19 +9,19 @@ Purpose: YURA画像生成におけるアスペクト比、人物占有率、余�
 
 Parent authority:
 
-`docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
+`visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`
 
 BODY authority:
 
-- `docs/assistant-context/creation/yura/identity/body/BODY_MASTER.md`
-- `docs/assistant-context/creation/yura/identity/body/BODY_SPEC.md`
+- `visuals/yura/identity/body/BODY_MASTER.md`
+- `visuals/yura/identity/body/BODY_SPEC.md`
 
 Protected operational size-profile sub-spec:
 
-`docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`
+`visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`
 
 This file owns **framing / margin / quiet-zone behavior**. It never owns BODY geometry.
-`docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md` narrows this domain into named Profile A–E use cases and must not contradict this parent specification.
+`visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md` narrows this domain into named Profile A–E use cases and must not contradict this parent specification.
 
 ---
 
@@ -80,7 +80,7 @@ Framing adaptation is a **layout operation, not a BODY redesign**.
 
 Detailed named operational profiles are defined in:
 
-`docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`
+`visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`
 
 Current routing:
 
@@ -132,7 +132,7 @@ No fixed percentage is imposed for normal minimal margins; composition determine
 ## 5. Smartphone wallpaper profile — protected
 
 Operational name: **Profile C**.
-Detailed routing/default ratio follows `docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`.
+Detailed routing/default ratio follows `visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`.
 
 Trigger examples:
 
@@ -184,7 +184,7 @@ Do not alter BODY proportions to create wallpaper space.
 ## 6. X thumbnail profile — protected
 
 Operational name: **Profile D**.
-Detailed routing/default ratio follows `docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`.
+Detailed routing/default ratio follows `visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md`.
 
 Trigger example:
 
@@ -250,7 +250,7 @@ This specification and its Profile A–E sub-spec are applied inside:
 
 **Block D — CAMERA / LAYOUT**
 
-from `docs/assistant-context/creation/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`.
+from `visuals/yura/generation/IMAGE_GENERATION_GOVERNANCE.md`.
 
 Compile order remains:
 
