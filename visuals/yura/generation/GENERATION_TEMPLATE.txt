@@ -25,9 +25,9 @@ YURAの正式MASTER画像と現行ビジュアルテキスト仕様を参照す�
 - 衣装の露出は、指定された服種・シーンに対して通常の成人向け文脈に合う範囲を使用し、自動的な低露出化を行わない
 
 MASTER / BODY / FACE / EYE SIGNATURE / HAIR v1.3 / Normal Super-Long / RENDERINGの保護仕様を、衣装・ポーズ・背景・余白より優先する。
-髪型アレンジがある場合は `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を併用し、元のスーパーロング長・総毛量を勝手に減らさない。
-余白・アスペクト比・人物占有率は `docs/assistant-context/creation/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` に従う。
-用途別サイズ・比率・構図は `docs/assistant-context/creation/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md` の Profile A–E を選択し、BODY変形ではなく全体の均一スケール / 移動で調整する。
+髪型アレンジがある場合は `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を併用し、元のスーパーロング長・総毛量を勝手に減らさない。
+余白・アスペクト比・人物占有率は `visuals/yura/generation/framing/FRAMING_AND_MARGIN_SPEC.md` に従う。
+用途別サイズ・比率・構図は `visuals/yura/generation/framing/IMAGE_SIZE_PROFILE_SPEC.md` の Profile A–E を選択し、BODY変形ではなく全体の均一スケール / 移動で調整する。
 
 ==================================================
 0A. 参照入力Preflight [Assistant必須 / 生成直前]
@@ -138,8 +138,8 @@ Hard rule:
 - 細い髪 = 少毛として扱わない
 - まとめ髪でも総毛量を削減しない
 
-※arrangement指定がない通常髪は `docs/assistant-context/creation/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` を適用する。
-※ポニーテール / シニヨン / ハーフアップ / 編み込み等は `docs/assistant-context/creation/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を適用する。
+※arrangement指定がない通常髪は `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG_SPEC.md` を適用する。
+※ポニーテール / シニヨン / ハーフアップ / 編み込み等は `visuals/yura/identity/hair/HAIR_ARRANGEMENT_GUIDELINE.md` を適用する。
 ※正面等で後頭部の結び目が見えない場合、見せるためだけに左右へ移動させない。
 
 ==================================================
