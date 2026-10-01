@@ -7,7 +7,7 @@ MEMORIELAの画像・Visual制作を開始するための共通入口。
 Creation資料は人物の経歴・家族・物語Canonを上書きしない。
 
 ## Routing
-- 久遠ゆら → `creation/yura/START_HERE.md`
+- 久遠ゆら → `visuals/yura/START_HERE.md`
 - Pin銀 → `creation/pingin/START_HERE.md`
 - Background → `creation/background/START_HERE.md`
 - 今後追加する要・大和・美緒・栞等 → 各人物のCreation Domainを新設する。
