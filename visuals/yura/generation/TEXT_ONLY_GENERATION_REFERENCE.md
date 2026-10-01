@@ -326,6 +326,32 @@ For one standing image / 立ち絵 / 一枚もの:
 - no character sheet / turnaround / expression sheet / insets / panels / callouts / swatches / measurements / labels / text / logos
 - preserve the eye-signature design in the high-resolution source when practical, but do not distort the eye to make it visible at small display scale
 
+## 9A. Dynamic pose route — mandatory when movement is significant
+
+When the requested pose is more complex than neutral standing, walking, or another low-risk posture, read and apply:
+
+`visuals/yura/generation/pose/POSE_GENERATION_GUIDELINE.md`
+
+For twist, seated, squat / crouch, kneeling, large forward / backward lean, strong lateral lean, reaching, running / dynamic stepping, or other significant movement, the guideline's **Dynamic Pose Preservation Rule** is mandatory.
+
+Core rule:
+
+`動的ポーズではYURAのBODYを再設計せず、固定されたYURA BODYを関節回転・重心移動・接触変形だけでポーズさせる。`
+
+Generation order:
+
+1. protected YURA Identity / BODY
+2. skeleton transform
+3. camera / perspective
+4. support / contact / load
+5. hair physical placement while conserving source mass / length
+6. outfit physical response
+7. YURA rendering + Matte Natural Anime last
+
+Do not let pose, foreshortening, seating compression, or camera perspective redefine BODY.
+
+---
+
 ## 10. Outfit / accessory separation
 
 The master fixes YURA herself, not styling.
