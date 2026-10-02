@@ -12,7 +12,7 @@ Skin authority:
 This file defines only YURA-specific protection when the project-wide Matte Natural Anime rendering is applied.
 
 It does not define a separate YURA art style.
-It does not duplicate BODY / FACE / EYE / HAIR / SKIN identity.
+It does not duplicate BODY / FACE / EAR / EYE / HAIR / SKIN identity.
 
 ## YURA rendering rule
 YURA uses the project-wide **Matte Natural Anime** rendering style unless the user explicitly requests an allowed one-off rendering derivative.
@@ -20,6 +20,7 @@ YURA uses the project-wide **Matte Natural Anime** rendering style unless the us
 Rendering may describe visible form, but must not:
 - redesign YURA BODY
 - alter FACE geometry
+- alter EAR size / placement / tilt / projection / visibility behavior
 - recolor EYE / HAIR / SKIN identity
 - change source hair length or mass
 - change outfit structure
@@ -50,7 +51,7 @@ After Root / Face / required BODY-view Masters are approved and the Production G
 The image references do not override precise protected Identity Specs.
 
 ## Targeted retry stability
-When retrying a failed BODY / FACE / EYE / HAIR / SKIN / outfit / pose domain:
+When retrying a failed BODY / FACE / EAR / EYE / HAIR / SKIN / outfit / pose domain:
 - preserve line treatment
 - preserve shading behavior
 - preserve gloss level
