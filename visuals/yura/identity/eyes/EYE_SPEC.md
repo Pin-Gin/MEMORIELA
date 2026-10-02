@@ -38,7 +38,7 @@ If the blue-gray identity is lost, do not accept the image.
 
 ## Shape lock
 Preserve:
-- slightly larger than average, balanced for a 15–18-year-old anime face
+- slightly larger than average, balanced for the protected YURA anime face
 - horizontally elongated
 - restrained vertical height
 - mild almond form
@@ -48,11 +48,11 @@ Preserve:
 - outer corner neutral to very slightly downturned
 
 Do not reinterpret as:
-- circular childlike eye
+- circular oversized eye
 - vertically oversized eye
 - strongly droopy eye
 - sharp upward fox-eye
-- narrow mature fashion-eye
+- narrow fashion-eye
 - oversized generic cute-anime eye
 
 Both eyes must retain the same character identity while allowing natural small asymmetry from perspective / expression.
