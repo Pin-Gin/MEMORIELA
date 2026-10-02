@@ -16,9 +16,27 @@ Image generation must not receive:
 - side-by-side wording
 - multi-variant wording
 
+## Per-call execution carrier
+Before every image-generation call:
+1. resolve the active Execution Carrier
+2. verify that the actual generation-facing context contains the fixed `TEXT_ONLY_ROOT_EXECUTION.md` `FIXED EXECUTION BLOCK` semantics
+3. when using `CONVERSATION_CONTEXT_CARRIER`, materialize that fixed block immediately before the image-generation call without ad-hoc paraphrase
+4. do not assume connector/Git retrieval output is automatically visible to the image-generation instruction synthesizer
+
+Invalid:
+- path-only handoff
+- "follow Git" without payload semantics
+- "same as previous"
+- EXTERNAL_RETRIEVAL_ONLY
+
+If semantic handoff cannot be verified:
+`GENERATION_ALLOWED = NO`
+
 ## Per-call invariant
 Every call:
 - uses exactly `TEXT_ONLY_ROOT_EXECUTION.md`
+- has a valid Execution Carrier
+- has the fixed generation semantics present in the actual generation-facing context
 - uses no visual reference
 - uses no appended ad-hoc prompt
 - uses the same framing/aspect class

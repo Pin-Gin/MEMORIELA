@@ -22,6 +22,14 @@ Raw Gate / QA documents must not be concatenated into the image-generation paylo
 
 The active mode must resolve exactly one permitted Execution Payload before generation.
 
+It must also resolve a valid Execution Carrier through `../../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md`.
+
+`AUTHORITY_RESOLVED = YES` does not imply `PAYLOAD_DELIVERED_TO_IMAGE_GENERATION = YES`.
+
+Git / connector retrieval alone is not a valid carrier.
+If the protected payload semantics are not present in the actual generation-facing carrier:
+`GENERATION_ALLOWED = NO`
+
 ## PRODUCTION
 Requires:
 - mandatory text Authorities resolved
@@ -56,6 +64,12 @@ Mandatory single-run controller:
 
 Generation-time visual references:
 `NONE`
+
+Execution transport:
+- if a direct model-facing prompt carrier exists, use the fixed Execution Block through it
+- if the image tool derives instructions from conversation context, use `CONVERSATION_CONTEXT_CARRIER`
+- in conversation-context mode, the fixed `TEXT_ONLY_ROOT_EXECUTION.md` generation block must be materialized immediately before generation
+- a Git read / connector result without semantic handoff is `EXTERNAL_RETRIEVAL_ONLY` and FAIL
 
 The image-generation call must receive only the single-run execution semantics, not:
 - batch size

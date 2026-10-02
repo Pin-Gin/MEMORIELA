@@ -12,6 +12,41 @@ The image-generation execution receives only the active **mode-specific Executio
 
 Do not pass raw Governance / Gate / QA documents directly into the image-generation execution.
 
+## Execution carrier — MANDATORY
+
+Authority resolution is not execution transport.
+
+Before image generation, resolve one actual `EXECUTION_CARRIER`:
+
+### DIRECT_PROMPT_CARRIER
+Use only when the image-generation interface exposes a real prompt/instruction field whose text is passed to the image model.
+
+For a `PROTECTED FIXED EXECUTION BLOCK`:
+- pass the fixed generation block through that field without semantic rewrite
+- Git path / connector retrieval alone does not count
+- the actual model-facing input must contain the protected generation semantics
+
+### CONVERSATION_CONTEXT_CARRIER
+Use when the image-generation interface does **not** expose a controllable prompt field and instead derives generation instructions from the active conversation context.
+
+In this carrier:
+- Git / connector / tool retrieval output is **resolution evidence only**
+- merely reading a file does **not** prove that its semantics reached image generation
+- immediately before the image-generation call, materialize the active fixed generation block into the generation-visible conversation context
+- for a fixed payload, copy the payload's `FIXED EXECUTION BLOCK` semantics without ad-hoc paraphrase, omission or substitution
+- do not replace the block with phrases such as "use Git", "follow YURA rules", "same as before" or file paths
+- do not append QA / Gate / batch / retry prose to the handoff
+- the handoff exists only to carry generation semantics across the tool boundary
+
+If the active image-generation interface cannot provide either carrier:
+`EXECUTION_CARRIER = NONE`
+`GENERATION_ALLOWED = NO`
+
+### Explicit invalid carrier
+`EXTERNAL_RETRIEVAL_ONLY` is never a valid execution carrier.
+
+A Git read, connector result, file path, memory, or prior successful generation is not by itself evidence that the image model received the protected payload.
+
 ## Compile stage
 Required order:
 
@@ -23,6 +58,8 @@ MODE RESOLUTION
 EXECUTION PAYLOAD SELECTION / COMPILE
         ↓
 EXECUTION PAYLOAD VALIDATION
+        ↓
+EXECUTION CARRIER / SEMANTIC HANDOFF VALIDATION
         ↓
 SINGLE IMAGE GENERATION
         ↓

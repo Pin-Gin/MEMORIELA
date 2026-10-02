@@ -15,6 +15,20 @@ Purpose: MEMORIELAで久遠ゆらを生成する際の唯一の入口。
 
 読むAuthorityは `gate/AUTHORITY_MANIFEST.md` が列挙した完全パスだけで決定する。
 
+## Execution handoff boundary
+Router-only化は「生成モデルへファイルパスだけ渡す」という意味ではない。
+
+Authority resolution後は、`../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md` に従い、active Execution Payloadの**実際の生成意味**を有効なExecution Carrierへ搬送すること。
+
+特に、会話コンテキストから自動的に画像指示を解釈する生成インターフェースでは:
+- Gitを読んだだけでは生成入力到達を証明しない
+- connector / tool outputだけではPASSにしない
+- active fixed payloadの生成ブロックがgeneration-visible contextへ存在することを確認する
+- path-only / "Git準拠" / "前回と同じ" への短縮は禁止する
+
+Execution Carrierが成立しない場合:
+`GENERATION_ALLOWED = NO`
+
 ## Fail-closed
 以下は生成許可にならない:
 - 過去に読んだ
