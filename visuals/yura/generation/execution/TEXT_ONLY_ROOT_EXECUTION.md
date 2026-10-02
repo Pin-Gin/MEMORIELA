@@ -120,18 +120,36 @@ Additional protected appearance:
 - long cheek-framing side sections
 - very gentle natural wave
 
-## Rendering
-High-quality 2D anime illustration in MEMORIELA **Matte Natural Anime** style:
-- delicate visible low-contrast line art
+## Rendering — HARD EXECUTION LOCK
+
+**HIGH-QUALITY 2D ANIME ILLUSTRATION ONLY.**
+**2D ANIME CHARACTER DESIGN FIRST.**
+**Matte means low-gloss surface quality; it does NOT mean realistic photography.**
+
+Required visual grammar:
+- clear 2D anime facial construction
+- delicate visible anime line art
 - soft cel / grouped illustration shading
-- gentle diffuse shading
-- low-to-medium contrast
-- matte surface quality
+- gentle diffuse shading only as a supplement to the anime/cel structure
 - simplified illustrated nose and lips
 - detailed but non-photographic anime irises
 - grouped illustrated hair locks
+- low-to-medium contrast
 - restrained highlights
-- natural soft dimensionality without semi-real / CGI appearance
+- matte / low-gloss surface quality
+- natural dimensionality kept strictly inside 2D-anime illustration grammar
+
+**NOT photoreal.**
+**NOT semi-photoreal.**
+**NOT live-action.**
+**NOT realistic portrait rendering.**
+**NOT CGI / 3D render.**
+**NOT game-engine rendering.**
+**NOT PBR.**
+**NOT photographic skin.**
+**NOT photographic individual-hair rendering.**
+
+If realism competes with anime grammar, preserve anime grammar and reduce realism.
 
 ## Validation clothing
 
@@ -185,6 +203,8 @@ Common:
 - plain white / warm-white background
 
 ## Compact anti-drift constraints
+- render as HIGH-QUALITY 2D ANIME ILLUSTRATION ONLY; matte is surface quality only
+- never reinterpret Matte Natural Anime as a matte photoreal / semi-real / CGI person
 - keep iris identity strictly BLUE-GRAY ONLY; gray component must remain visibly present
 - do not allow brown, amber, hazel, honey, warm gold, orange-brown, violet, or other warm-color iris drift
 - lighting / blush / skin warmth / hair reflection must not recolor the iris

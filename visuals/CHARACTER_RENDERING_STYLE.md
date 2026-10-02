@@ -16,6 +16,42 @@ outfit / pose等を定義しない。
 
 ---
 
+## 0. HARD EXECUTION LOCK — 2D ANIME FIRST
+
+This section is **execution-critical**.
+
+The phrase **Matte Natural Anime** MUST be interpreted in this order:
+
+1. **2D ANIME ILLUSTRATION**
+2. **ANIME CHARACTER DESIGN / ANIME FACIAL GRAMMAR**
+3. **SOFT CEL / GROUPED ILLUSTRATION SHADING**
+4. **MATTE / LOW-GLOSS SURFACE QUALITY**
+5. only then, a slight increase in natural dimensionality
+
+**"Matte" describes surface gloss. It does NOT permit photorealism, semi-photorealism, live-action appearance, realistic portrait rendering, CGI, game-engine rendering, or PBR.**
+
+Required execution reading:
+`HIGH-QUALITY 2D ANIME ILLUSTRATION ONLY.`
+
+Required exclusions:
+- NOT photoreal
+- NOT semi-photoreal
+- NOT live-action
+- NOT realistic portrait
+- NOT CGI
+- NOT 3D render
+- NOT game-engine render
+- NOT PBR
+- NOT photographic skin
+- NOT photographic hair
+
+If an output reads primarily as a real person / semi-real portrait / CGI character instead of a 2D anime illustration:
+`RENDERING HARD FAIL`
+
+A rendering hard fail cannot be accepted because gloss is low or "matte".
+
+---
+
 ## 1. Core definition
 
 **高品質2Dアニメイラストを基礎に、

@@ -70,12 +70,18 @@ Evaluate every valid candidate independently for:
 - subtle natural blood color
 - no clipping
 
-### RENDERING
+### RENDERING — HARD STABILITY CONDITION
+- unmistakably high-quality 2D anime illustration
+- anime facial / line / shading grammar dominant
 - Matte Natural Anime
-- fine low-contrast line
-- soft cel + diffuse shading
+- fine low-contrast anime line
+- soft cel + grouped illustration shading
 - low-to-medium contrast
 - restrained gloss
+- no photoreal / semi-photoreal / live-action / CGI / PBR reading
+
+Any realism-mode violation = RENDERING HARD FAIL.
+A Rendering Hard Fail candidate does not count as a valid stable candidate.
 
 ### VALIDATION CLOTHING
 - broad-shouldered pale opaque sleeveless top
@@ -123,6 +129,9 @@ Valid isolated runs still show repeated systematic drift traceable to text seman
 One-off structural artifacts prevent enough valid comparisons.
 
 ### REJECT_BATCH
-Material uncontrolled variance or reference contamination invalidates the batch.
+Material uncontrolled variance, reference contamination, or repeated Rendering Hard Fail invalidates the batch.
+
+### RENDERING_HARD_FAIL
+Reject the individual candidate immediately. Do not present it as a completed result and do not count it toward the minimum valid batch.
 
 Only the author can approve Root stability.

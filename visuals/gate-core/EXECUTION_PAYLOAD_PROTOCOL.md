@@ -99,3 +99,32 @@ For production modes:
 Post-generation QA may compare against Masters and protected specs as permitted by the active Gate.
 
 A comparison reference used after generation must never leak backward into a text-only generation call.
+
+
+## Rendering hard-lock compilation
+Every character Execution Payload that uses the project-wide Character Rendering Style must contain an explicit rendering hard-lock block.
+
+At minimum, the payload must state:
+- `HIGH-QUALITY 2D ANIME ILLUSTRATION ONLY`
+- 2D anime facial / line / shading grammar
+- soft cel / grouped illustration shading
+- matte / low-gloss surface quality
+- NOT photoreal
+- NOT semi-photoreal
+- NOT live-action
+- NOT CGI / 3D render
+- NOT PBR / game-engine render
+
+The word `matte` by itself is insufficient.
+
+If the compiled payload omits the 2D-anime-first lock or permits a realistic / CGI interpretation:
+`EXECUTION_PAYLOAD_VALIDATION = FAIL`
+`GENERATION_ALLOWED = NO`
+
+## Mandatory post-generation acceptance
+After every generation, run the active Domain QA and the project-wide Post-Generation Acceptance Protocol before presenting the image as a completed result.
+
+A generated image is not accepted merely because the tool returned an image.
+
+Rendering hard fail, identity hard fail, reference-policy fail, or execution-integrity fail:
+`PRESENTATION_ALLOWED = NO`

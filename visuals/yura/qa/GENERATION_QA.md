@@ -99,14 +99,35 @@ PASS if hidden features remain naturally hidden when dictated by:
 
 FAIL on show-feature compensation.
 
-## Gate 6 — RENDERING
-PASS if:
-- clear high-quality 2D anime
+## Gate 6 — RENDERING — HARD GATE
+
+Required PASS:
+- unmistakably high-quality **2D anime illustration**
+- anime facial / line / shading grammar remains dominant
 - Matte Natural Anime
+- soft cel / grouped illustration shading
+- delicate visible line art
 - restrained gloss
 - low-to-medium contrast
 - YURA colors preserved
-- no semi-real / PBR / realistic CGI drift
+- no semi-real / photoreal / live-action / CGI / PBR drift
+
+Immediate **RENDERING HARD FAIL**:
+- output reads primarily as a real human portrait
+- semi-photoreal portrait rendering
+- live-action appearance
+- realistic CGI / 3D render
+- game-engine / PBR rendering
+- photographic skin
+- photographic hair fibers
+- realistic portrait facial modeling overriding anime facial grammar
+
+`matte / low gloss` alone is NOT sufficient.
+
+If any Rendering Hard Fail is present:
+- `REJECT`
+- `PRESENTATION_ALLOWED = NO`
+- do not expose the candidate as a completed/accepted generation
 
 ## Gate 7 — Request fidelity
 Check requested outfit / hairstyle / expression / pose / scene / crop / framing.
@@ -150,6 +171,6 @@ A single good-looking candidate is not stability evidence.
 ## Decision
 - **PASS**: execution integrity + identity + BODY + applicable request/domain gates pass
 - **TARGETED RETRY**: local domain failure; retry only that scope while text inputs remain locked
-- **REJECT**: material identity/BODY/reference-policy failure or severe structural artifact
+- **REJECT**: material identity/BODY/reference-policy failure, **RENDERING HARD FAIL**, execution-integrity failure, or severe structural artifact
 
 Never change YURA canon to fit a failed generation.

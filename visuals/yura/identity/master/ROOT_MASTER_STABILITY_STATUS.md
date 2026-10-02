@@ -29,6 +29,8 @@ Observed drift:
 - EAR and VALIDATION CLOTHING are not yet classified as SYSTEMATIC_DRIFT from one run alone
 
 Current correction:
+- RENDERING EXECUTION ENFORCEMENT: project-wide 2D-anime-first hard lock added; matte alone is insufficient
+- POST-GENERATION ACCEPTANCE: Rendering Hard Fail now blocks presentation before user-visible acceptance
 - strengthen the compiled Text-only Execution Payload for HAIR length, bust/body relation, EYE color identity, EAR geometry/visibility, and VALIDATION CLOTHING construction
 - keep protected source Authorities unchanged; strengthen only the compiled execution wording
 - explicitly preserve natural adult-human ear proportions and prohibit elongated / elf-like / forced-visible ears

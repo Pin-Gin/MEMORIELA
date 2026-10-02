@@ -8,9 +8,10 @@ Status: **PROTECTED / MANDATORY / FAIL-CLOSED**
 3. `../../gate-core/AUTHORITY_SCOPE_RULES.md`
 4. `../../gate-core/REFERENCE_ROLE_RULES.md`
 5. `../../gate-core/VISIBILITY_OCCLUSION_PROTOCOL.md`
-6. `AUTHORITY_MANIFEST.md`
-7. `REFERENCE_GATE.md`
-8. `VIEW_ROUTER.md`
+6. `../../gate-core/POST_GENERATION_ACCEPTANCE_PROTOCOL.md`
+7. `AUTHORITY_MANIFEST.md`
+8. `REFERENCE_GATE.md`
+9. `VIEW_ROUTER.md`
 
 Do not generate before required pre-read completes.
 
@@ -86,3 +87,16 @@ When requested in an applicable production derivative, also require School Unifo
 Complete `../../gate-core/LOAD_RECEIPT_SCHEMA.md`.
 
 Only `GENERATION_ALLOWED = YES` permits execution.
+
+
+## POST-GENERATION ACCEPTANCE — mandatory
+Every generated YURA image is `CANDIDATE ONLY` until:
+1. `../qa/GENERATION_QA.md` is applied
+2. applicable mode-specific QA is applied
+3. `../../gate-core/POST_GENERATION_ACCEPTANCE_PROTOCOL.md` passes
+
+For Matte Natural Anime:
+- photoreal / semi-photoreal / live-action / CGI / PBR / realistic portrait drift = `RENDERING HARD FAIL`
+- Rendering Hard Fail = `PRESENTATION_ALLOWED = NO`
+
+Do not present a failed rendering as the completed generation result.
