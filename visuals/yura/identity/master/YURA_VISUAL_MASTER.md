@@ -29,6 +29,7 @@ This artifact was explicitly approved by the author and is the current root YURA
 - `YURA_VISUAL_TEXT.md`
 - `../body/BODY_SPEC.md`
 - `../face/FACE_SPEC.md`
+- `../ears/EAR_SPEC.md`
 - `../eyes/EYE_SPEC.md`
 - `../hair/HAIR_SPEC.md`
 - `../hair/styles/NORMAL_SUPER_LONG.md`
@@ -53,5 +54,5 @@ Replacement requires:
 2. replacement PNG manually placed in the master directory
 3. Git blob SHA and SHA-256 recorded here
 4. generation/source id recorded when available
-5. QA against BODY / FACE / EYE / HAIR / SKIN / rendering
+5. QA against BODY / FACE / EAR / EYE / HAIR / SKIN / rendering
 6. final validation generation
