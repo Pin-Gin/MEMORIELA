@@ -48,7 +48,7 @@ PASS:
 - natural forward projection / lower fullness
 - stable waist / pelvis / limb proportions
 
-## Gate 3 — FACE / EYE / EAR
+## Gate 3 — FACE / EYE
 Check:
 - small face
 - soft oval
@@ -65,8 +65,29 @@ Check:
 - very small delicate readable nose
 - very small short closed mouth; no broad default smile
 - stable eye / nose / mouth placement
-- small-to-standard restrained ear scale / projection
-- ear visibility follows angle + hair occlusion
+
+## EAR QA — HARD GEOMETRY / VISIBILITY
+PASS only if:
+- ear scale reads slightly small
+- vertical ear length is approximately 28–30% of forehead-to-chin face vertical length
+- protected ear length has priority over exact endpoint alignment
+- upper rim around eyebrow height is only an approximate placement guide
+- lower rim around nose-tip to subnasal height is only an approximate placement guide
+- ear is not stretched to satisfy both placement guides
+- ear long axis has restrained approximately 5–10 degree posterior tilt
+- projection from the head remains restrained
+- visibility follows actual camera angle + head orientation + natural hair occlusion
+- partially hidden or fully hidden ear is acceptable
+- `HIDDEN != MISSING`
+
+Immediate EAR FAIL:
+- ear enlarged / lengthened for readability
+- ear moved outward or rotated toward camera
+- hair moved, thinned, split or cleared to expose the ear
+- head rotated merely to expose the ear
+- both ears forced visible for symmetry
+- any show-ear compensation
+- any AI reinterpretation that enlarges the ear because it is hidden
 
 ## Gate 4 — HAIR
 PASS:
