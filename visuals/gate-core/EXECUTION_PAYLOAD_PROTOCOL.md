@@ -77,6 +77,8 @@ EXECUTION PAYLOAD VALIDATION
         ↓
 EXECUTION CARRIER / SEMANTIC HANDOFF VALIDATION
         ↓
+PRE-PRESENTATION QA CAPABILITY VALIDATION
+        ↓
 SINGLE IMAGE GENERATION
         ↓
 POST-GENERATION QA
@@ -175,7 +177,15 @@ If the compiled payload omits the 2D-anime-first lock or permits a realistic / C
 `GENERATION_ALLOWED = NO`
 
 ## Mandatory post-generation acceptance
-After every generation, run the active Domain QA and the project-wide Post-Generation Acceptance Protocol before presenting the image as a completed result.
+Before generation, the active image-generation interface must pass the pre-presentation capability check defined by `POST_GENERATION_ACCEPTANCE_PROTOCOL.md`.
+
+If the tool automatically presents the generated image before caller-side QA can complete, or failed-candidate withholding cannot be guaranteed:
+`PRE_PRESENTATION_QA_CAPABILITY = FAIL`
+`GENERATION_ALLOWED = NO`
+
+Post-hoc QA after an already user-visible image does not satisfy Fail-Closed presentation control.
+
+After every permitted generation, run the active Domain QA and the project-wide Post-Generation Acceptance Protocol before presenting the image as a completed result.
 
 A generated image is not accepted merely because the tool returned an image.
 
