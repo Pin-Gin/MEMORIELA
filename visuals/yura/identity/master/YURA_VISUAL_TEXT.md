@@ -9,7 +9,7 @@ Purpose:
 承認済みYURA Visual Masterの視覚情報を生成実行用に文章化する。
 
 本書は参考資料ではない。生成時に適用するVisual Authorityである。
-ただしBODY / FACE / EYE / HAIR / SKIN / renderingの精密なdomain ruleと競合する場合、そのdomain ruleを優先する。
+ただしBODY / FACE / EAR / EYE / HAIR / SKIN / renderingの精密なdomain ruleと競合する場合、そのdomain ruleを優先する。
 
 AIは禁止:
 - 要約による意味変更
@@ -34,7 +34,7 @@ AIは禁止:
 - standard-to-slightly-long legs
 - slender limbs with natural softness
 
-### FACE / EYE
+### FACE / EAR / EYE
 - visual age read = 15–18 years old; youthful but not childlike
 - small face
 - soft oval
@@ -47,6 +47,13 @@ AIは禁止:
 - blue-gray eyes with restrained saturation
 - very small delicate nose
 - very small short closed mouth; neutral to extremely subtle soft expression
+- ears are slightly small
+- ear vertical length = approximately 28–30% of forehead-to-chin face vertical length
+- ear length has priority over exact eyebrow / nose endpoint alignment
+- upper rim around eyebrow height and lower rim around nose-tip to subnasal height are placement guides only
+- ear long axis has restrained 5–10 degree posterior tilt
+- ear projection from the head remains restrained
+- ear may be partially or fully hidden by natural hair occlusion; no show-ear compensation
 - calm / refined / delicate overall impression
 - protected pupil signature remains governed by `../eyes/EYE_SPEC.md`
 
@@ -245,6 +252,7 @@ During the current TEXT_ONLY_ROOT_MASTER refinement, the precise 15–18-year-ol
 This Visual Text does not replace:
 - BODY_SPEC
 - FACE_SPEC
+- EAR_SPEC
 - EYE_SPEC
 - HAIR_SPEC
 - NORMAL_SUPER_LONG
