@@ -27,7 +27,7 @@ AIは禁止:
 - youthful but not childlike body read
 - somewhat narrow shoulders
 - compact ribcage
-- bust moderately fuller relative to the petite frame
+- BODYの横幅・腰・骨盤・太腿を増やさず、胸だけを体格比でやや豊かにする
 - soft hemispherical / お椀型 direction
 - slim natural waist
 - natural female pelvis / hips appropriate to the protected mature-teen design
@@ -99,7 +99,7 @@ During the current TEXT_ONLY_ROOT_MASTER refinement, the precise 15–18-year-ol
 - 上半身の横幅は抑えめで、胸部を支えるために胴体全体を広げてはいない。
 
 ### Bust
-- 体格に対して**やや豊か**に見える。
+- **BODYの横幅・腰・骨盤・太腿を増やさず、胸だけを体格比でやや豊かにする。**
 - 胸郭自体は細いまま、前方への自然なボリュームがある。
 - 形は**お椀型 / 柔らかな半球型寄り**。
 - 上部は過度に張らず、下側に自然な丸みがある。
