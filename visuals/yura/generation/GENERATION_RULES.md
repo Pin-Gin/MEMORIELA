@@ -30,6 +30,7 @@ Always preserve:
 - 153 cm concept
 - exact 7.25-head BODY
 - YURA face
+- protected EAR geometry / placement / visibility behavior
 - blue-gray eyes
 - silver-white hair
 - default Normal Super-Long unless explicitly changed
@@ -44,6 +45,19 @@ Do not:
 - invent unspecified identity changes
 
 `UNSPECIFIED != PERMISSION TO INVENT`
+
+## Ear visibility lock
+Ear visibility must follow the protected EAR Authority and natural occlusion.
+
+Do not:
+- enlarge / lengthen the ear for readability
+- move or rotate the ear to expose it
+- move / thin / split hair to expose the ear
+- rotate the head merely to show the ear
+- force both ears visible
+
+A naturally hidden ear is valid.
+`HIDDEN != MISSING`
 
 ## TEXT_ONLY_ROOT_MASTER
 Resolution:
