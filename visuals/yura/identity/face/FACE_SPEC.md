@@ -6,42 +6,53 @@ This file is a direct execution constraint. Do not soften, average, beautify, re
 
 ## HARD LOCK — face identity
 The following must remain simultaneously true:
-- adult woman
+- visual age read = **15–18 years old**
+- youthful teenage girl, but **not childlike**
 - soft / refined / delicate
 - clearly anime-stylized
-- soft oval face
+- face is **small**
+- face shape = **soft oval with slight vertical elongation**
+- face width = slightly narrow
 - slight cheek softness
 - cheekbones not emphasized
-- contour narrows smoothly from below the ears toward the chin
-- chin is **small and softly rounded**
+- contour narrows smoothly from temples / cheeks toward the chin
+- lower face remains compact
+- chin is **small, narrow, and softly rounded**
 - face is not round / childlike
 - face is not long / fashion-model-like
 - no extreme V-line
-- head remains slightly small inside the protected 7.25-head adult BODY balance
+- head remains slightly small inside the protected 7.25-head BODY balance
 
-If the face becomes visibly rounder, sharper, longer, younger, wider-jawed, or more generic than this identity, treat it as **FACE FAIL**, not acceptable variation.
+The target is a natural 15–18-year-old teenage facial read: youthful, calm and refined, without drifting toward either a younger child face or a mature adult face.
+
+If the face becomes visibly rounder, sharper, longer, older, younger/childlike, wider-jawed, or more generic than this identity, treat it as **FACE FAIL**, not acceptable variation.
 
 ## Head / outline — geometry lock
 Preserve:
-- soft oval outer contour
-- modest cheek width
-- smooth taper toward the chin
-- small rounded chin
-- adult-balanced head scale
+- small face
+- soft oval outer contour with slight vertical elongation
+- slightly narrow face width
+- modest cheek softness
+- smooth taper from temples / cheeks toward the chin
+- compact lower face
+- small narrow softly rounded chin
+- mature-teen-balanced head scale
 
 Do not:
-- enlarge the head to express petite stature
+- enlarge the head to express petite stature or youth
 - widen the lower face
 - sharpen the jaw
-- lengthen the mid/lower face
+- create a short round child face
+- create a long mature fashion-model face
 - make the chin pointed
 - inflate cheeks into a childlike round face
+- create an extreme V-line
 
 ## Ears — protected geometry / visibility lock
 Ear anatomy is stable:
+- small-to-standard scale
 - attachment height remains stable
-- overall scale remains stable
-- projection from the head remains restrained and stable
+- projection from the head remains restrained
 - general silhouette remains stable
 
 Ear visibility is determined only by:
@@ -85,47 +96,68 @@ Do not substitute a derivative, previous-chat image, or similar face.
 Exact color and pupil identity are controlled by `../eyes/EYE_SPEC.md`.
 
 Geometry lock:
-- slightly larger than average, but adult-balanced
+- slightly larger than average, but balanced for a 15–18-year-old anime face
+- horizontally elongated
+- restrained vertical height
 - mild almond shape
-- horizontally oriented rather than vertically oversized
+- clean gently curved upper eyelid
+- shallow lower eyelid curve
+- visible sclera remains on both sides of the iris
 - outer corners neutral to very slightly downturned
 - no circular / childlike oversized-eye reinterpretation
+- no vertically oversized eye
 - no sharp fox-eye reinterpretation
 - no strong droop
+- no narrow mature fashion-eye reinterpretation
 
 ## Brows
-- fine to standard-fine
+- fine
 - cool gray / silver-gray compatible with hair
 - nearly straight
 - only a very gentle natural arch
 - calm expression baseline
+- brow tail does not kick sharply upward
 
 Do not thicken or strongly arch the brows to create a different character impression.
 
 ## Nose
-- small and delicate
+- very small and delicate
 - narrow bridge
 - low-to-medium bridge height
-- softly readable in 2D shading
+- softly readable in minimal 2D-anime shading
 - must not disappear completely
 - must not project strongly
 - no realistic nostril detail
+- no realistic nose-tip modeling
 
 ## Mouth / lips
-- small mouth
-- lips thin to standard
+- **very small and short mouth**
+- closed by default
+- lips thin to standard-thin
 - soft natural pale pink
-- neutral to very slight smile by default
+- neutral to extremely subtle soft expression by default
+- mouth corners must not rise into a broad smile by default
 - no glossy / volumetric realistic lips
 
 ## Default expression
-- neutral to very soft
+- neutral to extremely soft
 - calm
 - gentle
 - composed
+- no broad smile by default
+- no exaggerated cute / childlike expression
 
 Expression derivatives may move brows / eyelids / mouth only.
 They must not alter face geometry.
+
+## Face framing boundary
+Hair-specific structure remains controlled by `../hair/HAIR_SPEC.md`.
+
+For FACE identity:
+- thin long fringe may cross the forehead naturally
+- long side bangs frame the cheeks / jaw area
+- face framing must not widen or round the perceived face
+- hair must not be moved merely to expose the ears
 
 ## FAIL boundaries
 FACE FAIL if materially present:
@@ -135,13 +167,17 @@ FACE FAIL if materially present:
 - sharp jaw
 - pointed chin
 - extreme V-line
-- long fashion-model face
+- long mature fashion-model face
+- visibly mature-adult facial read
+- generic cute-anime face replacing YURA geometry
 - strongly realistic nose / lips
 - oversized symbolic anime eyes
+- vertically oversized circular eyes
 - sharp fox-eye
 - strongly droopy childlike eye
+- broad default smile changing the face impression
 - visible ear enlargement / outward displacement for readability
 - hair moved merely to expose ears
 - facial geometry changes due to pose, outfit, lighting, or rendering
 
-When in doubt, preserve geometry rather than adding expressive exaggeration.
+When in doubt, preserve the protected 15–18-year-old mature-teen geometry rather than adding expressive exaggeration.
