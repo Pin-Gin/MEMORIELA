@@ -58,7 +58,9 @@ Do not make the hair fan widely sideways.
 - eyes remain readable
 - no ornaments / braid / bun unless explicitly requested
 
-Do not move bangs / side hair merely to expose ears.
+Local bangs / side-hair placement around the ears may vary naturally.
+Ear visibility is not a target: the ear may be visible, partly hidden, or fully hidden.
+Do not change source hair length, total mass, color, or hairstyle identity merely for ear visibility.
 
 ## Length authority
 All exact default length rules come from:
@@ -84,7 +86,7 @@ Pose must not change:
 Do not:
 - shorten hair because seated
 - lengthen hair because crouched
-- move most hair forward merely to expose joints / chest / ears
+- move most hair forward merely to expose joints / chest
 - delete back mass during a bend
 - widen the hair curtain merely to show BODY
 
@@ -104,5 +106,5 @@ HAIR FAIL if materially present:
 - large fan-shaped lateral spread
 - back mass moved mostly to the front
 - eyes heavily covered
-- ear-exposure compensation
+- source hair length / total-mass / identity change driven by ear visibility
 - pose-dependent source length / total-mass change
