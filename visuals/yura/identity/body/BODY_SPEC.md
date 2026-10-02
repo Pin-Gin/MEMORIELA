@@ -8,14 +8,12 @@ This file defines invariant BODY geometry. Do not average it with generic anime-
 Required simultaneously:
 - height concept: **153 cm**
 - total body ratio: **exactly 7.25 heads tall**
-- 15–18-year-old teenage girl
 - petite
 - slender
 - delicate
-- not childlike
 - not skeletal
 - not curvy / voluptuous as the dominant silhouette
-- head remains mature-teen-balanced and slightly small within the 7.25-head system
+- head remains balanced and slightly small within the 7.25-head system
 - legs remain standard to slightly long inside that system
 
 Petite stature must be expressed by overall compact scale, **not by enlarging the head**.
@@ -25,7 +23,7 @@ The front-view BODY must preserve this relationship:
 - shoulders = somewhat narrow
 - ribcage = slender / compact
 - waist = slim and clearly defined, but natural
-- pelvis / hips = natural female width appropriate to the protected mature-teen design
+- pelvis / hips = natural female width appropriate to the protected petite/slender design
 - hips = approximately similar to or only slightly wider than shoulders
 - thighs / calves = slender with natural softness
 - limbs = slender, not inflated and not stick-thin
@@ -34,7 +32,7 @@ Do not let one area become disproportionately wide to make another area visible 
 
 ## Neck / shoulders
 - neck: slender to standard
-- natural age-appropriate length
+- natural proportionate length
 - shoulders: somewhat narrow
 - shoulder line: soft natural slope
 
@@ -81,7 +79,7 @@ For twist / 3/4 / side:
 - do not widen ribcage to compensate
 
 ## Torso / waist / abdomen
-- torso: standard to slightly short for the protected 15–18-year-old design
+- torso: standard to slightly short for the protected design
 - waist: slim and clearly defined
 - no corset-like pinch
 - abdomen: flat-leaning with slight natural softness
@@ -94,7 +92,7 @@ FAIL:
 - body-builder abdominal definition
 
 ## Pelvis / hips
-- natural female pelvis width appropriate to the protected mature-teen design
+- natural female pelvis width appropriate to the protected petite/slender design
 - approximately similar to or slightly wider than shoulders
 - restrained soft roundness
 - neutral pelvic tilt by default
@@ -117,15 +115,15 @@ If the lower body reads notably heavier or curvier than the protected petite/sle
 `BODY FAIL`
 
 ## Arms / hands
-- arms: slender to slightly below average adult-female thickness
+- arms: slender to slightly below average thickness for the protected frame
 - not stick-thin
 - forearms retain natural thickness near elbow
 - taper toward wrist
-- hands: small to standard for the protected petite 15–18-year-old design
+- hands: small to standard for the protected petite frame
 - fingers: slender, slightly long, softly tapered
 
 ## Feet
-- natural size for the protected 153 cm 15–18-year-old design
+- natural size for the protected 153 cm design
 - do not make doll-small feet
 - restrained 2D-anime detail
 
@@ -157,7 +155,7 @@ Not allowed:
 - pelvis redesign
 - chest-volume shrinkage
 - torso widening
-- childlike proportion drift
+- head/body proportion drift
 
 ## Body-view anchor lock
 BODY geometry is invariant.
@@ -178,7 +176,7 @@ Hidden / foreshortened anatomy must not be enlarged, rotated, separated or expos
 BODY FAIL if materially present:
 - head/body ratio drift
 - 8+ head fashion-model elongation
-- childlike enlarged head
+- enlarged head
 - broad / athletic shoulders
 - enlarged ribcage
 - dominant curvy / voluptuous silhouette
