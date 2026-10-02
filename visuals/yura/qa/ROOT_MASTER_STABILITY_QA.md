@@ -3,141 +3,126 @@
 Status: **PROTECTED / MANDATORY FOR TEXT_ONLY_ROOT_MASTER**
 
 Purpose:
-Text Authorityのみで生成した複数候補の再現安定性を評価する。
-
-This QA measures:
-- agreement with protected text authority
-- cross-run variance
-- systematic drift
-
-It does not select a candidate by aesthetic preference alone.
+Text Authorityからコンパイルした固定Execution Payloadを使う複数の独立Single Runについて、再現安定性を評価する。
 
 ## Preconditions
-PASS only if:
+A run is valid only if:
 - mode = `MASTER_CREATION`
 - submode = `TEXT_ONLY_ROOT_MASTER`
-- `TEXT_ONLY_ROOT_MASTER.md` fixed profile was loaded
-- generation-time visual references = `NONE`
-- same generation conditions were maintained across the batch
-- minimum 3 independent candidates exist
+- `TEXT_ONLY_ROOT_EXECUTION.md` was the execution payload
+- `TEXT_ONLY_ROOT_SINGLE_RUN.md` was followed
+- generation-time visual references = NONE
+- same execution payload / framing class was used
+- output contains exactly one YURA / one canvas / one composition
 
-If an image reference was supplied during generation:
-`STABILITY_BATCH = INVALID`
+Invalid-run conditions:
+- multi-panel
+- triptych
+- comparison sheet
+- multiple YURA figures
+- multiple poses in one image
+- generation-time visual reference contamination
+- payload modified between runs
+
+An invalid run diagnoses **execution-control failure**.
+It must not be counted as evidence of Text Authority instability.
+
+## Minimum batch
+Evaluate at least 3 **valid independent single-image runs**.
+Preferred = 5.
 
 ## Domain comparison
-Evaluate every candidate independently for:
+Evaluate every valid candidate independently for:
 
 ### FACE
 - soft oval adult face
 - small softly rounded chin
-- adult-balanced eye geometry
-- nose / mouth placement and scale
+- stable eye / nose / mouth placement
 - no childlike / sharp-face drift
 
 ### EYE
 - blue-gray
 - restrained saturation
-- protected geometry
-- pupil signature when resolvable
+- stable geometry
+- pupil signature when naturally resolvable
 
 ### BODY
-- exact 7.25-head design target remains plausible
+- exact 7.25-head system
 - petite / slender adult frame
-- shoulder width
+- somewhat narrow shoulders
 - compact ribcage
-- bust volume / forward projection
-- waist
-- pelvis / hips
-- limb length / baseline thickness
+- bust moderately fuller relative to frame
+- soft hemispherical / お椀型 direction
+- natural forward projection and lower fullness
+- waist / pelvis / limb proportions stable
 
 ### HAIR
 - silver-white
-- Normal Super-Long
-- principal ends at natural waist to slightly below
-- sparse longest tips only near upper-buttock limit
-- slightly-above-standard mass
+- principal ends natural waist to slightly below
+- only sparse longest fine tips near upper-buttock boundary
+- slightly-above-standard total mass
 - restrained lateral spread
-- center/back mass not deleted
+- back mass conserved
 
 ### SKIN
 - bright fair
 - slightly white-leaning
 - subtle natural blood color
-- no strong pink/orange drift
-- no white clipping
+- no clipping
 
 ### RENDERING
 - Matte Natural Anime
-- fine clean line
+- fine low-contrast line
 - soft cel + diffuse shading
 - low-to-medium contrast
 - restrained gloss
-- no semi-real / PBR drift
 
-### COMPOSITION
-- one YURA
-- front-facing full body
-- centered
-- validation clothing
+### VALIDATION CLOTHING
+- broad-shouldered pale opaque sleeveless top
+- pale opaque simple shorts
+- clean waistband
 - barefoot
-- white background
-- minimal perspective
 
-## Cross-run variance
-Compare candidates against each other.
-
-Record whether each protected domain is:
+## Cross-run classification
+Per protected domain:
 - STABLE
 - MINOR_VARIANCE
 - MATERIAL_VARIANCE
 - SYSTEMATIC_DRIFT
 
-Material variance includes meaningful changes in:
-- face identity
-- eye shape/color
-- head/body ratio
-- shoulder/ribcage/body proportions
-- bust volume
-- pelvis/limb scale
-- principal hair length/mass
-- skin identity
-- rendering grammar
-
 ## Systematic drift rule
-If the same error appears repeatedly across candidates, treat it as a likely text-authority or model-interpretation problem.
+Repeated same-direction failure across **valid runs** may indicate:
+- execution payload defect
+- source Text Authority ambiguity
+- model interpretation issue
 
-Do not:
-- average candidates into a new canon
-- pick one accidental success and ignore repeated failures
-- rewrite canon to fit the batch
+Diagnose in that order:
+1. execution payload / orchestration
+2. rendering / composition leakage
+3. domain text ambiguity
 
-Identify the exact controlling text domain first.
+Do not change canon to fit failed generations.
 
-## Current Root Master comparison
-After generation only, the registered Root Master may be used as a secondary comparison reference.
-
-Role:
+## Post-generation Root Master comparison
+After generation only, the registered Root Master may be used as:
 `POST_GENERATION_COMPARISON_REFERENCE`
 
-It must not have been supplied during generation.
+It must not have entered generation.
 
-Use it to detect loss of intended identity, not to override precise protected text rules.
-
-## Stability decision
+## Decision
 ### PASS_FOR_AUTHOR_REVIEW
-- no material systematic drift
-- protected domains remain acceptably stable across the batch
-- each candidate satisfies core identity/body/rendering requirements
+All core domains acceptably stable across valid runs.
+
+### EXECUTION_FIX_REQUIRED
+Runs were contaminated by multi-panel / multi-figure / payload / reference-control failure.
 
 ### TEXT_REFINEMENT_REQUIRED
-- repeated systematic drift points to insufficient / ambiguous text authority
+Valid isolated runs still show repeated systematic drift traceable to text semantics.
 
 ### BATCH_RETRY_REQUIRED
-- one-off structural generation failures prevent a valid comparison but text itself is not implicated
+One-off structural artifacts prevent enough valid comparisons.
 
 ### REJECT_BATCH
-- reference contamination
-- changed conditions inside the batch
-- material uncontrolled identity variance
+Material uncontrolled variance or reference contamination invalidates the batch.
 
-Only the author can approve the Root Master and change stability status to APPROVED.
+Only the author can approve Root stability.

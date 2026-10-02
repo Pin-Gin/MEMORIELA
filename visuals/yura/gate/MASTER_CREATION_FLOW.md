@@ -3,7 +3,7 @@
 Status: **PROTECTED / MANDATORY / FAIL-CLOSED**
 
 Purpose:
-YURA Root Master / Face Master / BODY View Mastersを、依存順序を崩さず作成する。
+YURA Root Master / Face Master / BODY View Mastersを、依存順序と実行境界を崩さず作成する。
 
 ## Required order
 1. `TEXT_ONLY_ROOT_MASTER`
@@ -16,21 +16,33 @@ Do not skip forward.
 
 ## Submode 1 — TEXT_ONLY_ROOT_MASTER
 Purpose:
-画像参照を一切使わず、現行YURA Text Authorityだけで正面YURAが安定再現できるか検証し、Root Master候補を作成する。
+画像参照を使わず、現行Text Authorityから作った固定Execution Payloadで正面YURAを再構築する。
+
+Resolution / compile route:
+```text
+Protected Text Authorities
+        ↓
+TEXT_ONLY_ROOT_EXECUTION.md
+        ↓
+Payload validation
+        ↓
+one independent single-image call
+        ↓
+post-generation QA
+```
 
 Generation-time visual references:
 `NONE`
 
-Required semantic text input:
-`../generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
+Mandatory execution files:
+- `../generation/execution/TEXT_ONLY_ROOT_EXECUTION.md`
+- `../generation/execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
 
 Required QA:
 `../qa/ROOT_MASTER_STABILITY_QA.md`
 
-Current Root Master image may be used only after candidate generation as:
+The registered Root Master image may be used only after generation as:
 `POST_GENERATION_COMPARISON_REFERENCE`
-
-It must not be attached to or supplied to the generation call.
 
 ## Submode 2 — FACE_MASTER
 Allowed only when:
@@ -40,20 +52,16 @@ is `APPROVED`.
 Purpose:
 approved stable Root MasterからFace Close-up Masterを作成する。
 
-Candidate remains non-authority until explicit author approval and Git registration.
-
 ## Submode 3 — BODY_VIEW_MASTER
 Allowed only when:
 - Root Master stability status = `APPROVED`
-- approved Face Master exists and is registered in the Authority Manifest
+- approved Face Master exists and is registered
 
 Purpose:
-approved Root + Face identityを保持したまま、BODY projection anchorを角度別に作成する。
-
-Do not create BODY View Masters from an unstable Root or before Face Master adoption.
+approved Root + Face identityを保持したままBODY projection anchorsを角度別に作成する。
 
 ## Promotion rule
-No Master candidate becomes Authority because it looks good.
+No candidate becomes Authority because it looks good.
 
 Promotion requires:
 1. applicable QA

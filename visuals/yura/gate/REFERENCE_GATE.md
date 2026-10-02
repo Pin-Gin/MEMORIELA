@@ -2,9 +2,7 @@
 
 Status: **PROTECTED / MANDATORY / FAIL-CLOSED**
 
-## Mode-specific reference policy
-
-### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
+## MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
 Generation-time visual references:
 `NONE`
 
@@ -17,51 +15,44 @@ Required:
 - SCENE_REFERENCE = NONE
 - ACTUAL_VISUAL_REFERENCES_AVAILABLE = NOT_REQUIRED
 
-If any image is supplied to the generation execution:
+If any image is supplied to the image-generation execution:
 `GENERATION_ALLOWED = NO`
 
-The current approved Root Master may be viewed only after candidate generation as:
+The current registered Root Master may be viewed only **after** a candidate exists and only as:
 `POST_GENERATION_COMPARISON_REFERENCE`
 
-It must not be fed into generation or a generation-time retry.
+Do not:
+- attach it to generation
+- describe it into the generation payload
+- use it during a generation-time retry
+- allow another file to instruct PNG priority inside this submode
 
-### PRODUCTION
-Only:
+## PRODUCTION
+Only Gate-approved references may be attached in declared roles.
+
+Root whole-character Identity:
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
-may serve as the root whole-character Identity reference.
 
-PRODUCTION always requires:
+Face detail:
 `visuals/yura/identity/master/face/YURA_FACE_MASTER.png`
 
-Role:
-FACE_DETAIL_REFERENCE
-
-If absent or unavailable to the actual generation execution:
+Missing required production reference:
 `GENERATION_ALLOWED = NO`
 
-Do not substitute:
-- cropped derivative from an unapproved generation
-- previous chat image
-- prior successful derivative
-- similar face image
-
-## BODY view — PRODUCTION / BODY_VIEW_MASTER
+## BODY view — PRODUCTION
 Resolve through `VIEW_ROUTER.md`.
 
-FRONT uses root YURA Master.
-Non-front uses exactly one routed BODY View Master in PRODUCTION.
+FRONT uses the root YURA Master.
+Non-front uses exactly one routed BODY View Master.
 
 Do not:
 - load all BODY view Masters at once
-- average two neighboring angles
-- substitute a missing angle
-- let a BODY view reference redesign FACE / HAIR / outfit / rendering
+- average neighboring view anchors
+- substitute a missing view
+- let BODY view reference redesign FACE / HAIR / outfit / rendering
 
 ## Actual-reference requirement
-For modes that require visual references, a PNG existing in Git is not sufficient by itself.
-PASS requires that the actual approved image is available to the image-generation execution as the declared role.
-
-## Additional references
-Pose / outfit / scene references are allowed only with declared roles from `../../gate-core/REFERENCE_ROLE_RULES.md`.
+For modes that require visual references, Git existence alone is not enough.
+The actual approved image must be available to execution in the declared role.
 
 Rejected / intermediate images are denied.

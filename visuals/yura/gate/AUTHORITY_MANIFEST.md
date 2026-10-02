@@ -2,9 +2,9 @@
 
 Status: **PROTECTED / EXACT-PATH MANIFEST**
 
-Only the paths listed here may be loaded as YURA Visual Authority.
+Only paths listed here may participate in YURA Visual Authority resolution.
 
-## Mandatory text authorities
+## Gate / governance
 GATE:
 `visuals/yura/gate/GENERATION_GATE.md`
 
@@ -14,6 +14,7 @@ MASTER_CREATION_FLOW:
 ROOT_STABILITY_STATUS:
 `visuals/yura/identity/master/ROOT_MASTER_STABILITY_STATUS.md`
 
+## Protected semantic authorities
 ROOT_MASTER_MANIFEST:
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.md`
 
@@ -38,7 +39,7 @@ DEFAULT_HAIR:
 SKIN:
 `visuals/yura/identity/skin/SKIN_SPEC.md`
 
-YURA_RENDERING:
+YURA_RENDERING_ADAPTER:
 `visuals/yura/identity/rendering/YURA_RENDERING_SPEC.md`
 
 PROJECT_RENDERING:
@@ -50,17 +51,26 @@ GENERATION_RULES:
 QA:
 `visuals/yura/qa/GENERATION_QA.md`
 
-## Text-only Root Master creation
-TEXT_ONLY_ROOT_MASTER_PROFILE:
+## TEXT_ONLY_ROOT_MASTER
+PROFILE:
 `visuals/yura/generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
 
-ROOT_MASTER_STABILITY_QA:
+EXECUTION_PAYLOAD:
+`visuals/yura/generation/execution/TEXT_ONLY_ROOT_EXECUTION.md`
+
+SINGLE_RUN_PROTOCOL:
+`visuals/yura/generation/execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
+
+STABILITY_QA:
 `visuals/yura/qa/ROOT_MASTER_STABILITY_QA.md`
 
-TEXT_ONLY_ROOT_MASTER semantic generation inputs are defined exactly by the profile above.
-Do not add visual references.
+Reference policy:
+`NONE`
 
-## Mandatory production visual references
+The raw semantic authorities above are resolved to validate the Execution Payload.
+They are not directly dumped into the image-generation call.
+
+## PRODUCTION visual references
 IDENTITY_ROOT_REFERENCE:
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
@@ -92,8 +102,7 @@ RIGHT:
 FRONT_RIGHT:
 `visuals/yura/identity/master/body-views/YURA_BODY_VIEW_FRONT_RIGHT.png`
 
-Missing non-front BODY view anchors are intentional until created.
-Missing required anchors block PRODUCTION for that routed view.
+Missing required non-front anchors block that PRODUCTION route.
 
 ## Conditional authorities
 POSE:

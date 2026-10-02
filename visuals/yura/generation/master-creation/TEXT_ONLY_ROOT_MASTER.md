@@ -6,95 +6,67 @@ Master Creation Submode:
 `TEXT_ONLY_ROOT_MASTER`
 
 Purpose:
-YURAを画像参照なしで生成し、Text Authority単独でRoot identityが安定するか確認する。
+画像参照を一切使わず、現行YURA Text Authorityからコンパイルした実行PayloadでRoot identityの安定性を検証する。
 
 ## Generation-time reference policy
 `VISUAL_REFERENCES_ALLOWED = NONE`
 
-Forbidden during generation:
-- current `YURA_VISUAL_MASTER.png`
-- future Face Master
-- BODY View Masters
-- previous YURA generations
-- previous chat images
-- pose references
-- outfit references
-- scene references
-- cropped / edited derivatives
-- any image used as an implicit identity hint
+No image may be supplied to the image-generation execution.
 
-Do not pass any visual reference to the image-generation execution.
+## Authority resolution inputs
+Gate / compiler resolves the current protected sources:
+- `visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
+- `visuals/yura/identity/body/BODY_SPEC.md`
+- `visuals/yura/identity/face/FACE_SPEC.md`
+- `visuals/yura/identity/eyes/EYE_SPEC.md`
+- `visuals/yura/identity/hair/HAIR_SPEC.md`
+- `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG.md`
+- `visuals/yura/identity/skin/SKIN_SPEC.md`
+- `visuals/yura/identity/rendering/YURA_RENDERING_SPEC.md`
+- `visuals/CHARACTER_RENDERING_STYLE.md`
+- `visuals/yura/qa/VALIDATION_CLOTHING.md`
 
-## Required semantic text inputs
-Load exactly:
-1. `visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
-2. `visuals/yura/identity/body/BODY_SPEC.md`
-3. `visuals/yura/identity/face/FACE_SPEC.md`
-4. `visuals/yura/identity/eyes/EYE_SPEC.md`
-5. `visuals/yura/identity/hair/HAIR_SPEC.md`
-6. `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG.md`
-7. `visuals/yura/identity/skin/SKIN_SPEC.md`
-8. `visuals/yura/identity/rendering/YURA_RENDERING_SPEC.md`
-9. `visuals/CHARACTER_RENDERING_STYLE.md`
-10. `visuals/yura/generation/GENERATION_RULES.md`
-11. `visuals/yura/qa/VALIDATION_CLOTHING.md`
+These documents are resolution sources.
+They are **not** dumped directly into the image-generation call.
 
-Governance files may be read for Gate execution, but they must not introduce visual-image information into the generation call.
+## Mandatory execution payload
+Image generation receives:
+`visuals/yura/generation/execution/TEXT_ONLY_ROOT_EXECUTION.md`
+
+Execution orchestration follows:
+`visuals/yura/generation/execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
+
+No raw Gate / QA / batch instruction is appended to the generation payload.
 
 ## Fixed generation condition
-- exactly one YURA
-- front-facing
-- full body
-- head top through toes visible
-- centered
-- straight neutral standing pose
-- arms naturally lowered
-- legs nearly together
-- minimal perspective distortion
-- neutral / very soft expression
-- default Normal Super-Long
-- validation clothing only
-- barefoot
-- white / warm-white background
-- no props
-- no text / labels / panels
-- no school uniform
-- no hairstyle variation
-- no outfit variation
-- no pose variation
-- no scene variation
+The fixed condition is fully compiled into `TEXT_ONLY_ROOT_EXECUTION.md`.
 
-Use the same framing/aspect/resolution conditions across one stability batch.
+Do not add:
+- batch count
+- candidate comparison language
+- QA verdict language
+- Git paths
+- rejection tables
+- Master PNG descriptions outside the compiled text payload
 
 ## Variation policy
 `AI_INFERENCE_REQUIRED = NONE`
 `USER_AUTHORIZED_VARIATION = NONE`
 
-Do not improve, beautify, modernize, stylize or reinterpret YURA.
+## Stability batch
+Controller / QA layer:
+- minimum 3 valid independent single-image runs
+- preferred 5 valid independent single-image runs
 
-## Batch rule
-For stability evaluation:
-- minimum: 3 independent candidates
-- preferred: 5 independent candidates
-- generate each candidate as one YURA / one image
-- keep all text inputs and generation conditions unchanged within the batch
-
-Do not choose the best image first and treat the others as irrelevant.
-Evaluate cross-run variance.
+The image-generation model must not receive batch-size or comparison-sheet instructions.
 
 ## Post-generation comparison
-After each candidate is generated, the current approved Root Master may be viewed for QA comparison only.
+After each valid single-image run, the registered Root Master may be used for QA comparison only.
 
-It must not be supplied to the generation call.
-
-If the comparison reveals a mismatch:
-- identify the failing text/domain rule
-- do not copy incidental pixels/features from the old Master into a prompt
-- do not change canon to fit a failed candidate
-- text may be corrected only when the author confirms that the existing text fails to encode the intended identity
+It must not be supplied to any text-only generation call or retry.
 
 ## Candidate status
-Every output is:
+Every valid output remains:
 `CANDIDATE / NOT AUTHORITY`
 
-until explicit author approval and Root Master adoption.
+until explicit author approval and adoption.

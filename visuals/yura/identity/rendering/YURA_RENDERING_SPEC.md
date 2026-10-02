@@ -1,6 +1,6 @@
 # YURA RENDERING SPEC
 
-Status: **PROTECTED YURA-SPECIFIC RENDERING LAYER**
+Status: **PROTECTED YURA-SPECIFIC RENDERING ADAPTER**
 
 Project-wide rendering authority:
 `../../../CHARACTER_RENDERING_STYLE.md`
@@ -9,41 +9,52 @@ Skin authority:
 `../skin/SKIN_SPEC.md`
 
 ## Purpose
+This file defines only YURA-specific protection when the project-wide Matte Natural Anime rendering is applied.
 
-This file defines only YURA-specific rendering behavior that is not already defined by the Visual Master, protected Identity Specs, or the project-wide Matte Natural Anime style.
-
-Do not duplicate BODY / FACE / EYE / HAIR / SKIN identity definitions here.
+It does not define a separate YURA art style.
+It does not duplicate BODY / FACE / EYE / HAIR / SKIN identity.
 
 ## YURA rendering rule
-
-YURA uses the project-wide **Matte Natural Anime** rendering style unless the user explicitly requests a one-off style derivative.
+YURA uses the project-wide **Matte Natural Anime** rendering style unless the user explicitly requests an allowed one-off rendering derivative.
 
 Rendering may describe visible form, but must not:
-- redesign YURA's BODY
+- redesign YURA BODY
 - alter FACE geometry
 - recolor EYE / HAIR / SKIN identity
 - change source hair length or mass
 - change outfit structure
 - reinterpret YURA as another character
 
-## Targeted retry stability
+## Mode-specific authority
 
+### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
+Generation-time visual references are **NONE**.
+
+Rendering authority for the execution payload:
+1. protected YURA Text Identity Specs
+2. this YURA rendering adapter
+3. project-wide `CHARACTER_RENDERING_STYLE.md`
+
+The current YURA Visual Master PNG must **not** be loaded, attached, inspected as a generation reference, or described into the image-generation call for this submode.
+
+Post-generation comparison with the registered Root Master is allowed only through the QA route defined by the Gate.
+
+### PRODUCTION
+After Root / Face / required BODY-view Masters are approved and the Production Gate passes:
+1. Gate-approved visual references in their declared roles
+2. protected YURA Identity Specs
+3. requested authorized derivative variables
+4. this YURA rendering adapter
+5. project-wide `CHARACTER_RENDERING_STYLE.md`
+
+The image references do not override precise protected Identity Specs.
+
+## Targeted retry stability
 When retrying a failed BODY / FACE / EYE / HAIR / SKIN / outfit / pose domain:
-- preserve the current rendering grammar
-- do not silently change line treatment
-- do not silently change shading behavior
-- do not silently change gloss level
-- do not silently change overall contrast
+- preserve line treatment
+- preserve shading behavior
+- preserve gloss level
+- preserve overall contrast
+- preserve realism level
 
 Only the failed domain should be corrected unless the user explicitly requests a rendering change.
-
-## Authority
-
-For generation:
-1. current YURA Visual Master PNG
-2. protected Identity Specs
-3. requested pose / camera / outfit / expression / scene
-4. this YURA-specific rendering layer
-5. project-wide Matte Natural Anime rendering style
-
-This file does not override higher-priority identity authority.
