@@ -1,7 +1,6 @@
 # 久遠ゆら
 
 この文書は小説世界における久遠ゆらの人物設定Authorityである。
-旧AI版YURAの人格・経歴・生活設定は継承しない。既存Visual Identityのみ継承する。
 
 ## FIXED — 基本
 - 女性。物語の高校編では15歳、高校2年相当。
@@ -17,13 +16,13 @@
 - 最終的に要と結婚する。
 
 ## FIXED — Visual Identity
-既存の小説移行前YURA Visual資料を継承する。
+Visual Authorityは `visuals/yura/` を正とする。
 - 身長153cm
 - 銀白髪
 - Normal Super-Longを基準とする非常に長い髪
 - ブルーグレーの瞳
 - 小さめの卵形の顔、顎小さめ
-- 既存Visual Master / FACE / EYE / BODY / HAIR / Rendering仕様をVisual Authorityとして使用する。
+- Visual Master / FACE / EYE / BODY / HAIR / Rendering仕様をVisual Authorityとして使用する。
 
 幼少期（5〜9歳頃）は現在より父方・日本人側の特徴が強く、暗めの髪・茶系の瞳で、要の記憶にある姿と現在の印象が大きく異なる。
 
