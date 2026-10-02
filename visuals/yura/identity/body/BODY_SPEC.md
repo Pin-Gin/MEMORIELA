@@ -51,7 +51,7 @@ FAIL:
 - do not widen ribcage to support or display bust volume
 
 ### Bust
-- **moderately fuller relative to YURA's petite / slender frame**
+- **BODYの横幅・腰・骨盤・太腿を増やさず、胸だけを体格比でやや豊かにする**
 - soft hemispherical direction
 - restrained upper fullness
 - naturally fuller lower contour
