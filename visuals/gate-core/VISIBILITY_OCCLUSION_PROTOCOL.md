@@ -22,14 +22,15 @@ Do not:
 - rotate anatomy merely to expose it
 - widen BODY to reveal hidden volume
 - separate limbs merely for readability
-- pull hair away to reveal ears / face areas
+- force hair displacement solely to reveal ears / face areas, unless the active protected character/domain Authority explicitly allows local natural hair placement variation around that feature
 - enlarge a partially hidden feature
 - expose both left/right features for symmetry
 - flatten or relocate overlapping forms to make every component visible
 - modify pose because a hidden feature is known to exist
 
 ## Correct behavior
-If a feature should be hidden at the requested camera / pose, keep it hidden.
+If a feature should be hidden at the requested camera / pose, keep it hidden unless the active protected character/domain Authority explicitly permits local hair-placement variation around that feature.
+Such permitted hair variation does not authorize anatomy enlargement, rotation, displacement, or other geometry changes.
 Preserve the underlying protected geometry without forcing visual exposure.
 
 ## QA failure
