@@ -31,14 +31,27 @@ Preferred = 5.
 
 ## Evaluate every valid candidate
 ### FACE
-- soft oval adult face
-- small softly rounded chin
+- visual age reads 15–18; youthful but not childlike
+- small face
+- soft oval with slight vertical elongation
+- slightly narrow face width
+- modest cheek softness
+- smooth taper to a compact lower face
+- small narrow softly rounded chin
+- horizontally elongated eyes with restrained vertical height
+- very small delicate nose
+- very small short closed mouth with neutral to extremely subtle soft expression
 - stable eye / nose / mouth placement
 
 ### EYE
 - blue-gray only
 - gray component clearly present
 - restrained saturation
+- mild almond shape
+- horizontally elongated
+- restrained vertical height
+- visible sclera on both sides of iris
+- neutral to very slightly downturned outer corners
 - stable geometry
 
 ### BODY
