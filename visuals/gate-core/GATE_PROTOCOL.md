@@ -42,6 +42,15 @@ Approved Masters / required visual references must exist and be available to the
 
 ### MASTER_CREATION
 Used only to create a missing or replacement Master / derived view anchor.
+
+Each Domain must define an explicit `MASTER_CREATION_SUBMODE`.
+The active submode must be recorded in the Load Receipt.
+
+A Domain may define a text-only submode whose correct reference policy is:
+`VISUAL_REFERENCES_ALLOWED = NONE`
+
+In that case, zero visual references is a PASS condition, not a missing-reference failure.
+
 Generated candidate is:
 - CANDIDATE
 - NOT AUTHORITY
@@ -59,6 +68,8 @@ Example: YURA + school uniform requires both YURA Gate and School Uniform Gate.
 Every visual reference must have exactly one declared role from `REFERENCE_ROLE_RULES.md`.
 An image must not silently control another Scope.
 
+A text-only Master Creation submode may explicitly prohibit all generation-time visual references.
+
 ## Visibility rule
 Apply `VISIBILITY_OCCLUSION_PROTOCOL.md`.
 Do not alter anatomy / hair / pose merely to expose a feature.
@@ -66,3 +77,5 @@ Do not alter anatomy / hair / pose merely to expose a feature.
 ## Post-generation
 Run the active Domain QA.
 Rejected or intermediate outputs are denied as future Identity Authority unless explicitly adopted through Master change control.
+
+A reference permitted for post-generation comparison only must not be reintroduced into the generation call unless the active Gate explicitly permits it.

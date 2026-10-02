@@ -26,11 +26,9 @@ PRODUCTION requires:
 
 If the dedicated Face Close-up Master has not yet been created:
 `GENERATION_ALLOWED = NO` for PRODUCTION.
-Use MASTER_CREATION mode to create it.
 
 If a routed non-front BODY view Master has not yet been created:
 `GENERATION_ALLOWED = NO` for that PRODUCTION view.
-Use MASTER_CREATION mode to create the missing view anchor.
 
 ## Request routing
 ### Ordinary front-facing generation
@@ -55,9 +53,32 @@ Load:
 - `../qa/GENERATION_QA.md`
 
 ## Master creation mode
-MASTER_CREATION may create:
-- `../identity/master/face/YURA_FACE_MASTER.png`
-- missing `../identity/master/body-views/*.png`
+MASTER_CREATION requires:
+- `MASTER_CREATION_FLOW.md`
+- explicit `MASTER_CREATION_SUBMODE`
+
+### TEXT_ONLY_ROOT_MASTER
+Allowed now.
+
+Required:
+- `../generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
+- `../qa/ROOT_MASTER_STABILITY_QA.md`
+
+Generation-time visual references must be:
+`NONE`
+
+The current Root Master image may be used only after generation as:
+`POST_GENERATION_COMPARISON_REFERENCE`
+
+### FACE_MASTER
+Blocked until:
+`../identity/master/ROOT_MASTER_STABILITY_STATUS.md`
+records `APPROVED`.
+
+### BODY_VIEW_MASTER
+Blocked until:
+- Root Master stability status = `APPROVED`
+- approved Face Master exists and is registered
 
 Candidate output is not Authority until author approval, Git placement, manifest registration and QA.
 

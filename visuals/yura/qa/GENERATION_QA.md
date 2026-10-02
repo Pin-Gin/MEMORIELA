@@ -5,18 +5,32 @@ Status: **CANONICAL / CURRENT**
 Evaluate domains independently. Do not average failures into one score.
 
 ## Gate 0 — Execution integrity
+### PRODUCTION
 PASS only if:
 - YURA Generation Gate passed
 - Authority Manifest exact paths were loaded
 - actual required visual references were available to execution
-- Face Detail Reference passed for PRODUCTION
+- Face Detail Reference passed
 - routed BODY View Reference passed when required
 - no unauthorized / derivative Identity reference was mixed
 - AI_INFERENCE_REQUIRED = NONE unless the user explicitly authorized that variation scope
 
+### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
+PASS only if:
+- YURA Generation Gate passed
+- `MASTER_CREATION_SUBMODE = TEXT_ONLY_ROOT_MASTER`
+- `TEXT_ONLY_ROOT_MASTER.md` exact profile was loaded
+- generation-time visual references = NONE
+- ACTUAL_VISUAL_REFERENCES_AVAILABLE = NOT_REQUIRED
+- no previous/current Master image entered the generation call
+- AI_INFERENCE_REQUIRED = NONE
+- USER_AUTHORIZED_VARIATION = NONE
+
+The current Root Master may be used only after generation as a comparison reference.
+
 ## Gate 1 — Identity
 PASS if:
-- same YURA face impression
+- same intended YURA face impression
 - adult readability
 - blue-gray eyes
 - silver-white hair
@@ -33,6 +47,8 @@ PASS if:
 - chest remains moderately fuller relative to frame
 - limbs preserve lengths and baseline thickness
 - pose has not redesigned anatomy
+
+For PRODUCTION non-front views:
 - projection agrees with the routed BODY view anchor
 
 For twist / 3/4 / side:
@@ -95,6 +111,8 @@ PASS if:
 ## Gate 7 — Request fidelity
 Check requested outfit / hairstyle / expression / pose / scene / crop / framing.
 
+For TEXT_ONLY_ROOT_MASTER, request fidelity means exact compliance with the fixed Master Creation profile.
+
 ## Gate 8 — Pose / physical structure
 For significant movement:
 - plausible joints
@@ -104,7 +122,7 @@ For significant movement:
 - chest continuity
 - hair conservation
 - hands / feet / limb count
-- routed body view remains consistent
+- routed body view remains consistent where applicable
 
 ## Gate 9 — Output hygiene
 Check:
@@ -123,9 +141,15 @@ When required:
 - barefoot
 - white background
 
+## Text-only stability route
+For `TEXT_ONLY_ROOT_MASTER`, also run:
+`ROOT_MASTER_STABILITY_QA.md`
+
+A single good-looking candidate is not stability evidence.
+
 ## Decision
 - **PASS**: execution integrity + identity + BODY + applicable request/domain gates pass
-- **TARGETED RETRY**: local domain failure; retry only that scope while references and manifests remain locked
-- **REJECT**: material identity/BODY/reference failure or severe structural artifact
+- **TARGETED RETRY**: local domain failure; retry only that scope while text inputs remain locked
+- **REJECT**: material identity/BODY/reference-policy failure or severe structural artifact
 
 Never change YURA canon to fit a failed generation.

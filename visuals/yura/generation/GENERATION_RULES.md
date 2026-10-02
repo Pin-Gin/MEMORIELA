@@ -38,6 +38,19 @@ Visual Master / Visual Text / BODY / FACE / EYE / HAIR / SKIN / renderingを:
 
 ユーザーが明示的にVariationを許可したScopeだけ変更可能。
 
+## Text-only Root Master creation
+When:
+`MASTER_CREATION_SUBMODE = TEXT_ONLY_ROOT_MASTER`
+
+follow exactly:
+`master-creation/TEXT_ONLY_ROOT_MASTER.md`
+
+No generation-time image reference is permitted.
+
+The current Root Master may be used only for post-generation QA comparison.
+
+Do not create Face Master or BODY View Masters until the Root Master stability status permits them.
+
 ## Pose route
 意味のある動作・体幹回転・側面化・着座等では:
 - `POSE_RULES.md` を読む
