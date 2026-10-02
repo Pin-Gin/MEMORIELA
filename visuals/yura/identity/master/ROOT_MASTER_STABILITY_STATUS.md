@@ -18,7 +18,7 @@ Current Root Master remains:
 - project-wide 2D-anime-first Rendering Hard Gate: ACTIVE
 - post-generation Presentation Gate: ACTIVE
 - prior scope-only retry semantics for text-only full regeneration: INVALID DESIGN, now removed
-- FACE target refined to a 15–18-year-old read with a small, slightly vertically elongated soft oval face
+- FACE target refined to a 15–18-year-old read with a small soft oval face whose vertical length is standard to slightly short and remains vertically compact
 - eye / nose / mouth geometry and default-expression constraints were strengthened
 - fixed `TEXT_ONLY_ROOT_EXECUTION.md` was deliberately recompiled from the updated protected Authorities
 
