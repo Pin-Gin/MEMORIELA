@@ -84,7 +84,7 @@ Immediate EYE / Identity FAIL:
 - iris visibly reads brown / amber / hazel
 - gray component disappears
 - vivid saturated blue replaces blue-gray
-- eye shape becomes childlike round / strongly droopy / sharp fox-eye
+- eye shape becomes overly round / strongly droopy / sharp fox-eye
 - pupil signature moves to the wrong side in a resolvable close-up
 - pupil becomes bright / decorative
 - lighting recolors the identity
