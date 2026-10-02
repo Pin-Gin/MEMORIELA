@@ -56,6 +56,18 @@ Preferred = 5.
 - neutral to very slightly downturned outer corners
 - stable geometry
 
+### EAR
+- slightly small ear scale
+- vertical ear length approximately 28–30% of forehead-to-chin face vertical length
+- ear length has priority over exact eyebrow / nose endpoint alignment
+- upper rim around eyebrow height and lower rim around nose-tip to subnasal height are guides only
+- restrained approximately 5–10 degree posterior tilt
+- restrained projection from the head
+- hidden / partially hidden ears are acceptable
+- no hair movement, head rotation, ear rotation, outward displacement or enlargement for visibility
+- no forced bilateral ear visibility
+- stable ear geometry without show-ear compensation
+
 ### BODY
 - exact 7.25-head system
 - petite / slender frame
