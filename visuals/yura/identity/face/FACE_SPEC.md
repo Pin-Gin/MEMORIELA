@@ -145,7 +145,6 @@ For FACE identity:
 - thin long fringe may cross the forehead naturally
 - long side bangs frame the cheeks / jaw area
 - face framing must not widen or round the perceived face
-- hair must not be moved merely to expose the ears
 
 ## FAIL boundaries
 FACE FAIL if materially present:
@@ -166,7 +165,6 @@ FACE FAIL if materially present:
 - strongly droopy childlike eye
 - broad default smile changing the face impression
 - EAR_SPEC violation used to alter the face or head for ear visibility
-- hair moved merely to expose ears
 - facial geometry changes due to pose, outfit, lighting, or rendering
 
 When in doubt, preserve the protected 15–18-year-old mature-teen geometry rather than adding expressive exaggeration.
