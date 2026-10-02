@@ -22,22 +22,31 @@ AIは禁止:
 ## Current approved visual interpretation
 
 ### BODY
-- 153 cm petite / slender adult woman
+- 153 cm petite / slender 15–18-year-old teenage girl
 - exact 7.25-head design target
+- youthful but not childlike body read
 - somewhat narrow shoulders
 - compact ribcage
 - bust moderately fuller relative to the petite frame
 - soft hemispherical / お椀型 direction
 - slim natural waist
-- natural adult pelvis / hips
+- natural female pelvis / hips appropriate to the protected mature-teen design
 - standard-to-slightly-long legs
 - slender limbs with natural softness
 
 ### FACE / EYE
-- soft oval adult face
-- small softly rounded chin
+- visual age read = 15–18 years old; youthful but not childlike
+- small face
+- soft oval with slight vertical elongation
+- slightly narrow face width and modest cheek softness
+- smooth taper from temples / cheeks toward a compact lower face
+- small, narrow, softly rounded chin
+- eyes slightly large but horizontally elongated with restrained vertical height
+- mild almond shape; neutral to very slightly downturned outer corners
 - blue-gray eyes with restrained saturation
-- calm / gentle expression
+- very small delicate nose
+- very small short closed mouth; neutral to extremely subtle soft expression
+- calm / refined / delicate overall impression
 - protected pupil signature remains governed by `../eyes/EYE_SPEC.md`
 
 ### HAIR
@@ -64,6 +73,8 @@ AIは禁止:
 ## Master image visual transcription
 
 The following section is a direct visual transcription of the approved Master image. It exists to keep the PNG and written Visual Text aligned. It does not override protected domain specifications.
+
+During the current TEXT_ONLY_ROOT_MASTER refinement, the precise 15–18-year-old FACE / EYE target in `FACE_SPEC.md` and `EYE_SPEC.md` is authoritative even if the existing Root Master visually reads older or differs in facial geometry. The Root Master itself remains unchanged until explicit author approval of a replacement.
 
 ## Visual Description — 1. Overall silhouette
 
