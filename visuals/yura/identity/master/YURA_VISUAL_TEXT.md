@@ -53,7 +53,8 @@ AIは禁止:
 - upper rim around eyebrow height and lower rim around nose-tip to subnasal height are placement guides only
 - ear long axis has restrained 5–10 degree posterior tilt
 - ear projection from the head remains restrained
-- ear may be partially or fully hidden by natural hair occlusion; no show-ear compensation
+- ear may be visible, partially hidden, or fully hidden; local hair placement around the ear may vary naturally
+- ear visibility must not change protected ear size / length / tilt / projection
 - calm / refined / delicate overall impression
 - protected pupil signature remains governed by `../eyes/EYE_SPEC.md`
 
