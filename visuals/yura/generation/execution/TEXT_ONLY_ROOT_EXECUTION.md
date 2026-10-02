@@ -36,16 +36,18 @@ Skin:
 - smooth matte anime skin
 
 ## BODY — protected geometry
+
+### Fixed BODY anchor
 - exactly **7.25 heads tall**
+- **153cmの小柄・華奢な体格**
 - petite / slender / delicate adult frame
 - somewhat narrow natural shoulders
-- slender compact ribcage
-- **153cmの小柄・華奢、体格比で胸はやや豊かめ**
-- bust is clearly fuller relative to the petite frame while the ribcage remains narrow
-- soft hemispherical / お椀型 direction
-- gently sloped upper contour
-- naturally fuller lower contour
-- natural forward projection
+- **胸郭は細くコンパクト**
+- **体格比で胸はやや豊かめ**
+- **柔らかな半球型／お椀型**
+- **上側はなだらかで、下側に自然な丸み**
+- **細い胸郭のまま自然な前方への厚みを持つ**
+- chest volume is visibly fuller relative to the petite frame, but the ribcage itself stays narrow
 - standard-to-slightly-short torso
 - slim natural waist
 - flat-leaning abdomen with slight natural softness
@@ -62,7 +64,15 @@ Treat the whole figure as one uniformly scaled 7.25-head proportion system.
 Canvas size changes framing and negative space only, never anatomy.
 
 ## HAIR — Normal Super-Long
-- silver-white hair
+
+### Fixed hair anchor
+**銀白色のNormal Super-Long。**
+**主な毛先・主要毛量の終端は自然なウエストライン付近〜わずかに下。**
+**腰より下では毛量を明確に一段減らす。**
+**上臀部手前まで届くのは、ごく少数の細い最長毛先だけ。**
+**臀部中央以下や太ももへ主要毛量を延長しない。**
+
+Additional protected appearance:
 - cool-neutral white-leaning silver tone
 - fine and soft individual strands
 - total mass slightly above standard
@@ -71,8 +81,6 @@ Canvas size changes framing and negative space only, never anatomy.
 - lateral spread remains restrained
 - main mass remains behind the shoulders and down the back
 - only limited face-framing / chest-area strands come forward
-- main/principal ends reach the natural waistline to slightly below
-- only a small number of the longest fine tips may approach just before the upper-buttock area
 - tips taper gradually and delicately
 - thin long bangs
 - soft separated fringe
@@ -121,9 +129,12 @@ High-quality 2D anime illustration in MEMORIELA **Matte Natural Anime** style:
 ## Compact anti-drift constraints
 - keep iris identity blue-gray, not warm brown/amber
 - keep YURA exactly 7.25 heads tall
-- keep the ribcage slender while preserving the moderately fuller bust relative to her petite frame
-- keep the bust soft hemispherical / お椀型 with natural lower fullness
-- keep principal hair mass around the natural waist to slightly below, not hip/thigh-length
+- keep the ribcage slender and compact
+- preserve the noticeably fuller bust relative to the petite frame
+- preserve a soft hemispherical / お椀型 bust with gentle upper slope, natural lower roundness, and forward projection
+- keep principal hair mass ending at natural waistline to slightly below
+- below the waist, reduce hair mass clearly; only sparse finest tips may approach the upper-buttock boundary
+- do not extend principal hair mass to mid-buttock or thigh length
 - use a broad-shouldered sleeveless validation top, not camisole straps
 - use simple shorts with a clean waistband
 - one YURA only; no character sheet, panels, triptych, side-by-side variants, labels, or text

@@ -13,25 +13,31 @@ This file records whether the Root Master has completed the text-only stability 
 ## Current state
 `TEXT_ONLY_ROOT_STABILITY = TEXT_REFINEMENT_REQUIRED`
 
-Observed first-batch result:
-- FACE = MATERIAL_VARIANCE
-- EYE = SYSTEMATIC_DRIFT
-- BODY = MATERIAL_VARIANCE
-- HAIR = SYSTEMATIC_DRIFT / MATERIAL_VARIANCE
-- VALIDATION_CLOTHING = SYSTEMATIC_DRIFT
-- RENDERING = minor-to-material variance
+## Latest valid isolated batch
+Execution control:
+- single-run / one-person / one-image = PASS
+- generation-time visual references = NONE
+- triptych / multi-panel contamination = NOT PRESENT
+
+Observed drift:
+- HAIR LENGTH = SYSTEMATIC_DRIFT
+- BUST / UPPER TORSO = SYSTEMATIC_DRIFT
+
+Current correction:
+- strengthen only the compiled Text-only Execution Payload for HAIR length and bust/body relation
+- keep Gate structure, FACE, EYE, SKIN and rendering authorities unchanged for this retry
 
 Therefore:
 - `FACE_MASTER` creation = BLOCKED
 - `BODY_VIEW_MASTER` creation = BLOCKED
-- next action = refine Text Authority, then run a new same-condition text-only stability batch
+- next action = rerun the same isolated text-only batch with the updated Execution Payload
 
 ## Approval conditions
 Change this status to `APPROVED` only after:
 1. `TEXT_ONLY_ROOT_MASTER` profile is used
-2. at least 3 independent same-condition candidates are evaluated
+2. at least 3 independent same-condition valid single-image candidates are evaluated
 3. `ROOT_MASTER_STABILITY_QA.md` is completed
-4. systematic text-authority problems are resolved or explicitly accepted
+4. systematic text-authority / execution-payload problems are resolved or explicitly accepted
 5. protected domains show acceptable stability
 6. the author explicitly approves the stable Root Master result
 7. any replacement Root PNG is placed at the canonical path
