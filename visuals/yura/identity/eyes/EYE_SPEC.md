@@ -38,9 +38,13 @@ If the blue-gray identity is lost, do not accept the image.
 
 ## Shape lock
 Preserve:
-- slightly larger than average but adult-balanced
+- slightly larger than average, balanced for a 15–18-year-old anime face
+- horizontally elongated
+- restrained vertical height
 - mild almond form
-- horizontally oriented
+- clean gently curved upper eyelid
+- shallow lower eyelid curve
+- visible sclera on both sides of the iris
 - outer corner neutral to very slightly downturned
 
 Do not reinterpret as:
@@ -49,6 +53,7 @@ Do not reinterpret as:
 - strongly droopy eye
 - sharp upward fox-eye
 - narrow mature fashion-eye
+- oversized generic cute-anime eye
 
 Both eyes must retain the same character identity while allowing natural small asymmetry from perspective / expression.
 
