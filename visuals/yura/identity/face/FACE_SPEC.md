@@ -6,8 +6,6 @@ This file is a direct execution constraint. Do not soften, average, beautify, re
 
 ## HARD LOCK — face identity
 The following must remain simultaneously true:
-- visual age read = **15–18 years old**
-- youthful teenage girl, but **not childlike**
 - soft / refined / delicate
 - clearly anime-stylized
 - face is **small**
@@ -21,14 +19,14 @@ The following must remain simultaneously true:
 - contour narrows smoothly from temples / cheeks toward the chin
 - lower face remains compact
 - chin is **small, narrow, and softly rounded**
-- face is not round / childlike
+- face is not round
 - face is not long / fashion-model-like
 - no extreme V-line
 - head remains slightly small inside the protected 7.25-head BODY balance
 
-The target is a natural 15–18-year-old teenage facial read: youthful, calm and refined, without drifting toward either a younger child face or a mature adult face.
+The target is the protected small, vertically compact soft-oval YURA face: calm and refined, without drifting toward a rounder or longer generic face.
 
-If the face becomes visibly rounder, sharper, longer, older, younger/childlike, wider-jawed, or more generic than this identity, treat it as **FACE FAIL**, not acceptable variation.
+If the face becomes visibly rounder, sharper, longer, wider-jawed, or more generic than this identity, treat it as **FACE FAIL**, not acceptable variation.
 
 ## Head / outline — geometry lock
 Preserve:
@@ -42,17 +40,17 @@ Preserve:
 - smooth taper from temples / cheeks toward the chin
 - compact lower face
 - small narrow softly rounded chin
-- mature-teen-balanced head scale
+- protected balanced head scale
 
 Do not:
-- enlarge the head to express petite stature or youth
+- enlarge the head to express petite stature
 - widen the lower face
 - sharpen the jaw
-- create a short round child face
+- create a short round face
 - create a vertically elongated / oblong face
-- create a long mature fashion-model face
+- create a long fashion-model-like face
 - make the chin pointed
-- inflate cheeks into a childlike round face
+- inflate cheeks into an overly round face
 - create an extreme V-line
 
 ## Ear authority boundary
@@ -84,7 +82,7 @@ Do not substitute a derivative, previous-chat image, or similar face.
 Exact color and pupil identity are controlled by `../eyes/EYE_SPEC.md`.
 
 Geometry lock:
-- slightly larger than average, but balanced for a 15–18-year-old anime face
+- slightly larger than average, but balanced for the protected YURA anime face
 - horizontally elongated
 - restrained vertical height
 - mild almond shape
@@ -92,11 +90,11 @@ Geometry lock:
 - shallow lower eyelid curve
 - visible sclera remains on both sides of the iris
 - outer corners neutral to very slightly downturned
-- no circular / childlike oversized-eye reinterpretation
+- no circular / oversized-eye reinterpretation
 - no vertically oversized eye
 - no sharp fox-eye reinterpretation
 - no strong droop
-- no narrow mature fashion-eye reinterpretation
+- no narrow fashion-eye reinterpretation
 
 ## Brows
 - fine
@@ -148,23 +146,22 @@ For FACE identity:
 
 ## FAIL boundaries
 FACE FAIL if materially present:
-- childlike round face
+- round face
 - enlarged head
 - broad lower face
 - sharp jaw
 - pointed chin
 - extreme V-line
 - vertically elongated / oblong face
-- long mature fashion-model face
-- visibly mature-adult facial read
+- long fashion-model-like face
 - generic cute-anime face replacing YURA geometry
 - strongly realistic nose / lips
 - oversized symbolic anime eyes
 - vertically oversized circular eyes
 - sharp fox-eye
-- strongly droopy childlike eye
+- strongly droopy eye
 - broad default smile changing the face impression
 - EAR_SPEC violation used to alter the face or head for ear visibility
 - facial geometry changes due to pose, outfit, lighting, or rendering
 
-When in doubt, preserve the protected 15–18-year-old mature-teen geometry rather than adding expressive exaggeration.
+When in doubt, preserve the protected YURA FACE geometry rather than adding expressive exaggeration.
