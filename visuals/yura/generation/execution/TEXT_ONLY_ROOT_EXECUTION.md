@@ -28,6 +28,16 @@ Face:
 - adult-balanced eyes, slightly larger than average, mildly almond-shaped and horizontally oriented
 - fine cool-gray brows, nearly straight with a gentle natural arch
 
+### Fixed ear anchor
+**耳は通常の成人女性として自然な大きさ・縦横比。**
+**縦に長く伸ばさない。外側へ張り出さない。**
+**正面視では髪に自然に隠れる部分は隠れたままでよい。**
+**耳を見せるために髪を退けたり、耳を拡大・外向き回転させない。**
+- restrained ear projection
+- stable attachment height
+- no elongated / elf-like / pointed-ear reading
+- no symmetric overexposure of both ears for readability
+
 ## EYE — protected iris identity
 
 ### Fixed eye anchor
@@ -60,10 +70,17 @@ Skin:
 - somewhat narrow natural shoulders
 - **胸郭は細くコンパクト**
 - **体格比で胸はやや豊かめ**
+- **華奢な体格に対して、正面から見ても胸部ボリュームが明確に認識できる**
+- **ただしグラマラス体型や独立して大きすぎる胸にはしない**
 - **柔らかな半球型／お椀型**
 - **上側はなだらかで、下側に自然な丸み**
 - **細い胸郭のまま自然な前方への厚みを持つ**
-- chest volume is visibly fuller relative to the petite frame, but the ribcage itself stays narrow
+- **胸郭を広げずに、胸部だけが自然に前方へ立体を持つ**
+- chest volume is clearly fuller relative to the petite frame and remains visibly readable from the front
+- the ribcage itself stays narrow and compact
+- preserve gentle upper slope, fuller lower contour, and natural forward projection
+- do not flatten the bust into the ribcage
+- do not reduce the bust to a small / nearly flat reading
 - standard-to-slightly-short torso
 - slim natural waist
 - flat-leaning abdomen with slight natural softness
@@ -117,13 +134,38 @@ High-quality 2D anime illustration in MEMORIELA **Matte Natural Anime** style:
 - natural soft dimensionality without semi-real / CGI appearance
 
 ## Validation clothing
-- plain pale / off-white opaque sleeveless validation top
-- broad fabric sections over the shoulders
-- simple natural fit
-- plain pale / off-white opaque simple shorts
-- clean simple waistband
+
+### Fixed validation clothing anchor
+**PLAIN WIDE-SHOULDER SLEEVELESS VALIDATION TOP.**
+**肩部分は幅広い布で明確に覆う。細いストラップにはしない。**
+**NO THIN STRAPS. NO CAMISOLE. NO LINGERIE.**
+**PLAIN SIMPLE SHORTS WITH A CLEAN WAISTBAND.**
+**NO DRAWSTRING. NO CORD. NO BOW.**
+**OPAQUE. MATTE. PALE. BAREFOOT. WHITE BACKGROUND.**
+
+Upper garment:
+- pale / off-white / light-neutral
+- plain and opaque
 - matte fabric
+- broad shoulder sections that read clearly as a sleeveless top
+- natural simple fit
+- hem around waist / hip-bone region
+- no deep neckline
+- no lace / frill / bow / logo / decoration
+
+Lower garment:
+- pale / off-white / light-neutral
+- plain simple upper-thigh shorts
+- opaque and matte
+- clean simple waistband
+- no drawstring / visible cord / tie / bow
+- no lace / frill / decorative waistband
+
+Common:
 - barefoot
+- no jewelry
+- no hair ornament
+- clothing follows BODY and must not reshape anatomy
 
 ## Composition
 - exactly one YURA
@@ -147,12 +189,14 @@ High-quality 2D anime illustration in MEMORIELA **Matte Natural Anime** style:
 - do not allow brown, amber, hazel, honey, warm gold, orange-brown, violet, or other warm-color iris drift
 - lighting / blush / skin warmth / hair reflection must not recolor the iris
 - keep YURA exactly 7.25 heads tall
+- keep ears natural adult-human size and proportion; no elongated / elf-like ears, no outward displacement, no forced ear exposure
 - keep the ribcage slender and compact
-- preserve the noticeably fuller bust relative to the petite frame
+- preserve the noticeably fuller bust relative to the petite frame; it must remain clearly readable from the front
 - preserve a soft hemispherical / お椀型 bust with gentle upper slope, natural lower roundness, and forward projection
+- do not flatten or downsize the bust into a small / nearly flat reading, and do not widen the ribcage to compensate
 - keep principal hair mass ending at natural waistline to slightly below
 - below the waist, reduce hair mass clearly; only sparse finest tips may approach the upper-buttock boundary
 - do not extend principal hair mass to mid-buttock or thigh length
-- use a broad-shouldered sleeveless validation top, not camisole straps
-- use simple shorts with a clean waistband
+- use a PLAIN WIDE-SHOULDER SLEEVELESS VALIDATION TOP with broad shoulder fabric; absolutely no thin straps / camisole / lingerie construction
+- use plain simple shorts with a clean waistband; no drawstring / cord / bow
 - one YURA only; no character sheet, panels, triptych, side-by-side variants, labels, or text
