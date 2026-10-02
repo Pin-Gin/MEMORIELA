@@ -1,30 +1,9 @@
 # YURA GENERATION RULES
 
-Status: **CANONICAL / MANDATORY**
+Status: **CANONICAL / MANDATORY OPERATIONAL RULES**
 
-## Strict generation priority
-1. **Current YURA Visual Master PNG**
-2. **Visual Master manifest / transcription**
-3. **BODY**
-4. **FACE**
-5. **EYE**
-6. **HAIR + NORMAL_SUPER_LONG**
-7. **SKIN**
-8. requested pose / camera
-9. outfit
-10. expression
-11. scene / background
-12. YURA-specific rendering
-13. project-wide Matte Natural Anime rendering
-14. output hygiene / QA
-
-### Priority meaning
-- The current approved Master PNG is the whole-character visual anchor.
-- BODY / FACE / EYE / HAIR / SKIN are protected constraints used to prevent drift from the Master.
-- These protected specs do not independently rebuild YURA from zero when a current Master is available.
-- Later layers never redefine earlier protected layers.
-- Pose, camera, outfit, expression, scene and rendering may change presentation only.
-- Rejected / intermediate generations must not be used as Identity references.
+Authorityの読込順・正式パス・Reference roleは本書では再定義しない。
+必ず `../gate/AUTHORITY_MANIFEST.md` / `../gate/REFERENCE_GATE.md` / `../gate/VIEW_ROUTER.md` に従う。
 
 ## One-person rule
 Unless explicitly requested otherwise:
@@ -34,95 +13,55 @@ Unless explicitly requested otherwise:
 - no multi-pose sheet
 - no automatic front+side+back layout
 
-Multiple requested images are generated separately.
+複数枚は1人1枚として個別生成する。
 
 ## Identity lock
-Always preserve:
+常に保護:
 - 153 cm concept
 - exact 7.25-head BODY
 - YURA face
 - blue-gray eyes
 - silver-white hair
-- default Normal Super-Long unless another hairstyle is explicitly requested
-- SKIN per `../identity/skin/SKIN_SPEC.md`
+- default Normal Super-Long unless explicitly changed
+- protected SKIN
 - YURA-specific rendering
 
-## Color lock
-- iris = blue-gray
-- hair = silver-white
-- skin = `../identity/skin/SKIN_SPEC.md`
-- lighting may affect appearance subtly but not identity color
+## No AI reinterpretation
+Visual Master / Visual Text / BODY / FACE / EYE / HAIR / SKIN / renderingを:
+- 要約して別の意味へ置換しない
+- 一般的なアニメ表現へ置換しない
+- 自然さを理由に再設計しない
+- 未指定箇所を常識で補完しない
+- 複数Authorityを平均化しない
 
-## Hair default
-For ordinary YURA:
-- load `../identity/hair/HAIR_SPEC.md`
-- load `../identity/hair/styles/NORMAL_SUPER_LONG.md`
+`UNSPECIFIED != PERMISSION TO INVENT`
 
-Do not load optional hairstyle specs unless requested.
-
-## Skin default
-Always load:
-- `../identity/skin/SKIN_SPEC.md`
-
-Skin identity must not be inferred from rendering style alone.
+ユーザーが明示的にVariationを許可したScopeだけ変更可能。
 
 ## Pose route
-For meaningful motion, also load `POSE_RULES.md`.
-
-Pose controls:
-- joint positions
-- segment orientation
-- center of gravity
-- support / contact
-- camera projection
-
-Pose does not control:
-- identity
-- BODY dimensions
-- hair source length / mass
-- skin identity
-- rendering
+意味のある動作・体幹回転・側面化・着座等では:
+- `POSE_RULES.md` を読む
+- `../gate/VIEW_ROUTER.md` でBODY viewを決定
+- selected BODY view referenceを固定
+- Face Detail Referenceを維持
+- `../../gate-core/VISIBILITY_OCCLUSION_PROTOCOL.md` を適用
 
 ## Outfit route
-For clothing changes, also load `OUTFIT_RULES.md`.
+衣装変更では `OUTFIT_RULES.md` を読む。
+School Uniformの場合は `../../school-uniform/gate/GENERATION_GATE.md` を依存Gateとして通過する。
 
-Clothing follows BODY.
-BODY does not reshape to fit clothing.
+GARMENT FOLLOWS BODY.
+BODY NEVER FOLLOWS GARMENT MASTER.
 
 ## Validation route
-For controlled validation:
+Controlled validation:
 - white background
 - barefoot
-- load `../qa/VALIDATION_CLOTHING.md`
-- run `../qa/GENERATION_QA.md`
+- `../qa/VALIDATION_CLOTHING.md`
+- `../qa/GENERATION_QA.md`
 
-## Framing
-Framing is a layout variable, not BODY authority.
+## Retry lock
+局所FAIL時はFAILしたScopeだけを修正する。
+Gate PASS後のIdentity Reference / Face Reference / Body View Reference / Authority Manifest / Rendering grammarを再選定しない。
 
-Allowed examples:
-- full body
-- knee-up
-- waist-up
-- bust-up
-- face close-up
-- manga-panel composition
-
-Perspective / crop may alter what is visible but not underlying anatomy.
-
-## Reference discipline
-- current approved YURA Visual Master PNG is the sole whole-character visual anchor
-- do not use rejected / intermediate generations as identity authority
-- do not silently promote a derivative into a new master
-- pose references, when used, are pose-only references
-
-## Retry rule
-When one domain fails, fix that domain only.
-
-Examples:
-- wrong eye color → fix EYE only
-- wrong hair length → fix HAIR only
-- wrong skin tone → fix SKIN only
-- chest shrinks in twist → fix pose/projection continuity, not BODY canon
-- validation clothing becomes decorative → fix outfit only
-
-Do not rewrite YURA to fit a failed generation.
+Rejected / intermediate generationは次回Identity Referenceへ昇格させない。

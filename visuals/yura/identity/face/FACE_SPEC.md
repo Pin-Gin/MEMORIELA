@@ -18,12 +18,21 @@ Status: **PROTECTED / CURRENT**
 - chin: **small and softly rounded**
 - no extreme V-line
 
-## Ears
-- In front-facing standing illustrations, the ears may be **partially occluded by hair**.
-- Ears are **not a primary identity judgment item**.
-- Ear size and visible amount are **secondary consistency items**.
-- Do not move surrounding hair or enlarge / over-describe the ears merely to make them easier to see.
-- Partial occlusion and slight left-right visibility differences are acceptable when they read naturally.
+## Ears — protected geometry / visibility lock
+- Ear anatomy is stable: preserve attachment height, overall scale, projection from the head and general silhouette.
+- Ear visibility is determined only by actual head angle, camera angle and hair occlusion.
+- Do not enlarge ears, move them outward, rotate them toward camera or move surrounding hair merely to make ears easier to see.
+- Do not expose both ears for symmetry.
+- Do not increase visible ear area for readability.
+- A naturally hidden ear must remain hidden.
+- Partial occlusion and natural left-right visibility differences are valid.
+- `HIDDEN != MISSING`. Ear visibility itself is not a generation target.
+
+## Face-detail visual anchor
+- Production YURA generation uses the dedicated Face Close-up Master defined by `../../gate/AUTHORITY_MANIFEST.md`.
+- The Face Close-up Master stabilizes face outline, cheek/chin balance, eye placement, nose/mouth placement, ear geometry and face-framing hair boundary.
+- Precise FACE / EYE text specifications remain authoritative for their own domains.
+- If the dedicated Face Close-up Master is unavailable, PRODUCTION must stop; do not replace it with a derivative or prior-chat image.
 
 ## Eyes
 Exact color and pupil signature are controlled by `../eyes/EYE_SPEC.md`.

@@ -1,15 +1,36 @@
 # YURA OUTFIT RULES
 
-Status: **CURRENT**
+Status: **CURRENT / MANDATORY WHEN OUTFIT CHANGES**
 
-Outfit is a derivative layer. Clothing follows YURA's protected BODY; BODY must not be redesigned to fit clothing.
+Outfit is a derivative layer.
 
-Always preserve BODY / FACE / EYE / HAIR / skin identity / rendering identity.
+GARMENT FOLLOWS YURA BODY.
+YURA BODY NEVER FOLLOWS GARMENT MASTER.
 
-Do not change shoulder width, ribcage, chest volume, waist, pelvis, limb length or baseline limb thickness because of clothing.
+衣装は以下を変更してはならない:
+- shoulder width
+- ribcage
+- bust volume
+- waist
+- pelvis
+- limb length
+- baseline limb thickness
+- FACE / EYE / HAIR / SKIN identity
 
 Garment fit, drape, folds and local compression may change only as clothing behavior.
 
-For BODY / HAIR / pose validation, use `../qa/VALIDATION_CLOTHING.md` only. Validation clothing is a measurement condition, not canonical fashion.
+## School Uniform route
+学校制服が指定された場合:
+1. `../../school-uniform/START_HERE.md`
+2. `../../school-uniform/gate/GENERATION_GATE.md`
+3. `profiles/SCHOOL_UNIFORM_YURA.md`
 
-If clothing causes apparent anatomy drift, keep BODY authority and correct the clothing layer only.
+を適用する。
+
+制服MasterはOUTFIT_REFERENCEであり、YURAのBODY / FACE / EYE / HAIR / SKINを支配しない。
+
+## Validation clothing
+BODY / HAIR / pose validationでは `../qa/VALIDATION_CLOTHING.md` のみを使用する。
+Validation clothingはcanonical fashionではない。
+
+衣装によって見かけ上の人体形状が崩れた場合、BODY authorityを維持し、衣装Scopeだけを修正する。

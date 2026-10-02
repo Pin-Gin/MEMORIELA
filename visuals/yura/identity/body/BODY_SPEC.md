@@ -105,6 +105,18 @@ Not allowed:
 - torso widening
 - childlike proportion drift
 
+## Body-view anchor lock
+
+BODY geometry is invariant. A body-view Master is a projection / silhouette anchor for a viewing direction, not a new BODY design.
+
+- FRONT uses `../master/YURA_VISUAL_MASTER.png` as the front body-view anchor.
+- Non-front orientations are routed by `../../gate/VIEW_ROUTER.md`.
+- A selected body-view reference may stabilize projected shoulder width, ribcage depth, bust projection, waist depth, pelvis / hip silhouette and baseline limb thickness.
+- A body-view reference must never redefine the protected BODY dimensions.
+- When a required body-view anchor is missing, PRODUCTION must stop. Do not substitute a neighboring angle and do not infer the missing view from memory.
+- Hidden or foreshortened anatomy must not be enlarged, rotated or exposed merely to make it easier to read.
+- Visibility is governed by camera, pose, overlap and occlusion; it is not a target to maximize.
+
 ## Fail boundaries
 FAIL if materially present:
 - head/body ratio drift

@@ -99,6 +99,29 @@ Do not alter:
 - hidden limbs must not carry unexplained load
 - hands / feet / joints must remain anatomically plausible
 
+## Body-view routing
+Before significant motion generation:
+- determine torso/body viewing direction independently from face direction
+- resolve the body-view anchor through `../gate/VIEW_ROUTER.md`
+- FRONT may use the current root YURA Visual Master as the front body-view anchor
+- non-front orientation requires its routed body-view Master in PRODUCTION
+- if the selected view anchor is missing, stop; do not fall back to another angle
+
+The body-view reference controls projected BODY reading only. It does not control face identity, hairstyle, outfit, expression or rendering.
+
+## No show-feature compensation
+Do not alter pose or anatomy merely to expose a feature.
+
+Forbidden:
+- rotating torso / pelvis / limbs to make hidden anatomy visible
+- widening BODY to show hidden volume
+- separating limbs only for readability
+- moving hair away to reveal ears or face regions
+- enlarging partially hidden features
+- making left/right visibility artificially symmetrical
+
+Occlusion caused by pose, hair, clothing, body overlap or camera is valid information.
+
 ## Dynamic Pose QA
 Check independently:
 1. identity
