@@ -11,7 +11,10 @@ The following must remain simultaneously true:
 - soft / refined / delicate
 - clearly anime-stylized
 - face is **small**
-- face shape = **soft oval with slight vertical elongation**
+- face shape = **soft oval**
+- face vertical length = **standard to slightly short**
+- visible face remains **vertically compact**
+- no vertically elongated / oblong impression
 - face width = slightly narrow
 - slight cheek softness
 - cheekbones not emphasized
@@ -30,7 +33,10 @@ If the face becomes visibly rounder, sharper, longer, older, younger/childlike, 
 ## Head / outline — geometry lock
 Preserve:
 - small face
-- soft oval outer contour with slight vertical elongation
+- soft oval outer contour
+- vertical face length = standard to slightly short
+- eye-area-to-chin distance remains compact
+- no vertically elongated / oblong impression
 - slightly narrow face width
 - modest cheek softness
 - smooth taper from temples / cheeks toward the chin
@@ -43,6 +49,7 @@ Do not:
 - widen the lower face
 - sharpen the jaw
 - create a short round child face
+- create a vertically elongated / oblong face
 - create a long mature fashion-model face
 - make the chin pointed
 - inflate cheeks into a childlike round face
@@ -167,6 +174,7 @@ FACE FAIL if materially present:
 - sharp jaw
 - pointed chin
 - extreme V-line
+- vertically elongated / oblong face
 - long mature fashion-model face
 - visibly mature-adult facial read
 - generic cute-anime face replacing YURA geometry
