@@ -26,8 +26,24 @@ Face:
 - small natural pale-pink mouth
 - calm, gentle, composed adult impression
 - adult-balanced eyes, slightly larger than average, mildly almond-shaped and horizontally oriented
-- blue-gray irises with restrained saturation and a visible gray component
 - fine cool-gray brows, nearly straight with a gentle natural arch
+
+## EYE — protected iris identity
+
+### Fixed eye anchor
+**瞳色は青灰色のみ / BLUE-GRAY ONLY。**
+**一目で青灰色として認識でき、灰色成分を明確に残す。**
+**彩度は控えめ、明度は中〜やや高め。**
+**茶色・琥珀色・ヘーゼル・蜂蜜色・金色・橙茶・紫へ変化させない。**
+**肌・頬・髪・照明の暖色を瞳へ反映して暖色化しない。**
+
+Additional protected appearance:
+- gray component remains clearly visible
+- blue may be slightly stronger than neutral gray-blue
+- subtle pale silver-white tonal variation / reflection is allowed
+- pupil remains very dark blue-gray / deep gray near-black
+- detailed 2D-anime iris with restrained highlight
+- no jewel-like saturation or photographic wet-eye rendering
 
 Skin:
 - bright fair skin
@@ -127,7 +143,9 @@ High-quality 2D anime illustration in MEMORIELA **Matte Natural Anime** style:
 - plain white / warm-white background
 
 ## Compact anti-drift constraints
-- keep iris identity blue-gray, not warm brown/amber
+- keep iris identity strictly BLUE-GRAY ONLY; gray component must remain visibly present
+- do not allow brown, amber, hazel, honey, warm gold, orange-brown, violet, or other warm-color iris drift
+- lighting / blush / skin warmth / hair reflection must not recolor the iris
 - keep YURA exactly 7.25 heads tall
 - keep the ribcage slender and compact
 - preserve the noticeably fuller bust relative to the petite frame
