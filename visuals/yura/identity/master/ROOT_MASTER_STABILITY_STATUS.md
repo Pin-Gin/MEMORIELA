@@ -14,6 +14,9 @@ Current Root Master remains:
 - project-wide 2D-anime-first Rendering Hard Gate: ACTIVE
 - post-generation Presentation Gate: ACTIVE
 - prior scope-only retry semantics for text-only full regeneration: INVALID DESIGN, now removed
+- FACE target refined to a 15–18-year-old read with a small, slightly vertically elongated soft oval face
+- eye / nose / mouth geometry and default-expression constraints were strengthened
+- fixed `TEXT_ONLY_ROOT_EXECUTION.md` was deliberately recompiled from the updated protected Authorities
 
 ## Current text-only execution policy
 - actual generation input = short fixed `TEXT_ONLY_ROOT_EXECUTION.md`
@@ -39,7 +42,7 @@ No one-off failed image is sufficient to justify changing canon.
 - BODY_VIEW_MASTER creation = BLOCKED
 
 ## Next action
-Run a new stability batch using the fixed short Execution Block.
+Start a **new** stability batch using the revised fixed Execution Block.
 Minimum 3 valid runs; preferred 5.
 
 Only after stable text-only output is explicitly approved may Root stability become APPROVED.
