@@ -2,9 +2,13 @@
 
 Status: **PROTECTED / CURRENT**
 
+Primary female visual color anchor:
+`../master/female/FEMALE_UNIFORM_MASTER.png`
+
 ## Directional locks
 BLAZER:
 - slightly dark muted brown
+- medium-to-dark brown visual range
 - not navy
 - not charcoal
 - not bright reddish brown
@@ -13,25 +17,33 @@ PIPING:
 - black
 
 BUTTON:
-- subdued / restrained gold
+- subdued / restrained warm gold
 - not bright metallic yellow
 
 GRADE_2_RED:
-- red
-- restrained school accent
+- deep / restrained red
+- used for the female ribbon and male tie
 - not vivid neon red
+- not blue
 
 SKIRT_BASE:
-- black
+- black to near-black
 
 SKIRT_GRID:
-- dark muted red
+- dark muted red dominant check lines
+- do not introduce green / beige / bright multicolor tartan
 
 SHIRT:
 - white
 
+SOCKS:
+- black in the base female Master
+
+SHOES:
+- black
+
 ## Numeric color values
-Exact RGB / HEX values are not fixed yet.
+Exact RGB / HEX values are intentionally not fixed.
 Do not invent numeric values.
 
-After the approved Uniform Master is synchronized, the Master becomes the visual color anchor and this file may record measured / adopted values if explicitly approved.
+The approved Master image is the visual color anchor unless the author later approves explicit numeric values.

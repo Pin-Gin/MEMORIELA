@@ -24,7 +24,7 @@ QA:
 PROJECT_RENDERING:
 `visuals/CHARACTER_RENDERING_STYLE.md`
 
-## Female production master — expected
+## Female production master — CURRENT
 MASTER_IMAGE:
 `visuals/school-uniform/master/female/FEMALE_UNIFORM_MASTER.png`
 
@@ -34,13 +34,21 @@ MASTER_MANIFEST:
 VISUAL_TEXT:
 `visuals/school-uniform/SCHOOL_UNIFORM_VISUAL_TEXT.md`
 
-These production artifacts are intentionally pending until the author places the approved Master image and requests synchronization / transcription.
+Git blob SHA-1:
+`f3280023cdf7698932c88261993b3db00868b7df`
 
-## Male production master — expected
+Role:
+`OUTFIT_REFERENCE`
+
+Female production Authority is active when the actual approved Master image is available to the generation execution and the Uniform Gate passes.
+
+## Male production master — pending
 MASTER_IMAGE:
 `visuals/school-uniform/master/male/MALE_UNIFORM_MASTER.png`
 
 MASTER_MANIFEST:
 `visuals/school-uniform/master/male/MALE_UNIFORM_MASTER.md`
+
+Male PRODUCTION remains fail-closed until adopted.
 
 No alternate paths.
