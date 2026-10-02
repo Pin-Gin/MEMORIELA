@@ -1,70 +1,126 @@
 # 久遠ゆら BODY SPEC
 
-Status: **PROTECTED / CURRENT**
+Status: **PROTECTED / CURRENT / HARD-LOCKED**
 
-## Core
-- Height concept: **153 cm**
-- Total body ratio: **exactly 7.25 heads tall**
-- Adult woman; petite / slender / delicate, not childlike and not skeletal
-- Head remains adult-balanced; do not enlarge it to express small stature
-- Legs: standard to slightly long inside the 7.25-head system
+This file defines invariant BODY geometry. Do not average it with generic anime-body conventions.
+
+## HARD LOCK — whole-body identity
+Required simultaneously:
+- height concept: **153 cm**
+- total body ratio: **exactly 7.25 heads tall**
+- adult woman
+- petite
+- slender
+- delicate
+- not childlike
+- not skeletal
+- not curvy / voluptuous as the dominant silhouette
+- head remains adult-balanced and slightly small within the 7.25-head system
+- legs remain standard to slightly long inside that system
+
+Petite stature must be expressed by overall compact scale, **not by enlarging the head**.
+
+## Relative silhouette lock
+The front-view BODY must preserve this relationship:
+- shoulders = somewhat narrow
+- ribcage = slender / compact
+- waist = slim and clearly defined, but natural
+- pelvis / hips = natural adult-female width
+- hips = approximately similar to or only slightly wider than shoulders
+- thighs / calves = slender with natural softness
+- limbs = slender, not inflated and not stick-thin
+
+Do not let one area become disproportionately wide to make another area visible or attractive.
 
 ## Neck / shoulders
-- neck: slender to standard, natural adult length
+- neck: slender to standard
+- natural adult length
 - shoulders: somewhat narrow
 - shoulder line: soft natural slope
-- no broad / athletic / square shoulders
+
+FAIL:
+- broad / athletic shoulders
+- square shoulder line
+- shoulder widening to support bust volume
 
 ## Ribcage / bust
-Ribcage:
-- slender and compact
-- do not widen the upper torso to support bust volume
+### Ribcage
+- slender
+- compact
+- upper torso width remains restrained
+- do not widen ribcage to support or display bust volume
 
-Bust:
-- **moderately fuller relative to YURA's petite/slender frame**
+### Bust
+- **moderately fuller relative to YURA's petite / slender frame**
 - soft hemispherical direction
 - restrained upper fullness
 - naturally fuller lower contour
 - natural forward projection
 - smooth transition into ribcage
-- not independently oversized
-- not implant-like / rigid / conical
+
+Do not reinterpret as:
+- independently oversized
+- glamour / pin-up dominant
+- rigid
+- implant-like
+- conical
+- flattened into the ribcage
+
+The torso must still read **petite/slender first**, with moderate bust fullness as a secondary trait.
 
 ### Front / 3/4 / side continuity — mandatory
-The same physical bust volume must remain across viewing angles.
+The same physical bust volume remains across viewing angles.
 
 For twist / 3/4 / side:
 - frontal visible area may decrease by projection
-- **actual volume must not decrease**
-- preserve side depth and forward projection
-- far-side volume is represented by overlap / occlusion / perspective, not deletion
-- do not flatten the chest toward the camera
-- do not widen the ribcage to compensate
+- actual volume does not decrease
+- side depth / forward projection remains
+- far-side volume may be hidden by overlap / occlusion
+- do not expose hidden volume merely for readability
+- do not flatten the chest toward camera
+- do not widen ribcage to compensate
 
 ## Torso / waist / abdomen
 - torso: standard to slightly short for an adult woman
-- waist: slim and clearly defined, but not corset-like
+- waist: slim and clearly defined
+- no corset-like pinch
 - abdomen: flat-leaning with slight natural softness
 - ribcage → waist → pelvis transition remains smooth
 
+FAIL:
+- extreme hourglass
+- torso widening
+- over-pinched waist
+- body-builder abdominal definition
+
 ## Pelvis / hips
 - natural adult-female pelvis width
-- hips approximately similar to or slightly wider than shoulders
+- approximately similar to or slightly wider than shoulders
 - restrained soft roundness
-- no exaggerated glamour hourglass
 - neutral pelvic tilt by default
 
+Do not:
+- create exaggerated glamour hips
+- widen pelvis to make the silhouette more feminine
+- make hips the dominant visual feature
+
 ## Legs
-- thighs: slender with natural softness; neither thick nor stick-thin
-- knees: small/modest and anatomically readable
+- thighs: slender with natural softness
+- not thick / plush
+- not stick-thin
+- knees: small / modest and readable
 - calves: slender with gentle natural curve
 - ankles: slim but plausible
-- preserve thigh/calf proportions across angle and pose
+- preserve thigh / calf proportions
+
+If the lower body reads notably heavier or curvier than the protected petite/slender frame:
+`BODY FAIL`
 
 ## Arms / hands
 - arms: slender to slightly below average adult-female thickness
 - not stick-thin
-- forearms retain natural thickness near elbow and taper toward wrist
+- forearms retain natural thickness near elbow
+- taper toward wrist
 - hands: small to standard for a petite adult woman
 - fingers: slender, slightly long, softly tapered
 
@@ -79,54 +135,60 @@ Canvas, crop, aspect ratio, camera distance, outfit and pose do not redefine BOD
 Preserve:
 - 7.25-head ratio
 - shoulder width
-- ribcage
+- ribcage width / depth
 - bust volume
 - waist
 - pelvis / hip scale
 - limb lengths
 - baseline limb thickness
 
-When framing changes, adapt composition and negative space rather than anatomy.
+When framing changes, adapt composition and negative space, not anatomy.
 
 ## Dynamic-pose invariant
-**動的ポーズではYURAのBODYを再設計せず、固定されたYURA BODYを関節回転・重心移動・接触変形だけでポーズさせる。**
-
-Allowed:
+Dynamic pose = fixed BODY moved by:
 - joint rotation
 - center-of-mass shift
 - perspective / foreshortening
-- local soft-tissue compression at contact
+- local plausible soft-tissue compression
 
 Not allowed:
-- pose-driven segment length changes
-- permanent thigh/calf inflation
+- pose-driven segment-length change
+- permanent thigh / calf inflation
 - pelvis redesign
 - chest-volume shrinkage
 - torso widening
 - childlike proportion drift
 
 ## Body-view anchor lock
+BODY geometry is invariant.
 
-BODY geometry is invariant. A body-view Master is a projection / silhouette anchor for a viewing direction, not a new BODY design.
+A body-view Master is a projection / silhouette anchor, not a new BODY design.
 
-- FRONT uses `../master/YURA_VISUAL_MASTER.png` as the front body-view anchor.
-- Non-front orientations are routed by `../../gate/VIEW_ROUTER.md`.
-- A selected body-view reference may stabilize projected shoulder width, ribcage depth, bust projection, waist depth, pelvis / hip silhouette and baseline limb thickness.
-- A body-view reference must never redefine the protected BODY dimensions.
-- When a required body-view anchor is missing, PRODUCTION must stop. Do not substitute a neighboring angle and do not infer the missing view from memory.
-- Hidden or foreshortened anatomy must not be enlarged, rotated or exposed merely to make it easier to read.
-- Visibility is governed by camera, pose, overlap and occlusion; it is not a target to maximize.
+- FRONT uses `../master/YURA_VISUAL_MASTER.png`
+- non-front views route via `../../gate/VIEW_ROUTER.md`
+- selected BODY-view reference may stabilize projected shoulder width, ribcage depth, bust projection, waist depth, pelvis / hip silhouette and baseline limb thickness
+- BODY-view reference must never redefine protected dimensions
+- missing required view anchor = PRODUCTION STOP
+- do not substitute neighboring angle
+- do not infer missing view from memory
 
-## Fail boundaries
-FAIL if materially present:
+Hidden / foreshortened anatomy must not be enlarged, rotated, separated or exposed merely to make it easier to read.
+
+## HARD FAIL boundaries
+BODY FAIL if materially present:
 - head/body ratio drift
 - 8+ head fashion-model elongation
-- childlike large head
-- broad athletic shoulders
+- childlike enlarged head
+- broad / athletic shoulders
 - enlarged ribcage
-- chest reduction in side/3/4
-- independently oversized chest
+- dominant curvy / voluptuous silhouette
+- exaggerated hourglass
+- independently oversized bust
+- chest reduction in side / 3/4
 - extreme waist pinch
 - over-wide hips
-- skeletal or inflated limbs
+- thickened thighs / calves
+- skeletal limbs
+- inflated limbs
 - pose-dependent anatomy redesign
+- anatomy widened for readability

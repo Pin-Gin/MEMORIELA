@@ -1,48 +1,87 @@
 # 久遠ゆら EYE SPEC
 
-Status: **PROTECTED / CURRENT**
+Status: **PROTECTED / CURRENT / HARD-LOCKED**
 
-## Color lock
-- iris base: **blue-gray**
-- gray component remains visible
+This file is a direct execution constraint.
+
+## HARD LOCK — identity color
+Iris identity is:
+
+`BLUE-GRAY ONLY`
+
+Required visual read:
+- base = blue-gray
+- gray component remains clearly visible
 - blue may be slightly stronger than neutral gray-blue
-- saturation: restrained
-- brightness: medium-high
+- saturation remains restrained
+- brightness remains medium-high
 - subtle pale silver-white tonal variation / reflection is allowed
 
-Do not shift to:
-- amber / brown / hazel
+The eye must still read as **blue-gray** at first glance.
+
+## Absolute color FAIL
+The following are not acceptable variation. They are **Identity FAIL**:
+- brown
+- amber
+- hazel
+- honey
+- warm gold
+- orange-brown
 - violet / purple
-- vivid cobalt / cyan / jewel blue
+- vivid cobalt
+- vivid cyan
+- jewel-blue
 
-Lighting must not recolor the identity.
+Lighting, blush, skin warmth, hair reflection, or scene color must not warm the iris into brown / amber / hazel.
 
-## Shape
+If the blue-gray identity is lost, do not accept the image.
+
+## Shape lock
+Preserve:
 - slightly larger than average but adult-balanced
 - mild almond form
-- slightly horizontal
+- horizontally oriented
 - outer corner neutral to very slightly downturned
-- no strong droop
-- no sharp upward fox-eye shape
+
+Do not reinterpret as:
+- circular childlike eye
+- vertically oversized eye
+- strongly droopy eye
+- sharp upward fox-eye
+- narrow mature fashion-eye
+
+Both eyes must retain the same character identity while allowing natural small asymmetry from perspective / expression.
 
 ## Pupil signature
-- pupil: very dark blue-gray / deep gray near-black
-- protected signature: a **tiny teardrop-like notch at the lower-right pupil edge**
-- keep the detail subtle
-- do not enlarge it unnaturally to force visibility
-- in full-body outputs it may be NOT OBSERVABLE due to scale
-- in close-up / face-focused outputs preserve it when resolvable
+- pupil = very dark blue-gray / deep gray near-black
+- protected signature = **tiny teardrop-like notch at the lower-right pupil edge**
+- keep the notch subtle
+- do not enlarge it merely to force visibility
+- full-body output: may be NOT OBSERVABLE due to scale
+- close-up / face-focused output: preserve when resolvable
+
+Do not:
+- move the signature to another side
+- turn it into a decorative symbol
+- brighten the pupil
+- add unrelated star / heart / jewel motifs
 
 ## Rendering
 - detailed 2D-anime iris
 - clear but non-photoreal
+- restrained highlight
 - no wet photographic eye
-- no excessive lens-like glow
+- no excessive glass / lens glow
+- no jewel-like saturation increase
 
-## Fail boundaries
-Visible non-blue-gray iris = **Identity FAIL**.
+## FAIL boundaries
+Immediate EYE / Identity FAIL:
+- iris visibly reads brown / amber / hazel
+- gray component disappears
+- vivid saturated blue replaces blue-gray
+- eye shape becomes childlike round / strongly droopy / sharp fox-eye
+- pupil signature moves to the wrong side in a resolvable close-up
+- pupil becomes bright / decorative
+- lighting recolors the identity
 
-Also FAIL:
-- signature moved to wrong side in resolvable close-up
-- pupil becomes bright or decorative
-- eye shape changes into another character's signature
+Do not "correct" a failed iris by changing surrounding face geometry.
