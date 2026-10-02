@@ -22,6 +22,7 @@ Gate / compiler resolves the current protected sources:
 - `visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
 - `visuals/yura/identity/body/BODY_SPEC.md`
 - `visuals/yura/identity/face/FACE_SPEC.md`
+- `visuals/yura/identity/ears/EAR_SPEC.md`
 - `visuals/yura/identity/eyes/EYE_SPEC.md`
 - `visuals/yura/identity/hair/HAIR_SPEC.md`
 - `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG.md`
