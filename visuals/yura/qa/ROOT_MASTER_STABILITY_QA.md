@@ -31,7 +31,6 @@ Preferred = 5.
 
 ## Evaluate every valid candidate
 ### FACE
-- visual age reads 15–18; youthful but not childlike
 - small face
 - soft oval
 - face vertical length = standard to slightly short
