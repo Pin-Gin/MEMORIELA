@@ -8,7 +8,9 @@ Purpose:
 ## Required order
 
 ```text
-IMAGE GENERATED
+PRE-PRESENTATION QA CAPABILITY CHECK
+      ↓
+PASS → IMAGE GENERATED
       ↓
 DOMAIN QA
       ↓
@@ -28,6 +30,28 @@ Default before QA:
 
 Only after all mandatory hard gates pass:
 `PRESENTATION_ALLOWED = YES`
+
+## Pre-presentation QA capability — MANDATORY PRECHECK
+Before any protected generation, resolve whether the active image-generation interface can keep the generated candidate from user visibility until mandatory QA completes.
+
+Required:
+`PRE_PRESENTATION_QA_CAPABILITY = PASS`
+
+PASS only if all are true:
+- the generated candidate can be received / inspected without being automatically presented to the user
+- presentation can remain withheld while Domain QA and hard-fail checks run
+- a failed candidate can be rejected / discarded without user-visible image presentation
+- only a QA-passed candidate is presented
+
+If the interface automatically presents the generated image as soon as generation returns, or the caller cannot guarantee withholding before QA:
+`PRE_PRESENTATION_QA_CAPABILITY = FAIL`
+`GENERATION_ALLOWED = NO`
+
+`UNKNOWN` or unverifiable capability is treated as FAIL.
+
+This is an execution-environment limitation, not an Authority / Execution Payload failure.
+
+Do not generate first to test whether the interface exposes the candidate. The capability must be resolved before the generation call.
 
 ## Project-wide rendering hard fail
 Any of the following is immediate hard fail when Matte Natural Anime is active:
