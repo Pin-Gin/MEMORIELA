@@ -22,17 +22,27 @@ Raw Gate / QA documents must not be concatenated into the image-generation paylo
 
 The active mode must resolve exactly one permitted Execution Payload before generation.
 
-It must also resolve a verified model-facing Execution Carrier through `../../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md`.
+It must also resolve a valid Execution Carrier through `../../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md`.
 
-`AUTHORITY_RESOLVED = YES` does not imply `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = PASS`.
+For TEXT_ONLY modes:
+- `DIRECT_MODEL_INPUT` may PASS
+- `CONTEXT_DERIVED_TEXT_EXECUTION` may PASS
+- `EXTERNAL_RETRIEVAL_ONLY` may not PASS
 
-For a `PROTECTED FIXED EXECUTION BLOCK`, only `VERIFIED_DIRECT_MODEL_INPUT` may PASS.
+Git / connector retrieval alone is not sufficient.
+The active Execution Payload semantics must be carried into the generation-facing context.
 
-Git / connector retrieval alone is invalid.
-Conversation-context-derived prompt synthesis is `CONTEXT_DERIVED_UNVERIFIED` and must FAIL protected fixed execution.
+Do not require a direct raw-prompt API merely because the mode is TEXT_ONLY.
 
-If direct model-facing prompt control cannot be verified:
-`GENERATION_ALLOWED = NO`
+## Mode routing — resolve before dependency checks
+If the user explicitly requests text-only generation with no image references for Root creation / Root stability validation:
+`MODE = MASTER_CREATION`
+`MASTER_CREATION_SUBMODE = TEXT_ONLY_ROOT_MASTER`
+
+In that case:
+- evaluate the TEXT_ONLY_ROOT_MASTER branch below
+- do **not** evaluate PRODUCTION-only Master reference requirements as blockers
+- PRODUCTION reference dependencies are out of scope for that request
 
 ## PRODUCTION
 Requires:
@@ -70,11 +80,11 @@ Generation-time visual references:
 `NONE`
 
 Execution transport:
-- required carrier = `VERIFIED_DIRECT_MODEL_INPUT`
-- the fixed `TEXT_ONLY_ROOT_EXECUTION.md` block must be the verified model-facing input
-- conversation-derived / auto-synthesized image instructions = `CONTEXT_DERIVED_UNVERIFIED` and FAIL
-- copying the fixed block into chat does not upgrade an unverified context-derived route to PASS
-- Git read / connector result = `EXTERNAL_RETRIEVAL_ONLY` and FAIL
+- `DIRECT_MODEL_INPUT` is allowed when available
+- `CONTEXT_DERIVED_TEXT_EXECUTION` is allowed for the current ChatGPT-style context-derived image interface
+- the fixed `TEXT_ONLY_ROOT_EXECUTION.md` generation semantics must be materialized immediately before generation
+- no generation-time image reference may be attached
+- Git read / connector result without the payload semantics handoff = `EXTERNAL_RETRIEVAL_ONLY` and FAIL
 
 The image-generation call must receive only the single-run execution semantics, not:
 - batch size

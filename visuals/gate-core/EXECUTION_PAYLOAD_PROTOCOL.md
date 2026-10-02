@@ -14,51 +14,54 @@ Do not pass raw Governance / Gate / QA documents directly into the image-generat
 
 ## Execution carrier — MANDATORY
 
-Authority resolution is not execution transport.
+Authority resolution and generation transport are separate concerns.
 
-For any `PROTECTED FIXED EXECUTION BLOCK`, generation is allowed only when the active image-generation interface provides a **verified model-facing input carrier**.
+Do **not** redefine a Source / Reference Mode based on the transport implementation.
 
-### VERIFIED_DIRECT_MODEL_INPUT
-PASS only when all are true:
-- the interface exposes an actual prompt / instruction field used by the image model
-- the caller can place the protected fixed block into that field
-- the fixed block is not silently replaced by conversation summarization / prompt synthesis before model execution
-- the caller can verify that the protected generation semantics are the model-facing input
+### Source-mode rule
+`TEXT_ONLY` means:
+- generation-time visual references = NONE
+- generation semantics come from the active text Authorities / Execution Payload
+- no Master PNG or other image is attached to generation
 
-For a protected fixed block:
-- pass the fixed generation block without runtime paraphrase
-- Git path / connector retrieval alone does not count
-- conversation presence alone does not count
-- previous successful output does not count
+It does **not** mean:
+- direct raw-prompt API required
+- visual generation forbidden on context-derived image tools
 
-### CONTEXT_DERIVED_INPUT — UNVERIFIED
-If the image-generation interface derives image instructions from conversation context, tool context, hidden prompt synthesis, or another non-controllable intermediary, this route is **not a verified carrier** for `PROTECTED FIXED EXECUTION BLOCK`.
+### DIRECT_MODEL_INPUT
+Use when the interface exposes a controllable model-facing prompt / instruction field.
 
-Even if the fixed block is copied into the conversation immediately before generation:
-- its presence in chat does not prove model-facing delivery
-- automatic summarization / reinterpretation / replacement may occur
-- semantic preservation cannot be asserted
-- `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = FAIL`
+The active Execution Payload should be passed through that field without ad-hoc semantic mutation.
 
-Therefore:
-`EXECUTION_CARRIER = CONTEXT_DERIVED_UNVERIFIED`
-`GENERATION_ALLOWED = NO`
+### CONTEXT_DERIVED_TEXT_EXECUTION
+Use when the image-generation interface derives image instructions from the active conversation context.
+
+This route is valid for a `TEXT_ONLY` mode when all are true:
+- all required text Authorities are resolved
+- the active Execution Payload is resolved
+- no generation-time visual reference is supplied
+- the payload's actual generation semantics are materialized immediately before the image-generation call
+- no unrelated Gate / QA / batch prose is mixed into the generation handoff
+- the caller does not replace the payload with path-only shorthand such as "follow Git" or "same as before"
+
+This carrier does **not** claim byte-for-byte preservation inside hidden model plumbing.
+That limitation is handled by post-generation QA; it does not convert TEXT_ONLY into a blocked mode.
 
 ### EXTERNAL_RETRIEVAL_ONLY — INVALID
-Git read, connector result, file path, memory, prior read, or prior successful generation is resolution evidence only.
+Git read, connector result, file path, memory, prior read, or prior successful generation by itself is not a generation handoff.
 
-It is never a valid execution carrier.
+### Permission rule
+For protected TEXT_ONLY generation:
+- `DIRECT_MODEL_INPUT` may PASS
+- `CONTEXT_DERIVED_TEXT_EXECUTION` may PASS
+- `EXTERNAL_RETRIEVAL_ONLY` may not PASS
 
-### Fail-closed rule
-For `PROTECTED FIXED EXECUTION BLOCK`:
-
-`VERIFIED_DIRECT_MODEL_INPUT` unavailable
-→ `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = FAIL`
-→ `GENERATION_ALLOWED = NO`
-
-Do not downgrade this to best-effort execution while claiming Gate PASS.
-
-A non-protected / best-effort generation flow may define a different transport policy, but it must not be represented as protected fixed execution.
+Generation remains Fail-Closed when:
+- required text Authorities are missing
+- active Execution Payload is missing
+- unauthorized visual references are attached
+- payload semantics are not carried into the generation-facing context
+- active Gate / mode requirements otherwise fail
 
 ## Compile stage
 Required order:

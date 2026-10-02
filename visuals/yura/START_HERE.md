@@ -16,21 +16,18 @@ Purpose: MEMORIELAで久遠ゆらを生成する際の唯一の入口。
 読むAuthorityは `gate/AUTHORITY_MANIFEST.md` が列挙した完全パスだけで決定する。
 
 ## Execution handoff boundary
-Router-only化は「Authorityを解決できれば生成できる」という意味ではない。
+Router-only化は「Authorityを解決できれば何でも生成してよい」という意味ではない。
 
-Authority resolution後は、`../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md` に従い、active Execution Payloadを**検証可能なモデル向け入力経路**へ渡せることを確認する。
+Authority resolution後は、`../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md` に従い、active Execution Payloadの実際の生成意味を画像生成へ渡す。
 
-`PROTECTED FIXED EXECUTION BLOCK` では:
-- Gitを読んだだけではPASSにならない
-- connector / tool outputだけではPASSにならない
-- 会話へ固定ブロックを展開しただけでもPASSにならない
-- 会話コンテキストから画像指示を自動再構成する生成インターフェースは `CONTEXT_DERIVED_UNVERIFIED`
-- model-facing prompt / instruction を直接固定・検証できない場合は Fail-Closed
+重要:
+- `TEXT_ONLY` は **画像参照を使わないSource Mode**
+- `TEXT_ONLY` を direct-prompt API の有無で禁止してはならない
+- 会話コンテキストから画像指示を構成する生成インターフェースでは `CONTEXT_DERIVED_TEXT_EXECUTION` を使用できる
+- その場合もGitパスだけ、"Git準拠"、"前回と同じ" だけで生成してはならない
+- active Execution Payloadの実際の生成意味を生成直前のcontextへ搬送する
 
-`AUTHORITY_RESOLVED = YES` と `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = PASS` は別条件。
-
-後者を証明できない場合:
-`GENERATION_ALLOWED = NO`
+今回のような `MASTER_CREATION / TEXT_ONLY_ROOT_MASTER` が明示されている場合、PRODUCTION Gateへ誤ルーティングしない。
 
 ## Fail-closed
 以下は生成許可にならない:

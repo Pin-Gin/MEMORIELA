@@ -13,6 +13,10 @@ Purpose:
 
 No image may be supplied to the image-generation execution.
 
+`TEXT_ONLY` is a Source / Reference Mode.
+It means the generation is driven only by the resolved text Authorities and compiled text Execution Payload.
+It does not require a direct raw-prompt API and must not be blocked merely because the image interface derives instructions from conversation context.
+
 ## Authority resolution inputs
 Gate / compiler resolves the current protected sources:
 - `visuals/yura/identity/master/YURA_VISUAL_TEXT.md`

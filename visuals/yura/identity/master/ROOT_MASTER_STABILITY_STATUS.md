@@ -1,16 +1,18 @@
 # YURA ROOT MASTER STABILITY STATUS
 
-Status: **EXECUTION_CARRIER_BLOCKED**
+Status: **READY_FOR_TEXT_ONLY_STABILITY_RUN**
 
 Current Root Master remains:
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
 ## Current state
-`TEXT_ONLY_ROOT_STABILITY = EXECUTION_CARRIER_BLOCKED`
+`TEXT_ONLY_ROOT_STABILITY = READY_FOR_TEXT_ONLY_STABILITY_RUN`
 
 ## Confirmed execution findings
-- protected fixed-payload transport through the current context-derived image interface: FAIL / UNVERIFIED
-- conversation-context presence does not prove model-facing payload preservation
+- TEXT_ONLY source mode: ACTIVE
+- generation-time visual references: NONE
+- current context-derived image interface may be used through CONTEXT_DERIVED_TEXT_EXECUTION
+- payload semantics handoff is required before each generation
 - single-run / one-person / one-image orchestration: PASS
 - generation-time visual references: NONE
 - project-wide 2D-anime-first Rendering Hard Gate: ACTIVE
@@ -21,11 +23,13 @@ Current Root Master remains:
 - fixed `TEXT_ONLY_ROOT_EXECUTION.md` was deliberately recompiled from the updated protected Authorities
 
 ## Current text-only execution policy
-- intended protected generation input = fixed `TEXT_ONLY_ROOT_EXECUTION.md`
-- protected execution requires `VERIFIED_DIRECT_MODEL_INPUT`
-- context-derived / auto-synthesized image instructions are not accepted as a protected carrier
-- until a verified direct model-facing carrier is available, `GENERATION_ALLOWED = NO`
-- fixed block must remain byte/semantic-equivalent within a batch
+- generation source = current text Authorities only
+- generation-time visual references = NONE
+- active fixed payload = `TEXT_ONLY_ROOT_EXECUTION.md`
+- current context-derived image interface is allowed through `CONTEXT_DERIVED_TEXT_EXECUTION`
+- actual payload semantics must be carried immediately before each generation
+- direct raw-prompt API is not a prerequisite for TEXT_ONLY mode
+- fixed block must remain semantic-equivalent within a batch
 - no runtime paraphrase / per-run correction
 - `TARGETED_RETRY = FORBIDDEN`
 - any failed protected domain rejects the whole candidate
@@ -47,14 +51,13 @@ No one-off failed image is sufficient to justify changing canon.
 - BODY_VIEW_MASTER creation = BLOCKED
 
 ## Next action
-Do **not** start a protected text-only stability batch through an unverified context-derived image interface.
+Start a new TEXT_ONLY Root stability batch using:
+- `REFERENCE_POLICY = NONE`
+- current text Authorities only
+- active `TEXT_ONLY_ROOT_EXECUTION.md`
+- one person / one image per run
+- post-generation full QA
 
-First establish an execution route that can prove:
-- direct model-facing prompt / instruction control
-- fixed-block transport without hidden conversation-derived rewrite
-- `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = PASS`
-
-Only then start a new stability batch.
 Minimum 3 valid runs; preferred 5.
 
 Only after stable protected executions are explicitly approved may Root stability become APPROVED.
