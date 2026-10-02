@@ -3,135 +3,117 @@
 Status: **PROTECTED / MANDATORY FOR TEXT_ONLY_ROOT_MASTER**
 
 Purpose:
-Text Authorityからコンパイルした固定Execution Payloadを使う複数の独立Single Runについて、再現安定性を評価する。
+同一の短い固定Execution Blockから生成した独立Single Run間で、YURAの再現安定性を評価する。
 
 ## Preconditions
-A run is valid only if:
-- mode = `MASTER_CREATION`
-- submode = `TEXT_ONLY_ROOT_MASTER`
-- `TEXT_ONLY_ROOT_EXECUTION.md` was the execution payload
-- `TEXT_ONLY_ROOT_SINGLE_RUN.md` was followed
+A valid run requires:
+- mode = MASTER_CREATION
+- submode = TEXT_ONLY_ROOT_MASTER
+- exact `TEXT_ONLY_ROOT_EXECUTION.md` used unchanged
+- `TEXT_ONLY_ROOT_SINGLE_RUN.md` followed
 - generation-time visual references = NONE
-- same execution payload / framing class was used
-- output contains exactly one YURA / one canvas / one composition
+- no appended per-run correction
+- same framing/aspect class
+- exactly one YURA / one canvas / one composition
 
-Invalid-run conditions:
-- multi-panel
-- triptych
-- comparison sheet
-- multiple YURA figures
-- multiple poses in one image
-- generation-time visual reference contamination
-- payload modified between runs
+Invalid:
+- multi-panel / triptych / comparison sheet
+- multiple figures / poses
+- reference contamination
+- Execution Block mutation
+- targeted prompt correction inside the batch
 
-An invalid run diagnoses **execution-control failure**.
-It must not be counted as evidence of Text Authority instability.
+Invalid run = execution-control failure and does not count toward stability.
 
 ## Minimum batch
-Evaluate at least 3 **valid independent single-image runs**.
+At least 3 valid independent single-image runs.
 Preferred = 5.
 
-## Domain comparison
-Evaluate every valid candidate independently for:
-
+## Evaluate every valid candidate
 ### FACE
 - soft oval adult face
 - small softly rounded chin
 - stable eye / nose / mouth placement
-- no childlike / sharp-face drift
 
 ### EYE
-- blue-gray
+- blue-gray only
+- gray component clearly present
 - restrained saturation
 - stable geometry
-- pupil signature when naturally resolvable
 
 ### BODY
 - exact 7.25-head system
-- petite / slender adult frame
-- somewhat narrow shoulders
-- compact ribcage
+- petite / slender frame
+- narrow compact ribcage
 - bust moderately fuller relative to frame
-- soft hemispherical / お椀型 direction
-- natural forward projection and lower fullness
-- waist / pelvis / limb proportions stable
+- soft hemispherical / お椀型
+- stable waist / pelvis / limbs
 
 ### HAIR
-- silver-white
-- principal ends natural waist to slightly below
-- only sparse longest fine tips near upper-buttock boundary
-- slightly-above-standard total mass
-- restrained lateral spread
-- back mass conserved
+- silver-white, cool-neutral / white-leaning
+- principal ends waist to slightly below
+- clear mass reduction below waist
+- only sparse finest tips near upper-buttock limit
+- no dense main mass at mid-buttock / thighs
+- stable total mass / lateral spread
 
 ### SKIN
-- bright fair
-- slightly white-leaning
-- subtle natural blood color
+- bright fair / slightly white-leaning
+- subtle blood color
 - no clipping
 
 ### RENDERING — HARD STABILITY CONDITION
-- unmistakably high-quality 2D anime illustration
-- anime facial / line / shading grammar dominant
+- unmistakable 2D anime illustration
 - Matte Natural Anime
-- fine low-contrast anime line
-- soft cel + grouped illustration shading
-- low-to-medium contrast
+- fine anime line
+- soft cel / grouped shading
 - restrained gloss
-- no photoreal / semi-photoreal / live-action / CGI / PBR reading
+- no photoreal / semi-real / CGI / PBR
 
-Any realism-mode violation = RENDERING HARD FAIL.
-A Rendering Hard Fail candidate does not count as a valid stable candidate.
+Rendering Hard Fail candidate does not count.
 
 ### VALIDATION CLOTHING
-- broad-shouldered pale opaque sleeveless top
-- pale opaque simple shorts
+- broad-shouldered pale sleeveless top
+- pale simple shorts
 - clean waistband
 - barefoot
 
 ## Cross-run classification
-Per protected domain:
+Per domain:
 - STABLE
 - MINOR_VARIANCE
 - MATERIAL_VARIANCE
 - SYSTEMATIC_DRIFT
 
-## Systematic drift rule
-Repeated same-direction failure across **valid runs** may indicate:
-- execution payload defect
-- source Text Authority ambiguity
-- model interpretation issue
+## Text-only retry semantics
+No scope-only retry inside a batch.
 
-Diagnose in that order:
-1. execution payload / orchestration
-2. rendering / composition leakage
-3. domain text ambiguity
+If one candidate fails:
+- reject that whole candidate
+- keep fixed block unchanged
+- generate another independent whole candidate
+- re-run all QA
 
-Do not change canon to fit failed generations.
+If the same domain repeatedly fails across otherwise valid isolated runs:
+- stop the batch
+- diagnose Execution Block first
+- revise outside the batch
+- begin a new batch
 
-## Post-generation Root Master comparison
-After generation only, the registered Root Master may be used as:
-`POST_GENERATION_COMPARISON_REFERENCE`
-
-It must not have entered generation.
-
-## Decision
+## Decisions
 ### PASS_FOR_AUTHOR_REVIEW
-All core domains acceptably stable across valid runs.
+At least 3 valid runs; all core protected domains acceptably stable.
+
+### FULL_CANDIDATE_RETRY
+A candidate failed, but no repeated systematic drift is yet established.
 
 ### EXECUTION_FIX_REQUIRED
-Runs were contaminated by multi-panel / multi-figure / payload / reference-control failure.
+Execution isolation / fixed-block discipline failed.
 
-### TEXT_REFINEMENT_REQUIRED
-Valid isolated runs still show repeated systematic drift traceable to text semantics.
-
-### BATCH_RETRY_REQUIRED
-One-off structural artifacts prevent enough valid comparisons.
+### EXECUTION_PAYLOAD_REFINEMENT_REQUIRED
+Repeated valid runs show the same domain drift and the fixed block needs revision.
 
 ### REJECT_BATCH
-Material uncontrolled variance, reference contamination, or repeated Rendering Hard Fail invalidates the batch.
+Material uncontrolled variance, reference contamination, or repeated Rendering Hard Fail.
 
-### RENDERING_HARD_FAIL
-Reject the individual candidate immediately. Do not present it as a completed result and do not count it toward the minimum valid batch.
-
-Only the author can approve Root stability.
+Only the author approves Root stability.

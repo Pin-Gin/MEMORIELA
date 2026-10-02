@@ -8,169 +8,128 @@ Evaluate domains independently. Do not average failures into one score.
 ### PRODUCTION
 PASS only if:
 - YURA Generation Gate passed
-- Authority Manifest exact paths were loaded
-- actual required visual references were available to execution
-- Face Detail Reference passed
-- routed BODY View Reference passed when required
-- no unauthorized / derivative Identity reference was mixed
-- AI_INFERENCE_REQUIRED = NONE unless the user explicitly authorized that variation scope
+- Authority Manifest exact paths were resolved
+- actual required visual references were available
+- required Face / BODY View references passed
+- no unauthorized reference
+- active Execution Payload was validated
 
 ### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
 PASS only if:
-- YURA Generation Gate passed
-- `MASTER_CREATION_SUBMODE = TEXT_ONLY_ROOT_MASTER`
-- `TEXT_ONLY_ROOT_MASTER.md` exact profile was loaded
+- submode = `TEXT_ONLY_ROOT_MASTER`
+- exact `TEXT_ONLY_ROOT_EXECUTION.md` was used
+- `TEXT_ONLY_ROOT_SINGLE_RUN.md` was followed
 - generation-time visual references = NONE
-- ACTUAL_VISUAL_REFERENCES_AVAILABLE = NOT_REQUIRED
-- no previous/current Master image entered the generation call
+- no current/previous Master image entered generation
+- no per-run prompt mutation
+- no batch/comparison language entered generation
+- one person / one image / one canvas
 - AI_INFERENCE_REQUIRED = NONE
-- USER_AUTHORIZED_VARIATION = NONE
-
-The current Root Master may be used only after generation as a comparison reference.
 
 ## Gate 1 — Identity
-PASS if:
-- same intended YURA face impression
+PASS:
+- intended YURA face impression
 - adult readability
 - blue-gray eyes
 - silver-white hair
 - bright fair skin
-- no unrelated character traits
 
 Visible wrong iris color = FAIL.
 
-## Gate 2 — BODY / view continuity
-PASS if:
-- 7.25-head system remains plausible
-- petite/slender adult frame remains
-- shoulders / ribcage / waist / pelvis relationships remain
-- chest remains moderately fuller relative to frame
-- limbs preserve lengths and baseline thickness
-- pose has not redesigned anatomy
-
-For PRODUCTION non-front views:
-- projection agrees with the routed BODY view anchor
-
-For twist / 3/4 / side:
-- frontal visible area may reduce
-- actual volume remains
-- side depth / forward projection remains
-- far-side volume may be occluded rather than exposed
-
-FAIL if anatomy is widened, rotated or exposed merely to make it easier to see.
+## Gate 2 — BODY
+PASS:
+- 7.25-head system
+- petite/slender adult frame
+- somewhat narrow shoulders
+- compact ribcage
+- bust moderately fuller relative to frame
+- soft hemispherical / お椀型 direction
+- natural forward projection / lower fullness
+- stable waist / pelvis / limb proportions
 
 ## Gate 3 — FACE / EYE / EAR
 Check:
 - soft oval face
 - small rounded chin
-- eye geometry
 - blue-gray iris
-- pupil signature when resolvable
-- nose / mouth remain YURA-like
-- ear attachment / scale / projection remain stable
-- ear visibility follows real head angle + camera + hair occlusion
-
-FAIL if:
-- ears are enlarged or pulled outward for readability
-- hair is moved aside merely to show ears
-- both ears are artificially exposed for symmetry
-- facial geometry changes due to pose / outfit / lighting
+- stable eye geometry
+- natural adult ear scale / projection
+- ear visibility follows angle + hair occlusion
 
 ## Gate 4 — HAIR
-Default Normal Super-Long:
-- silver-white
-- principal ends = waist to slightly below
-- only sparse longest fine tips may approach just before upper-buttock
-- total mass slightly above standard
+PASS:
+- silver-white, cool-neutral / white-leaning
+- principal mass ends at waist to slightly below
+- below waist mass clearly decreases
+- only sparse longest fine tips may approach upper-buttock boundary
+- no dense main mass at mid-buttock / thighs
+- slightly-above-standard total mass
 - restrained lateral spread
-- center-back mass conserved
-- no unauthorized braid / bun / ornament
 
-## Gate 5 — Visibility / occlusion integrity
-PASS if hidden features remain naturally hidden when dictated by:
-- camera
-- pose
-- hair
-- clothing
-- body overlap
-- perspective
-
+## Gate 5 — Visibility / occlusion
 `HIDDEN != MISSING`
-
-FAIL on show-feature compensation.
+No show-feature compensation.
 
 ## Gate 6 — RENDERING — HARD GATE
-
-Required PASS:
-- unmistakably high-quality **2D anime illustration**
-- anime facial / line / shading grammar remains dominant
+Required:
+- unmistakably high-quality 2D anime illustration
+- anime facial / line / shading grammar dominant
 - Matte Natural Anime
 - soft cel / grouped illustration shading
-- delicate visible line art
+- delicate visible anime line art
 - restrained gloss
 - low-to-medium contrast
-- YURA colors preserved
-- no semi-real / photoreal / live-action / CGI / PBR drift
 
-Immediate **RENDERING HARD FAIL**:
-- output reads primarily as a real human portrait
-- semi-photoreal portrait rendering
-- live-action appearance
-- realistic CGI / 3D render
-- game-engine / PBR rendering
-- photographic skin
-- photographic hair fibers
-- realistic portrait facial modeling overriding anime facial grammar
+Immediate HARD FAIL:
+- photoreal
+- semi-photoreal
+- live-action
+- realistic CGI / 3D
+- PBR / game-engine render
+- photographic skin / hair
 
-`matte / low gloss` alone is NOT sufficient.
-
-If any Rendering Hard Fail is present:
-- `REJECT`
-- `PRESENTATION_ALLOWED = NO`
-- do not expose the candidate as a completed/accepted generation
+Rendering Hard Fail:
+- REJECT
+- PRESENTATION_ALLOWED = NO
 
 ## Gate 7 — Request fidelity
-Check requested outfit / hairstyle / expression / pose / scene / crop / framing.
+For TEXT_ONLY_ROOT_MASTER:
+exact fixed Execution Block compliance.
 
-For TEXT_ONLY_ROOT_MASTER, request fidelity means exact compliance with the fixed Master Creation profile.
-
-## Gate 8 — Pose / physical structure
-For significant movement:
-- plausible joints
-- support/contact/load
-- center of gravity
-- perspective
-- chest continuity
-- hair conservation
-- hands / feet / limb count
-- routed body view remains consistent where applicable
+## Gate 8 — Physical structure
+Check limbs / joints / support / hands / feet / proportions.
 
 ## Gate 9 — Output hygiene
-Check:
-- extra / missing limbs
-- broken hands / feet
-- unintended text / logos
-- duplicate props
-- severe crop / occlusion accidents
+Check extra limbs, malformed anatomy, unintended text/logos, crop accidents.
 
 ## Validation clothing gate
-When required:
-- broad-shoulder sleeveless top
-- plain shorts
-- no drawstring / bow / lace / frill
+PASS:
+- broad-shouldered sleeveless top
+- plain simple shorts
+- clean waistband
+- no drawstring / bow / cord / lace / frill
 - pale / opaque / matte
 - barefoot
 - white background
 
-## Text-only stability route
-For `TEXT_ONLY_ROOT_MASTER`, also run:
-`ROOT_MASTER_STABILITY_QA.md`
+## TEXT_ONLY_ROOT_MASTER failure handling
+If any protected domain FAILS:
+- reject the **entire candidate**
+- `TARGETED_RETRY = FORBIDDEN`
+- do not issue a scope-only stochastic repair instruction
+- do not preserve the candidate as an execution carrier
+- run a new independent full candidate with the **same unchanged fixed Execution Block**
+- run **all Gates again**
 
-A single good-looking candidate is not stability evidence.
+If the same failure repeats across valid isolated runs:
+- classify the recurring failed domain
+- revise Execution Payload / source Authority outside the active batch
+- start a new batch
 
-## Decision
-- **PASS**: execution integrity + identity + BODY + applicable request/domain gates pass
-- **TARGETED RETRY**: local domain failure; retry only that scope while text inputs remain locked
-- **REJECT**: material identity/BODY/reference-policy failure, **RENDERING HARD FAIL**, execution-integrity failure, or severe structural artifact
+## Decisions
+- **PASS**: all mandatory Gates pass
+- **FULL_CANDIDATE_RETRY**: text-only candidate failed a protected domain; regenerate whole candidate with unchanged fixed block
+- **TARGETED_RETRY**: allowed only in a mode/route with verified preservation carriers
+- **REJECT**: Rendering Hard Fail, reference-policy fail, execution-integrity fail, severe identity/BODY fail, or severe structural artifact
 
-Never change YURA canon to fit a failed generation.
+Never change canon to fit a failed generation.

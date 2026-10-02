@@ -100,3 +100,14 @@ For Matte Natural Anime:
 - Rendering Hard Fail = `PRESENTATION_ALLOWED = NO`
 
 Do not present a failed rendering as the completed generation result.
+
+
+## TEXT-ONLY retry semantics
+For `MASTER_CREATION / TEXT_ONLY_ROOT_MASTER`:
+- `TARGETED_RETRY = FORBIDDEN`
+- any protected-domain failure rejects the entire candidate
+- regenerate a new independent whole candidate with the unchanged fixed Execution Block
+- rerun all YURA QA Gates
+- do not issue scope-only correction prompts inside the active batch
+
+True targeted retry is reserved for execution routes with verified visual/pixel preservation carriers.

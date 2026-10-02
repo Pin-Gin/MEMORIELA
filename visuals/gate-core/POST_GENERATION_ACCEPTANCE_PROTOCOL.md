@@ -66,3 +66,13 @@ When retry is allowed:
 - do not promote the failed candidate to reference
 
 If automatic retry is not performed, report the failed domain succinctly instead of presenting the rejected output as success.
+
+
+## Text-only candidate failure
+When active mode is a text-only stochastic full-generation mode:
+- any protected-domain FAIL keeps `PRESENTATION_ALLOWED = NO`
+- reject the entire candidate
+- do not present it as accepted
+- do not perform scope-only targeted regeneration while claiming other visual domains are fixed
+- regenerate a new whole candidate with the unchanged fixed Execution Block
+- rerun all mandatory QA

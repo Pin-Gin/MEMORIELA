@@ -128,3 +128,26 @@ A generated image is not accepted merely because the tool returned an image.
 
 Rendering hard fail, identity hard fail, reference-policy fail, or execution-integrity fail:
 `PRESENTATION_ALLOWED = NO`
+
+
+## Fixed-block execution mode
+A Domain may declare an Execution Payload as:
+`PROTECTED FIXED EXECUTION BLOCK`
+
+For that mode:
+- the file content is the actual image-generation semantic input
+- do not paraphrase it at runtime
+- do not append Gate / QA / batch text
+- do not mutate it between runs of one stability batch
+- any modification requires a new batch
+
+## Text-only stochastic retry boundary
+Without a fixed visual/pixel carrier, stochastic full-image regeneration cannot guarantee unaffected domains remain fixed.
+
+Therefore, in a text-only full-generation mode:
+- `TARGETED_RETRY = FORBIDDEN`
+- failed candidate = whole-candidate reject
+- next run = full independent regeneration using the same fixed block
+- all protected domains are re-QA'd
+
+Scope-targeted retry may only be claimed where the active execution route can actually preserve unaffected domains.

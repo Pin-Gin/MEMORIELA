@@ -10,10 +10,10 @@ Do not send the entire Authority set to the image-generation model.
 Follow:
 `../../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md`
 
-The active mode must resolve a concise mode-specific Execution Payload.
+The active mode must resolve one mode-specific Execution Payload.
 
 ## One-person / one-image invariant
-Unless the user explicitly asks for a multi-character composition:
+Unless the user explicitly requests a multi-character composition:
 - exactly one YURA
 - one canvas
 - one composition
@@ -23,7 +23,7 @@ Unless the user explicitly asks for a multi-character composition:
 - no automatic front+side+back layout
 - no comparison sheet / triptych
 
-When multiple outputs are requested, execute multiple independent single-image calls.
+Multiple requested outputs = multiple independent single-image calls.
 
 ## Identity lock
 Always preserve:
@@ -40,16 +40,20 @@ Always preserve:
 Do not:
 - replace protected identity with generic anime defaults
 - redesign for beauty / readability
-- average conflicting traits
+- average protected traits
 - invent unspecified identity changes
 
 `UNSPECIFIED != PERMISSION TO INVENT`
 
 ## TEXT_ONLY_ROOT_MASTER
-Use exactly:
-- `master-creation/TEXT_ONLY_ROOT_MASTER.md` for resolution
-- `execution/TEXT_ONLY_ROOT_EXECUTION.md` for image-generation semantics
-- `execution/TEXT_ONLY_ROOT_SINGLE_RUN.md` for call isolation
+Resolution:
+`master-creation/TEXT_ONLY_ROOT_MASTER.md`
+
+Actual image-generation input:
+`execution/TEXT_ONLY_ROOT_EXECUTION.md`
+
+Single-run orchestration:
+`execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
 
 Generation-time image references = NONE.
 
@@ -58,25 +62,42 @@ Do not append:
 - QA text
 - batch count
 - comparison language
-- current Master PNG priority
+- current Master PNG
+- per-run corrective wording
+
+### Text-only failure handling
+`TARGETED_RETRY = FORBIDDEN`
+
+A failed text-only candidate is rejected as a whole.
+
+Do not say:
+- keep BODY fixed and change EYE only
+- keep FACE fixed and change HAIR only
+- preserve this candidate and repair one semantic scope by stochastic regeneration
+
+Those guarantees require a fixed visual carrier and are not available in text-only full regeneration.
+
+Instead:
+- keep the fixed Execution Block unchanged
+- generate a new independent full candidate
+- re-run all protected-domain QA
+
+If repeated isolated runs show the same failure, revise the Execution Block / source Authority and start a new batch.
+
+## PRODUCTION targeted retry
+Only a mode with verified visual carriers / references may use true targeted retry where the execution route can preserve unaffected protected domains.
 
 ## Pose route
 For significant motion:
 - load `POSE_RULES.md`
 - route BODY view through `../gate/VIEW_ROUTER.md`
-- keep references locked by their declared roles
+- keep references locked by declared role
 - apply Visibility / Occlusion Protocol
 
 ## Outfit route
-When outfit changes, load `OUTFIT_RULES.md`.
-
 School Uniform requires its dependency Gate.
 
 `GARMENT FOLLOWS BODY.`
 `BODY NEVER FOLLOWS GARMENT MASTER.`
-
-## Retry lock
-Correct only the failed execution Scope.
-Do not silently change unaffected identity / rendering / reference roles.
 
 Rejected / intermediate generation is never auto-promoted to Identity Authority.
