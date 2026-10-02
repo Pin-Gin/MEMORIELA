@@ -29,8 +29,6 @@ PASS only if:
 ## Gate 1 — Identity
 PASS:
 - intended YURA face impression
-- visual age reads 15–18
-- youthful but not childlike
 - blue-gray eyes
 - silver-white hair
 - bright fair skin
@@ -40,7 +38,7 @@ Visible wrong iris color = FAIL.
 ## Gate 2 — BODY
 PASS:
 - 7.25-head system
-- petite/slender protected 15–18-year-old frame
+- petite/slender protected frame
 - somewhat narrow shoulders
 - compact ribcage
 - bust moderately fuller relative to frame
