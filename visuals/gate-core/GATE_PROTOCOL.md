@@ -5,10 +5,23 @@ Status: **PROTECTED / MANDATORY / FAIL-CLOSED / PROJECT-WIDE**
 Applies to all MEMORIELA Visual generation domains that adopt this protocol.
 
 ## Core rule
-Gate PASS and Load Receipt completion are required before image generation.
+Gate PASS, Load Receipt completion, and pre-presentation QA capability PASS are required before image generation.
 
 If any required condition is missing, ambiguous, conflicting or unavailable:
 `GENERATION_ALLOWED = NO`
+
+## Execution-environment fail-closed
+Before generation, apply `POST_GENERATION_ACCEPTANCE_PROTOCOL.md` as a capability precheck.
+
+Required:
+`PRE_PRESENTATION_QA_CAPABILITY = PASS`
+
+If the active image-generation interface automatically presents a generated candidate before the caller can run mandatory QA, or candidate withholding cannot be guaranteed:
+`GENERATION_ALLOWED = NO`
+
+Unknown / unverifiable presentation behavior is also FAIL.
+
+Do not generate first and then discover that the candidate could not be withheld.
 
 ## Source-of-truth rule
 Use current Git Authority only.
