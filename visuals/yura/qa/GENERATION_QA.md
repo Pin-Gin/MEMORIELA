@@ -29,7 +29,8 @@ PASS only if:
 ## Gate 1 — Identity
 PASS:
 - intended YURA face impression
-- adult readability
+- visual age reads 15–18
+- youthful but not childlike
 - blue-gray eyes
 - silver-white hair
 - bright fair skin
@@ -39,7 +40,7 @@ Visible wrong iris color = FAIL.
 ## Gate 2 — BODY
 PASS:
 - 7.25-head system
-- petite/slender adult frame
+- petite/slender protected 15–18-year-old frame
 - somewhat narrow shoulders
 - compact ribcage
 - bust moderately fuller relative to frame
@@ -49,11 +50,20 @@ PASS:
 
 ## Gate 3 — FACE / EYE / EAR
 Check:
-- soft oval face
-- small rounded chin
+- small face
+- soft oval with slight vertical elongation
+- slightly narrow face width
+- modest cheek softness; cheekbones not emphasized
+- smooth taper toward a compact lower face
+- small narrow softly rounded chin
+- horizontally elongated mild-almond eyes with restrained vertical height
+- visible sclera on both sides of the iris
+- neutral to very slightly downturned outer corners
 - blue-gray iris
-- stable eye geometry
-- natural adult ear scale / projection
+- very small delicate readable nose
+- very small short closed mouth; no broad default smile
+- stable eye / nose / mouth placement
+- small-to-standard restrained ear scale / projection
 - ear visibility follows angle + hair occlusion
 
 ## Gate 4 — HAIR
