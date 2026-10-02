@@ -52,11 +52,12 @@ Ear visibility must follow the protected EAR Authority and natural occlusion.
 Do not:
 - enlarge / lengthen the ear for readability
 - move or rotate the ear to expose it
-- move / thin / split hair to expose the ear
 - rotate the head merely to show the ear
 - force both ears visible
 
-A naturally hidden ear is valid.
+Local hair placement around the ear may vary naturally and may make the ear more or less visible.
+Do not change source hair length / total mass / identity for ear visibility.
+A naturally visible, partially hidden, or fully hidden ear is valid.
 `HIDDEN != MISSING`
 
 ## TEXT_ONLY_ROOT_MASTER
