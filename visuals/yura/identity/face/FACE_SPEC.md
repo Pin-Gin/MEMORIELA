@@ -131,7 +131,7 @@ Do not thicken or strongly arch the brows to create a different character impres
 - gentle
 - composed
 - no broad smile by default
-- no exaggerated cute / childlike expression
+- no exaggerated generic cute expression
 
 Expression derivatives may move brows / eyelids / mouth only.
 They must not alter face geometry.
