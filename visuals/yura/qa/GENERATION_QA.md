@@ -76,17 +76,18 @@ PASS only if:
 - ear is not stretched to satisfy both placement guides
 - ear long axis has restrained approximately 5–10 degree posterior tilt
 - projection from the head remains restrained
-- visibility follows actual camera angle + head orientation + natural hair occlusion
-- partially hidden or fully hidden ear is acceptable
+- visibility follows actual camera angle + head orientation + natural/local hair placement
+- visible, partially hidden, or fully hidden ear is acceptable
+- local hair movement / separation around the ear is allowed and is not itself a failure
 - `HIDDEN != MISSING`
 
 Immediate EAR FAIL:
 - ear enlarged / lengthened for readability
 - ear moved outward or rotated toward camera
-- hair moved, thinned, split or cleared to expose the ear
+- source hair length / total mass / identity changed to expose the ear
 - head rotated merely to expose the ear
 - both ears forced visible for symmetry
-- any show-ear compensation
+- any visibility-driven EAR or head-geometry compensation
 - any AI reinterpretation that enlarges the ear because it is hidden
 
 ## Gate 4 — HAIR
