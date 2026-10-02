@@ -56,38 +56,40 @@ Do not:
 
 ## Visibility / occlusion — HARD LOCK
 
-Ear visibility is determined only by:
+Ear visibility is determined by:
 - camera angle
 - actual head orientation
 - hairstyle
-- natural hair occlusion
+- natural / local hair placement and occlusion
 
-**The ear is allowed to be partially hidden or fully hidden.**
+**The ear is allowed to be visible, partially hidden, or fully hidden.**
 
 `HIDDEN != MISSING`
 
 Visibility is not a target.
+Hair placement is not locked for the purpose of ear visibility: local hair may naturally shift, separate, or settle so the ear becomes more or less visible.
+Do not require the hair to expose the ear, and do not require the hair to hide the ear.
 
 Strictly forbidden:
-- moving hair away to reveal the ear
-- thinning / separating hair to expose the ear
 - rotating the head merely to reveal the ear
 - rotating the ear toward camera
 - moving the ear outward
 - enlarging / lengthening the ear because it is hidden
 - exposing both ears for symmetry
-- increasing visible ear area for readability
-- any other show-ear compensation
+- increasing ear size / projection / rotation for readability
+- any other visibility-driven EAR or head-geometry compensation
 
-If the natural camera / head / hair relationship hides the ear, keep it hidden.
+If the ear is hidden, preserve the protected EAR geometry without enlarging it.
+If the ear is visible because of natural hair placement, keep the same protected EAR geometry.
 
 ## Relationship to FACE / HAIR
 
 - FACE controls face geometry, not ear size
-- HAIR controls hair structure and natural occlusion, not ear exposure
+- HAIR controls source hair structure, length and mass; local placement around the ear may vary naturally
 - EAR_SPEC controls ear size / placement guide / tilt / projection / visibility behavior
 
-FACE or HAIR must not be modified to make the ear visible.
+FACE geometry must not be modified to make the ear visible.
+HAIR source length / mass / identity must not be changed for ear visibility, but local hair placement around the ear may vary.
 
 ## HARD FAIL
 
@@ -98,11 +100,11 @@ EAR FAIL if materially present:
 - outward-flared ear
 - excessive projection from the head
 - endpoint alignment achieved by stretching the ear
-- hair moved / thinned / separated to expose the ear
+- source hair length / mass / identity changed to expose the ear
 - head rotated merely to expose the ear
 - ear rotated toward camera for readability
 - ear enlarged because it is partially hidden
 - forced bilateral ear visibility
-- any visibility-driven ear enlargement or displacement
+- any visibility-driven ear enlargement, displacement, projection increase or rotation
 
 Never change FACE or HAIR canon to rescue an ear-visibility failure.
