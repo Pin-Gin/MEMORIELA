@@ -16,17 +16,20 @@ Purpose: MEMORIELAで久遠ゆらを生成する際の唯一の入口。
 読むAuthorityは `gate/AUTHORITY_MANIFEST.md` が列挙した完全パスだけで決定する。
 
 ## Execution handoff boundary
-Router-only化は「生成モデルへファイルパスだけ渡す」という意味ではない。
+Router-only化は「Authorityを解決できれば生成できる」という意味ではない。
 
-Authority resolution後は、`../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md` に従い、active Execution Payloadの**実際の生成意味**を有効なExecution Carrierへ搬送すること。
+Authority resolution後は、`../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md` に従い、active Execution Payloadを**検証可能なモデル向け入力経路**へ渡せることを確認する。
 
-特に、会話コンテキストから自動的に画像指示を解釈する生成インターフェースでは:
-- Gitを読んだだけでは生成入力到達を証明しない
-- connector / tool outputだけではPASSにしない
-- active fixed payloadの生成ブロックがgeneration-visible contextへ存在することを確認する
-- path-only / "Git準拠" / "前回と同じ" への短縮は禁止する
+`PROTECTED FIXED EXECUTION BLOCK` では:
+- Gitを読んだだけではPASSにならない
+- connector / tool outputだけではPASSにならない
+- 会話へ固定ブロックを展開しただけでもPASSにならない
+- 会話コンテキストから画像指示を自動再構成する生成インターフェースは `CONTEXT_DERIVED_UNVERIFIED`
+- model-facing prompt / instruction を直接固定・検証できない場合は Fail-Closed
 
-Execution Carrierが成立しない場合:
+`AUTHORITY_RESOLVED = YES` と `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = PASS` は別条件。
+
+後者を証明できない場合:
 `GENERATION_ALLOWED = NO`
 
 ## Fail-closed

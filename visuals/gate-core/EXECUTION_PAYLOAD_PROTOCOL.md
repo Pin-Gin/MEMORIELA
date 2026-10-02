@@ -16,36 +16,49 @@ Do not pass raw Governance / Gate / QA documents directly into the image-generat
 
 Authority resolution is not execution transport.
 
-Before image generation, resolve one actual `EXECUTION_CARRIER`:
+For any `PROTECTED FIXED EXECUTION BLOCK`, generation is allowed only when the active image-generation interface provides a **verified model-facing input carrier**.
 
-### DIRECT_PROMPT_CARRIER
-Use only when the image-generation interface exposes a real prompt/instruction field whose text is passed to the image model.
+### VERIFIED_DIRECT_MODEL_INPUT
+PASS only when all are true:
+- the interface exposes an actual prompt / instruction field used by the image model
+- the caller can place the protected fixed block into that field
+- the fixed block is not silently replaced by conversation summarization / prompt synthesis before model execution
+- the caller can verify that the protected generation semantics are the model-facing input
 
-For a `PROTECTED FIXED EXECUTION BLOCK`:
-- pass the fixed generation block through that field without semantic rewrite
+For a protected fixed block:
+- pass the fixed generation block without runtime paraphrase
 - Git path / connector retrieval alone does not count
-- the actual model-facing input must contain the protected generation semantics
+- conversation presence alone does not count
+- previous successful output does not count
 
-### CONVERSATION_CONTEXT_CARRIER
-Use when the image-generation interface does **not** expose a controllable prompt field and instead derives generation instructions from the active conversation context.
+### CONTEXT_DERIVED_INPUT — UNVERIFIED
+If the image-generation interface derives image instructions from conversation context, tool context, hidden prompt synthesis, or another non-controllable intermediary, this route is **not a verified carrier** for `PROTECTED FIXED EXECUTION BLOCK`.
 
-In this carrier:
-- Git / connector / tool retrieval output is **resolution evidence only**
-- merely reading a file does **not** prove that its semantics reached image generation
-- immediately before the image-generation call, materialize the active fixed generation block into the generation-visible conversation context
-- for a fixed payload, copy the payload's `FIXED EXECUTION BLOCK` semantics without ad-hoc paraphrase, omission or substitution
-- do not replace the block with phrases such as "use Git", "follow YURA rules", "same as before" or file paths
-- do not append QA / Gate / batch / retry prose to the handoff
-- the handoff exists only to carry generation semantics across the tool boundary
+Even if the fixed block is copied into the conversation immediately before generation:
+- its presence in chat does not prove model-facing delivery
+- automatic summarization / reinterpretation / replacement may occur
+- semantic preservation cannot be asserted
+- `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = FAIL`
 
-If the active image-generation interface cannot provide either carrier:
-`EXECUTION_CARRIER = NONE`
+Therefore:
+`EXECUTION_CARRIER = CONTEXT_DERIVED_UNVERIFIED`
 `GENERATION_ALLOWED = NO`
 
-### Explicit invalid carrier
-`EXTERNAL_RETRIEVAL_ONLY` is never a valid execution carrier.
+### EXTERNAL_RETRIEVAL_ONLY — INVALID
+Git read, connector result, file path, memory, prior read, or prior successful generation is resolution evidence only.
 
-A Git read, connector result, file path, memory, or prior successful generation is not by itself evidence that the image model received the protected payload.
+It is never a valid execution carrier.
+
+### Fail-closed rule
+For `PROTECTED FIXED EXECUTION BLOCK`:
+
+`VERIFIED_DIRECT_MODEL_INPUT` unavailable
+→ `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = FAIL`
+→ `GENERATION_ALLOWED = NO`
+
+Do not downgrade this to best-effort execution while claiming Gate PASS.
+
+A non-protected / best-effort generation flow may define a different transport policy, but it must not be represented as protected fixed execution.
 
 ## Compile stage
 Required order:

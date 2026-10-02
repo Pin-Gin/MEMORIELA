@@ -18,25 +18,30 @@ Image generation must not receive:
 
 ## Per-call execution carrier
 Before every image-generation call:
-1. resolve the active Execution Carrier
-2. verify that the actual generation-facing context contains the fixed `TEXT_ONLY_ROOT_EXECUTION.md` `FIXED EXECUTION BLOCK` semantics
-3. when using `CONVERSATION_CONTEXT_CARRIER`, materialize that fixed block immediately before the image-generation call without ad-hoc paraphrase
-4. do not assume connector/Git retrieval output is automatically visible to the image-generation instruction synthesizer
+1. resolve the active image-generation interface
+2. verify that it exposes a controllable model-facing prompt / instruction field
+3. verify that the fixed `TEXT_ONLY_ROOT_EXECUTION.md` `FIXED EXECUTION BLOCK` can be supplied through that field without hidden conversation-derived rewrite
+4. record `EXECUTION_CARRIER = VERIFIED_DIRECT_MODEL_INPUT`
+5. require `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = PASS`
 
-Invalid:
+The following are invalid for protected fixed execution:
+- conversation-context-only handoff
+- hidden / automatic prompt synthesis
+- copying the payload into chat without model-facing prompt control
 - path-only handoff
-- "follow Git" without payload semantics
+- "follow Git"
 - "same as previous"
 - EXTERNAL_RETRIEVAL_ONLY
 
-If semantic handoff cannot be verified:
+If the interface is context-derived and the actual model-facing input cannot be verified:
+`EXECUTION_CARRIER = CONTEXT_DERIVED_UNVERIFIED`
 `GENERATION_ALLOWED = NO`
 
 ## Per-call invariant
 Every call:
 - uses exactly `TEXT_ONLY_ROOT_EXECUTION.md`
-- has a valid Execution Carrier
-- has the fixed generation semantics present in the actual generation-facing context
+- has `EXECUTION_CARRIER = VERIFIED_DIRECT_MODEL_INPUT`
+- has `FIXED_PAYLOAD_TRANSPORT_GUARANTEE = PASS`
 - uses no visual reference
 - uses no appended ad-hoc prompt
 - uses the same framing/aspect class
