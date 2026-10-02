@@ -63,10 +63,12 @@ Preferred = 5.
 - upper rim around eyebrow height and lower rim around nose-tip to subnasal height are guides only
 - restrained approximately 5–10 degree posterior tilt
 - restrained projection from the head
-- hidden / partially hidden ears are acceptable
-- no hair movement, head rotation, ear rotation, outward displacement or enlargement for visibility
+- visible / hidden / partially hidden ears are all acceptable
+- local hair placement around the ear may vary naturally
+- no source hair length / total-mass / identity change for ear visibility
+- no head rotation, ear rotation, outward displacement or enlargement for visibility
 - no forced bilateral ear visibility
-- stable ear geometry without show-ear compensation
+- stable ear geometry without visibility-driven EAR/head compensation
 
 ### BODY
 - exact 7.25-head system
