@@ -117,19 +117,20 @@ Complete `../../gate-core/LOAD_RECEIPT_SCHEMA.md`.
 
 Only `GENERATION_ALLOWED = YES` permits execution.
 
-
 ## POST-GENERATION ACCEPTANCE — mandatory
 Every generated YURA image is `CANDIDATE ONLY` until:
 1. `../qa/GENERATION_QA.md` is applied
 2. applicable mode-specific QA is applied
-3. `../../gate-core/POST_GENERATION_ACCEPTANCE_PROTOCOL.md` passes
+3. `../../gate-core/POST_GENERATION_ACCEPTANCE_PROTOCOL.md` classifies the candidate
 
 For Matte Natural Anime:
 - photoreal / semi-photoreal / live-action / CGI / PBR / realistic portrait drift = `RENDERING HARD FAIL`
-- Rendering Hard Fail = `PRESENTATION_ALLOWED = NO`
+- Rendering Hard Fail = `ACCEPTANCE_ALLOWED = NO`
 
-Do not present a failed rendering as the completed generation result.
+Generation-tool/UI visibility before QA does not invalidate the run by itself.
+A failed image remains a `REJECTED CANDIDATE`; it must not be described as accepted, promoted to Authority, or reused as a protected reference.
 
+Post-generation QA must not be reinterpreted as a requirement for hidden pre-presentation staging.
 
 ## TEXT-ONLY retry semantics
 For `MASTER_CREATION / TEXT_ONLY_ROOT_MASTER`:
