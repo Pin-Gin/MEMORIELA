@@ -55,31 +55,12 @@ Do not:
 - inflate cheeks into a childlike round face
 - create an extreme V-line
 
-## Ears — protected geometry / visibility lock
-Ear anatomy is stable:
-- small-to-standard scale
-- attachment height remains stable
-- projection from the head remains restrained
-- general silhouette remains stable
+## Ear authority boundary
+Ear size, placement guides, tilt, projection and visibility behavior are controlled only by:
+`../ears/EAR_SPEC.md`
 
-Ear visibility is determined only by:
-- actual head angle
-- camera angle
-- hair occlusion
-
-Do not:
-- enlarge ears
-- move ears outward
-- rotate ears toward camera
-- move surrounding hair merely to reveal ears
-- expose both ears for symmetry
-- increase visible ear area for readability
-
-A naturally hidden ear must remain hidden.
-
-`HIDDEN != MISSING`
-
-Ear visibility itself is not a generation target.
+FACE geometry must not be modified to expose or enlarge an ear.
+A hidden ear is allowed and does not imply missing anatomy.
 
 ## Face-detail visual anchor
 Production YURA generation uses the dedicated Face Close-up Master defined by `../../gate/AUTHORITY_MANIFEST.md`.
@@ -89,10 +70,10 @@ The Face Close-up Master stabilizes:
 - cheek / chin balance
 - eye placement
 - nose / mouth placement
-- ear geometry
+- naturally visible ear appearance, only when observable without compensation
 - face-framing hair boundary
 
-Precise FACE / EYE text rules remain authoritative for their domains.
+Precise FACE / EAR / EYE text rules remain authoritative for their domains.
 
 If the dedicated Face Close-up Master is unavailable in PRODUCTION:
 `GENERATION_ALLOWED = NO`
@@ -184,7 +165,7 @@ FACE FAIL if materially present:
 - sharp fox-eye
 - strongly droopy childlike eye
 - broad default smile changing the face impression
-- visible ear enlargement / outward displacement for readability
+- EAR_SPEC violation used to alter the face or head for ear visibility
 - hair moved merely to expose ears
 - facial geometry changes due to pose, outfit, lighting, or rendering
 
