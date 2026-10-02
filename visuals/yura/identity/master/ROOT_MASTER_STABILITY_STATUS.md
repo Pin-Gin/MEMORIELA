@@ -18,7 +18,7 @@ Current Root Master remains:
 - project-wide 2D-anime-first Rendering Hard Gate: ACTIVE
 - post-generation Presentation Gate: ACTIVE
 - prior scope-only retry semantics for text-only full regeneration: INVALID DESIGN, now removed
-- FACE target refined to a 15–18-year-old read with a small soft oval face whose vertical length is standard to slightly short and remains vertically compact
+- FACE target refined to a small soft oval face whose vertical length is standard to slightly short and remains vertically compact
 - eye / nose / mouth geometry and default-expression constraints were strengthened
 - EAR is a dedicated protected Authority with a slightly-small 28–30% face-length target, length-priority placement, restrained tilt / projection, and no visibility-driven EAR/head geometry compensation
 - local hair placement around the ear may vary naturally; ear visibility itself is not a generation target
