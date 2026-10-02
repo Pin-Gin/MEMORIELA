@@ -79,7 +79,7 @@ EXECUTION CARRIER / SEMANTIC HANDOFF VALIDATION
         ↓
 SINGLE IMAGE GENERATION
         ↓
-POST-GENERATION QA
+POST-GENERATION QA / ACCEPTANCE CLASSIFICATION
 ```
 
 The Execution Payload is not an independent canon source.
@@ -153,7 +153,6 @@ Post-generation QA may compare against Masters and protected specs as permitted 
 
 A comparison reference used after generation must never leak backward into a text-only generation call.
 
-
 ## Rendering hard-lock compilation
 Every character Execution Payload that uses the project-wide Character Rendering Style must contain an explicit rendering hard-lock block.
 
@@ -175,13 +174,19 @@ If the compiled payload omits the 2D-anime-first lock or permits a realistic / C
 `GENERATION_ALLOWED = NO`
 
 ## Mandatory post-generation acceptance
-After every permitted generation, run the active Domain QA and the project-wide Post-Generation Acceptance Protocol before presenting the image as a completed result.
+After every permitted generation, run the active Domain QA and the project-wide Post-Generation Acceptance Protocol.
 
-A generated image is not accepted merely because the tool returned an image.
+A generated image is not accepted merely because the tool returned or displayed an image.
+
+Generation-tool/UI visibility before caller-side QA is **not** a generation-integrity failure and is **not** a pre-generation blocker.
+
+`USER_VISIBLE != ACCEPTED`
+`USER_VISIBLE != AUTHORITY`
 
 Rendering hard fail, identity hard fail, reference-policy fail, or execution-integrity fail:
-`PRESENTATION_ALLOWED = NO`
+`ACCEPTANCE_ALLOWED = NO`
 
+A failed candidate may be visible because of the generation interface, but it remains rejected and must never be promoted to Authority or reused as a protected reference.
 
 ## Fixed-block execution mode
 A Domain may declare an Execution Payload as:
