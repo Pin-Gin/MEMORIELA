@@ -51,7 +51,9 @@ PASS:
 ## Gate 3 — FACE / EYE / EAR
 Check:
 - small face
-- soft oval with slight vertical elongation
+- soft oval
+- face vertical length = standard to slightly short
+- vertically compact; no oblong / elongated impression
 - slightly narrow face width
 - modest cheek softness; cheekbones not emphasized
 - smooth taper toward a compact lower face
