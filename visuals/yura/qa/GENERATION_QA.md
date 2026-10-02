@@ -122,7 +122,9 @@ Immediate HARD FAIL:
 
 Rendering Hard Fail:
 - REJECT
-- PRESENTATION_ALLOWED = NO
+- `ACCEPTANCE_ALLOWED = NO`
+- candidate may remain visible because of the generation interface, but visibility does not make it accepted
+- never promote or reuse it as protected Authority / reference
 
 ## Gate 7 — Request fidelity
 For TEXT_ONLY_ROOT_MASTER:
@@ -150,6 +152,7 @@ If any protected domain FAILS:
 - `TARGETED_RETRY = FORBIDDEN`
 - do not issue a scope-only stochastic repair instruction
 - do not preserve the candidate as an execution carrier
+- do not promote it to Authority or future protected reference
 - run a new independent full candidate with the **same unchanged fixed Execution Block**
 - run **all Gates again**
 
