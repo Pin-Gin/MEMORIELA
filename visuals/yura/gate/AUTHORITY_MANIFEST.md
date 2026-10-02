@@ -27,6 +27,9 @@ BODY:
 FACE:
 `visuals/yura/identity/face/FACE_SPEC.md`
 
+EAR:
+`visuals/yura/identity/ears/EAR_SPEC.md`
+
 EYE:
 `visuals/yura/identity/eyes/EYE_SPEC.md`
 
