@@ -9,5 +9,3 @@
 
 会話で案が出ただけではFIXEDにしない。
 矛盾時は現行GitのFIXED記述を優先し、作者へ矛盾を提示する。
-旧AI版Project.YURAの人格・経歴・生活設定は小説正史ではない。
-既存YURA Visual Identityは、明示的に小説版へ継承されたVisual Authorityである。
