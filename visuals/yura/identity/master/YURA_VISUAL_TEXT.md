@@ -22,20 +22,18 @@ AIは禁止:
 ## Current approved visual interpretation
 
 ### BODY
-- 153 cm petite / slender 15–18-year-old teenage girl
+- 153 cm petite / slender female character
 - exact 7.25-head design target
-- youthful but not childlike body read
 - somewhat narrow shoulders
 - compact ribcage
 - BODYの横幅・腰・骨盤・太腿を増やさず、胸だけを体格比でやや豊かにする
 - soft hemispherical / お椀型 direction
 - slim natural waist
-- natural female pelvis / hips appropriate to the protected mature-teen design
+- natural restrained female pelvis / hips consistent with the protected petite/slender design
 - standard-to-slightly-long legs
 - slender limbs with natural softness
 
 ### FACE / EAR / EYE
-- visual age read = 15–18 years old; youthful but not childlike
 - small face
 - soft oval
 - face vertical length = standard to slightly short; vertically compact; not oblong
@@ -83,22 +81,22 @@ AIは禁止:
 
 The following section is a direct visual transcription of the approved Master image. It exists to keep the PNG and written Visual Text aligned. It does not override protected domain specifications.
 
-During the current TEXT_ONLY_ROOT_MASTER refinement, the precise 15–18-year-old FACE / EYE target in `FACE_SPEC.md` and `EYE_SPEC.md` is authoritative even if the existing Root Master visually reads older or differs in facial geometry. The Root Master itself remains unchanged until explicit author approval of a replacement.
+During the current TEXT_ONLY_ROOT_MASTER refinement, the precise FACE / EYE geometry in `FACE_SPEC.md` and `EYE_SPEC.md` is authoritative even if the existing Root Master differs in facial geometry. The Root Master itself remains unchanged until explicit author approval of a replacement.
 
 ## Visual Description — 1. Overall silhouette
 
-- 成人女性として明確に読める、小柄で華奢な全身シルエット。
-- 頭部は全身比率に対してやや小さめで、子供っぽい大頭身には見えない。
+- 小柄で華奢な全身シルエット。
+- 頭部は全身比率に対してやや小さめ。
 - 全身は縦にすっきりまとまり、極端なモデル体型・長身感には寄っていない。
 - 肩幅はやや狭く、上半身はコンパクト。
 - 腰は細いが、極端なくびれには見えない。
-- 骨盤・ヒップは成人女性として自然な丸みがあり、過度なグラマラス体型ではない。
+- 骨盤・ヒップは自然な丸みがあり、過度なグラマラス体型ではない。
 - 脚は細身だが棒状ではなく、太腿・膝・ふくらはぎに自然な柔らかさがある。
 
 ## Visual Description — 2. BODY visual read
 
 ### Head / body balance
-- 見た目として7.25頭身系の成人アニメ体型。
+- 見た目として7.25頭身系のアニメ体型。
 - 8頭身以上のファッションモデル的な引き伸ばし感はない。
 - 小柄さは頭部拡大ではなく、全身のコンパクトさで表現されている。
 
@@ -118,7 +116,7 @@ During the current TEXT_ONLY_ROOT_MASTER refinement, the precise 15–18-year-ol
 - 腰は細く自然。
 - 胸郭から腰、骨盤への移行は滑らか。
 - 骨盤は女性らしい自然な幅で、肩幅と大きく乖離しない。
-- ヒップは過度に横へ張り出さず、自然な成人女性の丸み。
+- ヒップは過度に横へ張り出さず、自然な丸み。
 
 ### Legs
 - 太腿は細身だが適度な厚みと柔らかさがある。
@@ -131,7 +129,7 @@ During the current TEXT_ONLY_ROOT_MASTER refinement, the precise 15–18-year-ol
 - 腕は細身だが極端に細くない。
 - 前腕から手首へのテーパーは自然。
 - 手は小さめ〜標準。
-- 足は小さすぎず、153cm級成人女性として自然なサイズ感。
+- 足は小さすぎず、153cm級の体格として自然なサイズ感。
 
 ## Visual Description — 3. FACE visual read
 
@@ -143,7 +141,7 @@ During the current TEXT_ONLY_ROOT_MASTER refinement, the precise 15–18-year-ol
 - 極端なVラインではない。
 
 ### Eyes
-- 成人女性としてやや大きめ。
+- 顔全体に対してやや大きめ。
 - 形はややアーモンド型で、縦長すぎず横方向に少し広い。
 - 目尻はニュートラル〜ごくわずかに下向きに見える。
 - 強いたれ目・つり目ではない。
