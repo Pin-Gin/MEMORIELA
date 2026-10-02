@@ -20,6 +20,7 @@ Current Root Master remains:
 - prior scope-only retry semantics for text-only full regeneration: INVALID DESIGN, now removed
 - FACE target refined to a 15–18-year-old read with a small soft oval face whose vertical length is standard to slightly short and remains vertically compact
 - eye / nose / mouth geometry and default-expression constraints were strengthened
+- EAR is now a dedicated protected Authority with a slightly-small 28–30% face-length target, length-priority placement, restrained tilt / projection, and no show-ear compensation
 - fixed `TEXT_ONLY_ROOT_EXECUTION.md` was deliberately recompiled from the updated protected Authorities
 
 ## Current text-only execution policy
@@ -38,6 +39,7 @@ Current Root Master remains:
 
 ## Known drift to re-test
 - EYE color
+- EAR size / length / placement / visibility compensation
 - HAIR color / length / mass
 - BODY bust relation
 - FACE consistency
