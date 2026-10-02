@@ -22,10 +22,13 @@ Execution control:
 Observed drift:
 - HAIR LENGTH = SYSTEMATIC_DRIFT
 - BUST / UPPER TORSO = SYSTEMATIC_DRIFT
+- EYE COLOR = MATERIAL DRIFT observed in the latest valid isolated single run; warm hazel/brown reading instead of protected blue-gray
+- EYE COLOR is not yet classified as SYSTEMATIC_DRIFT from one run alone
 
 Current correction:
-- strengthen only the compiled Text-only Execution Payload for HAIR length and bust/body relation
-- keep Gate structure, FACE, EYE, SKIN and rendering authorities unchanged for this retry
+- strengthen the compiled Text-only Execution Payload for HAIR length, bust/body relation, and EYE color identity
+- keep `EYE_SPEC.md` unchanged; strengthen only the compiled execution wording so BLUE-GRAY ONLY survives Authority-to-Payload compression
+- keep Gate structure, FACE geometry, SKIN and rendering authorities unchanged for this retry
 
 Therefore:
 - `FACE_MASTER` creation = BLOCKED
