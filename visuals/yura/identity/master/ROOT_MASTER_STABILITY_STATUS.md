@@ -16,7 +16,9 @@ Current Root Master remains:
 - single-run / one-person / one-image orchestration: PASS
 - generation-time visual references: NONE
 - project-wide 2D-anime-first Rendering Hard Gate: ACTIVE
-- post-generation Presentation Gate: ACTIVE
+- post-generation Acceptance Classification: ACTIVE
+- generation-tool/UI visibility before QA is not acceptance and is not a pre-generation blocker
+- failed candidates remain rejected and cannot become Authority / protected references
 - prior scope-only retry semantics for text-only full regeneration: INVALID DESIGN, now removed
 - FACE target refined to a small soft oval face whose vertical length is standard to slightly short and remains vertically compact
 - eye / nose / mouth geometry and default-expression constraints were strengthened
@@ -35,6 +37,7 @@ Current Root Master remains:
 - no runtime paraphrase / per-run correction
 - `TARGETED_RETRY = FORBIDDEN`
 - any failed protected domain rejects the whole candidate
+- rejected candidate is never promoted to Authority or future protected reference
 - next attempt is a new independent full candidate using the same unchanged block
 - every new candidate is re-evaluated across all protected domains
 
@@ -59,7 +62,7 @@ Start a new TEXT_ONLY Root stability batch using:
 - current text Authorities only
 - active `TEXT_ONLY_ROOT_EXECUTION.md`
 - one person / one image per run
-- post-generation full QA
+- post-generation full QA / acceptance classification
 
 Minimum 3 valid runs; preferred 5.
 
