@@ -37,7 +37,8 @@ AIは禁止:
 ### FACE / EYE
 - visual age read = 15–18 years old; youthful but not childlike
 - small face
-- soft oval with slight vertical elongation
+- soft oval
+- face vertical length = standard to slightly short; vertically compact; not oblong
 - slightly narrow face width and modest cheek softness
 - smooth taper from temples / cheeks toward a compact lower face
 - small, narrow, softly rounded chin
