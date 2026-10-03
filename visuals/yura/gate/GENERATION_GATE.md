@@ -129,7 +129,17 @@ Until `face-anchored-root/SOURCE_LOCK.md` records the approved Face Root hash an
 `GENERATION_ALLOWED = NO`
 
 ### TEXT_ONLY_ROOT_MASTER — FINAL VERIFICATION
-Allowed as the final reference-free verification route.
+This route is intentionally deferred until face-first stabilization is complete.
+
+Required before a new final TEXT_ONLY batch:
+- author-approved Face Root exists and is registered
+- author-approved Face-Anchored Root exists as the stabilized full-body target
+- protected text Authorities represent that approved target
+- current text-only `SOURCE_LOCK.md` passes after any required recompile
+
+If any dependency is incomplete:
+`TEXT_ONLY_ROOT_FINAL_VERIFICATION = DEFERRED`
+`GENERATION_ALLOWED = NO`
 
 Authority profile:
 `../generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
@@ -154,7 +164,7 @@ Post-generation visual comparison reference:
 
 Do not attach, inspect into generation, or describe into the payload:
 - Face Root PNG
-- face-anchored Root
+- Face-Anchored Root
 - repository Root Master PNG
 - prior generations
 
