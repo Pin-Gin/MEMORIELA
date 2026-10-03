@@ -6,7 +6,7 @@ Exactly one female character, one canvas, one composition, front-facing full bod
 CRITICAL VISUAL LOCKS
 - exactly 7.25 heads tall; petite / slender / delicate overall frame
 - face vertical length = standard to slightly short; visibly vertically compact; never oblong, elongated, or long / fashion-model-like
-- ears remain slightly small; vertical ear length approximately 28–30% of face vertical length; restrained projection; never enlarged, lengthened, moved outward, or rotated toward camera for visibility
+- EAR SIZE HAS PRIORITY OVER VISIBILITY: ears remain slightly small; vertical ear length approximately 28–30% of face vertical length; restrained projection; restrained approximately 5–10 degree posterior tilt; either ear may be partially hidden or fully hidden by natural hair; never enlarge, lengthen, move outward, flare, increase projection, or rotate toward camera for visibility; do not force both ears visible or equally exposed
 - blue-gray irises only
 - silver-white hair only
 - dense principal hair mass ends at the natural waistline to only slightly below it
@@ -27,7 +27,13 @@ CRITICAL VISUAL LOCKS
 目はやや大きめだが横方向に長く、縦幅は控えめの穏やかなアーモンド型。目尻は水平〜ごくわずかに下向き。
 瞳は青灰色のみ。灰色成分を明確に残し、低彩度〜中低彩度。茶・琥珀・ヘーゼル・金・紫・鮮やかな青にしない。
 
-耳はやや小さめで、縦寸法は顔の縦寸法の約28〜30%。耳の長さを優先し、可視性のために肥大化・長大化・突出増加させない。耳は見えても、一部が隠れても、全部が隠れてもよい。
+EAR VISIBILITY / SIZE — PRIMARY GEOMETRY LOCK
+耳はやや小さめ。耳の縦寸法は、額から顎先までの顔の縦寸法の約28〜30%。
+耳のサイズは可視性より優先する。耳を見せるために大きくしない、長くしない、外側へ動かさない、張り出しを増やさない、カメラ側へ回転させない。
+耳の長軸は垂直から後方へ約5〜10度だけ自然に傾け、頭部側面に近く、張り出しは控えめに保つ。
+正面でも左右両耳を同じ程度に見せる必要はない。片耳だけ見える、一部だけ見える、両耳または片耳が髪で自然に隠れる状態はすべて有効。
+耳の可視性は生成目標ではない。自然な髪の重なりで耳の可視範囲が減っても、耳の形状を補償変更しない。
+耳の可視性と保護された小さな耳形状が競合する場合は、耳形状を維持し、自然な遮蔽を許容する。
 
 眉は細く銀灰〜冷たい灰色。鼻は非常に小さく繊細で、最小限の2Dアニメ陰影で存在を読ませる。口は非常に小さく横幅も短い閉じた口。表情はニュートラル〜ごく柔らかい。
 
