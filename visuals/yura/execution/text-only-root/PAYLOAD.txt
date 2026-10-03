@@ -3,82 +3,42 @@ YURA / TEXT-ONLY ROOT MASTER / SINGLE IMAGE.
 HIGH-QUALITY 2D ANIME ILLUSTRATION ONLY.
 Exactly one female character, one canvas, one composition, front-facing full body.
 
-CRITICAL VISUAL LOCKS
-- exactly 7.25 heads tall; petite / slender / delicate overall frame
-- face vertical length = standard to slightly short; visibly vertically compact; never oblong, elongated, or long / fashion-model-like
-- EAR SIZE HAS PRIORITY OVER VISIBILITY: ears remain slightly small; vertical ear length approximately 28–30% of face vertical length; restrained projection; restrained approximately 5–10 degree posterior tilt; either ear may be partially hidden or fully hidden by natural hair; never enlarge, lengthen, move outward, flare, increase projection, or rotate toward camera for visibility; do not force both ears visible or equally exposed
-- blue-gray irises only
-- silver-white hair only
-- dense principal hair mass ends at the natural waistline to only slightly below it
-- below the waistline, hair density drops sharply; only a few thin isolated longest tips may approach the upper-buttock boundary
-- no dense principal hair mass over the buttocks or thighs
-- plain broad-shouldered sleeveless validation top; no thin straps; no camisole construction
-- plain simple validation shorts with a clean waistband
-- neutral upright anatomical standing pose; both arms hang down naturally; both hands remain visible beside the outer thighs
-- completely unadorned; no hair ornaments, ribbons, bows, clips, jewelry, or accessories
-- white / warm-white background
-- Matte Natural Anime; unmistakably 2D anime
-
 久遠ゆら / YURA。
-153cmの小柄・華奢な女性キャラクター。全身は正確に7.25頭身。頭部・顔は全身比率に対して小さめ。
+153cmの小柄で華奢な女性キャラクター。全身は正確に7.25頭身。頭部は全身比率に対してやや小さめ。
 
-顔は小さめの柔らかな卵型。顔の縦寸法は標準〜わずかに短めで、縦長感を出さない。顔幅はやや細め。頬にはわずかな柔らかさを残し、頬骨は強調しない。下顔面はコンパクトで、顎は小さく細めだが尖らず柔らかく丸い。
+全身シルエットはpetite / slender / delicate。肩はやや狭く、胸郭は細くコンパクト。ウエストは細く自然。骨盤・ヒップは自然な女性らしい幅で、過度に広げない。脚は標準〜やや長めで、細身だが棒状ではなく、太腿・膝・ふくらはぎに自然な柔らかさと厚みを残す。腕も細身で自然な柔らかさを持つ。
 
-目はやや大きめだが横方向に長く、縦幅は控えめの穏やかなアーモンド型。目尻は水平〜ごくわずかに下向き。
-瞳は青灰色のみ。灰色成分を明確に残し、低彩度〜中低彩度。茶・琥珀・ヘーゼル・金・紫・鮮やかな青にしない。
+上半身は細い胸郭と狭めの肩を維持したまま、胸部だけが体格比で明確に豊かに見える。胴体全体を広げず、自然な前方ボリュームを持たせる。全身はあくまで小柄・華奢・細身を基調にする。
 
-EAR VISIBILITY / SIZE — PRIMARY GEOMETRY LOCK
-耳はやや小さめ。耳の縦寸法は、額から顎先までの顔の縦寸法の約28〜30%。
-耳のサイズは可視性より優先する。耳を見せるために大きくしない、長くしない、外側へ動かさない、張り出しを増やさない、カメラ側へ回転させない。
-耳の長軸は垂直から後方へ約5〜10度だけ自然に傾け、頭部側面に近く、張り出しは控えめに保つ。
-正面でも左右両耳を同じ程度に見せる必要はない。片耳だけ見える、一部だけ見える、両耳または片耳が髪で自然に隠れる状態はすべて有効。
-耳の可視性は生成目標ではない。自然な髪の重なりで耳の可視範囲が減っても、耳の形状を補償変更しない。
-耳の可視性と保護された小さな耳形状が競合する場合は、耳形状を維持し、自然な遮蔽を許容する。
+顔は小さめの柔らかな卵型。顔の縦寸法は標準〜わずかに短めで、縦長感を出さない。顔幅はやや細め。頬にはわずかな柔らかさを残し、頬骨は強調しない。下顔面はコンパクト。顎は小さく細めで、尖らず柔らかく丸い。
 
-眉は細く銀灰〜冷たい灰色。鼻は非常に小さく繊細で、最小限の2Dアニメ陰影で存在を読ませる。口は非常に小さく横幅も短い閉じた口。表情はニュートラル〜ごく柔らかい。
+目はやや大きめだが横方向に長く、縦幅は控えめの穏やかなアーモンド型。上まぶたは滑らかに湾曲し、下まぶたの丸みは浅い。目尻は水平〜ごくわずかに下向き。瞳は低彩度の青灰色のみで、灰色成分を明確に残す。
 
-肌は明るく白寄りの色白で、わずかな自然な血色のみ。
+眉は細く、銀灰〜冷たい灰色。ほぼ直線で、ごく緩い自然なアーチ。
+鼻は非常に小さく繊細で、最小限の2Dアニメ陰影で存在を読ませる。
+口は非常に小さく横幅も短い閉じた口。口角はごくわずかに柔らかく上がる程度の、穏やかな微笑み。
 
-胸郭は細くコンパクト。肩はやや狭い。
-胸部だけを体格比でやや豊かにし、BODYの横幅・胸郭・腰・骨盤・ヒップ・太腿を広げない。小柄・華奢な全身シルエットを最優先し、胸部は自然な前方への厚みと穏やかな丸みを持つ。
-腰は細く自然。骨盤とヒップは自然な女性体型で誇張しない。脚と腕は細身だが骨ばらず、7.25頭身の範囲で自然な長さと太さを保つ。
+耳はやや小さめで、顔の縦寸法に対して約28〜30%。頭部側面に近く、張り出しは控えめ。長軸は垂直から後方へ約5〜10度だけ自然に傾く。髪に一部隠れてもよい。耳を見せるために大きくしたり、外側へ張り出させたり、カメラ側へ回転させない。
 
-HAIR LENGTH — PRIMARY VISUAL TARGET
-主要毛量の密な毛束は、自然なウエストライン付近〜わずかに下で視覚的に終わる。
-ウエストラインより下では毛量を明確かつ急速に減らす。
-上臀部手前まで届いてよいのは、ごく少数の細く独立した最長毛先だけ。
-臀部中央・臀部下部・太ももに密な主要毛量を置かない。
-全体の見え方は、背中側の主毛量がウエスト付近まで連続し、そこから急速にテーパーし、腰より下は少数の細い毛先だけになる構造。
+肌は明るく白寄りの色白。頬や関節にごく薄い自然な血色を残し、白背景でも白飛びしない。表面は滑らかでマット。
 
-この正確な長さ・毛量構造を持つYURA固有の髪型名称が Normal Super-Long。
-“Super-Long”という名称から一般的なヒップ丈・臀部丈・太もも丈の髪を推測しない。
-髪色は銀白色のみ。cool-neutral / white-leaning silver-white。
-総毛量は標準よりやや多めで、一本一本は細く柔らかい。全体は縦長Iライン寄りで横へ大きく広がらず、主毛量は背中側に保持する。毛先は軽く繊細にテーパーする。
-薄い長めの前髪、柔らかく分かれた前髪、頬〜顎周辺に沿う長いサイドバング。
+髪は銀白色のNormal Super-Long。白寄りのcool-neutral silver-whiteで、わずかな冷たい灰色・銀色ニュアンス。一本一本は細く柔らかく、総毛量は標準よりやや多め。重力に沿って縦へ落ち、全体は縦長Iライン寄り。横へ大きく扇状に広がらない。
 
-HAIR AND BODY COMPLETELY UNADORNED.
-No hair ribbon. No bow. No hair clip. No hairpin. No headband. No jewelry. No necklace. No bracelet. No earrings. No decorative accessory of any kind.
+頭頂部は自然な丸みで過剰に膨らませない。前髪は薄めで長く、柔らかく分かれ、額を完全には隠さない。頬〜顎・首周辺へ沿う長いサイドバングを持つ。主毛量は肩・背中側へ保持する。
+
+髪の密な主要毛量は、背中からウエストを通って上腰・ヒップボーン付近まで自然に連続し、その位置から明確にテーパーする。上腰より下へ続くのは、ごく少数の細く柔らかな最長毛先だけ。最長毛先は上腿のごく上部付近まで届いてよいが、そこに密な第二層を作らない。中腿以下へ密な長髪カーテンを伸ばさない。外側には少数の柔らかな長いカーブ状の毛束があってよい。
+
+髪飾りなし。リボンなし。ヘアピンなし。ヘッドバンドなし。アクセサリーなし。ジュエリーなし。
+
+検証服は淡いオフホワイト〜ライトニュートラル。無地・不透明・マット〜低光沢。
+上は、身体に自然に沿うシンプルなタンク型ノースリーブトップ。肩部分はスパゲッティストラップより明確に幅のある中幅の一体型肩布。ネックラインは丸みのあるシンプルなスクープネックで深すぎない。裾は上腰〜ショートパンツのウエスト付近。レース、フリル、リボン、ロゴ、装飾なし。ランジェリー風にしない。
+下は、淡色のシンプルなフィットしたショートパンツ。上腿丈。ウエストはシンプルで清潔な帯状。紐、コード、結び目、リボン、レース、フリル、ロゴ、装飾なし。裸足。
 
 Matte Natural Anime。
-高品質2Dアニメイラスト。2D anime facial grammar。細く繊細な2Dアニメ線。soft cel / grouped illustration shading。低〜中コントラスト。マットで低光沢。
+高品質2Dアニメイラスト。細く繊細な2Dアニメ線。soft cel / grouped illustration shading。柔らかな拡散陰影。低〜中コントラスト。明るいhigh-key表現。肌・髪・衣服の光沢は控えめ。
 NOT photoreal. NOT semi-photoreal. NOT live-action. NOT CGI / 3D render. NOT PBR / game-engine rendering. NOT photographic skin. NOT photographic hair.
 
-VALIDATION CLOTHING
-淡色・無地・不透明・マットなシンプルなノースリーブ検証トップ。
-両肩は、通常のノースリーブトップとして明確に読める幅広の連続した布で覆う。
-細いストラップではない。キャミソール構造ではない。スパゲッティストラップではない。リボンストラップではない。ランジェリー風ではない。
-淡色・無地・不透明・マットなシンプルショートパンツ。上腿丈。ウエストはシンプルで清潔な帯状。
-紐・コード・リボン・結び目・レース・フリル・ロゴ・装飾なし。
-裸足。
-
-NEUTRAL UPRIGHT REFERENCE POSE
-胴体は垂直でねじらない。左右の肩は水平。
-両上腕は胴体の横で自然に真下へ下ろす。両前腕も自然に下向き。
-両手は左右の太腿外側付近に見える位置に置く。手を背中へ回さない。
-腰を片側へ逃がさない。コントラポストにしない。脚を交差しない。
-両足で均等に立ち、脚はほぼ揃え、足は自然に平行。
-頭は垂直で傾けない。
-
-白〜暖白背景。正面向き。頭頂から足先まで完全表示。中央配置。近似正投影、遠近歪み最小。
+正面向き。頭頂から足先まで完全表示。中央配置。白〜暖白背景。近似正投影、遠近歪み最小。
+頭は垂直で傾けない。肩はほぼ水平。胴体は正面でねじらない。両腕は左右とも自然に下ろし、両手は太腿外側付近に見える。腰を片側へ逃がさない。強いコントラポストなし。脚はほぼ揃え、足は近い位置で自然に前を向く。
 
 Exactly one YURA. One figure only. One canvas only. No character sheet. No multi-pose. No panels. No triptych. No side-by-side variants. No props. No labels. No text.
