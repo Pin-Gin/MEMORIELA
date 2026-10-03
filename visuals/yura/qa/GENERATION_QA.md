@@ -10,28 +10,19 @@ PASS only if:
 - YURA Generation Gate passed
 - Authority Manifest exact paths were resolved
 - actual required visual references were available
-- required Face Root / BODY View references passed
+- required BODY View references passed
 - no unauthorized reference
 - active Execution Payload was validated
 
-### MASTER_CREATION / TEXT_ONLY_FACE_ROOT_MASTER
-Use mandatory mode QA:
-`FACE_ROOT_QA.md`
-
-### MASTER_CREATION / FACE_ANCHORED_ROOT_MASTER
-Use mandatory mode QA:
-`FACE_ANCHORED_ROOT_QA.md`
-
 ### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
 PASS only if:
-- workflow dependency for final reference-free verification passed
 - submode = `TEXT_ONLY_ROOT_MASTER`
 - exact `visuals/yura/execution/text-only-root/PAYLOAD.txt` was used
 - `visuals/yura/execution/text-only-root/RUN.md` was controller-only
 - `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matched current protected source blobs
 - generation-time visual references = NONE
 - post-generation comparison visual reference = NONE
-- Face Root / Face-Anchored Root / repository Root Master PNG did not enter generation
+- repository Root Master PNG did not enter generation
 - no Gate / QA / controller / retry / batch text entered generation semantics
 - no per-run prompt mutation
 - one person / one image / one canvas
