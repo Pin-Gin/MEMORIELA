@@ -12,6 +12,7 @@ The image-generation model receives only:
 - MASTER_CREATION_SUBMODE = TEXT_ONLY_FACE_ROOT_MASTER
 - REFERENCE_POLICY = NONE
 - generation-time visual references = NONE
+- EDIT_SOURCE_CARRIER = NONE
 - AI_INFERENCE_REQUIRED = NONE
 - USER_AUTHORIZED_VARIATION = NONE
 
@@ -32,6 +33,7 @@ For context-derived execution:
 - head vertical
 - white / warm-white background
 - no image reference
+- no edit source image
 
 Invalid:
 - full-body output
@@ -44,13 +46,24 @@ Invalid:
 - no per-run paraphrase
 - no targeted mutation
 - no ad-hoc ear correction wording
-- no prior failed candidate as reference
+- no prior failed candidate as Reference
+
+## Post-generation classification
+Run `../../qa/FACE_ROOT_QA.md`.
+
+Allowed classifications:
+- `PASS_FOR_AUTHOR_REVIEW`
+- `REFINEMENT_ELIGIBLE`
+- `REJECTED_CANDIDATE`
+
+`REFINEMENT_ELIGIBLE` does not accept or promote the candidate.
+It only permits the separate protected `FACE_ROOT_GEOMETRY_REFINEMENT` route, where the exact eligible image may be used as a non-reference `EDIT_SOURCE_CARRIER`.
 
 ## Adoption boundary
 A generated Face Root is candidate only.
 
 Adoption requires:
-1. `FACE_ROOT_QA.md` PASS
+1. applicable Face Root QA PASS
 2. explicit author approval
 3. actual PNG placed at `visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
 4. `YURA_FACE_ROOT.md` created with hash and role declaration
@@ -58,4 +71,6 @@ Adoption requires:
 
 ## Ear suitability
 Do not modify generation semantics to force ear visibility.
-If no ear is sufficiently observable for geometry verification, classify the image as valid-or-invalid by normal identity QA, but do not adopt it as the Face Root identity carrier.
+If no ear is sufficiently observable for geometry verification, do not adopt and do not route to refinement merely to expose an ear.
+
+If EAR geometry alone fails while all other required Face Root domains pass and at least one ear is observable, classification may be `REFINEMENT_ELIGIBLE` according to `FACE_ROOT_QA.md`.
