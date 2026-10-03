@@ -64,21 +64,35 @@ A naturally visible, partially hidden, or fully hidden ear is valid.
 Resolution:
 `master-creation/TEXT_ONLY_ROOT_MASTER.md`
 
-Actual image-generation input:
-`execution/TEXT_ONLY_ROOT_EXECUTION.md`
+Actual image-generation semantic input:
+`../execution/text-only-root/PAYLOAD.txt`
 
-Single-run orchestration:
-`execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
+Run controller:
+`../execution/text-only-root/RUN.md`
+
+Source lock:
+`../execution/text-only-root/SOURCE_LOCK.md`
 
 Generation-time image references = NONE.
 
+Only `PAYLOAD.txt` enters the image-generation semantic handoff.
+
 Do not append:
+- `RUN.md`
+- `SOURCE_LOCK.md`
 - Gate text
 - QA text
 - batch count
 - comparison language
-- current Master PNG
+- current Master PNG or its description
+- retry procedure
 - per-run corrective wording
+- prior-generation discussion
+
+### Text-only source lock
+Before generation, `SOURCE_LOCK.md` must match the current protected source blobs.
+
+A stale source lock blocks generation until `PAYLOAD.txt` is deliberately recompiled and the lock is updated.
 
 ### Text-only failure handling
 `TARGETED_RETRY = FORBIDDEN`
@@ -93,11 +107,11 @@ Do not say:
 Those guarantees require a fixed visual carrier and are not available in text-only full regeneration.
 
 Instead:
-- keep the fixed Execution Block unchanged
+- keep `PAYLOAD.txt` unchanged inside the active batch
 - generate a new independent full candidate
 - re-run all protected-domain QA
 
-If repeated isolated runs show the same failure, revise the Execution Block / source Authority and start a new batch.
+If repeated isolated runs show the same failure, revise `PAYLOAD.txt` / source Authority outside the active batch, update `SOURCE_LOCK.md`, and start a new batch.
 
 ## PRODUCTION targeted retry
 Only a mode with verified visual carriers / references may use true targeted retry where the execution route can preserve unaffected protected domains.
