@@ -1,16 +1,19 @@
 # YURA FACE REFERENCE RULES
 
-Status: **PREPARED / IMAGE PENDING**
+Status: **AUTHOR-APPROVED / ACTIVE**
 
-予定画像:
+Active image:
 `visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
 
-この画像は、作者がローカル同期後に手動追加する。
-画像が存在するまでは、FACE IMAGE AUTHORITY = NONE とする。
+Git blob SHA:
+`4c96c4ec42f996807248be1aff60ec8a090fd570`
+
+この画像は作者承認済みのYURA Face Identity Referenceである。
+**FACE IMAGE AUTHORITY = ACTIVE**
 
 ## Authority scope
 
-YURA_FACE_REFERENCE.png が存在し、作者が承認した後、この画像は以下のみのAuthorityとする。
+`YURA_FACE_REFERENCE.png` は以下のみのAuthorityとする。
 
 - 顔Identity
 - 顔の縦横比
