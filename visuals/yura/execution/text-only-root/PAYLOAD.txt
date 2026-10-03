@@ -1,7 +1,21 @@
 YURA / TEXT-ONLY ROOT MASTER / SINGLE IMAGE.
 
-High-quality 2D anime illustration only.
+HIGH-QUALITY 2D ANIME ILLUSTRATION ONLY.
 Exactly one female character, one canvas, one composition, front-facing full body.
+
+CRITICAL VISUAL LOCKS
+- exactly 7.25 heads tall; petite / slender / delicate overall frame
+- blue-gray irises only
+- silver-white hair only
+- dense principal hair mass ends at the natural waistline to only slightly below it
+- below the waistline, hair density drops sharply; only a few thin isolated longest tips may approach the upper-buttock boundary
+- no dense principal hair mass over the buttocks or thighs
+- plain broad-shouldered sleeveless validation top; no thin straps; no camisole construction
+- plain simple validation shorts with a clean waistband
+- neutral upright anatomical standing pose; both arms hang down naturally; both hands remain visible beside the outer thighs
+- completely unadorned; no hair ornaments, ribbons, bows, clips, jewelry, or accessories
+- white / warm-white background
+- Matte Natural Anime; unmistakably 2D anime
 
 久遠ゆら / YURA。
 153cmの小柄・華奢な女性キャラクター。全身は正確に7.25頭身。頭部・顔は全身比率に対して小さめ。
@@ -21,17 +35,42 @@ Exactly one female character, one canvas, one composition, front-facing full bod
 胸部だけを体格比でやや豊かにし、BODYの横幅・胸郭・腰・骨盤・ヒップ・太腿を広げない。小柄・華奢な全身シルエットを最優先し、胸部は自然な前方への厚みと穏やかな丸みを持つ。
 腰は細く自然。骨盤とヒップは自然な女性体型で誇張しない。脚と腕は細身だが骨ばらず、7.25頭身の範囲で自然な長さと太さを保つ。
 
-髪は銀白色のNormal Super-Long。cool-neutral / white-leaning silver-white。
-主な毛先・主要毛量の終端は自然なウエストライン付近〜わずかに下。腰より下では毛量を明確に減らし、上臀部手前まで届くのはごく少数の細い最長毛先だけ。臀部中央以下や太ももへ主要毛量を延長しない。
+HAIR LENGTH — PRIMARY VISUAL TARGET
+主要毛量の密な毛束は、自然なウエストライン付近〜わずかに下で視覚的に終わる。
+ウエストラインより下では毛量を明確かつ急速に減らす。
+上臀部手前まで届いてよいのは、ごく少数の細く独立した最長毛先だけ。
+臀部中央・臀部下部・太ももに密な主要毛量を置かない。
+全体の見え方は、背中側の主毛量がウエスト付近まで連続し、そこから急速にテーパーし、腰より下は少数の細い毛先だけになる構造。
+
+この正確な長さ・毛量構造を持つYURA固有の髪型名称が Normal Super-Long。
+“Super-Long”という名称から一般的なヒップ丈・臀部丈・太もも丈の髪を推測しない。
+髪色は銀白色のみ。cool-neutral / white-leaning silver-white。
 総毛量は標準よりやや多めで、一本一本は細く柔らかい。全体は縦長Iライン寄りで横へ大きく広がらず、主毛量は背中側に保持する。毛先は軽く繊細にテーパーする。
 薄い長めの前髪、柔らかく分かれた前髪、頬〜顎周辺に沿う長いサイドバング。
+
+HAIR AND BODY COMPLETELY UNADORNED.
+No hair ribbon. No bow. No hair clip. No hairpin. No headband. No jewelry. No necklace. No bracelet. No earrings. No decorative accessory of any kind.
 
 Matte Natural Anime。
 高品質2Dアニメイラスト。2D anime facial grammar。細く繊細な2Dアニメ線。soft cel / grouped illustration shading。低〜中コントラスト。マットで低光沢。
 NOT photoreal. NOT semi-photoreal. NOT live-action. NOT CGI / 3D render. NOT PBR / game-engine rendering. NOT photographic skin. NOT photographic hair.
 
-検証服は、淡色・無地・不透明・マットな幅広肩のシンプルなノースリーブトップ。肩は細いストラップではなく幅のある布で覆う。淡色・無地・不透明・マットなシンプルショートパンツ。ウエストはシンプルで、紐・リボン・コード・レース・フリル・装飾なし。裸足。
+VALIDATION CLOTHING
+淡色・無地・不透明・マットなシンプルなノースリーブ検証トップ。
+両肩は、通常のノースリーブトップとして明確に読める幅広の連続した布で覆う。
+細いストラップではない。キャミソール構造ではない。スパゲッティストラップではない。リボンストラップではない。ランジェリー風ではない。
+淡色・無地・不透明・マットなシンプルショートパンツ。上腿丈。ウエストはシンプルで清潔な帯状。
+紐・コード・リボン・結び目・レース・フリル・ロゴ・装飾なし。
+裸足。
 
-白〜暖白背景。正面向き。頭頂から足先まで完全表示。中央配置。近似正投影、遠近歪み最小。直立。頭を傾けない。腕は自然に下ろし、胴体からわずかに離す。脚はほぼ揃え、足は自然に平行。
+NEUTRAL UPRIGHT REFERENCE POSE
+胴体は垂直でねじらない。左右の肩は水平。
+両上腕は胴体の横で自然に真下へ下ろす。両前腕も自然に下向き。
+両手は左右の太腿外側付近に見える位置に置く。手を背中へ回さない。
+腰を片側へ逃がさない。コントラポストにしない。脚を交差しない。
+両足で均等に立ち、脚はほぼ揃え、足は自然に平行。
+頭は垂直で傾けない。
 
-Exactly one YURA. One figure only. One canvas only. No character sheet. No multi-pose. No panels. No triptych. No side-by-side variants. No labels. No text.
+白〜暖白背景。正面向き。頭頂から足先まで完全表示。中央配置。近似正投影、遠近歪み最小。
+
+Exactly one YURA. One figure only. One canvas only. No character sheet. No multi-pose. No panels. No triptych. No side-by-side variants. No props. No labels. No text.
