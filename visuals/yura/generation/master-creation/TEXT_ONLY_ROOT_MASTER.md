@@ -6,14 +6,10 @@ Master Creation Submode:
 `TEXT_ONLY_ROOT_MASTER`
 
 Purpose:
-Face Root → Face-Anchored RootでIdentityと全身構造・Renderingを安定化した後、画像参照を完全に外し、現行YURA Text Authorityからコンパイルした固定Payloadだけで最終TEXT_ONLY再現安定性を検証する。
+現行YURA Text Authorityからコンパイルした固定Payloadだけで最終TEXT_ONLY再現安定性を検証する。
 
 ## Workflow dependency
-This is the final verification stage, not the first identity-stabilization stage.
-
 Before starting a new final TEXT_ONLY stability batch:
-- Face Root must have been author-approved and registered
-- Face-Anchored Root must have been generated and author-approved as the stabilized target
 - current text Authorities must represent the approved target
 - `SOURCE_LOCK.md` must match all current protected source blobs
 
@@ -26,8 +22,6 @@ If those workflow dependencies are incomplete:
 No image may be supplied to the image-generation execution.
 
 Specifically forbidden from the generation call:
-- Face Root PNG
-- Face-Anchored Root image
 - repository `YURA_VISUAL_MASTER.png`
 - previous generated candidates
 
