@@ -87,11 +87,56 @@ Execution:
 `../execution/face-root/PAYLOAD.txt`
 
 Generation-time image references = NONE.
+Edit source carrier = NONE.
 
 Purpose:
-Create the Face Root identity carrier before full-body Root generation.
+Create the Face Root identity candidate before full-body Root generation.
 
-The candidate must pass `../qa/FACE_ROOT_QA.md` and receive explicit author approval before adoption.
+The candidate must be classified by `../qa/FACE_ROOT_QA.md`.
+
+Possible outcomes:
+- `PASS_FOR_AUTHOR_REVIEW`
+- `REFINEMENT_ELIGIBLE`
+- `REJECTED_CANDIDATE`
+
+Only `PASS_FOR_AUTHOR_REVIEW` may proceed directly to author approval.
+`REFINEMENT_ELIGIBLE` remains rejected for adoption and may only enter the protected refinement route below.
+
+## FACE_ROOT_GEOMETRY_REFINEMENT
+Resolution:
+`master-creation/FACE_ROOT_GEOMETRY_REFINEMENT.md`
+
+Execution:
+`../execution/face-root-refinement/PAYLOAD.txt`
+
+Run controller:
+`../execution/face-root-refinement/RUN.md`
+
+Source lock:
+`../execution/face-root-refinement/SOURCE_LOCK.md`
+
+Required non-reference image input:
+exactly one `REFINEMENT_ELIGIBLE` Face Root candidate as `EDIT_SOURCE_CARRIER`.
+
+All Reference roles remain `NONE`.
+
+The edit-source image:
+- is not Authority
+- is not an Identity / Production Reference
+- is not Canon evidence
+- supplies only the existing pixel / layout starting state for correction of that same candidate
+
+Use this route only when EAR geometry is the sole protected-domain failure and at least one ear is observable.
+Do not use it to rescue rendering, FACE, EYE, HAIR, SKIN, or composition failures.
+Do not use it merely to expose a naturally hidden ear.
+
+The edit request may ask to preserve non-EAR content, but do not claim preservation is guaranteed.
+Every refinement output is a new candidate and must pass `../qa/FACE_ROOT_REFINEMENT_QA.md` across all protected Face Root domains.
+
+A failed refinement output must not become the next edit source.
+If another refinement attempt is authorized, restart from the same originally eligible `EDIT_SOURCE_CARRIER` with the unchanged active refinement payload.
+
+Only a refinement output that passes QA and receives explicit author approval may be registered as Face Root Authority.
 
 ## FACE_ANCHORED_ROOT_MASTER
 Resolution:
@@ -127,12 +172,14 @@ Source lock:
 `../execution/text-only-root/SOURCE_LOCK.md`
 
 Generation-time image references = NONE.
+Edit source carrier = NONE.
 
 Do not inject:
 - Face Root
 - face-anchored Root
 - repository Root Master PNG
 - previous generation
+- refinement edit-source carrier
 - controller / QA / Gate text
 
 Only `PAYLOAD.txt` enters the generation-facing semantic handoff.
@@ -165,4 +212,5 @@ School Uniform requires its dependency Gate.
 `GARMENT FOLLOWS BODY.`
 `BODY NEVER FOLLOWS GARMENT MASTER.`
 
-Rejected / intermediate generation is never auto-promoted to Identity Authority.
+Rejected / intermediate generation is never auto-promoted to Identity Authority or Production Reference.
+A Gate-authorized `EDIT_SOURCE_CARRIER` remains a non-reference edit input and does not alter that rule.
