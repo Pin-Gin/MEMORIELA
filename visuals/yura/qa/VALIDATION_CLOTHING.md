@@ -5,7 +5,7 @@ Status: **FIXED COMPARISON CONDITION / HARD-LOCKED**
 Purpose:
 BODY / HAIR / pose / Root-Master-candidate validation with minimal clothing interference.
 
-This is not fashion, sleepwear, underwear, lingerie, or casual styling.
+This is not fashion, sleepwear, underwear, lingerie, or decorative styling.
 Do not redesign it for attractiveness.
 
 ## HARD LOCK — upper garment
@@ -13,33 +13,36 @@ Required:
 - pale / off-white / light-neutral
 - plain
 - opaque
-- matte
-- simple sleeveless top
-- **WIDE / BROAD SHOULDER FABRIC**
-- shoulder sections must visually read as a sleeveless top, not as straps
-- natural simple fit
-- hem around waist / hip-bone region
+- matte to low-gloss
+- simple fitted tank-style sleeveless validation top
+- **MEDIUM-WIDTH INTEGRATED SHOULDER PANELS**
+- shoulder sections are clearly wider than spaghetti straps / thin cords
+- rounded scoop neckline
+- moderate neckline depth
+- natural fitted shape that follows BODY without padding or reshaping
+- hem around the upper-hip / waistband region
+- light natural fabric wrinkles allowed
 - no ornament
 
 Absolute FAIL:
 - spaghetti straps
-- camisole straps
+- very thin camisole cords
 - lingerie-like straps
 - halter styling
 - ribbon straps
 - thin shoulder cords
 - sleepwear / underwear appearance
-- deep neckline used to emphasize bust
-- lace / frill / bow / logo / decoration
+- neckline or garment construction used to exaggerate BODY
+- lace / frill / bow / logo / decorative trim
 
-The upper garment must look like a plain sleeveless validation top with broad shoulder sections.
+The upper garment must read as a plain fitted tank-style validation top, not lingerie.
 
 ## HARD LOCK — lower garment
 Required:
 - pale / off-white / light-neutral
-- plain simple shorts
+- plain simple fitted shorts
 - opaque
-- matte
+- matte to low-gloss
 - upper-thigh length
 - simple clean waistband
 - no ornament
@@ -68,24 +71,24 @@ Absolute FAIL:
 - never reshape BODY to fit clothing
 - clothing must not add body-shaping padding / structure
 
-## Mandatory generation wording
+## Mandatory generation meaning
 Use this meaning without softening:
 
-`PLAIN WIDE-SHOULDER SLEEVELESS VALIDATION TOP; NO THIN STRAPS; NO CAMISOLE; NO LINGERIE; PLAIN SIMPLE SHORTS WITH A CLEAN WAISTBAND; NO DRAWSTRING; NO CORD; NO BOW; OPAQUE; MATTE; PALE; BAREFOOT; WHITE BACKGROUND.`
+`PLAIN PALE FITTED TANK-STYLE SLEEVELESS VALIDATION TOP WITH MEDIUM-WIDTH INTEGRATED SHOULDER PANELS AND A SIMPLE ROUNDED SCOOP NECKLINE; NO SPAGHETTI STRAPS; NO THIN CORDS; NO LINGERIE; PLAIN SIMPLE FITTED SHORTS WITH A CLEAN WAISTBAND; NO DRAWSTRING; NO CORD; NO BOW; OPAQUE; MATTE TO LOW-GLOSS; BAREFOOT; WHITE BACKGROUND.`
 
-Do not replace this with a shorter generic phrase such as "simple white camisole and shorts".
+Do not replace this with a generic fashion, camisole, sleepwear, underwear, or lingerie description.
 
 ## FAIL
-Comparison-condition FAIL if any are visible:
-- thin straps
-- camisole construction
+Comparison-condition FAIL if materially present:
+- spaghetti / cord-like shoulder straps
 - lingerie / sleepwear reading
+- halter / ribbon-strap construction
 - drawstring
 - waistband bow
 - visible cord
 - lace / frills
 - sheer fabric
-- deep neckline used to alter BODY readability
-- fashion styling that materially changes BODY readability
+- decorative styling
+- garment structure that materially changes BODY readability
 
 A clothing mismatch is not automatically BODY failure, but the validation candidate cannot pass comparison-condition QA.
