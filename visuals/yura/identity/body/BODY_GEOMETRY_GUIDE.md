@@ -1,12 +1,29 @@
 # YURA BODY GEOMETRY GUIDE
 
-Status: **PREPARED / GUIDE IMAGE PENDING**
+Status: **AUTHOR-APPROVED / IMAGE COMMIT PENDING**
 
 予定画像:
 `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
 
 この文書は、YURAの全身比率を7.2頭身で固定するためのBODY Geometry Authority定義である。
-ガイド画像が存在するまでは、BODY GEOMETRY IMAGE AUTHORITY = NONE とする。
+作者承認済みのガイド候補は存在するが、ガイド画像がGitHub `main` に存在するまでは、**BODY GEOMETRY IMAGE AUTHORITY = NONE** とする。
+
+## Approved guide candidate
+
+作者承認済み候補画像:
+- dimensions: **1200 × 1600 px**
+- format: **PNG / RGBA**
+- SHA-256: **da18dbd7a8cdc9c3659f83ca8970349c18923bd4b4e29bcedf1f1b8cb1e7e379**
+
+実測基準:
+- crown / 0.0: y = 160 px
+- chin / 1.0: y = 340 px
+- 1 head = 180 px
+- soles / 7.2: y = 1456 px
+- (1456 - 160) / 180 = **7.2 heads**
+
+この候補画像と異なるファイルを、同名だからという理由だけでAuthorityへ昇格させてはならない。
+GitHub `main` へ追加後、画像同一性を確認してからACTIVEへ切り替える。
 
 ## Target geometry
 
