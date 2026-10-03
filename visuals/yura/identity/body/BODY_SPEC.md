@@ -12,7 +12,8 @@ Required simultaneously:
 - slender
 - delicate
 - not skeletal
-- not curvy / voluptuous as the dominant silhouette
+- not broad / athletic
+- not glamour / voluptuous as the dominant full-body silhouette
 - head remains balanced and slightly small within the 7.25-head system
 - legs remain standard to slightly long inside that system
 
@@ -24,8 +25,8 @@ The front-view BODY must preserve this relationship:
 - ribcage = slender / compact
 - waist = slim and clearly defined, but natural
 - pelvis / hips = natural female width appropriate to the protected petite/slender design
-- hips = approximately similar to or only slightly wider than shoulders
-- thighs / calves = slender with natural softness
+- hips = approximately similar to or slightly wider than shoulders
+- thighs / calves = slender with visible natural softness and plausible anatomical thickness
 - limbs = slender, not inflated and not stick-thin
 
 Do not let one area become disproportionately wide to make another area visible or attractive.
@@ -39,22 +40,22 @@ Do not let one area become disproportionately wide to make another area visible 
 FAIL:
 - broad / athletic shoulders
 - square shoulder line
-- shoulder widening to support bust volume
+- shoulder widening to support chest volume
 
-## Ribcage / bust
+## Ribcage / chest
 ### Ribcage
 - slender
 - compact
 - upper torso width remains restrained
-- do not widen ribcage to support or display bust volume
+- do not widen ribcage to support or display chest volume
 
-### Bust
-- **BODYの横幅・腰・骨盤・太腿を増やさず、胸だけを体格比でやや豊かにする**
-- soft hemispherical direction
+### Chest
+- **the chest is clearly fuller relative to the protected petite/slender frame while the ribcage and torso width remain compact**
+- natural forward volume
+- soft rounded direction
 - restrained upper fullness
-- naturally fuller lower contour
-- natural forward projection
-- smooth transition into ribcage
+- fuller lower contour
+- smooth transition into the ribcage
 
 Do not reinterpret as:
 - independently oversized
@@ -63,11 +64,12 @@ Do not reinterpret as:
 - implant-like
 - conical
 - flattened into the ribcage
+- torso-wide volume created by widening the ribcage
 
-The torso must still read **petite/slender first**, with moderate bust fullness as a secondary trait.
+The torso must still read **petite/slender first**, with clearly fuller relative chest volume as a protected secondary trait.
 
 ### Front / 3/4 / side continuity — mandatory
-The same physical bust volume remains across viewing angles.
+The same physical chest volume remains across viewing angles.
 
 For twist / 3/4 / side:
 - frontal visible area may decrease by projection
@@ -103,15 +105,15 @@ Do not:
 - make hips the dominant visual feature
 
 ## Legs
-- thighs: slender with natural softness
-- not thick / plush
+- thighs: slender with visible natural softness and moderate plausible thickness
+- not heavy / plush
 - not stick-thin
 - knees: small / modest and readable
 - calves: slender with gentle natural curve
 - ankles: slim but plausible
 - preserve thigh / calf proportions
 
-If the lower body reads notably heavier or curvier than the protected petite/slender frame:
+If the lower body reads notably heavier, wider, or more curvy than the protected completion silhouette:
 `BODY FAIL`
 
 ## Arms / hands
@@ -134,7 +136,7 @@ Preserve:
 - 7.25-head ratio
 - shoulder width
 - ribcage width / depth
-- bust volume
+- chest volume
 - waist
 - pelvis / hip scale
 - limb lengths
@@ -162,13 +164,15 @@ BODY geometry is invariant.
 
 A body-view Master is a projection / silhouette anchor, not a new BODY design.
 
-- FRONT uses `../master/YURA_VISUAL_MASTER.png`
+- FRONT uses `../master/YURA_VISUAL_MASTER.png` only in modes whose active Gate explicitly permits that visual reference
 - non-front views route via `../../gate/VIEW_ROUTER.md`
-- selected BODY-view reference may stabilize projected shoulder width, ribcage depth, bust projection, waist depth, pelvis / hip silhouette and baseline limb thickness
+- selected BODY-view reference may stabilize projected shoulder width, ribcage depth, chest projection, waist depth, pelvis / hip silhouette and baseline limb thickness
 - BODY-view reference must never redefine protected dimensions
 - missing required view anchor = PRODUCTION STOP
 - do not substitute neighboring angle
 - do not infer missing view from memory
+
+For `TEXT_ONLY_ROOT_MASTER`, generation-time visual references remain NONE and the repository Master PNG is not used to define this BODY target.
 
 Hidden / foreshortened anatomy must not be enlarged, rotated, separated or exposed merely to make it easier to read.
 
@@ -179,14 +183,14 @@ BODY FAIL if materially present:
 - enlarged head
 - broad / athletic shoulders
 - enlarged ribcage
-- dominant curvy / voluptuous silhouette
+- dominant glamour / voluptuous full-body silhouette
 - exaggerated hourglass
-- independently oversized bust
+- chest volume created by widening the torso
 - chest reduction in side / 3/4
 - extreme waist pinch
 - over-wide hips
-- thickened thighs / calves
+- heavy / inflated thighs or calves
 - skeletal limbs
-- inflated limbs
+- stick-thin lower body
 - pose-dependent anatomy redesign
 - anatomy widened for readability
