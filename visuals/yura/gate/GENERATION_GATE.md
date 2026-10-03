@@ -18,7 +18,7 @@ Do not generate before required pre-read completes.
 ## Mandatory execution boundary
 Authority resolution and image-generation input are separate stages.
 
-Raw Gate / QA documents must not be concatenated into the image-generation payload.
+Raw Gate / QA / controller documents must not be concatenated into the image-generation payload.
 
 The active mode must resolve exactly one permitted Execution Payload before generation.
 
@@ -71,10 +71,13 @@ Authority resolution sources:
 `../generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
 
 Mandatory execution payload:
-`../generation/execution/TEXT_ONLY_ROOT_EXECUTION.md`
+`../execution/text-only-root/PAYLOAD.txt`
 
-Mandatory single-run controller:
-`../generation/execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
+Mandatory run controller:
+`../execution/text-only-root/RUN.md`
+
+Mandatory source lock:
+`../execution/text-only-root/SOURCE_LOCK.md`
 
 Generation-time visual references:
 `NONE`
@@ -82,16 +85,23 @@ Generation-time visual references:
 Execution transport:
 - `DIRECT_MODEL_INPUT` is allowed when available
 - `CONTEXT_DERIVED_TEXT_EXECUTION` is allowed for the current ChatGPT-style context-derived image interface
-- the fixed `TEXT_ONLY_ROOT_EXECUTION.md` generation semantics must be materialized immediately before generation
+- the actual semantics of `PAYLOAD.txt` must be materialized immediately before generation
 - no generation-time image reference may be attached
 - Git read / connector result without the payload semantics handoff = `EXTERNAL_RETRIEVAL_ONLY` and FAIL
 
-The image-generation call must receive only the single-run execution semantics, not:
-- batch size
+Image-generation semantic input for this submode is **only**:
+`../execution/text-only-root/PAYLOAD.txt`
+
+Do not append or mix:
+- `RUN.md`
+- `SOURCE_LOCK.md`
+- Gate text
 - QA instructions
-- Gate instructions
+- batch size
 - candidate-comparison language
-- current Root Master PNG
+- retry language
+- current Root Master PNG or its description
+- prior-generation discussion
 
 Current Root Master may be used only after generation as:
 `POST_GENERATION_COMPARISON_REFERENCE`
@@ -115,6 +125,10 @@ When requested in an applicable production derivative, also require School Unifo
 ## Final permission
 Complete `../../gate-core/LOAD_RECEIPT_SCHEMA.md`.
 
+For `TEXT_ONLY_ROOT_MASTER`, `SOURCE_LOCK.md` must match the current protected source blobs.
+If the source lock is stale:
+`GENERATION_ALLOWED = NO`
+
 Only `GENERATION_ALLOWED = YES` permits execution.
 
 ## POST-GENERATION ACCEPTANCE — mandatory
@@ -136,7 +150,7 @@ Post-generation QA must not be reinterpreted as a requirement for hidden pre-pre
 For `MASTER_CREATION / TEXT_ONLY_ROOT_MASTER`:
 - `TARGETED_RETRY = FORBIDDEN`
 - any protected-domain failure rejects the entire candidate
-- regenerate a new independent whole candidate with the unchanged fixed Execution Block
+- regenerate a new independent whole candidate with the unchanged `PAYLOAD.txt`
 - rerun all YURA QA Gates
 - do not issue scope-only correction prompts inside the active batch
 
