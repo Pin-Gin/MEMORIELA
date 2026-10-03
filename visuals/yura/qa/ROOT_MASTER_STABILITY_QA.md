@@ -3,7 +3,7 @@
 Status: **PROTECTED / MANDATORY FOR TEXT_ONLY_ROOT_MASTER**
 
 Purpose:
-同一の固定 `PAYLOAD.txt` から生成した独立Single Run間で、YURAの再現安定性を評価する。
+同一の固定 `PAYLOAD.txt` から生成した独立Single Run間で、作者承認済み完成ターゲットのTEXT_ONLY再現安定性を評価する。
 
 ## Preconditions
 A valid run requires:
@@ -13,6 +13,8 @@ A valid run requires:
 - `visuals/yura/execution/text-only-root/RUN.md` followed as controller-only material
 - `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matches current protected source blobs
 - generation-time visual references = NONE
+- post-generation visual comparison reference = NONE
+- repository `YURA_VISUAL_MASTER.png` is not used for this target
 - no Gate / QA / controller / retry / batch text mixed into generation semantics
 - no appended per-run correction
 - same framing/aspect class
@@ -44,7 +46,8 @@ Preferred = 5.
 - small narrow softly rounded chin
 - horizontally elongated eyes with restrained vertical height
 - very small delicate nose
-- very small short closed mouth with neutral to extremely subtle soft expression
+- very small short closed mouth
+- extremely subtle soft smile / calm expression
 - stable eye / nose / mouth placement
 
 ### EYE
@@ -67,6 +70,7 @@ Preferred = 5.
 - restrained projection from the head
 - visible / hidden / partially hidden ears are all acceptable
 - local hair placement around the ear may vary naturally
+- bilateral equal exposure is not required
 - no source hair length / total-mass / identity change for ear visibility
 - no head rotation, ear rotation, outward displacement or enlargement for visibility
 - no forced bilateral ear visibility
@@ -75,18 +79,24 @@ Preferred = 5.
 ### BODY
 - exact 7.25-head system
 - petite / slender frame
+- somewhat narrow shoulders
 - narrow compact ribcage
-- bust moderately fuller relative to frame
-- natural rounded direction
+- clearly fuller chest volume relative to the frame without torso widening
+- slim natural waist
+- natural restrained pelvis / hips
+- thighs / calves slender with visible natural softness and plausible thickness
 - stable waist / pelvis / limbs
 
 ### HAIR
 - silver-white, cool-neutral / white-leaning
-- principal ends waist to slightly below
-- clear mass reduction below waist
-- only sparse finest tips near upper-buttock limit
-- no dense main mass at mid-buttock / thighs
+- principal dense mass continues through the waist into the upper-hip / hip-bone region
+- clear taper through the upper hip
+- only a small number of sparse finest tips may continue toward the very upper-thigh boundary
+- no dense main curtain at mid-thigh or lower
+- no generic full thigh-length hair curtain
 - stable total mass / lateral spread
+- fine / soft strands
+- vertical I-line tendency
 
 ### SKIN
 - bright fair / slightly white-leaning
@@ -99,14 +109,22 @@ Preferred = 5.
 - fine anime line
 - soft cel / grouped shading
 - restrained gloss
+- low-to-medium contrast
+- bright high-key presentation
 - no photoreal / semi-real / CGI / PBR
 
 Rendering Hard Fail candidate does not count.
 
 ### VALIDATION CLOTHING
-- broad-shouldered pale sleeveless top
-- pale simple shorts
+- pale / off-white plain fitted tank-style sleeveless top
+- medium-width integrated shoulder panels, clearly wider than spaghetti straps
+- rounded scoop neckline with moderate depth
+- pale simple fitted shorts
 - clean waistband
+- opaque
+- matte to low-gloss
+- no drawstring / cord / tie / bow / lace / frill / logo / decorative trim
+- no lingerie / sleepwear reading
 - barefoot
 
 ## Cross-run classification
