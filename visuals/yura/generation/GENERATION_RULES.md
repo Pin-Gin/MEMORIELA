@@ -60,7 +60,60 @@ Do not change source hair length / total mass / identity for ear visibility.
 A naturally visible, partially hidden, or fully hidden ear is valid.
 `HIDDEN != MISSING`
 
-## TEXT_ONLY_ROOT_MASTER
+## Rendering compilation lock
+Every YURA execution payload must implement the mandatory rendering block in:
+`../identity/rendering/YURA_RENDERING_SPEC.md`
+
+Do not collapse the rendering meaning into only:
+- high-key
+- soft
+- low contrast
+- matte
+
+Required protected touch includes:
+- visible fine 2D anime linework
+- grouped soft-cel shadow shapes
+- mild diffuse gradients as support only
+- low-to-medium, not ultra-low, contrast
+- white-background separation
+- grouped anime hair masses
+- no washed-out / watercolor / pastel-faded / ethereal-faded drift
+
+## TEXT_ONLY_FACE_ROOT_MASTER
+Resolution:
+`master-creation/TEXT_ONLY_FACE_ROOT_MASTER.md`
+
+Execution:
+`../execution/face-root/PAYLOAD.txt`
+
+Generation-time image references = NONE.
+
+Purpose:
+Create the Face Root identity carrier before full-body Root generation.
+
+The candidate must pass `../qa/FACE_ROOT_QA.md` and receive explicit author approval before adoption.
+
+## FACE_ANCHORED_ROOT_MASTER
+Resolution:
+`master-creation/FACE_ANCHORED_ROOT_MASTER.md`
+
+Execution:
+`../execution/face-anchored-root/PAYLOAD.txt`
+
+Required visual reference:
+exact approved `../identity/master/face-root/YURA_FACE_ROOT.png` as `FACE_DETAIL_REFERENCE`.
+
+No other visual reference is allowed.
+
+FACE_DETAIL_REFERENCE may control FACE / EYE / EAR / face-framing hair only.
+It must not control BODY, full hair length, outfit, pose, scene, or rendering style.
+
+The actual image must reach generation execution; Git existence alone is not enough.
+
+Failed full-body candidates never become the next reference.
+The approved Face Root remains the sole face identity carrier in this submode.
+
+## TEXT_ONLY_ROOT_MASTER — final reference-free verification
 Resolution:
 `master-creation/TEXT_ONLY_ROOT_MASTER.md`
 
@@ -75,19 +128,14 @@ Source lock:
 
 Generation-time image references = NONE.
 
-Only `PAYLOAD.txt` enters the image-generation semantic handoff.
+Do not inject:
+- Face Root
+- face-anchored Root
+- repository Root Master PNG
+- previous generation
+- controller / QA / Gate text
 
-Do not append:
-- `RUN.md`
-- `SOURCE_LOCK.md`
-- Gate text
-- QA text
-- batch count
-- comparison language
-- current Master PNG or its description
-- retry procedure
-- per-run corrective wording
-- prior-generation discussion
+Only `PAYLOAD.txt` enters the generation-facing semantic handoff.
 
 ### Text-only source lock
 Before generation, `SOURCE_LOCK.md` must match the current protected source blobs.
@@ -98,23 +146,11 @@ A stale source lock blocks generation until `PAYLOAD.txt` is deliberately recomp
 `TARGETED_RETRY = FORBIDDEN`
 
 A failed text-only candidate is rejected as a whole.
-
-Do not say:
-- keep BODY fixed and change EYE only
-- keep FACE fixed and change HAIR only
-- preserve this candidate and repair one semantic scope by stochastic regeneration
-
-Those guarantees require a fixed visual carrier and are not available in text-only full regeneration.
-
-Instead:
-- keep `PAYLOAD.txt` unchanged inside the active batch
-- generate a new independent full candidate
-- re-run all protected-domain QA
-
-If repeated isolated runs show the same failure, revise `PAYLOAD.txt` / source Authority outside the active batch, update `SOURCE_LOCK.md`, and start a new batch.
+Keep the fixed payload unchanged inside the active batch.
+Repeated systematic drift requires batch stop, deliberate payload/source diagnosis, source-lock update, then a new batch.
 
 ## PRODUCTION targeted retry
-Only a mode with verified visual carriers / references may use true targeted retry where the execution route can preserve unaffected protected domains.
+Only a mode with verified visual carriers / references may claim preservation of unaffected domains.
 
 ## Pose route
 For significant motion:
