@@ -60,24 +60,6 @@ Ear size, placement guides, tilt, projection and visibility behavior are control
 FACE geometry must not be modified to expose or enlarge an ear.
 A hidden ear is allowed and does not imply missing anatomy.
 
-## Face-detail visual anchor
-Production YURA generation uses the dedicated Face Close-up Master defined by `../../gate/AUTHORITY_MANIFEST.md`.
-
-The Face Close-up Master stabilizes:
-- face outline
-- cheek / chin balance
-- eye placement
-- nose / mouth placement
-- naturally visible ear appearance, only when observable without compensation
-- face-framing hair boundary
-
-Precise FACE / EAR / EYE text rules remain authoritative for their domains.
-
-If the dedicated Face Close-up Master is unavailable in PRODUCTION:
-`GENERATION_ALLOWED = NO`
-
-Do not substitute a derivative, previous-chat image, or similar face.
-
 ## Eyes — geometry only
 Exact color and pupil identity are controlled by `../eyes/EYE_SPEC.md`.
 
