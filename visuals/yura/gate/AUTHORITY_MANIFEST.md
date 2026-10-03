@@ -54,99 +54,6 @@ GENERATION_RULES:
 QA:
 `visuals/yura/qa/GENERATION_QA.md`
 
-## TEXT_ONLY_FACE_ROOT_MASTER
-PROFILE:
-`visuals/yura/generation/master-creation/TEXT_ONLY_FACE_ROOT_MASTER.md`
-
-EXECUTION_PAYLOAD:
-`visuals/yura/execution/face-root/PAYLOAD.txt`
-
-RUN_CONTROLLER:
-`visuals/yura/execution/face-root/RUN.md`
-
-SOURCE_LOCK:
-`visuals/yura/execution/face-root/SOURCE_LOCK.md`
-
-QA:
-`visuals/yura/qa/FACE_ROOT_QA.md`
-
-Reference policy:
-`NONE`
-
-Edit source policy:
-`NONE`
-
-Adoption slot:
-`visuals/yura/identity/master/face-root/`
-
-Expected approved artifact:
-`visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
-
-Expected approved manifest:
-`visuals/yura/identity/master/face-root/YURA_FACE_ROOT.md`
-
-Declared role after adoption:
-`FACE_DETAIL_REFERENCE`
-
-## FACE_ROOT_GEOMETRY_REFINEMENT
-PROFILE:
-`visuals/yura/generation/master-creation/FACE_ROOT_GEOMETRY_REFINEMENT.md`
-
-EXECUTION_PAYLOAD:
-`visuals/yura/execution/face-root-refinement/PAYLOAD.txt`
-
-RUN_CONTROLLER:
-`visuals/yura/execution/face-root-refinement/RUN.md`
-
-SOURCE_LOCK:
-`visuals/yura/execution/face-root-refinement/SOURCE_LOCK.md`
-
-QA:
-`visuals/yura/qa/FACE_ROOT_REFINEMENT_QA.md`
-
-Reference policy:
-`NONE`
-
-All declared visual reference roles:
-`NONE`
-
-Edit source policy:
-`EXACTLY_ONE_ELIGIBLE_FACE_ROOT_CANDIDATE`
-
-Edit source carrier:
-Runtime-supplied candidate image only. It is not stored in this Manifest as Authority and has no Reference role.
-
-Eligibility is controlled by `FACE_ROOT_QA.md` and `FACE_ROOT_GEOMETRY_REFINEMENT.md`.
-The edit result is a new candidate and must pass the full refinement QA before author review.
-
-Adoption target after QA PASS + explicit author approval remains:
-- `visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
-- `visuals/yura/identity/master/face-root/YURA_FACE_ROOT.md`
-
-## FACE_ANCHORED_ROOT_MASTER
-PROFILE:
-`visuals/yura/generation/master-creation/FACE_ANCHORED_ROOT_MASTER.md`
-
-EXECUTION_PAYLOAD:
-`visuals/yura/execution/face-anchored-root/PAYLOAD.txt`
-
-RUN_CONTROLLER:
-`visuals/yura/execution/face-anchored-root/RUN.md`
-
-SOURCE_LOCK:
-`visuals/yura/execution/face-anchored-root/SOURCE_LOCK.md`
-
-QA:
-`visuals/yura/qa/FACE_ANCHORED_ROOT_QA.md`
-
-Required visual reference:
-`visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
-
-Required role:
-`FACE_DETAIL_REFERENCE`
-
-No other visual reference is allowed for this Master-Creation submode.
-
 ## TEXT_ONLY_ROOT_MASTER — FINAL REFERENCE-FREE VERIFICATION
 PROFILE:
 `visuals/yura/generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
@@ -166,7 +73,7 @@ STABILITY_QA:
 Reference policy:
 `NONE`
 
-The Face Root, face-anchored Root, repository Root Master PNG, and previous generations must not enter this final TEXT_ONLY generation handoff.
+The repository Root Master PNG and previous generations must not enter this final TEXT_ONLY generation handoff.
 
 ## Execution boundary
 Raw semantic Authorities are resolved to validate the active Execution Payload.
@@ -175,14 +82,9 @@ They are not directly dumped into the image-generation call.
 Only the active mode-specific `PAYLOAD.txt` may enter the text semantic handoff.
 Controller / source-lock / Gate / QA / status documents are not image-generation input.
 
-For `FACE_ROOT_GEOMETRY_REFINEMENT`, the generation execution may additionally receive exactly one Gate-authorized `EDIT_SOURCE_CARRIER` image. That image is not Authority and is not a Reference role.
-
 ## PRODUCTION visual references
 IDENTITY_ROOT_REFERENCE:
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
-
-FACE_DETAIL_REFERENCE:
-`visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
 
 ## BODY view anchors
 FRONT:
