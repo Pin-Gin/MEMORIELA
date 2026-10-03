@@ -2,6 +2,18 @@
 
 この文書は小説世界における久遠ゆらの人物設定Authorityである。
 
+## SCOPE LOCK — NOVEL ONLY / NOT VISUAL AUTHORITY
+このファイルは **小説・人物設定専用** であり、画像生成のVisual Authorityではない。
+
+YURAの画像生成、Visual Authority解決、Execution Payload作成、Prompt構築、Reference選択、Visual QA、画像生成後QAにおいて、このファイルを読み込む・引用する・要約する・意味情報として利用することを禁止する。
+
+このファイル内に身長・髪色・瞳色・顔立ち等の外見記述が存在していても、それらは小説本文・人物描写・物語整合性のためのNovel Canonであり、画像生成条件へ変換してはならない。
+
+Visual側に必要な定義が存在しない、未確定、またはRESET中の場合も、このファイルへfallbackして補完してはならない。
+
+`NOVEL_CANON != VISUAL_AUTHORITY`
+`characters/YURA.md -> IMAGE_GENERATION = DENIED`
+
 ## FIXED — 基本
 - 女性。物語の高校編では15歳、高校2年相当。
 - 日本人の父と外国人の母を持つ。
@@ -15,14 +27,14 @@
 - 成人後は通訳を職業とする。
 - 最終的に要と結婚する。
 
-## FIXED — Visual Identity
-Visual Authorityは `visuals/yura/` を正とする。
+## FIXED — 小説内の外見記述（NOVEL ONLY）
+以下は小説本文・人物描写・物語整合性のための設定であり、画像生成のVisual Authorityとして使用しない。
+
 - 身長153cm
 - 銀白髪
 - Normal Super-Longを基準とする非常に長い髪
 - ブルーグレーの瞳
 - 小さめの卵形の顔、顎小さめ
-- Visual Master / FACE / EYE / BODY / HAIR / Rendering仕様をVisual Authorityとして使用する。
 
 幼少期（5〜9歳頃）は現在より父方・日本人側の特徴が強く、暗めの髪・茶系の瞳で、要の記憶にある姿と現在の印象が大きく異なる。
 
