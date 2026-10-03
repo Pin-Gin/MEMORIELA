@@ -8,13 +8,16 @@ Master Creation Submode:
 Purpose:
 全身Rootより先に、画像参照なしでYURAのFACE / EYE / EAR / face-framing hair identityを高解像度のFace Root候補として確立する。
 
-This submode creates an identity carrier for later full-body generation.
+This submode creates an identity carrier candidate for later full-body generation.
 It does not define BODY, full hair length, outfit, or pose authority.
 
 ## Generation-time reference policy
 `VISUAL_REFERENCES_ALLOWED = NONE`
 
 No image may be supplied to the Face Root generation execution.
+
+Edit source carrier:
+`NONE`
 
 ## Authority resolution inputs
 Resolve only the protected sources needed for the Face Root:
@@ -55,9 +58,33 @@ Only `PAYLOAD.txt` enters the generation-facing semantic context.
 ## Ear observability rule
 Ear visibility is not a generation target and must never cause geometry compensation.
 
-For adoption as a Face Root Master, however, at least one ear must be sufficiently observable to evaluate protected EAR geometry without enlarging, rotating, moving, or forcing bilateral exposure.
+For direct adoption as a Face Root Master, at least one ear must be sufficiently observable to evaluate protected EAR geometry without enlarging, rotating, moving, or forcing bilateral exposure.
 
 A candidate with both ears naturally hidden may still be a valid YURA face, but it is **NOT SUITABLE FOR FACE_ROOT ADOPTION** because it cannot anchor EAR geometry.
+It is also not refinement-eligible merely because the ear is hidden; the refinement route must not force exposure.
+
+## Refinement eligibility boundary
+After generation, `FACE_ROOT_QA.md` may classify the candidate as `REFINEMENT_ELIGIBLE` only when:
+- FACE = PASS
+- EYE = PASS
+- HAIR FRAMING = PASS
+- SKIN = PASS
+- RENDERING = PASS
+- single-image / composition constraints = PASS
+- at least one ear is observable
+- EAR geometry alone materially fails protected size / placement / projection / tilt
+- no other protected-domain FAIL exists
+
+`REFINEMENT_ELIGIBLE` means only that the candidate may be used by the protected `FACE_ROOT_GEOMETRY_REFINEMENT` route as a non-reference `EDIT_SOURCE_CARRIER`.
+
+It does not mean:
+- accepted
+- author-approved
+- Authority
+- Identity Reference
+- Production Reference
+
+If any non-EAR protected domain fails, the candidate is rejected and not eligible for refinement.
 
 ## Adoption target
 After QA PASS and explicit author approval, the adopted artifact is:
@@ -89,3 +116,4 @@ It must not control:
 
 ## Candidate status
 Every output is `CANDIDATE / NOT AUTHORITY` until explicit author approval and Git registration.
+A candidate used as an `EDIT_SOURCE_CARRIER` remains `NOT AUTHORITY / NOT REFERENCE`.
