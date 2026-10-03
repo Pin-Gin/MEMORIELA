@@ -10,9 +10,9 @@ This file is **NOT image-generation input**.
 ## Compiled-from repository state
 Repository: `Pin-Gin/MEMORIELA`
 Branch: `main`
-Base commit used for this compile: `27ae1725925545704a3d8be5948a215fb694b79a`
-Payload recompile commit: `53f7f3b5a015e2cad705288001462dfaa9f55eef`
-Payload blob: `642f3c1fd9fdc900630a36adc53713c5070753cf`
+Base commit used for this compile: `9c4875f1d74f3f5b158b3dea7546b6d336546e5a`
+Payload recompile commit: `cff519c993160e9e77adc71833a2876bf6dbc611`
+Payload blob: `5d6d0ef96f43f20e6db6f0f9c7dd4e31e3412e43`
 
 ## Recompile classification
 `AUTHORITY_CHANGE = NO`
@@ -20,7 +20,7 @@ Payload blob: `642f3c1fd9fdc900630a36adc53713c5070753cf`
 `NEW_STABILITY_BATCH_REQUIRED = YES`
 
 Reason:
-Repeated valid isolated generation attempts showed recurring semantic drift in HAIR length, validation-clothing interpretation, neutral upright pose, and unauthorized decoration.
+Repeated valid isolated generation attempts showed recurring semantic drift in HAIR length, validation-clothing interpretation, neutral upright pose, unauthorized decoration, FACE vertical elongation, and EAR enlargement / visibility-driven size drift.
 The protected Authorities below were not changed.
 `PAYLOAD.txt` was recompiled only to express the existing protected semantics in a less generalizable generation-facing order and wording.
 
@@ -55,6 +55,8 @@ The concise payload does not delete or weaken those protected specifications.
 
 ## Current compile emphasis
 The current payload gives generation-facing priority to existing protected constraints that repeatedly drifted:
+- FACE vertical length remains standard to slightly short and visibly vertically compact; no oblong / elongated / long fashion-model-like reinterpretation
+- EAR remains slightly small at approximately 28–30% of face vertical length with restrained projection; no visibility-driven enlargement, lengthening, outward displacement, or rotation toward camera
 - exact waist-level termination of dense principal hair mass before the hairstyle label is introduced
 - explicit rapid taper below the waist and sparse-tip-only continuation toward the upper-buttock boundary
 - explicit broad-shoulder sleeveless validation-top construction and rejection of camisole/thin-strap reinterpretation
