@@ -63,7 +63,6 @@ Both eyes must retain the same character identity while allowing natural small a
 - keep the notch subtle
 - do not enlarge it merely to force visibility
 - full-body output: may be NOT OBSERVABLE due to scale
-- close-up / face-focused output: preserve when resolvable
 
 Do not:
 - move the signature to another side
@@ -85,7 +84,7 @@ Immediate EYE / Identity FAIL:
 - gray component disappears
 - vivid saturated blue replaces blue-gray
 - eye shape becomes overly round / strongly droopy / sharp fox-eye
-- pupil signature moves to the wrong side in a resolvable close-up
+- pupil signature moves to the wrong side when resolvable
 - pupil becomes bright / decorative
 - lighting recolors the identity
 
