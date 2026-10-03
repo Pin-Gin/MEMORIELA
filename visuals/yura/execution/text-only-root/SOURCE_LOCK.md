@@ -10,7 +10,19 @@ This file is **NOT image-generation input**.
 ## Compiled-from repository state
 Repository: `Pin-Gin/MEMORIELA`
 Branch: `main`
-Base commit used for this compile: `b9aca2b09a03ef26cd36eb41b3583a6c89354292`
+Base commit used for this compile: `27ae1725925545704a3d8be5948a215fb694b79a`
+Payload recompile commit: `53f7f3b5a015e2cad705288001462dfaa9f55eef`
+Payload blob: `642f3c1fd9fdc900630a36adc53713c5070753cf`
+
+## Recompile classification
+`AUTHORITY_CHANGE = NO`
+`PAYLOAD_RECOMPILE = YES`
+`NEW_STABILITY_BATCH_REQUIRED = YES`
+
+Reason:
+Repeated valid isolated generation attempts showed recurring semantic drift in HAIR length, validation-clothing interpretation, neutral upright pose, and unauthorized decoration.
+The protected Authorities below were not changed.
+`PAYLOAD.txt` was recompiled only to express the existing protected semantics in a less generalizable generation-facing order and wording.
 
 ## Protected source blobs
 - `visuals/yura/identity/master/YURA_VISUAL_TEXT.md` — `81bb0de02d7417f6bbdb22882894b2751618ed38`
@@ -40,6 +52,16 @@ It must not contain:
 
 Detailed source Authorities remain authoritative for validation and QA.
 The concise payload does not delete or weaken those protected specifications.
+
+## Current compile emphasis
+The current payload gives generation-facing priority to existing protected constraints that repeatedly drifted:
+- exact waist-level termination of dense principal hair mass before the hairstyle label is introduced
+- explicit rapid taper below the waist and sparse-tip-only continuation toward the upper-buttock boundary
+- explicit broad-shoulder sleeveless validation-top construction and rejection of camisole/thin-strap reinterpretation
+- explicit neutral upright reference-pose geometry, with both hands visible beside the thighs and no contrapposto / hands-behind-back reinterpretation
+- explicit fully unadorned character state with no hair ornament / ribbon / jewelry / accessory invention
+
+These are compilation emphases only and do not create new Canon.
 
 ## Recompile trigger
 If any protected source blob listed above changes:
