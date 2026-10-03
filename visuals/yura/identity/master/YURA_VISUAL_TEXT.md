@@ -5,7 +5,7 @@ Status: **AUTHOR-APPROVED / STEP 1**
 Purpose: YURAを画像参照なしのTEXT_ONLYで新規生成するための初期Visual定義。
 
 この文書は旧YURA Master画像・旧Visual Text・過去生成画像を参照して作らない。
-この段階ではYURAのMaster画像は存在しない。
+この段階ではYURAの全身Master画像は存在しない。
 
 ## Overall
 YURAは、銀白色のスーパーロングヘアを持つ、繊細で透明感のある少女として描く。
@@ -70,28 +70,42 @@ NOT mature model-like facial proportions.
 **TARGET = 7.2 heads**
 **ACCEPTABLE RANGE = 7.1〜7.3 heads**
 
-7.2頭身を成立させるために、胴体・脚・肩幅・腰幅・胸郭・四肢を大型化してはならない。
-身体全体を縦方向へ引き伸ばして7.2頭身に合わせない。
+7.2頭身は、YURAの全身における頭部と身体の相対比率として扱う。
+フェイスアップ画像のキャンバス内サイズ、トリミング、余白、画面占有率から頭身・身長・BODYサイズを推定してはならない。
+
+7.2頭身を成立させるために、胴体・脚・肩幅・腰幅・胸郭・四肢を不自然に大型化しない。
 脚だけを不自然に長くしない。
-胴だけを長くしない。
+胴だけを不自然に長くしない。
 肩幅や骨格を大きくしない。
-体格そのものを大きくしない。
+体格そのものを大きく見せない。
 
-7.2頭身は、「身体を大きくする」ことではなく、頭部と身体全体の相対比率として成立させる。
-7.2頭身化によって、体格・身体ボリューム・身長感を大きく見せない。
+DO NOT INFER BODY PROPORTION FROM FACE REFERENCE CROP OR SCALE.
+DO NOT USE FACE REFERENCE CANVAS OCCUPANCY AS BODY GEOMETRY.
+DO NOT CREATE A TALL MODEL-LIKE BODY TO SATISFY 7.2 HEADS.
+DO NOT INCREASE SHOULDER WIDTH OR BODY MASS TO SATISFY THE RATIO.
 
-BODY SIZE MUST NOT INCREASE TO ACHIEVE 7.2 HEADS.
-DO NOT ENLARGE OR ELONGATE THE BODY TO REACH THE TARGET RATIO.
-DO NOT CREATE A TALL MODEL-LIKE BODY.
-DO NOT INCREASE SHOULDER WIDTH.
-DO NOT LENGTHEN THE TORSO.
-DO NOT EXCESSIVELY LENGTHEN THE LEGS.
+### Face identity / body geometry authority separation
+顔Identityと全身Geometryは別Authorityとして扱う。
 
-### Head scale / face geometry lock
-7.2頭身を成立させる際、現在定義されている顔形状を変更してはならない。
+予定されたフェイス画像:
+`visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
+
+予定されたBODY Geometryガイド画像:
+`visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
+
+フェイス画像は、顔Identity・顔内部比率・目・眉・鼻・口・頬・顎・顔まわりの髪のIdentityを確認するために使用する。
+フェイス画像は、頭身・BODYサイズ・身長感・肩幅・胴長・脚長・全身キャンバス占有率のAuthorityではない。
+
+BODY Geometryガイドは、7.2頭身・頭部と身体の相対スケール・全身Geometryを規定するために使用する。
+BODY Geometryガイドは、顔内部の造形・目・眉・鼻・口・頬・顎のIdentityを変更するAuthorityではない。
+
+**FACE_REFERENCE -> BODY_PROPORTION = DENIED**
+**FACE_REFERENCE -> FULL_BODY_SCALE = DENIED**
+**FACE_REFERENCE -> CANVAS_OCCUPANCY = DENIED**
+**BODY_GEOMETRY_GUIDE -> FACE_GEOMETRY = DENIED**
+**BODY_GEOMETRY_GUIDE -> FACE_IDENTITY = DENIED**
 
 FACE GEOMETRY IS LOCKED.
-
 顔の縦横比を変更しない。
 目の大きさ・形・間隔を変更しない。
 眉・鼻・口の相対位置を変更しない。
@@ -102,25 +116,15 @@ FACE GEOMETRY IS LOCKED.
 顔を面長化しない。
 顔を横長化しない。
 
-7.2頭身への調整は、顔内部の造形を変更するのではなく、頭部全体の身体に対する相対スケールを調整することで行う。
-頭部は、顔・頭蓋を一体の形状として均等に縮小する。
-顔内部の各パーツを個別に縮小・移動・再配置しない。
+旧方式の「約5.8頭身から7.2頭身へ補正するため頭部を80〜81%へ縮小する」という数値補正は使用しない。
+顔画像の見かけ上の頭部サイズを基準に、頭部またはBODYを機械的に拡大・縮小しない。
+7.2頭身はBODY Geometryガイド上の全身配置として成立させる。
 
-現在の約5.8頭身相当から7.2頭身へ補正する場合、頭部ユニットの相対スケールは現在比およそ**80〜81%**を目安とする。
-
-**BODY SCALE = 100%.**
-身体の幅・肩幅・胸郭・腰幅・四肢の太さを増加させない。
-頭身調整のために身体を大型化しない。
-
-長髪の末端位置は、頭部縮小に連動して短くしない。
-髪の長さは従来どおり胸下を越え、腰付近までを維持する。
+BODY Geometryガイド画像が存在しない場合、フェイス画像をその代替として使用してはならない。
 
 FACE SHAPE MUST REMAIN IDENTICAL IN PROPORTION.
-ONLY THE RELATIVE HEAD-TO-BODY SCALE MAY CHANGE.
-DO NOT ENLARGE THE BODY.
-DO NOT WIDEN THE BODY.
-DO NOT LENGTHEN THE TORSO TO COMPENSATE.
-DO NOT EXCESSIVELY LENGTHEN THE LEGS TO COMPENSATE.
+FACE REFERENCE CONTROLS IDENTITY, NOT FULL-BODY SCALE.
+BODY GEOMETRY GUIDE CONTROLS PROPORTION, NOT FACE IDENTITY.
 
 ### Chest — Core priority
 胸部は、細身の体格に対して**やや豊か**であることを基準とする。
