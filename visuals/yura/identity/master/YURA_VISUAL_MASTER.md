@@ -40,7 +40,6 @@ This artifact was explicitly approved by the author and is the current root YURA
 The root Master is not a license to ignore precise protected domain rules.
 
 ## Specialized visual anchors
-- Face detail: `face/YURA_FACE_MASTER.png` — required for PRODUCTION once created; exact policy is controlled by `../../gate/REFERENCE_GATE.md`.
 - BODY view anchors: `body-views/` — selected only by `../../gate/VIEW_ROUTER.md`.
 - FRONT body-view uses this root Master.
 
