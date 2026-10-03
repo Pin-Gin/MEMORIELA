@@ -10,22 +10,30 @@ PASS only if:
 - YURA Generation Gate passed
 - Authority Manifest exact paths were resolved
 - actual required visual references were available
-- required Face / BODY View references passed
+- required Face Root / BODY View references passed
 - no unauthorized reference
 - active Execution Payload was validated
 
+### MASTER_CREATION / TEXT_ONLY_FACE_ROOT_MASTER
+Use mandatory mode QA:
+`FACE_ROOT_QA.md`
+
+### MASTER_CREATION / FACE_ANCHORED_ROOT_MASTER
+Use mandatory mode QA:
+`FACE_ANCHORED_ROOT_QA.md`
+
 ### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
 PASS only if:
+- workflow dependency for final reference-free verification passed
 - submode = `TEXT_ONLY_ROOT_MASTER`
 - exact `visuals/yura/execution/text-only-root/PAYLOAD.txt` was used
-- `visuals/yura/execution/text-only-root/RUN.md` was followed as controller-only material
-- `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matched the current protected source blobs
+- `visuals/yura/execution/text-only-root/RUN.md` was controller-only
+- `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matched current protected source blobs
 - generation-time visual references = NONE
 - post-generation comparison visual reference = NONE
-- repository `YURA_VISUAL_MASTER.png` did not enter generation or acceptance comparison for this target
-- no Gate / QA / controller / retry / batch text entered the generation semantic handoff
+- Face Root / Face-Anchored Root / repository Root Master PNG did not enter generation
+- no Gate / QA / controller / retry / batch text entered generation semantics
 - no per-run prompt mutation
-- no batch/comparison language entered generation
 - one person / one image / one canvas
 - AI_INFERENCE_REQUIRED = NONE
 
@@ -76,14 +84,10 @@ PASS only if:
 - ear scale reads slightly small
 - vertical ear length is approximately 28–30% of forehead-to-chin face vertical length
 - protected ear length has priority over exact endpoint alignment
-- upper rim around eyebrow height is only an approximate placement guide
-- lower rim around nose-tip to subnasal height is only an approximate placement guide
-- ear is not stretched to satisfy both placement guides
+- upper / lower placement values remain guides, not stretch targets
 - ear long axis has restrained approximately 5–10 degree posterior tilt
 - projection from the head remains restrained
-- visibility follows actual camera angle + head orientation + natural/local hair placement
 - visible, partially hidden, or fully hidden ear is acceptable
-- local hair movement / separation around the ear is allowed and is not itself a failure
 - bilateral equal ear exposure is not required
 - `HIDDEN != MISSING`
 
@@ -94,7 +98,6 @@ Immediate EAR FAIL:
 - head rotated merely to expose the ear
 - both ears forced visible for symmetry
 - any visibility-driven EAR or head-geometry compensation
-- any AI reinterpretation that enlarges the ear because it is hidden
 
 ## Gate 4 — HAIR
 PASS:
@@ -114,18 +117,32 @@ PASS:
 `HIDDEN != MISSING`
 No show-feature compensation.
 
-## Gate 6 — RENDERING — HARD GATE
-Required:
+## Gate 6 — RENDERING — PROTECTED DOMAIN
+Required simultaneously:
 - unmistakably high-quality 2D anime illustration
-- anime facial / line / shading grammar dominant
 - Matte Natural Anime
-- soft cel / grouped illustration shading
-- delicate visible anime line art
-- restrained gloss
-- low-to-medium contrast
-- bright high-key presentation compatible with the approved completion target
+- clean fine but **clearly readable** anime linework
+- linework remains visibly present; not painterly / watercolor-faded
+- soft cel / grouped illustration shading is the base
+- readable grouped shadow shapes define form
+- diffuse gradients are mild support only, not uniform airbrush rendering
+- low-to-medium contrast, **not ultra-low contrast**
+- bright presentation without overexposure
+- on white background, face / skin / silver-white hair / pale clothing / linework / shading remain clearly separated
+- hair reads as grouped anime masses with overlap / thickness / tonal depth
+- no translucent pale fiber haze
+- matte / low-gloss surface quality
+- soft and calm but not washed-out / watercolor-like / pastel-faded / ethereal-faded
 
-Immediate HARD FAIL:
+Material `RENDERING FAIL`:
+- visibly absent or excessively faded linework
+- grouped shading replaced by uniform airbrush softness
+- washed-out ultra-low contrast
+- white-background separation materially lost
+- silver-white hair collapses into translucent haze
+- watercolor / pastel-faded / ethereal-faded touch replaces Matte Natural Anime
+
+Immediate `RENDERING HARD FAIL`:
 - photoreal
 - semi-photoreal
 - live-action
@@ -133,15 +150,13 @@ Immediate HARD FAIL:
 - PBR / game-engine render
 - photographic skin / hair
 
-Rendering Hard Fail:
-- REJECT
+Any Rendering FAIL or Hard Fail:
 - `ACCEPTANCE_ALLOWED = NO`
-- candidate may remain visible because of the generation interface, but visibility does not make it accepted
-- never promote or reuse it as protected Authority / reference
+- candidate remains rejected
+- never promote or reuse as protected Authority / reference
 
 ## Gate 7 — Request fidelity
-For TEXT_ONLY_ROOT_MASTER:
-exact `PAYLOAD.txt` compliance.
+Apply exact active mode-specific payload and reference policy.
 
 ## Gate 8 — Physical structure
 Check limbs / joints / support / hands / feet / proportions.
@@ -166,24 +181,19 @@ PASS:
 
 ## TEXT_ONLY_ROOT_MASTER failure handling
 If any protected domain FAILS:
-- reject the **entire candidate**
+- reject the entire candidate
 - `TARGETED_RETRY = FORBIDDEN`
-- do not issue a scope-only stochastic repair instruction
 - do not preserve the candidate as an execution carrier
 - do not promote it to Authority or future protected reference
-- run a new independent full candidate with the **same unchanged `PAYLOAD.txt`**
-- run **all Gates again**
+- run a new independent full candidate with unchanged active payload inside a valid batch
+- run all Gates again
 
-If the same failure repeats across valid isolated runs:
-- classify the recurring failed domain
-- revise `PAYLOAD.txt` / source Authority outside the active batch
-- update `SOURCE_LOCK.md`
-- start a new batch
+Repeated systematic drift requires deliberate source / payload diagnosis outside the batch.
 
 ## Decisions
 - **PASS**: all mandatory Gates pass
 - **FULL_CANDIDATE_RETRY**: text-only candidate failed a protected domain; regenerate whole candidate with unchanged payload
-- **TARGETED_RETRY**: allowed only in a mode/route with verified preservation carriers
-- **REJECT**: Rendering Hard Fail, reference-policy fail, execution-integrity fail, severe identity/BODY fail, or severe structural artifact
+- **TARGETED_RETRY**: only where an active route has verified preservation carriers
+- **REJECT**: Rendering Fail / Hard Fail, reference-policy fail, execution-integrity fail, severe identity/BODY fail, or severe structural artifact
 
 Never change canon to fit a failed generation.
