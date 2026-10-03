@@ -6,7 +6,7 @@ Master Creation Submode:
 `TEXT_ONLY_ROOT_MASTER`
 
 Purpose:
-画像参照を一切使わず、現行YURA Text Authorityからコンパイルした実行PayloadでRoot identityの安定性を検証する。
+画像参照を一切使わず、現行YURA Text Authorityからコンパイルした実行Payloadで、作者承認済み完成ターゲットをTEXT_ONLYで再構築・安定検証する。
 
 ## Generation-time reference policy
 `VISUAL_REFERENCES_ALLOWED = NONE`
@@ -33,6 +33,8 @@ Gate / compiler resolves the current protected sources:
 
 These documents are resolution sources.
 They are **not** dumped directly into the image-generation call.
+
+The repository `YURA_VISUAL_MASTER.png` is not part of this TEXT_ONLY completion target and must not be used to reinterpret these text Authorities.
 
 ## Isolated execution package
 Image-generation semantic input only:
@@ -79,9 +81,12 @@ Controller / QA layer:
 The image-generation model must not receive batch-size or comparison-sheet instructions.
 
 ## Post-generation comparison
-After each valid single-image run, the registered Root Master may be used for QA comparison only.
+For the current author-approved TEXT_ONLY completion target:
+`POST_GENERATION_COMPARISON_REFERENCE = NONE`
 
-It must not be supplied to any text-only generation call or retry.
+Post-generation QA compares the candidate against the protected text Authorities and mode QA only.
+
+Do not load, inspect, describe, or compare against the repository Root Master PNG unless the author explicitly changes this policy.
 
 ## Candidate status
 Every valid output remains:
