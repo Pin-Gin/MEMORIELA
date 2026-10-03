@@ -10,19 +10,23 @@ This file is **NOT image-generation input**.
 ## Compiled-from repository state
 Repository: `Pin-Gin/MEMORIELA`
 Branch: `main`
-Base commit used for this compile: `9c4875f1d74f3f5b158b3dea7546b6d336546e5a`
-Payload recompile commit: `cff519c993160e9e77adc71833a2876bf6dbc611`
-Payload blob: `5d6d0ef96f43f20e6db6f0f9c7dd4e31e3412e43`
+Base commit used for this compile: `b9720702324a94ac7aa10f41a27389a01e045de8`
+Payload recompile commit: `57d01c583f3e0bdb288885fc1b1b146f8cdbc34f`
+Payload blob: `b544989cc88f1f6cfdd3d43e9adcf184eea52eab`
 
 ## Recompile classification
 `AUTHORITY_CHANGE = NO`
 `PAYLOAD_RECOMPILE = YES`
+`PREVIOUS_BATCH_STATUS = STOPPED`
+`PREVIOUS_BATCH_STOP_REASON = EAR_SYSTEMATIC_DRIFT`
 `NEW_STABILITY_BATCH_REQUIRED = YES`
+`NEW_STABILITY_BATCH_STATUS = READY`
 
 Reason:
-Repeated valid isolated generation attempts showed recurring semantic drift in HAIR length, validation-clothing interpretation, neutral upright pose, unauthorized decoration, FACE vertical elongation, and EAR enlargement / visibility-driven size drift.
+After the previous FACE / EAR reprioritization, a new valid isolated generation still reproduced the same material EAR enlargement on one visible ear.
+This establishes repeated EAR size / visibility drift across isolated runs and requires payload refinement outside the stopped batch.
 The protected Authorities below were not changed.
-`PAYLOAD.txt` was recompiled only to express the existing protected semantics in a less generalizable generation-facing order and wording.
+`PAYLOAD.txt` was recompiled only to strengthen the existing EAR Authority semantics: protected small ear geometry has priority over visibility, bilateral ear visibility is not required, natural partial / full hair occlusion is valid, and visibility-driven enlargement / projection / rotation / outward displacement remains forbidden.
 
 ## Protected source blobs
 - `visuals/yura/identity/master/YURA_VISUAL_TEXT.md` — `81bb0de02d7417f6bbdb22882894b2751618ed38`
@@ -56,7 +60,13 @@ The concise payload does not delete or weaken those protected specifications.
 ## Current compile emphasis
 The current payload gives generation-facing priority to existing protected constraints that repeatedly drifted:
 - FACE vertical length remains standard to slightly short and visibly vertically compact; no oblong / elongated / long fashion-model-like reinterpretation
-- EAR remains slightly small at approximately 28–30% of face vertical length with restrained projection; no visibility-driven enlargement, lengthening, outward displacement, or rotation toward camera
+- EAR SIZE HAS PRIORITY OVER VISIBILITY
+- EAR remains slightly small at approximately 28–30% of face vertical length
+- EAR projection remains restrained and the long axis remains only approximately 5–10 degrees posterior from vertical
+- either ear may be visible, partially hidden, or fully hidden by natural local hair placement
+- bilateral ear visibility / equal exposure is not a target
+- no visibility-driven EAR enlargement, lengthening, outward displacement, projection increase, flaring, or camera-facing rotation
+- if visibility conflicts with protected ear geometry, preserve the protected ear geometry and allow natural occlusion
 - exact waist-level termination of dense principal hair mass before the hairstyle label is introduced
 - explicit rapid taper below the waist and sparse-tip-only continuation toward the upper-buttock boundary
 - explicit broad-shoulder sleeveless validation-top construction and rejection of camisole/thin-strap reinterpretation
