@@ -6,9 +6,19 @@ This file is **NOT image-generation input**.
 
 Repository: `Pin-Gin/MEMORIELA`
 Branch: `main`
-Base commit used for this compile: `33f317a1adc61cd8c1974c3536ffa6255c82c6f4`
-Payload creation commit: `c09f4b53c22a9294f7152727500f352f373dd85e`
-Payload blob: `94d629feb5239b241bbf667483d2a236cb0e00c8`
+Base commit used for this recompile: `8f58b6b04bf78625c19d33ca8f77f6edbfe7f499`
+Payload recompile commit: `ebb73b66cfe7f744e5432d49b7c4c44a3c5b15c1`
+Payload blob: `3ea68d657619a7e735e457d2cb49ecf3064a7a14`
+
+## Batch transition
+`PREVIOUS_FACE_ROOT_BATCH_STATUS = STOPPED`
+`PREVIOUS_FACE_ROOT_BATCH_STOP_REASON = EAR_SYSTEMATIC_DRIFT`
+`OBSERVED_REPEAT = EAR_VERTICAL_ELONGATION`
+`PAYLOAD_RECOMPILE = YES`
+`NEW_FACE_ROOT_BATCH_STATUS = READY`
+
+The rejected prior candidates are not Authority and are not generation references.
+The recompile changes execution emphasis only; protected EAR canon remains unchanged.
 
 ## Protected source blobs
 - `visuals/yura/identity/master/YURA_VISUAL_TEXT.md` — `2ede5c28484f8de787724cec31bbb9ffffabde21`
