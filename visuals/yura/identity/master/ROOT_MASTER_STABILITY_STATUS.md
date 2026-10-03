@@ -1,84 +1,88 @@
 # YURA ROOT MASTER STABILITY STATUS
 
-Status: **READY_FOR_TEXT_ONLY_STABILITY_RUN**
+Status: **FACE_ROOT_CREATION_READY**
 
 ## Current state
-`TEXT_ONLY_ROOT_STABILITY = READY_FOR_TEXT_ONLY_STABILITY_RUN`
+`FACE_ROOT_MASTER = READY_TO_CREATE`
+`FACE_ANCHORED_ROOT_MASTER = BLOCKED_PENDING_FACE_ROOT_APPROVAL`
+`TEXT_ONLY_ROOT_FINAL_VERIFICATION = DEFERRED_UNTIL_FACE_FIRST_STABILIZATION`
+`BODY_VIEW_MASTER = BLOCKED`
 
-The current target is the author-approved completion transcription encoded in the protected text Authorities.
+## Reason for workflow transition
+Repeated protected-domain drift was observed in full-body TEXT_ONLY runs, especially FACE / EAR identity stability, while rendering also drifted toward washed-out / airbrush-dominant high-key output.
 
-For this TEXT_ONLY target:
-`REPOSITORY_YURA_VISUAL_MASTER_PNG_USED = NO`
-`POST_GENERATION_COMPARISON_REFERENCE = NONE`
+The current workflow therefore separates the problems:
+- FACE / EYE / EAR identity is stabilized first through a dedicated Face Root carrier
+- Rendering/touch is hardened in the YURA rendering compilation contract and all active payloads
+- full-body Root is then generated with the approved Face Root as FACE_DETAIL_REFERENCE
+- final reference-free TEXT_ONLY verification remains a later required step
 
-## Confirmed execution findings
-- TEXT_ONLY source mode: ACTIVE
-- generation-time visual references: NONE
-- post-generation visual comparison references: NONE
-- current context-derived image interface may be used through CONTEXT_DERIVED_TEXT_EXECUTION
-- payload semantics handoff is required before each generation
-- single-run / one-person / one-image orchestration: PASS
-- project-wide 2D-anime-first Rendering Hard Gate: ACTIVE
-- post-generation Acceptance Classification: ACTIVE
-- generation-tool/UI visibility before QA is not acceptance and is not a pre-generation blocker
-- failed candidates remain rejected and cannot become Authority / protected references
-- generation payload and controller/QA text are physically separated
-- image-generation semantic input = `visuals/yura/execution/text-only-root/PAYLOAD.txt` only
-- run control = `visuals/yura/execution/text-only-root/RUN.md`
-- source integrity = `visuals/yura/execution/text-only-root/SOURCE_LOCK.md`
-- `RUN.md` / `SOURCE_LOCK.md` / Gate / QA / retry / batch text must never enter the image-generation semantic handoff
-- stale source lock blocks generation until deliberate payload recompilation
+Failed prior candidates remain rejected and are not references.
 
-## Current protected target summary
-- FACE = small soft oval, standard-to-slightly-short vertical length, vertically compact, small softly rounded chin
-- EYE = BLUE-GRAY ONLY, mild almond, horizontally elongated, restrained vertical height
-- EAR = slightly small, approximately 28–30% of face vertical length, restrained projection, no visibility-driven enlargement
-- HAIR = silver-white Normal Super-Long; dense principal mass continues through the waist into the upper-hip / hip-bone region, then tapers to sparse very-upper-thigh tips
-- BODY = exact 7.25-head petite/slender frame; somewhat narrow shoulders; compact ribcage; clearly fuller relative chest volume without widening the torso; slim waist; natural restrained hips; slender legs with natural softness
-- VALIDATION CLOTHING = pale fitted tank-style sleeveless top with medium-width integrated shoulder panels and rounded scoop neckline; pale fitted simple shorts; barefoot; no ornament
-- RENDERING = Matte Natural Anime / high-quality 2D anime / bright high-key / fine line / soft cel + diffuse grouped shading
-- COMPOSITION = exactly one YURA, front-facing full body, upright, white background, head-to-toe visible
+## Face Root stage
+Active next submode:
+`TEXT_ONLY_FACE_ROOT_MASTER`
 
-## Current text-only execution policy
-- generation source = current protected text Authorities only
+Execution:
+- `visuals/yura/execution/face-root/PAYLOAD.txt`
+- `visuals/yura/execution/face-root/RUN.md`
+- `visuals/yura/execution/face-root/SOURCE_LOCK.md`
+
+QA:
+`visuals/yura/qa/FACE_ROOT_QA.md`
+
+Generation-time visual references:
+`NONE`
+
+Adoption target after explicit author approval:
+- `visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
+- `visuals/yura/identity/master/face-root/YURA_FACE_ROOT.md`
+
+Declared later-use role:
+`FACE_DETAIL_REFERENCE`
+
+## Face-anchored full-body stage
+Blocked until Face Root is approved, registered, hash-locked, and the actual image is available to generation.
+
+Submode:
+`FACE_ANCHORED_ROOT_MASTER`
+
+Only approved Face Root may be attached, and only as FACE_DETAIL_REFERENCE.
+
+The Face Root must not control BODY, full hair length, clothing, pose, or rendering style.
+
+## Rendering stability state
+The YURA rendering adapter now requires payloads to preserve:
+- clearly readable fine 2D-anime linework
+- soft cel / grouped shadow shapes
+- mild diffuse gradients only as support
+- low-to-medium, not ultra-low, contrast
+- white-background separation
+- grouped anime hair masses
+- matte / low-gloss quality
+- no washed-out / watercolor-like / pastel-faded / ethereal-faded drift
+
+`BRIGHT != WASHED_OUT`
+`SOFT != AIRBRUSH_ONLY`
+`FINE_LINE != INVISIBLE_LINE`
+
+## Final TEXT_ONLY objective
+A passing Face-Anchored Root is an intermediate stabilization result, not final TEXT_ONLY completion.
+
+After Face Root and full-body identity / rendering are author-approved and stable, return to:
+`TEXT_ONLY_ROOT_MASTER`
+
+Final verification requirements remain:
 - generation-time visual references = NONE
-- repository `YURA_VISUAL_MASTER.png` is not used for this target
-- post-generation visual comparison reference = NONE
-- active image-generation payload = `visuals/yura/execution/text-only-root/PAYLOAD.txt`
-- current context-derived image interface is allowed through `CONTEXT_DERIVED_TEXT_EXECUTION`
-- actual payload semantics must be carried immediately before each generation
-- direct raw-prompt API is not a prerequisite for TEXT_ONLY mode
-- payload must remain unchanged within an active stability batch
-- no runtime paraphrase / per-run correction
-- no controller / QA / history / retry / batch prose mixed into generation semantics
-- `TARGETED_RETRY = FORBIDDEN`
-- any failed protected domain rejects the whole candidate
-- rejected candidate is never promoted to Authority or future protected reference
-- next attempt is a new independent full candidate using the same unchanged `PAYLOAD.txt`
-- every new candidate is re-evaluated across all protected domains
-
-## Stability batch
-Previous debug-oriented batch is closed.
-
-New batch target:
-`AUTHOR_APPROVED_COMPLETION_TEXT_TARGET`
-
-Minimum valid independent runs: 3
-Preferred: 5
-
-## Blocked downstream
-- FACE_MASTER creation = BLOCKED
-- BODY_VIEW_MASTER creation = BLOCKED
+- Face Root not attached
+- face-anchored Root not attached
+- repository Root Master PNG not attached
+- exact fixed text-only payload
+- minimum 3 valid independent runs; preferred 5
+- all protected domains stable
+- explicit author approval
 
 ## Next action
-Start a new TEXT_ONLY Root stability batch using:
-- `REFERENCE_POLICY = NONE`
-- `POST_GENERATION_COMPARISON_REFERENCE = NONE`
-- current protected text Authorities only
-- current `SOURCE_LOCK.md`
-- `PAYLOAD.txt` as the only generation semantic input
-- `RUN.md` as controller-only material
-- one person / one image per run
-- post-generation full text-authority QA / acceptance classification
+Generate a single `TEXT_ONLY_FACE_ROOT_MASTER` candidate using the current Face Root payload and no image reference.
 
-Only after stable protected executions are explicitly approved by the author may Root stability become APPROVED.
+Do not start `FACE_ANCHORED_ROOT_MASTER` until the author explicitly approves a Face Root and it is Git-registered.
