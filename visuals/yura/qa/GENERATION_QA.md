@@ -21,7 +21,8 @@ PASS only if:
 - `visuals/yura/execution/text-only-root/RUN.md` was followed as controller-only material
 - `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matched the current protected source blobs
 - generation-time visual references = NONE
-- no current/previous Master image entered generation
+- post-generation comparison visual reference = NONE
+- repository `YURA_VISUAL_MASTER.png` did not enter generation or acceptance comparison for this target
 - no Gate / QA / controller / retry / batch text entered the generation semantic handoff
 - no per-run prompt mutation
 - no batch/comparison language entered generation
@@ -39,14 +40,17 @@ Visible wrong iris color = FAIL.
 
 ## Gate 2 — BODY
 PASS:
-- 7.25-head system
+- exact 7.25-head system
 - petite/slender protected frame
 - somewhat narrow shoulders
 - compact ribcage
-- bust moderately fuller relative to frame
-- soft natural rounded direction
-- natural forward projection / lower fullness
+- clearly fuller chest volume relative to the petite/slender frame without widening the torso
+- slim natural waist
+- natural restrained pelvis / hips
+- thighs / calves remain slender with visible natural softness and plausible thickness
 - stable waist / pelvis / limb proportions
+
+FAIL if the full-body silhouette becomes broad, glamour-dominant, heavy in the lower body, stick-thin, or 8+ heads tall.
 
 ## Gate 3 — FACE / EYE
 Check:
@@ -63,7 +67,8 @@ Check:
 - neutral to very slightly downturned outer corners
 - blue-gray iris
 - very small delicate readable nose
-- very small short closed mouth; no broad default smile
+- very small short closed mouth
+- extremely subtle soft smile / calm expression
 - stable eye / nose / mouth placement
 
 ## EAR QA — HARD GEOMETRY / VISIBILITY
@@ -79,6 +84,7 @@ PASS only if:
 - visibility follows actual camera angle + head orientation + natural/local hair placement
 - visible, partially hidden, or fully hidden ear is acceptable
 - local hair movement / separation around the ear is allowed and is not itself a failure
+- bilateral equal ear exposure is not required
 - `HIDDEN != MISSING`
 
 Immediate EAR FAIL:
@@ -93,12 +99,16 @@ Immediate EAR FAIL:
 ## Gate 4 — HAIR
 PASS:
 - silver-white, cool-neutral / white-leaning
-- principal mass ends at waist to slightly below
-- below waist mass clearly decreases
-- only sparse longest fine tips may approach upper-buttock boundary
-- no dense main mass at mid-buttock / thighs
+- principal dense mass continues through the waist into the upper-hip / hip-bone region
+- main dense silhouette tapers through the upper hip
+- only a small number of finest longest tips may continue toward the very upper-thigh boundary
+- no dense main curtain at mid-thigh or lower
+- no generic full thigh-length hair curtain
 - slightly-above-standard total mass
 - restrained lateral spread
+- fine / soft strands
+- vertical I-line tendency
+- principal mass remains behind / around the back rather than mostly forward
 
 ## Gate 5 — Visibility / occlusion
 `HIDDEN != MISSING`
@@ -113,6 +123,7 @@ Required:
 - delicate visible anime line art
 - restrained gloss
 - low-to-medium contrast
+- bright high-key presentation compatible with the approved completion target
 
 Immediate HARD FAIL:
 - photoreal
@@ -140,13 +151,18 @@ Check extra limbs, malformed anatomy, unintended text/logos, crop accidents.
 
 ## Validation clothing gate
 PASS:
-- broad-shouldered sleeveless top
-- plain simple shorts
+- pale / off-white plain fitted tank-style sleeveless validation top
+- medium-width integrated shoulder panels, clearly wider than spaghetti straps / thin cords
+- rounded scoop neckline with moderate depth
+- opaque
+- matte to low-gloss
+- plain simple fitted shorts
+- upper-thigh length
 - clean waistband
-- no drawstring / bow / cord / lace / frill
-- pale / opaque / matte
+- no drawstring / cord / tie / bow / lace / frill / logo / decorative trim
+- no lingerie / sleepwear reading
 - barefoot
-- white background
+- white / warm-white background
 
 ## TEXT_ONLY_ROOT_MASTER failure handling
 If any protected domain FAILS:
