@@ -6,14 +6,26 @@ Purpose:
 Authorityを「読むこと」と、画像生成モデルへ「何を実行命令として渡すか」を分離する。
 
 ## Core rule
-Authority / Gate / QA documents are for resolution and validation.
+Authority / Gate / QA / controller documents are for resolution, validation, orchestration, and acceptance.
 
 The image-generation execution receives only the active **mode-specific Execution Payload** plus explicitly authorized request variables.
 
-Do not pass raw Governance / Gate / QA documents directly into the image-generation execution.
+Do not pass raw Governance / Gate / QA / controller / retry / batch documents directly into the image-generation execution.
+
+## Payload / controller separation — MANDATORY
+A Domain may physically separate:
+- pure image-generation semantic payload
+- run controller
+- source-integrity lock
+- QA / acceptance rules
+
+When separated, only the declared pure payload may enter the generation-facing semantic handoff.
+
+Controller-only files must never be concatenated, summarized, or paraphrased into the image-generation semantic input merely because they were required pre-read material.
+
+`REQUIRED_TO_READ != REQUIRED_TO_SEND_TO_IMAGE_MODEL`
 
 ## Execution carrier — MANDATORY
-
 Authority resolution and generation transport are separate concerns.
 
 Do **not** redefine a Source / Reference Mode based on the transport implementation.
@@ -41,7 +53,7 @@ This route is valid for a `TEXT_ONLY` mode when all are true:
 - the active Execution Payload is resolved
 - no generation-time visual reference is supplied
 - the payload's actual generation semantics are materialized immediately before the image-generation call
-- no unrelated Gate / QA / batch prose is mixed into the generation handoff
+- no unrelated Gate / QA / controller / retry / batch prose is mixed into the generation handoff
 - the caller does not replace the payload with path-only shorthand such as "follow Git" or "same as before"
 
 This carrier does **not** claim byte-for-byte preservation inside hidden model plumbing.
@@ -59,8 +71,10 @@ For protected TEXT_ONLY generation:
 Generation remains Fail-Closed when:
 - required text Authorities are missing
 - active Execution Payload is missing
+- required source-integrity lock is stale
 - unauthorized visual references are attached
 - payload semantics are not carried into the generation-facing context
+- controller / QA / retry / batch prose contaminates a declared payload-only handoff
 - active Gate / mode requirements otherwise fail
 
 ## Compile stage
@@ -70,6 +84,8 @@ Required order:
 AUTHORITY RESOLUTION
         ↓
 MODE RESOLUTION
+        ↓
+SOURCE-INTEGRITY VALIDATION (when required)
         ↓
 EXECUTION PAYLOAD SELECTION / COMPILE
         ↓
@@ -103,11 +119,14 @@ Do not include:
 - PASS / FAIL tables
 - retry policy
 - Git workflow instructions
+- source-lock bookkeeping
+- run-controller instructions
 - batch evaluation instructions
 - history / migration notes
 - candidate-selection discussion
 - rejection rationale
 - comparison results
+- Authority-promotion rules
 - unrelated Domain rules
 
 ## Positive-first rule
@@ -188,16 +207,15 @@ Rendering hard fail, identity hard fail, reference-policy fail, or execution-int
 
 A failed candidate may be visible because of the generation interface, but it remains rejected and must never be promoted to Authority or reused as a protected reference.
 
-## Fixed-block execution mode
-A Domain may declare an Execution Payload as:
-`PROTECTED FIXED EXECUTION BLOCK`
+## Fixed-payload execution mode
+A Domain may declare an Execution Payload as a protected fixed payload.
 
 For that mode:
-- the file content is the actual image-generation semantic input
+- the declared payload content is the actual image-generation semantic input
 - do not paraphrase it at runtime
-- do not append Gate / QA / batch text
+- do not append Gate / QA / controller / retry / batch text
 - do not mutate it between runs of one stability batch
-- any modification requires a new batch
+- any semantic modification requires a new batch
 
 ## Text-only stochastic retry boundary
 Without a fixed visual/pixel carrier, stochastic full-image regeneration cannot guarantee unaffected domains remain fixed.
@@ -205,7 +223,7 @@ Without a fixed visual/pixel carrier, stochastic full-image regeneration cannot 
 Therefore, in a text-only full-generation mode:
 - `TARGETED_RETRY = FORBIDDEN`
 - failed candidate = whole-candidate reject
-- next run = full independent regeneration using the same fixed block
+- next run = full independent regeneration using the same fixed payload
 - all protected domains are re-QA'd
 
 Scope-targeted retry may only be claimed where the active execution route can actually preserve unaffected domains.
