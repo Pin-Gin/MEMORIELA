@@ -82,6 +82,9 @@ Mandatory source lock:
 Generation-time visual references:
 `NONE`
 
+Post-generation visual comparison reference for the current completion target:
+`NONE`
+
 Execution transport:
 - `DIRECT_MODEL_INPUT` is allowed when available
 - `CONTEXT_DERIVED_TEXT_EXECUTION` is allowed for the current ChatGPT-style context-derived image interface
@@ -103,8 +106,7 @@ Do not append or mix:
 - current Root Master PNG or its description
 - prior-generation discussion
 
-Current Root Master may be used only after generation as:
-`POST_GENERATION_COMPARISON_REFERENCE`
+For the current author-approved TEXT_ONLY completion target, do not load, inspect, describe, or compare against the repository `YURA_VISUAL_MASTER.png` during generation or post-generation acceptance.
 
 Any output containing multiple figures / panels / poses is:
 `EXECUTION_RUN_INVALID`
