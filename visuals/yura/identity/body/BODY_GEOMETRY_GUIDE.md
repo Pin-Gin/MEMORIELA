@@ -1,19 +1,22 @@
 # YURA BODY GEOMETRY GUIDE
 
-Status: **AUTHOR-APPROVED / IMAGE COMMIT PENDING**
+Status: **AUTHOR-APPROVED / ACTIVE**
 
-予定画像:
+Authority image:
 `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
 
 この文書は、YURAの全身比率を7.2頭身で固定するためのBODY Geometry Authority定義である。
-作者承認済みのガイド候補は存在するが、ガイド画像がGitHub `main` に存在するまでは、**BODY GEOMETRY IMAGE AUTHORITY = NONE** とする。
+GitHub `main` 上のガイド画像は、作者承認済み候補画像と同一であることを確認済み。
 
-## Approved guide candidate
+**BODY GEOMETRY IMAGE AUTHORITY = ACTIVE**
 
-作者承認済み候補画像:
+## Active guide
+
+作者承認済みAuthority画像:
 - dimensions: **1200 × 1600 px**
 - format: **PNG / RGBA**
 - SHA-256: **da18dbd7a8cdc9c3659f83ca8970349c18923bd4b4e29bcedf1f1b8cb1e7e379**
+- Git blob SHA: **63f5a6496afac5a142e63a7b329cc7d0ffc3c6b7**
 
 実測基準:
 - crown / 0.0: y = 160 px
@@ -22,8 +25,8 @@ Status: **AUTHOR-APPROVED / IMAGE COMMIT PENDING**
 - soles / 7.2: y = 1456 px
 - (1456 - 160) / 180 = **7.2 heads**
 
-この候補画像と異なるファイルを、同名だからという理由だけでAuthorityへ昇格させてはならない。
-GitHub `main` へ追加後、画像同一性を確認してからACTIVEへ切り替える。
+このAuthority画像と異なるファイルを、同名だからという理由だけでAuthorityへ昇格させてはならない。
+画像を差し替える場合は、再検証・作者承認・ハッシュ更新を必須とする。
 
 ## Target geometry
 
@@ -36,7 +39,7 @@ GitHub `main` へ追加後、画像同一性を確認してからACTIVEへ切り
 
 ## Authority scope
 
-YURA_BODY_GEOMETRY_GUIDE.png が存在し、作者が承認した後、この画像は以下のみのAuthorityとする。
+`YURA_BODY_GEOMETRY_GUIDE.png` は以下のみのAuthorityとする。
 
 - 頭部と全身の相対スケール
 - 7.2頭身の分割位置
@@ -88,5 +91,5 @@ BODY GEOMETRY GUIDE CONTROLS PROPORTION, NOT FACE IDENTITY.
 
 ## Guide image requirement
 
-全身Master候補を作る際は、BODY Geometry Guide画像が存在する場合、その画像を7.2頭身のGeometry参照として使用する。
-BODY Geometry Guide画像が存在しない場合、フェイス画像を代替Geometryとして使用してはならない。
+全身Master候補を作る際は、ACTIVEな `YURA_BODY_GEOMETRY_GUIDE.png` を7.2頭身のGeometry参照として使用する。
+フェイス画像をBODY Geometryの代替として使用してはならない。
