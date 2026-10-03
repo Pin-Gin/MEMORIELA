@@ -12,6 +12,7 @@ PASS only if:
 - `RUN.md` controller-only
 - `SOURCE_LOCK.md` current
 - generation-time visual references = NONE
+- edit source carrier = NONE
 - one YURA / one face / one canvas / one composition
 - no Gate / QA / controller / retry text in generation semantics
 
@@ -52,13 +53,14 @@ Immediate FAIL:
 - flared / projected ear
 - visibility-driven geometry compensation
 
-### Face Root adoption suitability
+### Ear observability
 At least one ear must be sufficiently observable to evaluate its size / projection / tilt without any visibility-driven compensation.
 
 If both ears are naturally hidden:
 - this is not automatically an EAR identity failure
-- but `FACE_ROOT_ADOPTION_SUITABILITY = FAIL`
-- do not adopt that candidate as the Face Root carrier
+- `FACE_ROOT_ADOPTION_SUITABILITY = FAIL`
+- `REFINEMENT_ELIGIBILITY = FAIL`
+- do not force exposure through refinement
 
 ## Gate 4 — Hair framing
 PASS:
@@ -98,7 +100,9 @@ HARD FAIL:
 - CGI / 3D / PBR
 - photographic skin / hair
 
-## Gate 7 — Master suitability
+Any rendering FAIL blocks refinement eligibility.
+
+## Gate 7 — Composition / single-image suitability
 PASS only if:
 - front-facing
 - head vertical
@@ -106,9 +110,40 @@ PASS only if:
 - head top not cropped
 - no body pose or outfit dominates the image
 - no text / label / panel
-- at least one ear is evaluable without geometry compensation
+- exactly one YURA / one canvas / one composition
+
+## Classification
+### PASS_FOR_AUTHOR_REVIEW
+Only if:
+- Gates 0–7 PASS
+- EAR Gate PASS
+- at least one ear is evaluable
+
+### REFINEMENT_ELIGIBLE
+Only if all are true:
+- Gate 0 PASS
+- Gate 1 FACE PASS
+- Gate 2 EYE PASS
+- Gate 4 Hair framing PASS
+- Gate 5 SKIN PASS
+- Gate 6 RENDERING PASS
+- Gate 7 Composition PASS
+- at least one ear is observable
+- Gate 3 EAR FAIL is the only protected-domain failure
+- the EAR failure is material geometry drift in size / placement / projection / tilt
+
+`REFINEMENT_ELIGIBLE` is not acceptance.
+The candidate remains rejected for adoption and remains `NOT AUTHORITY / NOT REFERENCE`.
+It may only enter the protected `FACE_ROOT_GEOMETRY_REFINEMENT` route as `EDIT_SOURCE_CARRIER`.
+
+### REJECTED_CANDIDATE
+Use when:
+- any non-EAR protected domain fails
+- rendering fails
+- composition fails
+- both ears are naturally hidden and geometry cannot be evaluated
+- execution integrity fails
+- any condition for `REFINEMENT_ELIGIBLE` is missing
 
 ## Decision
-`PASS_FOR_AUTHOR_REVIEW` only if all protected identity gates and Master-suitability gate pass.
-
 No candidate becomes Face Root Authority without explicit author approval and Git registration.
