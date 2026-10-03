@@ -6,19 +6,19 @@ This file is **NOT image-generation input**.
 
 Repository: `Pin-Gin/MEMORIELA`
 Branch: `main`
-Base commit used for this recompile: `8f58b6b04bf78625c19d33ca8f77f6edbfe7f499`
-Payload recompile commit: `ebb73b66cfe7f744e5432d49b7c4c44a3c5b15c1`
-Payload blob: `3ea68d657619a7e735e457d2cb49ecf3064a7a14`
+Base commit used for this recompile: `eb9d56813105b2e9045b3c1dbc4bd5eb2b729393`
+Payload recompile commit: `afcf3de778557397a40a1f36880893dbaa393274`
+Payload blob: `e03c5426a61cafc24f7446f066e897b52db7879d`
 
 ## Batch transition
 `PREVIOUS_FACE_ROOT_BATCH_STATUS = STOPPED`
-`PREVIOUS_FACE_ROOT_BATCH_STOP_REASON = EAR_SYSTEMATIC_DRIFT`
-`OBSERVED_REPEAT = EAR_VERTICAL_ELONGATION`
+`PREVIOUS_FACE_ROOT_BATCH_STOP_REASON = EYE_PUPIL_SIGNATURE_OMITTED_FROM_PAYLOAD`
+`OBSERVED_REPEAT = NOT_APPLICABLE`
 `PAYLOAD_RECOMPILE = YES`
 `NEW_FACE_ROOT_BATCH_STATUS = READY`
 
-The rejected prior candidates are not Authority and are not generation references.
-The recompile changes execution emphasis only; protected EAR canon remains unchanged.
+No candidate was generated under the incomplete payload in this transition.
+The recompile restores the protected EYE pupil signature to execution; protected EYE canon remains unchanged.
 
 ## Protected source blobs
 - `visuals/yura/identity/master/YURA_VISUAL_TEXT.md` — `2ede5c28484f8de787724cec31bbb9ffffabde21`
