@@ -12,6 +12,7 @@ Status: **PROTECTED / MANDATORY / FAIL-CLOSED**
 7. `AUTHORITY_MANIFEST.md`
 8. `REFERENCE_GATE.md`
 9. `VIEW_ROUTER.md`
+10. `MASTER_CREATION_FLOW.md`
 
 Do not generate before required pre-read completes.
 
@@ -19,12 +20,10 @@ Do not generate before required pre-read completes.
 Authority resolution and image-generation input are separate stages.
 
 Raw Gate / QA / controller documents must not be concatenated into the image-generation payload.
-
 The active mode must resolve exactly one permitted Execution Payload before generation.
-
 It must also resolve a valid Execution Carrier through `../../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md`.
 
-For TEXT_ONLY modes:
+For text-only Master-Creation modes:
 - `DIRECT_MODEL_INPUT` may PASS
 - `CONTEXT_DERIVED_TEXT_EXECUTION` may PASS
 - `EXTERNAL_RETRIEVAL_ONLY` may not PASS
@@ -32,23 +31,29 @@ For TEXT_ONLY modes:
 Git / connector retrieval alone is not sufficient.
 The active Execution Payload semantics must be carried into the generation-facing context.
 
-Do not require a direct raw-prompt API merely because the mode is TEXT_ONLY.
-
 ## Mode routing — resolve before dependency checks
-If the user explicitly requests text-only generation with no image references for Root creation / Root stability validation:
+### Face-first identity creation
+If the user requests creation of the YURA face anchor / face close-up before full-body Root creation:
+`MODE = MASTER_CREATION`
+`MASTER_CREATION_SUBMODE = TEXT_ONLY_FACE_ROOT_MASTER`
+
+### Face-anchored full-body Root
+If the user requests full-body Root generation using the approved Face Root:
+`MODE = MASTER_CREATION`
+`MASTER_CREATION_SUBMODE = FACE_ANCHORED_ROOT_MASTER`
+
+### Final reference-free verification
+If the user explicitly requests pure text-only full-body Root generation with no image references:
 `MODE = MASTER_CREATION`
 `MASTER_CREATION_SUBMODE = TEXT_ONLY_ROOT_MASTER`
 
-In that case:
-- evaluate the TEXT_ONLY_ROOT_MASTER branch below
-- do **not** evaluate PRODUCTION-only Master reference requirements as blockers
-- PRODUCTION reference dependencies are out of scope for that request
+Do not evaluate PRODUCTION-only requirements as blockers for these Master-Creation submodes unless that submode explicitly requires a visual reference.
 
 ## PRODUCTION
 Requires:
 - mandatory text Authorities resolved
-- root YURA Visual Master available in the declared role
-- dedicated Face Close-up Master available in the declared role
+- root YURA Visual Master available in declared role
+- approved Face Root available as FACE_DETAIL_REFERENCE
 - requested BODY orientation resolved
 - required BODY view anchor available
 - no unauthorized reference
@@ -56,70 +61,117 @@ Requires:
 - mode-specific Execution Payload validated
 - Load Receipt complete
 
-Missing Face Master or required non-front BODY view Master:
+Missing approved Face Root or required BODY view Master:
 `GENERATION_ALLOWED = NO`
 
 ## MASTER_CREATION
 Requires:
-- `MASTER_CREATION_FLOW.md`
 - explicit `MASTER_CREATION_SUBMODE`
+- exact profile / execution package from `AUTHORITY_MANIFEST.md`
 
-### TEXT_ONLY_ROOT_MASTER
+### TEXT_ONLY_FACE_ROOT_MASTER
 Allowed now.
 
-Authority resolution sources:
-`../generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
+Authority profile:
+`../generation/master-creation/TEXT_ONLY_FACE_ROOT_MASTER.md`
 
-Mandatory execution payload:
-`../execution/text-only-root/PAYLOAD.txt`
+Execution payload:
+`../execution/face-root/PAYLOAD.txt`
 
-Mandatory run controller:
-`../execution/text-only-root/RUN.md`
+Run controller:
+`../execution/face-root/RUN.md`
 
-Mandatory source lock:
-`../execution/text-only-root/SOURCE_LOCK.md`
+Source lock:
+`../execution/face-root/SOURCE_LOCK.md`
+
+QA:
+`../qa/FACE_ROOT_QA.md`
 
 Generation-time visual references:
 `NONE`
 
-Post-generation visual comparison reference for the current completion target:
-`NONE`
-
 Execution transport:
-- `DIRECT_MODEL_INPUT` is allowed when available
-- `CONTEXT_DERIVED_TEXT_EXECUTION` is allowed for the current ChatGPT-style context-derived image interface
-- the actual semantics of `PAYLOAD.txt` must be materialized immediately before generation
-- no generation-time image reference may be attached
-- Git read / connector result without the payload semantics handoff = `EXTERNAL_RETRIEVAL_ONLY` and FAIL
+- `DIRECT_MODEL_INPUT` or `CONTEXT_DERIVED_TEXT_EXECUTION`
+- exact payload semantics materialized immediately before generation
+- no image reference attached
+- no Gate / QA / controller / prior-generation text mixed into payload
 
-Image-generation semantic input for this submode is **only**:
+Generated candidate is not Face Root Authority until QA PASS + explicit author approval + Git PNG / manifest registration.
+
+### FACE_ANCHORED_ROOT_MASTER
+Blocked until approved Face Root is registered and hash-locked.
+
+Authority profile:
+`../generation/master-creation/FACE_ANCHORED_ROOT_MASTER.md`
+
+Execution payload:
+`../execution/face-anchored-root/PAYLOAD.txt`
+
+Run controller:
+`../execution/face-anchored-root/RUN.md`
+
+Source / reference lock:
+`../execution/face-anchored-root/SOURCE_LOCK.md`
+
+QA:
+`../qa/FACE_ANCHORED_ROOT_QA.md`
+
+Required generation-time visual reference:
+exactly one approved `../identity/master/face-root/YURA_FACE_ROOT.png` as `FACE_DETAIL_REFERENCE`.
+
+No other visual reference is allowed in this submode.
+The actual Face Root image must be available to execution; Git existence alone is insufficient.
+
+Face Root scope is limited to FACE / EYE / EAR / face-framing hair boundary.
+It must not redesign BODY, full hair length, outfit, pose, scene, or rendering.
+
+Until `face-anchored-root/SOURCE_LOCK.md` records the approved Face Root hash and explicitly permits generation:
+`GENERATION_ALLOWED = NO`
+
+### TEXT_ONLY_ROOT_MASTER — FINAL VERIFICATION
+Allowed as the final reference-free verification route.
+
+Authority profile:
+`../generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
+
+Execution payload:
 `../execution/text-only-root/PAYLOAD.txt`
 
-Do not append or mix:
-- `RUN.md`
-- `SOURCE_LOCK.md`
-- Gate text
-- QA instructions
-- batch size
-- candidate-comparison language
-- retry language
-- current Root Master PNG or its description
-- prior-generation discussion
+Run controller:
+`../execution/text-only-root/RUN.md`
 
-For the current author-approved TEXT_ONLY completion target, do not load, inspect, describe, or compare against the repository `YURA_VISUAL_MASTER.png` during generation or post-generation acceptance.
+Source lock:
+`../execution/text-only-root/SOURCE_LOCK.md`
 
-Any output containing multiple figures / panels / poses is:
-`EXECUTION_RUN_INVALID`
+QA:
+`../qa/ROOT_MASTER_STABILITY_QA.md`
 
-It is not evidence of Text Authority instability.
+Generation-time visual references:
+`NONE`
 
-### FACE_MASTER
-Blocked until Root stability status = `APPROVED`.
+Post-generation visual comparison reference:
+`NONE`
+
+Do not attach, inspect into generation, or describe into the payload:
+- Face Root PNG
+- face-anchored Root
+- repository Root Master PNG
+- prior generations
+
+Image-generation semantic input for this submode is only the active `PAYLOAD.txt`.
 
 ### BODY_VIEW_MASTER
 Blocked until:
-- Root stability status = `APPROVED`
-- approved Face Master exists and is registered
+- final Root stability status = `APPROVED`
+- approved Face Root exists and is registered
+
+## Rendering execution requirement
+Every YURA Execution Payload must satisfy the mandatory compilation lock in:
+`../identity/rendering/YURA_RENDERING_SPEC.md`
+
+If the payload collapses Matte Natural Anime into washed-out high-key / uniform airbrush / invisible linework:
+`EXECUTION_PAYLOAD_VALIDATION = FAIL`
+`GENERATION_ALLOWED = NO`
 
 ## School uniform
 When requested in an applicable production derivative, also require School Uniform Gate PASS.
@@ -127,33 +179,34 @@ When requested in an applicable production derivative, also require School Unifo
 ## Final permission
 Complete `../../gate-core/LOAD_RECEIPT_SCHEMA.md`.
 
-For `TEXT_ONLY_ROOT_MASTER`, `SOURCE_LOCK.md` must match the current protected source blobs.
-If the source lock is stale:
+For every source-locked Master-Creation route, its active SOURCE_LOCK must PASS.
+A stale or unresolved lock:
 `GENERATION_ALLOWED = NO`
 
 Only `GENERATION_ALLOWED = YES` permits execution.
 
 ## POST-GENERATION ACCEPTANCE — mandatory
 Every generated YURA image is `CANDIDATE ONLY` until:
-1. `../qa/GENERATION_QA.md` is applied
-2. applicable mode-specific QA is applied
-3. `../../gate-core/POST_GENERATION_ACCEPTANCE_PROTOCOL.md` classifies the candidate
+1. common `../qa/GENERATION_QA.md` where applicable
+2. active mode-specific QA
+3. `../../gate-core/POST_GENERATION_ACCEPTANCE_PROTOCOL.md`
 
 For Matte Natural Anime:
 - photoreal / semi-photoreal / live-action / CGI / PBR / realistic portrait drift = `RENDERING HARD FAIL`
-- Rendering Hard Fail = `ACCEPTANCE_ALLOWED = NO`
+- washed-out / watercolor-like / pastel-faded / airbrush-only / linework-loss drift = `RENDERING FAIL`
+- any Rendering FAIL keeps `ACCEPTANCE_ALLOWED = NO`
 
 Generation-tool/UI visibility before QA does not invalidate the run by itself.
-A failed image remains a `REJECTED CANDIDATE`; it must not be described as accepted, promoted to Authority, or reused as a protected reference.
+A failed image remains a `REJECTED CANDIDATE`; it must not be promoted or reused as protected reference.
 
-Post-generation QA must not be reinterpreted as a requirement for hidden pre-presentation staging.
-
-## TEXT-ONLY retry semantics
-For `MASTER_CREATION / TEXT_ONLY_ROOT_MASTER`:
+## Retry semantics
+### Text-only modes
+For `TEXT_ONLY_FACE_ROOT_MASTER` and `TEXT_ONLY_ROOT_MASTER`:
 - `TARGETED_RETRY = FORBIDDEN`
-- any protected-domain failure rejects the entire candidate
-- regenerate a new independent whole candidate with the unchanged `PAYLOAD.txt`
-- rerun all YURA QA Gates
-- do not issue scope-only correction prompts inside the active batch
+- failed candidate is rejected as a whole
+- next run is a new independent candidate using unchanged active payload inside the batch
 
-True targeted retry is reserved for execution routes with verified visual/pixel preservation carriers.
+### Face-anchored mode
+The approved Face Root remains the only identity reference.
+A failed full-body candidate must never replace it.
+Do not promote or feed a failed full-body candidate back as a reference.
