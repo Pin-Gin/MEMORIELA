@@ -7,12 +7,14 @@ YURA Face Root / full-body Root / final TEXT_ONLY stability / BODY View Masters�
 
 ## Required order
 1. `TEXT_ONLY_FACE_ROOT_MASTER`
-2. author-approved and Git-registered Face Root
-3. `FACE_ANCHORED_ROOT_MASTER`
-4. author-approved stable face-anchored full-body Root
-5. `TEXT_ONLY_ROOT_MASTER` final reference-free stability verification
-6. explicit author approval of TEXT_ONLY Root stability
-7. `BODY_VIEW_MASTER`
+2. candidate classification by `FACE_ROOT_QA.md`
+3. if direct PASS: author review; if eligible EAR-only geometry FAIL: `FACE_ROOT_GEOMETRY_REFINEMENT`
+4. author-approved and Git-registered Face Root
+5. `FACE_ANCHORED_ROOT_MASTER`
+6. author-approved stable face-anchored full-body Root
+7. `TEXT_ONLY_ROOT_MASTER` final reference-free stability verification
+8. explicit author approval of TEXT_ONLY Root stability
+9. `BODY_VIEW_MASTER`
 
 Do not skip forward.
 
@@ -26,6 +28,9 @@ Purpose:
 Generation-time visual references:
 `NONE`
 
+Edit source carrier:
+`NONE`
+
 Mandatory profile:
 `../generation/master-creation/TEXT_ONLY_FACE_ROOT_MASTER.md`
 
@@ -37,11 +42,52 @@ Mandatory execution package:
 Required QA:
 `../qa/FACE_ROOT_QA.md`
 
+Possible outcomes:
+- `PASS_FOR_AUTHOR_REVIEW`
+- `REFINEMENT_ELIGIBLE`
+- `REJECTED_CANDIDATE`
+
+`REFINEMENT_ELIGIBLE` does not mean accepted, approved, Authority, or Reference.
+It only allows the protected refinement route below.
+
+## Submode 1R — FACE_ROOT_GEOMETRY_REFINEMENT
+Purpose:
+EAR geometry alone has failed while all other protected Face Root domains pass, and the ear is observable. Use the same candidate image as a non-reference edit-source carrier so ear size / placement / projection / tilt can be corrected in the face's existing spatial coordinate system.
+
+Generation-time visual references:
+`NONE`
+
+Required non-reference edit source:
+exactly one Gate-eligible Face Root candidate as `EDIT_SOURCE_CARRIER`.
+
+The edit source is:
+- NOT Authority
+- NOT Identity Reference
+- NOT Production Reference
+- NOT Canon evidence
+
+Mandatory profile:
+`../generation/master-creation/FACE_ROOT_GEOMETRY_REFINEMENT.md`
+
+Mandatory execution package:
+- `../execution/face-root-refinement/PAYLOAD.txt`
+- `../execution/face-root-refinement/RUN.md`
+- `../execution/face-root-refinement/SOURCE_LOCK.md`
+
+Required QA:
+`../qa/FACE_ROOT_REFINEMENT_QA.md`
+
+Refinement does not claim pixel-perfect preservation outside EAR.
+The output is a new candidate and all protected Face Root domains are re-QA'd.
+
+A failed refinement output must not become the next edit source.
+A repeated refinement attempt, when allowed, starts again from the same originally eligible edit-source candidate using the unchanged active refinement payload.
+
 Adoption target after QA PASS + explicit author approval:
 - `../identity/master/face-root/YURA_FACE_ROOT.png`
 - `../identity/master/face-root/YURA_FACE_ROOT.md`
 
-Declared later-use role:
+Declared later-use role after adoption only:
 `FACE_DETAIL_REFERENCE`
 
 ## Submode 2 — FACE_ANCHORED_ROOT_MASTER
@@ -73,6 +119,9 @@ Face-first identity stabilization後、画像参照を完全に外し、現行Te
 Generation-time visual references:
 `NONE`
 
+Edit source carrier:
+`NONE`
+
 Post-generation visual comparison reference for the current completion target:
 `NONE`
 
@@ -87,7 +136,7 @@ Mandatory execution package:
 Required QA:
 `../qa/ROOT_MASTER_STABILITY_QA.md`
 
-The Face Root, face-anchored Root, repository Root Master PNG, and previous generations must not enter this final TEXT_ONLY generation call.
+The Face Root, face-anchored Root, repository Root Master PNG, previous generations, and refinement edit-source carriers must not enter this final TEXT_ONLY generation call.
 
 ## Submode 4 — BODY_VIEW_MASTER
 Allowed only when:
@@ -98,7 +147,7 @@ Purpose:
 approved Root + Face identityを保持したままBODY projection anchorsを角度別に作成する。
 
 ## Promotion rule
-No candidate becomes Authority because it looks good.
+No candidate becomes Authority because it looks good or because it was used as an edit source.
 
 Promotion requires:
 1. applicable QA
