@@ -87,6 +87,41 @@ DO NOT INCREASE SHOULDER WIDTH.
 DO NOT LENGTHEN THE TORSO.
 DO NOT EXCESSIVELY LENGTHEN THE LEGS.
 
+### Head scale / face geometry lock
+7.2頭身を成立させる際、現在定義されている顔形状を変更してはならない。
+
+FACE GEOMETRY IS LOCKED.
+
+顔の縦横比を変更しない。
+目の大きさ・形・間隔を変更しない。
+眉・鼻・口の相対位置を変更しない。
+中顔面の長さを変更しない。
+下顔面の長さを変更しない。
+顎の形状を変更しない。
+頬の幅と丸みを変更しない。
+顔を面長化しない。
+顔を横長化しない。
+
+7.2頭身への調整は、顔内部の造形を変更するのではなく、頭部全体の身体に対する相対スケールを調整することで行う。
+頭部は、顔・頭蓋を一体の形状として均等に縮小する。
+顔内部の各パーツを個別に縮小・移動・再配置しない。
+
+現在の約5.8頭身相当から7.2頭身へ補正する場合、頭部ユニットの相対スケールは現在比およそ**80〜81%**を目安とする。
+
+**BODY SCALE = 100%.**
+身体の幅・肩幅・胸郭・腰幅・四肢の太さを増加させない。
+頭身調整のために身体を大型化しない。
+
+長髪の末端位置は、頭部縮小に連動して短くしない。
+髪の長さは従来どおり胸下を越え、腰付近までを維持する。
+
+FACE SHAPE MUST REMAIN IDENTICAL IN PROPORTION.
+ONLY THE RELATIVE HEAD-TO-BODY SCALE MAY CHANGE.
+DO NOT ENLARGE THE BODY.
+DO NOT WIDEN THE BODY.
+DO NOT LENGTHEN THE TORSO TO COMPENSATE.
+DO NOT EXCESSIVELY LENGTHEN THE LEGS TO COMPENSATE.
+
 ### Chest — Core priority
 胸部は、細身の体格に対して**やや豊か**であることを基準とする。
 細い肩・胸郭・ウエストとの対比の中で、胸部には明確なボリュームを残す。
@@ -204,15 +239,12 @@ EAR SIZE AND NATURAL PLACEMENT HAVE PRIORITY OVER EAR VISIBILITY.
 正面視で左右の耳を対称に完全露出させない。
 耳が頭部の左右へ大きく張り出したシルエットにしない。
 
-耳を描写する必要がある場合でも、
-髪の隙間から部分的に見える程度を優先する。
+耳を描写する必要がある場合でも、髪の隙間から部分的に見える程度を優先する。
 
 ### Fail-safe
-耳の可視性と自然なサイズが両立しない場合は、
-耳を大きくして見せるのではなく、髪で隠す。
+耳の可視性と自然なサイズが両立しない場合は、耳を大きくして見せるのではなく、髪で隠す。
 
-耳の構造を明示するために、
-YURAの頭部・顔・髪の形状を変更してはならない。
+耳の構造を明示するために、YURAの頭部・顔・髪の形状を変更してはならない。
 
 NOT large ears.
 NOT elongated ears.
