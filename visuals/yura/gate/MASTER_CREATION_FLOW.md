@@ -16,27 +16,32 @@ Do not skip forward.
 
 ## Submode 1 — TEXT_ONLY_ROOT_MASTER
 Purpose:
-画像参照を使わず、現行Text Authorityから作った固定Execution Payloadで正面YURAを再構築する。
+画像参照を使わず、現行Text Authorityからコンパイルした純粋な生成Payloadで正面YURAを再構築する。
 
 Resolution / compile route:
 ```text
 Protected Text Authorities
         ↓
-TEXT_ONLY_ROOT_EXECUTION.md
+SOURCE_LOCK.md
+        ↓
+PAYLOAD.txt
         ↓
 Payload validation
         ↓
+RUN.md controller validation
+        ↓
 one independent single-image call
         ↓
-post-generation QA
+post-generation QA / acceptance classification
 ```
 
 Generation-time visual references:
 `NONE`
 
-Mandatory execution files:
-- `../generation/execution/TEXT_ONLY_ROOT_EXECUTION.md`
-- `../generation/execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
+Mandatory execution package:
+- `../execution/text-only-root/PAYLOAD.txt` — image-generation semantic input only
+- `../execution/text-only-root/RUN.md` — controller only; never image-generation input
+- `../execution/text-only-root/SOURCE_LOCK.md` — source-integrity controller only; never image-generation input
 
 Required QA:
 `../qa/ROOT_MASTER_STABILITY_QA.md`
