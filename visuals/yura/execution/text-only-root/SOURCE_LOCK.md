@@ -1,6 +1,6 @@
 # YURA TEXT-ONLY ROOT SOURCE LOCK
 
-Status: **PROTECTED / CONTROLLER-ONLY / SOURCE INTEGRITY LOCK**
+Status: **PROTECTED / CONTROLLER-ONLY / SOURCE INTEGRITY LOCK / FINAL VERIFICATION DEFERRED**
 
 Purpose:
 `PAYLOAD.txt` がどの現行Authorityからコンパイルされたかを固定し、Authority変更後に古いPayloadをそのまま実行しないための記録。
@@ -10,9 +10,9 @@ This file is **NOT image-generation input**.
 ## Compiled-from repository state
 Repository: `Pin-Gin/MEMORIELA`
 Branch: `main`
-Base commit used for this compile: `1aa207031cfd0b3ed47d02b6f54546c92738eeb2`
-Payload recompile commit: `9157531766396c5f7b83ed429e620a4e947a7c0d`
-Payload blob: `bfe61b10316129a5e84d57a4aa55f3ae1b4f7c1d`
+Rendering authority hardening commit: `237016e1304b5e15cf2423eca6accf8bbe7a7969`
+Payload recompile commit: `75828e1fe69dbf2c7de16e01975663744be5351e`
+Payload blob: `58b6343bfce281bad79f454731ab5c88fb43b6e1`
 
 ## Approved completion provenance
 Author-approved completion image SHA-256 used for transcription:
@@ -23,19 +23,13 @@ Author-approved completion image SHA-256 used for transcription:
 `COMPLETION_IMAGE_POST_GENERATION_REFERENCE = NONE`
 `REPOSITORY_YURA_VISUAL_MASTER_PNG_USED_FOR_THIS_TEXT_ONLY_TARGET = NO`
 
-## Recompile classification
-`AUTHORITY_CHANGE = YES`
-`PAYLOAD_RECOMPILE = YES`
-`PREVIOUS_BATCH_STATUS = STOPPED`
-`PREVIOUS_BATCH_STOP_REASON = AUTHOR_APPROVED_COMPLETION_TARGET_REALIGNMENT`
-`NEW_STABILITY_BATCH_REQUIRED = YES`
-`NEW_STABILITY_BATCH_STATUS = READY`
+## Current workflow classification
+`PREVIOUS_TEXT_ONLY_BATCH_STATUS = STOPPED`
+`STOP_REASON = FACE_EAR_IDENTITY_DRIFT_AND_RENDERING_TOUCH_DRIFT`
+`FACE_FIRST_STABILIZATION_REQUIRED = YES`
+`FINAL_TEXT_ONLY_VERIFICATION_STATUS = DEFERRED`
 
-Reason:
-The author designated a final completion image as the target that TEXT_ONLY generation must reproduce.
-The repository Root Master PNG was explicitly excluded from this task.
-Protected text Authorities were synchronized to the author-approved completion target, including BODY silhouette, Normal Super-Long length distribution, and validation clothing.
-`PAYLOAD.txt` was then rebuilt from those synchronized positive semantics instead of accumulating prior failure-specific debug wording.
+The fixed TEXT_ONLY payload is now rendering-hardened and source-locked, but the active workflow first creates and approves a Face Root, then validates a face-anchored full-body Root, before returning to final reference-free TEXT_ONLY stability verification.
 
 ## Protected source blobs
 - `visuals/yura/identity/master/YURA_VISUAL_TEXT.md` — `2ede5c28484f8de787724cec31bbb9ffffabde21`
@@ -46,51 +40,31 @@ Protected text Authorities were synchronized to the author-approved completion t
 - `visuals/yura/identity/hair/HAIR_SPEC.md` — `a1f259ee396f192aad635e7b7f4433822981e1f0`
 - `visuals/yura/identity/hair/styles/NORMAL_SUPER_LONG.md` — `f2f0101f29f0036c47225e40af16a2146bfaed27`
 - `visuals/yura/identity/skin/SKIN_SPEC.md` — `22860c4d0b1a2a20612d4c83fd5a0e17a746e83b`
-- `visuals/yura/identity/rendering/YURA_RENDERING_SPEC.md` — `8f088f354938ae5081cd9a067e1444afe747b243`
+- `visuals/yura/identity/rendering/YURA_RENDERING_SPEC.md` — `365cf79a475619c14d8d0e3d73b7f0aaa8c4912f`
 - `visuals/CHARACTER_RENDERING_STYLE.md` — `345e779c72664a50e2f099199a3950e0115576b8`
 - `visuals/yura/qa/VALIDATION_CLOTHING.md` — `207acb3419278490d54dfc017a9ae28cc458929c`
 
-## Compile rule
-`PAYLOAD.txt` is a concise operational projection of the protected sources above.
-
-It intentionally contains generation-relevant semantics only.
-It must not contain:
-- Gate workflow
-- QA scoring / verdict logic
-- retry procedure
-- batch instructions
-- Git history
-- candidate-selection language
-- Authority promotion rules
-- prior failed-generation descriptions
-
-Detailed source Authorities remain authoritative for validation and QA.
-The concise payload does not delete or weaken those protected specifications.
-
-## Current compile emphasis
-The current payload is organized around the approved completion target rather than prior failure history:
-- exact 7.25-head petite / slender whole-body balance
-- compact ribcage with clearly fuller relative chest volume without torso widening
-- small soft-oval vertically compact face
-- blue-gray eyes
-- slightly-small restrained ears with no visibility-driven enlargement
-- silver-white Normal Super-Long whose dense principal mass continues through the waist into the upper-hip / hip-bone region, then tapers to sparse upper-thigh tips
-- pale fitted tank-style validation top with medium-width integrated shoulder panels and rounded scoop neckline
-- pale simple fitted shorts with a clean waistband
-- no ornament / jewelry / hair accessory
-- neutral upright front-facing full-body pose
-- white background
-- Matte Natural Anime / high-quality 2D anime rendering
+## Rendering compile emphasis
+The payload now explicitly preserves:
+- clearly readable fine 2D-anime linework
+- grouped soft-cel shadow shapes
+- diffuse gradients as mild support only
+- low-to-medium, not ultra-low, contrast
+- no white-background washout
+- grouped anime hair masses
+- matte / low-gloss quality
+- no watercolor / ethereal / pastel-faded reinterpretation
 
 ## Recompile trigger
 If any protected source blob listed above changes:
 `PAYLOAD_SOURCE_LOCK = STALE`
 `GENERATION_ALLOWED = NO`
 
-Before the next protected TEXT_ONLY_ROOT_MASTER generation:
-1. reread the changed Authority
-2. deliberately recompile `PAYLOAD.txt`
-3. update the blob list in this file
-4. start a new stability batch
+Before final protected TEXT_ONLY_ROOT_MASTER verification:
+1. complete the face-first stabilization workflow
+2. reread current protected source blobs
+3. if any blob changed, deliberately recompile `PAYLOAD.txt`
+4. update this lock
+5. begin a new final TEXT_ONLY stability batch
 
 Do not silently patch `PAYLOAD.txt` during an active batch.
