@@ -1,21 +1,38 @@
 # YURA TEXT-ONLY ROOT MASTER CREATION PROFILE
 
-Status: **PROTECTED / FIXED INPUT PROFILE**
+Status: **PROTECTED / FIXED INPUT PROFILE / FINAL REFERENCE-FREE VERIFICATION**
 
 Master Creation Submode:
 `TEXT_ONLY_ROOT_MASTER`
 
 Purpose:
-画像参照を一切使わず、現行YURA Text Authorityからコンパイルした実行Payloadで、作者承認済み完成ターゲットをTEXT_ONLYで再構築・安定検証する。
+Face Root → Face-Anchored RootでIdentityと全身構造・Renderingを安定化した後、画像参照を完全に外し、現行YURA Text Authorityからコンパイルした固定Payloadだけで最終TEXT_ONLY再現安定性を検証する。
+
+## Workflow dependency
+This is the final verification stage, not the first identity-stabilization stage.
+
+Before starting a new final TEXT_ONLY stability batch:
+- Face Root must have been author-approved and registered
+- Face-Anchored Root must have been generated and author-approved as the stabilized target
+- current text Authorities must represent the approved target
+- `SOURCE_LOCK.md` must match all current protected source blobs
+
+If those workflow dependencies are incomplete:
+`TEXT_ONLY_ROOT_FINAL_VERIFICATION = DEFERRED`
 
 ## Generation-time reference policy
 `VISUAL_REFERENCES_ALLOWED = NONE`
 
 No image may be supplied to the image-generation execution.
 
-`TEXT_ONLY` is a Source / Reference Mode.
-It means the generation is driven only by the resolved text Authorities and compiled text Execution Payload.
-It does not require a direct raw-prompt API and must not be blocked merely because the image interface derives instructions from conversation context.
+Specifically forbidden from the generation call:
+- Face Root PNG
+- Face-Anchored Root image
+- repository `YURA_VISUAL_MASTER.png`
+- previous generated candidates
+
+`TEXT_ONLY` means the generation is driven only by resolved text Authorities and compiled text Execution Payload.
+It does not require a direct raw-prompt API and may use a valid context-derived execution carrier.
 
 ## Authority resolution inputs
 Gate / compiler resolves the current protected sources:
@@ -34,8 +51,6 @@ Gate / compiler resolves the current protected sources:
 These documents are resolution sources.
 They are **not** dumped directly into the image-generation call.
 
-The repository `YURA_VISUAL_MASTER.png` is not part of this TEXT_ONLY completion target and must not be used to reinterpret these text Authorities.
-
 ## Isolated execution package
 Image-generation semantic input only:
 `visuals/yura/execution/text-only-root/PAYLOAD.txt`
@@ -47,46 +62,28 @@ Source-integrity lock only:
 `visuals/yura/execution/text-only-root/SOURCE_LOCK.md`
 
 Only `PAYLOAD.txt` may enter the generation-facing semantic context.
-`RUN.md` and `SOURCE_LOCK.md` must never be appended to it.
 
-## Fixed generation condition
-The fixed generation condition is fully compiled into `PAYLOAD.txt`.
+## Rendering compilation requirement
+The active payload must preserve the mandatory YURA rendering compilation lock from:
+`visuals/yura/identity/rendering/YURA_RENDERING_SPEC.md`
 
-Do not add to the generation handoff:
-- batch count
-- candidate comparison language
-- QA verdict language
-- Git paths
-- rejection tables
-- retry procedure
-- Master PNG descriptions
-- prior-generation discussion
+Washed-out high-key / watercolor-like / pastel-faded / airbrush-only / invisible-line drift is not acceptable Matte Natural Anime.
 
 ## Variation policy
 `AI_INFERENCE_REQUIRED = NONE`
 `USER_AUTHORIZED_VARIATION = NONE`
-
-## Source integrity
-Before generation, `SOURCE_LOCK.md` must match the current protected source blobs.
-
-If any locked Authority changed without deliberate payload recompilation:
-`PAYLOAD_SOURCE_LOCK = STALE`
-`GENERATION_ALLOWED = NO`
 
 ## Stability batch
 Controller / QA layer:
 - minimum 3 valid independent single-image runs
 - preferred 5 valid independent single-image runs
 
-The image-generation model must not receive batch-size or comparison-sheet instructions.
+The generation model must not receive batch-size or comparison-sheet instructions.
 
 ## Post-generation comparison
-For the current author-approved TEXT_ONLY completion target:
 `POST_GENERATION_COMPARISON_REFERENCE = NONE`
 
-Post-generation QA compares the candidate against the protected text Authorities and mode QA only.
-
-Do not load, inspect, describe, or compare against the repository Root Master PNG unless the author explicitly changes this policy.
+Post-generation QA compares the candidate against protected text Authorities and mode QA only.
 
 ## Candidate status
 Every valid output remains:
