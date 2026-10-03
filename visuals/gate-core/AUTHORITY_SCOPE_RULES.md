@@ -38,6 +38,23 @@ Does not recolor / redesign protected identity.
 ### SCENE
 Controls background / environment / props except protected character and outfit scopes.
 
+## Novel / Visual domain boundary
+Novel Canon and Visual Authority are separate Authority domains.
+
+A file under `characters/`, `story/`, or `manuscript/` does not become image-generation Visual Authority merely because it contains appearance, age, clothing, scene, or other visually expressible information.
+
+For YURA specifically:
+- `characters/YURA.md` is **NOVEL ONLY**
+- it must not participate in YURA Visual Authority resolution
+- it must not be compiled into a YURA Execution Payload or Prompt
+- it must not be used as fallback when YURA Visual Authority is missing
+- it must not be used for YURA Visual QA or Reference selection
+
+If the active YURA Visual Domain lacks a required definition, stop instead of importing Novel Canon.
+
+`NOVEL_CANON != VISUAL_AUTHORITY`
+`characters/YURA.md -> YURA_IMAGE_GENERATION = DENIED`
+
 ## Composite rule
 When multiple domains are active, each controls only its Scope.
 
