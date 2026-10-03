@@ -4,6 +4,22 @@ Status: **CANONICAL YURA VISUAL ENTRYPOINT / ROUTER ONLY**
 
 Purpose: MEMORIELAで久遠ゆらを生成する際の唯一の入口。
 
+## HARD DOMAIN ISOLATION — NOVEL CANON DENY
+YURAの画像生成では、`characters/YURA.md` を読み込む・Authority解決へ参加させる・Prompt/Payloadへ変換する・Visual QAへ使用することを禁止する。
+
+`characters/YURA.md` は小説・人物設定専用であり、YURA Visual Domainとは完全に分離する。
+
+同様に、`story/` / `manuscript/` の物語記述をYURAのVisual Identity補完へ使用してはならない。
+
+Visual側に必要な情報が不足・未定義・RESET中の場合:
+- Novel Canonへfallbackしない
+- 過去会話やMemoryへfallbackしない
+- 一般知識で補完しない
+- 生成を停止する
+
+`NOVEL_CANON != VISUAL_AUTHORITY`
+`characters/YURA.md -> IMAGE_GENERATION = DENIED`
+
 ## Mandatory route
 画像生成を行う場合、この文書から直接生成してはならない。
 
@@ -37,9 +53,10 @@ Authority resolution後は、`../gate-core/EXECUTION_PAYLOAD_PROTOCOL.md` に従
 - 似たファイルがある
 - ディレクトリ配下を読めば十分
 - MasterがGitに存在するだけで実際の視覚参照へ渡っていない
+- Novel CanonからVisual条件を補完する
 
 Gate PASSとLoad Receipt完成前に画像生成を実行しない。
 
 ## Novel boundary
-年齢、人物関係、時系列、制服、場面設定など物語Canonは `characters/` / `story/` を正とする。
-このDomainはYURAのVisual Identityと生成安定性を扱う。
+小説制作では `characters/` / `story/` をNovel Authorityとして使用する。
+YURA画像生成では、それらをVisual Authority・生成意味・Visual QAへ持ち込まない。
