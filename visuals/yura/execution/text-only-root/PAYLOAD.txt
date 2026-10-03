@@ -34,9 +34,16 @@ Exactly one female character, one canvas, one composition, front-facing full bod
 上は、身体に自然に沿うシンプルなタンク型ノースリーブトップ。肩部分はスパゲッティストラップより明確に幅のある中幅の一体型肩布。ネックラインは丸みのあるシンプルなスクープネックで深すぎない。裾は上腰〜ショートパンツのウエスト付近。レース、フリル、リボン、ロゴ、装飾なし。ランジェリー風にしない。
 下は、淡色のシンプルなフィットしたショートパンツ。上腿丈。ウエストはシンプルで清潔な帯状。紐、コード、結び目、リボン、レース、フリル、ロゴ、装飾なし。裸足。
 
-Matte Natural Anime。
-高品質2Dアニメイラスト。細く繊細な2Dアニメ線。soft cel / grouped illustration shading。柔らかな拡散陰影。低〜中コントラスト。明るいhigh-key表現。肌・髪・衣服の光沢は控えめ。
-NOT photoreal. NOT semi-photoreal. NOT live-action. NOT CGI / 3D render. NOT PBR / game-engine rendering. NOT photographic skin. NOT photographic hair.
+RENDERING LOCK — MATTE NATURAL ANIME.
+HIGH-QUALITY 2D ANIME ILLUSTRATION ONLY.
+クリーンで細く繊細だが、画面上ではっきり読める2Dアニメ線。線画を消すほど淡くせず、ペインタリー／水彩表現へ溶かさない。
+soft cel / grouped illustration shadingを基礎とし、形状は読めるまとまりのある影面で表現する。柔らかな拡散グラデーションは補助に限定し、全体を均一なエアブラシ陰影へ置き換えない。
+コントラストは低〜中程度だが、極端な低コントラストにはしない。明るい表現は維持するが白飛びさせない。
+白〜暖白背景上でも、顔・肌・銀白髪・淡色衣服・線画・陰影が互いに明確に分離して読める状態を維持する。
+髪は大きな2Dアニメ毛束を基本とし、毛束の重なり・厚み・穏やかな明暗差・少数の細い毛のアクセントで表現する。銀白髪を半透明の淡い繊維の霞のようにしない。
+肌・髪・衣服はマット〜低光沢。柔らかく落ち着いた質感だが、washed-out、水彩風、ethereal-faded、pastel-fadedにはしない。
+BRIGHT != WASHED_OUT. SOFT != AIRBRUSH_ONLY. FINE_LINE != INVISIBLE_LINE.
+NOT photoreal. NOT semi-photoreal. NOT live-action. NOT realistic portrait. NOT CGI / 3D render. NOT PBR / game-engine rendering. NOT photographic skin. NOT photographic hair.
 
 正面向き。頭頂から足先まで完全表示。中央配置。白〜暖白背景。近似正投影、遠近歪み最小。
 頭は垂直で傾けない。肩はほぼ水平。胴体は正面でねじらない。両腕は左右とも自然に下ろし、両手は太腿外側付近に見える。腰を片側へ逃がさない。強いコントラポストなし。脚はほぼ揃え、足は近い位置で自然に前を向く。
