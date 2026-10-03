@@ -34,29 +34,42 @@ Gate / compiler resolves the current protected sources:
 These documents are resolution sources.
 They are **not** dumped directly into the image-generation call.
 
-## Mandatory execution payload
-Image generation receives:
-`visuals/yura/generation/execution/TEXT_ONLY_ROOT_EXECUTION.md`
+## Isolated execution package
+Image-generation semantic input only:
+`visuals/yura/execution/text-only-root/PAYLOAD.txt`
 
-Execution orchestration follows:
-`visuals/yura/generation/execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
+Controller only:
+`visuals/yura/execution/text-only-root/RUN.md`
 
-No raw Gate / QA / batch instruction is appended to the generation payload.
+Source-integrity lock only:
+`visuals/yura/execution/text-only-root/SOURCE_LOCK.md`
+
+Only `PAYLOAD.txt` may enter the generation-facing semantic context.
+`RUN.md` and `SOURCE_LOCK.md` must never be appended to it.
 
 ## Fixed generation condition
-The fixed condition is fully compiled into `TEXT_ONLY_ROOT_EXECUTION.md`.
+The fixed generation condition is fully compiled into `PAYLOAD.txt`.
 
-Do not add:
+Do not add to the generation handoff:
 - batch count
 - candidate comparison language
 - QA verdict language
 - Git paths
 - rejection tables
-- Master PNG descriptions outside the compiled text payload
+- retry procedure
+- Master PNG descriptions
+- prior-generation discussion
 
 ## Variation policy
 `AI_INFERENCE_REQUIRED = NONE`
 `USER_AUTHORIZED_VARIATION = NONE`
+
+## Source integrity
+Before generation, `SOURCE_LOCK.md` must match the current protected source blobs.
+
+If any locked Authority changed without deliberate payload recompilation:
+`PAYLOAD_SOURCE_LOCK = STALE`
+`GENERATION_ALLOWED = NO`
 
 ## Stability batch
 Controller / QA layer:
