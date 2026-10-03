@@ -63,6 +63,30 @@ NOT mature model-like facial proportions.
 腰から太腿にかけては細すぎず、自然でやわらかなラインを維持する。
 太腿・ふくらはぎ・足首を極端に細くしない。
 
+### Body proportion / head-to-body ratio
+全身は **7.2頭身** をTARGETとする。
+
+頭頂から顎先までの頭部高を1.0とした場合、頭頂から足裏までの全身高は **7.2** を基準とする。
+**TARGET = 7.2 heads**
+**ACCEPTABLE RANGE = 7.1〜7.3 heads**
+
+7.2頭身を成立させるために、胴体・脚・肩幅・腰幅・胸郭・四肢を大型化してはならない。
+身体全体を縦方向へ引き伸ばして7.2頭身に合わせない。
+脚だけを不自然に長くしない。
+胴だけを長くしない。
+肩幅や骨格を大きくしない。
+体格そのものを大きくしない。
+
+7.2頭身は、「身体を大きくする」ことではなく、頭部と身体全体の相対比率として成立させる。
+7.2頭身化によって、体格・身体ボリューム・身長感を大きく見せない。
+
+BODY SIZE MUST NOT INCREASE TO ACHIEVE 7.2 HEADS.
+DO NOT ENLARGE OR ELONGATE THE BODY TO REACH THE TARGET RATIO.
+DO NOT CREATE A TALL MODEL-LIKE BODY.
+DO NOT INCREASE SHOULDER WIDTH.
+DO NOT LENGTHEN THE TORSO.
+DO NOT EXCESSIVELY LENGTHEN THE LEGS.
+
 ### Chest — Core priority
 胸部は、細身の体格に対して**やや豊か**であることを基準とする。
 細い肩・胸郭・ウエストとの対比の中で、胸部には明確なボリュームを残す。
