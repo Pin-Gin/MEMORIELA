@@ -20,4 +20,12 @@ Current character Visual domains:
 - 一ノ瀬栞 → `visuals/shiori/`
 - project-wide rendering → `visuals/CHARACTER_RENDERING_STYLE.md`
 
+### YURA domain isolation
+`characters/YURA.md` は小説資料専用であり、YURA画像生成のVisual Authorityではない。
+
+YURA画像生成、Prompt/Payload作成、Reference選択、Visual QA、Visual情報の補完に `characters/YURA.md` を使用してはならない。
+Visual側の必要情報が未定義の場合も `characters/YURA.md` へfallbackせず、生成を停止する。
+
+`NOVEL_CANON != VISUAL_AUTHORITY`
+
 作者はユーザー。AIは壁打ち、QA、整合性確認、POV/情報開示確認、演出稿→小説稿変換補助、添削・校正を担当する。
