@@ -1,19 +1,24 @@
-# YURA FACE MASTER
+# YURA LEGACY FACE MASTER SLOT
 
-Status: **MASTER SLOT / PRODUCTION BLOCKED UNTIL ADOPTED**
+Status: **LEGACY / NOT ACTIVE AUTHORITY**
 
-Expected image:
-`YURA_FACE_MASTER.png`
+This directory belonged to the previous Root-first workflow.
+It is no longer the active Face identity carrier route.
 
-Expected manifest after adoption:
-`YURA_FACE_MASTER.md`
+Current Face-first authority slot:
+`../face-root/`
 
-Role:
-FACE_DETAIL_REFERENCE
+Expected active approved artifact:
+`../face-root/YURA_FACE_ROOT.png`
 
-Purpose:
-stabilize face outline, eye placement, nose/mouth placement, ear geometry and face-framing hair boundary.
+Expected active manifest:
+`../face-root/YURA_FACE_ROOT.md`
 
-Until an approved Face Close-up Master is placed here and registered, YURA PRODUCTION generation is fail-closed.
+Declared role:
+`FACE_DETAIL_REFERENCE`
 
-Candidate creation must use MASTER_CREATION mode and explicit author approval before adoption.
+Do not place new authoritative Face Root assets in this legacy directory.
+Do not use a file from this directory as fallback if the active Face Root is missing.
+
+Exact active paths are defined by:
+`../../../gate/AUTHORITY_MANIFEST.md`
