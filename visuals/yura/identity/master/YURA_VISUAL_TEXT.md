@@ -65,9 +65,30 @@ NOT mature model-like facial proportions.
 太腿・ふくらはぎ・足首を極端に細くしない。
 
 ## Ears
-耳は髪に自然に隠れてよい。
-見える場合も小さめ〜標準程度とし、不自然に大きくしない。
-耳を見せるために外側へ張り出させない。
+耳はやや小さめを基準とする。
+耳は頭部側面に近く沿わせ、外側への張り出しを弱くする。
+耳の縦方向の長さを過度に伸ばさない。
+耳たぶを長くしない。
+耳を大きく、縦長に、横へ広く描かない。
+
+耳の可視性は生成目標ではない。
+髪によって一部または全部が自然に隠れてよい。
+耳を見せるために髪を避けたり、耳を外側へ移動させたりしない。
+耳を見せるために耳自体を拡大しない。
+耳をカメラ側へ回転させない。
+左右の耳を同じ程度に見せる必要はない。
+
+耳が髪に隠れる場合は、その遮蔽を自然な状態として許容する。
+見えにくい場合でも、耳の大きさ・位置・向きを変更して可視化しない。
+
+NOT large ears.
+NOT elongated ears.
+NOT protruding ears.
+NOT outward-flared ears.
+NOT camera-facing ears.
+NOT long earlobes.
+NOT pointed ears.
+NOT elf-like ears.
 
 ## Validation Clothing
 TEXT_ONLY検証時の服装は、白〜ごく薄いグレー系のシンプルな軽装。
