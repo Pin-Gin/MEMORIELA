@@ -1,20 +1,30 @@
 # YURA ROOT MASTER STABILITY QA
 
-Status: **PROTECTED / MANDATORY FOR TEXT_ONLY_ROOT_MASTER**
+Status: **PROTECTED / MANDATORY FOR FINAL TEXT_ONLY_ROOT_MASTER**
 
 Purpose:
-同一の固定 `PAYLOAD.txt` から生成した独立Single Run間で、作者承認済み完成ターゲットのTEXT_ONLY再現安定性を評価する。
+Face-first stabilization完了後、同一の固定 `PAYLOAD.txt` から生成した独立Single Run間で、最終reference-free TEXT_ONLY再現安定性を評価する。
 
-## Preconditions
+## Workflow precondition
+Before a final TEXT_ONLY batch starts:
+- author-approved Face Root must exist and be registered
+- author-approved Face-Anchored Root must have established the stabilized full-body target
+- protected text Authorities must represent that approved target
+- current text-only `SOURCE_LOCK.md` must PASS
+
+The Face Root and Face-Anchored Root are workflow provenance only at this stage.
+They must **not** enter generation or post-generation visual comparison.
+
+## Run preconditions
 A valid run requires:
 - mode = MASTER_CREATION
 - submode = TEXT_ONLY_ROOT_MASTER
 - exact `visuals/yura/execution/text-only-root/PAYLOAD.txt` used unchanged
-- `visuals/yura/execution/text-only-root/RUN.md` followed as controller-only material
-- `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matches current protected source blobs
+- `RUN.md` controller-only
+- `SOURCE_LOCK.md` current
 - generation-time visual references = NONE
 - post-generation visual comparison reference = NONE
-- repository `YURA_VISUAL_MASTER.png` is not used for this target
+- Face Root / Face-Anchored Root / repository Root Master PNG not supplied to generation
 - no Gate / QA / controller / retry / batch text mixed into generation semantics
 - no appended per-run correction
 - same framing/aspect class
@@ -28,7 +38,7 @@ Invalid:
 - targeted prompt correction inside the batch
 - stale `SOURCE_LOCK.md`
 
-Invalid run = execution-control failure and does not count toward stability.
+Invalid run does not count toward stability.
 
 ## Minimum batch
 At least 3 valid independent single-image runs.
@@ -38,93 +48,82 @@ Preferred = 5.
 ### FACE
 - small face
 - soft oval
-- face vertical length = standard to slightly short
+- standard-to-slightly-short vertical length
 - vertically compact; no oblong / elongated impression
 - slightly narrow face width
 - modest cheek softness
-- smooth taper to a compact lower face
+- smooth taper to compact lower face
 - small narrow softly rounded chin
-- horizontally elongated eyes with restrained vertical height
-- very small delicate nose
-- very small short closed mouth
-- extremely subtle soft smile / calm expression
-- stable eye / nose / mouth placement
+- stable feature placement
 
 ### EYE
 - blue-gray only
 - gray component clearly present
 - restrained saturation
-- mild almond shape
-- horizontally elongated
+- mild horizontally elongated almond shape
 - restrained vertical height
-- visible sclera on both sides of iris
-- neutral to very slightly downturned outer corners
-- stable geometry
+- stable identity
 
 ### EAR
-- slightly small ear scale
-- vertical ear length approximately 28–30% of forehead-to-chin face vertical length
-- ear length has priority over exact eyebrow / nose endpoint alignment
-- upper rim around eyebrow height and lower rim around nose-tip to subnasal height are guides only
+- slightly small scale
+- approximately 28–30% of forehead-to-chin face vertical length
 - restrained approximately 5–10 degree posterior tilt
-- restrained projection from the head
-- visible / hidden / partially hidden ears are all acceptable
-- local hair placement around the ear may vary naturally
-- bilateral equal exposure is not required
-- no source hair length / total-mass / identity change for ear visibility
-- no head rotation, ear rotation, outward displacement or enlargement for visibility
-- no forced bilateral ear visibility
-- stable ear geometry without visibility-driven EAR/head compensation
+- restrained projection
+- visible / hidden / partially hidden all acceptable
+- bilateral equal exposure not required
+- no visibility-driven enlargement / displacement / rotation
+- stable geometry across valid runs
 
 ### BODY
 - exact 7.25-head system
 - petite / slender frame
 - somewhat narrow shoulders
 - narrow compact ribcage
-- clearly fuller chest volume relative to the frame without torso widening
+- clearly fuller chest relative to frame without torso widening
 - slim natural waist
 - natural restrained pelvis / hips
-- thighs / calves slender with visible natural softness and plausible thickness
-- stable waist / pelvis / limbs
+- slender limbs with natural softness
 
 ### HAIR
 - silver-white, cool-neutral / white-leaning
-- principal dense mass continues through the waist into the upper-hip / hip-bone region
-- clear taper through the upper hip
-- only a small number of sparse finest tips may continue toward the very upper-thigh boundary
-- no dense main curtain at mid-thigh or lower
-- no generic full thigh-length hair curtain
+- principal dense mass through waist into upper-hip / hip-bone region
+- clear taper through upper hip
+- only sparse finest tips toward very upper-thigh boundary
+- no dense mid-thigh-or-lower curtain
 - stable total mass / lateral spread
-- fine / soft strands
-- vertical I-line tendency
 
 ### SKIN
 - bright fair / slightly white-leaning
 - subtle blood color
 - no clipping
 
-### RENDERING — HARD STABILITY CONDITION
-- unmistakable 2D anime illustration
+### RENDERING — PROTECTED STABILITY CONDITION
+Required simultaneously:
+- unmistakable high-quality 2D anime illustration
 - Matte Natural Anime
-- fine anime line
-- soft cel / grouped shading
-- restrained gloss
-- low-to-medium contrast
-- bright high-key presentation
+- clean fine but clearly readable linework
+- linework remains visible
+- soft cel / grouped shadow shapes define form
+- diffuse gradients remain mild support only
+- low-to-medium contrast, not ultra-low contrast
+- bright but not overexposed
+- white-background separation remains clear
+- silver-white hair reads as grouped anime masses, not translucent haze
+- matte / low-gloss
+- not watercolor-like / pastel-faded / ethereal-faded
 - no photoreal / semi-real / CGI / PBR
 
-Rendering Hard Fail candidate does not count.
+Material rendering drift or Rendering Hard Fail candidate does not count.
 
 ### VALIDATION CLOTHING
 - pale / off-white plain fitted tank-style sleeveless top
-- medium-width integrated shoulder panels, clearly wider than spaghetti straps
-- rounded scoop neckline with moderate depth
+- medium-width integrated shoulder panels
+- rounded scoop neckline
 - pale simple fitted shorts
 - clean waistband
 - opaque
 - matte to low-gloss
 - no drawstring / cord / tie / bow / lace / frill / logo / decorative trim
-- no lingerie / sleepwear reading
 - barefoot
 
 ## Cross-run classification
@@ -138,32 +137,32 @@ Per domain:
 No scope-only retry inside a batch.
 
 If one candidate fails:
-- reject that whole candidate
+- reject whole candidate
 - keep `PAYLOAD.txt` unchanged
 - generate another independent whole candidate
 - re-run all QA
 
-If the same domain repeatedly fails across otherwise valid isolated runs:
-- stop the batch
-- diagnose `PAYLOAD.txt` against current protected Authorities and `SOURCE_LOCK.md`
-- revise outside the batch
-- update `SOURCE_LOCK.md`
-- begin a new batch
+If the same domain repeatedly fails:
+- stop batch
+- diagnose payload against current protected Authorities and source lock
+- revise outside batch only
+- update source lock
+- begin new batch
 
 ## Decisions
 ### PASS_FOR_AUTHOR_REVIEW
 At least 3 valid runs; all core protected domains acceptably stable.
 
 ### FULL_CANDIDATE_RETRY
-A candidate failed, but no repeated systematic drift is yet established.
+A candidate failed without established systematic drift.
 
 ### EXECUTION_FIX_REQUIRED
 Execution isolation / source-lock / fixed-payload discipline failed.
 
 ### EXECUTION_PAYLOAD_REFINEMENT_REQUIRED
-Repeated valid runs show the same domain drift and `PAYLOAD.txt` needs deliberate revision.
+Repeated valid runs show same domain drift.
 
 ### REJECT_BATCH
-Material uncontrolled variance, reference contamination, stale source lock, or repeated Rendering Hard Fail.
+Material uncontrolled variance, reference contamination, stale source lock, or repeated Rendering failure.
 
-Only the author approves Root stability.
+Only the author approves final Root stability.
