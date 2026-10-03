@@ -3,15 +3,17 @@
 Status: **PROTECTED / MANDATORY FOR TEXT_ONLY_ROOT_MASTER**
 
 Purpose:
-同一の短い固定Execution Blockから生成した独立Single Run間で、YURAの再現安定性を評価する。
+同一の固定 `PAYLOAD.txt` から生成した独立Single Run間で、YURAの再現安定性を評価する。
 
 ## Preconditions
 A valid run requires:
 - mode = MASTER_CREATION
 - submode = TEXT_ONLY_ROOT_MASTER
-- exact `TEXT_ONLY_ROOT_EXECUTION.md` used unchanged
-- `TEXT_ONLY_ROOT_SINGLE_RUN.md` followed
+- exact `visuals/yura/execution/text-only-root/PAYLOAD.txt` used unchanged
+- `visuals/yura/execution/text-only-root/RUN.md` followed as controller-only material
+- `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matches current protected source blobs
 - generation-time visual references = NONE
+- no Gate / QA / controller / retry / batch text mixed into generation semantics
 - no appended per-run correction
 - same framing/aspect class
 - exactly one YURA / one canvas / one composition
@@ -20,8 +22,9 @@ Invalid:
 - multi-panel / triptych / comparison sheet
 - multiple figures / poses
 - reference contamination
-- Execution Block mutation
+- payload mutation
 - targeted prompt correction inside the batch
+- stale `SOURCE_LOCK.md`
 
 Invalid run = execution-control failure and does not count toward stability.
 
@@ -74,7 +77,7 @@ Preferred = 5.
 - petite / slender frame
 - narrow compact ribcage
 - bust moderately fuller relative to frame
-- soft hemispherical / お椀型
+- natural rounded direction
 - stable waist / pelvis / limbs
 
 ### HAIR
@@ -118,14 +121,15 @@ No scope-only retry inside a batch.
 
 If one candidate fails:
 - reject that whole candidate
-- keep fixed block unchanged
+- keep `PAYLOAD.txt` unchanged
 - generate another independent whole candidate
 - re-run all QA
 
 If the same domain repeatedly fails across otherwise valid isolated runs:
 - stop the batch
-- diagnose Execution Block first
+- diagnose `PAYLOAD.txt` against current protected Authorities and `SOURCE_LOCK.md`
 - revise outside the batch
+- update `SOURCE_LOCK.md`
 - begin a new batch
 
 ## Decisions
@@ -136,12 +140,12 @@ At least 3 valid runs; all core protected domains acceptably stable.
 A candidate failed, but no repeated systematic drift is yet established.
 
 ### EXECUTION_FIX_REQUIRED
-Execution isolation / fixed-block discipline failed.
+Execution isolation / source-lock / fixed-payload discipline failed.
 
 ### EXECUTION_PAYLOAD_REFINEMENT_REQUIRED
-Repeated valid runs show the same domain drift and the fixed block needs revision.
+Repeated valid runs show the same domain drift and `PAYLOAD.txt` needs deliberate revision.
 
 ### REJECT_BATCH
-Material uncontrolled variance, reference contamination, or repeated Rendering Hard Fail.
+Material uncontrolled variance, reference contamination, stale source lock, or repeated Rendering Hard Fail.
 
 Only the author approves Root stability.
