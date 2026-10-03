@@ -32,33 +32,17 @@ Git / connector retrieval alone is not sufficient.
 The active Execution Payload semantics must be carried into the generation-facing context.
 
 ## Mode routing — resolve before dependency checks
-### Face-first identity creation
-If the user requests creation of the YURA face anchor / face close-up before full-body Root creation:
-`MODE = MASTER_CREATION`
-`MASTER_CREATION_SUBMODE = TEXT_ONLY_FACE_ROOT_MASTER`
-
-### Face Root geometry refinement
-If an active Face Root candidate is classified `REFINEMENT_ELIGIBLE` by `FACE_ROOT_QA.md` and the user requests correction through the protected edit route:
-`MODE = MASTER_CREATION`
-`MASTER_CREATION_SUBMODE = FACE_ROOT_GEOMETRY_REFINEMENT`
-
-### Face-anchored full-body Root
-If the user requests full-body Root generation using the approved Face Root:
-`MODE = MASTER_CREATION`
-`MASTER_CREATION_SUBMODE = FACE_ANCHORED_ROOT_MASTER`
-
 ### Final reference-free verification
 If the user explicitly requests pure text-only full-body Root generation with no image references:
 `MODE = MASTER_CREATION`
 `MASTER_CREATION_SUBMODE = TEXT_ONLY_ROOT_MASTER`
 
-Do not evaluate PRODUCTION-only requirements as blockers for these Master-Creation submodes unless that submode explicitly requires a visual input.
+Do not evaluate PRODUCTION-only requirements as blockers for this Master-Creation submode unless that submode explicitly requires a visual input.
 
 ## PRODUCTION
 Requires:
 - mandatory text Authorities resolved
 - root YURA Visual Master available in declared role
-- approved Face Root available as FACE_DETAIL_REFERENCE
 - requested BODY orientation resolved
 - required BODY view anchor available
 - no unauthorized reference
@@ -66,7 +50,7 @@ Requires:
 - mode-specific Execution Payload validated
 - Load Receipt complete
 
-Missing approved Face Root or required BODY view Master:
+Missing required BODY view Master:
 `GENERATION_ALLOWED = NO`
 
 ## MASTER_CREATION
@@ -74,138 +58,9 @@ Requires:
 - explicit `MASTER_CREATION_SUBMODE`
 - exact profile / execution package from `AUTHORITY_MANIFEST.md`
 
-### TEXT_ONLY_FACE_ROOT_MASTER
-Allowed now.
-
-Authority profile:
-`../generation/master-creation/TEXT_ONLY_FACE_ROOT_MASTER.md`
-
-Execution payload:
-`../execution/face-root/PAYLOAD.txt`
-
-Run controller:
-`../execution/face-root/RUN.md`
-
-Source lock:
-`../execution/face-root/SOURCE_LOCK.md`
-
-QA:
-`../qa/FACE_ROOT_QA.md`
-
-Generation-time visual references:
-`NONE`
-
-Edit source carrier:
-`NONE`
-
-Execution transport:
-- `DIRECT_MODEL_INPUT` or `CONTEXT_DERIVED_TEXT_EXECUTION`
-- exact payload semantics materialized immediately before generation
-- no image reference attached
-- no Gate / QA / controller / prior-generation text mixed into payload
-
-Generated candidate is not Face Root Authority until QA PASS + explicit author approval + Git PNG / manifest registration.
-
-A candidate may be classified `REFINEMENT_ELIGIBLE` only by the active Face Root QA. That classification does not accept or promote the candidate.
-
-### FACE_ROOT_GEOMETRY_REFINEMENT
-Allowed only for a candidate classified `REFINEMENT_ELIGIBLE` by `../qa/FACE_ROOT_QA.md`.
-
-Authority profile:
-`../generation/master-creation/FACE_ROOT_GEOMETRY_REFINEMENT.md`
-
-Execution payload:
-`../execution/face-root-refinement/PAYLOAD.txt`
-
-Run controller:
-`../execution/face-root-refinement/RUN.md`
-
-Source lock:
-`../execution/face-root-refinement/SOURCE_LOCK.md`
-
-QA:
-`../qa/FACE_ROOT_REFINEMENT_QA.md`
-
-Generation-time visual reference roles:
-`NONE`
-
-Required non-reference image input:
-exactly one eligible candidate as `EDIT_SOURCE_CARRIER`.
-
-The edit source carrier:
-- is NOT Authority
-- is NOT a Reference role
-- is NOT Canon evidence
-- exists only as the pixel / layout starting image for correction of that same candidate
-
-Before execution:
-- `EDIT_SOURCE_ELIGIBILITY = PASS`
-- actual edit source image available = PASS
-- exact runtime SHA-256 of the edit source recorded in the Load Receipt
-- no other image supplied
-- active refinement SOURCE_LOCK = PASS
-
-Eligibility requires:
-- FACE PASS
-- EYE PASS
-- HAIR FRAMING PASS
-- SKIN PASS
-- RENDERING PASS
-- composition / single-image constraints PASS
-- EAR geometry FAIL while at least one ear is observable
-- no other protected-domain FAIL
-
-If any other domain failed, or rendering failed, or the candidate is not the exact QA-classified candidate:
-`GENERATION_ALLOWED = NO`
-
-The edit operation may request local preservation, but preservation outside EAR is not assumed or guaranteed.
-The output is a new candidate and all protected Face Root domains must be re-QA'd.
-
-A failed refinement output:
-- remains rejected
-- is not Authority
-- is not a Reference
-- must not become the next edit source
-
-If another refinement run is allowed, use the same originally eligible edit-source carrier and the unchanged active refinement payload.
-
-### FACE_ANCHORED_ROOT_MASTER
-Blocked until approved Face Root is registered and hash-locked.
-
-Authority profile:
-`../generation/master-creation/FACE_ANCHORED_ROOT_MASTER.md`
-
-Execution payload:
-`../execution/face-anchored-root/PAYLOAD.txt`
-
-Run controller:
-`../execution/face-anchored-root/RUN.md`
-
-Source / reference lock:
-`../execution/face-anchored-root/SOURCE_LOCK.md`
-
-QA:
-`../qa/FACE_ANCHORED_ROOT_QA.md`
-
-Required generation-time visual reference:
-exactly one approved `../identity/master/face-root/YURA_FACE_ROOT.png` as `FACE_DETAIL_REFERENCE`.
-
-No other visual reference is allowed in this submode.
-The actual Face Root image must be available to execution; Git existence alone is insufficient.
-
-Face Root scope is limited to FACE / EYE / EAR / face-framing hair boundary.
-It must not redesign BODY, full hair length, outfit, pose, scene, or rendering.
-
-Until `face-anchored-root/SOURCE_LOCK.md` records the approved Face Root hash and explicitly permits generation:
-`GENERATION_ALLOWED = NO`
-
 ### TEXT_ONLY_ROOT_MASTER — FINAL VERIFICATION
-This route is intentionally deferred until face-first stabilization is complete.
-
 Required before a new final TEXT_ONLY batch:
-- author-approved Face Root exists and is registered
-- author-approved Face-Anchored Root exists as the stabilized full-body target
-- protected text Authorities represent that approved target
+- protected text Authorities represent the target
 - current text-only `SOURCE_LOCK.md` passes after any required recompile
 
 If any dependency is incomplete:
@@ -237,18 +92,14 @@ Post-generation visual comparison reference:
 `NONE`
 
 Do not attach, inspect into generation, or describe into the payload:
-- Face Root PNG
-- Face-Anchored Root
 - repository Root Master PNG
 - prior generations
-- refinement edit-source carriers
 
 Image-generation semantic input for this submode is only the active `PAYLOAD.txt`.
 
 ### BODY_VIEW_MASTER
 Blocked until:
 - final Root stability status = `APPROVED`
-- approved Face Root exists and is registered
 
 ## Rendering execution requirement
 Every YURA Execution Payload must satisfy the mandatory compilation lock in:
@@ -285,20 +136,8 @@ Generation-tool/UI visibility before QA does not invalidate the run by itself.
 A failed image remains a `REJECTED CANDIDATE`; it must not be promoted or reused as protected reference.
 
 ## Retry semantics
-### Text-only modes
-For `TEXT_ONLY_FACE_ROOT_MASTER` and `TEXT_ONLY_ROOT_MASTER`:
+### Text-only mode
+For `TEXT_ONLY_ROOT_MASTER`:
 - `TARGETED_RETRY = FORBIDDEN`
 - failed candidate is rejected as a whole
 - next run is a new independent candidate using unchanged active payload inside the batch
-
-### Face Root refinement
-For `FACE_ROOT_GEOMETRY_REFINEMENT`:
-- targeted pixel preservation is requested but not guaranteed
-- all Face Root domains are re-QA'd after every edit
-- failed refinement output must not become the next edit source
-- a repeated allowed attempt uses the same originally eligible edit-source carrier with unchanged payload
-
-### Face-anchored mode
-The approved Face Root remains the only identity reference.
-A failed full-body candidate must never replace it.
-Do not promote or feed a failed full-body candidate back as a reference.
