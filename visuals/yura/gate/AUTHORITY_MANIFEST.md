@@ -59,10 +59,13 @@ PROFILE:
 `visuals/yura/generation/master-creation/TEXT_ONLY_ROOT_MASTER.md`
 
 EXECUTION_PAYLOAD:
-`visuals/yura/generation/execution/TEXT_ONLY_ROOT_EXECUTION.md`
+`visuals/yura/execution/text-only-root/PAYLOAD.txt`
 
-SINGLE_RUN_PROTOCOL:
-`visuals/yura/generation/execution/TEXT_ONLY_ROOT_SINGLE_RUN.md`
+RUN_CONTROLLER:
+`visuals/yura/execution/text-only-root/RUN.md`
+
+SOURCE_LOCK:
+`visuals/yura/execution/text-only-root/SOURCE_LOCK.md`
 
 STABILITY_QA:
 `visuals/yura/qa/ROOT_MASTER_STABILITY_QA.md`
@@ -72,6 +75,9 @@ Reference policy:
 
 The raw semantic authorities above are resolved to validate the Execution Payload.
 They are not directly dumped into the image-generation call.
+
+Only `PAYLOAD.txt` may enter the image-generation semantic handoff for this submode.
+`RUN.md`, `SOURCE_LOCK.md`, Gate, QA, and status documents are controller / validation material only.
 
 ## PRODUCTION visual references
 IDENTITY_ROOT_REFERENCE:
