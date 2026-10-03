@@ -3,17 +3,12 @@
 Status: **PROTECTED / MANDATORY FOR FINAL TEXT_ONLY_ROOT_MASTER**
 
 Purpose:
-Face-first stabilization完了後、同一の固定 `PAYLOAD.txt` から生成した独立Single Run間で、最終reference-free TEXT_ONLY再現安定性を評価する。
+同一の固定 `PAYLOAD.txt` から生成した独立Single Run間で、最終reference-free TEXT_ONLY再現安定性を評価する。
 
 ## Workflow precondition
 Before a final TEXT_ONLY batch starts:
-- author-approved Face Root must exist and be registered
-- author-approved Face-Anchored Root must have established the stabilized full-body target
-- protected text Authorities must represent that approved target
+- protected text Authorities must represent the approved target
 - current text-only `SOURCE_LOCK.md` must PASS
-
-The Face Root and Face-Anchored Root are workflow provenance only at this stage.
-They must **not** enter generation or post-generation visual comparison.
 
 ## Run preconditions
 A valid run requires:
@@ -24,7 +19,7 @@ A valid run requires:
 - `SOURCE_LOCK.md` current
 - generation-time visual references = NONE
 - post-generation visual comparison reference = NONE
-- Face Root / Face-Anchored Root / repository Root Master PNG not supplied to generation
+- repository Root Master PNG not supplied to generation
 - no Gate / QA / controller / retry / batch text mixed into generation semantics
 - no appended per-run correction
 - same framing/aspect class
