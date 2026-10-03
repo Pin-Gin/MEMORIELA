@@ -16,7 +16,7 @@ Do not skip forward.
 
 ## Submode 1 — TEXT_ONLY_ROOT_MASTER
 Purpose:
-画像参照を使わず、現行Text Authorityからコンパイルした純粋な生成Payloadで正面YURAを再構築する。
+画像参照を使わず、現行Text Authorityからコンパイルした純粋な生成Payloadで、作者承認済み完成ターゲットをTEXT_ONLY再構築する。
 
 Resolution / compile route:
 ```text
@@ -32,10 +32,13 @@ RUN.md controller validation
         ↓
 one independent single-image call
         ↓
-post-generation QA / acceptance classification
+post-generation text-authority QA / acceptance classification
 ```
 
 Generation-time visual references:
+`NONE`
+
+Post-generation visual comparison reference for the current completion target:
 `NONE`
 
 Mandatory execution package:
@@ -46,8 +49,7 @@ Mandatory execution package:
 Required QA:
 `../qa/ROOT_MASTER_STABILITY_QA.md`
 
-The registered Root Master image may be used only after generation as:
-`POST_GENERATION_COMPARISON_REFERENCE`
+For the current author-approved TEXT_ONLY completion target, the repository Root Master PNG is not loaded, inspected, described, or used as a generation or post-generation comparison reference.
 
 ## Submode 2 — FACE_MASTER
 Allowed only when:
