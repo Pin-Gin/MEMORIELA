@@ -1,265 +1,235 @@
 # YURA VISUAL TEXT
 
-Status: **PROTECTED / CURRENT / EXECUTION AUTHORITY**
+Status: **PROTECTED / CURRENT / EXECUTION AUTHORITY / AUTHOR-APPROVED COMPLETION TRANSCRIPTION**
 
-Source visual anchor:
-`visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
+## Source provenance
+This text was transcribed from the author-approved completion image supplied for the final TEXT_ONLY reconstruction target.
 
-Purpose:
-承認済みYURA Visual Masterの視覚情報を生成実行用に文章化する。
+Source image SHA-256:
+`2487b8c8ad4cdc4358fe4d69b57b9a4ea50e23fd2359613f82c7de7d68fa449a`
 
-本書は参考資料ではない。生成時に適用するVisual Authorityである。
-ただしBODY / FACE / EAR / EYE / HAIR / SKIN / renderingの精密なdomain ruleと競合する場合、そのdomain ruleを優先する。
+The repository PNG at `visuals/yura/identity/master/YURA_VISUAL_MASTER.png` is intentionally **not used as the visual source for this TEXT_ONLY target**.
 
-AIは禁止:
-- 要約による意味変更
-- 一般的なキャラクター表現への置換
-- 自然さを理由とした補正
-- 未指定特徴の追加
-- 複数条件の独自平均化
-- 重要度の独自変更
+The approved completion image is transcription provenance only. It is not a generation-time visual reference.
 
-## Current approved visual interpretation
+## Authority rule
+This file is a self-contained Visual Authority for the approved YURA completion target.
 
-### BODY
-- 153 cm petite / slender female character
+BODY / FACE / EAR / EYE / HAIR / SKIN / rendering / validation-clothing domain specs must describe the same target.
+If a protected domain spec conflicts with this approved target, do not average or silently reinterpret the conflict. Resolve the text Authority before generation.
+
+AI must not:
+- replace these traits with generic anime defaults
+- beautify or normalize geometry by assumption
+- add unspecified ornaments or styling
+- average conflicting descriptions
+- use previous failed generations as visual evidence
+- use the repository Master PNG to reinterpret this TEXT_ONLY target
+
+## Overall silhouette
+- 153 cm petite / slender female character concept
 - exact 7.25-head design target
-- somewhat narrow shoulders
-- compact ribcage
-- BODYの横幅・腰・骨盤・太腿を増やさず、胸だけを体格比でやや豊かにする
-- soft hemispherical / お椀型 direction
-- slim natural waist
-- natural restrained female pelvis / hips consistent with the protected petite/slender design
-- standard-to-slightly-long legs
-- slender limbs with natural softness
+- head visually small relative to the full body
+- delicate but not skeletal
+- shoulders slightly narrow
+- compact, restrained ribcage
+- clearly slim natural waist
+- natural female pelvis / hips without exaggerated width
+- legs read standard-to-slightly-long within the 7.25-head system
+- arms and legs remain slender with visible natural softness rather than stick-thin geometry
+- overall silhouette is vertically clean and compact, not an 8-head fashion-model elongation
 
-### FACE / EAR / EYE
-- small face
-- soft oval
-- face vertical length = standard to slightly short; vertically compact; not oblong
-- slightly narrow face width and modest cheek softness
-- smooth taper from temples / cheeks toward a compact lower face
-- small, narrow, softly rounded chin
-- eyes slightly large but horizontally elongated with restrained vertical height
-- mild almond shape; neutral to very slightly downturned outer corners
-- blue-gray eyes with restrained saturation
-- very small delicate nose
-- very small short closed mouth; neutral to extremely subtle soft expression
-- ears are slightly small
-- ear vertical length = approximately 28–30% of forehead-to-chin face vertical length
-- ear length has priority over exact eyebrow / nose endpoint alignment
-- upper rim around eyebrow height and lower rim around nose-tip to subnasal height are placement guides only
-- ear long axis has restrained 5–10 degree posterior tilt
-- ear projection from the head remains restrained
-- ear may be visible, partially hidden, or fully hidden; local hair placement around the ear may vary naturally
-- ear visibility must not change protected ear size / length / tilt / projection
-- calm / refined / delicate overall impression
-- protected pupil signature remains governed by `../eyes/EYE_SPEC.md`
+## BODY visual target
+### Upper body
+- neck slender to standard, with natural proportionate length
+- shoulders slightly narrow with a soft natural slope
+- ribcage stays compact and does not widen to support the chest
+- chest volume is clearly fuller relative to the petite/slender frame while the torso width remains restrained
+- upper torso must still read petite/slender first, not broad or glamour-dominant
 
-### HAIR
-- silver-white
-- Normal Super-Long
-- principal ends at natural waistline to slightly below
-- only sparse longest fine tips may approach just before the upper-buttock
-- total hair mass slightly above standard
-- fine / soft strands
-- restrained lateral spread
-- gravity-dominant fall
-
-### SKIN / RENDERING
-- bright fair skin
-- slightly white-leaning
-- very subtle natural blood color
-- no paper-white clipping
-- Matte Natural Anime
-- minimal specular highlight on skin / hair / clothing
-- soft cel + soft diffuse shading
-- low-to-medium contrast
-- no glossy / PBR / semi-photoreal drift
-
-## Master image visual transcription
-
-The following section is a direct visual transcription of the approved Master image. It exists to keep the PNG and written Visual Text aligned. It does not override protected domain specifications.
-
-During the current TEXT_ONLY_ROOT_MASTER refinement, the precise FACE / EYE geometry in `FACE_SPEC.md` and `EYE_SPEC.md` is authoritative even if the existing Root Master differs in facial geometry. The Root Master itself remains unchanged until explicit author approval of a replacement.
-
-## Visual Description — 1. Overall silhouette
-
-- 小柄で華奢な全身シルエット。
-- 頭部は全身比率に対してやや小さめ。
-- 全身は縦にすっきりまとまり、極端なモデル体型・長身感には寄っていない。
-- 肩幅はやや狭く、上半身はコンパクト。
-- 腰は細いが、極端なくびれには見えない。
-- 骨盤・ヒップは自然な丸みがあり、過度なグラマラス体型ではない。
-- 脚は細身だが棒状ではなく、太腿・膝・ふくらはぎに自然な柔らかさがある。
-
-## Visual Description — 2. BODY visual read
-
-### Head / body balance
-- 見た目として7.25頭身系のアニメ体型。
-- 8頭身以上のファッションモデル的な引き伸ばし感はない。
-- 小柄さは頭部拡大ではなく、全身のコンパクトさで表現されている。
-
-### Shoulders / ribcage
-- 肩はやや狭め。
-- 胸郭は細くコンパクト。
-- 上半身の横幅は抑えめで、胸部を支えるために胴体全体を広げてはいない。
-
-### Bust
-- **BODYの横幅・腰・骨盤・太腿を増やさず、胸だけを体格比でやや豊かにする。**
-- 胸郭自体は細いまま、前方への自然なボリュームがある。
-- 形は**お椀型 / 柔らかな半球型寄り**。
-- 上部は過度に張らず、下側に自然な丸みがある。
-- 球体を貼り付けたような形や、上部だけ盛り上がる形には見えない。
-
-### Waist / pelvis
-- 腰は細く自然。
-- 胸郭から腰、骨盤への移行は滑らか。
-- 骨盤は女性らしい自然な幅で、肩幅と大きく乖離しない。
-- ヒップは過度に横へ張り出さず、自然な丸み。
+### Waist / pelvis / hips
+- waist clearly slim but not corset-pinched
+- ribcage → waist → pelvis transition is smooth
+- pelvis / hips have natural restrained female width
+- hips do not become the dominant feature of the silhouette
 
 ### Legs
-- 太腿は細身だが適度な厚みと柔らかさがある。
-- 膝は小さめで目立ちすぎない。
-- ふくらはぎは自然なカーブを持つ。
-- 足首は細い。
-- 脚全体は標準〜やや長めに見えるが、極端な脚長化はない。
+- thighs slender with natural visible softness and moderate anatomical thickness
+- knees small / modest
+- calves slender with a gentle curve
+- ankles slim
+- no heavy lower-body exaggeration and no stick-thin legs
 
 ### Arms / hands / feet
-- 腕は細身だが極端に細くない。
-- 前腕から手首へのテーパーは自然。
-- 手は小さめ〜標準。
-- 足は小さすぎず、153cm級の体格として自然なサイズ感。
+- arms slender with natural softness
+- forearms taper naturally toward the wrist
+- hands small-to-standard for the protected petite frame
+- feet natural in size for the 153 cm concept
 
-## Visual Description — 3. FACE visual read
-
+## FACE visual target
 ### Outline
-- 柔らかな卵型。
-- 頬にわずかな丸みがある。
-- 頬骨は強く出ない。
-- 顎は小さめで、尖らず柔らかく丸い。
-- 極端なVラインではない。
+- small face
+- soft oval shape
+- face vertical length standard to slightly short
+- compact lower face
+- slightly narrow face width
+- modest cheek softness
+- cheekbones not emphasized
+- contour tapers smoothly toward the chin
+- chin small, narrow, softly rounded
+- not round
+- not oblong / vertically elongated
+- not an extreme V-line
 
 ### Eyes
-- 顔全体に対してやや大きめ。
-- 形はややアーモンド型で、縦長すぎず横方向に少し広い。
-- 目尻はニュートラル〜ごくわずかに下向きに見える。
-- 強いたれ目・つり目ではない。
-- 瞳色は**青灰色**。
-- 彩度は控えめで、落ち着いた冷色。
-- フルボディ表示では瞳孔下右側の微細ノッチは判別困難なため、画像単体では非観測扱い。
+- slightly large but balanced for the small face
+- horizontally elongated mild almond shape
+- restrained vertical height
+- gently curved upper eyelid
+- shallow lower eyelid curve
+- outer corners neutral to very slightly downturned
+- iris color = low-saturation blue-gray with a clear gray component
+- no brown / amber / hazel / vivid jewel-blue reinterpretation
 
 ### Brows
-- 細め。
-- ほぼ直線に近く、ごく緩いアーチ。
-- 髪色と馴染む冷たい灰色系。
+- fine
+- cool gray / silver-gray
+- nearly straight with only a gentle natural arch
 
 ### Nose
-- 小さく繊細。
-- 鼻筋は強く主張せず、軽い陰影で存在が分かる程度。
-- 鼻先・小鼻は写実的に描き込みすぎない。
+- very small and delicate
+- readable through minimal 2D-anime shading
+- no realistic nostril or nose-tip modeling
 
 ### Mouth / expression
-- 口は小さめ。
-- ごく薄い自然な微笑み。
-- 表情は穏やかで、落ち着きがある。
-- 唇の艶や立体感は控えめ。
+- very small, short, closed mouth
+- extremely subtle soft smile
+- calm / gentle / composed expression
+- no broad default smile
 
-## Visual Description — 4. HAIR visual read
+## EAR visual target
+- ears visually small and restrained
+- vertical ear length approximately 28–30% of forehead-to-chin face vertical length
+- ears remain close to the side of the head
+- projection is restrained
+- long axis has a mild approximately 5–10 degree posterior tilt
+- natural hair may partially hide either ear
+- bilateral equal exposure is not required
+- visibility must never cause ear enlargement, outward displacement, flaring, or camera-facing rotation
 
-### Color
-- 髪色は**銀白色 / silver-white**。
-- 白に近いが無彩色の真っ白ではなく、わずかに冷たい灰色・銀色のニュアンスがある。
-- ベージュ、金髪、ラベンダー、金属銀には見えない。
+## HAIR visual target
+### Color / material
+- silver-white only
+- white-leaning cool-neutral tone with subtle cool gray / silver nuance
+- not beige, blonde, lavender, pink-lavender, or metallic silver
+- individual strands read fine and soft
+- grouped 2D-anime hair masses remain readable
+
+### Overall structure
+- default hairstyle = Normal Super-Long / down hair
+- total mass = standard to slightly above standard
+- gravity-dominant fall
+- restrained lateral spread
+- vertical I-line tendency
+- crown / upper back hair does not balloon outward
+- principal mass remains behind / around the back rather than being moved mostly forward
 
 ### Length
-- Normal Super-Long。
-- 主毛量は**自然なウエスト付近〜わずかに下**まで。
-- それより下へ伸びるのは少数の細い毛先のみ。
-- 臀部中央以下や太腿まで主要毛量は伸びていない。
+The approved completion target visually reads longer than the earlier waist-only compilation.
 
-### Mass / silhouette
-- 総毛量は標準よりやや多め。
-- 一本一本は細く柔らかい印象。
-- 全体は縦長Iライン寄り。
-- 横へ大きく扇状には広がらない。
-- 肩から背中、腰へ自然に落ちる。
-- 腰付近から毛先へ段階的に細くなる。
-
-### Front distribution
-- 主毛量は肩・背中側に残る。
-- 胸前へ来るのは顔周りと一部の細い毛束だけ。
-- 後ろ髪の大半を前へ回してはいない。
+- dense principal visible mass continues through the waist into the upper-hip / hip-bone region
+- the main dense silhouette should taper through the upper hip rather than stop abruptly at the natural waist
+- only a small number of thinner tapered outer tips may continue toward the very upper-thigh boundary
+- no dense curtain at mid-thigh or lower
+- no generic thigh-length full hair curtain
 
 ### Bangs / face framing
-- 前髪は細く長め。
-- 束感は柔らかく、額を完全に覆い隠さない。
-- 頬沿いに長めのサイドバングがある。
-- 目を強く隠さない。
+- long thin bangs
+- softly separated fringe
+- forehead remains partly visible
+- long side sections frame cheeks / jaw / neck
+- eyes remain readable
+- no ornaments, braid, bun, ribbon, clip, headband, or accessory
 
-## Visual Description — 5. SKIN visual read
+## SKIN visual target
+- bright fair skin
+- slightly white-leaning
+- subtle natural blood color, especially cheeks and joints
+- no paper-white clipping against the white background
+- no strong pink / orange warming
+- smooth matte surface impression
+- no wet or waxy gloss
 
-- 明るい色白。
-- **ほんの少し白寄り**に見える。
-- 頬や関節周辺に**ごく薄い自然な血色**がある。
-- 白背景でも肌が背景に溶けるほど白飛びしていない。
-- ピンク・オレンジ方向への強い暖色化はない。
-- 表面はさらっとしたマット寄りで、濡れた艶・ワックス感はない。
+## VALIDATION CLOTHING visual target
+### Upper garment
+- pale off-white / light-neutral
+- plain
+- opaque
+- matte to low-gloss
+- fitted simple tank-style sleeveless validation top
+- medium-width integrated shoulder panels, clearly wider than spaghetti straps
+- rounded scoop neckline of moderate depth
+- neckline is simple and not lingerie-styled
+- hem reaches the upper-hip / waistband area
+- light natural fabric wrinkles are allowed
+- no lace, frill, bow, ribbon, logo, trim, ornament, or body-shaping structure
 
-## Visual Description — 6. RENDERING visual read
+### Lower garment
+- matching pale off-white / light-neutral simple shorts
+- opaque
+- matte to low-gloss
+- natural fitted validation shape without lingerie styling
+- upper-thigh length
+- clean simple waistband
+- no drawstring, cord, tie, bow, lace, frill, logo, or decoration
 
-- 高品質2Dアニメイラスト。
-- Matte Natural Animeの方向。
-- 線画は細く、黒々と強くない。
-- 全体コントラストは低〜中程度。
-- 陰影はsoft celを基礎に、柔らかな拡散陰影が混ざる。
-- 肌・髪・衣服のスペキュラハイライトは控えめ。
-- 立体感は強い光沢ではなく、明暗差と柔らかな陰影で出している。
-- 髪は大きな毛束の重なり・厚み・明暗差で質感を出している。
-- 強い艶リング、ガラス状ハイライト、金属的な反射はない。
-- 検証服もサテン・シルクのような強い反射はない。
-- 半実写・PBR・3DCGには寄っていない。
+### Common
+- barefoot
+- no jewelry
+- no hair ornament
+- clothing follows BODY and must not redesign BODY
 
-## Visual Description — 7. Validation clothing visual read
-
-- 淡色〜白系。
-- 無地。
-- 不透明。
-- マット。
-- シンプルなノースリーブトップス。
-- シンプルなショートパンツ。
-- 装飾・リボン・レース・フリル・ドローコードなし。
-- 裸足。
-- 衣服はBODYの形状確認を邪魔しない程度の自然なフィット。
-
-## Visual Description — 8. Composition
-
+## POSE / COMPOSITION visual target
 - exactly one YURA
-- front-facing
-- full body
-- head top through toes visible
+- one figure / one canvas / one composition
+- front-facing full body
+- head top through toes fully visible
 - centered
-- white background
-- minimal perspective distortion
-- neutral standing
-- arms naturally lowered
+- white to warm-white background
+- near-orthographic feeling with minimal perspective distortion
+- upright neutral standing
+- head vertical, not tilted
+- shoulders approximately level
+- torso untwisted
+- both arms naturally lowered
+- both hands visible near the outer thighs
 - legs nearly together
+- feet close together and naturally forward
+- no contrapposto
 - no props
 - no text / labels / panels
 
-## Relationship to precise specs
-This Visual Text does not replace:
-- BODY_SPEC
-- FACE_SPEC
-- EAR_SPEC
-- EYE_SPEC
-- HAIR_SPEC
-- NORMAL_SUPER_LONG
-- SKIN_SPEC
-- YURA_RENDERING_SPEC
-
-A precise protected domain rule wins over an incidental visual reading.
+## RENDERING visual target
+- high-quality 2D anime illustration
+- Matte Natural Anime
+- fine, delicate anime linework
+- linework not heavy black
+- soft cel shading with soft diffuse grouped shading
+- low-to-medium contrast
+- bright high-key presentation
+- restrained specular highlights
+- hair volume expressed through grouped masses, overlap, subtle tonal depth, and soft strand separation
+- no strong gloss ring
+- no photographic skin texture
+- no photographic hair-fiber field
+- NOT photoreal
+- NOT semi-photoreal
+- NOT live-action
+- NOT CGI / 3D render
+- NOT PBR / game-engine rendering
 
 ## Change control
-本書はMaster差し替え、または同一Masterの転記修正を作者が明示承認した場合のみ更新する。
-失敗生成に合わせて内容を書き換えない。
+This Visual Text may be changed only by explicit author approval of a new target or a deliberate transcription correction.
+
+Do not rewrite it to fit failed generations.
+Do not use the repository Master PNG to override this approved TEXT_ONLY completion target unless the author explicitly changes that policy.
