@@ -13,19 +13,23 @@ Required:
 - OUTFIT_REFERENCE = NONE
 - POSE_ONLY_REFERENCE = NONE
 - SCENE_REFERENCE = NONE
+- POST_GENERATION_COMPARISON_REFERENCE = NONE
 - ACTUAL_VISUAL_REFERENCES_AVAILABLE = NOT_REQUIRED
 
 If any image is supplied to the image-generation execution:
 `GENERATION_ALLOWED = NO`
 
-The current registered Root Master may be viewed only **after** a candidate exists and only as:
-`POST_GENERATION_COMPARISON_REFERENCE`
+For the current author-approved TEXT_ONLY completion target, the repository Root Master PNG is also excluded from post-generation acceptance / stability comparison.
 
 Do not:
-- attach it to generation
+- attach the repository Root Master PNG to generation
+- inspect it as part of the current TEXT_ONLY acceptance target
 - describe it into the generation payload
 - use it during a generation-time retry
+- use it as a post-generation comparison reference for this TEXT_ONLY target
 - allow another file to instruct PNG priority inside this submode
+
+The current TEXT_ONLY target is evaluated against the protected text Authorities and active fixed `PAYLOAD.txt` only.
 
 ## PRODUCTION
 Only Gate-approved references may be attached in declared roles.
@@ -42,7 +46,7 @@ Missing required production reference:
 ## BODY view — PRODUCTION
 Resolve through `VIEW_ROUTER.md`.
 
-FRONT uses the root YURA Master.
+FRONT uses the root YURA Visual Master.
 Non-front uses exactly one routed BODY View Master.
 
 Do not:
