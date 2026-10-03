@@ -59,24 +59,6 @@ If a YURA payload reduces this to only `high-key`, `soft`, `low contrast`, or `m
 
 ## Mode-specific authority
 
-### MASTER_CREATION / TEXT_ONLY_FACE_ROOT_MASTER
-Generation-time visual references are **NONE**.
-
-Rendering authority for the execution payload:
-1. protected YURA FACE / EAR / EYE / HAIR-face-framing / SKIN text Authorities
-2. this YURA rendering adapter
-3. project-wide `CHARACTER_RENDERING_STYLE.md`
-
-### MASTER_CREATION / FACE_ANCHORED_ROOT_MASTER
-Generation-time FACE_DETAIL_REFERENCE is allowed only through the active Gate.
-
-Rendering authority remains:
-1. protected YURA text Authorities
-2. this YURA rendering adapter
-3. project-wide `CHARACTER_RENDERING_STYLE.md`
-
-The Face Root reference stabilizes identity geometry. It does not replace or redefine rendering authority.
-
 ### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
 Generation-time visual references are **NONE**.
 
