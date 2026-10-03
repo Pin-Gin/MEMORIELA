@@ -2,7 +2,55 @@
 
 Status: **PROTECTED / MANDATORY / FAIL-CLOSED**
 
-## MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
+## MASTER_CREATION / TEXT_ONLY_FACE_ROOT_MASTER
+Generation-time visual references:
+`NONE`
+
+Required:
+- IDENTITY_ROOT_REFERENCE = NONE
+- FACE_DETAIL_REFERENCE = NONE
+- BODY_VIEW_REFERENCE = NONE
+- OUTFIT_REFERENCE = NONE
+- POSE_ONLY_REFERENCE = NONE
+- SCENE_REFERENCE = NONE
+- ACTUAL_VISUAL_REFERENCES_AVAILABLE = NOT_REQUIRED
+
+If any image is supplied to this Face Root generation execution:
+`GENERATION_ALLOWED = NO`
+
+## MASTER_CREATION / FACE_ANCHORED_ROOT_MASTER
+Generation-time visual references:
+exactly one approved Face Root.
+
+Required:
+- IDENTITY_ROOT_REFERENCE = NONE
+- FACE_DETAIL_REFERENCE = `visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
+- BODY_VIEW_REFERENCE = NONE
+- OUTFIT_REFERENCE = NONE
+- POSE_ONLY_REFERENCE = NONE
+- SCENE_REFERENCE = NONE
+- ACTUAL_VISUAL_REFERENCES_AVAILABLE = PASS
+
+The Face Root manifest and image hash must match `face-anchored-root/SOURCE_LOCK.md`.
+The actual approved image must be available to the generation execution.
+Git existence alone is insufficient.
+
+Any other image supplied to this submode:
+`GENERATION_ALLOWED = NO`
+
+FACE_DETAIL_REFERENCE may control only:
+- face outline
+- cheek / chin balance
+- eye identity / placement
+- nose / mouth placement
+- ear geometry
+- face-framing hair boundary
+
+It must not control BODY / full hair length / outfit / pose / scene / rendering style.
+
+Rejected, unapproved, or previous full-body generations are denied.
+
+## MASTER_CREATION / TEXT_ONLY_ROOT_MASTER — FINAL VERIFICATION
 Generation-time visual references:
 `NONE`
 
@@ -19,17 +67,13 @@ Required:
 If any image is supplied to the image-generation execution:
 `GENERATION_ALLOWED = NO`
 
-For the current author-approved TEXT_ONLY completion target, the repository Root Master PNG is also excluded from post-generation acceptance / stability comparison.
+Do not attach or describe into this final TEXT_ONLY call:
+- Face Root PNG
+- face-anchored Root candidate / Master
+- repository Root Master PNG
+- previous generation
 
-Do not:
-- attach the repository Root Master PNG to generation
-- inspect it as part of the current TEXT_ONLY acceptance target
-- describe it into the generation payload
-- use it during a generation-time retry
-- use it as a post-generation comparison reference for this TEXT_ONLY target
-- allow another file to instruct PNG priority inside this submode
-
-The current TEXT_ONLY target is evaluated against the protected text Authorities and active fixed `PAYLOAD.txt` only.
+The final TEXT_ONLY target is evaluated against protected text Authorities and active fixed `PAYLOAD.txt` only.
 
 ## PRODUCTION
 Only Gate-approved references may be attached in declared roles.
@@ -38,7 +82,7 @@ Root whole-character Identity:
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
 Face detail:
-`visuals/yura/identity/master/face/YURA_FACE_MASTER.png`
+`visuals/yura/identity/master/face-root/YURA_FACE_ROOT.png`
 
 Missing required production reference:
 `GENERATION_ALLOWED = NO`
@@ -56,7 +100,7 @@ Do not:
 - let BODY view reference redesign FACE / HAIR / outfit / rendering
 
 ## Actual-reference requirement
-For modes that require visual references, Git existence alone is not enough.
+For every mode that requires visual references, Git existence alone is not enough.
 The actual approved image must be available to execution in the declared role.
 
 Rejected / intermediate images are denied.
