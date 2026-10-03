@@ -17,10 +17,12 @@ PASS only if:
 ### MASTER_CREATION / TEXT_ONLY_ROOT_MASTER
 PASS only if:
 - submode = `TEXT_ONLY_ROOT_MASTER`
-- exact `TEXT_ONLY_ROOT_EXECUTION.md` was used
-- `TEXT_ONLY_ROOT_SINGLE_RUN.md` was followed
+- exact `visuals/yura/execution/text-only-root/PAYLOAD.txt` was used
+- `visuals/yura/execution/text-only-root/RUN.md` was followed as controller-only material
+- `visuals/yura/execution/text-only-root/SOURCE_LOCK.md` matched the current protected source blobs
 - generation-time visual references = NONE
 - no current/previous Master image entered generation
+- no Gate / QA / controller / retry / batch text entered the generation semantic handoff
 - no per-run prompt mutation
 - no batch/comparison language entered generation
 - one person / one image / one canvas
@@ -42,7 +44,7 @@ PASS:
 - somewhat narrow shoulders
 - compact ribcage
 - bust moderately fuller relative to frame
-- soft hemispherical / お椀型 direction
+- soft natural rounded direction
 - natural forward projection / lower fullness
 - stable waist / pelvis / limb proportions
 
@@ -128,7 +130,7 @@ Rendering Hard Fail:
 
 ## Gate 7 — Request fidelity
 For TEXT_ONLY_ROOT_MASTER:
-exact fixed Execution Block compliance.
+exact `PAYLOAD.txt` compliance.
 
 ## Gate 8 — Physical structure
 Check limbs / joints / support / hands / feet / proportions.
@@ -153,17 +155,18 @@ If any protected domain FAILS:
 - do not issue a scope-only stochastic repair instruction
 - do not preserve the candidate as an execution carrier
 - do not promote it to Authority or future protected reference
-- run a new independent full candidate with the **same unchanged fixed Execution Block**
+- run a new independent full candidate with the **same unchanged `PAYLOAD.txt`**
 - run **all Gates again**
 
 If the same failure repeats across valid isolated runs:
 - classify the recurring failed domain
-- revise Execution Payload / source Authority outside the active batch
+- revise `PAYLOAD.txt` / source Authority outside the active batch
+- update `SOURCE_LOCK.md`
 - start a new batch
 
 ## Decisions
 - **PASS**: all mandatory Gates pass
-- **FULL_CANDIDATE_RETRY**: text-only candidate failed a protected domain; regenerate whole candidate with unchanged fixed block
+- **FULL_CANDIDATE_RETRY**: text-only candidate failed a protected domain; regenerate whole candidate with unchanged payload
 - **TARGETED_RETRY**: allowed only in a mode/route with verified preservation carriers
 - **REJECT**: Rendering Hard Fail, reference-policy fail, execution-integrity fail, severe identity/BODY fail, or severe structural artifact
 
