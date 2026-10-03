@@ -45,7 +45,9 @@ Scene lighting may tint highlights slightly but must not recolor identity.
 - grouped anime hair masses remain readable
 - restrained lateral spread
 - gravity-dominant fall
+- vertical I-line tendency
 - main mass remains centered behind / around the back rather than being moved mostly forward
+- outer side sections may form a few soft long curves / loops without turning the whole silhouette into a wide fan
 
 Do not increase total mass merely because the hair is long.
 Do not make the hair fan widely sideways.
@@ -55,6 +57,7 @@ Do not make the hair fan widely sideways.
 - soft separated fringe
 - forehead not completely blocked
 - long cheek-framing side sections
+- side sections continue naturally along the neck / shoulder line
 - eyes remain readable
 - no ornaments / braid / bun unless explicitly requested
 
@@ -99,8 +102,9 @@ Optional hairstyle rules never redefine the default source hair.
 
 ## FAIL boundaries
 HAIR FAIL if materially present:
-- generic thigh-length "super-long" reinterpretation
-- main dense hair mass extends to mid-buttock or below
+- generic full thigh-length "super-long" reinterpretation
+- dense main hair curtain continues materially below the protected upper-hip region
+- large dense mass reaches mid-thigh or lower
 - blonde / beige / lavender color drift
 - sparse hair caused by interpreting "fine" as low mass
 - large fan-shaped lateral spread
