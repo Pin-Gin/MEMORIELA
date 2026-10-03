@@ -73,6 +73,18 @@ NOT mature model-like facial proportions.
 左右へ広がりすぎず、中央寄りの自然なまとまりを保つ。
 輪郭は丸く連続させ、尖った形・角張った形・平坦な形へ変形させない。
 
+胸部はやや高めの位置にまとまり、張りのある形状とする。
+上胸にも自然なボリュームを残し、下側だけに重さが集中しない。
+胸部の最も前方へ出る位置を低くしすぎない。
+胸部下縁を必要以上に下げない。
+左右それぞれがコンパクトに丸くまとまり、重力で下方向へ長く伸びた形にしない。
+
+胸部のボリュームは、上部から中央、下部へ自然に連続する丸みとして形成する。
+下半分だけが大きく膨らむ形状にはしない。
+
+FIRM, HIGH-SET, ROUNDED CHEST SHAPE.
+胸部は張りがあり、やや高めの位置にある丸い形状を優先する。
+
 CHEST VOLUME RELATIVE TO BODY HAS PRIORITY OVER SLENDER-BODY SIMPLIFICATION.
 胸部の体格比を、細身体格の単純化より優先する。
 
@@ -88,6 +100,14 @@ NOT pointed chest.
 NOT conical chest.
 NOT flattened chest silhouette.
 NOT clothing-compressed chest silhouette.
+NOT sagging chest.
+NOT drooping chest.
+NOT low-set chest.
+NOT bottom-heavy chest.
+NOT elongated downward chest shape.
+NOT deflated upper chest.
+NOT flattened upper chest.
+NOT excessively low breast contour.
 
 ## Ears
 
