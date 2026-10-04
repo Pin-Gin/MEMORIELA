@@ -70,22 +70,6 @@ Those final Composition targets remain authoritative in `YURA_COMPOSITION_AUTHOR
 Do not copy the numeric Composition targets into `compiled_prompt`.
 Do not ask the image model to stretch, shrink, lengthen, shorten, or otherwise change internal body geometry to fit final Composition.
 
-## RAW Body Geometry measurement contract
-
-The Body Geometry target is a measurable proportion constraint, not a vague style preference.
-The compiled prompt must make the following interpretation explicit:
-
-- 1.0 head is measured vertically from crown to chin.
-- Full-body height is measured vertically from crown to soles.
-- The target relation is crown-to-soles / crown-to-chin = 7.2.
-- Acceptable QA range is 7.1–7.3.
-- The BODY Geometry reference controls the relative head/body scale and vertical landmark placement.
-- Do not fall back to large-head, chibi-like, or approximately six-head anime proportions when they conflict with the BODY Geometry reference.
-- Do not obtain 7.2 by stretching only the legs or only the torso; match the guide's whole-body relative geometry.
-- Do not make a tall model-like body merely to satisfy the number.
-
-This measurement contract is independent of canvas occupancy and final margins.
-
 ## Prompt compilation
 
 Compile one complete **RAW Body-Geometry-first** prompt for the OpenAI Image API reference-image edit workflow.
@@ -105,7 +89,8 @@ The compiled prompt must:
 - contain no fallback from denied sources
 - request exactly one complete front-view full-body subject with crown and soles visible and comfortable white clearance
 - avoid any final occupancy/margin optimization during generation
-- treat the Body Geometry reference as the primary scale authority for crown/chin/soles proportion
+- treat the approved Body Geometry Guide as a measurable geometry reference rather than a vague style suggestion
+- preserve a relatively compact upper-body span and a subtly longer lower-body balance within the approved 7.2-head geometry
 
 ## Required verbatim RAW-generation block
 
@@ -122,6 +107,10 @@ ONE HEAD IS CROWN TO CHIN.
 CROWN TO SOLES MUST BE 7.2 HEADS.
 BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTIONS.
 DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.
+UPPER BODY MUST NOT BE VERTICALLY ELONGATED.
+KEEP THE PELVIS/CROTCH POSITION SLIGHTLY HIGH, WITH A SUBTLY LONGER LOWER BODY.
+LOW SITTING-HEIGHT IMPRESSION = RELATIVELY COMPACT UPPER-BODY SPAN + SLIGHTLY LONGER LOWER BODY.
+DO NOT CREATE THE LOWER-BODY EMPHASIS BY LEG-ONLY STRETCHING.
 ```
 
 The compiled prompt must also retain:
@@ -132,6 +121,15 @@ The compiled prompt must also retain:
 ```
 
 These are Body Geometry invariants.
+
+The phrases above are not permission to redesign the body independently from the active Body Geometry Guide. They clarify the approved internal-balance intent:
+
+- do not let neck/chest/abdomen/pelvis stack into an elongated upper body
+- keep pelvis/crotch slightly high in the standing full-body silhouette
+- let the lower body read subtly longer, not exaggeratedly model-like
+- keep knee placement natural
+- do not solve the preference by stretching only thighs, shins, or total leg length
+- do not compress the ribcage/abdomen unnaturally merely to shorten the upper body
 
 ## Forbidden final-Composition literals in compiled prompt
 
