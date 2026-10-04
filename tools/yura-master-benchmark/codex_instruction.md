@@ -62,6 +62,44 @@ The compiled prompt must:
 - respect lifecycle/rule files in the sealed bundle
 - state that the output is a **QA-pending Master candidate**, not an approved Master
 - contain no fallback from denied sources
+- preserve the exact BODY-Geometry-before-Composition precedence defined below
+
+## Required verbatim precedence block
+
+The following lines MUST appear verbatim in `compiled_prompt`, in this order, with the same capitalization and punctuation:
+
+```text
+BODY GEOMETRY IS RESOLVED FIRST.
+BODY GEOMETRY HAS PRIORITY OVER COMPOSITION.
+WHOLE-FIGURE UNIFORM SCALING ONLY.
+DO NOT ALTER INTERNAL BODY LANDMARK POSITIONS TO SATISFY OCCUPANCY OR MARGINS.
+BODY GEOMETRY WINS; COMPOSITION MAY FAIL.
+```
+
+The compiled prompt must also explicitly explain that:
+
+- Body Geometry is fixed before Composition is applied.
+- Composition may move and uniformly scale the already-proportioned complete figure only.
+- Composition must never independently lengthen or shorten the head, neck, torso, waist placement, legs, knee placement, ankles, or other internal body landmark distances.
+- If the 89% occupancy / 5–6% margin goals cannot be satisfied without changing Body Geometry, preserve Body Geometry and allow Composition QA to fail.
+- A Composition miss is preferable to deforming the approved Body Geometry.
+
+Do not soften, paraphrase away, omit, or reverse this precedence.
+
+## Required numeric constraints in compiled prompt
+
+The compiled prompt must retain all of the following literal values:
+
+```text
+7.2 heads
+7.1–7.3
+1440 × 2560
+89%
+88–90%
+5–6%
+```
+
+These are compilation invariants. If the source Authorities do not support them, set `ready=false` instead of inventing them.
 
 ## Output
 
