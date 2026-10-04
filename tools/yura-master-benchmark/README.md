@@ -52,11 +52,11 @@ PNGの画素はCodex compileには埋め込まない。Face Reference / Body Geo
 1. sealed bundle / Authority順 / SHA-256を確認
 2. Codex compiled promptとSHA-256を保存
 3. Image API usageを保存
-4. 専用OpenAI Projectの実課金額を確認
+4. Codex + Imageのrun単位推定コストを確認し、Costs APIの日次Project costと混同しない
 5. 1回総額が設定閾値未満なら10回batchを検討
 
 デフォルトbatch閾値は `config.json` の `$1.00/run` 未満。
-失敗したCodex-only attemptは成功runとして数えないが、Project costには含まれる可能性があるので別途記録する。
+失敗したCodex-only attemptは成功runとして数えないが、同じProject / UTC日の日次Costsには含まれる可能性がある。
 
 ## Requirements
 
@@ -65,7 +65,7 @@ PNGの画素はCodex compileには埋め込まない。Face Reference / Body Geo
 - OpenAI Python SDK
 - Git working copy of `Pin-Gin/MEMORIELA`
 - benchmark用OpenAI Project API key
-- 正確なドル課金照合を行う場合は Organization Admin API key
+- Organization Costs APIを照合する場合は Organization Admin API key
 
 Install:
 
@@ -97,6 +97,9 @@ $env:OPENAI_ADMIN_KEY="sk-admin-..."
 
 秘密キーはGitにもチャットにも保存しない。
 Codex CLIがAPI-key認証であることを実行前に確認する。
+
+OpenAI Costs APIは現在 **1日（1d）bucket** のみなので、同一Project・同一UTC日に複数run/失敗試行が存在する場合、Project日次costを単一runの正式costとして扱ってはならない。
+単一runの正式costへ厳密に帰属させたい場合は、そのrun専用のProject/dayへ隔離する。
 
 ## One run
 
@@ -162,10 +165,10 @@ Codexはmanifestで次をそのまま返さなければrunnerが停止する:
 
 Codexがfilesystem/shellを使えないことはエラー条件ではない。sealed modeでは意図的に不要。
 
-## Authoritative dollar cost
+## Cost accounting
 
-Image API responseにusageがある場合、runnerは参考推定値を `cost.json` に入れる。
-ただし正式評価ではProject costを優先する。
+Image API responseとCodex traceのusageから、benchmarkはrun単位の推定額を計算できる。
+これは `config.json` のpricing snapshotに基づく推定であり、正式billingそのものではない。
 
 成功run後:
 
@@ -174,19 +177,57 @@ python tools/yura-master-benchmark/query_project_cost.py tools/yura-master-bench
 ```
 
 `OPENAI_ADMIN_KEY` と `OPENAI_PROJECT_ID` が必要。
-Project cost集計には遅延があり得る。
+
+Costs APIは現在 `bucket_width=1d` のみ。したがって:
+
+```text
+run-specific usage / estimate = run単位で保持可能
+authoritative Costs API      = ProjectのUTC日次bucket
+```
+
+UTC日がまだ閉じていない場合、`query_project_cost.py` は無駄にpollせず:
+
+```text
+billing_status = PROJECT_DAY_COST_PENDING_UTC_CLOSE
+run_estimated_cost_usd = Codex + Image 推定総額
+```
+
+を記録する。
+
+UTC日が閉じた後、Project日次costが取得できても、通常は:
+
+```text
+billing_status = AUTHORITATIVE_PROJECT_DAY_COST_ONLY
+run_specific_authoritative_cost_usd = null
+```
+
+とする。同じProject/dayに他の課金活動があれば、その日次総額は単一runの正式costではない。
+
+そのrunだけのためにProject/dayを意図的に隔離した場合に限り:
+
+```powershell
+python tools/yura-master-benchmark/query_project_cost.py <RUN_DIR> --isolated-project-day
+```
+
+を使用できる。このflagは「対象UTC bucket内で他のbillable activityが無い」ことを作者側で保証できる場合だけ指定する。
 
 ## Ten-run batch
 
-成功したseed runのProject cost確認後のみ:
+成功したseed runのコスト確認後のみ実行する。
+正式なrun-specific costがある場合:
 
 ```powershell
 python tools/yura-master-benchmark/run_batch.py --seed-run tools/yura-master-benchmark/runs/<RUN_DIR> --runs 10 --query-costs
 ```
 
-seed runのauthoritative costが `config.json` の閾値以上なら自動停止する。
+Costs APIの日次granularityのため正式なrun単価を分離できない場合、usageベースの **Codex + Image総推定** を明示的に受け入れるなら:
 
-`--allow-estimate` は明示的にImage API estimateだけで進めたい場合のoverrideで、正式なコスト評価には使用しない。
+```powershell
+python tools/yura-master-benchmark/run_batch.py --seed-run tools/yura-master-benchmark/runs/<RUN_DIR> --runs 10 --allow-estimate
+```
+
+`--allow-estimate` はImage代だけではなく、Codex + Imageのrun総推定を使う。
+推定または隔離済み正式run costが `config.json` の閾値以上なら自動停止する。
 
 ## What stability means
 
