@@ -1,5 +1,5 @@
 {
-  "benchmark_version": 4,
+  "benchmark_version": 5,
   "purpose": "YURA master-generation reproducibility and cost benchmark",
   "authority_order": [
     "visuals/yura/identity/master/YURA_MASTER_GENERATION_LIFECYCLE.md",
@@ -45,6 +45,11 @@
     "target_heads": 7.2,
     "acceptable_heads_min": 7.1,
     "acceptable_heads_max": 7.3,
+    "inseam_proxy_target_min": 0.46,
+    "inseam_proxy_target_max": 0.465,
+    "inseam_proxy_model_like_hard_fail_min": 0.47,
+    "torso_chin_to_crotch_heads_min": 2.7985,
+    "torso_chin_to_crotch_heads_max": 2.942,
     "required_landmarks": [
       "crown",
       "chin",
@@ -52,12 +57,18 @@
       "knee",
       "soles"
     ],
-    "internal_landmark_policy": "MEASURE_AND_REQUIRE_AUTHOR_VISUAL_GATE_UNTIL_NUMERIC_REFERENCE_IS_FROZEN",
+    "internal_landmark_policy": "NUMERIC_HEAD_RATIO_PLUS_INSEAM_PROXY_PLUS_TORSO_GATE_AND_AUTHOR_VISUAL_REVIEW",
     "upper_body_rule": "NOT_VERTICALLY_ELONGATED",
-    "lower_body_preference": "SLIGHTLY_HIGH_PELVIS_CROTCH_AND_SUBTLY_LONGER_LOWER_BODY",
+    "torso_rule": "COMPACT_RIBCAGE_TO_PELVIS_AND_WAIST_SPAN",
+    "waist_rule": "NOT_UNNATURALLY_LOW",
+    "pelvis_rule": "SLIGHTLY_HIGH_PELVIS_CROTCH",
+    "lower_body_preference": "SUBTLY_LONGER_LOWER_BODY",
     "sitting_height_shorthand": "LOW_SITTING_HEIGHT_IMPRESSION",
     "require_landmarks_reviewed": true,
     "require_upper_body_not_elongated_confirmation": true,
+    "require_torso_compact_confirmation": true,
+    "require_waist_not_low_confirmation": true,
+    "require_pelvis_high_enough_confirmation": true,
     "require_lower_body_slightly_longer_confirmation": true,
     "require_natural_knee_placement_confirmation": true,
     "require_raw_sha_match_before_composition": true
@@ -68,6 +79,7 @@
     "require_explicit_body_geometry_pass": true,
     "require_numeric_body_geometry_qa_pass": true,
     "require_internal_body_geometry_review_pass": true,
+    "require_torso_specific_gate_pass": true,
     "body_geometry_qa_filename": "body_geometry_qa.json",
     "final_width": 1440,
     "final_height": 2560,
