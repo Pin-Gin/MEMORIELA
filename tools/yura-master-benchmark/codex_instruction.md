@@ -70,6 +70,22 @@ Those final Composition targets remain authoritative in `YURA_COMPOSITION_AUTHOR
 Do not copy the numeric Composition targets into `compiled_prompt`.
 Do not ask the image model to stretch, shrink, lengthen, shorten, or otherwise change internal body geometry to fit final Composition.
 
+## RAW Body Geometry measurement contract
+
+The Body Geometry target is a measurable proportion constraint, not a vague style preference.
+The compiled prompt must make the following interpretation explicit:
+
+- 1.0 head is measured vertically from crown to chin.
+- Full-body height is measured vertically from crown to soles.
+- The target relation is crown-to-soles / crown-to-chin = 7.2.
+- Acceptable QA range is 7.1–7.3.
+- The BODY Geometry reference controls the relative head/body scale and vertical landmark placement.
+- Do not fall back to large-head, chibi-like, or approximately six-head anime proportions when they conflict with the BODY Geometry reference.
+- Do not obtain 7.2 by stretching only the legs or only the torso; match the guide's whole-body relative geometry.
+- Do not make a tall model-like body merely to satisfy the number.
+
+This measurement contract is independent of canvas occupancy and final margins.
+
 ## Prompt compilation
 
 Compile one complete **RAW Body-Geometry-first** prompt for the OpenAI Image API reference-image edit workflow.
@@ -89,6 +105,7 @@ The compiled prompt must:
 - contain no fallback from denied sources
 - request exactly one complete front-view full-body subject with crown and soles visible and comfortable white clearance
 - avoid any final occupancy/margin optimization during generation
+- treat the Body Geometry reference as the primary scale authority for crown/chin/soles proportion
 
 ## Required verbatim RAW-generation block
 
@@ -101,6 +118,10 @@ RAW GENERATION IS BODY-GEOMETRY-FIRST.
 FINAL COMPOSITION IS DEFERRED TO DETERMINISTIC POST-PROCESSING.
 DO NOT OPTIMIZE FOR FINAL CANVAS OCCUPANCY OR MARGINS DURING GENERATION.
 DO NOT ALTER INTERNAL BODY LANDMARK POSITIONS FOR CANVAS FITTING.
+ONE HEAD IS CROWN TO CHIN.
+CROWN TO SOLES MUST BE 7.2 HEADS.
+BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTIONS.
+DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.
 ```
 
 The compiled prompt must also retain:
