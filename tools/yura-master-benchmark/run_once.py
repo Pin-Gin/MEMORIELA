@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import base64
 import hashlib
 import json
@@ -183,11 +184,16 @@ def build_sealed_bundle(
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--preflight-only",
+        action="store_true",
+        help="Build and hash the sealed Authority bundle, then exit before any paid Codex or Image API call.",
+    )
+    args = parser.parse_args()
+
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     root = Path(run(["git", "rev-parse", "--show-toplevel"], TOOL_DIR).stdout.strip())
-
-    if not os.environ.get("OPENAI_API_KEY"):
-        raise RuntimeError("OPENAI_API_KEY is required for the benchmark project.")
 
     # Resolve and validate current main locally before any paid model request.
     run(["git", "fetch", "origin", "main"], root)
@@ -236,6 +242,7 @@ def main() -> int:
         "config_sha256": sha256_file(CONFIG_PATH),
         "authority_sha256": local_hashes,
         "sealed_authority_bundle_sha256": bundle_sha,
+        "preflight_only": args.preflight_only,
         "codex_input_mode": "sealed_authority_bundle_via_stdin",
         "codex_user_config_loaded": False,
         "codex_tool_dependency": "NONE",
@@ -253,7 +260,24 @@ def main() -> int:
         + bundle_text
         + "\n</SEALED_AUTHORITY_BUNDLE_JSON>\n"
     )
-    (run_dir / "codex_input.sha256").write_text(sha256_text(codex_input) + "\n", encoding="ascii")
+    codex_input_sha = sha256_text(codex_input)
+    (run_dir / "codex_input.sha256").write_text(codex_input_sha + "\n", encoding="ascii")
+
+    if args.preflight_only:
+        print(json.dumps({
+            "status": "PREFLIGHT_OK",
+            "paid_model_calls": 0,
+            "run_dir": str(run_dir),
+            "git_commit": head,
+            "authority_count": len(authority_paths),
+            "sealed_authority_bundle_sha256": bundle_sha,
+            "codex_input_sha256": codex_input_sha,
+            "next": "Run without --preflight-only only after reviewing this preflight result.",
+        }, ensure_ascii=False, indent=2))
+        return 0
+
+    if not os.environ.get("OPENAI_API_KEY"):
+        raise RuntimeError("OPENAI_API_KEY is required for paid Codex/Image API execution.")
 
     manifest_path = run_dir / "authority_manifest.json"
     codex_cmd = [
