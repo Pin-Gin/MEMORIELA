@@ -1,195 +1,386 @@
 # YURA MASTER GENERATION — CURRENT STATE
 
-Status: **ACTIVE / PRE-FIRST-SUCCESSFUL-RUN**
+Status: **ACTIVE / SEALED-BUNDLE PREFLIGHT PENDING**
 
 Last updated: **2026-10-04 JST**
 
-This is an operational continuation note. It is **NOT** a YURA visual Authority and MUST NOT be used as an appearance source.
+This file is an operational continuation note. It is **NOT** a YURA visual Authority and MUST NOT be used as an appearance source.
 
-Read this together with:
+Read together with:
 
 - `tools/YURA_MASTER_GENERATION_WORKLOG.md`
 - `tools/yura-master-benchmark/README.md`
 - `tools/yura-master-benchmark/config.json`
+- `tools/yura-master-benchmark/codex_instruction.md`
 - `tools/yura-master-benchmark/run_once.py`
 
-## Current objective
+---
+
+## 1. Current objective
 
 Produce exactly one auditable YURA Master candidate first, measure the complete Codex + Image API cost, inspect QA, and only then decide whether to run 10 independent generations.
 
-The one-run flow remains:
+The author-approved visual Authority architecture is unchanged.
+
+The current work is only about making the benchmark execution path reproducible and removing an unreliable Codex-local-tool dependency.
+
+---
+
+## 2. OpenAI / local environment state already verified
+
+Known working state before the latest runner redesign:
 
 ```text
-current Git main
-  -> Codex reads only approved Authorities in fixed order
-  -> Codex discloses commit/read order/SHA-256
-  -> Codex compiles exact image-generation prompt
-  -> runner independently verifies manifest
-  -> OpenAI Image API receives compiled prompt + approved Face/Body reference images
-  -> result.png + usage/cost logs
-  -> QA_PENDING
+Python: 3.12
+openai Python SDK: 3.24.0
+Codex CLI: 0.160.0
+Codex auth: API key
+OPENAI_API_KEY: set in current PowerShell session
+OPENAI_PROJECT_ID: set in current PowerShell session
 ```
 
-## OpenAI project/auth state
-
-The user created a reusable benchmark OpenAI Project named approximately:
+The benchmark Project is intended to be a reusable creator/master benchmark project rather than YURA-only; the chosen name is approximately:
 
 ```text
 creator-master-benchmark
 ```
 
-The local PowerShell session has:
+Never commit or expose the actual API key.
 
-```text
-OPENAI_API_KEY = set
-OPENAI_PROJECT_ID = set
-```
+---
 
-Codex CLI was installed and verified:
+## 3. Novel-side local change remains protected
 
-```text
-codex-cli 0.160.0
-```
-
-Codex authentication was switched from ChatGPT login to API-key login successfully:
-
-```text
-Logged in using an API key
-```
-
-Do not expose or commit the actual key.
-
-## Local repository state before the failed run
-
-Local HEAD and origin/main were confirmed equal at:
-
-```text
-4cf7f6942a885aa028a1d8c35b0c483a3d6155af
-Add YURA master generation worklog handoff
-```
-
-The only unrelated unstaged local change was:
+The user's unrelated local draft remains:
 
 ```text
 manuscript/episode-001/EP001_DRAFT.txt
 ```
 
-That draft must remain untouched by YURA visual work.
+This file must not be modified, discarded, committed, reset, or used as YURA visual input.
 
-Preflight passed:
-
-- `openai` Python package = `3.24.0`
-- `run_once.py` py_compile PASS
-- `run_batch.py` py_compile PASS
-- `query_project_cost.py` py_compile PASS
-- `config.json` parse PASS
-- Face reference exists
-- Body Geometry Guide exists
-- Composition Authority exists
-- `YURA_VISUAL_TEXT.md` exists
-- Codex API-key login PASS
-
-## First attempted `run_once.py` result
-
-One attempt was made:
+Safe sync pattern:
 
 ```powershell
-python tools/yura-master-benchmark/run_once.py
+git stash push -m "WIP EP001 before YURA benchmark sync" -- manuscript/episode-001/EP001_DRAFT.txt
+git pull --rebase origin main
+git stash pop
 ```
 
-It stopped at the Codex Authority-resolution stage with:
+Do not use `git reset --hard` or force push.
+
+---
+
+## 4. Two Codex-only benchmark attempts have failed before Image API
+
+### Attempt 1
+
+The first `run_once.py` attempt stopped because Codex reported that it could not retrieve `git rev-parse HEAD` or read Authority files under the available Windows tool environment.
+
+Interpretation:
 
 ```text
-Codex reported ready=false:
-Cannot complete requested verification because filesystem is read-only and shell access is unavailable for retrieving `git rev-parse HEAD` and reading required authority files.
-```
-
-Important interpretation:
-
-```text
-Codex started
-  -> could not use the Windows shell inside the selected sandbox
-  -> returned ready=false
+Codex request started
+  -> local tool/file verification unavailable to model
+  -> ready=false
   -> runner stopped
-  -> Image API was NOT called
+  -> Image API NOT called
 ```
 
-Therefore no image-generation charge was incurred by that attempt.
-
-A small Codex API charge may still have occurred because Codex produced the `ready=false` response. Include this failed attempt when later inspecting Project-level cost if exact experiment accounting is desired.
-
-Do NOT count this failed attempt as a completed benchmark image run.
-
-## Sandbox diagnosis
-
-A no-model Windows sandbox probe was executed:
+A Windows sandbox probe then showed that this machine itself can execute Git successfully with:
 
 ```powershell
 codex sandbox -c 'windows.sandbox="elevated"' -- git rev-parse HEAD
 ```
 
-It succeeded and returned:
+The probe returned the expected commit, proving the host sandbox command path itself was viable.
+
+### Attempt 2
+
+After explicitly configuring read-only + Windows elevated sandbox, a second `run_once.py` attempt still stopped at Codex compile/Authority resolution.
+
+Latest failed run directory reported locally:
 
 ```text
-4cf7f6942a885aa028a1d8c35b0c483a3d6155af
+tools/yura-master-benchmark/runs/run_20261004T061634Z
 ```
 
-This demonstrated that the native Windows elevated sandbox can execute the required Git read command on this machine.
-
-The intended security posture is:
-
-```text
-Codex filesystem policy = read-only
-Windows sandbox backend = elevated
-repository write access = NOT granted
-```
-
-Do not replace this with `danger-full-access` merely to make the benchmark work.
-
-## Runner fix now committed
-
-`tools/yura-master-benchmark/run_once.py` was updated remotely so that Codex is launched explicitly with:
-
-```text
---sandbox read-only
--c windows.sandbox="elevated"
-```
-
-The run metadata now also records:
-
-```json
-{
-  "codex_sandbox": {
-    "mode": "read-only",
-    "windows_backend": "elevated"
-  }
-}
-```
-
-If Codex returns `ready=false`, the runner now writes `failure.json` with:
+`failure.json` recorded:
 
 ```text
 phase = codex_authority_resolution
+ready = false
 image_api_called = false
 ```
 
-The runner-fix commit is:
+The model response again stated that filesystem/tool execution was unavailable.
+
+The JSONL trace is important:
 
 ```text
-c639e814d17e24f3457600b2293e7ca72460cbb1
-Fix Codex Windows read-only sandbox for YURA benchmark
+thread.started
+configuration warnings/errors
+turn.started
+agent_message ready=false
+turn.completed
 ```
 
-This current-state note is committed after that fix, so always resolve the latest `origin/main` rather than pinning blindly to `c639e81`.
+There was **no shell/tool call item** between `turn.started` and the agent response.
 
-## Exact next step
+Observed Codex usage for this second failed attempt:
 
-Do **not** rerun from the old local commit.
+```text
+input_tokens  = 12823
+output_tokens = 159
+```
 
-First safely sync current main while preserving the unrelated novel draft:
+Therefore a small Codex API charge may exist, but there was no image-generation charge.
+
+### Important accounting fact
+
+Across these two failed attempts:
+
+```text
+successful image benchmark runs = 0
+Image API generation calls that reached generation = 0
+Codex API attempts = 2
+```
+
+Do not count either failed attempt as the one successful seed run.
+
+---
+
+## 5. Diagnostics from attempt 2
+
+`codex_stderr.log` showed failed MCP transport attempts to:
+
+```text
+http://127.0.0.1:8080/mcp
+```
+
+The trace also reported:
+
+```text
+features.rmcp_client is unrecognized/ignored
+configured service tier priority is not advertised for gpt-5.3-codex
+model metadata for gpt-5.3-codex not found; fallback metadata used
+```
+
+The user's `~/.codex/config.toml` contains Windows sandbox/trust configuration and unrelated local runtime configuration.
+
+Conclusion:
+
+The benchmark should not depend on the model being able to use the user's local Codex filesystem/shell/MCP environment at all.
+
+Repeated paid retries with different local tool flags would add cost without improving experimental isolation.
+
+---
+
+## 6. Architecture decision: SEALED AUTHORITY BUNDLE
+
+The benchmark has now been redesigned.
+
+Old path:
+
+```text
+Git
+  -> Codex tries to run Git/read files itself
+  -> Codex compiles prompt
+```
+
+New path:
+
+```text
+Git working copy
+  -> Python runner verifies HEAD == origin/main
+  -> Python runner checks configured Authority paths are clean
+  -> Python runner reads ONLY configured Authority files
+  -> Python runner computes SHA-256 locally
+  -> Python runner embeds complete text Authority contents
+  -> Python runner records PNG path/hash/declared role metadata
+  -> sealed_authority_bundle.json
+  -> Codex receives instruction + sealed bundle directly via stdin
+  -> Codex compiles manifest + generation prompt WITHOUT filesystem/shell/MCP
+  -> runner re-verifies manifest against local facts
+  -> only then Image API may receive the actual Face + Body PNG files
+```
+
+This is a stronger audit boundary, not a relaxation.
+
+Forbidden sources such as:
+
+```text
+characters/YURA.md
+story/**
+manuscript/**
+Git history / old branches / old YURA visual files
+Memory-derived appearance
+rejected/past generations not explicitly active
+```
+
+are not included in the sealed Codex input.
+
+Codex cannot use them as fallback if they are not supplied.
+
+---
+
+## 7. PNG handling in sealed mode
+
+Codex does not need to visually inspect the PNGs during prompt compilation.
+
+The sealed bundle contains deterministic metadata for them:
+
+```text
+YURA_FACE_REFERENCE.png
+  role = FACE IDENTITY ONLY
+  SHA-256 = runner-computed
+
+YURA_BODY_GEOMETRY_GUIDE.png
+  role = BODY GEOMETRY ONLY
+  SHA-256 = runner-computed
+```
+
+The actual binary image files are passed directly by Python to the Image API only after the Codex manifest passes verification.
+
+This preserves the Authority split:
+
+```text
+Face image -> Face Identity only
+Body guide image -> Body Geometry only
+```
+
+---
+
+## 8. Codex compile isolation
+
+`run_once.py` now invokes Codex using a sealed prompt on stdin and:
+
+```text
+--ignore-user-config
+--sandbox read-only
+```
+
+The compile instruction explicitly says:
+
+```text
+filesystem access = unnecessary
+shell access = unnecessary
+Git access = unnecessary
+MCP/external tools = unnecessary
+```
+
+Codex must not return `ready=false` merely because those tools are unavailable.
+
+`--ignore-user-config` is intentional: benchmark compile should not inherit unrelated MCP endpoints, experimental feature flags, local notification hooks, or other user configuration.
+Authentication remains separate from ignored user configuration.
+
+---
+
+## 9. Model condition intentionally NOT changed yet
+
+The filesystem/tool architecture was changed, but the configured Codex model is intentionally left unchanged for the next controlled comparison:
+
+```text
+gpt-5.3-codex
+```
+
+Reason:
+
+Changing the model and the input architecture simultaneously would make the next result ambiguous.
+
+First isolate whether sealed-input compilation fixes the failure mode.
+Only after that should a model migration be treated as a separate benchmark condition and committed explicitly.
+
+The Image model/config is also unchanged in this redesign.
+
+---
+
+## 10. Files changed for sealed-bundle mode
+
+### `tools/yura-master-benchmark/codex_instruction.md`
+
+Changed from "Codex must resolve Git/read repository files" to:
+
+```text
+Use ONLY the sealed Authority bundle supplied in the prompt.
+Do not call tools.
+Do not independently read Git/filesystem.
+Do not fail because local tools are absent.
+```
+
+Relevant commit:
+
+```text
+c65c4e5fbcc487ebed6500045554a3780889ee9c
+Switch YURA Codex compile to sealed authority bundle
+```
+
+### `tools/yura-master-benchmark/run_once.py`
+
+Now:
+
+- verifies Git/Authority locally
+- computes SHA-256 locally
+- builds `sealed_authority_bundle.json`
+- writes `sealed_authority_bundle.sha256`
+- writes `codex_input.sha256`
+- sends the complete compile input to `codex exec` through stdin
+- uses `--ignore-user-config`
+- keeps sandbox read-only as defense in depth
+- verifies ordinal/path/role/SHA/denied_sources/image-reference order
+- calls Image API only after manifest verification
+
+Initial sealed-mode runner commit:
+
+```text
+379741c2f0aebed0de1ff489d49f95eb6569c7f0
+Feed Codex a sealed YURA authority bundle
+```
+
+### Free preflight mode
+
+A later runner update added:
 
 ```powershell
-git stash push -m "WIP EP001 before YURA sandbox-fix sync" -- manuscript/episode-001/EP001_DRAFT.txt
+python tools/yura-master-benchmark/run_once.py --preflight-only
+```
+
+This performs local Git/Authority verification and sealed-bundle construction, writes hashes, and exits with:
+
+```text
+paid_model_calls = 0
+```
+
+It does **not** call Codex and does **not** call Image API.
+
+Relevant commit:
+
+```text
+ca30958c071150d6d1afcbf64860331d881af48f
+Add free sealed-bundle preflight mode
+```
+
+### README
+
+Benchmark documentation was updated to describe sealed mode.
+
+Relevant commit:
+
+```text
+86e09d2d5da37294d38625b3e3f53fc17bbcfe0a
+Document sealed authority bundle benchmark flow
+```
+
+This CURRENT_STATE commit comes after those changes; always sync latest `origin/main` instead of pinning to one of the intermediate SHAs above.
+
+---
+
+## 11. Exact next step — NO paid model call yet
+
+The user's local repository was last synchronized before the sealed-mode commits, so first preserve the unrelated novel draft and pull latest main:
+
+```powershell
+git stash push -m "WIP EP001 before sealed YURA benchmark sync" -- manuscript/episode-001/EP001_DRAFT.txt
 git pull --rebase origin main
 git stash pop
 ```
@@ -200,58 +391,107 @@ Then verify:
 git log -1 --oneline
 git status --short
 python -m py_compile tools/yura-master-benchmark/run_once.py
-codex login status
 ```
 
-Expected conditions:
+Expected working-tree condition:
 
-- local HEAD == origin/main
-- only `manuscript/episode-001/EP001_DRAFT.txt` is dirty
-- `run_once.py` compiles
-- Codex is still logged in using the benchmark API key
-- `OPENAI_API_KEY` and `OPENAI_PROJECT_ID` remain set in the current PowerShell session
+```text
+only manuscript/episode-001/EP001_DRAFT.txt is dirty
+```
 
-Only after those checks should the user run exactly one more attempt:
+Then run the **free preflight only**:
+
+```powershell
+python tools/yura-master-benchmark/run_once.py --preflight-only
+```
+
+Expected terminal payload includes:
+
+```text
+status = PREFLIGHT_OK
+paid_model_calls = 0
+authority_count = 7
+sealed_authority_bundle_sha256 = ...
+codex_input_sha256 = ...
+```
+
+Do not run the paid form yet if this preflight fails.
+
+---
+
+## 12. After free preflight passes
+
+Inspect the created preflight run directory:
+
+```text
+run_meta.json
+sealed_authority_bundle.json
+sealed_authority_bundle.sha256
+codex_input.sha256
+```
+
+Confirm:
+
+- commit is current main
+- seven Authority entries are present in exact configured order
+- only approved text Authority contents are embedded
+- PNG entries contain metadata/role/hash, not arbitrary fallback content
+- denied sources list is correct
+- no `characters/YURA.md` / manuscript / old-history content leaked into the bundle
+
+Only then consider exactly one paid run:
 
 ```powershell
 python tools/yura-master-benchmark/run_once.py
 ```
 
-If it errors again, do not retry automatically. Preserve the terminal output and run artifacts for diagnosis.
+If the paid run errors, do not automatically retry. Preserve terminal output and run artifacts.
 
-If it succeeds, inspect the generated run directory before any batch execution.
+---
 
-## After the first successful image run
+## 13. Success criteria for the next paid run
 
-Inspect at minimum:
+The next paid run is successful only if:
 
-- `authority_manifest.json`
-- `compiled_prompt.txt`
-- `compiled_prompt.sha256`
-- `codex_trace.jsonl`
-- `codex_usage_candidates.json`
-- `image_response.json`
-- `cost.json`
-- `qa.json`
-- `result.png`
+```text
+1. local Git validation PASS
+2. sealed bundle created
+3. Codex receives sealed input without requiring tools
+4. Codex returns ready=true
+5. manifest commit/order/roles/SHA/denied sources/reference order PASS runner verification
+6. compiled_prompt is saved and hashed
+7. Image API returns exactly one candidate
+8. result remains QA_PENDING / master_promotion=NO
+9. usage/cost artifacts are saved
+```
 
-Then obtain Project-level authoritative cost using the documented cost-query flow. If an Organization Admin key is used for automated cost querying, never commit or expose it.
+The first two failed Codex-only attempts remain diagnostic overhead, not successful seed runs.
 
-Do not run the 10-run batch until:
+---
 
-1. Authority resolution is correct.
-2. Prompt compilation is correct.
-3. Image generation succeeds.
-4. One-run cost is acceptable.
-5. The user explicitly approves proceeding with the batch.
+## 14. What must NOT happen
 
-## Architecture decisions that remain unchanged
+Do not:
 
-- Face Reference controls Face Identity only.
-- Body Geometry Guide controls 7.2-head body geometry only.
-- Composition Authority controls canvas/occupancy/margins/centering only.
-- `YURA_VISUAL_TEXT.md` is currently the Master-generation API specification.
-- Novel material, Memory-derived appearance, old Git visual history, old Masters, and rejected generated images are denied as fallback sources.
-- Failed generated candidates are never fed back as correction references.
-- Master promotion requires explicit author approval.
-- After Master approval, create `YURA_MASTER_VISUAL_DESCRIPTION.md` by visually inspecting the approved Master, switch normal Production to Master + Master-derived description, and archive the Master-generation package outside normal auto-load.
+- retry paid Codex merely to test flags
+- re-enable repository-wide Codex exploration
+- feed rejected generated YURA images back as references
+- use novel/manuscript/Memory as visual fallback
+- silently change `gpt-5.3-codex` during the sealed-input diagnosis
+- silently change the Image model or endpoint
+- run the 10-generation batch before one complete successful run and cost inspection
+- auto-promote any generated candidate to Master
+- touch or lose `EP001_DRAFT.txt`
+
+---
+
+## 15. Short resume instruction
+
+```text
+YURA Authority architecture is already established.
+Two Codex-only attempts failed before Image API because local tool/filesystem access was not available to the model.
+Image generation count is still zero.
+The benchmark has now switched to SEALED AUTHORITY BUNDLE mode: Python verifies Git/files/hashes and passes only approved Authority data to Codex via stdin; Codex must not use local tools.
+The Codex model remains gpt-5.3-codex for controlled diagnosis.
+Next: sync latest main safely, py_compile run_once.py, then run --preflight-only. That preflight must report paid_model_calls=0 before any further paid run is considered.
+```
