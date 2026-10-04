@@ -131,6 +131,66 @@ Body GeometryとCompositionを同時に完全達成できない場合は、BODY 
 89% occupancyや上下5–6%余白を満たすために人物内部Geometryを変形してはならない。
 その場合はComposition QAをFAILとして扱い、BODY Geometryを壊して帳尻を合わせない。
 
+## Two-stage enforcement pipeline
+
+最終Compositionの数値条件は、Image APIの人物内部Geometry生成と分離して適用してよい。
+現在のMaster benchmarkでは、以下の2段階を正式な適用順とする。
+
+### Stage 1 — RAW Image generation
+
+Image APIが生成するRAW画像は、Face Identity・BODY Geometry・人物シルエットを確定するための素材であり、最終Compositionそのものではない。
+
+RAW生成では以下を要求する。
+
+- 完全な全身をキャンバス内へ収める
+- 頭頂・足裏を切らない
+- 白背景
+- 正面直立
+- BODY GeometryをComposition数値へ合わせるために変形しない
+- 最終89% occupancyや上下5–6%余白を成立させるために脚・胴・頭部等を伸縮しない
+- 後段の均等スケーリングに必要な最低限の白余白を確保する
+
+**RAW GENERATION MUST NOT ALTER BODY GEOMETRY TO SATISFY FINAL COMPOSITION.**
+
+RAW生成画像は `result_raw.png` として保持する。
+
+### Stage 2 — Deterministic final composition postprocess
+
+最終Compositionは、RAW人物の内部Geometryを一切変更せず、完成済み人物ラスタ全体へ同一倍率を適用し、白背景キャンバス上で移動して成立させてよい。
+
+許可される操作:
+
+- RAW画像全体の均等スケーリング
+- X/Y方向の平行移動
+- 人物外側の白背景のみのクロップ
+- 1440×2560白背景キャンバスへの配置
+
+禁止される操作:
+
+- 非等方スケーリング
+- 頭部・胴・脚など部位別スケーリング
+- ワープ
+- content-aware変形
+- inpaintingによる体型修正
+- BODY landmarkの移動
+- Face Identityの再生成
+
+**FINAL COMPOSITION IS APPLIED BY DETERMINISTIC RUNNER POSTPROCESS.**
+**POSTPROCESS MAY SCALE AND TRANSLATE THE COMPLETE RASTER ONLY.**
+
+最終出力 `result.png` は、RAWの人物内部Geometryを保持したまま以下へ正規化する。
+
+- canvas = **1440 × 2560**
+- figure height target = **89%**
+- acceptable figure height = **88–90%**
+- top margin = **5–6%**
+- bottom margin = **5–6%**
+- horizontal center = **x=720**
+
+RAW人物がキャンバス端で切れている、人物検出が成立しない、または均等スケーリング＋平行移動だけでは最終条件を安全に成立させられない場合は、postprocessをFAILとしてMaster候補を昇格させない。
+
+このpostprocessはCompositionの適用であり、BODY Geometryの修正ではない。
+
 ## Relationship with BODY Geometry Authority
 
 BODY Geometry Authority:
@@ -170,6 +230,8 @@ Face Identity Authority:
 - bottom margin = **5–6%**
 - body center axis = **horizontal center**
 - head-to-body ratio remains **7.1–7.3**, target **7.2**
+- RAW生成と最終Compositionの間で人物内部Geometryが変形していない
+- postprocess操作が全体一括の均等スケーリング＋平行移動だけである
 
 Composition条件を満たすためにBODY Geometryが変化した場合はFAILとする。
 BODY Geometryを保持した結果Compositionのみ未達になった場合も、Composition QAはFAILだが、BODY Geometryを変形して救済してはならない。
