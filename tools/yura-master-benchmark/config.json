@@ -1,5 +1,5 @@
 {
-  "benchmark_version": 1,
+  "benchmark_version": 2,
   "purpose": "YURA master-generation reproducibility and cost benchmark",
   "authority_order": [
     "visuals/yura/identity/master/YURA_MASTER_GENERATION_LIFECYCLE.md",
@@ -36,6 +36,26 @@
     "output_format": "png",
     "background": "opaque",
     "n": 1
+  },
+  "composition_postprocess": {
+    "enabled": true,
+    "final_width": 1440,
+    "final_height": 2560,
+    "target_figure_height_ratio": 0.89,
+    "acceptable_figure_height_ratio_min": 0.88,
+    "acceptable_figure_height_ratio_max": 0.90,
+    "acceptable_margin_ratio_min": 0.05,
+    "acceptable_margin_ratio_max": 0.06,
+    "horizontal_center_x": 720,
+    "horizontal_center_tolerance_px": 3,
+    "corner_sample_px": 64,
+    "foreground_difference_threshold": 7,
+    "median_filter_size": 3,
+    "raw_edge_guard_px": 2,
+    "resample": "LANCZOS",
+    "raw_filename": "result_raw.png",
+    "final_filename": "result.png",
+    "report_filename": "composition_postprocess.json"
   },
   "batch": {
     "single_run_first": true,
