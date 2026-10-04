@@ -16,9 +16,31 @@ CONFIG_PATH = TOOL_DIR / "config.json"
 SCHEMA_PATH = TOOL_DIR / "authority_manifest.schema.json"
 INSTRUCTION_PATH = TOOL_DIR / "codex_instruction.md"
 
+AUTHORITY_ROLES: dict[str, str] = {
+    "visuals/yura/identity/master/YURA_MASTER_GENERATION_LIFECYCLE.md": "MASTER-GENERATION LIFECYCLE / AUTHORITY TRANSITION RULES",
+    "visuals/yura/identity/face/FACE_REFERENCE_RULES.md": "FACE IDENTITY RULES",
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png": "FACE IDENTITY ONLY",
+    "visuals/yura/identity/body/BODY_GEOMETRY_GUIDE.md": "BODY GEOMETRY RULES",
+    "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png": "BODY GEOMETRY ONLY",
+    "visuals/yura/identity/master/YURA_VISUAL_TEXT.md": "MASTER-GENERATION API VISUAL SPECIFICATION",
+    "visuals/yura/identity/composition/YURA_COMPOSITION_AUTHORITY.md": "COMPOSITION ONLY",
+}
 
-def run(cmd: list[str], cwd: Path, check: bool = True) -> subprocess.CompletedProcess[str]:
-    p = subprocess.run(cmd, cwd=cwd, text=True, capture_output=True)
+
+def run(
+    cmd: list[str],
+    cwd: Path,
+    check: bool = True,
+    input_text: str | None = None,
+) -> subprocess.CompletedProcess[str]:
+    p = subprocess.run(
+        cmd,
+        cwd=cwd,
+        text=True,
+        encoding="utf-8",
+        input=input_text,
+        capture_output=True,
+    )
     if check and p.returncode != 0:
         raise RuntimeError(
             f"command failed ({p.returncode}): {' '.join(cmd)}\nSTDOUT:\n{p.stdout}\nSTDERR:\n{p.stderr}"
@@ -32,6 +54,10 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
 def jsonable(obj: Any) -> Any:
@@ -93,14 +119,77 @@ def estimate_image_cost(usage: dict[str, Any] | None, rates: dict[str, float]) -
     )
 
 
+def write_failure(run_dir: Path, phase: str, errors: list[str], image_api_called: bool) -> None:
+    failure = {
+        "phase": phase,
+        "ready": False,
+        "errors": errors,
+        "image_api_called": image_api_called,
+    }
+    (run_dir / "failure.json").write_text(
+        json.dumps(failure, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+
+def build_sealed_bundle(
+    root: Path,
+    head: str,
+    config: dict[str, Any],
+    authority_paths: list[str],
+    local_hashes: dict[str, str],
+) -> dict[str, Any]:
+    entries: list[dict[str, Any]] = []
+    for index, rel in enumerate(authority_paths, start=1):
+        if rel not in AUTHORITY_ROLES:
+            raise RuntimeError(f"no deterministic Authority role mapping for: {rel}")
+
+        p = root / rel
+        entry: dict[str, Any] = {
+            "order": index,
+            "path": rel,
+            "role": AUTHORITY_ROLES[rel],
+            "sha256": local_hashes[rel],
+        }
+        if p.suffix.lower() == ".png":
+            entry["kind"] = "binary_image_reference"
+            entry["content_in_bundle"] = False
+            entry["content_note"] = (
+                "Binary pixels are intentionally not embedded in the Codex bundle. "
+                "The runner passes this exact file to the Image API according to image_reference_order."
+            )
+        else:
+            entry["kind"] = "text_authority"
+            entry["content_in_bundle"] = True
+            entry["content"] = p.read_text(encoding="utf-8")
+        entries.append(entry)
+
+    return {
+        "bundle_version": 1,
+        "bundle_mode": "SEALED_AUTHORITY_BUNDLE",
+        "git_commit": head,
+        "authority_order": entries,
+        "denied_sources": [str(x) for x in config["denied_sources"]],
+        "image_reference_order": [str(x) for x in config["image_reference_order"]],
+        "compiler_boundary": {
+            "runner_resolves_git": True,
+            "runner_reads_authorities": True,
+            "runner_computes_sha256": True,
+            "codex_filesystem_access_required": False,
+            "codex_shell_access_required": False,
+            "codex_external_tools_required": False,
+            "png_pixels_inspected_by_codex": False,
+        },
+    }
+
+
 def main() -> int:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     root = Path(run(["git", "rev-parse", "--show-toplevel"], TOOL_DIR).stdout.strip())
 
     if not os.environ.get("OPENAI_API_KEY"):
-        raise RuntimeError("OPENAI_API_KEY is required for the Image API and should belong to the benchmark project.")
+        raise RuntimeError("OPENAI_API_KEY is required for the benchmark project.")
 
-    # Resolve current main before any paid request.
+    # Resolve and validate current main locally before any paid model request.
     run(["git", "fetch", "origin", "main"], root)
     head = run(["git", "rev-parse", "HEAD"], root).stdout.strip()
     origin_main = run(["git", "rev-parse", "origin/main"], root).stdout.strip()
@@ -129,6 +218,15 @@ def main() -> int:
         suffix += 1
     run_dir.mkdir(parents=True)
 
+    # Build the only dataset Codex is allowed to see. Text Authorities are embedded;
+    # PNGs are represented by verified path/hash/role metadata and are passed as actual
+    # image files only to the later Image API call.
+    bundle = build_sealed_bundle(root, head, config, authority_paths, local_hashes)
+    bundle_text = json.dumps(bundle, ensure_ascii=False, indent=2)
+    bundle_sha = sha256_text(bundle_text)
+    (run_dir / "sealed_authority_bundle.json").write_text(bundle_text, encoding="utf-8")
+    (run_dir / "sealed_authority_bundle.sha256").write_text(bundle_sha + "\n", encoding="ascii")
+
     started_at = int(time.time())
     meta = {
         "run_id": run_dir.name,
@@ -137,26 +235,33 @@ def main() -> int:
         "git_commit": head,
         "config_sha256": sha256_file(CONFIG_PATH),
         "authority_sha256": local_hashes,
+        "sealed_authority_bundle_sha256": bundle_sha,
+        "codex_input_mode": "sealed_authority_bundle_via_stdin",
+        "codex_user_config_loaded": False,
+        "codex_tool_dependency": "NONE",
         "codex_sandbox": {
             "mode": "read-only",
-            "windows_backend": "elevated",
+            "purpose": "defense in depth only; compilation requires no shell/filesystem tools",
         },
     }
     (run_dir / "run_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # Codex reads the repo and produces a machine-readable manifest plus the exact prompt.
-    # On native Windows, explicitly select the elevated sandbox backend while keeping
-    # the agent filesystem policy read-only. This allows shell-based Git/file reads
-    # without granting repository write access.
     instruction = INSTRUCTION_PATH.read_text(encoding="utf-8")
+    codex_input = (
+        instruction
+        + "\n\n<SEALED_AUTHORITY_BUNDLE_JSON>\n"
+        + bundle_text
+        + "\n</SEALED_AUTHORITY_BUNDLE_JSON>\n"
+    )
+    (run_dir / "codex_input.sha256").write_text(sha256_text(codex_input) + "\n", encoding="ascii")
+
     manifest_path = run_dir / "authority_manifest.json"
     codex_cmd = [
         config["codex"]["executable"],
         "exec",
+        "--ignore-user-config",
         "--sandbox",
         "read-only",
-        "-c",
-        'windows.sandbox="elevated"',
         "--json",
         "--model",
         config["codex"]["model"],
@@ -164,50 +269,67 @@ def main() -> int:
         str(SCHEMA_PATH),
         "-o",
         str(manifest_path),
-        instruction,
     ]
-    codex = run(codex_cmd, root, check=False)
+
+    # No positional prompt is supplied. codex exec reads the complete sealed input from
+    # stdin, avoiding Windows command-line length limits and eliminating filesystem reads
+    # from the model task itself.
+    codex = run(codex_cmd, root, check=False, input_text=codex_input)
     (run_dir / "codex_trace.jsonl").write_text(codex.stdout, encoding="utf-8")
     (run_dir / "codex_stderr.log").write_text(codex.stderr, encoding="utf-8")
-    events, codex_usage = parse_codex_trace(codex.stdout)
+    _events, codex_usage = parse_codex_trace(codex.stdout)
     (run_dir / "codex_usage_candidates.json").write_text(
         json.dumps(codex_usage, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+
     if codex.returncode != 0:
+        write_failure(
+            run_dir,
+            "codex_prompt_compile",
+            [f"Codex process exited with code {codex.returncode}; inspect codex_stderr.log"],
+            False,
+        )
         raise RuntimeError(f"Codex failed; inspect {run_dir / 'codex_stderr.log'}")
     if not manifest_path.exists():
+        write_failure(run_dir, "codex_prompt_compile", ["Codex completed without authority_manifest.json"], False)
         raise RuntimeError("Codex completed without authority_manifest.json")
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if not manifest.get("ready"):
-        failure = {
-            "phase": "codex_authority_resolution",
-            "ready": False,
-            "errors": manifest.get("errors", []),
-            "image_api_called": False,
-        }
-        (run_dir / "failure.json").write_text(
-            json.dumps(failure, ensure_ascii=False, indent=2), encoding="utf-8"
-        )
-        raise RuntimeError("Codex reported ready=false: " + "; ".join(manifest.get("errors", [])))
+        errors = [str(x) for x in manifest.get("errors", [])]
+        write_failure(run_dir, "codex_prompt_compile", errors, False)
+        raise RuntimeError("Codex reported ready=false: " + "; ".join(errors))
     if manifest.get("git_commit") != head:
+        write_failure(run_dir, "manifest_verification", ["Codex manifest git_commit does not match runner HEAD"], False)
         raise RuntimeError("Codex manifest git_commit does not match current HEAD")
 
-    reported_paths = [x["path"] for x in manifest.get("authority_order", [])]
+    reported = manifest.get("authority_order", [])
+    reported_paths = [x.get("path") for x in reported]
     if reported_paths != authority_paths:
+        write_failure(run_dir, "manifest_verification", [f"Codex Authority order mismatch: {reported_paths}"], False)
         raise RuntimeError(f"Codex Authority order mismatch: {reported_paths}")
-    for item in manifest["authority_order"]:
-        if item["sha256"].lower() != local_hashes[item["path"]].lower():
-            raise RuntimeError(f"Codex SHA-256 mismatch: {item['path']}")
+
+    for index, item in enumerate(reported, start=1):
+        path = item["path"]
+        if item.get("order") != index:
+            raise RuntimeError(f"Codex Authority ordinal mismatch for {path}: {item.get('order')} != {index}")
+        if item.get("sha256", "").lower() != local_hashes[path].lower():
+            raise RuntimeError(f"Codex SHA-256 mismatch: {path}")
+        if item.get("role") != AUTHORITY_ROLES[path]:
+            raise RuntimeError(f"Codex Authority role mismatch: {path}")
+
+    expected_denied = [str(x) for x in config["denied_sources"]]
+    if manifest.get("denied_sources") != expected_denied:
+        raise RuntimeError("Codex denied_sources mismatch")
     if manifest.get("image_reference_order") != config["image_reference_order"]:
         raise RuntimeError("Codex image_reference_order mismatch")
 
     compiled_prompt = manifest["compiled_prompt"]
-    prompt_sha = hashlib.sha256(compiled_prompt.encode("utf-8")).hexdigest()
+    prompt_sha = sha256_text(compiled_prompt)
     (run_dir / "compiled_prompt.txt").write_text(compiled_prompt, encoding="utf-8")
     (run_dir / "compiled_prompt.sha256").write_text(prompt_sha + "\n", encoding="ascii")
 
-    # OpenAI Image API: reference order is fixed by config and verified above.
+    # OpenAI Image API: reference order is fixed by config and reverified above.
     from openai import OpenAI
 
     client = OpenAI()
@@ -272,6 +394,7 @@ def main() -> int:
     print(json.dumps({
         "run_dir": str(run_dir),
         "git_commit": head,
+        "sealed_authority_bundle_sha256": bundle_sha,
         "compiled_prompt_sha256": prompt_sha,
         "image_path": str(output_path),
         "image_estimated_cost_usd": image_estimate,
