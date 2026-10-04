@@ -1,25 +1,62 @@
 # YURA Master Benchmark
 
-YURA Master候補を、固定したGit Authority解決 → Codex manifest/prompt compile → OpenAI Image API生成 → cost/QA記録、の順で再現可能に実行するためのローカルベンチマーク。
+YURA Master候補を、固定Git Authority検証 → **sealed Authority bundle** → Codex prompt compile → OpenAI Image API生成 → cost/QA記録、の順で再現可能に実行するローカルベンチマーク。
 
 ## Authority lifecycle
 
 `YURA_VISUAL_TEXT.md` は現在、**OpenAI API Master-generation specification** としてのみ使用する。
-Master完成後の通常Productionでは自動読込しない。詳細は:
+Master完成後の通常Productionでは自動読込しない。詳細:
 
 `visuals/yura/identity/master/YURA_MASTER_GENERATION_LIFECYCLE.md`
 
-## Why one run first
+## Core security / reproducibility boundary
 
-最初は必ず1回だけ実行する。
+Codexはリポジトリを直接探索しない。
 
-1. Codexが読んだAuthority順とSHA-256を確認
-2. Codex trace / usageを保存
-3. Image APIのusageを保存
+Git/Authorityの事実確認はPython runnerが先にローカルで行う:
+
+```text
+current local Git
+  -> git fetch origin main
+  -> require HEAD == origin/main
+  -> require configured Authority paths clean
+  -> require all configured Authority files exist
+  -> compute SHA-256 locally
+  -> embed complete text Authority contents
+  -> represent PNG Authorities by verified path/hash/role metadata
+  -> write sealed_authority_bundle.json
+  -> send that sealed bundle directly to Codex via stdin
+```
+
+Codex compile段階では:
+
+```text
+filesystem access = NOT REQUIRED
+shell access      = NOT REQUIRED
+Git access        = NOT REQUIRED
+MCP               = NOT REQUIRED
+user Codex config = IGNORED
+```
+
+`codex exec --ignore-user-config --sandbox read-only` を使用し、Codexにはsealed bundleだけを入力する。
+これにより `characters/YURA.md`、`manuscript/**`、Git history、Memory等の禁止ソースはCodex入力に入らない。
+
+PNGの画素はCodex compileには埋め込まない。Face Reference / Body Geometry Guideの実ファイルは、manifest検証後にrunnerがImage APIへ直接渡す。
+
+## Why one successful run first
+
+最初は**成功した完全runを1回だけ**得る。
+
+目的:
+
+1. sealed bundle / Authority順 / SHA-256を確認
+2. Codex compiled promptとSHA-256を保存
+3. Image API usageを保存
 4. 専用OpenAI Projectの実課金額を確認
-5. 1回総額が設定閾値未満なら10回batchへ進む
+5. 1回総額が設定閾値未満なら10回batchを検討
 
 デフォルトbatch閾値は `config.json` の `$1.00/run` 未満。
+失敗したCodex-only attemptは成功runとして数えないが、Project costには含まれる可能性があるので別途記録する。
 
 ## Requirements
 
@@ -27,7 +64,7 @@ Master完成後の通常Productionでは自動読込しない。詳細は:
 - Codex CLI
 - OpenAI Python SDK
 - Git working copy of `Pin-Gin/MEMORIELA`
-- benchmark専用OpenAI ProjectのAPI key
+- benchmark用OpenAI Project API key
 - 正確なドル課金照合を行う場合は Organization Admin API key
 
 Install:
@@ -36,34 +73,34 @@ Install:
 python -m pip install -r tools/yura-master-benchmark/requirements.txt
 ```
 
-## Billing isolation — important
+## Billing isolation
 
-この実験では、CodexとImage APIを**同じ専用OpenAI Project**へ課金する。
-例: `yura-master-benchmark`
+CodexとImage APIは同じbenchmark OpenAI ProjectのAPI-key billingで実行する。
+現在の汎用Project名は例として:
 
-通常のChatGPT認証のCodex利用枠ではなく、**API-key billingのCodex**を使用すること。
-API-key利用時のCodexはAPI料金として課金される。ChatGPT認証のままでは「1回何ドル」の実験にならない。
+```text
+creator-master-benchmark
+```
 
-PowerShell current session example:
+PowerShell current session:
 
 ```powershell
-$env:OPENAI_API_KEY="sk-...benchmark-project-key..."
+$env:OPENAI_API_KEY="sk-..."
 $env:OPENAI_PROJECT_ID="proj_..."
 ```
 
-正確なproject cost queryを自動化する場合:
+Project cost query用:
 
 ```powershell
 $env:OPENAI_ADMIN_KEY="sk-admin-..."
 ```
 
-API keyやAdmin keyをGitへ保存しないこと。
-
-Codex CLIもbenchmark projectのAPI-key認証であることを実行前に確認する。
+秘密キーはGitにもチャットにも保存しない。
+Codex CLIがAPI-key認証であることを実行前に確認する。
 
 ## One run
 
-Repository rootで:
+Repository root:
 
 ```powershell
 python tools/yura-master-benchmark/run_once.py
@@ -73,20 +110,25 @@ python tools/yura-master-benchmark/run_once.py
 
 1. `git fetch origin main`
 2. local `HEAD == origin/main` を要求
-3. Authority対象ファイルに未コミット変更がないことを要求
-4. 全Authority SHA-256をローカル計算
-5. `codex exec --json` で指定順のみ読ませる
-6. Codexが `authority_manifest.json` と完全な `compiled_prompt` を出力
-7. runnerが順番・commit・SHAを再検証
-8. Image APIへFace Reference → Body Geometry Guideの順で参照画像を渡す
-9. `gpt-image-2.5-sunburst-2026-09-08` / `1440x2560` / `high` で1枚生成
-10. usage/cost/QA pending状態を保存
+3. configured Authority対象に未コミット変更がないことを要求
+4. 全Authority SHA-256をPythonでローカル計算
+5. text Authority本文 + PNG path/hash/role metadataからsealed bundleを構築
+6. bundleとbundle SHA-256をrun directoryへ保存
+7. Codexへinstruction + sealed bundleをstdinで送信
+8. Codexが `authority_manifest.json` と完全な `compiled_prompt` を出力
+9. runnerがcommit・Authority順・ordinal・role・SHA・denied_sources・image reference orderを再検証
+10. Image APIへFace Reference → Body Geometry Guideの順で実ファイルを渡す
+11. configured Image model / size / qualityで1枚生成
+12. usage/cost/QA pending状態を保存
 
-各runは:
+各成功runには概ね:
 
 ```text
 runs/run_YYYYMMDDTHHMMSSZ/
   run_meta.json
+  sealed_authority_bundle.json
+  sealed_authority_bundle.sha256
+  codex_input.sha256
   authority_manifest.json
   codex_trace.jsonl
   codex_stderr.log
@@ -99,26 +141,44 @@ runs/run_YYYYMMDDTHHMMSSZ/
   qa.json
 ```
 
+pre-image failure時は `failure.json` も保存する。
 `runs/` はGit管理対象外。
+
+## Sealed bundle invariants
+
+固定Authority順は `config.json` の `authority_order` が唯一の順序定義。
+runner内のdeterministic role mappingとも一致する必要がある。
+
+Codexはmanifestで次をそのまま返さなければrunnerが停止する:
+
+- `git_commit`
+- Authority order
+- ordinal
+- path
+- SHA-256
+- declared role
+- `denied_sources`
+- `image_reference_order`
+
+Codexがfilesystem/shellを使えないことはエラー条件ではない。sealed modeでは意図的に不要。
 
 ## Authoritative dollar cost
 
 Image API responseにusageがある場合、runnerは参考推定値を `cost.json` に入れる。
-ただし**課金の正解はProject cost**とする。
+ただし正式評価ではProject costを優先する。
 
-1回生成後:
+成功run後:
 
 ```powershell
 python tools/yura-master-benchmark/query_project_cost.py tools/yura-master-benchmark/runs/<RUN_DIR>
 ```
 
 `OPENAI_ADMIN_KEY` と `OPENAI_PROJECT_ID` が必要。
-Organization costs APIのproject-filtered結果を取得し、`authoritative_total_project_cost_usd` に保存する。
-課金集計が遅延している場合はデフォルト90秒までpollする。
+Project cost集計には遅延があり得る。
 
 ## Ten-run batch
 
-1回目のproject cost確認後:
+成功したseed runのProject cost確認後のみ:
 
 ```powershell
 python tools/yura-master-benchmark/run_batch.py --seed-run tools/yura-master-benchmark/runs/<RUN_DIR> --runs 10 --query-costs
@@ -126,54 +186,51 @@ python tools/yura-master-benchmark/run_batch.py --seed-run tools/yura-master-ben
 
 seed runのauthoritative costが `config.json` の閾値以上なら自動停止する。
 
-どうしてもAdmin cost未取得の段階で試験する場合のみ:
-
-```powershell
-python tools/yura-master-benchmark/run_batch.py --allow-estimate --runs 10
-```
-
-この場合の判定はImage API estimateのみなので、正式なコスト評価には使用しない。
+`--allow-estimate` は明示的にImage API estimateだけで進めたい場合のoverrideで、正式なコスト評価には使用しない。
 
 ## What stability means
 
-各runでCodexを再実行する。
+各runでCodex compileを再実行する。
 
 `compiled_prompt.sha256` が10回すべて同一:
-- Authority解決/Prompt compileは安定
-- 画像差分は主にImage model側のsampling差
 
-`compiled_prompt.sha256` がrun間で異なる:
-- Codex compile段階が揺れている
-- 画像PASS率を評価する前にPrompt compilerを固定すべき
+- sealed input / prompt compileが安定
+- 画像差分は主にImage model側sampling差
+
+hashがrun間で異なる:
+
+- 同一sealed inputに対してCodex compileが揺れている可能性
+- Image PASS率評価前にcompiler安定性を確認する
+
+`sealed_authority_bundle.sha256` も比較し、入力Authority自体が同じだったかを必ず区別する。
 
 ## QA
 
 生成直後は必ず:
 
-- `candidate = QA_PENDING`
-- `master_promotion = NO`
+```text
+candidate = QA_PENDING
+master_promotion = NO
+```
 
-最終PASSは作者承認を必須とする。
+最終PASSは作者承認必須。
 少なくとも以下を確認する:
 
 - Face Identity
 - 7.1–7.3頭身 / target 7.2
 - 耳20–22% / HARD MAX 23%
-- BODYの横幅・縦伸び
-- 胸部の体格比と形状
+- Body Geometry / unwanted body enlargement or elongation
 - 1440×2560 / 9:16
 - figure occupancy 88–90% / target 89%
 - 上下余白5–6%
 - 中央配置
+- hair / overall identity
 
 `qa.json` の `author_pass=true` は作者が確認した場合だけ設定する。
 
-## Current API choices
+## Frozen benchmark model condition
 
-Benchmark開始時点の固定値:
+filesystem/tool問題の原因切り分け中はモデル条件を同時変更しない。
+現在 `config.json` に固定されたCodex model / Image model / pricing snapshotを使う。
 
-- Image model: `gpt-image-2.5-sunburst-2026-09-08`
-- output: `1440x2560`, PNG, opaque, quality=`high`
-- Codex model: `gpt-5.3-codex`
-
-モデルや料金を変更する場合は `config.json` を変更し、そのcommitを別benchmark条件として扱う。
+モデルや料金条件を変更する場合は `config.json` を明示的に変更し、そのcommitを別benchmark条件として扱う。
