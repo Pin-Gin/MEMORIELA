@@ -72,6 +72,63 @@ def detect_subject_bbox(
     return tuple(int(v) for v in bbox)
 
 
+def load_numeric_body_geometry_gate(
+    run_dir: Path,
+    raw_path: Path,
+    config: dict[str, Any],
+    composition_cfg: dict[str, Any],
+) -> dict[str, Any]:
+    if composition_cfg.get("require_numeric_body_geometry_qa_pass") is not True:
+        raise RuntimeError("numeric Body Geometry QA must be required before Composition")
+
+    qa_cfg = config.get("body_geometry_qa") or {}
+    report_name = str(
+        composition_cfg.get(
+            "body_geometry_qa_filename",
+            qa_cfg.get("report_filename", "body_geometry_qa.json"),
+        )
+    )
+    report_path = run_dir / report_name
+    if not report_path.exists():
+        raise RuntimeError(
+            f"Numeric Body Geometry QA report not found: {report_path}. "
+            "Run body_geometry_qa.py first."
+        )
+
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    if report.get("pass") is not True or report.get("status") != "PASS":
+        raise RuntimeError("Numeric Body Geometry QA is not PASS; Composition remains blocked")
+    if report.get("landmarks_reviewed") is not True:
+        raise RuntimeError("Numeric Body Geometry landmarks were not explicitly reviewed")
+    if report.get("landmark_method") != "MANUAL_PIXEL_Y":
+        raise RuntimeError("Unexpected Body Geometry landmark method")
+
+    current_raw_sha = sha256_file(raw_path)
+    if report.get("raw_sha256") != current_raw_sha:
+        raise RuntimeError(
+            "Numeric Body Geometry QA was recorded for a different RAW image; SHA-256 mismatch"
+        )
+    if report.get("raw_file") != raw_path.name:
+        raise RuntimeError("Numeric Body Geometry QA raw filename mismatch")
+
+    ratio = float(report["head_ratio_heads"])
+    acceptable_min = float(qa_cfg["acceptable_heads_min"])
+    acceptable_max = float(qa_cfg["acceptable_heads_max"])
+    if not (acceptable_min <= ratio <= acceptable_max):
+        raise RuntimeError(
+            f"Numeric Body Geometry ratio {ratio:.6f} is outside {acceptable_min:.1f}–{acceptable_max:.1f}"
+        )
+
+    qa_path = run_dir / "qa.json"
+    if not qa_path.exists():
+        raise RuntimeError(f"qa.json not found: {qa_path}")
+    qa = json.loads(qa_path.read_text(encoding="utf-8"))
+    if qa.get("body_geometry_status") != "PASS_NUMERIC":
+        raise RuntimeError("qa.json does not record body_geometry_status=PASS_NUMERIC")
+
+    return report
+
+
 def build_plan(raw_path: Path, cfg: dict[str, Any]) -> tuple[dict[str, Any], Any, tuple[int, int, int, int]]:
     from PIL import Image
 
@@ -113,8 +170,8 @@ def build_plan(raw_path: Path, cfg: dict[str, Any]) -> tuple[dict[str, Any], Any
 
     plan = {
         "status": "PLAN_ONLY",
-        "mode": "deterministic_uniform_raster_composition_v2",
-        "body_geometry_gate": "REQUIRED_BEFORE_RESULT_CREATION",
+        "mode": "deterministic_uniform_raster_composition_v3",
+        "body_geometry_gate": "NUMERIC_QA_PASS_PLUS_EXPLICIT_CONFIRMATION_REQUIRED_BEFORE_RESULT_CREATION",
         "source_file": raw_path.name,
         "source_sha256": sha256_file(raw_path),
         "source_canvas": [source_width, source_height],
@@ -133,7 +190,7 @@ def build_plan(raw_path: Path, cfg: dict[str, Any]) -> tuple[dict[str, Any], Any
         "allowed_transforms": [
             "uniform whole-raster scaling",
             "x/y translation",
-            "white-background crop/pad by final canvas placement"
+            "white-background crop/pad by final canvas placement",
         ],
         "forbidden_transforms": [
             "nonuniform scaling",
@@ -141,14 +198,18 @@ def build_plan(raw_path: Path, cfg: dict[str, Any]) -> tuple[dict[str, Any], Any
             "warp",
             "content-aware deformation",
             "inpainting/body reshaping",
-            "face regeneration"
+            "face regeneration",
         ],
-        "body_geometry_changed_by_composition": False
+        "body_geometry_changed_by_composition": False,
     }
     return plan, source, raw_bbox
 
 
-def normalize(run_dir: Path, cfg: dict[str, Any]) -> dict[str, Any]:
+def normalize(
+    run_dir: Path,
+    cfg: dict[str, Any],
+    numeric_geometry_report: dict[str, Any],
+) -> dict[str, Any]:
     from PIL import Image
 
     raw_path = run_dir / str(cfg["raw_filename"])
@@ -156,11 +217,20 @@ def normalize(run_dir: Path, cfg: dict[str, Any]) -> dict[str, Any]:
     report_path = run_dir / str(cfg["report_filename"])
     plan_path = run_dir / str(cfg.get("plan_filename", "composition_postprocess_plan.json"))
 
-    plan, source, raw_bbox = build_plan(raw_path, cfg)
+    plan, source, _raw_bbox = build_plan(raw_path, cfg)
+    plan["numeric_body_geometry_qa"] = {
+        "status": numeric_geometry_report["status"],
+        "head_ratio_heads": numeric_geometry_report["head_ratio_heads"],
+        "raw_sha256": numeric_geometry_report["raw_sha256"],
+    }
     plan_path.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     if not plan["raw_edge_clear"]:
-        report = {**plan, "status": "FAIL", "pass": False,
-                  "error": "RAW subject touches or crosses edge guard; complete subject visibility cannot be guaranteed."}
+        report = {
+            **plan,
+            "status": "FAIL",
+            "pass": False,
+            "error": "RAW subject touches or crosses edge guard; complete subject visibility cannot be guaranteed.",
+        }
         report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
         raise RuntimeError(report["error"])
 
@@ -191,6 +261,7 @@ def normalize(run_dir: Path, cfg: dict[str, Any]) -> dict[str, Any]:
     center_error_px = detected_center_x - target_center_x
 
     checks = {
+        "numeric_body_geometry_qa_pass": True,
         "canvas_size": canvas.size == (final_width, final_height),
         "figure_occupancy": float(cfg["acceptable_figure_height_ratio_min"]) <= occupancy <= float(cfg["acceptable_figure_height_ratio_max"]),
         "top_margin": float(cfg["acceptable_margin_ratio_min"]) <= top_margin_ratio <= float(cfg["acceptable_margin_ratio_max"]),
@@ -198,12 +269,17 @@ def normalize(run_dir: Path, cfg: dict[str, Any]) -> dict[str, Any]:
         "horizontal_center_proxy": abs(center_error_px) <= int(cfg["horizontal_center_tolerance_px"]),
         "raw_subject_not_clipped": bool(plan["raw_edge_clear"]),
         "uniform_scale_only": True,
-        "nonuniform_or_partwise_transform": False
+        "nonuniform_or_partwise_transform": False,
     }
     passed = (
-        checks["canvas_size"] and checks["figure_occupancy"] and checks["top_margin"]
-        and checks["bottom_margin"] and checks["horizontal_center_proxy"]
-        and checks["raw_subject_not_clipped"] and checks["uniform_scale_only"]
+        checks["numeric_body_geometry_qa_pass"]
+        and checks["canvas_size"]
+        and checks["figure_occupancy"]
+        and checks["top_margin"]
+        and checks["bottom_margin"]
+        and checks["horizontal_center_proxy"]
+        and checks["raw_subject_not_clipped"]
+        and checks["uniform_scale_only"]
         and not checks["nonuniform_or_partwise_transform"]
     )
 
@@ -222,7 +298,7 @@ def normalize(run_dir: Path, cfg: dict[str, Any]) -> dict[str, Any]:
         "final_bottom_margin_ratio": bottom_margin_ratio,
         "final_detected_center_x": detected_center_x,
         "final_center_error_px": center_error_px,
-        "checks": checks
+        "checks": checks,
     }
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     if not passed:
@@ -231,10 +307,18 @@ def normalize(run_dir: Path, cfg: dict[str, Any]) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Apply deterministic final Composition only after RAW Body Geometry QA PASS.")
+    parser = argparse.ArgumentParser(
+        description="Apply deterministic final Composition only after numeric RAW Body Geometry QA PASS."
+    )
     parser.add_argument("run_dir", type=Path)
-    parser.add_argument("--confirm-body-geometry-pass", action="store_true",
-                        help="Without this flag only a plan is written; result.png is not created.")
+    parser.add_argument(
+        "--confirm-body-geometry-pass",
+        action="store_true",
+        help=(
+            "Without this flag only a plan is written. With the flag, a matching numeric "
+            "body_geometry_qa.json PASS is also mandatory before result.png can be created."
+        ),
+    )
     args = parser.parse_args()
 
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
@@ -243,11 +327,15 @@ def main() -> int:
         raise RuntimeError("composition_postprocess is not configured for deferred Body Geometry QA gating")
     if cfg.get("require_explicit_body_geometry_pass") is not True:
         raise RuntimeError("explicit Body Geometry PASS must be required")
+    if cfg.get("require_numeric_body_geometry_qa_pass") is not True:
+        raise RuntimeError("numeric Body Geometry QA PASS must be required")
 
     try:
         import PIL  # noqa: F401
     except ImportError as exc:
-        raise RuntimeError("Pillow is required. Run: python -m pip install -r tools/yura-master-benchmark/requirements.txt") from exc
+        raise RuntimeError(
+            "Pillow is required. Run: python -m pip install -r tools/yura-master-benchmark/requirements.txt"
+        ) from exc
 
     run_dir = args.run_dir.resolve()
     raw_path = run_dir / str(cfg["raw_filename"])
@@ -259,31 +347,42 @@ def main() -> int:
     plan_path.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
 
     if not args.confirm_body_geometry_pass:
+        qa_file = run_dir / str(cfg.get("body_geometry_qa_filename", "body_geometry_qa.json"))
+        qa_state = "NOT_RECORDED"
+        if qa_file.exists():
+            try:
+                recorded = json.loads(qa_file.read_text(encoding="utf-8"))
+                qa_state = str(recorded.get("status", "UNKNOWN"))
+            except Exception:
+                qa_state = "INVALID"
         print(json.dumps({
             "status": "PLAN_ONLY",
             "result_created": False,
             "run_dir": str(run_dir),
             "raw_image": str(raw_path),
+            "numeric_body_geometry_qa_status": qa_state,
             "source_subject_bbox": plan["source_subject_bbox"],
             "source_figure_occupancy": plan["source_figure_occupancy"],
             "uniform_scale": plan["uniform_scale"],
-            "next": "Review RAW Body Geometry. Only after PASS, rerun with --confirm-body-geometry-pass."
+            "next": (
+                "Run body_geometry_qa.py with reviewed crown/chin/soles landmarks. "
+                "Only after numeric PASS and remaining visual Body Geometry review, rerun with --confirm-body-geometry-pass."
+            ),
         }, ensure_ascii=False, indent=2))
         return 0
 
-    qa_path = run_dir / "qa.json"
-    if not qa_path.exists():
-        raise RuntimeError(f"qa.json not found: {qa_path}")
-    qa = json.loads(qa_path.read_text(encoding="utf-8"))
+    numeric_geometry_report = load_numeric_body_geometry_gate(run_dir, raw_path, config, cfg)
+    report = normalize(run_dir, cfg, numeric_geometry_report)
 
-    report = normalize(run_dir, cfg)
-    qa["body_geometry_status"] = "PASS_CONFIRMED"
+    qa_path = run_dir / "qa.json"
+    qa = json.loads(qa_path.read_text(encoding="utf-8"))
+    qa["body_geometry_status"] = "PASS_NUMERIC_AND_EXPLICITLY_CONFIRMED"
     qa["composition_status"] = "PASS"
     qa["normalized_image"] = str(cfg["final_filename"])
     qa["master_promotion"] = "NO"
     qa["author_pass"] = None
     qa["notes"] = (
-        "RAW Body Geometry PASS was explicitly confirmed before deterministic Composition. "
+        "RAW numeric Body Geometry QA passed and Body Geometry was explicitly confirmed before deterministic Composition. "
         "Composition PASS does not approve or promote the Master; remaining identity/visual QA and explicit author confirmation are still required."
     )
     qa_path.write_text(json.dumps(qa, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -294,12 +393,13 @@ def main() -> int:
         "run_dir": str(run_dir),
         "raw_image": str(raw_path),
         "final_image": str(run_dir / str(cfg["final_filename"])),
+        "body_geometry_head_ratio": numeric_geometry_report["head_ratio_heads"],
         "uniform_scale": report["uniform_scale"],
         "final_figure_occupancy": report["final_figure_occupancy"],
         "final_top_margin_ratio": report["final_top_margin_ratio"],
         "final_bottom_margin_ratio": report["final_bottom_margin_ratio"],
         "final_center_error_px": report["final_center_error_px"],
-        "master_promotion": "NO"
+        "master_promotion": "NO",
     }, ensure_ascii=False, indent=2))
     return 0
 
