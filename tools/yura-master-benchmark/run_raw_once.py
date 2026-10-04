@@ -39,9 +39,13 @@ REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
     "BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTIONS.",
     "DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.",
     "UPPER BODY MUST NOT BE VERTICALLY ELONGATED.",
+    "TORSO MUST BE COMPACT; DO NOT LENGTHEN THE RIBCAGE-TO-PELVIS OR WAIST SPAN.",
     "KEEP THE PELVIS/CROTCH POSITION SLIGHTLY HIGH, WITH A SUBTLY LONGER LOWER BODY.",
     "LOW SITTING-HEIGHT IMPRESSION = RELATIVELY COMPACT UPPER-BODY SPAN + SLIGHTLY LONGER LOWER BODY.",
     "DO NOT CREATE THE LOWER-BODY EMPHASIS BY LEG-ONLY STRETCHING.",
+    "INSEAM PROXY RATIO = CROTCH-TO-SOLES / CROWN-TO-SOLES.",
+    "YURA INSEAM PROXY TARGET = 46.0–46.5%.",
+    "47.0% OR MORE IS FORBIDDEN AS TOO MODEL-LIKE.",
     "7.2 heads",
     "7.1–7.3",
 )
@@ -179,9 +183,22 @@ def validate_runtime_config(config: dict[str, Any]) -> None:
         raise RuntimeError("body_geometry_qa acceptable_heads_min must be 7.1")
     if float(body_cfg.get("acceptable_heads_max", -1)) != 7.3:
         raise RuntimeError("body_geometry_qa acceptable_heads_max must be 7.3")
+    if float(body_cfg.get("inseam_proxy_target_min", -1)) != 0.46:
+        raise RuntimeError("body_geometry_qa inseam_proxy_target_min must be 0.46")
+    if float(body_cfg.get("inseam_proxy_target_max", -1)) != 0.465:
+        raise RuntimeError("body_geometry_qa inseam_proxy_target_max must be 0.465")
+    if float(body_cfg.get("inseam_proxy_model_like_hard_fail_min", -1)) != 0.47:
+        raise RuntimeError("body_geometry_qa inseam_proxy_model_like_hard_fail_min must be 0.47")
+    if float(body_cfg.get("torso_chin_to_crotch_heads_min", -1)) != 2.7985:
+        raise RuntimeError("body_geometry_qa torso_chin_to_crotch_heads_min must be 2.7985")
+    if float(body_cfg.get("torso_chin_to_crotch_heads_max", -1)) != 2.942:
+        raise RuntimeError("body_geometry_qa torso_chin_to_crotch_heads_max must be 2.942")
     for key in (
         "require_landmarks_reviewed",
         "require_upper_body_not_elongated_confirmation",
+        "require_torso_compact_confirmation",
+        "require_waist_not_low_confirmation",
+        "require_pelvis_high_enough_confirmation",
         "require_lower_body_slightly_longer_confirmation",
         "require_natural_knee_placement_confirmation",
         "require_raw_sha_match_before_composition",
@@ -198,6 +215,7 @@ def validate_runtime_config(config: dict[str, Any]) -> None:
         "require_explicit_body_geometry_pass",
         "require_numeric_body_geometry_qa_pass",
         "require_internal_body_geometry_review_pass",
+        "require_torso_specific_gate_pass",
     ):
         if comp_cfg.get(key) is not True:
             raise RuntimeError(f"composition_postprocess {key} must be true")
@@ -240,7 +258,8 @@ def validate_compiled_prompt(run_dir: Path, compiled_prompt: str) -> None:
         "forbidden_generation_composition_literals": list(FORBIDDEN_GENERATION_COMPOSITION_LITERALS),
         "forbidden_present": forbidden_present,
         "image_api_allowed": passed,
-        "body_geometry_gate": "HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW_REQUIRED_AFTER_RAW",
+        "body_geometry_gate": "HEAD_RATIO_PLUS_INSEAM_PROXY_PLUS_TORSO_SPECIFIC_GATE_REQUIRED_AFTER_RAW",
+        "body_geometry_inseam_proxy_target": "46.0–46.5%",
         "composition_execution": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
     }
     (run_dir / "prompt_invariant_check.json").write_text(
@@ -292,7 +311,7 @@ def build_sealed_bundle(
         entries.append(entry)
 
     return {
-        "bundle_version": 5,
+        "bundle_version": 6,
         "bundle_mode": "SEALED_AUTHORITY_BUNDLE",
         "git_commit": head,
         "authority_order": entries,
@@ -307,6 +326,8 @@ def build_sealed_bundle(
             "codex_external_tools_required": False,
             "png_pixels_inspected_by_codex": False,
             "raw_body_geometry_head_ratio_qa_required": True,
+            "raw_body_geometry_inseam_proxy_qa_required": True,
+            "raw_body_geometry_torso_specific_gate_required": True,
             "raw_body_geometry_internal_landmark_review_required": True,
             "composition_execution": "DEFERRED_DETERMINISTIC_POSTPROCESS_AFTER_BODY_GEOMETRY_QA_PASS",
         },
@@ -377,7 +398,8 @@ def main() -> int:
         "codex_user_config_loaded": False,
         "codex_tool_dependency": "NONE",
         "compiled_prompt_invariant_gate": True,
-        "body_geometry_gate": "HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW_REQUIRED_AFTER_RAW",
+        "body_geometry_gate": "HEAD_RATIO_PLUS_INSEAM_PROXY_PLUS_TORSO_SPECIFIC_GATE_REQUIRED_AFTER_RAW",
+        "body_geometry_inseam_proxy_target": "46.0–46.5%",
         "composition_execution": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
     }
     (run_dir / "run_meta.json").write_text(
@@ -404,8 +426,9 @@ def main() -> int:
                     "authority_count": len(authority_paths),
                     "sealed_authority_bundle_sha256": bundle_sha,
                     "codex_input_sha256": codex_input_sha,
-                    "body_geometry_gate": "HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW_REQUIRED_AFTER_RAW",
-                    "body_geometry_internal_preference": "COMPACT_UPPER_BODY_PLUS_SUBTLY_LONGER_LOWER_BODY",
+                    "body_geometry_gate": "HEAD_RATIO_PLUS_INSEAM_PROXY_PLUS_TORSO_SPECIFIC_GATE_REQUIRED_AFTER_RAW",
+                    "body_geometry_inseam_proxy_target": "46.0–46.5%",
+                    "body_geometry_torso_gate": "COMPACT_TORSO_AND_SLIGHTLY_HIGH_PELVIS",
                     "composition_execution": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
                     "next": "Run without --preflight-only only after reviewing this preflight result.",
                 },
@@ -534,10 +557,14 @@ def main() -> int:
                 "body_geometry_qa": "tools/yura-master-benchmark/body_geometry_qa.py",
                 "normalizer": "tools/yura-master-benchmark/normalize_composition.py",
                 "requires_head_ratio_pass": True,
+                "requires_inseam_proxy_pass": True,
+                "inseam_proxy_target": "46.0–46.5%",
+                "requires_torso_specific_gate_pass": True,
                 "requires_internal_landmark_review_pass": True,
                 "note": (
-                    "Do not create result.png until RAW Body Geometry QA passes total head ratio and "
-                    "internal upper/lower-body review. Final Composition remains a separate deterministic step."
+                    "Do not create result.png until RAW Body Geometry QA passes total head ratio, "
+                    "YURA inseam proxy, torso-specific gate, and internal visual review. "
+                    "Final Composition remains a separate deterministic step."
                 ),
             },
             ensure_ascii=False,
@@ -578,6 +605,8 @@ def main() -> int:
                 "candidate": "QA_PENDING",
                 "master_promotion": "NO",
                 "body_geometry_status": "PENDING",
+                "body_geometry_inseam_proxy_ratio": None,
+                "body_geometry_torso_specific_gate_pass": None,
                 "body_geometry_internal_review_pass": None,
                 "composition_status": "DEFERRED",
                 "raw_image": raw_filename,
@@ -587,8 +616,8 @@ def main() -> int:
                 "author_pass": None,
                 "notes": (
                     "Review result_raw.png first. Body Geometry QA requires crown/chin/crotch/knee/soles, "
-                    "7.1–7.3 total head ratio, non-elongated upper body, subtly longer lower-body intent, "
-                    "and natural knee placement before Composition may run."
+                    "7.1–7.3 total head ratio, YURA inseam proxy 46.0–46.5%, compact torso, waist not low, "
+                    "slightly high pelvis/crotch, subtly longer lower body, and natural knee placement before Composition may run."
                 ),
             },
             ensure_ascii=False,
@@ -606,12 +635,13 @@ def main() -> int:
                 "compiled_prompt_sha256": prompt_sha,
                 "raw_image_path": str(raw_path),
                 "normalized_image_path": None,
-                "body_geometry_status": "PENDING_HEAD_RATIO_AND_INTERNAL_LANDMARK_REVIEW",
+                "body_geometry_status": "PENDING_HEAD_RATIO_INSEAM_TORSO_REVIEW",
+                "body_geometry_inseam_proxy_target": "46.0–46.5%",
                 "composition_status": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
                 "image_estimated_cost_usd": image_estimate,
                 "next": (
                     "Review result_raw.png and record crown/chin/crotch/knee/soles with body_geometry_qa.py. "
-                    "Do not run Composition unless that report is PASS."
+                    "Do not run Composition unless head ratio, inseam proxy, torso-specific gate, and internal visual review are all PASS."
                 ),
             },
             ensure_ascii=False,
