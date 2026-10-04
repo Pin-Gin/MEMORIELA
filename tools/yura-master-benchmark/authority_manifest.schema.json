@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ready", "git_commit", "authority_order", "denied_sources", "image_reference_order", "compiled_prompt", "errors"],
+  "properties": {
+    "ready": {"type": "boolean"},
+    "git_commit": {"type": "string"},
+    "authority_order": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["order", "path", "role", "sha256"],
+        "properties": {
+          "order": {"type": "integer", "minimum": 1},
+          "path": {"type": "string"},
+          "role": {"type": "string"},
+          "sha256": {"type": "string"}
+        }
+      }
+    },
+    "denied_sources": {"type": "array", "items": {"type": "string"}},
+    "image_reference_order": {"type": "array", "items": {"type": "string"}},
+    "compiled_prompt": {"type": "string", "minLength": 1},
+    "errors": {"type": "array", "items": {"type": "string"}}
+  }
+}
