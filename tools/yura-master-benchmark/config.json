@@ -1,5 +1,5 @@
 {
-  "benchmark_version": 2,
+  "benchmark_version": 3,
   "purpose": "YURA master-generation reproducibility and cost benchmark",
   "authority_order": [
     "visuals/yura/identity/master/YURA_MASTER_GENERATION_LIFECYCLE.md",
@@ -37,10 +37,23 @@
     "background": "opaque",
     "n": 1
   },
+  "body_geometry_qa": {
+    "enabled": true,
+    "landmark_method": "MANUAL_PIXEL_Y",
+    "raw_filename": "result_raw.png",
+    "report_filename": "body_geometry_qa.json",
+    "target_heads": 7.2,
+    "acceptable_heads_min": 7.1,
+    "acceptable_heads_max": 7.3,
+    "require_landmarks_reviewed": true,
+    "require_raw_sha_match_before_composition": true
+  },
   "composition_postprocess": {
     "enabled": true,
     "mode": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
     "require_explicit_body_geometry_pass": true,
+    "require_numeric_body_geometry_qa_pass": true,
+    "body_geometry_qa_filename": "body_geometry_qa.json",
     "final_width": 1440,
     "final_height": 2560,
     "target_figure_height_ratio": 0.89,
