@@ -49,8 +49,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
             "Record RAW Body Geometry QA from manually reviewed vertical landmarks. "
-            "The hard numeric gate remains total head ratio; internal landmark metrics are recorded, "
-            "and upper/lower-body proportion review is also required before Composition."
+            "Hard gates cover total head ratio, YURA inseam proxy, and torso span; "
+            "visual review remains mandatory for torso/pelvis/knee naturalness."
         )
     )
     parser.add_argument("run_dir", type=Path)
@@ -67,23 +67,32 @@ def main() -> int:
     parser.add_argument(
         "--confirm-upper-body-not-elongated",
         action="store_true",
-        help=(
-            "Required for PASS: confirms the chin-to-crotch / torso span is not vertically elongated "
-            "relative to the approved YURA Body Geometry intent."
-        ),
+        help="Required for PASS: confirms the upper body is not vertically elongated.",
+    )
+    parser.add_argument(
+        "--confirm-torso-compact",
+        action="store_true",
+        help="Required for PASS: confirms ribcage-to-waist-to-pelvis torso span is compact rather than long.",
+    )
+    parser.add_argument(
+        "--confirm-waist-not-low",
+        action="store_true",
+        help="Required for PASS: confirms waist placement is not unnaturally low.",
+    )
+    parser.add_argument(
+        "--confirm-pelvis-high-enough",
+        action="store_true",
+        help="Required for PASS: confirms pelvis/crotch position reads slightly high as intended.",
     )
     parser.add_argument(
         "--confirm-lower-body-slightly-longer",
         action="store_true",
-        help=(
-            "Required for PASS: confirms a low-sitting-height impression: pelvis/crotch slightly high "
-            "and lower body subtly long, without leg-only stretching."
-        ),
+        help="Required for PASS: confirms the lower body reads subtly longer without exaggerated model-like legs.",
     )
     parser.add_argument(
         "--confirm-knee-placement-natural",
         action="store_true",
-        help="Required for PASS: confirms the lower-body emphasis was not produced by abnormal thigh/shin landmark placement.",
+        help="Required for PASS: confirms thigh/shin distribution and knee placement are natural.",
     )
     args = parser.parse_args()
 
@@ -127,26 +136,53 @@ def main() -> int:
     knee_to_soles_heads = (soles_y - knee_y) / head_height_px
     crotch_to_soles_heads = (soles_y - crotch_y) / head_height_px
     knee_from_crown_heads = (knee_y - crown_y) / head_height_px
-    lower_body_share_of_figure = (soles_y - crotch_y) / figure_height_px
+    inseam_proxy_ratio = (soles_y - crotch_y) / figure_height_px
 
     target = float(qa_cfg["target_heads"])
     acceptable_min = float(qa_cfg["acceptable_heads_min"])
     acceptable_max = float(qa_cfg["acceptable_heads_max"])
     head_ratio_pass = acceptable_min <= head_ratio <= acceptable_max
 
+    inseam_min = float(qa_cfg["inseam_proxy_target_min"])
+    inseam_max = float(qa_cfg["inseam_proxy_target_max"])
+    inseam_hard_fail_min = float(qa_cfg["inseam_proxy_model_like_hard_fail_min"])
+    inseam_target_pass = inseam_min <= inseam_proxy_ratio <= inseam_max
+    inseam_model_like_hard_fail = inseam_proxy_ratio >= inseam_hard_fail_min
+
+    torso_min = float(qa_cfg["torso_chin_to_crotch_heads_min"])
+    torso_max = float(qa_cfg["torso_chin_to_crotch_heads_max"])
+    torso_numeric_pass = torso_min <= chin_to_crotch_heads <= torso_max
+
     review = {
         "upper_body_not_elongated": bool(args.confirm_upper_body_not_elongated),
+        "torso_compact": bool(args.confirm_torso_compact),
+        "waist_not_low": bool(args.confirm_waist_not_low),
+        "pelvis_high_enough": bool(args.confirm_pelvis_high_enough),
         "lower_body_slightly_longer": bool(args.confirm_lower_body_slightly_longer),
         "knee_placement_natural": bool(args.confirm_knee_placement_natural),
     }
-    internal_proportion_review_pass = all(review.values())
-    passed = head_ratio_pass and internal_proportion_review_pass
+    internal_visual_review_pass = all(review.values())
+
+    torso_specific_gate_pass = (
+        torso_numeric_pass
+        and inseam_target_pass
+        and not inseam_model_like_hard_fail
+        and review["torso_compact"]
+        and review["waist_not_low"]
+        and review["pelvis_high_enough"]
+    )
+
+    passed = (
+        head_ratio_pass
+        and torso_specific_gate_pass
+        and internal_visual_review_pass
+    )
 
     raw_sha = sha256_file(raw_path)
     report = {
         "pass": passed,
         "status": "PASS" if passed else "FAIL",
-        "gate": "BODY_GEOMETRY_HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW",
+        "gate": "HEAD_RATIO_PLUS_INSEAM_PROXY_PLUS_TORSO_SPECIFIC_GATE",
         "landmark_method": "MANUAL_PIXEL_Y_WITH_INTERNAL_LANDMARKS",
         "landmarks_reviewed": True,
         "raw_file": raw_name,
@@ -170,7 +206,8 @@ def main() -> int:
             "knee_to_soles_heads": knee_to_soles_heads,
             "crotch_to_soles_heads": crotch_to_soles_heads,
             "knee_from_crown_heads": knee_from_crown_heads,
-            "lower_body_share_of_figure": lower_body_share_of_figure,
+            "inseam_proxy_ratio": inseam_proxy_ratio,
+            "inseam_proxy_percent": inseam_proxy_ratio * 100.0,
         },
         "head_ratio_gate": {
             "pass": head_ratio_pass,
@@ -179,21 +216,40 @@ def main() -> int:
             "acceptable_heads_max": acceptable_max,
             "distance_to_target_heads": head_ratio - target,
         },
-        "internal_landmark_policy": {
-            "status": "MEASURED_PLUS_AUTHOR_VISUAL_GATE",
-            "numeric_threshold_status": "NOT_FROZEN_YET",
-            "reason": (
-                "The active Body Geometry Authority fixes 7.2 heads but does not yet define exact numeric "
-                "crotch/knee thresholds. Internal landmark metrics are therefore recorded without inventing "
-                "new numeric appearance limits; explicit author review is required."
+        "inseam_proxy_gate": {
+            "pass": inseam_target_pass and not inseam_model_like_hard_fail,
+            "target_min": inseam_min,
+            "target_max": inseam_max,
+            "model_like_hard_fail_min": inseam_hard_fail_min,
+            "value": inseam_proxy_ratio,
+            "value_percent": inseam_proxy_ratio * 100.0,
+            "model_like_hard_fail": inseam_model_like_hard_fail,
+            "definition": "(soles_y - crotch_y) / (soles_y - crown_y)",
+            "scope": "YURA-specific image-space proxy, not a universal human-body standard.",
+        },
+        "torso_specific_gate": {
+            "pass": torso_specific_gate_pass,
+            "chin_to_crotch_heads": chin_to_crotch_heads,
+            "acceptable_min": torso_min,
+            "acceptable_max": torso_max,
+            "numeric_pass": torso_numeric_pass,
+            "inseam_proxy_pass": inseam_target_pass and not inseam_model_like_hard_fail,
+            "torso_compact_confirmed": review["torso_compact"],
+            "waist_not_low_confirmed": review["waist_not_low"],
+            "pelvis_high_enough_confirmed": review["pelvis_high_enough"],
+            "derivation_note": (
+                "The torso numeric envelope is derived from the approved 7.1–7.3 total-head range "
+                "and 46.0–46.5% YURA inseam proxy target; it is not an independently invented body ratio."
             ),
+        },
+        "internal_landmark_policy": {
+            "status": "NUMERIC_PLUS_AUTHOR_VISUAL_GATE",
             "preference": (
-                "Upper body must not be vertically elongated. Prefer a slightly high pelvis/crotch position "
-                "and subtly longer lower body (low-sitting-height impression), while keeping natural knee placement "
-                "and avoiding leg-only or torso-only stretching."
+                "Compact torso, waist not low, pelvis/crotch slightly high, subtly longer lower body, "
+                "natural knee placement, and no leg-only or torso-only stretching."
             ),
             "review": review,
-            "review_pass": internal_proportion_review_pass,
+            "review_pass": internal_visual_review_pass,
         },
         "composition_execution_allowed": passed,
         "master_promotion": "NO",
@@ -211,9 +267,13 @@ def main() -> int:
         qa = {}
     qa["body_geometry_status"] = "PASS" if passed else "FAIL"
     qa["body_geometry_head_ratio"] = head_ratio
-    qa["body_geometry_internal_review_pass"] = internal_proportion_review_pass
+    qa["body_geometry_inseam_proxy_ratio"] = inseam_proxy_ratio
+    qa["body_geometry_torso_specific_gate_pass"] = torso_specific_gate_pass
+    qa["body_geometry_internal_review_pass"] = internal_visual_review_pass
     qa["body_geometry_qa_file"] = report_name
-    qa["composition_status"] = "READY_FOR_EXPLICIT_CONFIRMATION" if passed else "BLOCKED_BY_BODY_GEOMETRY"
+    qa["composition_status"] = (
+        "READY_FOR_EXPLICIT_CONFIRMATION" if passed else "BLOCKED_BY_BODY_GEOMETRY"
+    )
     qa["master_promotion"] = "NO"
     qa["author_pass"] = None
     qa_path.write_text(json.dumps(qa, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -225,11 +285,12 @@ def main() -> int:
         "body_geometry_qa": str(report_path),
         "head_ratio_heads": head_ratio,
         "acceptable_head_ratio_range": [acceptable_min, acceptable_max],
-        "crown_to_crotch_heads": crown_to_crotch_heads,
-        "chin_to_crotch_heads": chin_to_crotch_heads,
-        "crotch_to_soles_heads": crotch_to_soles_heads,
-        "lower_body_share_of_figure": lower_body_share_of_figure,
-        "internal_proportion_review_pass": internal_proportion_review_pass,
+        "inseam_proxy_percent": inseam_proxy_ratio * 100.0,
+        "inseam_proxy_target_percent": [inseam_min * 100.0, inseam_max * 100.0],
+        "torso_chin_to_crotch_heads": chin_to_crotch_heads,
+        "torso_target_heads": [torso_min, torso_max],
+        "torso_specific_gate_pass": torso_specific_gate_pass,
+        "internal_visual_review_pass": internal_visual_review_pass,
         "composition_execution_allowed": passed,
         "next": (
             "If PASS, Composition may be normalized only with the separate explicit confirmation flag."
