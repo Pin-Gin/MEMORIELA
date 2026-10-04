@@ -45,9 +45,34 @@ Do not attempt to independently re-read or re-resolve those facts.
 9. If the sealed text Authorities are internally contradictory, required activation status is absent where required, or bundle data is structurally incomplete, set `ready=false`, list the exact error, and do not produce a usable generation prompt.
 10. Do not silently resolve conflicts. Fail closed.
 
+## Benchmark execution split
+
+This benchmark deliberately separates **RAW visual generation** from **final Composition normalization**.
+
+The Image API generation step is responsible for:
+
+- Face Identity
+- Body Geometry
+- active appearance constraints
+- pose / full-body completeness
+- white background
+- one QA-pending RAW candidate
+
+The Image API generation step is NOT responsible for satisfying the final numeric Composition targets for:
+
+- final canvas dimensions as a prompt constraint
+- final figure occupancy
+- final top/bottom margin percentages
+- final horizontal placement coordinates
+
+Those final Composition targets remain authoritative in `YURA_COMPOSITION_AUTHORITY.md`, but the runner applies them later with deterministic Python post-processing **only after Body Geometry QA has explicitly passed**.
+
+Do not copy the numeric Composition targets into `compiled_prompt`.
+Do not ask the image model to stretch, shrink, lengthen, shorten, or otherwise change internal body geometry to fit final Composition.
+
 ## Prompt compilation
 
-Compile one complete prompt for the OpenAI Image API reference-image edit workflow.
+Compile one complete **RAW Body-Geometry-first** prompt for the OpenAI Image API reference-image edit workflow.
 
 The Image API will receive exactly two reference images in this order:
 
@@ -57,68 +82,52 @@ The Image API will receive exactly two reference images in this order:
 The compiled prompt must:
 
 - explicitly preserve the separation between Face Identity and Body Geometry
-- include the active constraints contained in `YURA_VISUAL_TEXT.md`
-- preserve the active final-composition constraints contained in `YURA_COMPOSITION_AUTHORITY.md`
-- treat exact final occupancy/margins/centering as a **runner postprocess contract**, not as a reason for the Image model to change anatomy
+- include the active character/appearance constraints contained in `YURA_VISUAL_TEXT.md`
+- use `YURA_COMPOSITION_AUTHORITY.md` only to preserve Authority separation and Body-Geometry precedence during RAW generation
 - respect lifecycle/rule files in the sealed bundle
-- state that the Image API output is a **RAW QA-pending Master candidate**, not an approved Master and not yet the final composition-normalized artifact
+- state that the output is a **QA-pending RAW Master candidate**, not an approved Master
 - contain no fallback from denied sources
-- preserve the exact BODY-Geometry-before-Composition precedence defined below
+- request exactly one complete front-view full-body subject with crown and soles visible and comfortable white clearance
+- avoid any final occupancy/margin optimization during generation
 
-## RAW generation stage
-
-The Image API must concentrate on Face Identity, Body Geometry, silhouette, pose, rendering, and complete visibility of the subject.
-
-The compiled prompt must tell the Image model to:
-
-- generate the complete full body without cropping crown or soles
-- keep visible white background above and below the subject so later uniform scaling is safe
-- keep the subject generally centered, but do not chase exact final occupancy or exact final margin numbers
-- never lengthen/shorten/warp head, neck, torso, waist position, legs, knees, ankles, or any internal body landmarks to satisfy final composition
-- leave exact final 1440×2560 / 89% / 5–6% / horizontal-centering enforcement to the deterministic runner postprocess
-
-The exact final composition numbers may appear in the compiled prompt only as a clearly identified **FINAL COMPOSITION POSTPROCESS CONTRACT — NOT A RAW BODY-GEOMETRY TARGET**.
-
-## Required verbatim precedence and stage block
+## Required verbatim RAW-generation block
 
 The following lines MUST appear verbatim in `compiled_prompt`, in this order, with the same capitalization and punctuation:
 
 ```text
 BODY GEOMETRY IS RESOLVED FIRST.
 BODY GEOMETRY HAS PRIORITY OVER COMPOSITION.
-WHOLE-FIGURE UNIFORM SCALING ONLY.
-DO NOT ALTER INTERNAL BODY LANDMARK POSITIONS TO SATISFY OCCUPANCY OR MARGINS.
-BODY GEOMETRY WINS; COMPOSITION MAY FAIL.
-RAW GENERATION MUST NOT ALTER BODY GEOMETRY TO SATISFY FINAL COMPOSITION.
-FINAL COMPOSITION IS APPLIED BY DETERMINISTIC RUNNER POSTPROCESS.
-POSTPROCESS MAY SCALE AND TRANSLATE THE COMPLETE RASTER ONLY.
+RAW GENERATION IS BODY-GEOMETRY-FIRST.
+FINAL COMPOSITION IS DEFERRED TO DETERMINISTIC POST-PROCESSING.
+DO NOT OPTIMIZE FOR FINAL CANVAS OCCUPANCY OR MARGINS DURING GENERATION.
+DO NOT ALTER INTERNAL BODY LANDMARK POSITIONS FOR CANVAS FITTING.
 ```
 
-The compiled prompt must also explicitly explain that:
-
-- Body Geometry is fixed before final Composition is applied.
-- The Image API is responsible for RAW subject generation, not exact final numeric placement.
-- Final Composition may move and uniformly scale the already-proportioned complete raster only.
-- Final Composition must never independently lengthen or shorten the head, neck, torso, waist placement, legs, knee placement, ankles, or other internal body landmark distances.
-- If final numeric placement cannot be achieved without changing Body Geometry, preserve Body Geometry and allow Composition QA to fail.
-- A Composition miss is preferable to deforming the approved Body Geometry.
-
-Do not soften, paraphrase away, omit, or reverse this precedence/stage separation.
-
-## Required numeric constraints in compiled prompt
-
-The compiled prompt must retain all of the following literal values inside the final postprocess contract:
+The compiled prompt must also retain:
 
 ```text
 7.2 heads
 7.1–7.3
+```
+
+These are Body Geometry invariants.
+
+## Forbidden final-Composition literals in compiled prompt
+
+The following final-Composition literals MUST NOT appear in `compiled_prompt`:
+
+```text
 1440 × 2560
 89%
 88–90%
 5–6%
+2278
+2253
+2304
+CENTER AXIS X
 ```
 
-These are compilation invariants. If the source Authorities do not support them, set `ready=false` instead of inventing them.
+They remain in the sealed Composition Authority and are applied by deterministic post-processing after Body Geometry PASS. If you include them in the Image API prompt, the benchmark separation is broken.
 
 ## Output
 
@@ -130,7 +139,7 @@ Populate it from the sealed bundle:
 - `authority_order` = exact supplied order, paths, declared roles, and SHA-256 values
 - `denied_sources` = exact supplied denied-source list
 - `image_reference_order` = exact supplied API image-reference order
-- `compiled_prompt` = complete RAW Image API prompt including the postprocess-only composition contract
+- `compiled_prompt` = complete RAW Body-Geometry-first Image API prompt
 - `errors` = empty only when `ready=true`
 
 Do not mention unavailable shell/filesystem access as an error. Tool access is intentionally unnecessary in this benchmark mode.
