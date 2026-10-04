@@ -24,15 +24,52 @@ def load_cost(run_dir: Path) -> dict:
     return json.loads((run_dir / "cost.json").read_text(encoding="utf-8"))
 
 
+def estimate_full_run_cost(cost: dict) -> float | None:
+    stored = cost.get("run_estimated_cost_usd")
+    if stored is not None:
+        return float(stored)
+
+    image_estimate = cost.get("image_estimated_cost_usd")
+    candidates = cost.get("codex_usage_candidates") or []
+    if image_estimate is None or not candidates:
+        return None
+
+    usage = candidates[-1]
+    try:
+        input_tokens = int(usage.get("input_tokens", 0))
+        cached_tokens = int(usage.get("cached_input_tokens", 0))
+        output_tokens = int(usage.get("output_tokens", 0))
+    except (TypeError, ValueError):
+        return None
+
+    uncached_tokens = max(input_tokens - cached_tokens, 0)
+    rates = CONFIG["pricing_snapshot"]["codex_model_standard"]
+    codex_estimate = (
+        (uncached_tokens / 1_000_000) * float(rates["input_per_1m_usd"])
+        + (cached_tokens / 1_000_000) * float(rates["cached_input_per_1m_usd"])
+        + (output_tokens / 1_000_000) * float(rates["output_per_1m_usd"])
+    )
+    return round(codex_estimate + float(image_estimate), 8)
+
+
 def eligible_cost(cost: dict, allow_estimate: bool) -> tuple[float, str]:
-    authoritative = cost.get("authoritative_total_project_cost_usd")
+    authoritative = cost.get("run_specific_authoritative_cost_usd")
+    if authoritative is None:
+        # Backward compatibility: this legacy field is populated by the corrected cost
+        # query only when isolated-project-day attribution was explicitly asserted.
+        authoritative = cost.get("authoritative_total_project_cost_usd")
     if authoritative is not None:
-        return float(authoritative), "authoritative"
-    if allow_estimate and cost.get("image_estimated_cost_usd") is not None:
-        return float(cost["image_estimated_cost_usd"]), "image-estimate-only"
+        return float(authoritative), "authoritative-run-cost"
+
+    if allow_estimate:
+        estimate = estimate_full_run_cost(cost)
+        if estimate is not None:
+            return estimate, "codex-plus-image-estimate"
+
     raise RuntimeError(
-        "No authoritative run cost is available. Run query_project_cost.py first, "
-        "or pass --allow-estimate to explicitly accept an image-only estimate."
+        "No authoritative run-specific cost is available. The OpenAI Costs API is daily-granularity. "
+        "Use a deliberately isolated project/day for authoritative attribution, or pass --allow-estimate "
+        "to explicitly accept the Codex + Image run estimate."
     )
 
 
@@ -41,7 +78,14 @@ def main() -> int:
     parser.add_argument("--seed-run", type=Path, default=None)
     parser.add_argument("--runs", type=int, default=CONFIG["batch"]["runs_after_single"])
     parser.add_argument("--allow-estimate", action="store_true")
-    parser.add_argument("--query-costs", action="store_true", help="Query project cost after each run when admin credentials are set")
+    parser.add_argument(
+        "--query-costs",
+        action="store_true",
+        help=(
+            "Query project daily cost metadata after each run when admin credentials are set. "
+            "Current UTC-day runs remain pending until that daily bucket closes."
+        ),
+    )
     parser.add_argument("--cost-wait-seconds", type=int, default=30)
     args = parser.parse_args()
 
@@ -100,8 +144,9 @@ def main() -> int:
         if sha_file.exists():
             prompt_hashes.append(sha_file.read_text(encoding="ascii").strip())
         cost = load_cost(d)
-        if cost.get("authoritative_total_project_cost_usd") is not None:
-            authoritative_costs.append(float(cost["authoritative_total_project_cost_usd"]))
+        run_authoritative = cost.get("run_specific_authoritative_cost_usd")
+        if run_authoritative is not None:
+            authoritative_costs.append(float(run_authoritative))
         qa_path = d / "qa.json"
         if qa_path.exists():
             qa = json.loads(qa_path.read_text(encoding="utf-8"))
@@ -120,11 +165,15 @@ def main() -> int:
         "run_dirs": [str(x) for x in produced],
         "compiled_prompt_sha256_counts": dict(Counter(prompt_hashes)),
         "manifest_stable": len(set(prompt_hashes)) <= 1 if prompt_hashes else False,
-        "authoritative_costs_available": len(authoritative_costs),
+        "authoritative_run_costs_available": len(authoritative_costs),
         "authoritative_batch_cost_usd": round(sum(authoritative_costs), 8) if authoritative_costs else None,
         "auto_pass_count": auto_pass,
         "author_pass_count": author_pass,
-        "note": "author_pass_count stays zero until qa.json is reviewed and explicitly marked by the author.",
+        "note": (
+            "OpenAI Costs API is daily-granularity. authoritative_batch_cost_usd is populated only "
+            "from run-specific authoritative costs that were isolated; author_pass_count stays zero "
+            "until qa.json is explicitly approved by the author."
+        ),
     }
     out = TOOL_DIR / "runs" / "latest_batch_summary.json"
     out.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
