@@ -137,15 +137,26 @@ def main() -> int:
         "git_commit": head,
         "config_sha256": sha256_file(CONFIG_PATH),
         "authority_sha256": local_hashes,
+        "codex_sandbox": {
+            "mode": "read-only",
+            "windows_backend": "elevated",
+        },
     }
     (run_dir / "run_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # Codex reads the repo and produces a machine-readable manifest plus the exact prompt.
+    # On native Windows, explicitly select the elevated sandbox backend while keeping
+    # the agent filesystem policy read-only. This allows shell-based Git/file reads
+    # without granting repository write access.
     instruction = INSTRUCTION_PATH.read_text(encoding="utf-8")
     manifest_path = run_dir / "authority_manifest.json"
     codex_cmd = [
         config["codex"]["executable"],
         "exec",
+        "--sandbox",
+        "read-only",
+        "-c",
+        'windows.sandbox="elevated"',
         "--json",
         "--model",
         config["codex"]["model"],
@@ -169,6 +180,15 @@ def main() -> int:
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if not manifest.get("ready"):
+        failure = {
+            "phase": "codex_authority_resolution",
+            "ready": False,
+            "errors": manifest.get("errors", []),
+            "image_api_called": False,
+        }
+        (run_dir / "failure.json").write_text(
+            json.dumps(failure, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
         raise RuntimeError("Codex reported ready=false: " + "; ".join(manifest.get("errors", [])))
     if manifest.get("git_commit") != head:
         raise RuntimeError("Codex manifest git_commit does not match current HEAD")
