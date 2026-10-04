@@ -84,6 +84,8 @@ def load_body_geometry_gate(
         raise RuntimeError("numeric Body Geometry QA must be required before Composition")
     if composition_cfg.get("require_internal_body_geometry_review_pass") is not True:
         raise RuntimeError("internal Body Geometry review must be required before Composition")
+    if composition_cfg.get("require_torso_specific_gate_pass") is not True:
+        raise RuntimeError("torso-specific Body Geometry gate must be required before Composition")
 
     qa_cfg = config.get("body_geometry_qa") or {}
     report_name = str(
@@ -117,12 +119,25 @@ def load_body_geometry_gate(
     if head_gate.get("pass") is not True:
         raise RuntimeError("7.1–7.3 head-ratio gate is not PASS")
 
+    inseam_gate = report.get("inseam_proxy_gate") or {}
+    if inseam_gate.get("pass") is not True:
+        raise RuntimeError("YURA 46.0–46.5% inseam proxy gate is not PASS")
+    if inseam_gate.get("model_like_hard_fail") is True:
+        raise RuntimeError("inseam proxy triggered the >=47.0% model-like hard guard")
+
+    torso_gate = report.get("torso_specific_gate") or {}
+    if torso_gate.get("pass") is not True or torso_gate.get("numeric_pass") is not True:
+        raise RuntimeError("torso-specific numeric/review gate is not PASS")
+
     internal_policy = report.get("internal_landmark_policy") or {}
     if internal_policy.get("review_pass") is not True:
-        raise RuntimeError("Internal upper/lower-body proportion review is not PASS")
+        raise RuntimeError("Internal Body Geometry visual review is not PASS")
     review = internal_policy.get("review") or {}
     for key in (
         "upper_body_not_elongated",
+        "torso_compact",
+        "waist_not_low",
+        "pelvis_high_enough",
         "lower_body_slightly_longer",
         "knee_placement_natural",
     ):
@@ -146,12 +161,33 @@ def load_body_geometry_gate(
             f"Body Geometry ratio {ratio:.6f} is outside {acceptable_min:.1f}–{acceptable_max:.1f}"
         )
 
+    inseam = float(metrics["inseam_proxy_ratio"])
+    inseam_min = float(qa_cfg["inseam_proxy_target_min"])
+    inseam_max = float(qa_cfg["inseam_proxy_target_max"])
+    hard_fail_min = float(qa_cfg["inseam_proxy_model_like_hard_fail_min"])
+    if inseam >= hard_fail_min:
+        raise RuntimeError(f"inseam proxy {inseam:.6f} is >= model-like hard guard {hard_fail_min:.3f}")
+    if not (inseam_min <= inseam <= inseam_max):
+        raise RuntimeError(
+            f"inseam proxy {inseam:.6f} is outside YURA target {inseam_min:.3f}–{inseam_max:.3f}"
+        )
+
+    torso = float(metrics["chin_to_crotch_heads"])
+    torso_min = float(qa_cfg["torso_chin_to_crotch_heads_min"])
+    torso_max = float(qa_cfg["torso_chin_to_crotch_heads_max"])
+    if not (torso_min <= torso <= torso_max):
+        raise RuntimeError(
+            f"chin-to-crotch torso span {torso:.6f} is outside {torso_min:.4f}–{torso_max:.4f} heads"
+        )
+
     qa_path = run_dir / "qa.json"
     if not qa_path.exists():
         raise RuntimeError(f"qa.json not found: {qa_path}")
     qa = json.loads(qa_path.read_text(encoding="utf-8"))
     if qa.get("body_geometry_status") != "PASS":
         raise RuntimeError("qa.json does not record body_geometry_status=PASS")
+    if qa.get("body_geometry_torso_specific_gate_pass") is not True:
+        raise RuntimeError("qa.json does not record torso-specific Body Geometry PASS")
     if qa.get("body_geometry_internal_review_pass") is not True:
         raise RuntimeError("qa.json does not record internal Body Geometry review PASS")
 
@@ -198,8 +234,8 @@ def build_plan(raw_path: Path, cfg: dict[str, Any]) -> tuple[dict[str, Any], Any
 
     plan = {
         "status": "PLAN_ONLY",
-        "mode": "deterministic_uniform_raster_composition_v4",
-        "body_geometry_gate": "HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW_REQUIRED",
+        "mode": "deterministic_uniform_raster_composition_v5",
+        "body_geometry_gate": "HEAD_RATIO_PLUS_INSEAM_PROXY_PLUS_TORSO_SPECIFIC_GATE_REQUIRED",
         "source_file": raw_path.name,
         "source_sha256": sha256_file(raw_path),
         "source_canvas": [source_width, source_height],
@@ -250,10 +286,12 @@ def normalize(
     plan["body_geometry_qa"] = {
         "status": body_geometry_report["status"],
         "head_ratio_heads": metrics.get("head_ratio_heads"),
-        "crown_to_crotch_heads": metrics.get("crown_to_crotch_heads"),
         "chin_to_crotch_heads": metrics.get("chin_to_crotch_heads"),
-        "crotch_to_soles_heads": metrics.get("crotch_to_soles_heads"),
-        "lower_body_share_of_figure": metrics.get("lower_body_share_of_figure"),
+        "inseam_proxy_ratio": metrics.get("inseam_proxy_ratio"),
+        "inseam_proxy_percent": metrics.get("inseam_proxy_percent"),
+        "torso_specific_gate_pass": (
+            body_geometry_report.get("torso_specific_gate") or {}
+        ).get("pass"),
         "internal_review_pass": (
             body_geometry_report.get("internal_landmark_policy") or {}
         ).get("review_pass"),
@@ -294,6 +332,7 @@ def normalize(
 
     checks = {
         "body_geometry_qa_pass": True,
+        "torso_specific_gate_pass": True,
         "canvas_size": canvas.size == (final_width, final_height),
         "figure_occupancy": (
             float(cfg["acceptable_figure_height_ratio_min"])
@@ -318,6 +357,7 @@ def normalize(
     }
     passed = (
         checks["body_geometry_qa_pass"]
+        and checks["torso_specific_gate_pass"]
         and checks["canvas_size"]
         and checks["figure_occupancy"]
         and checks["top_margin"]
@@ -354,7 +394,8 @@ def normalize(
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Apply deterministic final Composition only after total head-ratio and internal Body Geometry review PASS."
+            "Apply deterministic final Composition only after head-ratio, inseam-proxy, torso-specific, "
+            "and internal Body Geometry review PASS."
         )
     )
     parser.add_argument("run_dir", type=Path)
@@ -363,7 +404,7 @@ def main() -> int:
         action="store_true",
         help=(
             "Without this flag only a plan is written. With the flag, a matching body_geometry_qa.json PASS "
-            "including the internal upper/lower-body review is mandatory before result.png can be created."
+            "including torso-specific and internal-review gates is mandatory before result.png can be created."
         ),
     )
     args = parser.parse_args()
@@ -376,6 +417,7 @@ def main() -> int:
         "require_explicit_body_geometry_pass",
         "require_numeric_body_geometry_qa_pass",
         "require_internal_body_geometry_review_pass",
+        "require_torso_specific_gate_pass",
     ):
         if cfg.get(key) is not True:
             raise RuntimeError(f"composition_postprocess {key} must be true")
@@ -417,8 +459,9 @@ def main() -> int:
                     "source_figure_occupancy": plan["source_figure_occupancy"],
                     "uniform_scale": plan["uniform_scale"],
                     "next": (
-                        "Run body_geometry_qa.py with crown/chin/crotch/knee/soles and all internal-review confirmations. "
-                        "Only after PASS, rerun with --confirm-body-geometry-pass."
+                        "Run body_geometry_qa.py with crown/chin/crotch/knee/soles and all torso/internal-review confirmations. "
+                        "Only after head-ratio, 46.0–46.5% inseam proxy, torso-specific gate, and review PASS, "
+                        "rerun with --confirm-body-geometry-pass."
                     ),
                 },
                 ensure_ascii=False,
@@ -433,13 +476,14 @@ def main() -> int:
     qa_path = run_dir / "qa.json"
     qa = json.loads(qa_path.read_text(encoding="utf-8"))
     qa["body_geometry_status"] = "PASS"
+    qa["body_geometry_torso_specific_gate_pass"] = True
     qa["body_geometry_internal_review_pass"] = True
     qa["composition_status"] = "PASS"
     qa["normalized_image"] = str(cfg["final_filename"])
     qa["master_promotion"] = "NO"
     qa["author_pass"] = None
     qa["notes"] = (
-        "Head-ratio and internal Body Geometry QA passed before deterministic Composition. "
+        "Head-ratio, YURA inseam proxy, torso-specific and internal Body Geometry QA passed before deterministic Composition. "
         "Composition PASS still does not approve or promote the Master; remaining Face Identity, silhouette, "
         "visual QA and explicit final author confirmation are required."
     )
