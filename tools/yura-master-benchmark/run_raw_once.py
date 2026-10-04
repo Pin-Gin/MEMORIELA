@@ -38,6 +38,10 @@ REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
     "CROWN TO SOLES MUST BE 7.2 HEADS.",
     "BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTIONS.",
     "DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.",
+    "UPPER BODY MUST NOT BE VERTICALLY ELONGATED.",
+    "KEEP THE PELVIS/CROTCH POSITION SLIGHTLY HIGH, WITH A SUBTLY LONGER LOWER BODY.",
+    "LOW SITTING-HEIGHT IMPRESSION = RELATIVELY COMPACT UPPER-BODY SPAN + SLIGHTLY LONGER LOWER BODY.",
+    "DO NOT CREATE THE LOWER-BODY EMPHASIS BY LEG-ONLY STRETCHING.",
     "7.2 heads",
     "7.1–7.3",
 )
@@ -102,17 +106,17 @@ def collect_usage_objects(value: Any, out: list[dict[str, Any]]) -> None:
         usage = value.get("usage")
         if isinstance(usage, dict):
             out.append(usage)
-        for v in value.values():
-            collect_usage_objects(v, out)
+        for child in value.values():
+            collect_usage_objects(child, out)
     elif isinstance(value, list):
-        for v in value:
-            collect_usage_objects(v, out)
+        for child in value:
+            collect_usage_objects(child, out)
 
 
 def parse_codex_trace(text: str) -> list[dict[str, Any]]:
     usage: list[dict[str, Any]] = []
-    for line in text.splitlines():
-        line = line.strip()
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
         if not line:
             continue
         try:
@@ -143,12 +147,7 @@ def estimate_image_cost(usage: dict[str, Any] | None, rates: dict[str, float]) -
     )
 
 
-def write_failure(
-    run_dir: Path,
-    phase: str,
-    errors: list[str],
-    image_api_called: bool,
-) -> None:
+def write_failure(run_dir: Path, phase: str, errors: list[str], image_api_called: bool) -> None:
     (run_dir / "failure.json").write_text(
         json.dumps(
             {
@@ -168,28 +167,40 @@ def validate_runtime_config(config: dict[str, Any]) -> None:
     body_cfg = config.get("body_geometry_qa")
     if not isinstance(body_cfg, dict) or body_cfg.get("enabled") is not True:
         raise RuntimeError("body_geometry_qa must be enabled")
-    if body_cfg.get("landmark_method") != "MANUAL_PIXEL_Y":
-        raise RuntimeError("body_geometry_qa landmark_method must be MANUAL_PIXEL_Y")
+    if body_cfg.get("landmark_method") != "MANUAL_PIXEL_Y_WITH_INTERNAL_LANDMARKS":
+        raise RuntimeError(
+            "body_geometry_qa landmark_method must be MANUAL_PIXEL_Y_WITH_INTERNAL_LANDMARKS"
+        )
+    if body_cfg.get("required_landmarks") != ["crown", "chin", "crotch", "knee", "soles"]:
+        raise RuntimeError("body_geometry_qa required_landmarks must be crown/chin/crotch/knee/soles")
     if float(body_cfg.get("target_heads", -1)) != 7.2:
         raise RuntimeError("body_geometry_qa target_heads must be 7.2")
     if float(body_cfg.get("acceptable_heads_min", -1)) != 7.1:
         raise RuntimeError("body_geometry_qa acceptable_heads_min must be 7.1")
     if float(body_cfg.get("acceptable_heads_max", -1)) != 7.3:
         raise RuntimeError("body_geometry_qa acceptable_heads_max must be 7.3")
-    if body_cfg.get("require_landmarks_reviewed") is not True:
-        raise RuntimeError("body_geometry_qa must require reviewed landmarks")
-    if body_cfg.get("require_raw_sha_match_before_composition") is not True:
-        raise RuntimeError("body_geometry_qa must require RAW SHA match before Composition")
+    for key in (
+        "require_landmarks_reviewed",
+        "require_upper_body_not_elongated_confirmation",
+        "require_lower_body_slightly_longer_confirmation",
+        "require_natural_knee_placement_confirmation",
+        "require_raw_sha_match_before_composition",
+    ):
+        if body_cfg.get(key) is not True:
+            raise RuntimeError(f"body_geometry_qa {key} must be true")
 
     comp_cfg = config.get("composition_postprocess")
     if not isinstance(comp_cfg, dict) or comp_cfg.get("enabled") is not True:
         raise RuntimeError("composition_postprocess must be enabled")
     if comp_cfg.get("mode") != "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS":
         raise RuntimeError("composition_postprocess mode must be DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS")
-    if comp_cfg.get("require_explicit_body_geometry_pass") is not True:
-        raise RuntimeError("composition_postprocess must require explicit Body Geometry PASS")
-    if comp_cfg.get("require_numeric_body_geometry_qa_pass") is not True:
-        raise RuntimeError("composition_postprocess must require numeric Body Geometry QA PASS")
+    for key in (
+        "require_explicit_body_geometry_pass",
+        "require_numeric_body_geometry_qa_pass",
+        "require_internal_body_geometry_review_pass",
+    ):
+        if comp_cfg.get(key) is not True:
+            raise RuntimeError(f"composition_postprocess {key} must be true")
     if str(comp_cfg.get("body_geometry_qa_filename")) != str(body_cfg.get("report_filename")):
         raise RuntimeError("Body Geometry QA report filename mismatch between config sections")
 
@@ -229,17 +240,16 @@ def validate_compiled_prompt(run_dir: Path, compiled_prompt: str) -> None:
         "forbidden_generation_composition_literals": list(FORBIDDEN_GENERATION_COMPOSITION_LITERALS),
         "forbidden_present": forbidden_present,
         "image_api_allowed": passed,
-        "body_geometry_numeric_gate": "REQUIRED_AFTER_RAW_GENERATION",
+        "body_geometry_gate": "HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW_REQUIRED_AFTER_RAW",
         "composition_execution": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
     }
     (run_dir / "prompt_invariant_check.json").write_text(
-        json.dumps(report, ensure_ascii=False, indent=2),
-        encoding="utf-8",
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     if not passed:
         errors = [
-            *[f"compiled prompt missing required invariant: {v}" for v in missing],
-            *[f"compiled prompt leaked deferred Composition target: {v}" for v in forbidden_present],
+            *[f"compiled prompt missing required invariant: {value}" for value in missing],
+            *[f"compiled prompt leaked deferred Composition target: {value}" for value in forbidden_present],
         ]
         write_failure(run_dir, "compiled_prompt_invariant_check", errors, False)
         raise RuntimeError("Compiled prompt invariant check failed: " + "; ".join(errors))
@@ -282,7 +292,7 @@ def build_sealed_bundle(
         entries.append(entry)
 
     return {
-        "bundle_version": 4,
+        "bundle_version": 5,
         "bundle_mode": "SEALED_AUTHORITY_BUNDLE",
         "git_commit": head,
         "authority_order": entries,
@@ -296,8 +306,9 @@ def build_sealed_bundle(
             "codex_shell_access_required": False,
             "codex_external_tools_required": False,
             "png_pixels_inspected_by_codex": False,
-            "raw_body_geometry_numeric_qa_required": True,
-            "composition_execution": "DEFERRED_DETERMINISTIC_POSTPROCESS_AFTER_NUMERIC_BODY_GEOMETRY_QA_PASS",
+            "raw_body_geometry_head_ratio_qa_required": True,
+            "raw_body_geometry_internal_landmark_review_required": True,
+            "composition_execution": "DEFERRED_DETERMINISTIC_POSTPROCESS_AFTER_BODY_GEOMETRY_QA_PASS",
         },
     }
 
@@ -323,10 +334,9 @@ def main() -> int:
             f"local HEAD is not current origin/main: HEAD={head} origin/main={origin_main}"
         )
 
-    authority_paths = [str(x) for x in config["authority_order"]]
+    authority_paths = [str(value) for value in config["authority_order"]]
     dirty = run(
-        ["git", "status", "--porcelain", "--", *authority_paths],
-        root,
+        ["git", "status", "--porcelain", "--", *authority_paths], root
     ).stdout.strip()
     if dirty:
         raise RuntimeError("Authority files have uncommitted changes; aborting:\n" + dirty)
@@ -367,12 +377,11 @@ def main() -> int:
         "codex_user_config_loaded": False,
         "codex_tool_dependency": "NONE",
         "compiled_prompt_invariant_gate": True,
-        "body_geometry_numeric_gate": "REQUIRED_AFTER_RAW_GENERATION",
+        "body_geometry_gate": "HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW_REQUIRED_AFTER_RAW",
         "composition_execution": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
     }
     (run_dir / "run_meta.json").write_text(
-        json.dumps(meta, ensure_ascii=False, indent=2),
-        encoding="utf-8",
+        json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
     codex_input = (
@@ -395,7 +404,8 @@ def main() -> int:
                     "authority_count": len(authority_paths),
                     "sealed_authority_bundle_sha256": bundle_sha,
                     "codex_input_sha256": codex_input_sha,
-                    "body_geometry_numeric_gate": "REQUIRED_AFTER_RAW_GENERATION",
+                    "body_geometry_gate": "HEAD_RATIO_PLUS_INTERNAL_VERTICAL_LANDMARK_REVIEW_REQUIRED_AFTER_RAW",
+                    "body_geometry_internal_preference": "COMPACT_UPPER_BODY_PLUS_SUBTLY_LONGER_LOWER_BODY",
                     "composition_execution": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
                     "next": "Run without --preflight-only only after reviewing this preflight result.",
                 },
@@ -428,8 +438,7 @@ def main() -> int:
     (run_dir / "codex_stderr.log").write_text(codex.stderr, encoding="utf-8")
     codex_usage = parse_codex_trace(codex.stdout)
     (run_dir / "codex_usage_candidates.json").write_text(
-        json.dumps(codex_usage, ensure_ascii=False, indent=2),
-        encoding="utf-8",
+        json.dumps(codex_usage, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
     if codex.returncode != 0:
@@ -451,7 +460,7 @@ def main() -> int:
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if not manifest.get("ready"):
-        errors = [str(x) for x in manifest.get("errors", [])]
+        errors = [str(value) for value in manifest.get("errors", [])]
         write_failure(run_dir, "codex_prompt_compile", errors, False)
         raise RuntimeError("Codex reported ready=false: " + "; ".join(errors))
     if manifest.get("git_commit") != head:
@@ -465,11 +474,10 @@ def main() -> int:
         if item.get("order") != index:
             raise RuntimeError(f"Codex Authority ordinal mismatch: {path}")
         if item.get("sha256", "").lower() != local_hashes[path].lower():
-            raise RuntimeError(f"Codex Authority SHA-256 mismatch: {path}")
+            raise RuntimeError(f"Codex Authority SHA mismatch: {path}")
         if item.get("role") != AUTHORITY_ROLES[path]:
             raise RuntimeError(f"Codex Authority role mismatch: {path}")
-
-    if manifest.get("denied_sources") != [str(x) for x in config["denied_sources"]]:
+    if manifest.get("denied_sources") != [str(value) for value in config["denied_sources"]]:
         raise RuntimeError("Codex denied_sources mismatch")
     if manifest.get("image_reference_order") != config["image_reference_order"]:
         raise RuntimeError("Codex image_reference_order mismatch")
@@ -497,15 +505,14 @@ def main() -> int:
             n=image_cfg["n"],
         )
     finally:
-        for ref in refs:
-            ref.close()
+        for file_obj in refs:
+            file_obj.close()
 
     if not result.data or not result.data[0].b64_json:
         raise RuntimeError("Image API returned no image")
 
     result_dict = jsonable(result)
     post_cfg = config["composition_postprocess"]
-    body_cfg = config["body_geometry_qa"]
     raw_filename = str(post_cfg["raw_filename"])
     raw_path = run_dir / raw_filename
     raw_path.write_bytes(base64.b64decode(result.data[0].b64_json))
@@ -515,8 +522,7 @@ def main() -> int:
         if "b64_json" in item:
             item["b64_json"] = f"<saved to {raw_filename}>"
     (run_dir / "image_response.json").write_text(
-        json.dumps(response_for_log, ensure_ascii=False, indent=2),
-        encoding="utf-8",
+        json.dumps(response_for_log, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
     (run_dir / "composition_deferred.json").write_text(
@@ -524,16 +530,14 @@ def main() -> int:
             {
                 "status": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
                 "raw_image": raw_filename,
-                "raw_sha256": sha256_file(raw_path),
-                "numeric_body_geometry_qa_required": True,
-                "body_geometry_qa_tool": "tools/yura-master-benchmark/body_geometry_qa.py",
-                "body_geometry_qa_file": str(body_cfg["report_filename"]),
                 "normalized_image": None,
+                "body_geometry_qa": "tools/yura-master-benchmark/body_geometry_qa.py",
                 "normalizer": "tools/yura-master-benchmark/normalize_composition.py",
-                "requires_explicit_body_geometry_pass": True,
+                "requires_head_ratio_pass": True,
+                "requires_internal_landmark_review_pass": True,
                 "note": (
-                    "Do not create result.png until numeric RAW Body Geometry QA passes and remaining Body Geometry is explicitly confirmed. "
-                    "Final Composition is a separate deterministic whole-raster scale/translate step."
+                    "Do not create result.png until RAW Body Geometry QA passes total head ratio and "
+                    "internal upper/lower-body review. Final Composition remains a separate deterministic step."
                 ),
             },
             ensure_ascii=False,
@@ -557,7 +561,10 @@ def main() -> int:
                 "pricing_snapshot_as_of": config["pricing_snapshot"]["as_of"],
                 "started_at_unix": started_at,
                 "ended_at_unix": ended_at,
-                "note": "Use query_project_cost.py for daily project-cost reconciliation; do not claim daily buckets as run-specific authoritative cost.",
+                "note": (
+                    "Use query_project_cost.py for daily project-cost reconciliation; do not claim "
+                    "daily buckets as run-specific authoritative cost."
+                ),
             },
             ensure_ascii=False,
             indent=2,
@@ -570,17 +577,18 @@ def main() -> int:
             {
                 "candidate": "QA_PENDING",
                 "master_promotion": "NO",
-                "body_geometry_status": "PENDING_NUMERIC_QA",
-                "body_geometry_qa_file": str(body_cfg["report_filename"]),
-                "composition_status": "BLOCKED_PENDING_BODY_GEOMETRY",
+                "body_geometry_status": "PENDING",
+                "body_geometry_internal_review_pass": None,
+                "composition_status": "DEFERRED",
                 "raw_image": raw_filename,
                 "normalized_image": None,
                 "auto_checks": {},
                 "auto_pass": False,
                 "author_pass": None,
                 "notes": (
-                    "Measure crown/chin/soles on result_raw.png with body_geometry_qa.py. "
-                    "Composition remains blocked unless the numeric 7.1–7.3 gate passes and the RAW SHA matches."
+                    "Review result_raw.png first. Body Geometry QA requires crown/chin/crotch/knee/soles, "
+                    "7.1–7.3 total head ratio, non-elongated upper body, subtly longer lower-body intent, "
+                    "and natural knee placement before Composition may run."
                 ),
             },
             ensure_ascii=False,
@@ -598,12 +606,12 @@ def main() -> int:
                 "compiled_prompt_sha256": prompt_sha,
                 "raw_image_path": str(raw_path),
                 "normalized_image_path": None,
-                "body_geometry_status": "PENDING_NUMERIC_QA",
-                "composition_status": "BLOCKED_PENDING_BODY_GEOMETRY",
+                "body_geometry_status": "PENDING_HEAD_RATIO_AND_INTERNAL_LANDMARK_REVIEW",
+                "composition_status": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
                 "image_estimated_cost_usd": image_estimate,
                 "next": (
-                    f"Measure crown/chin/soles and run: python {TOOL_DIR / 'body_geometry_qa.py'} {run_dir} "
-                    "--crown-y <Y> --chin-y <Y> --soles-y <Y> --confirm-landmarks-reviewed"
+                    "Review result_raw.png and record crown/chin/crotch/knee/soles with body_geometry_qa.py. "
+                    "Do not run Composition unless that report is PASS."
                 ),
             },
             ensure_ascii=False,
