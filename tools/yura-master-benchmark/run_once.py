@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import base64
 import hashlib
+import importlib.util
 import json
 import os
 import subprocess
@@ -33,6 +34,9 @@ REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
     "WHOLE-FIGURE UNIFORM SCALING ONLY.",
     "DO NOT ALTER INTERNAL BODY LANDMARK POSITIONS TO SATISFY OCCUPANCY OR MARGINS.",
     "BODY GEOMETRY WINS; COMPOSITION MAY FAIL.",
+    "RAW GENERATION MUST NOT ALTER BODY GEOMETRY TO SATISFY FINAL COMPOSITION.",
+    "FINAL COMPOSITION IS APPLIED BY DETERMINISTIC RUNNER POSTPROCESS.",
+    "POSTPROCESS MAY SCALE AND TRANSLATE THE COMPLETE RASTER ONLY.",
     "7.2 heads",
     "7.1–7.3",
     "1440 × 2560",
@@ -163,6 +167,260 @@ def validate_compiled_prompt(run_dir: Path, compiled_prompt: str) -> None:
         raise RuntimeError("Compiled prompt invariant check failed: " + "; ".join(missing))
 
 
+def validate_postprocess_config(config: dict[str, Any]) -> None:
+    cfg = config.get("composition_postprocess")
+    if not isinstance(cfg, dict) or not cfg.get("enabled"):
+        raise RuntimeError("composition_postprocess must be enabled for benchmark_version >= 2")
+
+    expected = {
+        "final_width": 1440,
+        "final_height": 2560,
+        "target_figure_height_ratio": 0.89,
+        "acceptable_figure_height_ratio_min": 0.88,
+        "acceptable_figure_height_ratio_max": 0.90,
+        "acceptable_margin_ratio_min": 0.05,
+        "acceptable_margin_ratio_max": 0.06,
+        "horizontal_center_x": 720,
+    }
+    for key, value in expected.items():
+        if cfg.get(key) != value:
+            raise RuntimeError(f"composition_postprocess {key} must equal Authority value {value!r}")
+
+    if cfg.get("resample") != "LANCZOS":
+        raise RuntimeError("composition_postprocess resample must be LANCZOS")
+    median_size = int(cfg.get("median_filter_size", 0))
+    if median_size < 1 or median_size % 2 == 0:
+        raise RuntimeError("composition_postprocess median_filter_size must be a positive odd integer")
+
+    image_size = str(config["image_api"]["size"])
+    if image_size != "1440x2560":
+        raise RuntimeError("Image API raw canvas must remain 1440x2560 for this benchmark condition")
+
+    if importlib.util.find_spec("PIL") is None:
+        raise RuntimeError(
+            "Pillow is required for deterministic composition postprocess. "
+            "Run: python -m pip install -r tools/yura-master-benchmark/requirements.txt"
+        )
+
+
+def _median_from_histogram(hist: list[int]) -> int:
+    total = sum(hist)
+    if total <= 0:
+        raise RuntimeError("empty background sample")
+    target = (total + 1) // 2
+    acc = 0
+    for value, count in enumerate(hist):
+        acc += count
+        if acc >= target:
+            return value
+    return 255
+
+
+def estimate_background_rgb(image: Any, corner_sample_px: int) -> tuple[int, int, int]:
+    width, height = image.size
+    sample = max(1, min(int(corner_sample_px), width // 4, height // 4))
+    boxes = (
+        (0, 0, sample, sample),
+        (width - sample, 0, width, sample),
+        (0, height - sample, sample, height),
+        (width - sample, height - sample, width, height),
+    )
+    channel_hists = [[0] * 256 for _ in range(3)]
+    for box in boxes:
+        crop = image.crop(box).convert("RGB")
+        for channel_index, channel in enumerate(crop.split()):
+            hist = channel.histogram()
+            channel_hists[channel_index] = [
+                a + b for a, b in zip(channel_hists[channel_index], hist)
+            ]
+    return tuple(_median_from_histogram(hist) for hist in channel_hists)  # type: ignore[return-value]
+
+
+def detect_subject_bbox(
+    image: Any,
+    background_rgb: tuple[int, int, int],
+    difference_threshold: int,
+    median_filter_size: int,
+) -> tuple[int, int, int, int]:
+    from PIL import Image, ImageChops, ImageFilter
+
+    rgb = image.convert("RGB")
+    background = Image.new("RGB", rgb.size, background_rgb)
+    diff = ImageChops.difference(rgb, background)
+    red, green, blue = diff.split()
+    max_diff = ImageChops.lighter(ImageChops.lighter(red, green), blue)
+    threshold = max(1, min(255, int(difference_threshold)))
+    mask = max_diff.point(lambda value: 255 if value >= threshold else 0)
+    if median_filter_size > 1:
+        mask = mask.filter(ImageFilter.MedianFilter(size=median_filter_size))
+    bbox = mask.getbbox()
+    if bbox is None:
+        raise RuntimeError("could not detect generated subject against white background")
+    return tuple(int(v) for v in bbox)
+
+
+def normalize_composition(
+    raw_path: Path,
+    final_path: Path,
+    report_path: Path,
+    cfg: dict[str, Any],
+) -> dict[str, Any]:
+    from PIL import Image
+
+    with Image.open(raw_path) as source_image:
+        source = source_image.convert("RGB")
+
+    source_width, source_height = source.size
+    corner_sample = int(cfg["corner_sample_px"])
+    difference_threshold = int(cfg["foreground_difference_threshold"])
+    median_filter_size = int(cfg["median_filter_size"])
+    edge_guard = int(cfg["raw_edge_guard_px"])
+
+    background_rgb = estimate_background_rgb(source, corner_sample)
+    raw_bbox = detect_subject_bbox(
+        source,
+        background_rgb,
+        difference_threshold,
+        median_filter_size,
+    )
+    raw_x0, raw_y0, raw_x1, raw_y1 = raw_bbox
+    raw_figure_width = raw_x1 - raw_x0
+    raw_figure_height = raw_y1 - raw_y0
+    if raw_figure_width <= 0 or raw_figure_height <= 0:
+        raise RuntimeError("invalid RAW subject bounding box")
+
+    raw_edge_clear = (
+        raw_x0 > edge_guard
+        and raw_y0 > edge_guard
+        and raw_x1 < source_width - edge_guard
+        and raw_y1 < source_height - edge_guard
+    )
+    if not raw_edge_clear:
+        report = {
+            "pass": False,
+            "mode": "deterministic_uniform_raster_composition_v1",
+            "error": "RAW subject touches or crosses edge guard; complete subject visibility cannot be guaranteed",
+            "source_canvas": [source_width, source_height],
+            "source_background_rgb": list(background_rgb),
+            "source_subject_bbox": list(raw_bbox),
+            "raw_edge_guard_px": edge_guard,
+            "raw_edge_clear": False,
+        }
+        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        raise RuntimeError(report["error"])
+
+    final_width = int(cfg["final_width"])
+    final_height = int(cfg["final_height"])
+    target_ratio = float(cfg["target_figure_height_ratio"])
+    target_figure_height = round(final_height * target_ratio)
+    scale = target_figure_height / raw_figure_height
+
+    scaled_width = max(1, round(source_width * scale))
+    scaled_height = max(1, round(source_height * scale))
+    scaled = source.resize((scaled_width, scaled_height), Image.Resampling.LANCZOS)
+
+    target_top_margin = round((final_height - target_figure_height) / 2)
+    raw_center_x = (raw_x0 + raw_x1) / 2.0
+    target_center_x = float(cfg["horizontal_center_x"])
+    paste_x = round(target_center_x - raw_center_x * scale)
+    paste_y = target_top_margin - round(raw_y0 * scale)
+
+    canvas = Image.new("RGB", (final_width, final_height), (255, 255, 255))
+    canvas.paste(scaled, (paste_x, paste_y))
+    canvas.save(final_path, format="PNG")
+
+    final_background = (255, 255, 255)
+    final_bbox = detect_subject_bbox(
+        canvas,
+        final_background,
+        difference_threshold,
+        median_filter_size,
+    )
+    final_x0, final_y0, final_x1, final_y1 = final_bbox
+    final_figure_height = final_y1 - final_y0
+    final_figure_width = final_x1 - final_x0
+    occupancy = final_figure_height / final_height
+    top_margin_ratio = final_y0 / final_height
+    bottom_margin_px = final_height - final_y1
+    bottom_margin_ratio = bottom_margin_px / final_height
+    detected_center_x = (final_x0 + final_x1) / 2.0
+    center_error_px = detected_center_x - target_center_x
+
+    checks = {
+        "canvas_size": canvas.size == (final_width, final_height),
+        "figure_occupancy": (
+            float(cfg["acceptable_figure_height_ratio_min"])
+            <= occupancy
+            <= float(cfg["acceptable_figure_height_ratio_max"])
+        ),
+        "top_margin": (
+            float(cfg["acceptable_margin_ratio_min"])
+            <= top_margin_ratio
+            <= float(cfg["acceptable_margin_ratio_max"])
+        ),
+        "bottom_margin": (
+            float(cfg["acceptable_margin_ratio_min"])
+            <= bottom_margin_ratio
+            <= float(cfg["acceptable_margin_ratio_max"])
+        ),
+        "horizontal_center_proxy": abs(center_error_px) <= int(cfg["horizontal_center_tolerance_px"]),
+        "raw_subject_not_clipped": raw_edge_clear,
+        "uniform_scale_only": True,
+        "nonuniform_or_partwise_transform": False,
+    }
+    passed = all(bool(value) for key, value in checks.items() if key != "nonuniform_or_partwise_transform")
+
+    report = {
+        "pass": passed,
+        "mode": "deterministic_uniform_raster_composition_v1",
+        "source_file": raw_path.name,
+        "final_file": final_path.name,
+        "source_sha256": sha256_file(raw_path),
+        "final_sha256": sha256_file(final_path),
+        "source_canvas": [source_width, source_height],
+        "source_background_rgb": list(background_rgb),
+        "source_subject_bbox": list(raw_bbox),
+        "source_figure_height_px": raw_figure_height,
+        "source_figure_occupancy": raw_figure_height / source_height,
+        "raw_edge_guard_px": edge_guard,
+        "raw_edge_clear": raw_edge_clear,
+        "operation": {
+            "uniform_scale_factor": scale,
+            "scaled_full_raw_canvas": [scaled_width, scaled_height],
+            "translation_px": [paste_x, paste_y],
+            "resample": cfg["resample"],
+            "partwise_scaling": False,
+            "warping": False,
+            "inpainting": False,
+        },
+        "target": {
+            "canvas": [final_width, final_height],
+            "figure_height_ratio": target_ratio,
+            "figure_height_px": target_figure_height,
+            "top_bottom_margin_center_px": target_top_margin,
+            "horizontal_center_x": target_center_x,
+        },
+        "final_subject_bbox": list(final_bbox),
+        "final_figure_width_px": final_figure_width,
+        "final_figure_height_px": final_figure_height,
+        "final_figure_occupancy": occupancy,
+        "final_top_margin_px": final_y0,
+        "final_top_margin_ratio": top_margin_ratio,
+        "final_bottom_margin_px": bottom_margin_px,
+        "final_bottom_margin_ratio": bottom_margin_ratio,
+        "final_detected_subject_center_x": detected_center_x,
+        "final_center_error_px": center_error_px,
+        "checks": checks,
+    }
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    if not passed:
+        failed_checks = [key for key, value in checks.items() if key != "nonuniform_or_partwise_transform" and not value]
+        raise RuntimeError("deterministic composition QA failed: " + ", ".join(failed_checks))
+
+    return report
+
+
 def build_sealed_bundle(
     root: Path,
     head: str,
@@ -196,7 +454,7 @@ def build_sealed_bundle(
         entries.append(entry)
 
     return {
-        "bundle_version": 1,
+        "bundle_version": 2,
         "bundle_mode": "SEALED_AUTHORITY_BUNDLE",
         "git_commit": head,
         "authority_order": entries,
@@ -210,6 +468,7 @@ def build_sealed_bundle(
             "codex_shell_access_required": False,
             "codex_external_tools_required": False,
             "png_pixels_inspected_by_codex": False,
+            "final_composition_enforced_by_runner": True,
         },
     }
 
@@ -219,14 +478,14 @@ def main() -> int:
     parser.add_argument(
         "--preflight-only",
         action="store_true",
-        help="Build and hash the sealed Authority bundle, then exit before any paid Codex or Image API call.",
+        help="Build and hash the sealed Authority bundle, validate deterministic composition runtime, then exit before any paid Codex or Image API call.",
     )
     args = parser.parse_args()
 
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    validate_postprocess_config(config)
     root = Path(run(["git", "rev-parse", "--show-toplevel"], TOOL_DIR).stdout.strip())
 
-    # Resolve and validate current main locally before any paid model request.
     run(["git", "fetch", "origin", "main"], root)
     head = run(["git", "rev-parse", "HEAD"], root).stdout.strip()
     origin_main = run(["git", "rev-parse", "origin/main"], root).stdout.strip()
@@ -255,15 +514,13 @@ def main() -> int:
         suffix += 1
     run_dir.mkdir(parents=True)
 
-    # Build the only dataset Codex is allowed to see. Text Authorities are embedded;
-    # PNGs are represented by verified path/hash/role metadata and are passed as actual
-    # image files only to the later Image API call.
     bundle = build_sealed_bundle(root, head, config, authority_paths, local_hashes)
     bundle_text = json.dumps(bundle, ensure_ascii=False, indent=2)
     bundle_sha = sha256_text(bundle_text)
     (run_dir / "sealed_authority_bundle.json").write_text(bundle_text, encoding="utf-8")
     (run_dir / "sealed_authority_bundle.sha256").write_text(bundle_sha + "\n", encoding="ascii")
 
+    post_cfg = config["composition_postprocess"]
     started_at = int(time.time())
     meta = {
         "run_id": run_dir.name,
@@ -278,6 +535,8 @@ def main() -> int:
         "codex_user_config_loaded": False,
         "codex_tool_dependency": "NONE",
         "compiled_prompt_invariant_gate": True,
+        "composition_pipeline": "RAW_IMAGE_API_THEN_DETERMINISTIC_UNIFORM_RASTER_COMPOSITION_V1",
+        "composition_postprocess_config": post_cfg,
         "codex_sandbox": {
             "mode": "read-only",
             "purpose": "defense in depth only; compilation requires no shell/filesystem tools",
@@ -304,6 +563,7 @@ def main() -> int:
             "authority_count": len(authority_paths),
             "sealed_authority_bundle_sha256": bundle_sha,
             "codex_input_sha256": codex_input_sha,
+            "composition_postprocess": "READY",
             "next": "Run without --preflight-only only after reviewing this preflight result.",
         }, ensure_ascii=False, indent=2))
         return 0
@@ -327,9 +587,6 @@ def main() -> int:
         str(manifest_path),
     ]
 
-    # No positional prompt is supplied. codex exec reads the complete sealed input from
-    # stdin, avoiding Windows command-line length limits and eliminating filesystem reads
-    # from the model task itself.
     codex = run(codex_cmd, root, check=False, input_text=codex_input)
     (run_dir / "codex_trace.jsonl").write_text(codex.stdout, encoding="utf-8")
     (run_dir / "codex_stderr.log").write_text(codex.stderr, encoding="utf-8")
@@ -385,12 +642,8 @@ def main() -> int:
     (run_dir / "compiled_prompt.txt").write_text(compiled_prompt, encoding="utf-8")
     (run_dir / "compiled_prompt.sha256").write_text(prompt_sha + "\n", encoding="ascii")
 
-    # Hard gate: a Codex manifest can be structurally valid while still weakening a
-    # critical Authority precedence rule. Never spend an Image API call unless the
-    # compiled prompt retains all required body/composition and numeric invariants.
     validate_compiled_prompt(run_dir, compiled_prompt)
 
-    # OpenAI Image API: reference order is fixed by config and reverified above.
     from openai import OpenAI
 
     client = OpenAI()
@@ -415,14 +668,22 @@ def main() -> int:
     if not result.data or not result.data[0].b64_json:
         raise RuntimeError("Image API returned no image")
     image_bytes = base64.b64decode(result.data[0].b64_json)
-    output_path = run_dir / "result.png"
-    output_path.write_bytes(image_bytes)
 
-    # Save response metadata without duplicating the large base64 payload.
+    raw_path = run_dir / str(post_cfg["raw_filename"])
+    final_path = run_dir / str(post_cfg["final_filename"])
+    report_path = run_dir / str(post_cfg["report_filename"])
+    raw_path.write_bytes(image_bytes)
+
+    try:
+        composition_report = normalize_composition(raw_path, final_path, report_path, post_cfg)
+    except Exception as exc:
+        write_failure(run_dir, "deterministic_composition_postprocess", [str(exc)], True)
+        raise
+
     response_for_log = json.loads(json.dumps(result_dict))
     for item in response_for_log.get("data", []):
         if "b64_json" in item:
-            item["b64_json"] = "<saved to result.png>"
+            item["b64_json"] = "<saved to result_raw.png; result.png is deterministic local composition postprocess>"
     (run_dir / "image_response.json").write_text(
         json.dumps(response_for_log, ensure_ascii=False, indent=2), encoding="utf-8"
     )
@@ -439,16 +700,24 @@ def main() -> int:
         "pricing_snapshot_as_of": config["pricing_snapshot"]["as_of"],
         "started_at_unix": started_at,
         "ended_at_unix": ended_at,
-        "note": "Use query_project_cost.py with OPENAI_ADMIN_KEY and OPENAI_PROJECT_ID for authoritative project cost attribution.",
+        "note": "Use query_project_cost.py with OPENAI_ADMIN_KEY and OPENAI_PROJECT_ID for daily project cost accounting; run-specific billing remains usage-based estimate unless the project/day is isolated.",
     }
     (run_dir / "cost.json").write_text(json.dumps(cost, ensure_ascii=False, indent=2), encoding="utf-8")
 
     qa = {
         "candidate": "QA_PENDING",
         "master_promotion": "NO",
-        "auto_checks": {},
+        "auto_checks": {
+            "deterministic_composition_postprocess": bool(composition_report.get("pass")),
+            "final_canvas_1440x2560": bool(composition_report.get("checks", {}).get("canvas_size")),
+            "final_occupancy_88_90": bool(composition_report.get("checks", {}).get("figure_occupancy")),
+            "final_top_margin_5_6": bool(composition_report.get("checks", {}).get("top_margin")),
+            "final_bottom_margin_5_6": bool(composition_report.get("checks", {}).get("bottom_margin")),
+            "final_horizontal_center_proxy": bool(composition_report.get("checks", {}).get("horizontal_center_proxy")),
+            "raw_subject_not_clipped": bool(composition_report.get("checks", {}).get("raw_subject_not_clipped")),
+        },
         "author_pass": None,
-        "notes": "Do not promote until geometry, face identity, ears, body silhouette, composition, and author review pass.",
+        "notes": "Composition auto-checks apply only to final raster placement. Body geometry, face identity, ears, silhouette, and author review remain required before promotion.",
     }
     (run_dir / "qa.json").write_text(json.dumps(qa, ensure_ascii=False, indent=2), encoding="utf-8")
 
@@ -457,7 +726,12 @@ def main() -> int:
         "git_commit": head,
         "sealed_authority_bundle_sha256": bundle_sha,
         "compiled_prompt_sha256": prompt_sha,
-        "image_path": str(output_path),
+        "raw_image_path": str(raw_path),
+        "image_path": str(final_path),
+        "composition_postprocess_pass": bool(composition_report.get("pass")),
+        "final_figure_occupancy": composition_report.get("final_figure_occupancy"),
+        "final_top_margin_ratio": composition_report.get("final_top_margin_ratio"),
+        "final_bottom_margin_ratio": composition_report.get("final_bottom_margin_ratio"),
         "image_estimated_cost_usd": image_estimate,
         "next": f"python {TOOL_DIR / 'query_project_cost.py'} {run_dir}",
     }, ensure_ascii=False, indent=2))
