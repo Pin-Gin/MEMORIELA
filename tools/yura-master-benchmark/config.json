@@ -39,6 +39,8 @@
   },
   "composition_postprocess": {
     "enabled": true,
+    "mode": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
+    "require_explicit_body_geometry_pass": true,
     "final_width": 1440,
     "final_height": 2560,
     "target_figure_height_ratio": 0.89,
@@ -55,6 +57,7 @@
     "resample": "LANCZOS",
     "raw_filename": "result_raw.png",
     "final_filename": "result.png",
+    "plan_filename": "composition_postprocess_plan.json",
     "report_filename": "composition_postprocess.json"
   },
   "batch": {
