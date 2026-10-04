@@ -1,6 +1,6 @@
 # YURA Master Benchmark — Pipeline State
 
-Status: **ACTIVE / BODY-GEOMETRY-FIRST / NUMERIC-GATED / COMPOSITION-DEFERRED**
+Status: **ACTIVE / BODY-GEOMETRY-FIRST / HEAD-RATIO+INTERNAL-LANDMARK-GATED / COMPOSITION-DEFERRED**
 
 This file is operational documentation only. It is **NOT** a YURA visual Authority.
 
@@ -12,37 +12,82 @@ current Git main
   -> configured Authority files only
   -> sealed Authority bundle + SHA-256
   -> Codex compiles RAW Body-Geometry-first Image API prompt
-  -> runner rejects prompt if required Body Geometry measurement contract is missing
+  -> runner rejects prompt if required Body Geometry contract is missing
   -> runner rejects prompt if final Composition numeric targets leaked into it
   -> Image API generates result_raw.png only
   -> body_geometry_qa.py
-       manual reviewed crown/chin/soles Y landmarks
-       ratio = (soles - crown) / (chin - crown)
+       manually reviewed crown/chin/crotch/knee/soles Y landmarks
+       total head ratio = (soles - crown) / (chin - crown)
        target = 7.2
        acceptable = 7.1–7.3
-       raw SHA-256 is bound into body_geometry_qa.json
-     -> numeric FAIL: stop; Composition blocked
-     -> numeric PASS: remaining Body Geometry/silhouette visual review
-  -> explicit Body Geometry confirmation
-  -> normalize_composition.py verifies numeric PASS + RAW SHA match
+       internal landmark metrics are recorded
+       author review must confirm:
+         upper body not vertically elongated
+         pelvis/crotch slightly high and lower body subtly longer
+         knee placement natural / not leg-only stretching
+       RAW SHA-256 is bound into body_geometry_qa.json
+     -> FAIL: stop; Composition blocked
+     -> PASS: explicit Body Geometry confirmation still required
+  -> normalize_composition.py verifies Body Geometry PASS + RAW SHA match
   -> uniform whole-raster scale + x/y translation only
   -> result.png at final Composition target
   -> final QA / author confirmation
   -> Master promotion remains NO until explicit final PASS
 ```
 
-## Why numeric Body Geometry QA is now mandatory
+## Current Body Geometry intent
 
-A RAW run with final Composition numeric targets removed from the Image API prompt reduced the earlier vertical-stretch tendency, but the generated candidate still measured visually near ~6 heads rather than the Authority target 7.2.
-
-Therefore the current diagnosis is:
+The active Body Geometry Authority still fixes total height at:
 
 ```text
-Composition conflict was a real confounder,
-but removing it is not sufficient to guarantee Body Geometry compliance.
+TARGET = 7.2 heads
+ACCEPTABLE = 7.1–7.3 heads
+ONE HEAD = crown to chin
 ```
 
-Body Geometry is now measured independently before any Composition normalization.
+The author has additionally clarified the internal vertical balance:
+
+```text
+UPPER BODY MUST NOT BE VERTICALLY ELONGATED.
+KEEP THE PELVIS/CROTCH POSITION SLIGHTLY HIGH, WITH A SUBTLY LONGER LOWER BODY.
+LOW SITTING-HEIGHT IMPRESSION = RELATIVELY COMPACT UPPER-BODY SPAN + SLIGHTLY LONGER LOWER BODY.
+DO NOT CREATE THE LOWER-BODY EMPHASIS BY LEG-ONLY STRETCHING.
+```
+
+“Low sitting height” is only shorthand. In standing full-body generation it operationally means a relatively compact chin-to-crotch / torso span, a slightly high pelvis/crotch position, and a subtly longer crotch-to-soles lower body, while preserving natural knee placement.
+
+This is **not** permission to create an extreme fashion-model body or to lengthen only the legs.
+
+## Why the QA now includes internal vertical landmarks
+
+Total head ratio alone can miss a bad internal distribution. A candidate can approach 7.2 heads while still having an overlong neck/torso/pelvis stack, an overly low crotch, or an unnatural thigh/shin distribution.
+
+Therefore RAW QA now records:
+
+```text
+crown
+chin
+crotch / pelvis-line proxy
+knee
+soles
+```
+
+and derives:
+
+```text
+head_ratio_heads
+crown_to_crotch_heads
+chin_to_crotch_heads
+crotch_to_knee_heads
+knee_to_soles_heads
+crotch_to_soles_heads
+knee_from_crown_heads
+lower_body_share_of_figure
+```
+
+The total 7.1–7.3 head-ratio range remains a hard numeric gate.
+
+The active Authority does not yet define author-approved absolute numeric thresholds for crotch/knee placement. The benchmark therefore **does not invent those thresholds**. Until an approved good reference is numerically frozen, internal landmark values are measured and recorded, and explicit author review is required for the upper/lower-body balance.
 
 ## RAW Image API responsibility
 
@@ -50,20 +95,11 @@ The RAW Image API prompt contains Face Identity, Body Geometry, appearance, pose
 
 It does **not** contain final Composition numeric targets such as 1440×2560, 89% occupancy, 88–90%, or 5–6% margins. Those values remain in the active Composition Authority and operational postprocess config, but are intentionally withheld from the RAW generation prompt so the image model does not optimize anatomy for canvas fitting.
 
-The RAW Body Geometry prompt now also states explicitly:
-
-```text
-ONE HEAD IS CROWN TO CHIN.
-CROWN TO SOLES MUST BE 7.2 HEADS.
-BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTIONS.
-DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.
-```
-
-These are generation-stage geometry constraints, not Composition targets.
+The RAW Body Geometry prompt explicitly includes the total head-ratio contract and the compact-upper-body / subtly-longer-lower-body intent.
 
 ## Hard prompt gate
 
-Before Image API is called, the runner requires the RAW-stage invariants and rejects any compiled prompt that contains deferred final-Composition literals.
+Before Image API is called, the runner requires all RAW-stage invariants and rejects any compiled prompt that contains deferred final-Composition literals.
 
 Failure at this gate means:
 
@@ -85,39 +121,26 @@ prompt_invariant_check.json
 
 `result.png` is intentionally absent at this stage.
 
-## Numeric Body Geometry gate
+## Body Geometry QA command
 
-Landmarks are intentionally reviewed manually. Crown and soles can often be detected from background separation, but chin is not safely inferable from generic raster segmentation, so the benchmark does not pretend to auto-measure it.
-
-Record reviewed pixel Y positions:
+After visually locating the five vertical landmarks on `result_raw.png`, record them with:
 
 ```powershell
 python tools/yura-master-benchmark/body_geometry_qa.py <RUN_DIR> `
   --crown-y <Y> `
   --chin-y <Y> `
+  --crotch-y <Y> `
+  --knee-y <Y> `
   --soles-y <Y> `
-  --confirm-landmarks-reviewed
+  --confirm-landmarks-reviewed `
+  --confirm-upper-body-not-elongated `
+  --confirm-lower-body-slightly-longer `
+  --confirm-knee-placement-natural
 ```
 
-The tool writes:
+Do not supply a confirmation flag if the RAW does not actually satisfy that condition. A missing confirmation makes the Body Geometry report FAIL and keeps Composition blocked.
 
-```text
-body_geometry_qa.json
-```
-
-with:
-
-```text
-head_height     = chin_y - crown_y
-figure_height   = soles_y - crown_y
-heads           = figure_height / head_height
-PASS            = 7.1 <= heads <= 7.3
-```
-
-The report also stores the SHA-256 of `result_raw.png`.
-A PASS report for a different RAW image cannot unlock Composition.
-
-Numeric PASS is necessary but not sufficient: internal landmark placement, silhouette and Face Identity remain separate visual QA checks.
+The tool writes `body_geometry_qa.json` and binds it to the exact `result_raw.png` SHA-256.
 
 ## Body Geometry -> Composition gate
 
@@ -131,12 +154,16 @@ Final normalization is allowed only when all of the following hold:
 
 ```text
 body_geometry_qa.json exists
-pass == true
 status == PASS
-landmarks_reviewed == true
+pass == true
 head ratio is inside 7.1–7.3
+crown/chin/crotch/knee/soles were reviewed
+upper_body_not_elongated == true
+lower_body_slightly_longer == true
+knee_placement_natural == true
 body_geometry_qa.raw_sha256 == current result_raw.png SHA-256
-qa.json body_geometry_status == PASS_NUMERIC
+qa.json body_geometry_status == PASS
+qa.json body_geometry_internal_review_pass == true
 --confirm-body-geometry-pass was explicitly supplied
 ```
 
@@ -176,5 +203,4 @@ run_raw_once.py
 run_once.py
 ```
 
-Then run the free preflight only.
-Do not make another paid Image API call until the preflight confirms the numeric Body Geometry gate and zero paid calls.
+Then run the free preflight only. The expected preflight must show both the internal-landmark Body Geometry gate and deferred Composition, with `paid_model_calls = 0`.
