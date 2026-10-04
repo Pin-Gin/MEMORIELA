@@ -90,7 +90,8 @@ The compiled prompt must:
 - request exactly one complete front-view full-body subject with crown and soles visible and comfortable white clearance
 - avoid any final occupancy/margin optimization during generation
 - treat the approved Body Geometry Guide as a measurable geometry reference rather than a vague style suggestion
-- preserve a relatively compact upper-body span and a subtly longer lower-body balance within the approved 7.2-head geometry
+- preserve a compact torso, slightly high pelvis/crotch, and subtly longer lower body within the approved 7.2-head geometry
+- target the YURA-specific image-space inseam proxy range 46.0–46.5%, never 47.0% or more
 
 ## Required verbatim RAW-generation block
 
@@ -108,9 +109,13 @@ CROWN TO SOLES MUST BE 7.2 HEADS.
 BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTIONS.
 DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.
 UPPER BODY MUST NOT BE VERTICALLY ELONGATED.
+TORSO MUST BE COMPACT; DO NOT LENGTHEN THE RIBCAGE-TO-PELVIS OR WAIST SPAN.
 KEEP THE PELVIS/CROTCH POSITION SLIGHTLY HIGH, WITH A SUBTLY LONGER LOWER BODY.
 LOW SITTING-HEIGHT IMPRESSION = RELATIVELY COMPACT UPPER-BODY SPAN + SLIGHTLY LONGER LOWER BODY.
 DO NOT CREATE THE LOWER-BODY EMPHASIS BY LEG-ONLY STRETCHING.
+INSEAM PROXY RATIO = CROTCH-TO-SOLES / CROWN-TO-SOLES.
+YURA INSEAM PROXY TARGET = 46.0–46.5%.
+47.0% OR MORE IS FORBIDDEN AS TOO MODEL-LIKE.
 ```
 
 The compiled prompt must also retain:
@@ -125,11 +130,14 @@ These are Body Geometry invariants.
 The phrases above are not permission to redesign the body independently from the active Body Geometry Guide. They clarify the approved internal-balance intent:
 
 - do not let neck/chest/abdomen/pelvis stack into an elongated upper body
+- keep the ribcage-to-waist-to-pelvis torso span compact
+- do not let the waist read unnaturally low
 - keep pelvis/crotch slightly high in the standing full-body silhouette
 - let the lower body read subtly longer, not exaggeratedly model-like
 - keep knee placement natural
 - do not solve the preference by stretching only thighs, shins, or total leg length
 - do not compress the ribcage/abdomen unnaturally merely to shorten the upper body
+- interpret the inseam proxy only as the YURA-specific image-space QA proxy defined by the active Body Geometry Authority
 
 ## Forbidden final-Composition literals in compiled prompt
 
