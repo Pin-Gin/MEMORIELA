@@ -103,6 +103,34 @@ Composition Authorityは以下を変更するAuthorityではない。
 **CANVAS SCALE DOES NOT CHANGE BODY GEOMETRY.**
 **COMPOSITION DOES NOT CHANGE HEAD-TO-BODY RATIO.**
 
+## Precedence and fitting order
+
+人物内部のBODY Geometryを先に確定し、その後にCompositionを適用する。
+Compositionは、すでに確定した人物全体を一体として移動・均等スケールして配置する工程であり、人物内部の比率を再設計する工程ではない。
+
+**BODY GEOMETRY IS RESOLVED FIRST.**
+**BODY GEOMETRY HAS PRIORITY OVER COMPOSITION.**
+**WHOLE-FIGURE UNIFORM SCALING ONLY.**
+**DO NOT ALTER INTERNAL BODY LANDMARK POSITIONS TO SATISFY OCCUPANCY OR MARGINS.**
+
+Composition条件を満たすために、以下を個別に長く・短く・移動してはならない。
+
+- 頭部
+- 首
+- 胴体
+- 腰位置
+- 脚
+- 膝位置
+- 足首位置
+- 肩・胸郭・腰の内部相対位置
+
+Body GeometryとCompositionを同時に完全達成できない場合は、BODY Geometryを保持し、Composition側の未達を許容する。
+
+**BODY GEOMETRY WINS; COMPOSITION MAY FAIL.**
+
+89% occupancyや上下5–6%余白を満たすために人物内部Geometryを変形してはならない。
+その場合はComposition QAをFAILとして扱い、BODY Geometryを壊して帳尻を合わせない。
+
 ## Relationship with BODY Geometry Authority
 
 BODY Geometry Authority:
@@ -144,5 +172,6 @@ Face Identity Authority:
 - head-to-body ratio remains **7.1–7.3**, target **7.2**
 
 Composition条件を満たすためにBODY Geometryが変化した場合はFAILとする。
+BODY Geometryを保持した結果Compositionのみ未達になった場合も、Composition QAはFAILだが、BODY Geometryを変形して救済してはならない。
 
 **COMPOSITION QA FAIL -> MASTER_PROMOTION = NO**
