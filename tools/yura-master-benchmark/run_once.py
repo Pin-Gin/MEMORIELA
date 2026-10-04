@@ -27,6 +27,20 @@ AUTHORITY_ROLES: dict[str, str] = {
     "visuals/yura/identity/composition/YURA_COMPOSITION_AUTHORITY.md": "COMPOSITION ONLY",
 }
 
+REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
+    "BODY GEOMETRY IS RESOLVED FIRST.",
+    "BODY GEOMETRY HAS PRIORITY OVER COMPOSITION.",
+    "WHOLE-FIGURE UNIFORM SCALING ONLY.",
+    "DO NOT ALTER INTERNAL BODY LANDMARK POSITIONS TO SATISFY OCCUPANCY OR MARGINS.",
+    "BODY GEOMETRY WINS; COMPOSITION MAY FAIL.",
+    "7.2 heads",
+    "7.1–7.3",
+    "1440 × 2560",
+    "89%",
+    "88–90%",
+    "5–6%",
+)
+
 
 def run(
     cmd: list[str],
@@ -130,6 +144,23 @@ def write_failure(run_dir: Path, phase: str, errors: list[str], image_api_called
     (run_dir / "failure.json").write_text(
         json.dumps(failure, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+
+
+def validate_compiled_prompt(run_dir: Path, compiled_prompt: str) -> None:
+    missing = [value for value in REQUIRED_PROMPT_INVARIANTS if value not in compiled_prompt]
+    report = {
+        "pass": not missing,
+        "required": list(REQUIRED_PROMPT_INVARIANTS),
+        "missing": missing,
+        "image_api_allowed": not missing,
+    }
+    (run_dir / "prompt_invariant_check.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    if missing:
+        errors = [f"compiled prompt missing required invariant: {value}" for value in missing]
+        write_failure(run_dir, "compiled_prompt_invariant_check", errors, False)
+        raise RuntimeError("Compiled prompt invariant check failed: " + "; ".join(missing))
 
 
 def build_sealed_bundle(
@@ -246,6 +277,7 @@ def main() -> int:
         "codex_input_mode": "sealed_authority_bundle_via_stdin",
         "codex_user_config_loaded": False,
         "codex_tool_dependency": "NONE",
+        "compiled_prompt_invariant_gate": True,
         "codex_sandbox": {
             "mode": "read-only",
             "purpose": "defense in depth only; compilation requires no shell/filesystem tools",
@@ -352,6 +384,11 @@ def main() -> int:
     prompt_sha = sha256_text(compiled_prompt)
     (run_dir / "compiled_prompt.txt").write_text(compiled_prompt, encoding="utf-8")
     (run_dir / "compiled_prompt.sha256").write_text(prompt_sha + "\n", encoding="ascii")
+
+    # Hard gate: a Codex manifest can be structurally valid while still weakening a
+    # critical Authority precedence rule. Never spend an Image API call unless the
+    # compiled prompt retains all required body/composition and numeric invariants.
+    validate_compiled_prompt(run_dir, compiled_prompt)
 
     # OpenAI Image API: reference order is fixed by config and reverified above.
     from openai import OpenAI
