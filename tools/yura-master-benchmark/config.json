@@ -1,0 +1,61 @@
+{
+  "benchmark_version": 1,
+  "purpose": "YURA master-generation reproducibility and cost benchmark",
+  "authority_order": [
+    "visuals/yura/identity/master/YURA_MASTER_GENERATION_LIFECYCLE.md",
+    "visuals/yura/identity/face/FACE_REFERENCE_RULES.md",
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
+    "visuals/yura/identity/body/BODY_GEOMETRY_GUIDE.md",
+    "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
+    "visuals/yura/identity/master/YURA_VISUAL_TEXT.md",
+    "visuals/yura/identity/composition/YURA_COMPOSITION_AUTHORITY.md"
+  ],
+  "image_reference_order": [
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
+    "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png"
+  ],
+  "denied_sources": [
+    "characters/YURA.md",
+    "story/**",
+    "manuscript/**",
+    "Git history / old branches / old YURA visual files",
+    "Memory-derived YURA appearance",
+    "past generated YURA images other than explicitly active Authority images"
+  ],
+  "codex": {
+    "executable": "codex",
+    "model": "gpt-5.3-codex",
+    "json_trace": true,
+    "read_only_intent": true
+  },
+  "image_api": {
+    "model": "gpt-image-2.5-sunburst-2026-09-08",
+    "endpoint_mode": "edit_with_multiple_references",
+    "size": "1440x2560",
+    "quality": "high",
+    "output_format": "png",
+    "background": "opaque",
+    "n": 1
+  },
+  "batch": {
+    "single_run_first": true,
+    "runs_after_single": 10,
+    "max_total_cost_per_run_usd_for_auto_batch": 1.0,
+    "require_authoritative_cost_or_explicit_override": true
+  },
+  "pricing_snapshot": {
+    "as_of": "2026-10-04",
+    "note": "Estimates only. Authoritative billing comes from OpenAI project costs / Usage Dashboard.",
+    "image_model": {
+      "text_input_per_1m_usd": 5.0,
+      "image_input_per_1m_usd": 8.0,
+      "image_output_per_1m_usd": 30.0
+    },
+    "codex_model_standard": {
+      "input_per_1m_usd": 3.5,
+      "cached_input_per_1m_usd": 0.35,
+      "output_per_1m_usd": 28.0
+    }
+  },
+  "runs_dir": "tools/yura-master-benchmark/runs"
+}
