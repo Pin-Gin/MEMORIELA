@@ -1,6 +1,6 @@
 # YURA Face Geometry Audit
 
-Status: **ACTIVE AUDIT RECORD / INITIAL REVIEW / NOT VISUAL AUTHORITY**
+Status: **ACTIVE AUDIT RECORD / NUMERIC AUDIT EXECUTED / NOT VISUAL AUTHORITY**
 
 This file records the audit state of the currently active YURA Face Reference.
 
@@ -19,310 +19,461 @@ This document is evidence and process state. It is not itself Face Authority.
 
 ## Audit objective
 
-Determine whether the current Face Reference is geometrically strong enough to become the long-term canonical YURA face, independently from full-body scale.
+Determine whether the current Face Reference is geometrically strong enough to remain the canonical YURA face baseline, independently from full-body scale.
 
-The audit must answer whether the current reference has balanced:
+The audit specifically checks:
 
 - eye spacing and eye size;
+- facial center-line alignment;
 - nose / mouth / chin placement;
 - lower-face proportions;
 - forehead / upper-head impression;
-- ear size and placement;
+- ear size, placement, and prominence;
 - face contour;
-- apparent head size after separating hair volume from actual face/head geometry.
+- apparent head size after separating hair volume from actual face/head geometry where possible.
 
 The purpose is not to force the face toward generic human or generic anime averages. Numeric measurements are diagnostic tools for reproducing author-approved YURA identity.
 
 ---
 
-## Current project decision
+## Source verification
 
-Face Geometry concerns are now formally tracked, but the current reference remains the active baseline until evidence justifies revision and the author explicitly approves a replacement.
+The exact active image was loaded and visually inspected.
 
-No candidate has been promoted.
+```text
+file = visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+image dimensions = 372 × 364 px
+Git blob SHA = 4c96c4ec42f996807248be1aff60ec8a090fd570
+SHA-256 = 3f7fddee8c08087484ca1bd48b8ba9eb1acf8221727ef396001091f531c4f030
+```
 
-No current concern is allowed to alter Body Geometry targets automatically.
+The inspected image bytes matched the active Git blob recorded by `FACE_REFERENCE_RULES.md`.
+
+Visual inspection capability for this audit: **AVAILABLE**.
 
 ---
 
-## Current concerns queued for audit
+## Measurement method and uncertainty
 
-### 1. Eye spacing
-
-Question:
-
-> Are YURA's eyes too far apart relative to eye width and face width?
-
-Current state:
-
-- **NEEDS_NUMERIC_QA**
-
-Required measurements:
+Coordinates use image-space convention:
 
 ```text
-left/right inner eye landmarks
-left/right outer eye landmarks
-left/right eye centers
-face edges at eye line
+origin = upper-left
+x increases rightward
+y increases downward
+```
+
+Landmarks were placed by direct visual inspection on the native 372 × 364 image, with enlarged crops used for confirmation.
+
+Because the source is a rendered anime face rather than a landmark chart, anti-aliasing, eyelashes, hair overlap, and soft facial edges introduce uncertainty.
+
+Unless otherwise noted, landmark coordinates should be interpreted as approximately **±2–4 px**, not as sub-pixel anatomical ground truth.
+
+Hidden landmarks are not invented. In particular, the true hairline / forehead-top boundary is obscured by bangs and is therefore not treated as measurable.
+
+---
+
+## Measured landmark set
+
+Approximate native-image landmarks used for this audit:
+
+```text
+head crown / visible hair crown      = (186, 8)
+chin                                  = (187, 252)
+
+left face edge at eye-line proxy      = x 109
+right face edge at eye-line proxy     = x 270
+
+left eye outer corner                 = (119, 173)
+left eye inner corner                 = (166, 176)
+right eye inner corner                = (206, 173)
+right eye outer corner                = (253, 169)
+
+left eye horizontal center proxy      = x 142.5
+right eye horizontal center proxy     = x 229.5
+
+nose reference                        = (186, 201)
+mouth center                          = (187, 222)
+
+left visible ear top                  = y 164
+left visible ear bottom               = y 207
+right visible ear top                 = y 158
+right visible ear bottom              = y 204
+```
+
+The face-edge-at-eye-line points are visual proxies because hair partially obscures the temple boundary.
+
+---
+
+## Derived measurements
+
+### Eye geometry
+
+```text
+left eye projected width  = 47 px
+right eye projected width = 47 px
+average eye width         = 47 px
+inner-eye gap             = 40 px
 
 inner_eye_gap / average_eye_width
+= 40 / 47
+≈ 0.85
+```
+
+Eye center separation proxy:
+
+```text
+right eye center - left eye center
+= 229.5 - 142.5
+= 87 px
+```
+
+Face width proxy at eye line:
+
+```text
+270 - 109 = 161 px
+```
+
+Therefore:
+
+```text
 eye_center_distance / face_width_at_eye_line
+≈ 87 / 161
+≈ 0.54
+
 average_eye_width / face_width_at_eye_line
+≈ 47 / 161
+≈ 0.29
 ```
 
-Do not revise from impression alone.
+### Facial center-line alignment
+
+```text
+midpoint between eye centers ≈ x 186
+nose reference               ≈ x 186
+mouth center                 ≈ x 187
+chin                         ≈ x 187
+```
+
+The major facial center-line landmarks align within roughly 1 px in this audit.
+
+### Nose-mouth-chin vertical balance
+
+```text
+nose y  = 201
+mouth y = 222
+chin y  = 252
+
+nose→chin  = 51 px
+nose→mouth = 21 px
+mouth→chin = 30 px
+```
+
+Normalized position within the nose→chin interval:
+
+```text
+nose→mouth / nose→chin
+= 21 / 51
+≈ 0.41
+
+mouth→chin / nose→chin
+= 30 / 51
+≈ 0.59
+```
+
+The mouth therefore sits slightly above the midpoint of the nose→chin interval, leaving more vertical space below the mouth than above it.
+
+### Ear visibility / vertical span
+
+Visible ear spans:
+
+```text
+left ear  ≈ 43 px
+right ear ≈ 46 px
+average   ≈ 44.5 px
+```
+
+Visible crown→chin head span:
+
+```text
+252 - 8 = 244 px
+```
+
+Diagnostic only:
+
+```text
+average visible ear span / visible crown→chin head span
+≈ 44.5 / 244
+≈ 18.2%
+```
+
+This ratio is **not** treated as a universal ear standard because crown→chin includes hair-crown volume and is not identical to true face height.
 
 ---
 
-### 2. Mouth vertical placement
+## Audit results
 
-Question:
+### 1. Face Identity stability
 
-> Is the mouth too high relative to the chin / lower face?
+**Status: PASS**
 
-Current state:
+The current reference is internally coherent and clearly usable as the current YURA identity baseline.
 
-- **NEEDS_NUMERIC_QA**
-
-Required landmarks:
-
-```text
-nose reference point
-mouth center
-chin
-```
-
-Recommended diagnostic ratios:
-
-```text
-mouth_to_chin / nose_to_chin
-nose_to_mouth / nose_to_chin
-```
-
-The lower face must be judged together with jaw/chin contour; a short-looking lower face is not automatically caused by mouth placement alone.
+No evidence was found that the face should be discarded wholesale.
 
 ---
 
-### 3. Forehead / upper-head impression
+### 2. Eye spacing
 
-Question:
+**Status: PASS / LOW WATCH**
 
-> Is the forehead or upper head too large, making the head read oversized?
+The concern was:
 
-Current state:
+> Are the eyes too far apart?
 
-- **NEEDS_NUMERIC_QA**
-
-Important separation:
+Measured self-relative evidence:
 
 ```text
-visible forehead
-actual face height
-actual skull/head silhouette
-hair crown volume
-bangs / hairline visibility
-crop and framing
+inner-eye gap ≈ 0.85 × average eye width
 ```
 
-The current hairstyle can obscure the true hairline, so visible forehead alone may not be a reliable skull metric.
+The gap is smaller than one eye width, and the eye-center midpoint aligns almost exactly with the nose / mouth / chin center line.
+
+Visual inspection also does not show a clear "eyes are excessively far apart" failure.
+
+Conclusion:
+
+- no current evidence justifies moving the eyes inward;
+- do not revise eye spacing at this stage;
+- retain as a low-level WATCH only because the author explicitly raised the concern and future candidate comparison may still be informative.
 
 ---
 
-### 4. Overall apparent head size
+### 3. Eye size
 
-Question:
+**Status: PASS / STYLE-DEPENDENT**
 
-> Does the current Face Reference cause an oversized-head impression independent of the intended face identity?
-
-Current state:
-
-- **WATCH / NEEDS_INTEGRATION_QA**
-
-This must be separated from full-body head-to-body scale.
-
-The Face Reference is explicitly denied authority over full-body scale. A face-up crop must not dictate the size of the head in a 7.2-head full-body target.
-
-Potential causes to distinguish:
+The eyes are large relative to the face-width proxy:
 
 ```text
-face oval too large
-skull/head silhouette too tall or wide
-hair volume too large
-crop/framing illusion
-full-body integration incorrectly inheriting reference-image head scale
+average eye width / face width ≈ 0.29
 ```
+
+However, this is consistent with the current soft-anime YURA identity and does not visually read as a geometry failure by itself.
+
+No eye-size revision is justified from this audit alone.
 
 ---
 
-### 5. Ear height / prominence
+### 4. Horizontal facial balance / symmetry
 
-Question:
+**Status: PASS**
 
-> Are the ears too long or too visually prominent for the intended YURA face?
-
-Current state:
-
-- **WATCH-HIGH / PRIORITY REVIEW ITEM**
-
-This is currently the clearest repeated face-specific concern.
-
-Recommended landmarks:
+The horizontal center of the two eyes, nose reference, mouth center, and chin are nearly coincident:
 
 ```text
-ear top
-ear bottom
-eye line
-nose line
-mouth line
-face crown/chin or other stable face-height anchors
+central x ≈ 186–187
 ```
 
-Recommended diagnostic values:
+This is a strong result. There is no evidence of a meaningful horizontal drift in the central facial features.
 
-```text
-ear_height / face_height
-ear_top relative to eye line
-ear_bottom relative to nose/mouth region
-```
-
-Do not correct ears by globally changing face height or head scale.
-
-If a revision is justified, the preferred experiment is a local ear-geometry revision while preserving:
-
-- eye geometry;
-- nose/mouth geometry;
-- jaw/chin contour;
-- face identity;
-- hair identity.
+Small left/right eyelid or rendering differences are within normal illustration asymmetry and landmark uncertainty.
 
 ---
 
-### 6. Eye / nose / mouth overall balance
+### 5. Mouth vertical placement
 
-Question:
+**Status: PASS / WATCH**
 
-> After separating forehead, ear, and head-scale effects, do the major facial features form a balanced YURA-specific arrangement?
+The concern was:
 
-Current state:
+> Is the mouth too high relative to the chin?
 
-- **NEEDS_NUMERIC_QA + AUTHOR VISUAL REVIEW**
-
-This category must not be reduced to one universal "golden ratio".
-
-The final decision should combine:
+Measured result:
 
 ```text
-measured geometry
-current Face Identity
-candidate comparisons if needed
-author visual judgement
+nose→mouth = 41% of nose→chin span
+mouth→chin = 59% of nose→chin span
 ```
+
+So the mouth is above the midpoint of the nose→chin interval, but the lower-face silhouette does not visually show an obvious severe imbalance.
+
+Conclusion:
+
+- the mouth is not currently a confirmed failure;
+- do not move it based only on the current concern;
+- retain WATCH status until a deliberately revised candidate or author-preferred comparison face exists.
 
 ---
 
-## Provisional status summary
+### 6. Lower-face / chin balance
 
-```text
-Face Identity stability                 PASS / retain active baseline
-Eye spacing                             NEEDS_NUMERIC_QA
-Eye size                                WATCH / no revision authorized yet
-Nose-mouth-chin vertical balance        NEEDS_NUMERIC_QA
-Forehead / upper-head impression        NEEDS_NUMERIC_QA
-Overall apparent head size              WATCH / needs integration separation
-Ear height / prominence                 WATCH-HIGH / priority review
-Face contour                            no confirmed failure recorded yet
-```
+**Status: PASS**
 
-These are audit states, not final geometry verdicts.
+The chin is centered and the jaw converges cleanly toward it.
+
+The lower face is compact, but no clear visual evidence shows that the chin is excessively short or that the mouth is collapsing the lower-face region.
+
+No lower-face global reshape is justified at this stage.
 
 ---
 
-## Numeric QA landmarks to define next
+### 7. Forehead / upper-head geometry
 
-The next formal Face Geometry measurement pass should define a reproducible landmark schema for the active reference.
+**Status: NOT_MEASURABLE_FROM_CURRENT_REFERENCE**
 
-Candidate landmarks:
+The concern was:
 
-```text
-head_crown
-face_top_anchor where measurable
-chin
-left_face_edge_at_eye_line
-right_face_edge_at_eye_line
-left_inner_eye
-left_outer_eye
-right_inner_eye
-right_outer_eye
-left_eye_center
-right_eye_center
-nose_reference
-mouth_center
-left_ear_top
-left_ear_bottom
-right_ear_top
-right_ear_bottom
-```
+> Is the forehead too large and making the whole head too big?
 
-If a landmark is hidden by hair or rendering, record it as not measurable rather than inventing its position.
+The true hairline / forehead-top landmark is obscured by bangs.
+
+Therefore the audit cannot reliably derive a true forehead-height ratio from this reference.
+
+What can be said visually:
+
+- the upper-head silhouette is large;
+- the hairstyle has substantial crown / side hair volume;
+- the apparent head-size impression is therefore strongly influenced by hair volume;
+- the current image does **not** provide enough evidence to conclude that the underlying skull or forehead itself is too large.
+
+Do not reduce skull height or forehead height based on this image alone.
 
 ---
 
-## Candidate revision policy
+### 8. Overall apparent head size
 
-No face revision candidate should be generated until the problem statement is explicit.
+**Status: WATCH / INTEGRATION ISSUE MUST REMAIN SEPARATE**
 
-Examples:
+The face-up image has a large apparent head silhouette, but that cannot be converted directly into full-body head-to-body scale.
 
-```text
-EAR REVISION
-change only ear height/prominence
-preserve all other face geometry
+The project has separately observed approximately 6.4-head convergence during full-body generation.
 
-EYE-SPACING REVISION
-change only spacing after numeric evidence
-preserve eye shape/size and other facial features
+This audit does not establish that the face geometry itself is the cause.
 
-LOWER-FACE REVISION
-change only the specifically diagnosed vertical relationship
-preserve identity and unrelated geometry
-```
-
-One major variable per paid revision experiment is preferred.
-
----
-
-## Relationship to current full-body work
-
-The current full-body project has exposed a separate approximately-6.4-head convergence issue when using Face Reference with full-body generation.
-
-This audit does not assume that the Face Reference itself should define that head-to-body scale.
-
-Required integration principle remains:
+Required principle remains:
 
 ```text
 FACE IDENTITY = FACE AUTHORITY
-FACE FEATURE GEOMETRY = FACE AUTHORITY after audit/approval
+FACE FEATURE GEOMETRY = FACE AUTHORITY
 HEAD-TO-BODY SCALE = BODY GEOMETRY AUTHORITY
 TOTAL HEAD COUNT = BODY GEOMETRY AUTHORITY
 ```
 
-A future finalized Face Master should therefore be reusable at the correct full-body scale rather than forcing the body to inherit the face-up crop scale.
+The correct next full-body integration test is to preserve this face while explicitly denying the Face Reference authority over physical head scale.
 
 ---
 
-## Next action
+### 9. Ear height / prominence
 
-When Face Geometry audit execution begins:
+**Status: WATCH-HIGH / REVISION CANDIDATE JUSTIFIED IF AUTHOR CONFIRMS**
 
-1. load the exact active `YURA_FACE_REFERENCE.png`;
-2. confirm its SHA / Git provenance;
-3. define visible landmarks without guessing hidden points;
-4. record pixel coordinates;
-5. compute normalized ratios;
-6. compare numeric results with author visual judgement;
-7. classify each concern as PASS / WATCH / FAIL;
-8. create a revision candidate only for confirmed issues;
-9. re-audit candidate with the same definitions;
-10. promote only after explicit author approval.
+This remains the strongest face-specific concern.
 
-Until that measurement pass is completed, the current reference stays active and the concerns above remain diagnostic questions rather than final failures.
+Measured visible vertical spans are approximately:
+
+```text
+left ear  ≈ 43 px
+right ear ≈ 46 px
+```
+
+The raw numeric span alone does not prove a generic anatomical failure. However, direct visual inspection supports the author's earlier concern that the ears read somewhat long / prominent for the intended YURA face.
+
+The issue appears to be a combination of:
+
+- vertical span;
+- degree of exposure beside the hair;
+- top/bottom placement relative to the eye / nose region.
+
+Conclusion:
+
+- ears are the first local face-geometry item worth testing;
+- if revised, change ear geometry only;
+- do not globally shrink the face or alter head-to-body scale to solve the ear issue.
+
+Recommended first candidate contract:
+
+```text
+PROBLEM TO FIX:
+  ears read too long / prominent for intended YURA identity
+
+MAY CHANGE:
+  ear vertical height
+  ear top/bottom placement
+  local exposure / prominence
+
+MUST NOT CHANGE:
+  eye spacing
+  eye size / shape
+  eyebrows
+  nose
+  mouth
+  jaw / chin contour
+  central face alignment
+  hair identity except the minimum local interaction required around the ears
+
+EXPECTED RESULT:
+  lower ear prominence while preserving the current face identity
+```
+
+No numeric percentage reduction is frozen yet. A revision amount should be author-approved rather than invented by this audit.
+
+---
+
+### 10. Eye / nose / mouth overall balance
+
+**Status: PASS WITH WATCH ITEMS**
+
+After measuring the visible geometry:
+
+- horizontal center-line balance is strong;
+- eye spacing does not show a clear over-spacing failure;
+- mouth vertical placement is slightly high within the nose→chin span but not visually broken;
+- lower-face contour is coherent;
+- the main unresolved visual concern is the ears;
+- true forehead height cannot be determined because the hairline is hidden.
+
+The current face is therefore much closer to "retain and locally refine" than "redesign the face."
+
+---
+
+## Updated status summary
+
+```text
+Face Identity stability                 PASS
+Eye spacing                             PASS / LOW WATCH
+Eye size                                PASS / style-dependent
+Horizontal facial center-line           PASS
+Nose-mouth-chin vertical balance        PASS / WATCH
+Lower-face / chin contour               PASS
+Forehead true geometry                  NOT_MEASURABLE_FROM_CURRENT_REFERENCE
+Upper-head apparent size                WATCH / hair-volume confound
+Overall full-body head scale            NOT A FACE-AUDIT AUTHORITY
+Ear height / prominence                 WATCH-HIGH / first revision target
+Overall face-feature geometry           PASS WITH LOCAL WATCH ITEMS
+```
+
+---
+
+## Audit conclusion
+
+The active Face Reference is **not geometrically broken** and should remain the baseline.
+
+This audit does **not** support broad changes to eye spacing, eye size, mouth position, jaw shape, or the whole head.
+
+The strongest justified next face experiment is a **local ear-geometry revision only**, provided the author wants to proceed.
+
+The forehead concern cannot be resolved from this reference because the true hairline is hidden. Apparent upper-head size must not be confused with skull size or full-body head-to-body scale.
+
+The current face should therefore be treated as:
+
+```text
+IDENTITY BASELINE = RETAIN
+BROAD FACE REDESIGN = NO
+EAR LOCAL REVISION = CANDIDATE-LEVEL TEST JUSTIFIED
+FULL-BODY HEAD SCALE = CONTINUE TO SOLVE IN BODY / INTEGRATION PIPELINE
+```
+
+No candidate is promoted by this audit.
+
+Explicit author approval is still required for any Face Authority replacement.
