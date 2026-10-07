@@ -4,6 +4,14 @@ Status: **ACTIVE / HANDOFF CHECKPOINT / BODY GEOMETRY CALIBRATION IN PROGRESS**
 
 This file is operational documentation only. It is **NOT** a YURA visual Authority.
 
+## Mandatory recovery document
+
+Before continuing this benchmark in a new chat, read:
+
+- `tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md`
+
+That runbook records the PowerShell commands, Git synchronization procedure, local benchmark execution, sealed Authority/prompt workflow, QA commands, Composition gate, face audit execution, GitHub-side assistant work, and the new-chat recovery sequence used in this project.
+
 Use together with:
 
 - `tools/yura-master-benchmark/PIPELINE_STATE.md`
@@ -206,20 +214,48 @@ free preflight
 then one paid RAW
 ```
 
-## Face refinement is still deferred
+## Face audit status
 
-The current Face reference appears to produce ears that are too long vertically.
-
-This issue is recorded but remains deferred until full-body geometry is stable.
-
-Reason:
+A dedicated Face Geometry audit/revision lifecycle now exists:
 
 ```text
-change body + face simultaneously
--> improvement/regression cause becomes ambiguous
+visuals/yura/identity/face/FACE_GEOMETRY_REVISION_LIFECYCLE.md
+visuals/yura/identity/face/YURA_FACE_GEOMETRY_AUDIT.md
 ```
 
-After full-body geometry is stable, refine ear vertical size/placement as a local Face Identity task, then verify that the Face adjustment does not destabilize full-body identity.
+Numeric audit of the active Face Reference has been executed. Current conclusion:
+
+```text
+Face Identity stability           PASS
+Eye spacing                       PASS / LOW WATCH
+Eye size                          PASS / style-dependent
+Horizontal facial center-line     PASS
+Mouth vertical placement          PASS / WATCH
+Lower face / chin                 PASS
+True forehead geometry            NOT MEASURABLE (hairline hidden)
+Upper-head apparent size          WATCH / hair-volume confound
+Ear height / prominence           WATCH-HIGH
+Overall face geometry             PASS WITH LOCAL WATCH ITEMS
+```
+
+Broad Face redesign is not justified. Ear refinement is intentionally deferred.
+
+The later ear solution should also address generation behavior that tries to expose/show ears during oblique views or pose changes. Ear visibility should be incidental, and hair may naturally hide the ears.
+
+## Pose/view anti-drift issue queued for later
+
+After base full-body stability, address pose/view transformations such as squatting, leaning, and 45-degree/oblique poses where the model may stretch body regions or alter ear visibility.
+
+Desired separation:
+
+```text
+BASE GEOMETRY = locked
+POSE TRANSFORM = pose only
+VIEW ANGLE TRANSFORM = view only
+FORBIDDEN DRIFT = no redesign of head count, torso length, leg length, face-feature layout, or ear prominence
+```
+
+This is deferred until base geometry is stable.
 
 ## Composition remains blocked
 
@@ -267,9 +303,9 @@ SHIORI / MIO / later characters
 ## Immediate handoff instructions for the next chat
 
 1. Read current Git `main` before changing anything.
-2. Read this file, `PIPELINE_STATE.md`, and `visuals/MASTER_CREATION_WORKFLOW.md`.
+2. Read `tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md` first, then this file, `PIPELINE_STATE.md`, and `visuals/MASTER_CREATION_WORKFLOW.md`.
 3. Preserve the unrelated local `manuscript/episode-001/EP001_DRAFT.txt` change; do not commit, discard, or edit it.
-4. Sync the latest documentation commits to local using the existing stash/pull/pop pattern.
+4. Sync the latest documentation commits to local using the existing stash/pull/pop pattern recorded in the runbook.
 5. Locate the original local promising `result_raw.png` run.
 6. Measure exact `crown / chin / crotch / knee / soles` Y coordinates on the original file.
 7. Compute exact head ratio, inseam proxy, torso span, and knee split.
