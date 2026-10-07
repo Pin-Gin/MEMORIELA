@@ -1,6 +1,6 @@
 # YURA Master Benchmark — Current Handoff
 
-Status: **ACTIVE / HANDOFF CHECKPOINT / BODY GEOMETRY CALIBRATION IN PROGRESS**
+Status: **ACTIVE / HANDOFF CHECKPOINT / MASTER-IMAGE-ONLY SCOPE LOCK / BODY GEOMETRY CALIBRATION IN PROGRESS**
 
 This file is operational documentation only. It is **NOT** a YURA visual Authority.
 
@@ -17,6 +17,150 @@ Use together with:
 - `tools/yura-master-benchmark/PIPELINE_STATE.md`
 - `visuals/MASTER_CREATION_WORKFLOW.md`
 
+---
+
+# HARD SCOPE LOCK — MASTER IMAGE CREATION ONLY
+
+## Sole project objective in this workflow
+
+The purpose of this workflow is **to create the final high-quality YURA Master image, with generation drift reduced to the smallest practical level**.
+
+Everything done in this benchmark must be directly necessary for that objective.
+
+Allowed work is limited to:
+
+```text
+YURA Master image generation
+Face Identity / Face Geometry work required for the Master
+Body Geometry work required for the Master
+Master-construction visual text
+controlled generation experiments required to improve the Master
+numeric / visual QA required to judge the Master
+prompt compiler / invariant / benchmark code required to run those tests
+Authority and lifecycle documents required to make the Master reproducible
+deterministic final Composition required for the Master
+Git / PowerShell / cost / run-artifact work directly required to execute and audit the Master workflow
+```
+
+Anything outside this list is out of scope unless the author explicitly orders it.
+
+## Explicitly forbidden scope diversion
+
+Without an explicit author instruction, DO NOT switch to, propose as a replacement task, or begin work on:
+
+```text
+school-uniform Master / 制服マスタ
+outfit Master
+pose pack
+production illustration set
+story / manuscript work
+scene illustration work
+other character Master work
+SHIORI / MIO generation
+production deployment work unrelated to finishing the current YURA Master
+"while we are here" side work
+any alternate deliverable that substitutes for finishing the current Master
+```
+
+SHIORI, MIO, school-uniform work, pose/view anti-drift work, and other downstream work may be documented as future reuse targets, but **they must not replace or interrupt the active YURA Master task unless the author explicitly changes the objective**.
+
+## Historical failure that must not recur
+
+A prior failure mode was:
+
+```text
+YURA Body test was in progress
+-> chest-related Master text was deliberately changed for that controlled test
+-> the test was not completed
+-> later discussion drifted toward proposals such as school-uniform Master work
+```
+
+That is prohibited scope drift.
+
+If a controlled test variable has been changed — for example chest/body text, head-scale invariants, Body Geometry wording, Face-reference scale separation, or another Master parameter — that test becomes the active experiment and must be carried through its defined completion path unless the author explicitly cancels or replaces it.
+
+Default completion path:
+
+```text
+requested change
+-> smallest necessary diff
+-> commit / sync
+-> free preflight
+-> inspect compiled_prompt.txt and prompt_invariant_check.json
+-> exactly one paid RAW when authorized
+-> measure / inspect the result
+-> record result and decision in Git
+-> only then move to another hypothesis
+```
+
+Do **not** leave a test half-applied and silently move to another topic.
+
+## No autonomous reinterpretation
+
+The assistant must not reinterpret the author's goal into a different goal because it appears more convenient, more general, more reusable, more aesthetically interesting, or easier to complete.
+
+Rules:
+
+```text
+AUTHOR EXPLICIT INSTRUCTION > assistant preference
+CURRENT ACTIVE TEST > unsolicited alternative task
+MASTER COMPLETION > downstream asset creation
+EXACT REQUESTED VARIABLE > inferred substitute variable
+```
+
+Do not convert:
+
+```text
+"test this chest/body text change"
+into
+"make a uniform Master instead"
+
+"finish YURA Master"
+into
+"start work that may be useful later"
+
+"keep 7.2 and test scale decoupling"
+into
+"accept 6.4 because the model seems to prefer it"
+```
+
+If the author's instruction is technically possible and safe, execute it as written.
+
+If a genuinely blocking ambiguity exists, ask only about that ambiguity. Do not fill the gap with an unrelated plan.
+
+If a test fails, diagnose the failure. Do not use failure as permission to change the project objective.
+
+## Active-test continuity rule
+
+Before suggesting or starting a new experiment, confirm all three:
+
+```text
+1. What is the active Master hypothesis/test?
+2. Has its requested change actually been executed and measured?
+3. Has the author accepted, rejected, cancelled, or replaced that test?
+```
+
+If #2 or #3 is NO, continue the existing test. Do not branch into another task.
+
+## New-chat mandatory behavior
+
+A new chat must not merely read these files and then improvise.
+
+Before making changes, it must reconstruct and state internally from current Git:
+
+```text
+MASTER OBJECTIVE
+CURRENT ACTIVE TEST
+WHAT HAS ALREADY BEEN CHANGED
+WHAT HAS NOT YET BEEN EXECUTED
+NEXT REQUIRED COMMAND / DIFF
+FORBIDDEN SIDE WORK
+```
+
+The next action must advance the current YURA Master test, not invent a new project direction.
+
+---
+
 ## Primary objective
 
 Create a **high-quality YURA visual Master while reducing generation drift and stochastic variance to the smallest practical level**.
@@ -32,6 +176,8 @@ Additional operational goals:
 - make Authority inputs, hashes, prompt compilation, QA, and promotion auditable;
 - spend paid generations on hypothesis testing rather than random rerolls;
 - carry the method to later characters without copying YURA-specific proportions.
+
+These additional goals are subordinate to the sole active deliverable: **finish the YURA Master image**. They are not independent projects.
 
 ## Current strategic decision
 
@@ -134,7 +280,7 @@ preserve the successful torso / pelvis / lower-body balance
 
 ## Next paid-test strategy
 
-Before any further paid generation, perform exact landmark measurement on the original local `result_raw.png`.
+Before any further paid generation, perform exact landmark measurement on the original local `result_raw.png` unless current Git contains a newer explicit active test state.
 
 Then proceed one variable at a time.
 
@@ -255,7 +401,7 @@ VIEW ANGLE TRANSFORM = view only
 FORBIDDEN DRIFT = no redesign of head count, torso length, leg length, face-feature layout, or ear prominence
 ```
 
-This is deferred until base geometry is stable.
+This is deferred until base geometry is stable and must not replace the active YURA Master test.
 
 ## Composition remains blocked
 
@@ -284,6 +430,8 @@ Master promotion     completed
 
 Reuse the **process**, not YURA's numeric values.
 
+This is a future benefit only. It is **not permission to start those characters before the YURA Master objective is completed or the author explicitly redirects the work**.
+
 The desired long-term payoff is:
 
 ```text
@@ -304,10 +452,16 @@ SHIORI / MIO / later characters
 
 1. Read current Git `main` before changing anything.
 2. Read `tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md` first, then this file, `PIPELINE_STATE.md`, and `visuals/MASTER_CREATION_WORKFLOW.md`.
-3. Preserve the unrelated local `manuscript/episode-001/EP001_DRAFT.txt` change; do not commit, discard, or edit it.
-4. Sync the latest documentation commits to local using the existing stash/pull/pop pattern recorded in the runbook.
-5. Locate the original local promising `result_raw.png` run.
-6. Measure exact `crown / chin / crotch / knee / soles` Y coordinates on the original file.
-7. Compute exact head ratio, inseam proxy, torso span, and knee split.
-8. Do not run Composition and do not launch another paid RAW until that measurement has been reviewed.
-9. After measurement, decide the first paid hypothesis test: preserve the successful internal balance while testing whether Face Identity can be decoupled from total head/body scale so 7.2 heads becomes attainable.
+3. Read the **HARD SCOPE LOCK** in this file and treat it as operationally mandatory.
+4. Preserve the unrelated local `manuscript/episode-001/EP001_DRAFT.txt` change; do not commit, discard, or edit it.
+5. Determine the exact currently active YURA Master test from current Git. Do not infer it from memory if Git has advanced.
+6. Identify what change was already made for that test and what execution/measurement step remains unfinished.
+7. Continue that test to completion. Do not substitute school-uniform Master, other-character work, pose packs, or another side task.
+8. Sync GitHub/local using the existing stash/pull/pop pattern recorded in the runbook when needed.
+9. If the active test requires code/Authority changes, make only the smallest diff necessary.
+10. Run free preflight and inspect `compiled_prompt.txt` + `prompt_invariant_check.json` before any paid RAW.
+11. Only after PASS and author authorization, run exactly one paid RAW for the active hypothesis.
+12. Measure the original RAW, not a downscaled chat display.
+13. Record result and decision in Git.
+14. Do not run Composition until Body Geometry passes.
+15. Do not move to a new hypothesis until the active test is explicitly completed, rejected, cancelled, or replaced by the author.
