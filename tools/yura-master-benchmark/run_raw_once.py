@@ -548,6 +548,10 @@ def main() -> int:
         raise RuntimeError("Codex image_reference_order mismatch")
 
     compiled_prompt = manifest["compiled_prompt"]
+    compiled_prompt = compiled_prompt.replace(
+        "上半身前面のシルエットと体積バランスのみです.",
+        "上半身前面のシルエットと体積バランスのみです。",
+    )
     prompt_sha = sha256_text(compiled_prompt)
     (run_dir / "compiled_prompt.txt").write_text(compiled_prompt, encoding="utf-8")
     (run_dir / "compiled_prompt.sha256").write_text(prompt_sha + "\n", encoding="ascii")
