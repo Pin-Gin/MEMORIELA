@@ -11,6 +11,7 @@
     "visuals/yura/identity/composition/YURA_COMPOSITION_AUTHORITY.md"
   ],
   "image_reference_order": [
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
     "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png"
   ],
   "denied_sources": [

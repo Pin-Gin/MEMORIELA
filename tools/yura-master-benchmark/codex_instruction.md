@@ -74,15 +74,14 @@ Do not ask the image model to stretch, shrink, lengthen, shorten, or otherwise c
 
 Compile one complete **RAW Body-Geometry-first** prompt for the OpenAI Image API reference-image edit workflow.
 
-This run is Test 2 — diagnostic A/B isolation of Face-reference image influence.
+This run is Test 3 — Body Geometry enforcement using the author-approved guide landmarks as explicit relative geometry anchors.
 
-The Face Reference remains in the sealed Authority bundle for provenance and Authority-role verification, but its image pixels are intentionally NOT supplied to the Image API in this diagnostic.
+The Image API will receive exactly two reference images in this order:
 
-The Image API will receive exactly one reference image:
+1. `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` — FACE IDENTITY ONLY
+2. `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png` — BODY GEOMETRY ONLY
 
-1. `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png` — BODY GEOMETRY ONLY
-
-Absence of the Face Reference from `image_reference_order` is intentional for this diagnostic and must not be treated as an error.
+The Face Reference is restored after Test 2 because it is required to preserve Face Identity. It must remain isolated from full-body scale and internal Body Geometry.
 
 The compiled prompt must:
 
@@ -97,6 +96,7 @@ The compiled prompt must:
 - treat the approved Body Geometry Guide as a measurable geometry reference rather than a vague style suggestion
 - preserve a compact torso, slightly high pelvis/crotch, and subtly longer lower body within the approved 7.2-head geometry
 - target the YURA-specific image-space inseam proxy range 46.0–46.5%, never 47.0% or more
+- treat the approved Body Geometry Guide landmark values as fixed relative geometry anchors, not output-canvas absolute coordinates
 
 ## Required verbatim RAW-generation block
 
@@ -122,6 +122,19 @@ FACE_REFERENCE -> FULL_BODY_SCALE = DENIED
 FACE_REFERENCE -> CANVAS_OCCUPANCY = DENIED
 BODY GEOMETRY EXCLUSIVELY CONTROLS FULL-BODY HEAD SCALE AND TOTAL HEAD COUNT.
 CROWN TO SOLES MUST BE 7.2 HEADS.
+APPROVED BODY-GEOMETRY GUIDE LANDMARKS ARE FIXED RELATIVE GEOMETRY ANCHORS.
+BODY GUIDE CROWN Y = 160.
+BODY GUIDE CHIN Y = 340.
+BODY GUIDE CROTCH Y = 856.
+BODY GUIDE KNEE Y = 1156.
+BODY GUIDE SOLES Y = 1456.
+BODY GUIDE ONE HEAD = 180 PX.
+BODY GUIDE CROWN-TO-SOLES = 7.2 HEADS.
+BODY GUIDE CROWN-TO-CROTCH = 3.8667 HEADS.
+BODY GUIDE CHIN-TO-CROTCH = 2.8667 HEADS.
+BODY GUIDE CROTCH-TO-KNEE : KNEE-TO-SOLES = 1 : 1.
+THESE BODY-GUIDE PIXEL VALUES DEFINE RELATIVE GEOMETRY ONLY; DO NOT TREAT THEM AS OUTPUT-CANVAS ABSOLUTE COORDINATES.
+FACE REFERENCE PRESERVES FACE IDENTITY ONLY; BODY GEOMETRY GUIDE CONTROLS FULL-BODY HEAD SCALE AND INTERNAL BODY LANDMARK PLACEMENT.
 BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTIONS.
 DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.
 UPPER BODY MUST NOT BE VERTICALLY ELONGATED.
@@ -145,6 +158,8 @@ The compiled prompt must also retain:
 ```
 
 These are Body Geometry invariants.
+
+The approved guide landmark values above are not output-canvas coordinates. They encode the guide's internal relative geometry and must be preserved proportionally when generating the RAW candidate.
 
 The phrases above are not permission to redesign the body independently from the active Body Geometry Guide. They clarify the approved internal-balance intent:
 
