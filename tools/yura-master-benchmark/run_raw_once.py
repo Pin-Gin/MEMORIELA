@@ -213,12 +213,39 @@ def validate_runtime_config(config: dict[str, Any]) -> None:
     body_cfg = config.get("body_geometry_qa")
     if not isinstance(body_cfg, dict) or body_cfg.get("enabled") is not True:
         raise RuntimeError("body_geometry_qa must be enabled")
-    if body_cfg.get("landmark_method") != "MANUAL_PIXEL_Y_WITH_INTERNAL_LANDMARKS":
+    if body_cfg.get("landmark_method") != "MANUAL_PIXEL_Y_WITH_STRUCTURAL_UNCERTAINTY":
         raise RuntimeError(
-            "body_geometry_qa landmark_method must be MANUAL_PIXEL_Y_WITH_INTERNAL_LANDMARKS"
+            "body_geometry_qa landmark_method must be MANUAL_PIXEL_Y_WITH_STRUCTURAL_UNCERTAINTY"
         )
-    if body_cfg.get("required_landmarks") != ["crown", "chin", "crotch", "knee", "soles"]:
-        raise RuntimeError("body_geometry_qa required_landmarks must be crown/chin/crotch/knee/soles")
+    expected_required_landmarks = [
+        "structural_crown_min",
+        "structural_crown_best",
+        "structural_crown_max",
+        "chin",
+        "crotch_pelvis_boundary_min",
+        "crotch_pelvis_boundary_best",
+        "crotch_pelvis_boundary_max",
+        "knee",
+        "soles",
+    ]
+    if body_cfg.get("required_landmarks") != expected_required_landmarks:
+        raise RuntimeError(
+            "body_geometry_qa required_landmarks must match the structural-uncertainty contract"
+        )
+    expected_body_qa_contract = {
+        "crotch_pelvis_boundary_definition": (
+            "CENTRAL_MEDIAL_THIGH_BIFURCATION_UPPER_LOWER_BODY_BOUNDARY"
+        ),
+        "garment_line_landmark_authority": "DENIED",
+        "uncertainty_combination_policy": (
+            "STRUCTURAL_CROWN_3_X_CROTCH_PELVIS_BOUNDARY_3"
+        ),
+        "interval_pass_policy": "FULL_INTERVAL_MUST_BE_INSIDE_CURRENT_GATE",
+        "review_overlap_policy": "BLOCK_COMPOSITION_PENDING_REVIEW",
+    }
+    for key, value in expected_body_qa_contract.items():
+        if body_cfg.get(key) != value:
+            raise RuntimeError(f"body_geometry_qa {key} must equal {value!r}")
     if float(body_cfg.get("target_heads", -1)) != 7.2:
         raise RuntimeError("body_geometry_qa target_heads must be 7.2")
     if float(body_cfg.get("acceptable_heads_min", -1)) != 7.1:
@@ -236,6 +263,8 @@ def validate_runtime_config(config: dict[str, Any]) -> None:
     if float(body_cfg.get("torso_chin_to_crotch_heads_max", -1)) != 2.942:
         raise RuntimeError("body_geometry_qa torso_chin_to_crotch_heads_max must be 2.942")
     for key in (
+        "require_overall_build_not_too_thin_review",
+        "require_chest_front_volume_match_review",
         "require_landmarks_reviewed",
         "require_upper_body_not_elongated_confirmation",
         "require_torso_compact_confirmation",
