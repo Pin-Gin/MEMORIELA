@@ -1,6 +1,6 @@
 # YURA Test 6 — Pelvis/Boundary normalized-position lock
 
-Status: **PREREGISTERED / IMPLEMENTATION IN PROGRESS / BOUNDED 1–5 SAMPLE SERIES**
+Status: **PREREGISTERED / IMPLEMENTATION COMPLETE / FREE PREFLIGHT NEXT / BOUNDED 1–5 SAMPLE SERIES**
 
 ## Purpose
 
@@ -30,9 +30,17 @@ It is not a test of hair length, chest design, thigh design, Face Identity, knee
 
 Test 6 is derived from the frozen Test 5 state.
 
-The Test 5 compiler specification is preserved separately as a rollback/breakpoint artifact under:
+The exact Test 5 compiler specification is preserved separately as a rollback/breakpoint artifact at:
 
-`tools/yura-master-benchmark/archive/test5_breakpoint_20261011/`
+`tools/yura-master-benchmark/archive/test5_breakpoint_20261011/codex_instruction_test5.md`
+
+Frozen blob SHA:
+
+```text
+ced76faf3b382052c2928dd2ae0795c739ce2222
+```
+
+The former active Test 5 `tools/yura-master-benchmark/codex_instruction.md` has been retired from the active generation route after the archive copy was verified.
 
 Test 6 must not modify that archived Test 5 instruction.
 
@@ -112,7 +120,7 @@ Garment lines have no landmark authority.
 
 Only the pelvis/boundary enforcement method may change.
 
-The implementation must make the following normalized relationship explicit and primary:
+The implementation makes the following normalized relationship explicit and primary:
 
 ```text
 CROTCH/PELVIS BOUNDARY MUST BE AT 53.7037% OF CROWN-TO-SOLES BODY HEIGHT,
@@ -122,7 +130,17 @@ EQUIVALENT:
 CROTCH-TO-SOLES MUST BE 46.2963% OF CROWN-TO-SOLES BODY HEIGHT.
 ```
 
-The intervention must also state that the boundary is not an aesthetic suggestion and not a qualitative “high pelvis” direction. It is a measurable structural anchor inherited from the approved Body Guide.
+The boundary is not an aesthetic suggestion and not a qualitative “high pelvis” direction. It is a measurable structural anchor inherited from the approved Body Guide.
+
+## Test 6 active implementation files
+
+```text
+tools/yura-master-benchmark/config_test6.json
+tools/yura-master-benchmark/codex_instruction_test6.md
+tools/yura-master-benchmark/run_test6_once.py
+```
+
+The original Test 5 runner logic remains the inherited implementation base. Test 6 overrides only the Test-6-specific config/instruction/reference roles/invariants and exact Working Master hash check.
 
 ## Test 6 image-reference change
 
@@ -140,7 +158,7 @@ visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
 = BODY GEOMETRY CORRECTION AUTHORITY
 ```
 
-`YURA_FACE_REFERENCE.png` remains a sealed Face Identity Authority record but is not passed as Image API pixel input in Test 6. The existing Working Master face is preserved rather than regenerated from the Face Reference.
+`YURA_FACE_REFERENCE.png` is intentionally excluded from the Test 6 Authority order and from Image API pixel inputs. `FACE_REFERENCE_RULES.md` remains active as Face-preservation text rules. The existing Working Master face is preserved rather than regenerated from the Face Reference image.
 
 ## Frozen non-target variables
 
