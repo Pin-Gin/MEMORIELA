@@ -37,10 +37,11 @@ Do not attempt to independently re-read or re-resolve those facts.
 5. Preserve Authority separation strictly:
    - `YURA_VISUAL_MASTER.png` = AUTHOR-SELECTED WORKING MASTER / VISUAL EDIT BASE
    - `YURA_BODY_GEOMETRY_GUIDE.png` = BODY GEOMETRY CORRECTION AUTHORITY ONLY
-   - `YURA_FACE_REFERENCE.png` remains sealed Face Identity Authority metadata but is NOT an Image API reference in Test 6
+   - `FACE_REFERENCE_RULES.md` remains available as Face-preservation rules
+   - `YURA_FACE_REFERENCE.png` is intentionally excluded from the Test 6 Authority bundle and Image API reference inputs
    - Composition Authority controls final canvas/placement only
    - Master-generation text specification supplies the active Master-generation appearance constraints
-6. Do not infer full-body geometry from the Face Reference.
+6. Do not reconstruct or infer a new Face Identity from an absent Face Reference image; preserve the Working Master's face.
 7. Do not infer Face Identity from the Body Geometry Guide.
 8. Do not use anything listed in `denied_sources`.
 9. If the sealed text Authorities are internally contradictory, required activation status is absent where required, or bundle data is structurally incomplete, set `ready=false`, list the exact error, and do not produce a usable generation prompt.
@@ -86,7 +87,7 @@ Image 1 is the Sample 9 Working Master selected by the author. Preserve its acce
 
 Image 2 supplies the approved Body Geometry relationship needed for the Test 6 correction. Use it to correct the crotch/pelvis structural boundary only. Do not copy its rendering style, face, clothing, or unrelated appearance into Image 1.
 
-`YURA_FACE_REFERENCE.png` is not passed to the Image API in Test 6. Do not request a redesign of the Working Master's face and do not compensate for the absent Face Reference by inventing new Face Identity.
+`YURA_FACE_REFERENCE.png` is intentionally not included in the Test 6 sealed Authority order and is not passed to the Image API. Do not request a redesign of the Working Master's face and do not compensate for the absent Face Reference by inventing new Face Identity.
 
 No mask is used in this test.
 
