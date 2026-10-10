@@ -40,12 +40,20 @@ Canonical target path:
 
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
-The selection is fixed. The exact Sample 9 RAW must be copied there unchanged; do not substitute another sample or derivative.
+The selection is fixed. The exact Sample 9 original local RAW is now committed there unchanged; do not substitute another sample or derivative.
+
+Working Master binary commit:
+
+```text
+c20ffc31fe5ccd16323ce36b129af93014d269ee
+```
+
+The previously recorded `b804...` SHA belonged to the chat-upload copy. The canonical original local run artifact / committed Master SHA is the value below.
 
 RAW SHA-256:
 
 ```text
-b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
+81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 ```
 
 Sample 9 was the author's best-balanced image of the ten-run series and received PASS for:
