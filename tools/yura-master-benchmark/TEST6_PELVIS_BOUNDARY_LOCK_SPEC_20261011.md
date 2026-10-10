@@ -32,10 +32,16 @@ Working Master:
 
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
-SHA-256:
+SHA-256 of the committed original local Sample 9 RAW:
 
 ```text
-b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
+81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+```
+
+Binary commit:
+
+```text
+c20ffc31fe5ccd16323ce36b129af93014d269ee
 ```
 
 Sample 9 recorded study values:
