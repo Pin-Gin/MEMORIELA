@@ -33,7 +33,7 @@ Do not attempt to independently re-read or re-resolve those facts.
 1. Process `authority_order` in exactly the order supplied by the sealed bundle.
 2. Text Authority entries include their complete UTF-8 contents. Use only those contents.
 3. PNG Authority entries intentionally contain metadata/role/hash only. Do not pretend to visually inspect them in this Codex step.
-4. The actual PNG references will be supplied later by the runner directly to the OpenAI Image API.
+4. Only the PNG paths listed in the sealed bundle's `image_reference_order` will be supplied later by the runner directly to the OpenAI Image API.
 5. Preserve Authority separation strictly:
    - `YURA_FACE_REFERENCE.png` = FACE IDENTITY ONLY
    - `YURA_BODY_GEOMETRY_GUIDE.png` = BODY GEOMETRY ONLY
@@ -74,10 +74,15 @@ Do not ask the image model to stretch, shrink, lengthen, shorten, or otherwise c
 
 Compile one complete **RAW Body-Geometry-first** prompt for the OpenAI Image API reference-image edit workflow.
 
-The Image API will receive exactly two reference images in this order:
+This run is Test 2 — diagnostic A/B isolation of Face-reference image influence.
 
-1. `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` — FACE IDENTITY ONLY
-2. `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png` — BODY GEOMETRY ONLY
+The Face Reference remains in the sealed Authority bundle for provenance and Authority-role verification, but its image pixels are intentionally NOT supplied to the Image API in this diagnostic.
+
+The Image API will receive exactly one reference image:
+
+1. `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png` — BODY GEOMETRY ONLY
+
+Absence of the Face Reference from `image_reference_order` is intentional for this diagnostic and must not be treated as an error.
 
 The compiled prompt must:
 
