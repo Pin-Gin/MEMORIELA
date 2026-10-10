@@ -498,6 +498,18 @@ SHIORI / MIO / later characters
   -> high-quality, lower-variance Master creation
 ```
 
+## Test 3 completion checkpoint — 2026-10-10
+
+Test 3 completed.
+Face Reference restoration preserved Face Identity direction, but explicit Body Guide landmark enforcement still produced approximately 6.47 heads rather than the required 7.1–7.3.
+
+Test 3 = FAIL for Body Geometry.
+Composition remains blocked.
+Test 3 RAW is diagnostic only and is not Visual Authority.
+
+No Test 4 hypothesis is active yet.
+Do not change Face Identity, Body Authority, numeric gates, Composition, or rendering until the author explicitly approves the next controlled hypothesis.
+
 ## Immediate handoff instructions for the next chat
 
 1. Read current Git `main` before changing anything.
