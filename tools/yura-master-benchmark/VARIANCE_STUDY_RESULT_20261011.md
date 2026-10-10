@@ -50,7 +50,7 @@ Body Guide normalized crotch/pelvis boundary position
 
 ## Ten-run table
 
-| Sample | compiled_prompt_sha256 | RAW SHA256 | Head best | Boundary best | Inseam best | Chin→boundary best | Author visual result |
+| Sample | compiled_prompt_sha256 | study-upload image SHA256 | Head best | Boundary best | Inseam best | Chin→boundary best | Author visual result |
 |---:|---|---|---:|---:|---:|---:|---|
 | 1 | `b4934512b3440433abb9e8fb25847fc756f569f49ec70d884d87d25f02246537` | `f82cf810333bf35ed09e11db6fd898e0c538509584f740fb1d5ce396459bef47` | 7.048 | 48.62% | 51.38% | 2.427 | mixed |
 | 2 | `673b212b6ed5405b9223b14ace181b2ee5916e006833f59cdb504e6a218051fc` | `591016d4c2eccb82268fdaa4f3a52a491ab595e35fcfb2d7bad31ee1cccbe325` | 7.087 | 46.57% | 53.43% | 2.300 | mixed |
@@ -123,6 +123,20 @@ boundary too high
 
 The next experiment must therefore isolate **boundary placement itself** rather than changing Face Identity, chest, thigh shape, Composition, or the 7.2 target.
 
+## Hash provenance correction after Master commit
+
+The 10-run table was assembled from images uploaded into the chat for manual study. Those per-row image hashes identify the study-upload copies and are not guaranteed to equal the original local `result_raw.png` bytes.
+
+For Sample 9, the distinction is now verified:
+
+```text
+chat-upload copy SHA256     = b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
+original local RAW SHA256   = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+committed Master commit     = c20ffc31fe5ccd16323ce36b129af93014d269ee
+```
+
+The original local RAW hash is authoritative for the working Master binary and Test 6 baseline. The chat-upload copy hash remains in the table only as historical study provenance.
+
 ## Author visual decision
 
 Sample 9 is selected by the author as the **working YURA Master visual baseline**.
@@ -140,19 +154,24 @@ overall build               PASS
 overall balance             BEST OF THE 10-RUN SERIES
 ```
 
-Sample 9 original RAW SHA-256:
+Sample 9 original local RAW SHA-256 (verified from the local run artifact immediately before Git commit):
 
 ```text
-b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
+81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+```
+
+Git commit containing that exact working Master binary:
+
+```text
+c20ffc31fe5ccd16323ce36b129af93014d269ee
 ```
 
 Canonical target path:
 
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
-The exact selected RAW must be copied to that path unchanged, with SHA-256
-`b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967`.
-The author selection is canonical even if the binary asset commit is performed separately.
+The exact selected original local RAW is committed at that path unchanged, with SHA-256
+`81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d`.
 
 This author selection does **not** falsify the numeric QA result. The selected working Master still carries unresolved boundary/inseam/torso calibration debt. Production Authority switch and final Composition remain blocked until that debt is resolved or explicitly superseded by the author.
 
