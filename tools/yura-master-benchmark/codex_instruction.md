@@ -74,7 +74,7 @@ Do not ask the image model to stretch, shrink, lengthen, shorten, or otherwise c
 
 Compile one complete **RAW Body-Geometry-first** prompt for the OpenAI Image API reference-image edit workflow.
 
-This run is Test 4 — diagnose whether reference-image order changes Body Geometry adherence by using the Body Geometry Guide as Image 1 / edit base while keeping the Face Reference as Image 2 / Face Identity only.
+This run is Test 5 — test whether qualitative pelvis/lower-body wording is being applied as an additional directional offset beyond the approved Body Guide numeric geometry. Test 5 keeps the Test 4 Body-first reference order unchanged: Body Geometry Guide as Image 1 / edit base and Face Reference as Image 2 / Face Identity only.
 
 The Image API will receive exactly two reference images in this order:
 
@@ -85,7 +85,7 @@ Image 1 must be treated as the structural full-body edit base, not merely as a l
 
 Image 2 supplies Face Identity only. Do not transfer Image 2 crop, canvas occupancy, apparent head size, or reference-image scale into full-body geometry. Do not reinterpret or rescale Image 1 Body Geometry to match Image 2.
 
-This Test 4 changes reference-image order/role only. No mask is used in this test.
+This Test 5 keeps the Test 4 reference-image order/role unchanged. No mask is used in this test. The only experimental variable is whether qualitative pelvis/lower-body wording is allowed to act as an additional directional offset beyond the approved numeric guide geometry.
 
 The compiled prompt must:
 
@@ -98,7 +98,7 @@ The compiled prompt must:
 - request exactly one complete front-view full-body subject with crown and soles visible and comfortable white clearance
 - avoid any final occupancy/margin optimization during generation
 - treat the approved Body Geometry Guide as a measurable geometry reference rather than a vague style suggestion
-- preserve a compact torso, slightly high pelvis/crotch, and subtly longer lower body within the approved 7.2-head geometry
+- preserve a compact torso and the approved guide's exact relative pelvis/lower-body geometry; treat "slightly high pelvis/crotch" and "subtly longer lower body" only as descriptive labels for that approved guide geometry, not as additional directional offsets
 - target the YURA-specific image-space inseam proxy range 46.0–46.5%, never 47.0% or more
 - treat the approved Body Geometry Guide landmark values as fixed relative geometry anchors, not output-canvas absolute coordinates
 - treat Image 1 as the Body-Geometry edit base and Image 2 as Face Identity only
@@ -127,7 +127,7 @@ FACE_REFERENCE -> FULL_BODY_SCALE = DENIED
 FACE_REFERENCE -> CANVAS_OCCUPANCY = DENIED
 BODY GEOMETRY EXCLUSIVELY CONTROLS FULL-BODY HEAD SCALE AND TOTAL HEAD COUNT.
 CROWN TO SOLES MUST BE 7.2 HEADS.
-TEST 4 USES IMAGE 1 AS THE BODY-GEOMETRY EDIT BASE.
+TEST 5 USES IMAGE 1 AS THE BODY-GEOMETRY EDIT BASE.
 IMAGE 1 = YURA_BODY_GEOMETRY_GUIDE.png — BODY GEOMETRY EDIT BASE.
 IMAGE 2 = YURA_FACE_REFERENCE.png — FACE IDENTITY ONLY.
 PRESERVE IMAGE 1 RELATIVE BODY-LANDMARK LAYOUT.
@@ -150,8 +150,10 @@ BODY-GEOMETRY REFERENCE SCALE OVERRIDES DEFAULT LARGE-HEAD ANIME BODY PROPORTION
 DO NOT ACHIEVE 7.2 BY LENGTHENING ONLY LEGS OR ONLY TORSO.
 UPPER BODY MUST NOT BE VERTICALLY ELONGATED.
 TORSO MUST BE COMPACT; DO NOT LENGTHEN THE RIBCAGE-TO-PELVIS OR WAIST SPAN.
-KEEP THE PELVIS/CROTCH POSITION SLIGHTLY HIGH, WITH A SUBTLY LONGER LOWER BODY.
-LOW SITTING-HEIGHT IMPRESSION = RELATIVELY COMPACT UPPER-BODY SPAN + SLIGHTLY LONGER LOWER BODY.
+QUALITATIVE PELVIS/LOWER-BODY WORDING MUST NOT APPLY ANY ADDITIONAL OFFSET BEYOND THE APPROVED BODY-GUIDE LANDMARKS.
+BODY GUIDE CROTCH/PELVIS BOUNDARY POSITION OVERRIDES QUALITATIVE DIRECTIONAL WORDING.
+DO NOT RAISE THE CROTCH/PELVIS BOUNDARY ABOVE THE APPROVED BODY-GUIDE RELATIVE POSITION.
+INTERPRET "SLIGHTLY HIGH PELVIS/CROTCH" AND "SUBTLY LONGER LOWER BODY" ONLY AS DESCRIPTIVE LABELS FOR THE APPROVED GUIDE GEOMETRY.
 DO NOT CREATE THE LOWER-BODY EMPHASIS BY LEG-ONLY STRETCHING.
 INSEAM PROXY RATIO = CROTCH-TO-SOLES / CROWN-TO-SOLES.
 YURA INSEAM PROXY TARGET = 46.0–46.5%.
@@ -172,13 +174,13 @@ These are Body Geometry invariants.
 
 The approved guide landmark values above are not output-canvas coordinates. They encode the guide's internal relative geometry and must be preserved proportionally when generating the RAW candidate.
 
-The phrases above are not permission to redesign the body independently from the active Body Geometry Guide. They clarify the approved internal-balance intent:
+The phrases above are not permission to redesign the body independently from the active Body Geometry Guide. They clarify the approved internal-balance intent. For Test 5, qualitative labels do not authorize any extra pelvis/lower-body offset beyond the approved numeric guide geometry:
 
 - do not let neck/chest/abdomen/pelvis stack into an elongated upper body
 - keep the ribcage-to-waist-to-pelvis torso span compact
 - do not let the waist read unnaturally low
-- keep pelvis/crotch slightly high in the standing full-body silhouette
-- let the lower body read subtly longer, not exaggeratedly model-like
+- treat the Authority's "slightly high pelvis/crotch" wording as a descriptive label for the approved guide boundary, not as an instruction to raise it above that boundary
+- treat the Authority's "subtly longer lower body" wording as a descriptive label for the approved guide geometry, not as an instruction to lengthen the lower body beyond that geometry
 - keep knee placement natural
 - do not solve the preference by stretching only thighs, shins, or total leg length
 - do not compress the ribcage/abdomen unnaturally merely to shorten the upper body
