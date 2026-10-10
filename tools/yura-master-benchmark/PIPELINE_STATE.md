@@ -1,6 +1,6 @@
 # YURA Master Benchmark — Pipeline State
 
-Status: **ACTIVE / WORKING MASTER SELECTED / PELVIS-BOUNDARY REFINEMENT NEXT / COMPOSITION DEFERRED**
+Status: **ACTIVE / TEST 6 IMPLEMENTED / FREE PREFLIGHT NEXT / COMPOSITION DEFERRED**
 
 This file is operational documentation only. It is not a YURA visual Authority.
 
@@ -16,17 +16,19 @@ Canonical target path:
 
 Source: fixed-condition variance-study Sample 9.
 
-The selection is fixed. The exact original local RAW binary is committed and must match the SHA-256 below; no derivative may be substituted.
-
-The earlier `b804...` value was the chat-upload copy hash, not the original local run artifact.
-
-RAW SHA-256:
+Canonical original local RAW SHA-256:
 
 ```text
 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 ```
 
-Author decision: Sample 9 has the best overall balance of the ten-run series and is the current working Master visual baseline.
+Binary commit:
+
+```text
+c20ffc31fe5ccd16323ce36b129af93014d269ee
+```
+
+Author decision: Sample 9 has the best overall balance of the ten-run series and is the current Working Master / Test 6 recovery baseline.
 
 Numeric Body QA is still not PASS. Do not conflate visual selection with numeric gate status.
 
@@ -54,31 +56,90 @@ chin→boundary mean   ≈ 2.421 heads
 target                 2.7985–2.942 heads
 ```
 
-The systematic failure is the crotch/pelvis boundary being generated too high.
+Systematic failure:
 
-## Active next test
+```text
+crotch/pelvis boundary too high
+-> torso/chin→boundary too short
+-> inseam too long
+```
+
+## Test 5 breakpoint state
+
+The exact Test 5 compiler instruction is archived at:
+
+`tools/yura-master-benchmark/archive/test5_breakpoint_20261011/codex_instruction_test5.md`
+
+Blob SHA:
+
+```text
+ced76faf3b382052c2928dd2ae0795c739ce2222
+```
+
+The active-root `codex_instruction.md` from Test 5 has been retired so Test 6 cannot silently execute the old compiler path. The archive is rollback/audit only and is not an active Test 6 Authority.
+
+## Active Test 6 implementation
+
+Specification:
 
 `tools/yura-master-benchmark/TEST6_PELVIS_BOUNDARY_LOCK_SPEC_20261011.md`
 
-One hypothesis only:
+Active Test 6 files:
 
 ```text
-explicit normalized structural boundary anchor
--> move crotch/pelvis boundary toward 53.7037%
--> preserve selected Master appearance
+tools/yura-master-benchmark/config_test6.json
+tools/yura-master-benchmark/codex_instruction_test6.md
+tools/yura-master-benchmark/run_test6_once.py
 ```
 
-No other appearance redesign is part of Test 6.
+Test 6 is derived from Test 5. Unchanged QA/Composition/safety behavior is inherited through the existing runner; Test 6 overrides only the new config, compiler instruction, Working Master role/reference order, exact Master SHA check, and boundary-specific invariants.
+
+Image reference order:
+
+```text
+1. YURA_VISUAL_MASTER.png         = Working Master / edit base
+2. YURA_BODY_GEOMETRY_GUIDE.png   = Body Geometry correction Authority
+```
+
+The Face Reference is not an Image API pixel input in Test 6. The Working Master's existing Face Identity is preserved.
+
+Single causal intervention:
+
+```text
+boundary from structural crown = 53.7037% of crown→soles
+crotch→soles                   = 46.2963%
+boundary                       = central medial-thigh bifurcation / upper-lower body structural boundary
+garment-line authority         = DENIED
+```
+
+Hair length is frozen during Test 6.
+
+## Test 6 bounded replication
+
+```text
+minimum paid samples = 1
+maximum paid samples = 5
+```
+
+Every sample must use identical Git/config/compiler/Working-Master/Body-Guide conditions. Measure and author-review each RAW before another is justified.
+
+Stop early on exact accepted support. Continue only to establish whether directional/no-change behavior is reproducible. No lucky reroll selection.
+
+If the bounded series shows no reproducible material improvement, Sample 9 becomes the formal YURA full-body Master by explicit author decision, while the known numeric Body discrepancy remains preserved in audit history and is not relabeled as measured PASS.
 
 ## Hair
 
-The author approved a later slight hair-length increase relative to the selected working Master.
+The author approved a later slight hair-length increase relative to Sample 9:
 
-It is recorded in:
+```text
+same hair identity
+slightly longer only
+reach the waist area more clearly
+not dramatically longer
+not substantially below the waist
+```
 
-`visuals/yura/identity/master/YURA_VISUAL_MASTER_STATUS.md`
-
-It is intentionally excluded from Test 6 to avoid a second causal variable.
+It remains excluded from Test 6.
 
 ## Official Body QA remains unchanged
 
@@ -94,24 +155,47 @@ full 3×3 uncertainty
 REVIEW_OVERLAP blocks Composition
 ```
 
+## Fixed downstream order
+
+After Test 6:
+
+```text
+formal full-body Master selection/promotion
+-> detailed per-part Master-derived specifications
+-> Production Visual MD
+-> GPT reproduction test from full-body Master + Production Visual MD
+-> isolate Face ear-enlargement issue
+-> corrected Face Reference/Master generation
+-> approximately 10 fixed-condition Face-only stability generations
+-> Face promotion if PASS
+-> full-body reproduction test using new Face Master + full-body Master + Production Visual MD
+-> archive benchmark/Test/Master-generation materials away from normal Production generation without deleting them
+```
+
 ## Execution state
 
 ```text
-Test 5 variance study     = COMPLETE
-working Master selection = COMPLETE
-working Master binary    = PRESENT / SHA VERIFIED / commit c20ffc31fe5ccd16323ce36b129af93014d269ee
-Test 6 preregistration   = COMPLETE
-Test 6 implementation    = NOT YET
-Test 6 free preflight    = NOT YET
-Test 6 paid RAW          = NOT YET
-Composition              = BLOCKED
-Production switch        = NOT YET
+Test 5 variance study          = COMPLETE
+Test 5 compiler breakpoint     = ARCHIVED / VERIFIED
+Working Master selection      = COMPLETE
+Working Master binary         = PRESENT / SHA VERIFIED
+Test 6 preregistration        = COMPLETE
+Test 6 implementation files   = COMPLETE
+Test 6 free preflight         = NEXT
+Test 6 paid series            = NOT YET / 1–5 MAX
+Composition                   = BLOCKED DURING TEST 6
+Production switch             = NOT YET
 ```
 
 ## Next action
 
-Implement Test 6 exactly from the preregistered spec, review the diff, run free preflight, then one paid RAW.
+Synchronize current `main`, then run:
 
-Do not reroll.
+```text
+python tools/yura-master-benchmark/run_test6_once.py --preflight-only
+```
+
+Inspect `compiled_prompt.txt` and `prompt_invariant_check.json` before authorizing any paid Test 6 RAW.
+
 Do not combine hair refinement with Test 6.
-Do not change the Body QA numbers unless explicitly ordered.
+Do not change Body QA numbers unless explicitly ordered.
