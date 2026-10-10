@@ -278,6 +278,56 @@ preserve the successful torso / pelvis / lower-body balance
 + move total head ratio toward 7.2
 ```
 
+## Test 1 execution result — 2026-10-10
+
+Test 1 (Face Identity vs head/body scale decoupling) was executed after:
+
+- adding the existing Face-reference scale-denial rules to the compiled-prompt contract;
+- enforcing those rules in `REQUIRED_PROMPT_INVARIANTS`;
+- adding `性的な強調を目的としない` as the approved non-sexual-intent statement.
+
+Free preflight:
+
+```text
+status = PREFLIGHT_OK
+paid_model_calls = 0
+git_commit = b9ea99d29a5e8f18f8a853e4ab0a0302a6f70715
+```
+
+Paid RAW:
+
+- Image API generation succeeded; no moderation block occurred.
+- local `result_raw.png` dimensions were confirmed as 1440×2560.
+- Composition was not run.
+
+Preliminary landmark measurement from the uploaded 1152×2048 proportional display copy:
+
+```text
+head ratio      ≈ 6.51 heads
+inseam proxy    ≈ 51.8%
+chin→crotch     ≈ 2.13 heads
+```
+
+Current-gate result:
+
+```text
+7.1–7.3 head ratio              = FAIL
+46.0–46.5% inseam proxy         = FAIL
+2.7985–2.9420 chin→crotch range = FAIL
+```
+
+Decision:
+
+Test 1 did not decouple Face-reference influence strongly enough to reach 7.2 heads.
+The result remains a QA/calibration sample only and MUST NOT become visual Authority.
+Composition remains blocked.
+
+Next active test:
+
+**Test 2 — diagnostic A/B isolation of Face-reference influence, as already defined below.**
+
+Do not change existing Body information while setting up Test 2.
+
 ## Next paid-test strategy
 
 Before any further paid generation, perform exact landmark measurement on the original local `result_raw.png` unless current Git contains a newer explicit active test state.
