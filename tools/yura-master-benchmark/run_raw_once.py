@@ -58,6 +58,8 @@ REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
     "YURA INSEAM PROXY TARGET = 46.0–46.5%.",
     "47.0% OR MORE IS FORBIDDEN AS TOO MODEL-LIKE.",
     "性的な強調を目的としない",
+    "これは性的表現を目的としない、キャラクターMaster作成のためのBody Geometry検証です。",
+    "上半身前面のシルエットと体積バランスのみです。",
     "7.2 heads",
     "7.1–7.3",
 )
