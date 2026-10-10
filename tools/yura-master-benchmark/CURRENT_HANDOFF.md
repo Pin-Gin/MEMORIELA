@@ -16,23 +16,20 @@ Do not alter or touch:
 
 Do not use `git reset --hard` and do not force-push.
 
-## Test 5 completed and frozen as breakpoint
+## Test 5 frozen breakpoint
 
-The completed fixed-condition variance study used:
+Completed fixed-condition variance study baseline:
 
 ```text
-generation baseline commit
-cc38457dc39e509adcd44da10c75f354c49c8844
-
-sealed_authority_bundle_sha256
-11f3626d7eb140cec8f344fa5e78ac8258861d6a45ef648922bd42dc037f4b28
+generation commit = cc38457dc39e509adcd44da10c75f354c49c8844
+sealed_authority_bundle_sha256 = 11f3626d7eb140cec8f344fa5e78ac8258861d6a45ef648922bd42dc037f4b28
 ```
 
 Full result:
 
 `tools/yura-master-benchmark/VARIANCE_STUDY_RESULT_20261011.md`
 
-The exact Test 5 compiler MD is frozen outside the active Test 6 route at:
+The exact Test 5 compiler MD is frozen outside the active Test 6 route:
 
 `tools/yura-master-benchmark/archive/test5_breakpoint_20261011/codex_instruction_test5.md`
 
@@ -42,31 +39,22 @@ Frozen blob SHA:
 ced76faf3b382052c2928dd2ae0795c739ce2222
 ```
 
-The former active `tools/yura-master-benchmark/codex_instruction.md` was removed after the exact archive copy was verified. This prevents accidental Test 5 compiler use while preserving a rollback breakpoint.
+The former active `tools/yura-master-benchmark/codex_instruction.md` was retired after the exact archive copy was verified. This is the rollback breakpoint if later refinement causes a major visual collapse.
 
-## Working Master selected
+## Working Master / recovery baseline
 
-The author selected variance-study **Sample 9** as the current visual Master baseline.
-
-Canonical path:
+Author-selected variance-study Sample 9:
 
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
-Working Master binary commit:
-
 ```text
-c20ffc31fe5ccd16323ce36b129af93014d269ee
+binary commit = c20ffc31fe5ccd16323ce36b129af93014d269ee
+canonical original-local-RAW SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 ```
 
-Canonical original local RAW SHA-256:
+Sample 9 is the author's best-balanced image of the ten-run series and is the Test 6 recovery baseline.
 
-```text
-81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
-```
-
-Sample 9 is the author's best-balanced image of the ten-run series and is the recovery baseline if Test 6 causes major visual collapse.
-
-Do not falsely relabel its known numeric Body Geometry mismatch as a measured PASS.
+Known numeric Body mismatch remains recorded; do not rewrite it as a measured PASS.
 
 ## Current unresolved geometry
 
@@ -80,19 +68,19 @@ Chin→boundary mean          ≈ 2.421 heads
 Target                        2.7985–2.942 heads
 ```
 
-Dominant remaining failure:
+Dominant failure:
 
 ```text
 crotch/pelvis boundary too high
--> torso/chin→boundary too short
+-> chin→boundary too short
 -> inseam too long
 ```
 
-Do not lower the 7.2 target or recalibrate the official Body gates unless the author explicitly orders it.
+Do not lower the 7.2 target or recalibrate official Body gates unless explicitly ordered.
 
-## Test 6 active implementation
+## Test 6 implementation
 
-Detailed preregistration:
+Spec:
 
 `tools/yura-master-benchmark/TEST6_PELVIS_BOUNDARY_LOCK_SPEC_20261011.md`
 
@@ -104,21 +92,21 @@ tools/yura-master-benchmark/codex_instruction_test6.md
 tools/yura-master-benchmark/run_test6_once.py
 ```
 
-Test 6 is derived from Test 5 and changes only the causal pieces required to edit the Working Master directly and enforce the normalized structural boundary.
+Test 6 is derived from Test 5. Existing QA/Composition/safety behavior is inherited; only Test-6-specific reference roles, Working Master hash lock, compiler instruction, and boundary invariants are changed.
 
-Image API reference order:
+Image API inputs:
 
 ```text
 IMAGE 1 = YURA_VISUAL_MASTER.png
-          AUTHOR-SELECTED WORKING MASTER / VISUAL EDIT BASE
+          Working Master / visual edit base
 
 IMAGE 2 = YURA_BODY_GEOMETRY_GUIDE.png
-          BODY GEOMETRY CORRECTION AUTHORITY
+          Body Geometry correction Authority
 ```
 
-The Face Reference remains sealed Authority metadata but is not supplied as Image API pixel input for Test 6. Preserve the Working Master's existing Face Identity.
+`YURA_FACE_REFERENCE.png` is intentionally excluded from the Test 6 Authority order and Image API inputs. `FACE_REFERENCE_RULES.md` remains active as face-preservation text. Preserve the Working Master's existing face rather than regenerating it from the Face Reference image.
 
-Target anchor:
+Single causal intervention:
 
 ```text
 boundary from structural crown = 53.7037% of crown→soles
@@ -127,32 +115,22 @@ boundary definition            = central medial-thigh bifurcation / upper-lower 
 garment-line authority         = DENIED
 ```
 
-Only causal intervention:
-
-```text
-explicit normalized pelvis/boundary lock
-```
-
 Hair-length increase is NOT part of Test 6.
 
-## Test 6 paid-series rule
-
-Test 6 is a bounded replication series:
+## Test 6 paid series
 
 ```text
 minimum samples = 1
 maximum samples = 5
 ```
 
-All samples must use the same Git/config/compiler instruction/Working Master/Body Guide. Each sample is measured and author-reviewed before another is justified.
+Keep Git/config/compiler/Working Master/Body Guide identical across the series. Measure and author-review each RAW before another is justified. Stop early on exact accepted support; otherwise continue only to establish whether directional/no-change behavior is reproducible. Never exceed five samples and do not reroll merely to choose a lucky output.
 
-Stop early on exact accepted support. Continue identical-condition replications only to determine whether directional/no-change behavior is reproducible. Never exceed five samples and never reroll merely to select a lucky output.
-
-If the 1–5 series shows no reproducible material improvement, the author has decided to promote Sample 9 as the formal YURA full-body Master while retaining the numeric discrepancy as audit history rather than falsely converting it into a measured PASS.
+If the bounded series shows no reproducible material improvement, the author has decided to promote Sample 9 as the formal YURA full-body Master while retaining the numeric discrepancy as audit history rather than falsely converting it to PASS.
 
 ## Approved later hair refinement
 
-The author wants the Sample 9 hair slightly longer:
+After the Test 6 Body decision:
 
 ```text
 same hair identity
@@ -162,26 +140,24 @@ not dramatically longer
 not substantially below the waist
 ```
 
-This is deferred until the Test 6 body decision is complete.
+## Fixed downstream sequence
 
-## Fixed downstream sequence after Test 6
-
-After Test 6 concludes, proceed in this exact order:
+After Test 6, proceed exactly in this order:
 
 ```text
-1. choose/promote the accepted corrected full-body candidate, OR promote Sample 9 if Test 6 has no material effect
+1. promote accepted corrected full-body candidate, OR Sample 9 if Test 6 has no material effect
 2. derive detailed per-part specifications from the formal full-body Master
-3. create/refine the Production Visual MD from the Master image without inventing absent traits
+3. create/refine Production Visual MD from the Master image without inventing absent traits
 4. test GPT reproduction using formal full-body Master + Production Visual MD
-5. only after whole-body reproduction is demonstrated, isolate the Face ear-enlargement problem
-6. generate a corrected Face Reference/Master designed to prevent ear inflation while preserving Face Identity
+5. only after whole-body reproduction is demonstrated, isolate Face ear enlargement
+6. generate corrected Face Reference/Master that prevents ear inflation while preserving Face Identity
 7. perform approximately 10 fixed-condition Face-only generations
-8. if Face-only stability passes, promote the corrected Face Master/Reference
+8. if Face-only stability passes, promote corrected Face Master/Reference
 9. re-test full-body generation using new Face Master + formal full-body Master + Production Visual MD
 10. archive benchmark/Test/Master-generation materials away from normal YURA Production generation without deleting them
 ```
 
-The final archive must prevent old benchmark/test materials from being auto-loaded by normal Production generation while preserving rollback/audit access.
+Final archive must prevent old benchmark/test materials from being auto-loaded by normal Production generation while preserving rollback/audit access.
 
 ## Next action
 
@@ -193,11 +169,9 @@ Synchronize current `main`, then run:
 python tools/yura-master-benchmark/run_test6_once.py --preflight-only
 ```
 
-After `PREFLIGHT_OK`, inspect the generated `compiled_prompt.txt` and `prompt_invariant_check.json` before any paid Test 6 RAW.
+After `PREFLIGHT_OK`, inspect `compiled_prompt.txt` and `prompt_invariant_check.json` before any paid Test 6 RAW.
 
 ## Mandatory preservation
-
-Current official Body QA remains unchanged:
 
 ```text
 head target 7.2
@@ -211,7 +185,7 @@ crotch/pelvis boundary uncertainty
 REVIEW_OVERLAP blocks Composition
 ```
 
-Current author visual gates remain relevant:
+Author visual gates remain:
 
 ```text
 overall build
