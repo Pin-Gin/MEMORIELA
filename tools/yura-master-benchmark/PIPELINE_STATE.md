@@ -16,12 +16,14 @@ Canonical target path:
 
 Source: fixed-condition variance-study Sample 9.
 
-The selection is fixed. The exact RAW binary must match the SHA-256 below; no derivative may be substituted.
+The selection is fixed. The exact original local RAW binary is committed and must match the SHA-256 below; no derivative may be substituted.
+
+The earlier `b804...` value was the chat-upload copy hash, not the original local run artifact.
 
 RAW SHA-256:
 
 ```text
-b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
+81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 ```
 
 Author decision: Sample 9 has the best overall balance of the ten-run series and is the current working Master visual baseline.
@@ -97,7 +99,7 @@ REVIEW_OVERLAP blocks Composition
 ```text
 Test 5 variance study     = COMPLETE
 working Master selection = COMPLETE
-working Master binary    = PENDING EXACT COPY
+working Master binary    = PRESENT / SHA VERIFIED / commit c20ffc31fe5ccd16323ce36b129af93014d269ee
 Test 6 preregistration   = COMPLETE
 Test 6 implementation    = NOT YET
 Test 6 free preflight    = NOT YET
