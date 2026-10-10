@@ -161,46 +161,103 @@ It must not be interpreted as:
 
 ---
 
-## 5. Pelvis / leg-root landmark
+## 5. Crotch / pelvis boundary landmark
 
 Primary Audit v2 body landmark:
 
 ```text
-pelvis_leg_root_proxy_y
+crotch_pelvis_boundary_proxy_y
 ```
 
 Definition:
 
-> the approximate vertical level at which the left and right upper legs structurally separate from the pelvis.
+> the structural upper/lower-body boundary at the central medial-thigh bifurcation: the vertical level where the left and right inner thighs separate into independent legs beneath the pelvis.
 
-Do not derive this point solely from:
+This point is intended to correspond to the Active Body Guide's author-approved `CROTCH / PELVIS LINE = UPPER / LOWER BODY BOUNDARY` concept.
+
+Do not derive this point from garment graphics or garment construction alone. The following have **no landmark authority**:
 
 - underwear seam;
 - shorts hem;
-- garment crotch fabric;
-- decorative clothing line.
+- garment crotch fabric or its lowest point;
+- decorative clothing line;
+- V-shaped garment edge.
 
-If the structural leg-root cannot be visually resolved, record it as not measurable during manual review rather than inventing a landmark.
+**GARMENT LINE AUTHORITY = DENIED.**
 
-The current author-approved Body Guide value `crotch / pelvis-line proxy = y 856` is not changed by this diagnostic terminology. For the Active Body Guide exact reference test, `pelvis_leg_root_proxy_y = 856`.
+The boundary must be visually reviewed from the structural body/inner-thigh separation. If the boundary is partially obscured, Audit v2 records uncertainty instead of forcing a false exact point:
+
+```text
+crotch_pelvis_boundary_min_y
+crotch_pelvis_boundary_best_y
+crotch_pelvis_boundary_max_y
+```
+
+With Y increasing downward:
+
+```text
+min_y  = upper bound of plausible boundary position
+best_y = central reviewed estimate
+max_y  = lower bound of plausible boundary position
+```
+
+Required ordering:
+
+```text
+chin_y
+< crotch_pelvis_boundary_min_y
+<= crotch_pelvis_boundary_best_y
+<= crotch_pelvis_boundary_max_y
+< knee_y
+```
+
+The current author-approved Body Guide value `crotch / pelvis-line proxy = y 856` is not changed. For the Active Body Guide exact reference test:
+
+```text
+crotch_pelvis_boundary_min_y  = 856
+crotch_pelvis_boundary_best_y = 856
+crotch_pelvis_boundary_max_y  = 856
+```
 
 ---
 
-## 6. Body vertical calculations
+## 6. Body vertical calculations and uncertainty propagation
 
-For each structural-crown candidate:
+Structural-crown uncertainty and crotch/pelvis-boundary uncertainty are independent diagnostic dimensions.
+
+For all body metrics that depend on both landmarks, Audit v2 evaluates the full **3 Ã— 3 = 9 combination set**:
+
+```text
+structural crown min / best / max
+Ã—
+crotch-pelvis boundary min / best / max
+```
+
+The reported `best` value uses:
+
+```text
+structural_crown_best_y
++
+crotch_pelvis_boundary_best_y
+```
+
+The reported interval uses the minimum and maximum across all 9 combinations.
+
+Head ratio does not depend on the crotch/pelvis boundary and therefore uses structural-crown uncertainty only.
+
+For each crown/boundary combination:
 
 ```text
 inseam_proxy_ratio
-= (soles_y - pelvis_leg_root_proxy_y)
+= (soles_y - crotch_pelvis_boundary_y)
   / (soles_y - structural_crown_y)
 
-chin_to_pelvis_heads
-= (pelvis_leg_root_proxy_y - chin_y)
+chin_to_crotch_pelvis_boundary_heads
+= (crotch_pelvis_boundary_y - chin_y)
   / (chin_y - structural_crown_y)
 
-pelvis_to_knee_heads
-= (knee_y - pelvis_leg_root_proxy_y)
+crotch_pelvis_boundary_to_knee_heads
+= (knee_y - crotch_pelvis_boundary_y)
   / (chin_y - structural_crown_y)
 
 knee_to_soles_heads
@@ -208,18 +265,26 @@ knee_to_soles_heads
   / (chin_y - structural_crown_y)
 ```
 
-Audit v2 reports the full metric interval induced by structural-crown uncertainty.
+Lower-body split is also reported with uncertainty:
+
+```text
+boundary_to_knee_share
+= (knee_y - boundary_y) / (soles_y - boundary_y)
+
+knee_to_soles_share
+= (soles_y - knee_y) / (soles_y - boundary_y)
+```
 
 Current official Body Guide gates are read from existing `config.json`; Audit v2 does not invent replacements.
 
-Current values at creation time are:
+Current values at creation time remain:
 
 ```text
 head target                  7.2
 head acceptable range        7.1â€“7.3
 inseam target                46.0â€“46.5%
 inseam model-like hard fail  >= 47.0%
-chinâ†’pelvis current envelope 2.7985â€“2.9420 heads
+chinâ†’crotch current envelope 2.7985â€“2.9420 heads
 ```
 
 ---
@@ -237,7 +302,7 @@ pelvis_hip_width_px
 upper_thigh_left_width_px
 upper_thigh_right_width_px
 calf_left_width_px
-calf_right_width_px
+cal_right_width_px
 ankle_left_width_px
 ankle_right_width_px
 ```
@@ -256,195 +321,4 @@ When the required inputs exist, Audit v2 also reports:
 
 ```text
 shoulder / hip
-ribcage / hip
-waist / hip
-average upper thigh / hip
-average calf / hip
-chest / ribcage
-chest / waist
-```
-
-These ratios are **DIAGNOSTIC ONLY**.
-
-No numeric PASS threshold is frozen by Audit v2.
-
-Clothing contamination, hair overlap, perspective, and stylized rendering must remain part of human review.
-
-Do not promote a diagnostic width ratio into a Hard Gate without explicit author approval.
-
----
-
-## 8. Author visual gates
-
-Audit v2 records two independent author-review dimensions required to distinguish Test 3 and Test 4 failure modes.
-
-### `overall_build_not_too_thin`
-
-Checks the whole-body mass / silhouette.
-
-This is not equivalent to:
-
-- shoulder width only;
-- hip width only;
-- BMI-like interpretation;
-- generic human anatomy.
-
-### `chest_front_volume_matches_author_intent`
-
-Checks chest/front-volume appearance relative to the whole YURA build.
-
-This is not equivalent to:
-
-- chest width alone;
-- a single absolute size value;
-- generic anatomical targets.
-
-This validation is for character Master Body Geometry and silhouette review, not sexual emphasis.
-
-Allowed review states:
-
-```text
-PASS
-FAIL
-NOT_REVIEWED
-NOT_MEASURABLE
-```
-
-Audit v2 keeps these two states separate. A body-build failure must not overwrite a chest result, and a chest failure must not overwrite a body-build result.
-
----
-
-## 9. Modes
-
-### `head-shell`
-
-Required:
-
-- image path;
-- visible hair crown;
-- structural crown min / best / max;
-- chin.
-
-Produces head-shell diagnostic metrics only.
-
-Does not calculate a 7.2 full-body gate.
-
-### `body`
-
-Required:
-
-- image path;
-- structural crown min / best / max;
-- chin;
-- pelvis / leg-root proxy;
-- knee;
-- soles.
-
-`visible_hair_crown_y` is optional and adds apparent-head-shell diagnostics when supplied.
-
-Optional horizontal geometry and author visual review may also be recorded.
-
----
-
-## 10. Fail-closed validation
-
-Audit v2 rejects invalid landmark order.
-
-Required structural ordering:
-
-```text
-0 <= structural_crown_min_y
-structural_crown_min_y <= structural_crown_best_y <= structural_crown_max_y
-structural_crown_max_y < chin_y
-```
-
-For body mode:
-
-```text
-chin_y < pelvis_leg_root_proxy_y < knee_y < soles_y <= image_height
-```
-
-If `visible_hair_crown_y` is supplied:
-
-```text
-0 <= visible_hair_crown_y < chin_y
-```
-
-Width measurements must be positive if supplied.
-
----
-
-## 11. Active Body Guide reference test
-
-The current Active Body Guide exact landmarks remain:
-
-```text
-structural crown = 160
-chin             = 340
-pelvis proxy     = 856
-knee             = 1156
-soles            = 1456
-```
-
-Expected Audit v2 outputs:
-
-```text
-total head ratio = 7.2
-inseam proxy     = 46.2963%
-chinâ†’pelvis      = 2.8667 heads
-```
-
-Failure to reproduce these values means the Audit v2 calculation implementation is invalid.
-
-This exact test does not modify the Body Guide.
-
----
-
-## 12. Parallel-operation rule
-
-Until explicitly promoted by author approval:
-
-```text
-body_geometry_qa.py
-= CURRENT OFFICIAL QA
-
-body_geometry_qa_v2.py
-= PARALLEL DIAGNOSTIC QA
-```
-
-An Audit v2 result cannot by itself authorize:
-
-- Composition execution;
-- Master promotion;
-- Visual Authority promotion;
-- Body Authority changes;
-- Face Authority changes.
-
-All Audit v2 reports must therefore retain:
-
-```text
-composition_execution_allowed = false
-master_promotion = NO
-authority_status = DIAGNOSTIC_ONLY
-```
-
----
-
-## 13. Validation sequence before any promotion
-
-Run without paid generation:
-
-```text
-1. Python syntax check
-2. Active Body Guide exact reference test
-3. Face Reference head-shell test
-4. Test 3 body audit
-5. Test 4 body audit
-6. Record author visual gates
-7. Compare current QA and Audit v2
-8. Review results with the author
-```
-
-Only after that comparison may a separate author-approved change promote any Audit v2 definition into official QA.
-
-Test 5 is outside this specification and must not be started merely because Audit v2 runs successfully.
+rý¥‰…”€¼¡¥À)Ý…¥ÍÐ€¼¡¥À)…Ù•É…”ÕÁÁ•ÈÑ¡¥ €¼¡¥À)…Ù•É…”…±˜€¼¡¥À)¡•ÍÐ€¼É¥‰…”)¡•ÍÐ€¼Ý…¥ÍÐ)€()Q¡•Í”É…Ñ¥½Ì…É”€¨©%9=MQ%=91d¨¨¸()9¼¹Õµ•É¥ŒAMLÑ¡É•Í¡½±¥Ì™É½é•¸‰äÕ‘¥ÐØÈ¸()±½Ñ¡¥¹œ½¹Ñ…µ¥¹…Ñ¥½¸°¡…¥È½Ù•É±…À°Á•ÉÍÁ•Ñ¥Ù”°…¹ÍÑå±¥é•É•¹‘•É¥¹œµÕÍÐÉ•µ…¥¸Á…ÉÐ½˜¡Õµ…¸É•Ù¥•Ü¸()¼¹½ÐÁÉ½µ½Ñ”„‘¥…¹½ÍÑ¥ŒÝ¥‘Ñ É…Ñ¥¼¥¹Ñ¼„!…É…Ñ”Ý¥Ñ¡½ÕÐ•áÁ±¥¥Ð…ÕÑ¡½È…ÁÁÉ½Ù…°¸((´´´((ŒŒ€à¸ÕÑ¡½ÈÙ¥ÍÕ…°…Ñ•Ì()Õ‘¥ÐØÈÉ•½É‘ÌÑÝ¼¥¹‘•Á•¹‘•¹Ð…ÕÑ¡½ÈµÉ•Ù¥•Ü‘¥µ•¹Í¥½¹ÌÉ•ÅÕ¥É•Ñ¼‘¥ÍÑ¥¹Õ¥Í Q•ÍÐ€Ì…¹Q•ÍÐ€Ð™…¥±ÕÉ”µ½‘•Ì¸((ŒŒŒ½Ù•É…±±}‰Õ¥±‘}¹½Ñ}Ñ½½}Ñ¡¥¹€()¡•­ÌÑ¡”Ý¡½±”µ‰½‘äµ…ÍÌ€¼Í¥±¡½Õ•ÑÑ”¸()Q¡¥Ì¥Ì¹½Ð•ÅÕ¥Ù…±•¹ÐÑ¼è((´Í¡½Õ±‘•ÈÝ¥‘Ñ ½¹±äì(´¡¥ÀÝ¥‘Ñ ½¹±äì(´	5$µ±¥­”¥¹Ñ•ÉÁÉ•Ñ…Ñ¥½¸ì(´•¹•É¥Œ¡Õµ…¸…¹…Ñ½µä¸((ŒŒŒ¡•ÍÑ}™É½¹Ñ}Ù½±Õµ•}µ…Ñ¡•Í}…ÕÑ¡½É}¥¹Ñ•¹Ñ€()¡•­Ì¡•ÍÐ½™É½¹ÐµÙ½±Õµ”…ÁÁ•…É…¹”É•±…Ñ¥Ù”Ñ¼Ñ¡”Ý¡½±”eUI‰Õ¥±¸()Q¡¥Ì¥Ì¹½Ð•ÅÕ¥Ù…±•¹ÐÑ¼è((´¡•ÍÐÝ¥‘Ñ …±½¹”ì(´„Í¥¹±”…‰Í½±ÕÑ”Í¥é”Ù…±Õ”ì(´•¹•É¥Œ…¹…Ñ½µ¥…°Ñ…É•ÑÌ¸()Q¡¥ÌÙ…±¥‘…Ñ¥½¸¥Ì™½È¡…É…Ñ•È5…ÍÑ•È	½‘ä•½µ•ÑÉä…¹Í¥±¡½Õ•ÑÑ”É•Ù¥•Ü°¹½ÐÍ•áÕ…°•µÁ¡…Í¥Ì¸()±±½Ý•É•Ù¥•ÜÍÑ…Ñ•Ìè()Ñ•áÐ)AML)%0)9=Q}IY%])9=Q}5MUI	1)€()Õ‘¥ÐØÈ­••ÁÌÑ¡•Í”ÑÝ¼ÍÑ…Ñ•ÌÍ•Á…É…Ñ”¸‰½‘äµ‰Õ¥±™…¥±ÕÉ”µÕÍÐ¹½Ð½Ù•ÉÝÉ¥Ñ”„¡•ÍÐÉ•ÍÕ±Ð°…¹„¡•ÍÐ™…¥±ÕÉ”µÕÍÐ¹½Ð½Ù•ÉÝÉ¥Ñ”„‰½‘äµ‰Õ¥±É•ÍÕ±Ð¸((´´´((ŒŒ€ä¸5½‘•Ì((ŒŒŒ¡•…µÍ¡•±±€()I•ÅÕ¥É•è((´¥µ…”Á…Ñ ì(´Ù¥Í¥‰±”¡…¥ÈÉ½Ý¸ì(´ÍÑÉÕÑÕÉ…°É½Ý¸µ¥¸€¼‰•ÍÐ€¼µ…àì(´¡¥¸¸()AÉ½‘Õ•Ì¡•…µÍ¡•±°‘¥…¹½ÍÑ¥Œµ•ÑÉ¥Ì½¹±ä¸()½•Ì¹½Ð…±Õ±…Ñ”„€Ü¸È™Õ±°µ‰½‘ä…Ñ”¸((ŒŒŒ‰½‘å€()I•ÅÕ¥É•è((´¥µ…”Á…Ñ ì(´ÍÑÉÕÑÕÉ…°É½Ý¸µ¥¸€¼‰•ÍÐ€¼µ…àì(´¡¥¸ì(´É½Ñ ½Á•±Ù¥Ì‰½Õ¹‘…Éäµ¥¸€¼‰•ÍÐ€¼µ…àì(´­¹•”ì(´Í½±•Ì¸()Ù¥Í¥‰±•}¡…¥É}É½Ý¹}å€€¥Ì½ÁÑ¥½¹…°…¹…‘‘Ì…ÁÁ…É•¹Ðµ¡•…µÍ¡•±°‘¥…¹½ÍÑ¥ÌÝ¡•¸ÍÕÁÁ±¥•¸()=ÁÑ¥½¹…°¡½É¥é½¹Ñ…°•½µ•ÑÉä…¹…ÕÑ¡½ÈÙ¥ÍÕ…°É•Ù¥•Üµ…ä…±Í¼‰”É•½É‘•¸((´´´((ŒŒ€ÄÀ¸…¥°µ±½Í•Ù…±¥‘…Ñ¥½¸()Õ‘¥ÐØÈÉ•©•ÑÌ¥¹Ù…±¥±…¹‘µ…É¬½É‘•È¸()I•ÅÕ¥É•ÍÑÉÕÑÕÉ…°½É‘•É¥¹œè()Ñ•áÐ(À€ðôÍÑÉÕÑÕÉ…±}É½Ý¹}µ¥¹}ä)ÍÑÉÕÑÕÉ…±}É½Ý¹}µ¥¹}ä€ðôÍÑÉÕÑÕÉ…±}É½Ý¹}‰•ÍÑ}ä€ðôÍÑÉÕÑÕÉ…±}É½Ý¹}µ…á}ä)ÍÑÉÕÑÕÉ…±}É½Ý¹}µ…á}ä€ð¡¥¹}ä)€()½È‰½‘äµ½‘”è()Ñ•áÐ)¡¥¹}ä(ðÉ½Ñ¡}Á•±Ù¥Í}‰½Õ¹‘…Éå}µ¥¹}ä(ðôÉ½Ñ¡}Á•±Ù¥Í}‰½Õ¹‘…Éå}‰•ÍÑ}ä(ðôÉ½Ñ¡}Á•±Ù¥Í}‰½Õ¹‘…Éå}µ…á}ä(ð­¹••}ä(ðÍ½±•Í}ä(ðô¥µ…•}¡•¥¡Ð)€()%˜Ù¥Í¥‰±•}¡…¥É}É½Ý¹}å€¥ÌÍÕÁÁ±¥•è()Ñ•áÐ(À€ðôÙ¥Í¥‰±•}¡…¥É}É½Ý¹}ä€ð¡¥¹}ä)€()]¥‘Ñ µ•…ÍÕÉ•µ•¹ÑÌµÕÍÐ‰”Á½Í¥Ñ¥Ù”¥˜ÍÕÁÁ±¥•¸((´´´((ŒŒ€ÄÄ¸Ñ¥Ù”	½‘äÕ¥‘”É•™•É•¹”Ñ•ÍÐ()Q¡”ÕÉÉ•¹ÐÑ¥Ù”	½‘äÕ¥‘”•á…Ð±…¹‘µ…É­ÌÉ•µ…¥¸è()Ñ•áÐ)ÍÑÉÕÑÕÉ…°É½Ý¸€€€€€€€€€€€€€€ô€ÄØÀ)¡¥¸€€€€€€€€€€€€€€€€€€€€€€€€€€ô€ÌÐÀ)É½Ñ ½Á•±Ù¥Ì‰½Õ¹‘…Éäµ¥¸€€€€ô€àÔØ)É½Ñ ½Á•±Ù¥Ì‰½Õ¹‘…Éä‰•ÍÐ€€€ô€àÔØ)É½Ñ ½Á•±Ù¥Ì‰½Õ¹‘…Éäµ…à€€€€ô€àÔØ)­¹•”€€€€€€€€€€€€€€€€€€€€€€€€€€ô€ÄÄÔØ)Í½±•Ì€€€€€€€€€€€€€€€€€€€€€€€€€ô€ÄÐÔØ)€()áÁ•Ñ•Õ‘¥ÐØÈ½ÕÑÁÕÑÌè()Ñ•áÐ)Ñ½Ñ…°¡•…É…Ñ¥¼€ô€Ü¸È)¥¹Í•…´ÁÉ½áä€€€€€ô€ÐØ¸ÈäØÌ”)¡¥»ŠI‰½Õ¹‘…Éä€€€€ô€È¸àØØÜ¡•…‘Ì)‰½Õ¹‘…ÉçŠI­¹•”€€€€ô€ÌÀÀÁà)­¹•—ŠIÍ½±•Ì€€€€€€€ô€ÌÀÀÁà)±½Ý•ÈÍÁ±¥Ð€€€€€€ô€ÔÀ€è€ÔÀ)€()…¥±ÕÉ”Ñ¼É•ÁÉ½‘Õ”Ñ¡•Í”Ù…±Õ•Ìµ•…¹ÌÑ¡”Õ‘¥ÐØÈ…±Õ±…Ñ¥½¸¥µÁ±•µ•¹Ñ…Ñ¥½¸¥Ì¥¹Ù…±¥¸()Q¡¥Ì•á…ÐÑ•ÍÐ‘½•Ì¹½Ðµ½‘¥™äÑ¡”	½‘äÕ¥‘”¸((´´´((ŒŒ€ÄÈ¸A…É…±±•°µ½Á•É…Ñ¥½¸ÉÕ±”()U¹Ñ¥°•áÁ±¥¥Ñ±äÁÉ½µ½Ñ•‰ä…ÕÑ¡½È…ÁÁÉ½Ù…°è()Ñ•áÐ)‰½‘å}•½µ•ÑÉå}Å„¹Áä(ôUII9P=%%0E()‰½‘å}•½µ•ÑÉå}Å…}ØÈ¹Áä(ôAI110%9=MQ%E)€()¸Õ‘¥ÐØÈÉ•ÍÕ±Ð…¹¹½Ð‰ä¥ÑÍ•±˜…ÕÑ¡½É¥é”è((´½µÁ½Í¥Ñ¥½¸•á•ÕÑ¥½¸ì(´5…ÍÑ•ÈÁÉ½µ½Ñ¥½¸ì(´Y¥ÍÕ…°ÕÑ¡½É¥ÑäÁÉ½µ½Ñ¥½¸ì(´	½‘äÕÑ¡½É¥Ñä¡…¹•Ìì(´…”ÕÑ¡½É¥Ñä¡…¹•Ì¸()±°Õ‘¥ÐØÈÉ•Á½ÉÑÌµÕÍÐÑ¡•É•™½É”É•Ñ…¥¸è()Ñ•áÐ)½µÁ½Í¥Ñ¥½¹}•á•ÕÑ¥½¹}…±±½Ý•€ô™…±Í”)µ…ÍÑ•É}ÁÉ½µ½Ñ¥½¸€ô9<)…ÕÑ¡½É¥Ñå}ÍÑ…ÑÕÌ€ô%9=MQ%}=91d)€((´´´((ŒŒ€ÄÌ¸Y…±¥‘…Ñ¥½¸Í•ÅÕ•¹”‰•™½É”…¹äÁÉ½µ½Ñ¥½¸()IÕ¸Ý¥Ñ¡½ÕÐÁ…¥•¹•É…Ñ¥½¸è()Ñ•áÐ(Ä¸AåÑ¡½¸Íå¹Ñ…à¡•¬(È¸Ñ¥Ù”	½‘äÕ¥‘”•á…ÐÉ•™•É•¹”Ñ•ÍÐ(Ì¸…”I•™•É•¹”¡•…µÍ¡•±°Ñ•ÍÐ(Ð¸Q•ÍÐ€Ì‰½‘ä…Õ‘¥ÐÝ¥Ñ ‰½Õ¹‘…ÉäÕ¹•ÉÑ…¥¹Ñä(Ô¸Q•ÍÐ€Ð‰½‘ä…Õ‘¥ÐÝ¥Ñ ‰½Õ¹‘…ÉäÕ¹•ÉÑ…¥¹Ñä(Ø¸I•½É…ÕÑ¡½ÈÙ¥ÍÕ…°…Ñ•Ì(Ü¸½µÁ…É”ÕÉÉ•¹ÐE…¹Õ‘¥ÐØÈ(à¸I•Ù¥•ÜÉ•ÍÕ±ÑÌÝ¥Ñ Ñ¡”…ÕÑ¡½È)€()=¹±ä…™Ñ•ÈÑ¡…Ð½µÁ…É¥Í½¸µ…ä„Í•Á…É…Ñ”…ÕÑ¡½Èµ…ÁÁÉ½Ù•¡…¹”ÁÉ½µ½Ñ”…¹äÕ‘¥ÐØÈ‘•™¥¹¥Ñ¥½¸¥¹Ñ¼½™™¥¥…°E¸()Q•ÍÐ€Ô¥Ì½ÕÑÍ¥‘”Ñ¡¥ÌÍÁ•¥™¥…Ñ¥½¸…¹µÕÍÐ¹½Ð‰”ÍÑ…ÉÑ•µ•É•±ä‰•…ÕÍ”Õ‘¥ÐØÈÉÕ¹ÌÍÕ•ÍÍ™Õ±±ä¸(

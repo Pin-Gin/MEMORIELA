@@ -101,14 +101,26 @@ def validate_common_landmarks(
 def validate_body_landmarks(
     *,
     chin_y: float,
-    pelvis_y: float,
+    boundary_min_y: float,
+    boundary_best_y: float,
+    boundary_max_y: float,
     knee_y: float,
     soles_y: float,
     image_height: int,
 ) -> None:
-    if not (chin_y < pelvis_y < knee_y < soles_y <= image_height):
+    if not (
+        chin_y
+        < boundary_min_y
+        <= boundary_best_y
+        <= boundary_max_y
+        < knee_y
+        < soles_y
+        <= image_height
+    ):
         raise RuntimeError(
-            "Body landmarks must satisfy chin_y < pelvis_leg_root_y < knee_y < soles_y <= image_height"
+            "Body landmarks must satisfy chin_y < crotch_pelvis_boundary_min_y "
+            "<= crotch_pelvis_boundary_best_y <= crotch_pelvis_boundary_max_y "
+            "< knee_y < soles_y <= image_height"
         )
 
 
@@ -148,20 +160,25 @@ def head_metrics(crown_y: float, chin_y: float, soles_y: float) -> dict[str, flo
 def body_metrics(
     crown_y: float,
     chin_y: float,
-    pelvis_y: float,
+    boundary_y: float,
     knee_y: float,
     soles_y: float,
 ) -> dict[str, float]:
     values = head_metrics(crown_y, chin_y, soles_y)
     head_height = values["head_height_px"]
     figure_height = values["figure_height_px"]
+    lower_body_px = soles_y - boundary_y
+    boundary_to_knee_px = knee_y - boundary_y
+    knee_to_soles_px = soles_y - knee_y
     values.update(
         {
-            "inseam_proxy_ratio": (soles_y - pelvis_y) / figure_height,
-            "chin_to_pelvis_heads": (pelvis_y - chin_y) / head_height,
-            "pelvis_to_knee_heads": (knee_y - pelvis_y) / head_height,
-            "knee_to_soles_heads": (soles_y - knee_y) / head_height,
-            "pelvis_to_soles_heads": (soles_y - pelvis_y) / head_height,
+            "inseam_proxy_ratio": lower_body_px / figure_height,
+            "chin_to_crotch_pelvis_boundary_heads": (boundary_y - chin_y) / head_height,
+            "crotch_pelvis_boundary_to_knee_heads": boundary_to_knee_px / head_height,
+            "knee_to_soles_heads": knee_to_soles_px / head_height,
+            "crotch_pelvis_boundary_to_soles_heads": lower_body_px / head_height,
+            "crotch_pelvis_boundary_to_knee_share": boundary_to_knee_px / lower_body_px,
+            "knee_to_soles_share": knee_to_soles_px / lower_body_px,
         }
     )
     return values
@@ -300,24 +317,48 @@ def build_body_report(
         args.structural_crown_best_y,
         args.structural_crown_max_y,
     ]
-    metrics = [
+    boundary_values = [
+        args.crotch_pelvis_boundary_min_y,
+        args.crotch_pelvis_boundary_best_y,
+        args.crotch_pelvis_boundary_max_y,
+    ]
+
+    head_samples = [
+        head_metrics(crown_y, args.chin_y, args.soles_y)
+        for crown_y in structural_values
+    ]
+    combined_metrics = [
         body_metrics(
             crown_y,
             args.chin_y,
-            args.pelvis_leg_root_y,
+            boundary_y,
             args.knee_y,
             args.soles_y,
         )
         for crown_y in structural_values
+        for boundary_y in boundary_values
     ]
-    best = metrics[1]
+    best = body_metrics(
+        args.structural_crown_best_y,
+        args.chin_y,
+        args.crotch_pelvis_boundary_best_y,
+        args.knee_y,
+        args.soles_y,
+    )
+
     exact_crown = (
         args.structural_crown_min_y
         == args.structural_crown_best_y
         == args.structural_crown_max_y
     )
+    exact_boundary = (
+        args.crotch_pelvis_boundary_min_y
+        == args.crotch_pelvis_boundary_best_y
+        == args.crotch_pelvis_boundary_max_y
+    )
+    exact_combined = exact_crown and exact_boundary
 
-    head_min, head_max = metric_interval([m["head_ratio_heads"] for m in metrics])
+    head_min, head_max = metric_interval([m["head_ratio_heads"] for m in head_samples])
     head_status = classify_interval(
         head_min,
         head_max,
@@ -326,22 +367,39 @@ def build_body_report(
         exact=exact_crown,
     )
 
-    inseam_min, inseam_max = metric_interval([m["inseam_proxy_ratio"] for m in metrics])
+    inseam_min, inseam_max = metric_interval(
+        [m["inseam_proxy_ratio"] for m in combined_metrics]
+    )
     inseam_status = classify_interval(
         inseam_min,
         inseam_max,
         gates["inseam_proxy_target_min"],
         gates["inseam_proxy_target_max"],
-        exact=exact_crown,
+        exact=exact_combined,
     )
 
-    torso_min, torso_max = metric_interval([m["chin_to_pelvis_heads"] for m in metrics])
+    torso_min, torso_max = metric_interval(
+        [m["chin_to_crotch_pelvis_boundary_heads"] for m in combined_metrics]
+    )
     torso_status = classify_interval(
         torso_min,
         torso_max,
         gates["torso_chin_to_crotch_heads_min"],
         gates["torso_chin_to_crotch_heads_max"],
-        exact=exact_crown,
+        exact=exact_combined,
+    )
+
+    boundary_to_knee_heads_min, boundary_to_knee_heads_max = metric_interval(
+        [m["crotch_pelvis_boundary_to_knee_heads"] for m in combined_metrics]
+    )
+    knee_to_soles_heads_min, knee_to_soles_heads_max = metric_interval(
+        [m["knee_to_soles_heads"] for m in combined_metrics]
+    )
+    boundary_to_knee_share_min, boundary_to_knee_share_max = metric_interval(
+        [m["crotch_pelvis_boundary_to_knee_share"] for m in combined_metrics]
+    )
+    knee_to_soles_share_min, knee_to_soles_share_max = metric_interval(
+        [m["knee_to_soles_share"] for m in combined_metrics]
     )
 
     horizontal_geometry = parse_widths(args, best["figure_height_px"])
@@ -363,7 +421,15 @@ def build_body_report(
                 "max_y": args.structural_crown_max_y,
             },
             "chin_y": args.chin_y,
-            "pelvis_leg_root_proxy_y": args.pelvis_leg_root_y,
+            "crotch_pelvis_boundary_proxy": {
+                "min_y": args.crotch_pelvis_boundary_min_y,
+                "best_y": args.crotch_pelvis_boundary_best_y,
+                "max_y": args.crotch_pelvis_boundary_max_y,
+                "measurement_definition": (
+                    "central medial-thigh bifurcation / upper-lower body boundary"
+                ),
+                "garment_line_authority": "DENIED",
+            },
             "knee_y": args.knee_y,
             "soles_y": args.soles_y,
         },
@@ -400,8 +466,8 @@ def build_body_report(
             >= gates["inseam_proxy_model_like_hard_fail_min"],
             "status": inseam_status,
         },
-        "chin_to_pelvis_heads": {
-            "best": best["chin_to_pelvis_heads"],
+        "chin_to_crotch_pelvis_boundary_heads": {
+            "best": best["chin_to_crotch_pelvis_boundary_heads"],
             "range": [torso_min, torso_max],
             "current_gate": [
                 gates["torso_chin_to_crotch_heads_min"],
@@ -410,18 +476,28 @@ def build_body_report(
             "status": torso_status,
         },
         "lower_body_split": {
-            "pelvis_to_knee_heads_best": best["pelvis_to_knee_heads"],
-            "knee_to_soles_heads_best": best["knee_to_soles_heads"],
-            "pelvis_to_knee_share_percent_best": (
-                (args.knee_y - args.pelvis_leg_root_y)
-                / (args.soles_y - args.pelvis_leg_root_y)
-                * 100.0
-            ),
-            "knee_to_soles_share_percent_best": (
-                (args.soles_y - args.knee_y)
-                / (args.soles_y - args.pelvis_leg_root_y)
-                * 100.0
-            ),
+            "crotch_pelvis_boundary_to_knee_heads": {
+                "best": best["crotch_pelvis_boundary_to_knee_heads"],
+                "range": [boundary_to_knee_heads_min, boundary_to_knee_heads_max],
+            },
+            "knee_to_soles_heads": {
+                "best": best["knee_to_soles_heads"],
+                "range": [knee_to_soles_heads_min, knee_to_soles_heads_max],
+            },
+            "crotch_pelvis_boundary_to_knee_share_percent": {
+                "best": best["crotch_pelvis_boundary_to_knee_share"] * 100.0,
+                "range": [
+                    boundary_to_knee_share_min * 100.0,
+                    boundary_to_knee_share_max * 100.0,
+                ],
+            },
+            "knee_to_soles_share_percent": {
+                "best": best["knee_to_soles_share"] * 100.0,
+                "range": [
+                    knee_to_soles_share_min * 100.0,
+                    knee_to_soles_share_max * 100.0,
+                ],
+            },
         },
         "horizontal_geometry": horizontal_geometry,
         "author_visual_review": {
@@ -429,6 +505,12 @@ def build_body_report(
             "chest_front_volume_matches_author_intent": AUTHOR_REVIEW_VALUES[
                 args.chest_front_volume
             ],
+        },
+        "uncertainty_policy": {
+            "structural_crown_samples": len(structural_values),
+            "crotch_pelvis_boundary_samples": len(boundary_values),
+            "combined_body_metric_samples": len(combined_metrics),
+            "method": "FULL_3X3_CROWN_BY_BOUNDARY_COMBINATION",
         },
         "official_qa_replacement": False,
         "composition_execution_allowed": False,
@@ -484,7 +566,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--structural-crown-max-y", type=float, required=True)
     parser.add_argument("--chin-y", type=float, required=True)
 
-    parser.add_argument("--pelvis-leg-root-y", type=float)
+    parser.add_argument("--crotch-pelvis-boundary-min-y", type=float)
+    parser.add_argument("--crotch-pelvis-boundary-best-y", type=float)
+    parser.add_argument("--crotch-pelvis-boundary-max-y", type=float)
     parser.add_argument("--knee-y", type=float)
     parser.add_argument("--soles-y", type=float)
 
@@ -521,15 +605,18 @@ def main() -> int:
         image_height=height,
     )
 
+    boundary_args = (
+        args.crotch_pelvis_boundary_min_y,
+        args.crotch_pelvis_boundary_best_y,
+        args.crotch_pelvis_boundary_max_y,
+    )
+
     if args.mode == "head-shell":
         if args.visible_hair_crown_y is None:
             raise RuntimeError("head-shell mode requires --visible-hair-crown-y")
-        if any(
-            value is not None
-            for value in (args.pelvis_leg_root_y, args.knee_y, args.soles_y)
-        ):
+        if any(value is not None for value in (*boundary_args, args.knee_y, args.soles_y)):
             raise RuntimeError(
-                "head-shell mode does not accept pelvis/knee/soles body landmarks"
+                "head-shell mode does not accept crotch-pelvis-boundary/knee/soles body landmarks"
             )
         report = build_head_shell_report(
             image_path=image_path,
@@ -542,13 +629,17 @@ def main() -> int:
             chin_y=args.chin_y,
         )
     else:
-        if args.pelvis_leg_root_y is None or args.knee_y is None or args.soles_y is None:
+        if any(value is None for value in (*boundary_args, args.knee_y, args.soles_y)):
             raise RuntimeError(
-                "body mode requires --pelvis-leg-root-y, --knee-y, and --soles-y"
+                "body mode requires --crotch-pelvis-boundary-min-y, "
+                "--crotch-pelvis-boundary-best-y, --crotch-pelvis-boundary-max-y, "
+                "--knee-y, and --soles-y"
             )
         validate_body_landmarks(
             chin_y=args.chin_y,
-            pelvis_y=args.pelvis_leg_root_y,
+            boundary_min_y=args.crotch_pelvis_boundary_min_y,
+            boundary_best_y=args.crotch_pelvis_boundary_best_y,
+            boundary_max_y=args.crotch_pelvis_boundary_max_y,
             knee_y=args.knee_y,
             soles_y=args.soles_y,
             image_height=height,
