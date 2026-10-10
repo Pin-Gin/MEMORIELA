@@ -74,14 +74,18 @@ Do not ask the image model to stretch, shrink, lengthen, shorten, or otherwise c
 
 Compile one complete **RAW Body-Geometry-first** prompt for the OpenAI Image API reference-image edit workflow.
 
-This run is Test 3 — Body Geometry enforcement using the author-approved guide landmarks as explicit relative geometry anchors.
+This run is Test 4 — diagnose whether reference-image order changes Body Geometry adherence by using the Body Geometry Guide as Image 1 / edit base while keeping the Face Reference as Image 2 / Face Identity only.
 
 The Image API will receive exactly two reference images in this order:
 
-1. `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` — FACE IDENTITY ONLY
-2. `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png` — BODY GEOMETRY ONLY
+1. `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png` — BODY GEOMETRY EDIT BASE
+2. `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` — FACE IDENTITY ONLY
 
-The Face Reference is restored after Test 2 because it is required to preserve Face Identity. It must remain isolated from full-body scale and internal Body Geometry.
+Image 1 must be treated as the structural full-body edit base, not merely as a loose visual suggestion. Preserve its relative Body Geometry and vertical landmark layout while rendering the active YURA Master appearance.
+
+Image 2 supplies Face Identity only. Do not transfer Image 2 crop, canvas occupancy, apparent head size, or reference-image scale into full-body geometry. Do not reinterpret or rescale Image 1 Body Geometry to match Image 2.
+
+This Test 4 changes reference-image order/role only. No mask is used in this test.
 
 The compiled prompt must:
 
@@ -97,6 +101,7 @@ The compiled prompt must:
 - preserve a compact torso, slightly high pelvis/crotch, and subtly longer lower body within the approved 7.2-head geometry
 - target the YURA-specific image-space inseam proxy range 46.0–46.5%, never 47.0% or more
 - treat the approved Body Geometry Guide landmark values as fixed relative geometry anchors, not output-canvas absolute coordinates
+- treat Image 1 as the Body-Geometry edit base and Image 2 as Face Identity only
 
 ## Required verbatim RAW-generation block
 
@@ -122,6 +127,12 @@ FACE_REFERENCE -> FULL_BODY_SCALE = DENIED
 FACE_REFERENCE -> CANVAS_OCCUPANCY = DENIED
 BODY GEOMETRY EXCLUSIVELY CONTROLS FULL-BODY HEAD SCALE AND TOTAL HEAD COUNT.
 CROWN TO SOLES MUST BE 7.2 HEADS.
+TEST 4 USES IMAGE 1 AS THE BODY-GEOMETRY EDIT BASE.
+IMAGE 1 = YURA_BODY_GEOMETRY_GUIDE.png — BODY GEOMETRY EDIT BASE.
+IMAGE 2 = YURA_FACE_REFERENCE.png — FACE IDENTITY ONLY.
+PRESERVE IMAGE 1 RELATIVE BODY-LANDMARK LAYOUT.
+USE IMAGE 2 FOR FACE IDENTITY ONLY.
+DO NOT RESCALE IMAGE 1 BODY GEOMETRY TO MATCH IMAGE 2.
 APPROVED BODY-GEOMETRY GUIDE LANDMARKS ARE FIXED RELATIVE GEOMETRY ANCHORS.
 BODY GUIDE CROWN Y = 160.
 BODY GUIDE CHIN Y = 340.

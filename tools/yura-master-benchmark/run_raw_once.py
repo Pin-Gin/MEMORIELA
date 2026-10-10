@@ -47,6 +47,12 @@ REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
     "FACE_REFERENCE -> CANVAS_OCCUPANCY = DENIED",
     "BODY GEOMETRY EXCLUSIVELY CONTROLS FULL-BODY HEAD SCALE AND TOTAL HEAD COUNT.",
     "CROWN TO SOLES MUST BE 7.2 HEADS.",
+    "TEST 4 USES IMAGE 1 AS THE BODY-GEOMETRY EDIT BASE.",
+    "IMAGE 1 = YURA_BODY_GEOMETRY_GUIDE.png — BODY GEOMETRY EDIT BASE.",
+    "IMAGE 2 = YURA_FACE_REFERENCE.png — FACE IDENTITY ONLY.",
+    "PRESERVE IMAGE 1 RELATIVE BODY-LANDMARK LAYOUT.",
+    "USE IMAGE 2 FOR FACE IDENTITY ONLY.",
+    "DO NOT RESCALE IMAGE 1 BODY GEOMETRY TO MATCH IMAGE 2.",
     "APPROVED BODY-GEOMETRY GUIDE LANDMARKS ARE FIXED RELATIVE GEOMETRY ANCHORS.",
     "BODY GUIDE CROWN Y = 160.",
     "BODY GUIDE CHIN Y = 340.",
@@ -195,6 +201,15 @@ def write_failure(run_dir: Path, phase: str, errors: list[str], image_api_called
 
 
 def validate_runtime_config(config: dict[str, Any]) -> None:
+    expected_image_reference_order = [
+        "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
+        "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
+    ]
+    if config.get("image_reference_order") != expected_image_reference_order:
+        raise RuntimeError(
+            "Test 4 image_reference_order must be Body Geometry Guide first, Face Reference second"
+        )
+
     body_cfg = config.get("body_geometry_qa")
     if not isinstance(body_cfg, dict) or body_cfg.get("enabled") is not True:
         raise RuntimeError("body_geometry_qa must be enabled")
