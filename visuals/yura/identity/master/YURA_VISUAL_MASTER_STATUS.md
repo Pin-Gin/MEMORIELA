@@ -12,11 +12,20 @@ Required binary state:
 
 ```text
 asset_source = Variance Study Sample 9 original RAW
-asset_sha256 = b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
-binary_commit = PENDING UNTIL THE EXACT RAW IS PRESENT AT THE TARGET PATH
+asset_sha256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+binary_commit = c20ffc31fe5ccd16323ce36b129af93014d269ee (PRESENT / LOCAL SHA-256 VERIFIED BEFORE COMMIT)
 ```
 
 Do not substitute another sample, a grid image, a screenshot, or a recompressed derivative.
+
+Hash provenance correction:
+
+```text
+original local run RAW / committed Master SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+previous chat-upload copy SHA256                = b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
+```
+
+The earlier `b804...` value belonged to the chat-uploaded copy, not the original local `result_raw.png`. The local PowerShell `Get-FileHash` was executed on the exact run artifact immediately before staging/committing the Master.
 
 Source:
 
@@ -26,7 +35,7 @@ run_dir = C:\Dev\MEMORIELA\tools\yura-master-benchmark\runs\run_20261010T201652Z
 git_commit at generation = cc38457dc39e509adcd44da10c75f354c49c8844
 sealed_authority_bundle_sha256 = 11f3626d7eb140cec8f344fa5e78ac8258861d6a45ef648922bd42dc037f4b28
 compiled_prompt_sha256 = e87cb703d9cfd0e0be30231d764396193993577f74680d40cec96353796b22b8
-RAW SHA256 = b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
+RAW SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 ```
 
 ## Author decision
