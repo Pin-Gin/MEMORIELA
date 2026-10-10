@@ -1,0 +1,145 @@
+{
+  "benchmark_version": 6,
+  "purpose": "YURA Test 6 working-Master pelvis-boundary lock benchmark",
+  "authority_order": [
+    "visuals/yura/identity/master/YURA_MASTER_GENERATION_LIFECYCLE.md",
+    "visuals/yura/identity/face/FACE_REFERENCE_RULES.md",
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
+    "visuals/yura/identity/body/BODY_GEOMETRY_GUIDE.md",
+    "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
+    "visuals/yura/identity/master/YURA_VISUAL_TEXT.md",
+    "visuals/yura/identity/master/YURA_VISUAL_MASTER.png",
+    "visuals/yura/identity/composition/YURA_COMPOSITION_AUTHORITY.md"
+  ],
+  "image_reference_order": [
+    "visuals/yura/identity/master/YURA_VISUAL_MASTER.png",
+    "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png"
+  ],
+  "denied_sources": [
+    "characters/YURA.md",
+    "story/**",
+    "manuscript/**",
+    "Git history / old branches / old YURA visual files",
+    "Memory-derived YURA appearance",
+    "past generated YURA images other than explicitly active Authority images"
+  ],
+  "test6": {
+    "working_master_sha256": "81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d",
+    "working_master_binary_commit": "c20ffc31fe5ccd16323ce36b129af93014d269ee",
+    "boundary_from_structural_crown_ratio": 0.537037,
+    "crotch_to_soles_ratio": 0.462963,
+    "minimum_paid_samples": 1,
+    "maximum_paid_samples": 5,
+    "hair_length_change_allowed": false
+  },
+  "codex": {
+    "executable": "codex",
+    "model": "gpt-5.3-codex",
+    "json_trace": true,
+    "read_only_intent": true
+  },
+  "image_api": {
+    "model": "gpt-image-2.5-sunburst-2026-09-08",
+    "endpoint_mode": "edit_with_multiple_references",
+    "size": "1440x2560",
+    "quality": "high",
+    "output_format": "png",
+    "background": "opaque",
+    "n": 1
+  },
+  "body_geometry_qa": {
+    "enabled": true,
+    "landmark_method": "MANUAL_PIXEL_Y_WITH_STRUCTURAL_UNCERTAINTY",
+    "raw_filename": "result_raw.png",
+    "report_filename": "body_geometry_qa.json",
+    "target_heads": 7.2,
+    "acceptable_heads_min": 7.1,
+    "acceptable_heads_max": 7.3,
+    "inseam_proxy_target_min": 0.46,
+    "inseam_proxy_target_max": 0.465,
+    "inseam_proxy_model_like_hard_fail_min": 0.47,
+    "torso_chin_to_crotch_heads_min": 2.7985,
+    "torso_chin_to_crotch_heads_max": 2.942,
+    "required_landmarks": [
+      "structural_crown_min",
+      "structural_crown_best",
+      "structural_crown_max",
+      "chin",
+      "crotch_pelvis_boundary_min",
+      "crotch_pelvis_boundary_best",
+      "crotch_pelvis_boundary_max",
+      "knee",
+      "soles"
+    ],
+    "crotch_pelvis_boundary_definition": "CENTRAL_MEDIAL_THIGH_BIFURCATION_UPPER_LOWER_BODY_BOUNDARY",
+    "garment_line_landmark_authority": "DENIED",
+    "uncertainty_combination_policy": "STRUCTURAL_CROWN_3_X_CROTCH_PELVIS_BOUNDARY_3",
+    "interval_pass_policy": "FULL_INTERVAL_MUST_BE_INSIDE_CURRENT_GATE",
+    "review_overlap_policy": "BLOCK_COMPOSITION_PENDING_REVIEW",
+    "require_overall_build_not_too_thin_review": true,
+    "require_chest_front_volume_match_review": true,
+    "internal_landmark_policy": "NUMERIC_HEAD_RATIO_PLUS_INSEAM_PROXY_PLUS_TORSO_GATE_AND_AUTHOR_VISUAL_REVIEW",
+    "upper_body_rule": "NOT_VERTICALLY_ELONGATED",
+    "torso_rule": "COMPACT_RIBCAGE_TO_PELVIS_AND_WAIST_SPAN",
+    "waist_rule": "NOT_UNNATURALLY_LOW",
+    "pelvis_rule": "SLIGHTLY_HIGH_PELVIS_CROTCH",
+    "lower_body_preference": "SUBTLY_LONGER_LOWER_BODY",
+    "sitting_height_shorthand": "LOW_SITTING_HEIGHT_IMPRESSION",
+    "require_landmarks_reviewed": true,
+    "require_upper_body_not_elongated_confirmation": true,
+    "require_torso_compact_confirmation": true,
+    "require_waist_not_low_confirmation": true,
+    "require_pelvis_high_enough_confirmation": true,
+    "require_lower_body_slightly_longer_confirmation": true,
+    "require_natural_knee_placement_confirmation": true,
+    "require_raw_sha_match_before_composition": true
+  },
+  "composition_postprocess": {
+    "enabled": true,
+    "mode": "DEFERRED_UNTIL_BODY_GEOMETRY_QA_PASS",
+    "require_explicit_body_geometry_pass": true,
+    "require_numeric_body_geometry_qa_pass": true,
+    "require_internal_body_geometry_review_pass": true,
+    "require_torso_specific_gate_pass": true,
+    "body_geometry_qa_filename": "body_geometry_qa.json",
+    "final_width": 1440,
+    "final_height": 2560,
+    "target_figure_height_ratio": 0.89,
+    "acceptable_figure_height_ratio_min": 0.88,
+    "acceptable_figure_height_ratio_max": 0.9,
+    "acceptable_margin_ratio_min": 0.05,
+    "acceptable_margin_ratio_max": 0.06,
+    "horizontal_center_x": 720,
+    "horizontal_center_tolerance_px": 3,
+    "corner_sample_px": 64,
+    "foreground_difference_threshold": 7,
+    "median_filter_size": 3,
+    "raw_edge_guard_px": 2,
+    "resample": "LANCZOS",
+    "raw_filename": "result_raw.png",
+    "final_filename": "result.png",
+    "plan_filename": "composition_postprocess_plan.json",
+    "report_filename": "composition_postprocess.json"
+  },
+  "batch": {
+    "single_run_first": true,
+    "runs_after_single": 4,
+    "max_total_cost_per_run_usd_for_auto_batch": 1.0,
+    "require_authoritative_cost_or_explicit_override": true
+  },
+  "pricing_snapshot": {
+    "as_of": "2026-10-04",
+    "note": "Estimates only. Authoritative billing comes from OpenAI project costs / Usage Dashboard.",
+    "image_model": {
+      "text_input_per_1m_usd": 5.0,
+      "image_input_per_1m_usd": 8.0,
+      "image_output_per_1m_usd": 30.0
+    },
+    "codex_model_standard": {
+      "input_per_1m_usd": 3.5,
+      "cached_input_per_1m_usd": 0.35,
+      "output_per_1m_usd": 28.0
+    }
+  },
+  "runs_dir": "tools/yura-master-benchmark/runs"
+}
