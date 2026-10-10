@@ -6,6 +6,8 @@ import run_raw_once as base
 
 TOOL_DIR = Path(__file__).resolve().parent
 
+# Test 6 is intentionally isolated from the frozen Test 5 runner/config/instruction.
+# Only Test-6-specific globals are overridden; inherited pipeline/QA behavior stays unchanged.
 base.CONFIG_PATH = TOOL_DIR / "config_test6.json"
 base.INSTRUCTION_PATH = TOOL_DIR / "codex_instruction_test6.md"
 base.AUTHORITY_ROLES = {
@@ -38,29 +40,48 @@ TEST6_REQUIRED_PROMPT_INVARIANTS = (
     "DO NOT USE NONUNIFORM BODY SCALING OR COMPOSITION WARP.",
 )
 
+_TEST5_REFERENCE_SPECIFIC = {
+    "FACE REFERENCE DEFINES FACIAL IDENTITY AND FACE-LOCAL GEOMETRY ONLY.",
+    "FACE REFERENCE DOES NOT DEFINE HEAD-TO-BODY SCALE.",
+    "FACE REFERENCE DOES NOT DEFINE HEAD VERTICAL SIZE FOR FULL-BODY PROPORTION.",
+    "FACE REFERENCE DOES NOT DEFINE TOTAL HEAD COUNT.",
+    "FACE REFERENCE DOES NOT DEFINE BODY PROPORTIONS.",
+    "DO NOT INFER BODY PROPORTION FROM FACE REFERENCE CROP OR SCALE.",
+    "DO NOT USE FACE REFERENCE CANVAS OCCUPANCY AS BODY GEOMETRY.",
+    "FACE_REFERENCE -> BODY_PROPORTION = DENIED",
+    "FACE_REFERENCE -> FULL_BODY_SCALE = DENIED",
+    "FACE_REFERENCE -> CANVAS_OCCUPANCY = DENIED",
+    "PRESERVE IMAGE 1 RELATIVE BODY-LANDMARK LAYOUT.",
+    "USE IMAGE 2 FOR FACE IDENTITY ONLY.",
+    "DO NOT RESCALE IMAGE 1 BODY GEOMETRY TO MATCH IMAGE 2.",
+    "FACE REFERENCE PRESERVES FACE IDENTITY ONLY; BODY GEOMETRY GUIDE CONTROLS FULL-BODY HEAD SCALE AND INTERNAL BODY LANDMARK PLACEMENT.",
+}
+
 base.REQUIRED_PROMPT_INVARIANTS = tuple(
-    value for value in base.REQUIRED_PROMPT_INVARIANTS
-    if not value.startswith("TEST 5 USES IMAGE 1")
+    value
+    for value in base.REQUIRED_PROMPT_INVARIANTS
+    if value not in _TEST5_REFERENCE_SPECIFIC
+    and not value.startswith("TEST 5 USES IMAGE 1")
     and not value.startswith("IMAGE 1 = YURA_BODY_GEOMETRY_GUIDE.png")
     and not value.startswith("IMAGE 2 = YURA_FACE_REFERENCE.png")
-    and value != "PRESERVE IMAGE 1 RELATIVE BODY-LANDMARK LAYOUT."
-    and value != "USE IMAGE 2 FOR FACE IDENTITY ONLY."
-    and value != "DO NOT RESCALE IMAGE 1 BODY GEOMETRY TO MATCH IMAGE 2."
 ) + TEST6_REQUIRED_PROMPT_INVARIANTS
 
 _original_validate_runtime_config = base.validate_runtime_config
 
 
 def validate_runtime_config_test6(config: dict) -> None:
-    image_reference_order = config.get("image_reference_order")
     expected = [
         "visuals/yura/identity/master/YURA_VISUAL_MASTER.png",
         "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
     ]
-    if image_reference_order != expected:
-        raise RuntimeError("Test 6 image_reference_order must be Working Master first, Body Geometry Guide second")
+    if config.get("image_reference_order") != expected:
+        raise RuntimeError(
+            "Test 6 image_reference_order must be Working Master first, Body Geometry Guide second"
+        )
 
-    # Reuse all existing QA/Composition checks without the Test-5-specific image-order assertion.
+    # Reuse every existing Test-5-era QA/Composition validation unchanged.
+    # Temporarily substitute only the old reference-order value so the inherited
+    # validator can check the rest of the config without duplicating that logic.
     saved = config["image_reference_order"]
     config["image_reference_order"] = [
         "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
@@ -72,12 +93,20 @@ def validate_runtime_config_test6(config: dict) -> None:
         config["image_reference_order"] = saved
 
     test6 = config.get("test6") or {}
-    if test6.get("working_master_sha256") != "81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d":
+    if test6.get("working_master_sha256") != (
+        "81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d"
+    ):
         raise RuntimeError("Test 6 working_master_sha256 mismatch")
     if float(test6.get("boundary_from_structural_crown_ratio", -1)) != 0.537037:
         raise RuntimeError("Test 6 boundary_from_structural_crown_ratio must be 0.537037")
     if float(test6.get("crotch_to_soles_ratio", -1)) != 0.462963:
         raise RuntimeError("Test 6 crotch_to_soles_ratio must be 0.462963")
+    if int(test6.get("minimum_paid_samples", -1)) != 1:
+        raise RuntimeError("Test 6 minimum_paid_samples must be 1")
+    if int(test6.get("maximum_paid_samples", -1)) != 5:
+        raise RuntimeError("Test 6 maximum_paid_samples must be 5")
+    if test6.get("hair_length_change_allowed") is not False:
+        raise RuntimeError("Test 6 hair_length_change_allowed must be false")
 
 
 base.validate_runtime_config = validate_runtime_config_test6
@@ -92,7 +121,9 @@ def main() -> int:
     actual = base.sha256_file(master)
     expected = "81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d"
     if actual.lower() != expected:
-        raise RuntimeError(f"Test 6 Working Master SHA mismatch: expected={expected} actual={actual}")
+        raise RuntimeError(
+            f"Test 6 Working Master SHA mismatch: expected={expected} actual={actual}"
+        )
     return _original_main()
 
 
