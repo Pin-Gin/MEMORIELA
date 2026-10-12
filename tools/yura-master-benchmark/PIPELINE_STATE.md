@@ -1,10 +1,10 @@
 # YURA Master / Production Pipeline State
 
-Status: **FORMAL SAMPLE 9 MASTER / CANONICAL PIXEL MEASUREMENT V1 COMPLETE / AUTHOR GATE REVIEW NEXT**
+Status: **FORMAL SAMPLE 9 MASTER / FULL-BODY PIXEL V1 COMPLETE / FACE DETAILED SPECIFICATION ACTIVE**
 
 This file is operational state, not visual Authority.
 
-## Formal Master
+## Formal full-body Master
 
 ```text
 path = visuals/yura/identity/master/YURA_VISUAL_MASTER.png
@@ -15,103 +15,162 @@ canvas = 1440 x 2560 px
 formal author promotion = YES
 ```
 
-Sample 9 is the fixed full-body Production baseline.
+Sample 9 remains the fixed full-body Production baseline.
 
-## Completed Master-generation studies
+## Completed Master-generation work
 
 ```text
-Variance Study / Test 5 era = COMPLETE
-10-run RAW success          = 10/10
-Test 5 compiler breakpoint  = ARCHIVED / VERIFIED
-Test 6                      = COMPLETE
-Test 6 paid samples         = 3 / 5 maximum
-Test 6 result               = NO SUPPORT 3/3
-Further pelvis rerolling    = STOPPED
+Variance Study / Test 5 era       = COMPLETE
+10-run RAW success                = 10/10
+Test 5 compiler breakpoint        = ARCHIVED / VERIFIED
+Test 6                            = COMPLETE
+Test 6 paid samples               = 3 / 5 maximum
+Test 6 result                     = NO SUPPORT 3/3
+Further pelvis/boundary rerolling = STOPPED
 ```
 
-## Active Production-spec documents
+## Full-body Production measurement state
+
+Exact canonical Sample 9 binary was verified before measurement.
 
 ```text
-visuals/yura/identity/master/YURA_PRODUCTION_PART_SPEC_PROTOCOL.md
-visuals/yura/identity/master/YURA_MASTER_PIXEL_MEASUREMENT_20261013.md
-visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md
+SHA256 match               = PASS
+canvas                     = 1440 x 2560
+pixel measurement pass V1  = COMPLETE
+proposed body bands        = POPULATED
+body bands fully frozen    = NO
 ```
 
-## Canonical binary pixel access
+Measurement artifact:
 
-The exact formal Master was supplied in ZIP form and verified in the active runtime.
+`visuals/yura/identity/master/YURA_MASTER_PIXEL_MEASUREMENT_20261013.md`
+
+Working detailed spec:
+
+`visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md`
+
+The BODY baseline is now detailed enough to prevent a face-up reference from being used as a substitute for BODY geometry.
+
+## Current sequencing decision
+
+Author-approved plan:
+
+`visuals/yura/identity/face/YURA_FACE_MASTER_PHASE_PLAN_20261013.md`
+
+This newer decision intentionally moves Face detailed work earlier than the previous Production sequence.
+
+Reason:
 
 ```text
-SHA256 match = PASS
-canvas = 1440x2560
-exact pixel measurement available = YES
+BODY pixel V1 is already established
++ Face authority is separated from BODY scale
++ ear elongation/inflation is a known unresolved Face-local defect
++ local hair/ear ambiguity may contribute
++ final Production Visual MD should not freeze before this local system is resolved
 ```
 
-No final number in the current measurement pass comes from a remembered screenshot.
+## Current phase — Face detailed specification
 
-## Production normalization
+Immediate objective:
 
 ```text
-visible hair crown best = y59
-visible sole best = y2471
-H = 2412 px
-Y% = (y - 59) / 2412 * 100
-W% = width / 2412 * 100
+exact current Face Reference binary
+-> hash/identity verification
+-> Face-local pixel measurement
+-> ear actual geometry / visible geometry / hair occlusion separation
+-> compare with formal Sample 9 face region
+-> corrected Face Reference / Face Master candidate design
+-> review/preflight
+-> one paid Face-only Pilot
 ```
 
-The hidden structural crown is not directly visible and is not converted into a new hard gate by unsupported inference.
+No paid generation is the immediate next action.
 
-## Pixel measurement V1 — COMPLETE
+## Face/BODY authority separation
 
-Key measured values:
+Face-local authority may control:
 
 ```text
-chin Y%                      15.589%
-shoulder Y%                  19.527%
-shoulder width/H             16.584%
-face cheek width/H           11.070%
-hair outer width/H           26.202%
-upper-torso width/H          13.143%
-mid-torso width/H            12.396%
-lower-torso width/H          14.013%
-Production boundary Y%       49.461%
-upper-thigh width/H          8.147%
-mid-thigh width/H            5.763%
-knee Y%                      68.035%
-knee width/H                 4.768%
-calf max Y%                  74.461%
-calf max width/H             5.431%
-ankle Y%                     90.837%
-ankle width/H                2.985%
-forefoot width/H             4.104%
+face identity
+face aspect ratio
+eye / brow / nose / mouth layout
+midface / lower-face proportion
+cheek / chin geometry
+ear actual geometry and local placement
+explicitly scoped face-local hair relation
 ```
 
-Cross-part best ratios:
+Face-local authority is denied:
 
 ```text
-lower outer pair / shoulder = 1.020
-mid-torso / shoulder        = 0.748
-upper-thigh / knee          = 1.713
-calf-max / knee             = 1.139
-ankle / knee                = 0.626
-forefoot / ankle            = 1.375
+head-to-body ratio
+shoulder width
+torso length
+pelvis position
+leg length
+full-body size
+full-body canvas occupancy
 ```
 
-## Hair AUTHOR_OVERRIDE
-
-Measured Sample 9 current endpoint:
+## Ear model — three separate variables
 
 ```text
-best ≈ 37.562% H
+EAR ACTUAL GEOMETRY
+= actual ear top/bottom/height/projection/orientation
+
+EAR VISIBLE GEOMETRY
+= how much of the ear is visible after occlusion
+
+HAIR OCCLUSION
+= temple / ear-cover hair overlap and front-behind ordering
 ```
 
-Final intended SUPER-LONG requirement:
+Do not compensate for low ear visibility by enlarging or elongating the actual ear.
+
+Current working ear rule carried from active visual text:
 
 ```text
+ear actual height target = 20–22% of face vertical dimension
+HARD MAX = 23%
+ear visibility has lower priority than correct size / placement
+ear may be partly or almost completely hidden by hair
+```
+
+## Paid Face workflow
+
+```text
+Face measurement / design
+-> free review/preflight
+-> paid Face-only Pilot 1
+-> author review
+```
+
+Pilot 1 can produce only:
+
+```text
+WORKING FACE MASTER CANDIDATE
+```
+
+One good image is not enough for formal Face Master promotion.
+
+Later, after Hair detailed/reference work and Skin freeze, run approximately 10 fixed-condition Face-only generations and promote only if Face/ear stability passes.
+
+## Hair state
+
+Existing AUTHOR_OVERRIDE remains:
+
+```text
+SUPER-LONG mandatory
 must clearly reach waist area
 ordinary-long / mid-back = FAIL
-modest increase only
+modestly longer than Sample 9 only
 not substantially below waist
+```
+
+Measured Sample 9 endpoint:
+
+```text
+≈ 37.562% H
 ```
 
 First proposed final endpoint band:
@@ -120,88 +179,74 @@ First proposed final endpoint band:
 39.0–41.0% H
 ```
 
-Still pending author freeze.
+Hair detailed/reference work follows the one-image Face Pilot checkpoint.
 
-## Skin / hair color measurement
+## Historic Body QA — audit only
 
-```text
-hair median sRGB ≈ (239,236,239)
-hair median Lab  ≈ L*93.70 a*+1.53 b*-1.09
-
-skin median sRGB ≈ (253,244,242)
-skin median Lab  ≈ L*96.82 a*+2.66 b*+2.04
-```
-
-Color gates are proposed SOFT only.
-
-## Neutral body-analysis rule
-
-Current body values are technical 2D character geometry / silhouette measurements.
-
-For the upper torso/chest region:
+Do not revive these as the new Production gate automatically:
 
 ```text
-front-view visible envelope only
-no unseen 3D depth inference
-no generic size taxonomy
-no amplification beyond formal Master
+historic Sample 9 Head best          ≈ 7.214
+historic boundary                    ≈ 49.17%
+historic inseam                      ≈ 50.83%
+historic chin→boundary               ≈ 2.547 heads
+historic Guide boundary target       = 53.7037%
+historic Guide inseam target         = 46.0–46.5%
+historic Guide chin→boundary target  = 2.7985–2.942 heads
 ```
 
-## Proposed gates
+The mismatch remains audit history; it is not rewritten as PASS.
 
-`YURA_DETAILED_PART_SPEC.md` now contains first proposed allowed bands and HARD/SOFT candidates.
-
-They are **NOT ACTIVE** until author review.
-
-Gate-freeze rule:
+## Working method to preserve
 
 ```text
-measure -> propose -> author review -> freeze -> reproduction test
+exact source verification
+-> measurement
+-> uncertainty
+-> measured fact vs author override vs test hypothesis separation
+-> proposed gate
+-> author review
+-> freeze
+-> fixed-condition validation
+-> reproducibility before formal promotion
 ```
 
-Never modify a gate silently after seeing reproduction output.
-
-## Historic QA remains audit only
-
-```text
-Head best              ≈ 7.214
-Boundary best          ≈ 49.17% historic structural-crown normalization
-Inseam best            ≈ 50.83%
-Chin→boundary best     ≈ 2.547 heads
-```
-
-Historic Body Guide targets are not automatically the new Production gate.
+Never silently alter a gate after seeing a generation result.
 
 ## Execution state
 
 ```text
-Formal Sample 9 Master             = COMPLETE
-Test 6                             = COMPLETE / NO SUPPORT
-Further pelvis/boundary rerolls    = STOP
-Part measurement protocol          = COMPLETE
-Exact Master pixel verification    = PASS
-Pixel measurement pass V1          = COMPLETE
-Detailed part-spec values          = POPULATED / PROPOSED
-Author tolerance freeze            = NEXT
-Production Visual MD               = NOT YET
-Full-body GPT reproduction test    = NOT YET
-Hair/Face-up/Ear research          = DEFERRED
-Face-only ~10-run gate             = DEFERRED
-Production archive cleanup         = FINAL PHASE
+Formal Sample 9 Master              = COMPLETE
+Test 6                              = COMPLETE / NO SUPPORT
+Pelvis/boundary rerolls             = STOPPED
+Exact Master pixel verification     = PASS
+Full-body pixel measurement V1      = COMPLETE
+Detailed full-body proposed bands   = COMPLETE / NOT FULLY FROZEN
+Face phase sequencing decision      = RECORDED / AUTHOR APPROVED
+Face detailed specification         = ACTIVE / NEXT
+Exact Face Reference pixel measure  = NOT YET
+Corrected Face candidate design     = NOT YET
+Paid Face-only Pilot 1              = NOT YET
+Working Face Master Candidate       = NOT YET
+Hair detailed/reference work        = AFTER FACE PILOT CHECKPOINT
+Skin gate freeze                    = AFTER HAIR DETAIL CHECKPOINT
+Face-only stability series          = DEFERRED / ~10 PLANNED
+Formal Face Master                  = NOT YET
+Production Visual MD                = NOT YET
+Full-body reproduction test         = NOT YET
+Production archive cleanup          = FINAL PHASE
 ```
 
-## Next action
+## Exact next action
 
-Author reviews the proposed ranges in:
+Read:
 
-`visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md`
+`visuals/yura/identity/face/YURA_FACE_MASTER_PHASE_PLAN_20261013.md`
 
-After accepted edits/freeze:
+Then obtain/load the exact current:
 
-```text
-Production Visual MD
--> GPT full-body reproduction test
--> Hair/Face-up/Ear research
-```
+`visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
 
-No paid generation is required for the immediate review step.
+Verify its repository identity/hash, measure Face-local geometry and the ear actual/visible/occlusion metrics, and compare those measurements to the formal Sample 9 face region.
+
+No paid generation before that measurement/design checkpoint.
