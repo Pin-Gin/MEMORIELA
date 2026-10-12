@@ -1,6 +1,6 @@
 # YURA Master / Production Pipeline State
 
-Status: **FORMAL SAMPLE 9 MASTER / TEST 6 COMPLETE / PIXEL-DERIVED PART SPECIFICATION ACTIVE**
+Status: **FORMAL SAMPLE 9 MASTER / CANONICAL PIXEL MEASUREMENT V1 COMPLETE / AUTHOR GATE REVIEW NEXT**
 
 This file is operational state, not visual Authority.
 
@@ -11,6 +11,7 @@ path = visuals/yura/identity/master/YURA_VISUAL_MASTER.png
 source = Variance Study Sample 9 original local RAW
 SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 binary commit = c20ffc31fe5ccd16323ce36b129af93014d269ee
+canvas = 1440 x 2560 px
 formal author promotion = YES
 ```
 
@@ -28,113 +29,148 @@ Test 6 result               = NO SUPPORT 3/3
 Further pelvis rerolling    = STOPPED
 ```
 
-Test 6 result:
+## Active Production-spec documents
 
-`tools/yura-master-benchmark/TEST6_RESULT_20261012.md`
+```text
+visuals/yura/identity/master/YURA_PRODUCTION_PART_SPEC_PROTOCOL.md
+visuals/yura/identity/master/YURA_MASTER_PIXEL_MEASUREMENT_20261013.md
+visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md
+```
 
-## Historic QA values — audit only
+## Canonical binary pixel access
 
-Sample 9 historic estimates:
+The exact formal Master was supplied in ZIP form and verified in the active runtime.
+
+```text
+SHA256 match = PASS
+canvas = 1440x2560
+exact pixel measurement available = YES
+```
+
+No final number in the current measurement pass comes from a remembered screenshot.
+
+## Production normalization
+
+```text
+visible hair crown best = y59
+visible sole best = y2471
+H = 2412 px
+Y% = (y - 59) / 2412 * 100
+W% = width / 2412 * 100
+```
+
+The hidden structural crown is not directly visible and is not converted into a new hard gate by unsupported inference.
+
+## Pixel measurement V1 — COMPLETE
+
+Key measured values:
+
+```text
+chin Y%                      15.589%
+shoulder Y%                  19.527%
+shoulder width/H             16.584%
+face cheek width/H           11.070%
+hair outer width/H           26.202%
+upper-torso width/H          13.143%
+mid-torso width/H            12.396%
+lower-torso width/H          14.013%
+Production boundary Y%       49.461%
+upper-thigh width/H          8.147%
+mid-thigh width/H            5.763%
+knee Y%                      68.035%
+knee width/H                 4.768%
+calf max Y%                  74.461%
+calf max width/H             5.431%
+ankle Y%                     90.837%
+ankle width/H                2.985%
+forefoot width/H             4.104%
+```
+
+Cross-part best ratios:
+
+```text
+lower outer pair / shoulder = 1.020
+mid-torso / shoulder        = 0.748
+upper-thigh / knee          = 1.713
+calf-max / knee             = 1.139
+ankle / knee                = 0.626
+forefoot / ankle            = 1.375
+```
+
+## Hair AUTHOR_OVERRIDE
+
+Measured Sample 9 current endpoint:
+
+```text
+best ≈ 37.562% H
+```
+
+Final intended SUPER-LONG requirement:
+
+```text
+must clearly reach waist area
+ordinary-long / mid-back = FAIL
+modest increase only
+not substantially below waist
+```
+
+First proposed final endpoint band:
+
+```text
+39.0–41.0% H
+```
+
+Still pending author freeze.
+
+## Skin / hair color measurement
+
+```text
+hair median sRGB ≈ (239,236,239)
+hair median Lab  ≈ L*93.70 a*+1.53 b*-1.09
+
+skin median sRGB ≈ (253,244,242)
+skin median Lab  ≈ L*96.82 a*+2.66 b*+2.04
+```
+
+Color gates are proposed SOFT only.
+
+## Neutral body-analysis rule
+
+Current body values are technical 2D character geometry / silhouette measurements.
+
+For the upper torso/chest region:
+
+```text
+front-view visible envelope only
+no unseen 3D depth inference
+no generic size taxonomy
+no amplification beyond formal Master
+```
+
+## Proposed gates
+
+`YURA_DETAILED_PART_SPEC.md` now contains first proposed allowed bands and HARD/SOFT candidates.
+
+They are **NOT ACTIVE** until author review.
+
+Gate-freeze rule:
+
+```text
+measure -> propose -> author review -> freeze -> reproduction test
+```
+
+Never modify a gate silently after seeing reproduction output.
+
+## Historic QA remains audit only
 
 ```text
 Head best              ≈ 7.214
-Boundary best          ≈ 49.17%
+Boundary best          ≈ 49.17% historic structural-crown normalization
 Inseam best            ≈ 50.83%
 Chin→boundary best     ≈ 2.547 heads
 ```
 
-Historic Body Guide targets are preserved but are not automatically the new Production reproduction gate.
-
-No historic mismatch is rewritten as PASS.
-
-## Current Production-spec phase
-
-New active work documents:
-
-```text
-visuals/yura/identity/master/YURA_PRODUCTION_PART_SPEC_PROTOCOL.md
-visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md
-```
-
-Current task:
-
-```text
-canonical Sample 9 pixel measurement
--> normalized per-part values
--> author-reviewed allowed min/max bands
--> HARD / SOFT / DIAGNOSTIC gate classification
--> Production Visual MD
--> GPT reproduction verification
-```
-
-The detailed part spec is currently DRAFT / NOT GATE-ACTIVE.
-
-## Required part order
-
-```text
-01 Face coarse full-body geometry
-02 Hair
-03 Skin
-04 Shoulders / upper torso
-05 Upper-torso front-volume silhouette
-06 Waist / pelvis
-07 Thighs
-08 Knees
-09 Lower legs
-10 Feet
-11 Arms / hands
-12 Whole-body ratios
-```
-
-## Hair author override
-
-Sample 9 hair is slightly shorter than final intent.
-
-Final required identity:
-
-```text
-SUPER-LONG is mandatory
-must clearly reach the waist area
-merely long / mid-back = FAIL
-only modestly longer than Sample 9
-not dramatically or substantially below waist
-```
-
-This is an AUTHOR_OVERRIDE and must remain distinguishable from direct Sample 9 pixel facts.
-
-## Body-analysis intent
-
-Body measurement is neutral character geometry / silhouette QA.
-
-No sexual amplification, fetishization, provocative pose, or unsupported 3D anatomical inference is part of this phase.
-
-Measure technical image-space features only.
-
-## Canonical binary requirement
-
-Final numbers require the exact Master binary in the active runtime.
-
-```text
-required SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
-```
-
-If a new chat cannot access the binary pixels, request the exact PNG or a ZIP preserving it. Do not estimate final gates from screenshots or memory.
-
-## Future Face/Hair phase — deferred
-
-After full-body part specification + first reproduction verification:
-
-```text
-Hair-style references
--> Hair-definition MD
--> face-up references
--> 3D-style hair-part decomposition research around temple/ear-cover locks
--> ear inflation isolation
--> corrected Face Reference/Master candidates
--> ~10 fixed-condition Face-only runs
--> Face promotion if PASS
--> full-body reproduction recheck
-```
+Historic Body Guide targets are not automatically the new Production gate.
 
 ## Execution state
 
@@ -142,19 +178,30 @@ Hair-style references
 Formal Sample 9 Master             = COMPLETE
 Test 6                             = COMPLETE / NO SUPPORT
 Further pelvis/boundary rerolls    = STOP
-Part measurement protocol          = CREATED
-Detailed part-spec working file    = CREATED / PENDING MEASUREMENTS
-Canonical Master pixel measurement = NEXT
-Author tolerance freeze            = NOT YET
+Part measurement protocol          = COMPLETE
+Exact Master pixel verification    = PASS
+Pixel measurement pass V1          = COMPLETE
+Detailed part-spec values          = POPULATED / PROPOSED
+Author tolerance freeze            = NEXT
 Production Visual MD               = NOT YET
-Full-body GPT reproduction test     = NOT YET
-Hair/Face-up/Ear research           = DEFERRED
-Face-only ~10-run gate              = DEFERRED
-Production archive cleanup          = FINAL PHASE
+Full-body GPT reproduction test    = NOT YET
+Hair/Face-up/Ear research          = DEFERRED
+Face-only ~10-run gate             = DEFERRED
+Production archive cleanup         = FINAL PHASE
 ```
 
 ## Next action
 
-Load the exact canonical Master PNG in the active runtime, verify SHA256, then begin the fixed measurement order and populate `YURA_DETAILED_PART_SPEC.md`.
+Author reviews the proposed ranges in:
 
-No paid generation is required for this next step.
+`visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md`
+
+After accepted edits/freeze:
+
+```text
+Production Visual MD
+-> GPT full-body reproduction test
+-> Hair/Face-up/Ear research
+```
+
+No paid generation is required for the immediate review step.
