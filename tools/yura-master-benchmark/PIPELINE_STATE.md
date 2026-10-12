@@ -1,44 +1,32 @@
 # YURA Master Benchmark — Pipeline State
 
-Status: **ACTIVE / TEST 6 IMPLEMENTED / FREE PREFLIGHT NEXT / COMPOSITION DEFERRED**
+Status: **FORMAL FULL-BODY MASTER SELECTED / TEST 6 COMPLETE / PART SPECIFICATION NEXT**
 
-This file is operational documentation only. It is not a YURA visual Authority.
+This file is operational documentation only. It is not itself a YURA visual Authority.
 
-## Current objective
+## Formal full-body Master
 
-Finish the YURA Master while minimizing generation drift and preserving explicit author intent.
-
-## Current selected visual baseline
-
-Canonical target path:
+Canonical asset:
 
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
-Source: fixed-condition variance-study Sample 9.
-
-Canonical original local RAW SHA-256:
-
 ```text
-81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+source = Variance Study Sample 9
+SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+binary commit = c20ffc31fe5ccd16323ce36b129af93014d269ee
 ```
 
-Binary commit:
+The author has formally promoted Sample 9 after Test 6 failed to produce reproducible boundary improvement.
 
-```text
-c20ffc31fe5ccd16323ce36b129af93014d269ee
-```
+The known historic numeric Body discrepancy remains audit data and is not relabeled as PASS.
 
-Author decision: Sample 9 has the best overall balance of the ten-run series and is the current Working Master / Test 6 recovery baseline.
+## Completed studies
 
-Numeric Body QA is still not PASS. Do not conflate visual selection with numeric gate status.
-
-## Completed variance study
+### Variance Study / Test 5 era
 
 Result:
 
 `tools/yura-master-benchmark/VARIANCE_STUDY_RESULT_20261011.md`
-
-Summary:
 
 ```text
 10 fixed-condition paid runs
@@ -46,156 +34,109 @@ Summary:
 0 Official Body PASS
 4 visual all-PASS
 0 Full PASS
-
-head best mean       ≈ 7.036
-boundary best mean   ≈ 48.628%
-Guide boundary        53.7037%
-inseam best mean     ≈ 51.372%
-target                 46.0–46.5%
-chin→boundary mean   ≈ 2.421 heads
-target                 2.7985–2.942 heads
 ```
 
-Systematic failure:
-
-```text
-crotch/pelvis boundary too high
--> torso/chin→boundary too short
--> inseam too long
-```
-
-## Test 5 breakpoint state
-
-The exact Test 5 compiler instruction is archived at:
+Frozen Test 5 compiler breakpoint:
 
 `tools/yura-master-benchmark/archive/test5_breakpoint_20261011/codex_instruction_test5.md`
 
-Blob SHA:
+### Test 6
+
+Result:
+
+`tools/yura-master-benchmark/TEST6_RESULT_20261012.md`
 
 ```text
-ced76faf3b382052c2928dd2ae0795c739ce2222
+paid samples run = 3
+maximum allowed  = 5
+Sample 1         = NO SUPPORT
+Sample 2         = NO SUPPORT
+Sample 3         = NO SUPPORT
+Sample 4–5       = NOT RUN
 ```
 
-The active-root `codex_instruction.md` from Test 5 has been retired so Test 6 cannot silently execute the old compiler path. The archive is rollback/audit only and is not an active Test 6 Authority.
-
-## Active Test 6 implementation
-
-Specification:
-
-`tools/yura-master-benchmark/TEST6_PELVIS_BOUNDARY_LOCK_SPEC_20261011.md`
-
-Active Test 6 files:
+All three measured Test 6 samples remained around:
 
 ```text
-tools/yura-master-benchmark/config_test6.json
-tools/yura-master-benchmark/codex_instruction_test6.md
-tools/yura-master-benchmark/run_test6_once.py
+normalized crotch/pelvis boundary ≈ 48.98%
+requested target                   = 53.7037%
 ```
 
-Test 6 is derived from Test 5. Unchanged QA/Composition/safety behavior is inherited through the existing runner; Test 6 overrides only the new config, compiler instruction, Working Master role/reference order, exact Master SHA check, and boundary-specific invariants.
-
-Image reference order:
+Conclusion:
 
 ```text
-1. YURA_VISUAL_MASTER.png         = Working Master / edit base
-2. YURA_BODY_GEOMETRY_GUIDE.png   = Body Geometry correction Authority
+H6 = NO SUPPORT
+further pelvis/boundary rerolling = STOP
 ```
 
-The Face Reference is not an Image API pixel input in Test 6. The Working Master's existing Face Identity is preserved.
+## Hair correction requirement
 
-Single causal intervention:
+The formal Master is accepted with one explicit specification correction to carry forward:
 
 ```text
-boundary from structural crown = 53.7037% of crown→soles
-crotch→soles                   = 46.2963%
-boundary                       = central medial-thigh bifurcation / upper-lower body structural boundary
-garment-line authority         = DENIED
+Sample 9 hair is slightly shorter than final intent.
+SUPER-LONG must be defined strongly in the detailed Production specification.
+Hair must clearly reach the waist area.
+Merely long / mid-back output = FAIL.
+Only a modest increase relative to Sample 9 is intended.
+Do not extend dramatically or substantially below the waist.
 ```
 
-Hair length is frozen during Test 6.
+This is a specification/reproduction requirement, not a reason to replace the formal Sample 9 Master image.
 
-## Test 6 bounded replication
+## Historic Body QA audit values
+
+Sample 9:
 
 ```text
-minimum paid samples = 1
-maximum paid samples = 5
+Head best              ≈ 7.214
+Boundary best          ≈ 49.17%
+Inseam best            ≈ 50.83%
+Chin→boundary best     ≈ 2.547 heads
 ```
 
-Every sample must use identical Git/config/compiler/Working-Master/Body-Guide conditions. Measure and author-review each RAW before another is justified.
-
-Stop early on exact accepted support. Continue only to establish whether directional/no-change behavior is reproducible. No lucky reroll selection.
-
-If the bounded series shows no reproducible material improvement, Sample 9 becomes the formal YURA full-body Master by explicit author decision, while the known numeric Body discrepancy remains preserved in audit history and is not relabeled as measured PASS.
-
-## Hair
-
-The author approved a later slight hair-length increase relative to Sample 9:
+Historic targets:
 
 ```text
-same hair identity
-slightly longer only
-reach the waist area more clearly
-not dramatically longer
-not substantially below the waist
+Head                    7.1–7.3
+Boundary                53.7037%
+Inseam                  46.0–46.5%
+Chin→boundary           2.7985–2.942 heads
 ```
 
-It remains excluded from Test 6.
-
-## Official Body QA remains unchanged
-
-```text
-head target = 7.2
-acceptable = 7.1–7.3
-inseam = 46.0–46.5%
->=47.0% hard fail
-chin→boundary = 2.7985–2.942 heads
-structural crown min/best/max
-boundary min/best/max
-full 3×3 uncertainty
-REVIEW_OVERLAP blocks Composition
-```
-
-## Fixed downstream order
-
-After Test 6:
-
-```text
-formal full-body Master selection/promotion
--> detailed per-part Master-derived specifications
--> Production Visual MD
--> GPT reproduction test from full-body Master + Production Visual MD
--> isolate Face ear-enlargement issue
--> corrected Face Reference/Master generation
--> approximately 10 fixed-condition Face-only stability generations
--> Face promotion if PASS
--> full-body reproduction test using new Face Master + full-body Master + Production Visual MD
--> archive benchmark/Test/Master-generation materials away from normal Production generation without deleting them
-```
+Keep these as audit history only. Do not reopen the Body reroll loop unless the author explicitly changes the plan.
 
 ## Execution state
 
 ```text
 Test 5 variance study          = COMPLETE
 Test 5 compiler breakpoint     = ARCHIVED / VERIFIED
-Working Master selection      = COMPLETE
-Working Master binary         = PRESENT / SHA VERIFIED
-Test 6 preregistration        = COMPLETE
-Test 6 implementation files   = COMPLETE
-Test 6 free preflight         = NEXT
-Test 6 paid series            = NOT YET / 1–5 MAX
-Composition                   = BLOCKED DURING TEST 6
-Production switch             = NOT YET
+Sample 9 image selection       = COMPLETE
+Sample 9 formal promotion      = COMPLETE
+Formal full-body Master binary = PRESENT / SHA VERIFIED
+Test 6 preregistration         = COMPLETE
+Test 6 implementation          = COMPLETE
+Test 6 free preflight          = PASS
+Test 6 paid samples            = COMPLETE AT 3 / 5 MAX
+Test 6 conclusion              = NO SUPPORT
+Pelvis/boundary optimization   = STOPPED
+Detailed per-part specification= NEXT
+Production Visual MD           = AFTER PART SPEC
+GPT reproduction verification  = AFTER PRODUCTION VISUAL MD
+Face ear-correction phase      = DEFERRED UNTIL FULL-BODY REPRODUCTION PASS
+Production cleanup/archive     = FINAL PHASE
 ```
 
 ## Next action
 
-Synchronize current `main`, then run:
+Derive detailed per-part visual specifications from the formal full-body Master, while applying only explicit author corrections such as the strengthened SUPER-LONG hair-length definition.
+
+Then create/refine the Production Visual MD and test whether GPT can reproduce YURA from:
 
 ```text
-python tools/yura-master-benchmark/run_test6_once.py --preflight-only
+formal full-body Master
++
+Production Visual MD
 ```
 
-Inspect `compiled_prompt.txt` and `prompt_invariant_check.json` before authorizing any paid Test 6 RAW.
-
-Do not combine hair refinement with Test 6.
-Do not change Body QA numbers unless explicitly ordered.
+Do not begin the Face ear-enlargement correction until this full-body reproduction step is demonstrated.
