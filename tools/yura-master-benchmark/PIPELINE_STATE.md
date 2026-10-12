@@ -1,92 +1,40 @@
-# YURA Master Benchmark — Pipeline State
+# YURA Master / Production Pipeline State
 
-Status: **FORMAL FULL-BODY MASTER SELECTED / TEST 6 COMPLETE / PART SPECIFICATION NEXT**
+Status: **FORMAL SAMPLE 9 MASTER / TEST 6 COMPLETE / PIXEL-DERIVED PART SPECIFICATION ACTIVE**
 
-This file is operational documentation only. It is not itself a YURA visual Authority.
+This file is operational state, not visual Authority.
 
-## Formal full-body Master
-
-Canonical asset:
-
-`visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
+## Formal Master
 
 ```text
-source = Variance Study Sample 9
+path = visuals/yura/identity/master/YURA_VISUAL_MASTER.png
+source = Variance Study Sample 9 original local RAW
 SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 binary commit = c20ffc31fe5ccd16323ce36b129af93014d269ee
+formal author promotion = YES
 ```
 
-The author has formally promoted Sample 9 after Test 6 failed to produce reproducible boundary improvement.
+Sample 9 is the fixed full-body Production baseline.
 
-The known historic numeric Body discrepancy remains audit data and is not relabeled as PASS.
-
-## Completed studies
-
-### Variance Study / Test 5 era
-
-Result:
-
-`tools/yura-master-benchmark/VARIANCE_STUDY_RESULT_20261011.md`
+## Completed Master-generation studies
 
 ```text
-10 fixed-condition paid runs
-10 RAW successes
-0 Official Body PASS
-4 visual all-PASS
-0 Full PASS
+Variance Study / Test 5 era = COMPLETE
+10-run RAW success          = 10/10
+Test 5 compiler breakpoint  = ARCHIVED / VERIFIED
+Test 6                      = COMPLETE
+Test 6 paid samples         = 3 / 5 maximum
+Test 6 result               = NO SUPPORT 3/3
+Further pelvis rerolling    = STOPPED
 ```
 
-Frozen Test 5 compiler breakpoint:
-
-`tools/yura-master-benchmark/archive/test5_breakpoint_20261011/codex_instruction_test5.md`
-
-### Test 6
-
-Result:
+Test 6 result:
 
 `tools/yura-master-benchmark/TEST6_RESULT_20261012.md`
 
-```text
-paid samples run = 3
-maximum allowed  = 5
-Sample 1         = NO SUPPORT
-Sample 2         = NO SUPPORT
-Sample 3         = NO SUPPORT
-Sample 4–5       = NOT RUN
-```
+## Historic QA values — audit only
 
-All three measured Test 6 samples remained around:
-
-```text
-normalized crotch/pelvis boundary ≈ 48.98%
-requested target                   = 53.7037%
-```
-
-Conclusion:
-
-```text
-H6 = NO SUPPORT
-further pelvis/boundary rerolling = STOP
-```
-
-## Hair correction requirement
-
-The formal Master is accepted with one explicit specification correction to carry forward:
-
-```text
-Sample 9 hair is slightly shorter than final intent.
-SUPER-LONG must be defined strongly in the detailed Production specification.
-Hair must clearly reach the waist area.
-Merely long / mid-back output = FAIL.
-Only a modest increase relative to Sample 9 is intended.
-Do not extend dramatically or substantially below the waist.
-```
-
-This is a specification/reproduction requirement, not a reason to replace the formal Sample 9 Master image.
-
-## Historic Body QA audit values
-
-Sample 9:
+Sample 9 historic estimates:
 
 ```text
 Head best              ≈ 7.214
@@ -95,48 +43,118 @@ Inseam best            ≈ 50.83%
 Chin→boundary best     ≈ 2.547 heads
 ```
 
-Historic targets:
+Historic Body Guide targets are preserved but are not automatically the new Production reproduction gate.
+
+No historic mismatch is rewritten as PASS.
+
+## Current Production-spec phase
+
+New active work documents:
 
 ```text
-Head                    7.1–7.3
-Boundary                53.7037%
-Inseam                  46.0–46.5%
-Chin→boundary           2.7985–2.942 heads
+visuals/yura/identity/master/YURA_PRODUCTION_PART_SPEC_PROTOCOL.md
+visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md
 ```
 
-Keep these as audit history only. Do not reopen the Body reroll loop unless the author explicitly changes the plan.
+Current task:
+
+```text
+canonical Sample 9 pixel measurement
+-> normalized per-part values
+-> author-reviewed allowed min/max bands
+-> HARD / SOFT / DIAGNOSTIC gate classification
+-> Production Visual MD
+-> GPT reproduction verification
+```
+
+The detailed part spec is currently DRAFT / NOT GATE-ACTIVE.
+
+## Required part order
+
+```text
+01 Face coarse full-body geometry
+02 Hair
+03 Skin
+04 Shoulders / upper torso
+05 Upper-torso front-volume silhouette
+06 Waist / pelvis
+07 Thighs
+08 Knees
+09 Lower legs
+10 Feet
+11 Arms / hands
+12 Whole-body ratios
+```
+
+## Hair author override
+
+Sample 9 hair is slightly shorter than final intent.
+
+Final required identity:
+
+```text
+SUPER-LONG is mandatory
+must clearly reach the waist area
+merely long / mid-back = FAIL
+only modestly longer than Sample 9
+not dramatically or substantially below waist
+```
+
+This is an AUTHOR_OVERRIDE and must remain distinguishable from direct Sample 9 pixel facts.
+
+## Body-analysis intent
+
+Body measurement is neutral character geometry / silhouette QA.
+
+No sexual amplification, fetishization, provocative pose, or unsupported 3D anatomical inference is part of this phase.
+
+Measure technical image-space features only.
+
+## Canonical binary requirement
+
+Final numbers require the exact Master binary in the active runtime.
+
+```text
+required SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
+```
+
+If a new chat cannot access the binary pixels, request the exact PNG or a ZIP preserving it. Do not estimate final gates from screenshots or memory.
+
+## Future Face/Hair phase — deferred
+
+After full-body part specification + first reproduction verification:
+
+```text
+Hair-style references
+-> Hair-definition MD
+-> face-up references
+-> 3D-style hair-part decomposition research around temple/ear-cover locks
+-> ear inflation isolation
+-> corrected Face Reference/Master candidates
+-> ~10 fixed-condition Face-only runs
+-> Face promotion if PASS
+-> full-body reproduction recheck
+```
 
 ## Execution state
 
 ```text
-Test 5 variance study          = COMPLETE
-Test 5 compiler breakpoint     = ARCHIVED / VERIFIED
-Sample 9 image selection       = COMPLETE
-Sample 9 formal promotion      = COMPLETE
-Formal full-body Master binary = PRESENT / SHA VERIFIED
-Test 6 preregistration         = COMPLETE
-Test 6 implementation          = COMPLETE
-Test 6 free preflight          = PASS
-Test 6 paid samples            = COMPLETE AT 3 / 5 MAX
-Test 6 conclusion              = NO SUPPORT
-Pelvis/boundary optimization   = STOPPED
-Detailed per-part specification= NEXT
-Production Visual MD           = AFTER PART SPEC
-GPT reproduction verification  = AFTER PRODUCTION VISUAL MD
-Face ear-correction phase      = DEFERRED UNTIL FULL-BODY REPRODUCTION PASS
-Production cleanup/archive     = FINAL PHASE
+Formal Sample 9 Master             = COMPLETE
+Test 6                             = COMPLETE / NO SUPPORT
+Further pelvis/boundary rerolls    = STOP
+Part measurement protocol          = CREATED
+Detailed part-spec working file    = CREATED / PENDING MEASUREMENTS
+Canonical Master pixel measurement = NEXT
+Author tolerance freeze            = NOT YET
+Production Visual MD               = NOT YET
+Full-body GPT reproduction test     = NOT YET
+Hair/Face-up/Ear research           = DEFERRED
+Face-only ~10-run gate              = DEFERRED
+Production archive cleanup          = FINAL PHASE
 ```
 
 ## Next action
 
-Derive detailed per-part visual specifications from the formal full-body Master, while applying only explicit author corrections such as the strengthened SUPER-LONG hair-length definition.
+Load the exact canonical Master PNG in the active runtime, verify SHA256, then begin the fixed measurement order and populate `YURA_DETAILED_PART_SPEC.md`.
 
-Then create/refine the Production Visual MD and test whether GPT can reproduce YURA from:
-
-```text
-formal full-body Master
-+
-Production Visual MD
-```
-
-Do not begin the Face ear-enlargement correction until this full-body reproduction step is demonstrated.
+No paid generation is required for this next step.
