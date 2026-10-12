@@ -1,10 +1,10 @@
 # YURA VISUAL MASTER STATUS
 
-Status: **AUTHOR-SELECTED WORKING MASTER / GEOMETRY-CALIBRATION PENDING**
+Status: **FORMAL FULL-BODY MASTER / PRODUCTION SPECIFICATION PENDING**
 
-## Current working Master selection
+## Formal full-body Master
 
-Canonical target path:
+Canonical path:
 
 `visuals/yura/identity/master/YURA_VISUAL_MASTER.png`
 
@@ -18,14 +18,12 @@ binary_commit = c20ffc31fe5ccd16323ce36b129af93014d269ee (PRESENT / LOCAL SHA-25
 
 Do not substitute another sample, a grid image, a screenshot, or a recompressed derivative.
 
-Hash provenance correction:
+Hash provenance:
 
 ```text
 original local run RAW / committed Master SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 previous chat-upload copy SHA256                = b8048a7b5997783df20b0e36b59e9e3d319cd32f10acc0034fb8d376c33e1967
 ```
-
-The earlier `b804...` value belonged to the chat-uploaded copy, not the original local `result_raw.png`. The local PowerShell `Get-FileHash` was executed on the exact run artifact immediately before staging/committing the Master.
 
 Source:
 
@@ -38,14 +36,19 @@ compiled_prompt_sha256 = e87cb703d9cfd0e0be30231d764396193993577f74680d40cec9635
 RAW SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
 ```
 
-## Author decision
+## Author promotion decision
 
-Sample 9 is the author-selected visual baseline and is to be treated as the current YURA working Master for subsequent Master refinement.
+Sample 9 is now the **formal YURA full-body Master** by explicit author decision after Test 6 produced NO SUPPORT in 3/3 fixed-condition samples.
 
-Author visual review:
+Test 6 result:
+
+`tools/yura-master-benchmark/TEST6_RESULT_20261012.md`
+
+Sample 9 remains the author's best-balanced image of the original ten-run variance series.
+
+Author visual basis:
 
 ```text
-hair length                  PASS
 skin                         PASS
 chest                        PASS
 knee position                PASS
@@ -55,11 +58,13 @@ overall build                PASS
 overall balance              BEST OF THE 10-RUN SERIES
 ```
 
-## Important QA distinction
+The earlier hair-length PASS in the variance-study checklist is superseded by the later, more precise author decision below: Sample 9 is accepted as Master, but its hair is slightly shorter than the intended final YURA super-long definition.
 
-This selection is an explicit **visual Master decision**, not a claim that the existing numeric Body Geometry gate passed.
+## Numeric QA distinction remains mandatory
 
-Recorded study measurement for Sample 9:
+Formal Master promotion is an explicit author visual decision. It is **not** a claim that the previous numeric Body Geometry gate passed.
+
+Recorded Sample 9 measurement:
 
 ```text
 Head best              ≈ 7.214
@@ -68,7 +73,7 @@ Inseam best            ≈ 50.83%
 Chin→boundary best     ≈ 2.547 heads
 ```
 
-Current Body Guide / QA targets remain:
+Body Guide / historic QA targets remain:
 
 ```text
 Head                    7.1–7.3
@@ -80,38 +85,43 @@ Chin→boundary           2.7985–2.942 heads
 Therefore:
 
 ```text
-WORKING MASTER VISUAL SELECTION = YES
-NUMERIC BODY QA PASS            = NO
-FINAL COMPOSITION               = BLOCKED
-PRODUCTION AUTHORITY SWITCH     = NOT YET
+FORMAL FULL-BODY MASTER             = YES
+HISTORIC NUMERIC BODY QA PASS       = NO
+KNOWN NUMERIC DISCREPANCY            = RETAINED IN AUDIT HISTORY
+FURTHER PELVIS/BOUNDARY REROLLING    = STOP
+PRODUCTION VISUAL SPECIFICATION      = NEXT
+PRODUCTION REPRODUCTION VERIFICATION = NOT YET
 ```
 
-Do not erase or relabel the numeric failure merely because the image is visually preferred.
+Do not erase, relabel, or retroactively convert the numeric discrepancy into a measured PASS.
 
-## Approved pending hair refinement
+## Super-long hair requirement for the next specification phase
 
-The current Master hair is accepted, but the author wants **slightly more length**.
+The formal Master image is accepted with a known minor hair-length underreach.
 
-Frozen intent:
+The upcoming detailed per-part specification and Production Visual MD must strengthen the hair-length definition as follows:
 
 ```text
-preserve the Sample 9 silver-white straight super-long hair identity
-increase length only slightly
-make the hair reach the waist area more clearly
-do not make it dramatically longer
-do not extend substantially below the waist
+SUPER-LONG is a mandatory identity requirement, not a loose style adjective.
+The hair must read unmistakably as super-long.
+It must reach the waist area clearly.
+A merely long / mid-back impression is a FAIL.
+Relative to Sample 9, the intended correction is modest: slightly more length only.
+Do not extend it dramatically or substantially below the waist.
 ```
 
-This refinement is deliberately **not combined with Test 6**, because Test 6 is restricted to one Body Geometry hypothesis.
+Preserve the Sample 9 silver-white straight super-long hair identity; strengthen only the length requirement in the specification/reproduction contract.
 
-After the pelvis/boundary problem is resolved, hair length may be handled as a separate micro-refinement.
+Do not edit the formal Master image merely to hide this known underlength. The next task is to encode the intended final definition in the detailed visual specification and verify whether GPT reproduction follows it.
 
-## Current geometry priority
+## Next phase
 
-The next active experiment is limited to:
+Proceed in this order:
 
-> Fixing the crotch/pelvis boundary to the approved Body Guide relative position while preserving the selected Master visual balance.
-
-Detailed preregistration:
-
-`tools/yura-master-benchmark/TEST6_PELVIS_BOUNDARY_LOCK_SPEC_20261011.md`
+```text
+1. derive detailed per-part visual specifications from the formal full-body Master
+2. strengthen SUPER-LONG hair length in that specification as defined above
+3. create/refine the Production Visual MD
+4. verify GPT reproduction from formal full-body Master + Production Visual MD
+5. only after whole-body reproduction is demonstrated, isolate the Face ear-enlargement issue
+```
