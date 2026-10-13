@@ -15,9 +15,9 @@ Current validation root:
 Do not use `tools/yura-master-benchmark/**` during this phase.
 That route is reserved for paid generation after the text-only gate passes.
 
-## 2. Read only these two YURA specification files for this run
+## 2. Phase 0 — source verification MUST run before generator capability check
 
-Read:
+Read only:
 
 ```text
 visuals/yura/execution/text-only-root/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md
@@ -28,15 +28,28 @@ Expected Git blob SHA values:
 
 ```text
 YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md
-= 891fb7b6c48c5eaf5375b1f647733b610ecde01c
+= 3a356d96e2b757777f193aa1bb79e4c4e6b3d4b0
 
 YURA_VISUAL_TEXT.md
 = b5565b10c1ba68bed3720fbc5360f0f7925799e9
 ```
 
-Before generation, confirm the files exist on current `main` and record the commit SHA and both blob SHAs.
+Before checking whether image generation is available:
 
-If either blob SHA differs, STOP and report the mismatch. Do not generate.
+```text
+1. obtain current main commit SHA
+2. confirm both files exist on current main
+3. obtain and compare both blob SHAs
+4. record the three SHAs
+```
+
+If either blob SHA differs:
+
+```text
+EXECUTION STATE = SOURCE_BLOCKED
+```
+
+STOP and report the mismatch. Do not generate.
 
 ## 3. Hard source boundary
 
@@ -50,9 +63,15 @@ Do not use Memory, story, manuscript, character files, old images, past generate
 
 `YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md` is an execution / inspection rule. Do not append it wholesale to the image prompt as extra YURA appearance prose.
 
-## 4. Generator boundary
+## 4. Phase 1 — generator capability check
 
-Use Codex-native image generation only.
+After Phase 0 source verification passes, check whether this active Codex session exposes native image-generation capability.
+
+Required route:
+
+```text
+Codex-native image generation only
+```
 
 Do not:
 
@@ -64,16 +83,28 @@ run tools/yura-master-benchmark generation scripts
 use another external image generator as fallback
 ```
 
-If Codex-native image generation is unavailable, STOP and report that condition.
+If Codex-native image generation is unavailable:
 
-## 5. FRONT baseline generation
+```text
+EXECUTION STATE = ENVIRONMENT_BLOCKED
+FRONT RESULT = NOT EXECUTED
+QUALIFICATION COUNT CHANGE = NONE
+```
+
+STOP after reporting the verified commit/blob SHAs and the unavailable capability.
+
+Do **not** report `TEXT-ONLY FRONT = NOT QUALIFY` because no image was generated and no Visual Text quality test occurred.
+
+## 5. Phase 2 — FRONT baseline generation
+
+Only if Phase 0 = PASS and Codex-native image generation is available:
 
 Generate exactly **one** image.
 
 This first run is the cleanest text-only baseline.
 Do not add a new view override or crop override beyond what `YURA_VISUAL_TEXT.md` already specifies.
 
-Therefore preserve its current validation composition:
+Preserve its current validation composition:
 
 ```text
 one YURA
@@ -133,21 +164,33 @@ no CLEAR visibility compensation
 no forced hair clearing solely to expose the ear
 ```
 
+Then classify:
+
+```text
+EXECUTION STATE = GENERATED / QUALIFY
+or
+EXECUTION STATE = GENERATED / NOT QUALIFY
+```
+
+Only a generated and inspected image may receive QUALIFY / NOT QUALIFY.
+
 ## 8. Stop point
 
-After reporting the FRONT result, STOP.
+After the FRONT result, STOP.
 
 Do not automatically generate FRONT_3Q, SIDE, REAR_3Q, or BACK.
 Do not edit `YURA_VISUAL_TEXT.md`.
 Do not enter the paid-generation route.
 
-Return to the author with:
+Return exactly this operational summary:
 
 ```text
-current main commit SHA
-protocol blob SHA
-Visual Text blob SHA
-generated image path
-FRONT inspection result
-TEXT-ONLY FRONT = QUALIFY / NOT QUALIFY
+current main commit SHA: <sha>
+protocol blob SHA: <sha>
+Visual Text blob SHA: <sha>
+Codex-native image generation: AVAILABLE / UNAVAILABLE
+EXECUTION STATE: SOURCE_BLOCKED / ENVIRONMENT_BLOCKED / GENERATED-QUALIFY / GENERATED-NOT-QUALIFY
+generated image path: <path or NONE>
+FRONT inspection result: <result or NOT EXECUTED>
+qualification count change: +1 / 0
 ```
