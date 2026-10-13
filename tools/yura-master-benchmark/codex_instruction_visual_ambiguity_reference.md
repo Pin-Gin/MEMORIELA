@@ -1,4 +1,4 @@
-# Codex Instruction — YURA Visual Ambiguity Diagnostic References
+# Codex Instruction — YURA Visual Ambiguity Text-Only Diagnostics
 
 Use current `main` only.
 
@@ -9,90 +9,146 @@ tools/yura-master-benchmark/CURRENT_HANDOFF.md
 tools/yura-master-benchmark/PIPELINE_STATE.md
 visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md
 tools/yura-master-benchmark/VISUAL_AMBIGUITY_REFERENCE_GENERATION_SPEC_20261013.md
-tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py
-tools/yura-master-benchmark/visual_ambiguity_reference_config.json
+visuals/yura/identity/master/YURA_VISUAL_TEXT.md
 ```
 
-Do not use old Body Geometry Guide, Test 5/6 outputs, old Master images, story/manuscript/characters appearance, Memory-derived appearance, or Git-history visual fallbacks.
+The current test is intentionally **text-only**.
 
-## Phase A — FREE preflight only
+## Hard execution boundary
 
-Do not call the Image API.
-
-```bash
-git fetch origin main
-git status --short
-git rev-parse HEAD
-git rev-parse origin/main
-python -m py_compile tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py
-
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view FRONT --preflight-only
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view FRONT_3Q --preflight-only
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view SIDE --preflight-only
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view REAR_3Q --preflight-only
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view BACK --preflight-only
-```
-
-Require all five to PASS.
-
-Verify for every view:
+During this Codex diagnostic phase:
 
 ```text
-PREFLIGHT_OK
-paid_model_calls = 0
-HEAD == origin/main
-Master SHA256 exact match
-Face SHA256 exact match
-status = DIAGNOSTIC / CANDIDATE ONLY
-known ear defect not promoted = true
-rear-hair unverified not promoted = true
-image reference order = Master, Face
-transport config = dedicated ambiguity config
-prompt invariants complete
-denied-source list complete
+USE Codex-native image generation only
+DO NOT call OpenAI Image API
+DO NOT use OPENAI_API_KEY
+DO NOT run Python code that imports `openai` for image generation
+DO NOT use YURA image references
+DO NOT silently fall back to another image generator
 ```
 
-If any check fails, STOP. Do not generate an image and do not weaken the check.
+If Codex-native image generation is unavailable, STOP and report exactly that. Do not substitute another route.
 
-Return the five run directories and a compact PASS/FAIL table.
+## Appearance payload
 
-## Phase B — diagnostic image generation
+For generation, YURA appearance must come from this file only:
 
-Do this only after the author explicitly approves paid diagnostic generation after reviewing Phase A.
+`visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
 
-Generate one view at a time, never as an automatic five-image batch:
+Do not append appearance corrections from:
 
-```bash
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view FRONT
-# review FRONT before continuing
-
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view FRONT_3Q
-# review
-
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view SIDE
-# review
-
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view REAR_3Q
-# review
-
-python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view BACK
-# review
+```text
+YURA_FACE_REFERENCE.png
+YURA_VISUAL_MASTER.png
+Body Geometry Guide
+YURA_DETAILED_PART_SPEC.md
+Face Reference Rules
+Ambiguity Protocol
+past generated images
+Memory / story / manuscript / characters files
 ```
 
-Each output remains:
+Those documents may be used only for workflow/inspection where applicable, not as extra YURA appearance prompt content.
+
+## Allowed operational envelope
+
+Add only the requested camera/test presentation:
+
+```text
+one YURA
+requested view
+waist-up crop for baseline views
+entire head visible
+neutral upright pose
+neutral calm expression when face is visible
+eye-level camera
+plain unobtrusive background
+no dramatic action
+DIAGNOSTIC / CANDIDATE ONLY
+```
+
+Do not add ear-specific rescue wording outside the Visual Text. The purpose is to test whether the Visual Text already controls it.
+
+## Phase A — five-view baseline
+
+Generate and review **one image at a time** in this order:
+
+```text
+1. FRONT
+2. FRONT_3Q
+3. SIDE
+4. REAR_3Q
+5. BACK
+```
+
+Do not create one five-panel composite.
+
+After every generation, save the image as an independent file and record:
+
+```text
+view achieved: PASS / FAIL
+YURA-like text-only identity: PASS / SOFT FAIL / FAIL
+ear elongation / inflation: NONE / MILD / CLEAR
+ear outward projection: NONE / MILD / CLEAR
+visibility compensation: NONE / SUSPECTED / CLEAR
+hair moved behind ear only to expose ear: NO / SUSPECTED / YES
+naturalness: PASS / MINOR ISSUE / FAIL
+rear-hair note when applicable
+```
+
+Minor unrelated awkwardness is allowed at this stage if the ambiguity behavior is clearly improved and the output remains useful for diagnosis.
+
+A qualifying ear result requires:
+
+```text
+no CLEAR ear elongation / inflation
+no CLEAR outward-projection compensation
+no CLEAR visibility-compensation behavior
+no forced hair clearing for ear exposure
+ear remains low-prominence and visually natural enough for diagnosis
+```
+
+If a major failure is found, STOP the fixed condition and report the weak Visual Text wording that likely needs strengthening. Do not patch the individual image or add ad-hoc prompt rescue text.
+
+## Phase B — repeatability check
+
+If the baseline is usable:
+
+```text
+primary repeat condition = FRONT_3Q
+Visual Text = unchanged
+```
+
+Count the baseline FRONT_3Q if it qualifies, then generate additional independent FRONT_3Q images until there are:
+
+```text
+3 qualifying FRONT_3Q results total
+```
+
+Also require the baseline SIDE result to have no major ear elongation / outward-projection failure.
+
+If `YURA_VISUAL_TEXT.md` changes materially, reset the qualifying count to zero and restart the fixed condition.
+
+## Phase C — stop point
+
+When the Codex transfer gate passes, STOP Codex generation and report:
+
+```text
+five-view baseline results
+three qualifying FRONT_3Q results
+SIDE ear check
+exact Visual Text commit/blob used
+all generated image paths
+whether OpenAI transfer gate = PASS / FAIL
+```
+
+Do not call OpenAI image generation yourself in this phase.
+
+The next author-approved phase is a separate OpenAI **text-only Face-up Pilot 1** using `YURA_VISUAL_TEXT.md` only and no image reference.
+
+All generated images remain:
 
 ```text
 DIAGNOSTIC / CANDIDATE ONLY
 AUTHORITY PROMOTION = NO
 ```
-
-Route/view-behavior PASS is not ear PASS and not rear-hair PASS.
-
-After the five-view route passes, stop generation and move to:
-
-```text
-1. ear ACTUAL / VISIBLE / HAIR OCCLUSION analysis and correction
-2. rear-hair / back-view mass / silhouette / layer-order analysis and correction
-```
-
-Do not silently repair a discovered defect by changing a gate after seeing the output.
