@@ -196,6 +196,15 @@ EAR SIZE AND NATURAL PLACEMENT HAVE PRIORITY OVER EAR VISIBILITY.
 耳の可視部分が小さくても問題としない。
 耳のサイズ維持を可視性より優先する。
 
+### Vertical compactness
+「小さい耳」は、横幅が細いだけではなく、縦方向の高さ自体が短くコンパクトであることを意味する。
+細くても縦に長い耳はYURAの耳として扱わない。
+耳の上端から下端までの縦スパンを短く保ち、頭部側面にコンパクトに収める。
+
+EAR SMALLNESS MUST INCLUDE SHORT VERTICAL HEIGHT.
+NOT narrow-but-tall ears.
+NOT vertically stretched ear silhouette.
+
 ### Shape
 耳を縦長にしない。
 耳を横方向へ広げない。
