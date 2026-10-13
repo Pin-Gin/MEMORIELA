@@ -80,6 +80,10 @@ Dedicated one-view runner:
 
 `tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py`
 
+Dedicated transport config:
+
+`tools/yura-master-benchmark/visual_ambiguity_reference_config.json`
+
 Default set:
 
 ```text
@@ -101,7 +105,7 @@ The runner uses only these image references:
 
 It explicitly denies the historic Body Geometry Guide, old Masters, Test 5/6 outputs, past generated candidates, story/manuscript/characters appearance, Memory appearance, and Git-history visual fallbacks.
 
-The runner reuses only the already-working Image API transport settings from legacy `config.json`; it does not import the Test 5 authority order, Body Guide, historic pelvis/inseam gates, Body QA, or composition gates.
+Image transport settings are isolated in the dedicated ambiguity config. No Test 5 authority order, Body Guide, historic pelvis/inseam gate, Body QA, or composition gate is imported.
 
 ## Diagnostic status rule
 
@@ -156,6 +160,7 @@ Visual Ambiguity Protocol                 = ACTIVE / AUTHOR APPROVED
 Protocol-vs-authority validation           = PASS
 Five-view generation spec                 = COMPLETE
 Dedicated one-view runner                 = COMPLETE / GIT-LEVEL REVIEWED
+Dedicated image transport config          = COMPLETE
 Free preflight                            = NEXT
 Five-view diagnostic generation           = NOT YET
 Route / view-behavior PASS                 = NOT YET
@@ -169,12 +174,13 @@ Production Visual MD                       = NOT YET
 
 ## Exact next action
 
-Run free preflight with **zero paid model calls**, one view at a time, starting with FRONT:
+Run syntax check and then free preflight with **zero paid model calls**, one view at a time, starting with FRONT:
 
 ```text
+python -m py_compile tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py
 python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view FRONT --preflight-only
 ```
 
-Verify `preflight.json`, `compiled_prompt.txt`, exact source SHA-256 values, current-main equality, denied sources, and prompt invariants.
+Verify `preflight.json`, `compiled_prompt.txt`, exact source SHA-256 values, dedicated transport config, current-main equality, denied sources, and prompt invariants.
 
 If FRONT preflight passes, repeat preflight for FRONT_3Q / SIDE / REAR_3Q / BACK. Do not start paid diagnostic generation until the free preflight set is reviewed.
