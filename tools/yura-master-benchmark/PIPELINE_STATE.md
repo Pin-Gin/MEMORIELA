@@ -1,6 +1,6 @@
 # YURA Master / Production Pipeline State
 
-Status: **FORMAL SAMPLE 9 MASTER / FULL-BODY PIXEL V1 COMPLETE / CODEX TEXT-ONLY AMBIGUITY VALIDATION ACTIVE**
+Status: **FORMAL SAMPLE 9 MASTER / FULL-BODY PIXEL V1 COMPLETE / IDENTITY-ROUTE TEXT-ONLY AMBIGUITY VALIDATION ACTIVE**
 
 This file records operational state. It is not Visual Authority.
 
@@ -21,17 +21,24 @@ known issue = current Face Reference has overlong-ear tendency
 
 These image assets remain authority/audit context, but they are not supplied to the current Codex text-only generation test.
 
-## Governing ambiguity rule
+## Repository route boundary
 
-`visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md`
+```text
+visuals/yura/identity/**
+= free / text-only visual definition and diagnostic validation
 
-Current generation spec:
+tools/yura-master-benchmark/**
+= paid-generation execution route after text-only PASS
+```
 
-`tools/yura-master-benchmark/VISUAL_AMBIGUITY_REFERENCE_GENERATION_SPEC_20261013.md`
+Current free-phase rules:
 
-Codex execution instruction:
+```text
+visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md
+visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md
+```
 
-`tools/yura-master-benchmark/codex_instruction_visual_ambiguity_reference.md`
+The paid runner/spec/config under `tools/yura-master-benchmark` are inactive until the text-only gate passes.
 
 ## Current fixed condition
 
@@ -46,8 +53,7 @@ Generator boundary:
 
 ```text
 Codex-native image generation = REQUIRED
-OpenAI Image API = FORBIDDEN in this phase
-OPENAI_API_KEY = NOT USED
+paid OpenAI generation = NOT USED in this phase
 YURA image reference = NONE
 ```
 
@@ -118,20 +124,21 @@ A material Visual Text edit resets the count to zero and begins a new fixed cond
 
 If a weakness is found, strengthen `YURA_VISUAL_TEXT.md` at the specification level and rerun; do not patch a single image with ad-hoc rescue wording.
 
-## OpenAI transfer gate
+## Paid transfer gate
 
 Only after Codex repeatability passes:
 
 ```text
-generator = OpenAI image generation
-appearance input = YURA_VISUAL_TEXT.md only
-image reference = NONE
-initial test = Face-up Pilot 1
+TEXT-ONLY GATE = PASS
+-> activate tools/yura-master-benchmark paid-generation route
+-> appearance input = YURA_VISUAL_TEXT.md only
+-> image reference = NONE
+-> initial paid test = Face-up Pilot 1
 ```
 
-This later route is not yet active.
+The paid route is not yet active.
 
-The old `run_visual_ambiguity_reference_once.py` OpenAI + image-reference route is disabled and must not be used to bypass the current Codex text-only phase.
+Do not use the older image-reference ambiguity runner to bypass the text-only gate.
 
 ## Classification / naturalness
 
@@ -175,7 +182,7 @@ ear visibility lower priority than natural size / placement
 no visibility compensation
 ```
 
-Detailed ACTUAL / VISIBLE / HAIR OCCLUSION measurement/freeze follows the generator-transfer checkpoint.
+Detailed ACTUAL / VISIBLE / HAIR OCCLUSION measurement/freeze follows the paid generator-transfer checkpoint.
 
 ## Hair state
 
@@ -197,17 +204,16 @@ Rear-hair / back-view structure remains unresolved and follows detailed ear work
 Formal Sample 9 Master                      = COMPLETE
 Full-body pixel measurement V1              = COMPLETE
 Visual Ambiguity Protocol                   = ACTIVE / AUTHOR APPROVED
-Codex text-only generation spec             = COMPLETE
-Codex execution instruction                 = COMPLETE
-OpenAI/image-reference ambiguity runner     = DISABLED
+Identity-side text-only diagnostic protocol = ACTIVE / AUTHOR APPROVED
 Codex FRONT baseline                        = NEXT
 Codex FRONT_3Q baseline                     = NOT YET
 Codex SIDE baseline                         = NOT YET
 Codex REAR_3Q baseline                      = NOT YET
 Codex BACK baseline                         = NOT YET
 3x qualifying FRONT_3Q                      = NOT YET
-Codex -> OpenAI transfer gate               = NOT YET
-OpenAI text-only Face-up Pilot 1            = NOT YET
+TEXT-ONLY GATE                              = NOT YET
+Paid tools route                            = AFTER TEXT-ONLY PASS
+Paid text-only Face-up Pilot 1              = NOT YET
 Detailed ear correction                     = AFTER TRANSFER CHECKPOINT
 Rear-hair / back-view correction            = AFTER EAR
 Formal Face Master                          = NOT YET
@@ -218,10 +224,10 @@ Production Visual MD                        = NOT YET
 
 In Codex, read:
 
-`tools/yura-master-benchmark/codex_instruction_visual_ambiguity_reference.md`
+`visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
 
-Then generate the **FRONT** diagnostic image using `YURA_VISUAL_TEXT.md` as the only YURA appearance specification.
+Then generate the **FRONT** diagnostic image using `visuals/yura/identity/master/YURA_VISUAL_TEXT.md` as the only YURA appearance specification.
 
 Inspect the image before generating the next view.
 
-Do not call OpenAI image generation in this phase.
+Do not activate paid generation in this phase.
