@@ -141,6 +141,10 @@ Dedicated one-view runner:
 
 `tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py`
 
+Dedicated image transport config:
+
+`tools/yura-master-benchmark/visual_ambiguity_reference_config.json`
+
 Five independent views:
 
 ```text
@@ -162,7 +166,7 @@ image 2 = active YURA_FACE_REFERENCE.png
 
 It explicitly denies Body Geometry Guide, old Masters, Test 5/6 outputs, past generated candidates, story/manuscript/characters appearance, Memory-derived appearance, and Git-history fallback visuals.
 
-The runner reuses only the previously working Image API transport settings from legacy `config.json`. It does not import Test 5 authority order, old Body Guide gates, historic pelvis/inseam gates, Body QA, or composition gates.
+Image transport settings are isolated in `visual_ambiguity_reference_config.json`; no legacy Test 5 authority order, Body Guide gate, historic pelvis/inseam gate, Body QA, or composition gate is imported.
 
 ## 9. Diagnostic status rule
 
@@ -217,6 +221,7 @@ Visual Ambiguity Protocol                 = ACTIVE / AUTHOR APPROVED
 Protocol-vs-authority validation           = PASS
 Five-view generation spec                 = COMPLETE
 Dedicated one-view runner                 = COMPLETE / GIT-LEVEL REVIEWED
+Dedicated image transport config          = COMPLETE
 Free five-view preflight                   = NEXT
 Five-view diagnostic generation           = NOT YET
 Route / view-behavior PASS                 = NOT YET
@@ -230,9 +235,10 @@ Production Visual MD                       = NOT YET
 
 ## 13. Exact next action
 
-Run **free** preflight with zero paid model calls, starting with FRONT:
+Run **free** syntax check + preflight with zero paid model calls, starting with FRONT:
 
 ```text
+python -m py_compile tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py
 python tools/yura-master-benchmark/run_visual_ambiguity_reference_once.py --view FRONT --preflight-only
 ```
 
@@ -244,7 +250,8 @@ compiled_prompt.txt
 source_hashes.json
 current origin/main equality
 exact Master / Face SHA-256
-five ambiguity prompt invariants
+dedicated image transport config
+ambiguity prompt invariants
 known ear defect not promoted
 rear-hair structure not promoted
 denied-source list
