@@ -28,9 +28,11 @@ Git blob SHA:
 現行Face Referenceの耳は、縦方向の長さ・露出・存在感について既知の欠陥を持つ。
 そのため、現行Face Referenceは耳のGeometry・可視性・存在感のAuthorityとして使用しない。
 
-現在の耳Authorityは以下とする。
+現在の詳細な耳Structure Authorityは以下とする。
 
-`visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
+`visuals/yura/identity/ears/YURA_EAR_STRUCTURE.md`
+
+`visuals/yura/identity/master/YURA_VISUAL_TEXT.md` のEar記述は生成用の要約・補助仕様として使用できるが、耳のACTUAL / VISIBLE / OCCLUSION構造について競合する場合は `YURA_EAR_STRUCTURE.md` を優先する。
 
 **FACE_REFERENCE -> EAR_GEOMETRY = DENIED**
 **FACE_REFERENCE -> EAR_HEIGHT = DENIED**
@@ -38,7 +40,7 @@ Git blob SHA:
 **FACE_REFERENCE -> EAR_PROMINENCE = DENIED**
 
 顔IdentityをReferenceへ合わせる場合でも、Reference内の耳の縦寸法・突出・露出をコピーしてはならない。
-耳はVisual Textのサイズ・配置・遮蔽・非補償規則を優先する。
+耳は `YURA_EAR_STRUCTURE.md` の ACTUAL GEOMETRY / VISIBLE GEOMETRY / HAIR OCCLUSION 規則を優先する。
 
 ## Explicitly denied authority
 
