@@ -6,11 +6,11 @@ Status: **AUTHOR-APPROVED / ACTIVE FREE VALIDATION ROUTE / NOT VISUAL AUTHORITY*
 
 This is the free / text-only validation route for YURA visual specification work.
 
-Repository boundary:
+Current execution root:
 
 ```text
-visuals/yura/identity/**
-= text-only visual definition / ambiguity validation / diagnostic rules
+visuals/yura/execution/text-only-root/**
+= free text-only generation / ambiguity validation / diagnostic inspection
 
 tools/yura-master-benchmark/**
 = paid-generation execution route after the text-only gate passes
@@ -20,15 +20,15 @@ Do not use the paid-generation tool route to perform the current text-only valid
 
 ## 2. Generation source
 
-For Codex diagnostic generation, YURA appearance comes from:
+For Codex diagnostic generation, YURA appearance comes only from:
 
-`visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
+`visuals/yura/execution/text-only-root/YURA_VISUAL_TEXT.md`
 
 Use **Visual Text only** as YURA appearance input.
 
 Do not supply YURA image references during this phase.
 
-Do not append appearance rescue wording from Face Reference, Master image, Detailed Part Spec, Ambiguity Protocol, Memory, story, manuscript, or past generated images.
+Do not append appearance rescue wording from Face Reference, Master image, Detailed Part Spec, Ambiguity Protocol, Memory, story, manuscript, character files, Git history, or past generated images.
 
 Allowed extra generation instructions are presentation-only:
 
@@ -47,14 +47,43 @@ DIAGNOSTIC / CANDIDATE ONLY
 Current phase:
 
 ```text
-Codex-native image generation = USE
+Codex-native image generation = USE when available in the active Codex session
 OpenAI paid image generation = DO NOT USE
 YURA image reference = NONE
 ```
 
-If Codex-native image generation is unavailable, stop. Do not silently substitute the paid route.
+If Codex-native image generation is unavailable in the active session, stop. Do not silently substitute the paid route or another generator.
 
-## 4. Baseline views
+Generator availability is an **environment condition**, not a Visual Text quality result.
+
+## 4. Execution-state classification
+
+Use these states strictly:
+
+```text
+SOURCE_BLOCKED
+= required current-main file/hash verification failed
+
+ENVIRONMENT_BLOCKED
+= required files verified, but Codex-native image generation is unavailable
+
+GENERATED / QUALIFY
+= image was generated and passed the current behavioral gate
+
+GENERATED / NOT QUALIFY
+= image was generated and materially failed the current behavioral gate
+```
+
+Rules:
+
+```text
+No generated image -> never label QUALIFY or NOT QUALIFY.
+ENVIRONMENT_BLOCKED does not reset or increment any repeatability count.
+SOURCE_BLOCKED does not test Visual Text quality.
+Only an inspected generated image may affect the qualification count.
+```
+
+## 5. Baseline views
 
 Generate one image at a time:
 
@@ -68,9 +97,9 @@ Generate one image at a time:
 
 Do not use a five-panel composite for the primary validation set.
 
-## 5. Inspection
+## 6. Inspection
 
-After each image, inspect at minimum:
+After each generated image, inspect at minimum:
 
 ```text
 view achieved
@@ -97,7 +126,7 @@ ear remains low-prominence and visually natural enough for diagnosis
 
 This is an early behavioral gate, not the final numeric ear gate.
 
-## 6. Repeatability gate
+## 7. Repeatability gate
 
 Primary repeat condition:
 
@@ -117,9 +146,9 @@ The baseline FRONT_3Q may count if it qualifies.
 
 A material edit to `YURA_VISUAL_TEXT.md` starts a new fixed condition and resets the qualifying count to zero.
 
-If a weakness is found, strengthen the Visual Text specification. Do not patch one output with ad-hoc rescue wording.
+If a weakness is found in an actually generated result, strengthen the Visual Text specification. Do not patch one output with ad-hoc rescue wording.
 
-## 7. PASS -> paid generation boundary
+## 8. PASS -> paid generation boundary
 
 Only after the text-only repeatability gate passes:
 
@@ -135,7 +164,7 @@ The paid Face-up Pilot remains diagnostic. It tests whether the text-only behavi
 
 Do not activate image-reference rescue before this transfer check.
 
-## 8. Authority status
+## 9. Authority status
 
 All Codex text-only diagnostic outputs remain:
 
