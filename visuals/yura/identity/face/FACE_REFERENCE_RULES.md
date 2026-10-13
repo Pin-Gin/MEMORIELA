@@ -22,12 +22,32 @@ Git blob SHA:
 - 中顔面・下顔面の比率
 - 頬・顎の形状
 - 顔まわりの髪・前髪のIdentity
-- 顔付近で確認可能な耳の見え方
+
+## Ear exception / current known defect
+
+現行Face Referenceの耳は、縦方向の長さ・露出・存在感について既知の欠陥を持つ。
+そのため、現行Face Referenceは耳のGeometry・可視性・存在感のAuthorityとして使用しない。
+
+現在の耳Authorityは以下とする。
+
+`visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
+
+**FACE_REFERENCE -> EAR_GEOMETRY = DENIED**
+**FACE_REFERENCE -> EAR_HEIGHT = DENIED**
+**FACE_REFERENCE -> EAR_VISIBILITY = DENIED**
+**FACE_REFERENCE -> EAR_PROMINENCE = DENIED**
+
+顔IdentityをReferenceへ合わせる場合でも、Reference内の耳の縦寸法・突出・露出をコピーしてはならない。
+耳はVisual Textのサイズ・配置・遮蔽・非補償規則を優先する。
 
 ## Explicitly denied authority
 
 この画像は以下のAuthorityではない。
 
+- 耳の縦寸法・実形状
+- 耳の突出量
+- 耳の可視量・露出
+- 耳の存在感
 - 全身頭身
 - BODYサイズ
 - 身長感
@@ -57,6 +77,9 @@ FACE GEOMETRY IS LOCKED.
 顔を横長化しない。
 目・眉・鼻・口を個別に再配置しない。
 
+Face Referenceが入力として与えられた場合、顔Geometry・内部比率・顔IdentityはReferenceを優先する。
+ただし、このFace lockは耳Geometry・耳可視性・耳存在感には適用しない。
+
 BODY Geometryとの整合は、顔Identityを変更するのではなく、BODY Geometry Guide側の全身配置で解決する。
 
 ## Missing guide fail-safe
@@ -64,3 +87,4 @@ BODY Geometryとの整合は、顔Identityを変更するのではなく、BODY 
 BODY Geometry Guideが存在しない場合、このフェイス画像をBODY Geometryの代替として使用してはならない。
 
 FACE REFERENCE CONTROLS IDENTITY, NOT FULL-BODY SCALE.
+FACE REFERENCE DOES NOT CONTROL CURRENT EAR GEOMETRY.
