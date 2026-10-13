@@ -4,6 +4,22 @@ Status: **AUTHOR-APPROVED / ACTIVE WORK PROTOCOL / NOT BY ITSELF VISUAL AUTHORIT
 
 This protocol is the newest author-approved sequencing rule for ambiguous-structure work. Where an older Face-phase document says to proceed directly to Face measurement or image-reference generation, this protocol inserts text-only ambiguity validation first.
 
+Repository route boundary:
+
+```text
+visuals/yura/identity/**
+= free / text-only visual definition and diagnostic validation
+
+tools/yura-master-benchmark/**
+= paid-generation execution route after text-only PASS
+```
+
+Current free diagnostic entry point:
+
+`visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
+
+Do not use the paid-generation tools route to perform the current text-only validation.
+
 ## 1. Purpose
 
 This protocol governs any YURA feature whose actual structure, visible appearance, or camera-dependent presentation can diverge because of occlusion, overlap, perspective, or generative visibility compensation.
@@ -121,7 +137,9 @@ If a correct structure is naturally hidden, keep it hidden.
 
 ## 7. Text-only diagnostic generation rule
 
-The current first validation phase is **Codex text-only generation**.
+The current first validation phase is **Codex text-only generation** under:
+
+`visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
 
 Generation appearance input:
 
@@ -146,7 +164,7 @@ Do not add new YURA appearance prose outside `YURA_VISUAL_TEXT.md` during genera
 
 `YURA_VISUAL_AMBIGUITY_PROTOCOL.md` is used for **post-generation inspection**, not as extra appearance prompt text in the Codex text-only generation phase.
 
-Do not use OpenAI Image API or `OPENAI_API_KEY` in this Codex validation phase. If Codex-native image generation is unavailable, STOP rather than silently falling back to OpenAI.
+Do not use the paid-generation tool route in this phase. If Codex-native image generation is unavailable, STOP rather than silently falling back to paid generation.
 
 ## 8. Diagnostic output status
 
@@ -217,11 +235,11 @@ The target is natural generation with correct structure, not maximal structural 
 
 Minor unrelated visual awkwardness may be tolerated during the early Codex diagnostic phase if the ambiguity behavior being tested is clearly improved and the image remains usable for diagnosis.
 
-## 11. Codex -> OpenAI transfer gate
+## 11. Codex -> paid-generation transfer gate
 
 The Codex phase is a specification-strength test, not the final generator benchmark.
 
-Before switching generators, require repeated evidence under **unchanged Visual Text** that:
+Before switching to the paid route, require repeated evidence under **unchanged Visual Text** that:
 
 ```text
 no obvious ear elongation / inflation
@@ -242,18 +260,18 @@ The initial five-view set may supply the first FRONT_3Q and SIDE samples. If eit
 
 A material Visual Text change resets the repeated-result count.
 
-## 12. OpenAI text-only Face-up checkpoint
+## 12. Paid text-only Face-up checkpoint
 
-Only after the Codex transfer gate passes:
+Only after the text-only transfer gate passes:
 
 ```text
-switch to OpenAI image generation
-input appearance specification = YURA_VISUAL_TEXT.md only
+switch to tools/yura-master-benchmark paid-generation route
+appearance input = YURA_VISUAL_TEXT.md only
 image reference = NONE
 initial output = Face-up Pilot 1
 ```
 
-The first OpenAI Face-up is still diagnostic. It tests whether the Visual Text behavior transfers to the final generator without relying on the existing Face Reference image.
+The first paid Face-up is still diagnostic. It tests whether the Visual Text behavior transfers to the paid generator without relying on the existing Face Reference image.
 
 Do not silently add image references or generator-specific appearance corrections merely to obtain a pass.
 
@@ -261,15 +279,17 @@ Do not silently add image references or generator-specific appearance correction
 
 ```text
 1. Visual Ambiguity Protocol = fixed
-2. Codex text-only generation using YURA_VISUAL_TEXT.md
+2. Codex text-only generation from visuals/yura/identity route
 3. inspect each generated image
 4. tolerate minor unrelated awkwardness, but require meaningful ear-visibility-compensation suppression
 5. obtain repeated qualifying results under unchanged Visual Text
-6. switch to OpenAI text-only Face-up Pilot 1
-7. inspect generator-transfer behavior
-8. resolve / freeze ear ACTUAL / VISIBLE / OCCLUSION specification
-9. resolve rear-hair / back-view mass / silhouette / layer-order specification
-10. promote corrected reference material only after author review and later stability validation
+6. TEXT-ONLY GATE = PASS
+7. switch to tools/yura-master-benchmark paid route
+8. paid text-only Face-up Pilot 1
+9. inspect generator-transfer behavior
+10. resolve / freeze ear ACTUAL / VISIBLE / OCCLUSION specification
+11. resolve rear-hair / back-view mass / silhouette / layer-order specification
+12. promote corrected reference material only after author review and later stability validation
 ```
 
-No formal Visual Authority promotion is implied by a Codex or OpenAI diagnostic image alone.
+No formal Visual Authority promotion is implied by a Codex or paid diagnostic image alone.
