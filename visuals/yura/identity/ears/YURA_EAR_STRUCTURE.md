@@ -1,12 +1,15 @@
 # YURA EAR STRUCTURE
 
-Status: **AUTHOR-APPROVED / ACTIVE EAR STRUCTURE AUTHORITY / PRE-CORRECTED-FACE-MASTER**
+Status: **DRAFT / FREEZE CANDIDATE / NOT ACTIVE AUTHORITY**
 
 ## 1. Purpose
 
-This file is the structural authority for YURA's ears while the current Face Reference still contains the known long-ear defect.
+この文書は、現行YURA Face Referenceに残る既知の長耳問題を、
+顔Identityを変更せずに修正するための耳構造候補仕様である。
 
-It separates three different things that must not be conflated:
+この段階ではまだ正式Authorityへ昇格しない。
+
+耳について、以下の3要素を必ず分離して扱う。
 
 ```text
 A. EAR ACTUAL GEOMETRY
@@ -14,206 +17,541 @@ B. EAR VISIBLE GEOMETRY
 C. HAIR OCCLUSION
 ```
 
-The purpose is to stop visibility-driven ear enlargement and to provide a stable contract for producing an ear-corrected Face Master without changing YURA's approved face identity.
+耳そのもののサイズと、
+画面上で見えている耳の量と、
+髪による遮蔽を混同してはならない。
+
+目的は、
+
+- 耳の可視性を理由とした縦方向の長大化
+- 耳の外側への突出
+- 耳を見せるための髪操作
+- 耳を隠すための髪Identity変更
+
+を防止することである。
 
 ## 2. Authority boundary
 
-For the current revision phase:
+現在の検証段階では以下の役割分離を使用する。
 
 ```text
 FACE IDENTITY / FACE GEOMETRY
 = visuals/yura/identity/face/YURA_FACE_REFERENCE.png
 
-EAR ACTUAL GEOMETRY / EAR VISIBLE GEOMETRY / HAIR OCCLUSION
+EAR STRUCTURE CANDIDATE
 = this file
 
 CURRENT FACE REFERENCE EAR GEOMETRY
-= KNOWN DEFECT / NOT AUTHORITY
+= KNOWN DEFECT / NOT TARGET
 ```
 
-The current Face Reference must not be used to infer or preserve its ear height, elongation, projection, exposure, or prominence.
+現行Face Referenceから以下を継承してはならない。
 
-Do not infer hidden 3D ear geometry from the visible pixels of the current Face Reference.
+- ear height
+- ear vertical elongation
+- ear projection
+- ear exposure
+- ear prominence
+
+現行Face Referenceの可視ピクセルから、
+髪で隠れている耳の3D形状を逆算してはならない。
 
 ## 3. Source-status separation
 
-### AUTHOR-APPROVED STRUCTURAL RULES
+### AUTHOR OVERRIDE — CURRENT FIXED CONDITION
 
-- Ear actual vertical height target = **20–22% of face vertical**.
-- Ear actual vertical height hard maximum = **23% of face vertical**.
-- The ear is vertically compact, not narrow-and-tall.
-- The ear stays close to the side of the head and does not flare outward.
-- Ear visibility is lower priority than correct ear size and natural placement.
-- Hair may partially or completely hide the ear.
-- In front view, zero visible ear is acceptable.
-- Visibility must never be recovered by enlarging, elongating, rotating, moving outward, or exposing the ear.
+```text
+EAR ACTUAL HEIGHT TARGET
+= 20–22% of face vertical
 
-### PLACEMENT GUIDANCE
+HARD MAX
+= 23% of face vertical
+```
 
-The author-provided ear-placement guidance is used as a placement framework, not as a command to maximize ear height.
+この値は現段階のAUTHOR OVERRIDEとして扱う。
 
-- Upper ear attachment region: approximately around the eye-line region.
-- Lower ear attachment / lower-limit region: approximately around the lower-nose region.
-- Outer upper ear limit: do not rise materially above the eyebrow region.
+測定済み普遍値ではない。
 
-These are placement landmarks only.
+### STRUCTURAL RULES
 
-They do **not** require the ear to fill the whole eyebrow-to-nose region.
-They do **not** override the 20–22% target or 23% hard maximum.
-They do **not** justify a vertically stretched ear.
+- 耳は縦方向にコンパクトである。
+- 「小さい耳」を、細いだけで縦長の耳として解釈しない。
+- 耳は頭部側面に近く沿う。
+- 外側へ張り出さない。
+- 可視性より耳本体の自然なサイズを優先する。
+- 髪による部分遮蔽・完全遮蔽を許可する。
+- 正面では耳が完全に見えなくても正常とする。
 
-## 4. A — EAR ACTUAL GEOMETRY
+## 4. Terminology — face-framing side strand
 
-`EAR ACTUAL GEOMETRY` means the intended physical ear itself, including portions hidden by hair.
+この文書内の
 
-### Height
+`FACE-FRAMING SIDE STRAND`
+
+は、
+
+YURAの顔の左右に自然に落ちる既存の顔脇毛束を指す。
+
+これは一般的な「もみあげ」という人体部位名称ではなく、
+YURAの既存Hair Identityを構成する顔脇の毛束である。
+
+この毛束の、
+
+- 基本位置
+- 太さ
+- 本数
+- 流れ
+- 顔との距離感
+- 全体Hair Identity
+
+を、耳の可視性調整のために再設計してはならない。
+
+# 5. A — EAR ACTUAL GEOMETRY
+
+`EAR ACTUAL GEOMETRY` は、
+髪で隠れている部分を含む、本来存在する耳全体を指す。
+
+## Height
 
 ```text
 TARGET = 20–22% of face vertical
-HARD MAX = 23% of face vertical
+HARD MAX = 23%
 ```
 
-The percentage applies to the intended whole ear, not merely the visible fragment.
+この比率は耳本体の推定全高に適用する。
 
-A visible fragment must never be expanded in order to reconstruct a larger-looking full ear.
+画面上で見えている部分だけに適用しない。
 
-### Shape
+## Vertical compactness
 
-- Vertically compact.
-- Short upper-to-lower span.
-- No long earlobe.
-- No pointed or elf-like tip.
-- No narrow-but-tall silhouette.
-- No excessive internal cartilage detail.
+耳は、
 
-### Projection / orientation
+- short vertically
+- compact
+- low-prominence
 
-- Ear remains close to the side of the head.
-- No outward flare.
-- No camera-facing rotation for readability.
-- No outward displacement away from the face.
+を基本とする。
 
-### Placement
+禁止：
 
-The ear must sit naturally in the side-head region while remaining compact.
+```text
+narrow-but-tall ear
+vertically stretched ear
+long earlobe
+elongated lower ear
+elongated upper ear
+```
 
-If placement landmarks and compact height appear to conflict, **compact height wins**.
-Do not stretch the ear vertically to connect two landmarks.
+耳の高さを減らした結果として、
+横幅を大きくして補償してはならない。
 
-## 5. B — EAR VISIBLE GEOMETRY
+## Placement landmarks
 
-`EAR VISIBLE GEOMETRY` means only the portion actually visible from the current camera view after hair occlusion.
+耳の付け根の上側は、
+おおむね目の高さ付近を基準とする。
 
-It is not the same thing as EAR ACTUAL GEOMETRY.
+耳の付け根の下側は、
+おおむね鼻下付近を基準とする。
 
-### Front view
+耳全体の上端は、
+眉付近を大きく越えないことを目安とする。
 
-For a straight front-view YURA Face Master:
+ただし、これらは位置のガイドであり、
+
+```text
+眉付近
+↓
+鼻下付近
+```
+
+の領域全体を耳で埋める指示ではない。
+
+配置ランドマークを接続するために
+耳を縦方向へ伸ばしてはならない。
+
+ランドマークとコンパクトな耳高が競合する場合：
+
+```text
+COMPACT EAR HEIGHT WINS.
+```
+
+## Projection / orientation
+
+耳は頭部側面に沿わせる。
+
+禁止：
+
+- outward flare
+- outward displacement
+- camera-facing rotation
+- front-facing rotation
+- hair mass outside projection
+
+耳を認識しやすくするために、
+耳を頭部シルエットから外へ出してはならない。
+
+# 6. B — EAR VISIBLE GEOMETRY
+
+`EAR VISIBLE GEOMETRY` は、
+Hair Occlusion適用後にそのカメラ視点から実際に見える耳部分のみを指す。
+
+```text
+EAR ACTUAL GEOMETRY
+!=
+EAR VISIBLE GEOMETRY
+```
+
+この2つを同一視してはならない。
+
+## Front-view primary rule
+
+正面視では、耳は視覚的特徴として読ませない。
 
 ```text
 FULL EAR OUTLINE REQUIRED = NO
-PARTIAL EAR VISIBILITY = ACCEPTABLE
+
+PARTIAL VISIBILITY = ACCEPTABLE
+
 VERY SMALL VISIBLE FRAGMENT = ACCEPTABLE
+
 ZERO VISIBLE EAR = ACCEPTABLE
-LEFT/RIGHT EQUAL VISIBILITY = NOT REQUIRED
+
+LEFT / RIGHT EQUAL VISIBILITY = NOT REQUIRED
 ```
 
-If any ear is visible, prefer only a narrow local fragment rather than a complete outer ear silhouette.
+## Front-view visibility topology
 
-Do not expose the upper and lower ear endpoints merely to make the ear readable.
+正面視では、耳は
 
-Do not enlarge the visible portion so that viewers can identify the ear more easily.
+`FACE-FRAMING SIDE STRAND`
 
-## 6. C — HAIR OCCLUSION
+より前方または顔中央側へ露出してはならない。
 
-Hair occlusion is a valid and preferred solution when natural ear size would otherwise make the ear difficult to see.
+耳が見える場合でも、
 
-### Allowed
+顔脇毛束の後方・外側から
+ごく小さな局所断片だけが見える状態を基本とする。
 
-- Existing face-framing hair may overlap the ear.
-- Hair may hide the upper ear, lower ear, or the whole ear.
-- Left and right occlusion may differ naturally.
-- The ear may disappear completely behind hair in front view.
+### Required topology
 
-### Forbidden compensation
-
-Do not:
-
-- move hair behind the ear merely to expose it;
-- open an artificial gap in the hair for ear readability;
-- fan hair away from the face to show the ear;
-- enlarge the ear because hair covers it;
-- move the ear outward through the hair mass;
-- rotate the ear toward the camera;
-- alter the global hairstyle to reveal the ear.
-
-## 7. Corrected Face Master edit contract
-
-The next ear-correction candidate must begin from the current approved Face Reference.
-
-### MUST NOT CHANGE
-
-- face shape;
-- facial proportions;
-- eye size, shape, spacing, and placement;
-- eyebrows;
-- nose;
-- mouth;
-- cheeks;
-- chin / jaw contour;
-- facial center-line alignment;
-- expression identity;
-- hair color;
-- bangs identity;
-- face-framing hair identity;
-- overall head / hair silhouette except the minimum local ear-occlusion interaction;
-- rendering style, line quality, and color character.
-
-### MAY CHANGE
-
-- ear vertical height;
-- ear upper/lower extent;
-- ear local projection;
-- ear visible amount;
-- the minimum local adjacent hair overlap required to occlude the corrected ear naturally.
-
-### TARGET RESULT
+正面視では：
 
 ```text
-FACE IDENTITY = unchanged
-EAR ACTUAL GEOMETRY = compact
-EAR VISIBLE GEOMETRY = partial / minimal / zero in front view
-HAIR OCCLUSION = natural
-LONG-EAR DEFECT = removed
+EAR IN FRONT OF FACE-FRAMING SIDE STRAND
+= FORBIDDEN
+
+EAR MEDIAL TO FACE-FRAMING SIDE STRAND
+= FORBIDDEN
+
+COMPLETE OUTER EAR CONTOUR
+= FORBIDDEN
+
+EAR TOP AND EAR BOTTOM BOTH CLEARLY VISIBLE
+= FORBIDDEN
+
+CONTINUOUS VERTICAL EAR SILHOUETTE
+= FORBIDDEN
 ```
 
-The edit is not a face redesign.
-It is an ear-only correction with minimal local hair interaction.
+耳の上端と下端を同時に見せない。
 
-## 8. Candidate failure conditions
+耳の外周全体を連続した線として見せない。
+
+目付近から鼻下付近まで、
+一本の連続した耳シルエットを成立させない。
+
+## Visible fragment rule
+
+耳が見える場合は、
+
+```text
+small local fragment
+broken contour
+partial visibility
+```
+
+を許容する。
+
+耳が存在することを視聴者へ説明するために、
+耳の輪郭を完成させてはならない。
+
+見える耳部分から、
+完全な耳形状が容易に読み取れる必要はない。
+
+## Readability prohibition
+
+正面視では、
+
+```text
+EAR READABILITY
+```
+
+を生成目的にしない。
+
+禁止：
+
+- 耳を認識させるために上下端を見せる
+- 耳を認識させるために輪郭を連続させる
+- 耳を認識させるために縦方向へ露出量を増やす
+- 耳を認識させるために外側へ移動する
+
+耳が読みにくい場合：
+
+```text
+KEEP IT UNREADABLE OR HIDE IT.
+```
+
+可視性不足は失敗ではない。
+
+# 7. C — HAIR OCCLUSION
+
+Hair Occlusionは、
+自然な耳Geometryを維持した結果として耳が見えにくくなることを許容するための構造である。
+
+耳を隠すために髪型そのものを作り直す規則ではない。
+
+## Allowed
+
+- 既存のface-framing hairが耳へ重なってよい。
+- 耳上部を隠してよい。
+- 耳下部を隠してよい。
+- 耳全体を隠してよい。
+- 左右の遮蔽量が違ってよい。
+- 正面では両耳とも完全不可視でもよい。
+
+## Face-framing side strand ordering
+
+正面視の基本レイヤー順は、
+
+```text
+CAMERA
+↓
+FACE-FRAMING SIDE STRAND
+↓
+EAR
+↓
+SIDE / REAR HAIR MASS
+```
+
+とする。
+
+つまり、耳は既存の顔脇毛束の奥側に存在してよい。
+
+耳を顔脇毛束より前へ出して
+「耳がある」と説明する必要はない。
+
+## Hair Identity lock
+
+耳を隠す目的でも、
+既存のHair Identityを変更してはならない。
+
+禁止：
+
+```text
+make face-framing side strand wider
+move side strand toward face center
+increase number of side strands
+make side strand artificially thicker
+press hair unnaturally against face
+redesign local hair flow
+```
+
+耳を見せるためにも、
+耳を隠すためにも、
+Hair Identityを再設計しない。
+
+## Forbidden visibility compensation
+
+耳を見せるために：
+
+- 髪を耳の後ろへ送らない。
+- 耳周囲だけ人工的な隙間を開けない。
+- 顔脇毛束を細くしない。
+- 顔脇毛束を分離しない。
+- 髪を外側へ扇状に広げない。
+- 耳を髪の外へ押し出さない。
+- 耳をカメラ方向へ回転させない。
+
+# 8. CROSS-LAYER NO-COMPENSATION RULE
+
+以下の問題を別要素で補償してはならない。
+
+## Ear too difficult to see
+
+禁止：
+
+```text
+increase ear height
+increase ear width
+move ear outward
+rotate ear toward camera
+clear hair
+```
+
+正解：
+
+```text
+ALLOW PARTIAL OR ZERO VISIBILITY
+```
+
+## Ear becomes hidden
+
+これは失敗ではない。
+
+耳を再露出させない。
+
+## Compact ear does not reach both placement landmarks
+
+耳を伸ばさない。
+
+```text
+COMPACT HEIGHT WINS.
+```
+
+## Hair naturally covers the ear
+
+その状態を維持する。
+
+## Occlusion seems asymmetric
+
+左右対称化のために耳や髪を移動しない。
+
+# 9. Corrected Face Master edit contract
+
+将来の耳修正Candidateは、
+現行の作者承認済みFace Referenceを基準にする。
+
+## MUST NOT CHANGE
+
+- face shape
+- facial proportions
+- eye size
+- eye shape
+- eye spacing
+- eye placement
+- eyebrows
+- nose
+- mouth
+- cheeks
+- chin
+- jaw contour
+- facial center-line
+- expression identity
+- hair color
+- bangs identity
+- face-framing hair identity
+- global hair silhouette
+- rendering style
+- line quality
+- color character
+
+## MAY CHANGE
+
+- ear vertical height
+- ear upper extent
+- ear lower extent
+- ear local projection
+- ear visible amount
+- minimum local ear/hair overlap necessary to satisfy the fixed layer ordering
+
+ただし、
+
+`minimum local ear/hair overlap`
+
+はHair Identityの再設計を許可するものではない。
+
+# 10. Target front-view state
+
+正面Face Masterにおける優先結果：
+
+```text
+FACE IDENTITY
+= unchanged
+
+EAR ACTUAL GEOMETRY
+= short / compact
+
+EAR PROJECTION
+= close to side of head
+
+EAR VISIBLE GEOMETRY
+= minimal / fragmented / zero
+
+EAR TOP + BOTTOM BOTH VISIBLE
+= no
+
+COMPLETE EAR OUTLINE
+= no
+
+EAR IN FRONT OF FACE-FRAMING SIDE STRAND
+= no
+
+HAIR IDENTITY
+= unchanged
+
+LONG-EAR DEFECT
+= removed
+```
+
+正面では、
+
+耳が見えないことより、
+耳を長く見せることの方を明確な失敗とする。
+
+# 11. Failure conditions
 
 FAIL if any of the following occurs:
 
-- ear still reads clearly long / vertically stretched;
-- ear becomes wider or more protruding to compensate for reduced height;
-- ear is pushed outside the hair mass for visibility;
-- hair is unnaturally cleared behind the ear;
-- face identity changes materially;
-- eyes, mouth, chin, jaw, or facial proportions drift;
-- global hair identity changes;
-- the candidate improves ear visibility rather than ear correctness.
+- 耳が明確に縦長に見える
+- 実耳がTARGET / HARD MAXを超える
+- 耳の上端と下端が正面から同時に明瞭に見える
+- 耳外周が連続して読める
+- 耳がface-framing side strandより顔中央側へ露出する
+- 耳が髪より前へ押し出される
+- 高さを短くした代償として耳が太くなる
+- 高さを短くした代償として耳が外側へ張り出す
+- 耳可視性のために髪が移動する
+- 耳遮蔽のためにHair Identityが変更される
+- 顔Identityが変わる
+- 目・口・顎・輪郭が変わる
+- global hair identityが変わる
 
-## 9. Promotion rule
+# 12. View scope
 
-A corrected candidate remains **CANDIDATE ONLY** until author review.
-
-Only after explicit author approval may a corrected Face Master replace or supersede the current active `YURA_FACE_REFERENCE.png`.
-
-Promotion of a corrected Face Reference does not automatically change BODY authority or any unrelated part authority.
-
-Until that promotion occurs:
+この強いVisibility Topology Lockは、
 
 ```text
-CURRENT FACE REFERENCE = FACE IDENTITY AUTHORITY
-THIS FILE = EAR STRUCTURE AUTHORITY
+STRAIGHT FRONT VIEW
 ```
+
+を対象とする。
+
+3/4 view、side view、rear 3/4 viewについては、
+正面用遮蔽規則をそのまま機械的に流用しない。
+
+それらは正面耳構造が確定した後、
+別View ruleとして検証する。
+
+# 13. Freeze rule
+
+この文書は現在、
+
+```text
+DRAFT / FREEZE CANDIDATE
+```
+
+である。
+
+作者確認前にACTIVE Authorityへ昇格しない。
+
+作者承認後にのみ、
+
+```text
+AUTHOR-APPROVED / ACTIVE EAR STRUCTURE AUTHORITY
+```
+
+へ変更する。
+
+その後、
+Face-up Master + Visual Text + Ear Structure
+を使った耳修正検証へ進む。
