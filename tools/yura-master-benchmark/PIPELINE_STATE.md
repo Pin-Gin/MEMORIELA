@@ -1,252 +1,182 @@
 # YURA Master / Production Pipeline State
 
-Status: **FORMAL SAMPLE 9 MASTER / FULL-BODY PIXEL V1 COMPLETE / FACE DETAILED SPECIFICATION ACTIVE**
+Status: **FORMAL SAMPLE 9 MASTER / FULL-BODY PIXEL V1 COMPLETE / VISUAL AMBIGUITY VALIDATION ACTIVE**
 
-This file is operational state, not visual Authority.
+This file records operational state. It is not Visual Authority.
 
-## Formal full-body Master
+## Fixed full-body baseline
 
 ```text
 path = visuals/yura/identity/master/YURA_VISUAL_MASTER.png
-source = Variance Study Sample 9 original local RAW
 SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
-binary commit = c20ffc31fe5ccd16323ce36b129af93014d269ee
-canvas = 1440 x 2560 px
 formal author promotion = YES
+full-body pixel measurement V1 = COMPLETE
+body proposed bands = POPULATED / NOT FULLY FROZEN
 ```
 
-Sample 9 remains the fixed full-body Production baseline.
+Sample 9 remains the formal full-body baseline. Historic Test 6 is COMPLETE / NO SUPPORT; further pelvis/boundary rerolling remains stopped.
 
-## Completed Master-generation work
+## Current governing sequence
+
+Newest author-approved operational rule:
+
+`visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md`
+
+Current sequence:
 
 ```text
-Variance Study / Test 5 era       = COMPLETE
-10-run RAW success                = 10/10
-Test 5 compiler breakpoint        = ARCHIVED / VERIFIED
-Test 6                            = COMPLETE
-Test 6 paid samples               = 3 / 5 maximum
-Test 6 result                     = NO SUPPORT 3/3
-Further pelvis/boundary rerolling = STOPPED
+1. validate Visual Ambiguity Protocol against current authorities
+2. identify shortest reproducible Codex-side reference-generation route
+3. prepare fixed five-view diagnostic generation contract
+4. free preflight / invariant verification
+5. generate five separate DIAGNOSTIC / CANDIDATE views
+   FRONT / FRONT_3Q / SIDE / REAR_3Q / BACK
+6. verify route + view behavior
+7. PASS -> resolve ear problem
+8. resolve rear-hair / back-view problem
+9. author review before any corrected multi-view promotion
 ```
 
-## Full-body Production measurement state
+Where older Face-phase files say to proceed directly to Face pixel measurement, the ambiguity protocol inserts these validation and diagnostic-reference steps first.
 
-Exact canonical Sample 9 binary was verified before measurement.
+## Ambiguity classification
+
+Existing source classification remains:
 
 ```text
-SHA256 match               = PASS
-canvas                     = 1440 x 2560
-pixel measurement pass V1  = COMPLETE
-proposed body bands        = POPULATED
-body bands fully frozen    = NO
+MEASURED_MASTER_FACT
+AUTHOR_OVERRIDE
+TEST / HYPOTHESIS
 ```
 
-Measurement artifact:
-
-`visuals/yura/identity/master/YURA_MASTER_PIXEL_MEASUREMENT_20261013.md`
-
-Working detailed spec:
-
-`visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md`
-
-The BODY baseline is now detailed enough to prevent a face-up reference from being used as a substitute for BODY geometry.
-
-## Current sequencing decision
-
-Author-approved plan:
-
-`visuals/yura/identity/face/YURA_FACE_MASTER_PHASE_PLAN_20261013.md`
-
-This newer decision intentionally moves Face detailed work earlier than the previous Production sequence.
-
-Reason:
+Additional ambiguity classification:
 
 ```text
-BODY pixel V1 is already established
-+ Face authority is separated from BODY scale
-+ ear elongation/inflation is a known unresolved Face-local defect
-+ local hair/ear ambiguity may contribute
-+ final Production Visual MD should not freeze before this local system is resolved
+MEASURED_VISIBLE_FACT
+MEASURED_OCCLUSION_FACT
+ESTIMATED_HIDDEN_GEOMETRY
+AUTHOR_INTENT
+VIEW_SPECIFIC_RULE
+NON_COMPENSATION_RULE
 ```
 
-## Current phase — Face detailed specification
+No unsupported hidden 3D geometry is promoted to Authority.
 
-Immediate objective:
+## Naturalness / non-compensation rule
+
+For ambiguous or occluded parts, keep separate:
 
 ```text
-exact current Face Reference binary
--> hash/identity verification
--> Face-local pixel measurement
--> ear actual geometry / visible geometry / hair occlusion separation
--> compare with formal Sample 9 face region
--> corrected Face Reference / Face Master candidate design
--> review/preflight
--> one paid Face-only Pilot
+ACTUAL / STRUCTURAL GEOMETRY
+VISIBLE GEOMETRY
+OCCLUSION / LAYER ORDER
+VIEW
 ```
 
-No paid generation is the immediate next action.
+Low visibility does not require correction.
 
-## Face/BODY authority separation
+Do not expose a hidden feature by enlarging, elongating, widening, moving outward, rotating toward camera, clearing natural occlusion, forcing bilateral symmetry, or unnaturally fanning hair.
 
-Face-local authority may control:
+Acceptance requires:
 
 ```text
-face identity
-face aspect ratio
-eye / brow / nose / mouth layout
-midface / lower-face proportion
-cheek / chin geometry
-ear actual geometry and local placement
-explicitly scoped face-local hair relation
+STRUCTURAL CONSISTENCY
+IDENTITY CONSISTENCY
+VISUAL NATURALNESS
 ```
 
-Face-local authority is denied:
+## Exact Face Reference verification
 
 ```text
-head-to-body ratio
-shoulder width
-torso length
-pelvis position
-leg length
-full-body size
-full-body canvas occupancy
+path = visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+Git blob SHA = 4c96c4ec42f996807248be1aff60ec8a090fd570
+SHA256 = 3f7fddee8c08087484ca1bd48b8ba9eb1acf8221727ef396001091f531c4f030
+canvas = 372 x 364 RGBA
+ZIP ↔ current main = PASS
+PNG integrity = PASS
 ```
 
-## Ear model — three separate variables
+The current Face Reference has a known author-identified ear-longation defect. Current ear pixels are diagnostic evidence, not automatically the corrected target.
+
+## Ear state
+
+Current working rule remains:
+
+```text
+ear actual height target = 20–22% face vertical dimension
+HARD MAX = 23%
+ear visibility lower priority than correct size / placement
+hair may partly or almost completely hide ear
+```
+
+Required decomposition:
 
 ```text
 EAR ACTUAL GEOMETRY
-= actual ear top/bottom/height/projection/orientation
-
 EAR VISIBLE GEOMETRY
-= how much of the ear is visible after occlusion
-
 HAIR OCCLUSION
-= temple / ear-cover hair overlap and front-behind ordering
 ```
 
-Do not compensate for low ear visibility by enlarging or elongating the actual ear.
-
-Current working ear rule carried from active visual text:
-
-```text
-ear actual height target = 20–22% of face vertical dimension
-HARD MAX = 23%
-ear visibility has lower priority than correct size / placement
-ear may be partly or almost completely hidden by hair
-```
-
-## Paid Face workflow
-
-```text
-Face measurement / design
--> free review/preflight
--> paid Face-only Pilot 1
--> author review
-```
-
-Pilot 1 can produce only:
-
-```text
-WORKING FACE MASTER CANDIDATE
-```
-
-One good image is not enough for formal Face Master promotion.
-
-Later, after Hair detailed/reference work and Skin freeze, run approximately 10 fixed-condition Face-only generations and promote only if Face/ear stability passes.
+Ear correction starts only after the diagnostic multi-view route/view-behavior checkpoint passes.
 
 ## Hair state
 
-Existing AUTHOR_OVERRIDE remains:
+Existing AUTHOR_OVERRIDE:
 
 ```text
 SUPER-LONG mandatory
 must clearly reach waist area
 ordinary-long / mid-back = FAIL
-modestly longer than Sample 9 only
+modestly longer than Sample 9
 not substantially below waist
 ```
 
-Measured Sample 9 endpoint:
+Rear-hair / back-view structure is unresolved and follows the ear checkpoint.
+
+## Diagnostic reference state
+
+Default future diagnostic set:
 
 ```text
-≈ 37.562% H
+01 FRONT
+02 FRONT_3Q
+03 SIDE
+04 REAR_3Q
+05 BACK
 ```
 
-First proposed final endpoint band:
+One view per image is preferred. Before ear/rear-hair correction, every new view remains DIAGNOSTIC / CANDIDATE and may not promote the current ear defect or unverified rear-hair structure.
 
-```text
-39.0–41.0% H
-```
+## Paid generation discipline
 
-Hair detailed/reference work follows the one-image Face Pilot checkpoint.
+The diagnostic-route work does not by itself authorize paid generation or formal promotion.
 
-## Historic Body QA — audit only
-
-Do not revive these as the new Production gate automatically:
-
-```text
-historic Sample 9 Head best          ≈ 7.214
-historic boundary                    ≈ 49.17%
-historic inseam                      ≈ 50.83%
-historic chin→boundary               ≈ 2.547 heads
-historic Guide boundary target       = 53.7037%
-historic Guide inseam target         = 46.0–46.5%
-historic Guide chin→boundary target  = 2.7985–2.942 heads
-```
-
-The mismatch remains audit history; it is not rewritten as PASS.
-
-## Working method to preserve
-
-```text
-exact source verification
--> measurement
--> uncertainty
--> measured fact vs author override vs test hypothesis separation
--> proposed gate
--> author review
--> freeze
--> fixed-condition validation
--> reproducibility before formal promotion
-```
-
-Never silently alter a gate after seeing a generation result.
+The previously planned paid Face-only Pilot remains downstream of measurement/design/correction/preflight. One good Pilot may become only a WORKING FACE MASTER CANDIDATE; formal Face Master still requires later fixed-condition stability validation.
 
 ## Execution state
 
 ```text
-Formal Sample 9 Master              = COMPLETE
-Test 6                              = COMPLETE / NO SUPPORT
-Pelvis/boundary rerolls             = STOPPED
-Exact Master pixel verification     = PASS
-Full-body pixel measurement V1      = COMPLETE
-Detailed full-body proposed bands   = COMPLETE / NOT FULLY FROZEN
-Face phase sequencing decision      = RECORDED / AUTHOR APPROVED
-Face detailed specification         = ACTIVE / NEXT
-Exact Face Reference pixel measure  = NOT YET
-Corrected Face candidate design     = NOT YET
-Paid Face-only Pilot 1              = NOT YET
-Working Face Master Candidate       = NOT YET
-Hair detailed/reference work        = AFTER FACE PILOT CHECKPOINT
-Skin gate freeze                    = AFTER HAIR DETAIL CHECKPOINT
-Face-only stability series          = DEFERRED / ~10 PLANNED
-Formal Face Master                  = NOT YET
-Production Visual MD                = NOT YET
-Full-body reproduction test         = NOT YET
-Production archive cleanup          = FINAL PHASE
+Formal Sample 9 Master                    = COMPLETE
+Full-body pixel measurement V1            = COMPLETE
+Detailed body proposed bands              = COMPLETE / NOT FULLY FROZEN
+Visual Ambiguity Protocol                 = ACTIVE / AUTHOR APPROVED
+Protocol-vs-authority validation           = NEXT
+Codex-side shortest reference route       = NOT YET VERIFIED
+Five-view diagnostic contract             = NOT YET
+Five-view diagnostic generation           = NOT YET
+Route / view-behavior PASS                 = NOT YET
+Ear correction                             = AFTER PASS
+Rear-hair / back-view correction           = AFTER EAR
+Corrected multi-view promotion             = NOT YET
+Paid Face-only Pilot 1                     = NOT YET
+Formal Face Master                         = NOT YET
+Production Visual MD                       = NOT YET
 ```
 
 ## Exact next action
 
-Read:
+Validate:
 
-`visuals/yura/identity/face/YURA_FACE_MASTER_PHASE_PLAN_20261013.md`
+`visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md`
 
-Then obtain/load the exact current:
-
-`visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
-
-Verify its repository identity/hash, measure Face-local geometry and the ear actual/visible/occlusion metrics, and compare those measurements to the formal Sample 9 face region.
-
-No paid generation before that measurement/design checkpoint.
+against current Face, ear, Hair, and Production rules, then inspect the repository for the shortest existing Codex-side image/reference generation route and prepare a fixed five-view diagnostic contract before any generation.
