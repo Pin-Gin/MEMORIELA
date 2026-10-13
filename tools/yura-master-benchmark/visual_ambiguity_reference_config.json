@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "purpose": "YURA visual ambiguity diagnostic single-view reference generation",
+  "status": "DIAGNOSTIC_CANDIDATE_ONLY",
+  "image_api": {
+    "model": "gpt-image-2.5-sunburst-2026-09-08",
+    "endpoint_mode": "edit_with_multiple_references",
+    "size": "1440x2560",
+    "quality": "high",
+    "output_format": "png",
+    "background": "opaque",
+    "n": 1
+  }
+}
