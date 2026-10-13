@@ -12,7 +12,8 @@ from pathlib import Path
 from typing import Any
 
 TOOL_DIR = Path(__file__).resolve().parent
-LEGACY_CONFIG_PATH = TOOL_DIR / "config.json"
+CONFIG_PATH = TOOL_DIR / "visual_ambiguity_reference_config.json"
+CONFIG_REL = "tools/yura-master-benchmark/visual_ambiguity_reference_config.json"
 RUNS_DIR_REL = Path("tools/yura-master-benchmark/runs/visual_ambiguity_reference")
 
 MASTER_IMAGE = "visuals/yura/identity/master/YURA_VISUAL_MASTER.png"
@@ -113,6 +114,24 @@ def jsonable(obj: Any) -> Any:
     return obj
 
 
+def validate_transport_config(config: dict[str, Any]) -> dict[str, Any]:
+    if config.get("status") != "DIAGNOSTIC_CANDIDATE_ONLY":
+        raise RuntimeError("transport config status must be DIAGNOSTIC_CANDIDATE_ONLY")
+    image_cfg = config.get("image_api")
+    if not isinstance(image_cfg, dict):
+        raise RuntimeError("image_api config missing")
+    if image_cfg.get("endpoint_mode") != "edit_with_multiple_references":
+        raise RuntimeError("image_api endpoint_mode must be edit_with_multiple_references")
+    if image_cfg.get("output_format") != "png":
+        raise RuntimeError("image_api output_format must be png")
+    if image_cfg.get("n") != 1:
+        raise RuntimeError("image_api n must be 1")
+    for key in ("model", "size", "quality", "background"):
+        if not image_cfg.get(key):
+            raise RuntimeError(f"image_api {key} is required")
+    return image_cfg
+
+
 def build_prompt(view: str) -> str:
     view_instruction = VIEW_INSTRUCTIONS[view]
     return f"""YURA visual ambiguity diagnostic reference generation.
@@ -200,7 +219,7 @@ def main() -> int:
     if head != origin_main:
         raise RuntimeError(f"HEAD must equal current origin/main: HEAD={head} origin/main={origin_main}")
 
-    required_paths = [MASTER_IMAGE, FACE_IMAGE, *TEXT_SOURCES]
+    required_paths = [MASTER_IMAGE, FACE_IMAGE, *TEXT_SOURCES, CONFIG_REL]
     dirty = run(["git", "status", "--porcelain", "--", *required_paths], root).stdout.strip()
     if dirty:
         raise RuntimeError("Required source files have uncommitted changes:\n" + dirty)
@@ -218,6 +237,9 @@ def main() -> int:
             raise RuntimeError(
                 f"exact image SHA256 mismatch: {rel}: expected={expected} actual={actual}"
             )
+
+    transport_config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    image_cfg = validate_transport_config(transport_config)
 
     prompt = build_prompt(view)
     validate_prompt(prompt)
@@ -241,6 +263,7 @@ def main() -> int:
         "git_commit": head,
         "paid_model_calls": 0 if args.preflight_only else None,
         "image_reference_order": [MASTER_IMAGE, FACE_IMAGE],
+        "image_transport": image_cfg,
         "denied_sources": DENIED_SOURCES,
         "source_sha256": source_hashes,
         "prompt_invariants": REQUIRED_PROMPT_INVARIANTS,
@@ -258,11 +281,6 @@ def main() -> int:
     if not os.environ.get("OPENAI_API_KEY"):
         raise RuntimeError("OPENAI_API_KEY is required for Image API execution")
 
-    # Reuse only the already-working Image API transport settings from the legacy benchmark config.
-    # No Test 5 authority order, Body Guide, body QA, pelvis/inseam gate, or composition gate is imported.
-    legacy_cfg = json.loads(LEGACY_CONFIG_PATH.read_text(encoding="utf-8"))
-    image_cfg = legacy_cfg["image_api"]
-
     from openai import OpenAI
 
     client = OpenAI()
@@ -274,9 +292,9 @@ def main() -> int:
             prompt=prompt,
             size=image_cfg["size"],
             quality=image_cfg["quality"],
-            output_format="png",
+            output_format=image_cfg["output_format"],
             background=image_cfg["background"],
-            n=1,
+            n=image_cfg["n"],
         )
     finally:
         for file_obj in refs:
@@ -302,6 +320,7 @@ def main() -> int:
         "authority_promotion": "NO",
         "view": view,
         "git_commit": head,
+        "image_transport": image_cfg,
         "output_path": str(output_path),
         "output_sha256": output_sha256,
         "ear_known_defect_not_promoted": True,
