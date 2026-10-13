@@ -7,8 +7,11 @@ This protocol is the newest author-approved sequencing rule for ambiguous-struct
 Repository route boundary:
 
 ```text
+visuals/execution/text-only-root/**
+= shared temporary free / text-only validation workspace
+
 visuals/yura/identity/**
-= free / text-only visual definition and diagnostic validation
+= YURA formal visual authority / final consolidation target
 
 tools/yura-master-benchmark/**
 = paid-generation execution route after text-only PASS
@@ -16,7 +19,11 @@ tools/yura-master-benchmark/**
 
 Current free diagnostic entry point:
 
-`visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
+`visuals/execution/text-only-root/TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
+
+Current YURA text-only execution copy:
+
+`visuals/execution/text-only-root/YURA_VISUAL_TEXT.md`
 
 Do not use the paid-generation tools route to perform the current text-only validation.
 
@@ -137,15 +144,17 @@ If a correct structure is naturally hidden, keep it hidden.
 
 ## 7. Text-only diagnostic generation rule
 
-The current first validation phase is **Codex text-only generation** under:
+The current first validation phase is **Codex text-only generation** under the shared temporary route:
 
-`visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
+`visuals/execution/text-only-root/TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
 
-Generation appearance input:
+Generation appearance input for the current YURA run:
 
 ```text
-visuals/yura/identity/master/YURA_VISUAL_TEXT.md
+visuals/execution/text-only-root/YURA_VISUAL_TEXT.md
 ```
+
+The execution copy is temporary and does not replace YURA's formal identity-side source.
 
 No YURA image reference is supplied during this phase.
 
@@ -153,7 +162,7 @@ The only allowed extra generation instructions are the operational test envelope
 
 ```text
 requested view
-waist-up / face-up crop as specified by the test
+crop / framing as specified by the Run
 neutral pose / expression
 plain background
 single-character constraint
@@ -162,9 +171,9 @@ DIAGNOSTIC / CANDIDATE status
 
 Do not add new YURA appearance prose outside `YURA_VISUAL_TEXT.md` during generation. The purpose is to test the strength of the Visual Text itself.
 
-`YURA_VISUAL_AMBIGUITY_PROTOCOL.md` is used for **post-generation inspection**, not as extra appearance prompt text in the Codex text-only generation phase.
+`YURA_VISUAL_AMBIGUITY_PROTOCOL.md` is used for **YURA-specific interpretation / inspection**, not appended wholesale as extra appearance prompt text in the text-only generation phase.
 
-Do not use the paid-generation tool route in this phase. If Codex-native image generation is unavailable, STOP rather than silently falling back to paid generation.
+Do not use the paid-generation tool route in this phase. If Codex-native image generation is unavailable, classify the Run as `ENVIRONMENT_BLOCKED`; do not silently fall back to paid generation.
 
 ## 8. Diagnostic output status
 
@@ -249,7 +258,7 @@ ear remains low-prominence
 identity remains recognizably YURA-like from text alone
 ```
 
-Minimum working threshold:
+Current YURA working threshold:
 
 ```text
 three qualifying FRONT_3Q results under the same unchanged Visual Text
@@ -259,6 +268,8 @@ three qualifying FRONT_3Q results under the same unchanged Visual Text
 The initial five-view set may supply the first FRONT_3Q and SIDE samples. If either fails materially, strengthen the relevant Visual Text specification first and restart the fixed condition.
 
 A material Visual Text change resets the repeated-result count.
+
+This YURA-specific gate is a Run rule layered on top of the shared `TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`; it does not make the shared protocol YURA-specific.
 
 ## 12. Paid text-only Face-up checkpoint
 
@@ -279,17 +290,19 @@ Do not silently add image references or generator-specific appearance correction
 
 ```text
 1. Visual Ambiguity Protocol = fixed
-2. Codex text-only generation from visuals/yura/identity route
-3. inspect each generated image
-4. tolerate minor unrelated awkwardness, but require meaningful ear-visibility-compensation suppression
-5. obtain repeated qualifying results under unchanged Visual Text
-6. TEXT-ONLY GATE = PASS
-7. switch to tools/yura-master-benchmark paid route
-8. paid text-only Face-up Pilot 1
-9. inspect generator-transfer behavior
-10. resolve / freeze ear ACTUAL / VISIBLE / OCCLUSION specification
-11. resolve rear-hair / back-view mass / silhouette / layer-order specification
-12. promote corrected reference material only after author review and later stability validation
+2. stage YURA Visual Text in visuals/execution/text-only-root
+3. Codex text-only generation from the shared temporary execution route
+4. inspect each generated image
+5. tolerate minor unrelated awkwardness, but require meaningful ear-visibility-compensation suppression
+6. obtain repeated qualifying results under unchanged Visual Text
+7. TEXT-ONLY GATE = PASS
+8. switch to tools/yura-master-benchmark paid route
+9. paid text-only Face-up Pilot 1
+10. inspect generator-transfer behavior
+11. resolve / freeze ear ACTUAL / VISIBLE / OCCLUSION specification
+12. resolve rear-hair / back-view mass / silhouette / layer-order specification
+13. consolidate accepted rules into YURA identity part directories
+14. remove obsolete YURA temporary execution copy when no longer needed
 ```
 
 No formal Visual Authority promotion is implied by a Codex or paid diagnostic image alone.
