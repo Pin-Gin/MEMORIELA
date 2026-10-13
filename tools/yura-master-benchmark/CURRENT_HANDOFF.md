@@ -1,6 +1,6 @@
 # YURA Master / Production Specification — Current Handoff
 
-Status: **SAMPLE 9 FORMAL FULL-BODY MASTER / PIXEL V1 COMPLETE / CODEX TEXT-ONLY AMBIGUITY VALIDATION NEXT**
+Status: **SAMPLE 9 FORMAL FULL-BODY MASTER / PIXEL V1 COMPLETE / IDENTITY-ROUTE TEXT-ONLY VALIDATION NEXT**
 
 This is the primary operational restart document. It is not itself Visual Authority.
 
@@ -10,37 +10,51 @@ Newest author-approved order:
 
 ```text
 Visual Ambiguity Protocol
+-> visuals/yura/identity text-only diagnostic route
 -> Codex-native text-only generation
 -> inspect generated images
 -> confirm repeated ear-suppression behavior under unchanged Visual Text
--> OpenAI text-only Face-up Pilot 1
+-> TEXT-ONLY GATE = PASS
+-> tools/yura-master-benchmark paid-generation route
+-> paid text-only Face-up Pilot 1
 -> detailed ear ACTUAL / VISIBLE / HAIR OCCLUSION work
 -> rear-hair / back-view mass / silhouette / layer-order work
 ```
 
-The Codex phase does not use OpenAI Image API and does not use YURA image references.
+Repository boundary:
 
-## 2. Required read order
+```text
+visuals/yura/identity/**
+= free / text-only visual definition and diagnostic validation
+
+tools/yura-master-benchmark/**
+= paid-generation execution route after text-only PASS
+```
+
+Do not use the paid tools route for the current Codex text-only validation.
+
+## 2. Required read order for the current free phase
 
 Read current `main` in this order:
 
 ```text
 1. tools/yura-master-benchmark/CURRENT_HANDOFF.md
-2. tools/yura-master-benchmark/PIPELINE_STATE.md
-3. visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md
-4. tools/yura-master-benchmark/VISUAL_AMBIGUITY_REFERENCE_GENERATION_SPEC_20261013.md
-5. tools/yura-master-benchmark/codex_instruction_visual_ambiguity_reference.md
-6. visuals/yura/identity/master/YURA_VISUAL_TEXT.md
-7. visuals/yura/identity/face/YURA_FACE_MASTER_PHASE_PLAN_20261013.md
-8. visuals/yura/identity/master/YURA_PRODUCTION_PART_SPEC_PROTOCOL.md
-9. visuals/yura/identity/master/YURA_MASTER_PIXEL_MEASUREMENT_20261013.md
-10. visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md
-11. visuals/yura/identity/master/YURA_VISUAL_MASTER_STATUS.md
-12. visuals/yura/identity/face/FACE_REFERENCE_RULES.md
-13. tools/yura-master-benchmark/TEST6_RESULT_20261012.md only as historic audit context
+2. visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md
+3. visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md
+4. visuals/yura/identity/master/YURA_VISUAL_TEXT.md
+5. tools/yura-master-benchmark/PIPELINE_STATE.md
+6. visuals/yura/identity/face/YURA_FACE_MASTER_PHASE_PLAN_20261013.md
+7. visuals/yura/identity/master/YURA_PRODUCTION_PART_SPEC_PROTOCOL.md
+8. visuals/yura/identity/master/YURA_MASTER_PIXEL_MEASUREMENT_20261013.md
+9. visuals/yura/identity/master/YURA_DETAILED_PART_SPEC.md
+10. visuals/yura/identity/master/YURA_VISUAL_MASTER_STATUS.md
+11. visuals/yura/identity/face/FACE_REFERENCE_RULES.md
+12. tools/yura-master-benchmark/TEST6_RESULT_20261012.md only as historic audit context
 ```
 
-The Visual Ambiguity Protocol is the newest sequencing rule where older files conflict.
+The Visual Ambiguity Protocol and Text-only Diagnostic Protocol are the newest sequencing rules where older files conflict.
+
+Paid generation files under `tools/yura-master-benchmark` are not part of the current free generation input and are activated only after the text-only gate passes.
 
 ## 3. Fixed visual sources / audit baseline
 
@@ -71,7 +85,7 @@ Appearance specification:
 
 ```text
 visuals/yura/identity/master/YURA_VISUAL_TEXT.md
-current starting Git blob SHA = b5565b10c1ba68bed3720fbc5360f0f7925799e9
+starting Git blob SHA = b5565b10c1ba68bed3720fbc5360f0f7925799e9
 ```
 
 Codex generation appearance input must be this Visual Text only.
@@ -96,14 +110,17 @@ Current Codex validation phase:
 
 ```text
 Codex-native image generation = USE
-OpenAI Image API = FORBIDDEN
-OPENAI_API_KEY = NOT USED
+paid OpenAI image generation = NOT USED
 YURA image references = NONE
 ```
 
-If Codex-native image generation is unavailable, STOP rather than silently falling back to OpenAI or another generator.
+If Codex-native image generation is unavailable, STOP rather than silently falling back to the paid route.
 
-The previous `run_visual_ambiguity_reference_once.py` OpenAI/image-reference route is disabled and is not part of the current pipeline.
+Free-phase execution rule:
+
+`visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
+
+The paid-generation runner/spec/config under `tools/yura-master-benchmark` remain inactive until TEXT-ONLY GATE = PASS.
 
 ## 6. Baseline five-view test
 
@@ -171,20 +188,21 @@ Any material edit to `YURA_VISUAL_TEXT.md` resets the qualifying count to zero a
 
 If the spec is weak, strengthen the Visual Text rather than patching individual images or adding ad-hoc rescue prompt wording.
 
-## 9. OpenAI transfer checkpoint
+## 9. Paid-generation checkpoint
 
 Only after the Codex repeatability gate passes:
 
 ```text
-generator = OpenAI image generation
-appearance input = YURA_VISUAL_TEXT.md only
-image reference = NONE
-first test = Face-up Pilot 1
+TEXT-ONLY GATE = PASS
+-> activate tools/yura-master-benchmark paid-generation route
+-> appearance input = YURA_VISUAL_TEXT.md only
+-> image reference = NONE
+-> first paid test = Face-up Pilot 1
 ```
 
-This is a separate phase and requires its own execution route. Do not reuse the disabled image-reference ambiguity runner.
+The first paid Face-up remains diagnostic; it tests whether the text-only behavior transfers between generators.
 
-The first OpenAI Face-up remains diagnostic; it tests whether the text-only behavior transfers between generators.
+Do not use the older image-reference ambiguity runner to bypass the text-only gate.
 
 ## 10. Ambiguity classification
 
@@ -222,7 +240,7 @@ ear visibility lower priority than natural size / placement
 no visibility compensation
 ```
 
-Detailed ear work after the OpenAI transfer checkpoint separates:
+Detailed ear work after the paid transfer checkpoint separates:
 
 ```text
 EAR ACTUAL GEOMETRY
@@ -245,31 +263,30 @@ Rear-hair / back-view geometry remains unresolved until its dedicated phase.
 ## 12. Current execution state
 
 ```text
-Formal Sample 9 Master                    = COMPLETE
-Full-body pixel measurement V1            = COMPLETE
-Visual Ambiguity Protocol                 = ACTIVE / AUTHOR APPROVED
-Codex text-only generation spec           = COMPLETE
-Codex execution instruction               = COMPLETE
-Old OpenAI/image-reference ambiguity runner = DISABLED
-Codex five-view baseline                  = NEXT
-Codex repeated FRONT_3Q qualification     = NOT YET
-Codex -> OpenAI transfer gate             = NOT YET
-OpenAI text-only Face-up Pilot 1          = NOT YET
-Detailed ear correction                   = AFTER TRANSFER CHECKPOINT
-Rear-hair / back-view correction          = AFTER EAR
-Formal Face Master                        = NOT YET
-Production Visual MD                      = NOT YET
+Formal Sample 9 Master                      = COMPLETE
+Full-body pixel measurement V1              = COMPLETE
+Visual Ambiguity Protocol                   = ACTIVE / AUTHOR APPROVED
+Identity-side text-only diagnostic protocol = ACTIVE / AUTHOR APPROVED
+Codex five-view baseline                    = NEXT
+Codex repeated FRONT_3Q qualification       = NOT YET
+TEXT-ONLY GATE                              = NOT YET
+Paid tools route                            = AFTER TEXT-ONLY PASS
+Paid text-only Face-up Pilot 1              = NOT YET
+Detailed ear correction                     = AFTER TRANSFER CHECKPOINT
+Rear-hair / back-view correction            = AFTER EAR
+Formal Face Master                          = NOT YET
+Production Visual MD                        = NOT YET
 ```
 
 ## 13. Exact next action
 
 Use:
 
-`tools/yura-master-benchmark/codex_instruction_visual_ambiguity_reference.md`
+`visuals/yura/identity/YURA_TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
 
 In Codex, generate **FRONT first using `YURA_VISUAL_TEXT.md` as the only YURA appearance input**, save the image, inspect it, and only then continue to `FRONT_3Q`.
 
-Do not call OpenAI image generation during this phase.
+Do not activate `tools/yura-master-benchmark` paid generation during this phase.
 
 ## 14. Repository safety
 
@@ -279,5 +296,5 @@ no force-push
 no unrelated file changes
 no story/manuscript/Memory appearance as Visual Authority
 no reactivation of Test 5/6 generation routes
-no bypass of the text-only Codex gate with image-reference rescue
+no bypass of the text-only gate with image-reference rescue
 ```
