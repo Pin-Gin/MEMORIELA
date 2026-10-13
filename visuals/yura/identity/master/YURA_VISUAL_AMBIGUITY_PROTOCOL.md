@@ -2,7 +2,7 @@
 
 Status: **AUTHOR-APPROVED / ACTIVE WORK PROTOCOL / NOT BY ITSELF VISUAL AUTHORITY**
 
-This protocol is the newest author-approved sequencing rule for ambiguous-structure work. Where an older Face-phase document says to proceed directly to Face measurement, this protocol inserts the ambiguity-validation and diagnostic multi-view steps first.
+This protocol is the newest author-approved sequencing rule for ambiguous-structure work. Where an older Face-phase document says to proceed directly to Face measurement or image-reference generation, this protocol inserts text-only ambiguity validation first.
 
 ## 1. Purpose
 
@@ -119,20 +119,43 @@ forcing left/right visibility symmetry
 
 If a correct structure is naturally hidden, keep it hidden.
 
-## 7. Reference-generation rule
+## 7. Text-only diagnostic generation rule
 
-A generated reference must declare:
+The current first validation phase is **Codex text-only generation**.
+
+Generation appearance input:
 
 ```text
-view
-allowed authority scope
-denied authority scope
-known unresolved defects
-source image(s)
-status: DIAGNOSTIC / CANDIDATE / AUTHOR-APPROVED
+visuals/yura/identity/master/YURA_VISUAL_TEXT.md
 ```
 
-Before the ear and rear-hair defects are resolved, new multi-view images are **DIAGNOSTIC / CANDIDATE only**.
+No YURA image reference is supplied during this phase.
+
+The only allowed extra generation instructions are the operational test envelope:
+
+```text
+requested view
+waist-up / face-up crop as specified by the test
+neutral pose / expression
+plain background
+single-character constraint
+DIAGNOSTIC / CANDIDATE status
+```
+
+Do not add new YURA appearance prose outside `YURA_VISUAL_TEXT.md` during generation. The purpose is to test the strength of the Visual Text itself.
+
+`YURA_VISUAL_AMBIGUITY_PROTOCOL.md` is used for **post-generation inspection**, not as extra appearance prompt text in the Codex text-only generation phase.
+
+Do not use OpenAI Image API or `OPENAI_API_KEY` in this Codex validation phase. If Codex-native image generation is unavailable, STOP rather than silently falling back to OpenAI.
+
+## 8. Diagnostic output status
+
+Before ear and rear-hair defects are resolved, all outputs are:
+
+```text
+DIAGNOSTIC / CANDIDATE ONLY
+AUTHORITY PROMOTION = NO
+```
 
 They must not promote:
 
@@ -144,7 +167,7 @@ unverified rear-hair structure
 
 into YURA Authority.
 
-## 8. One-view-per-image default
+## 9. One-view-per-image default
 
 For ambiguity validation, prefer one image per view rather than one five-panel composite.
 
@@ -163,18 +186,17 @@ Reason:
 ```text
 independent generation
 independent replacement
-clearer source / hash tracking
-simpler PASS / FAIL per view
+clearer PASS / FAIL per view
 less cross-panel contamination
 ```
 
-A composite sheet may be created later for convenience, but it does not replace the individual source images.
+A composite sheet may be created later for convenience, but it does not replace the individual diagnostic images.
 
-## 9. Naturalness gate
+## 10. Naturalness gate
 
 A result is not accepted only because a numeric ratio passes.
 
-Final evaluation must satisfy all three:
+Evaluation uses all three:
 
 ```text
 STRUCTURAL CONSISTENCY
@@ -193,18 +215,61 @@ forced bilateral symmetry that removes natural overlap
 
 The target is natural generation with correct structure, not maximal structural visibility.
 
-## 10. Current application order
+Minor unrelated visual awkwardness may be tolerated during the early Codex diagnostic phase if the ambiguity behavior being tested is clearly improved and the image remains usable for diagnosis.
 
-Apply this protocol in the following order:
+## 11. Codex -> OpenAI transfer gate
+
+The Codex phase is a specification-strength test, not the final generator benchmark.
+
+Before switching generators, require repeated evidence under **unchanged Visual Text** that:
 
 ```text
-1. validate this protocol against current YURA authorities
-2. build the shortest reproducible reference-generation route
-3. generate the five single-view DIAGNOSTIC / CANDIDATE references
-4. verify the route and view behavior; PASS does not yet promote visual Authority
-5. resolve the ear problem using ACTUAL / VISIBLE / OCCLUSION separation
-6. resolve the rear-hair / back-view problem using mass / silhouette / layer-order separation
-7. only then promote corrected multi-view reference material after author review
+no obvious ear elongation / inflation
+no ear visibility compensation
+natural hair-over-ear behavior is preserved
+ear remains low-prominence
+identity remains recognizably YURA-like from text alone
 ```
 
-No paid-generation or formal visual promotion is implied by this protocol alone.
+Minimum working threshold:
+
+```text
+three qualifying FRONT_3Q results under the same unchanged Visual Text
++ one SIDE result with no major ear elongation / outward-projection failure
+```
+
+The initial five-view set may supply the first FRONT_3Q and SIDE samples. If either fails materially, strengthen the relevant Visual Text specification first and restart the fixed condition.
+
+A material Visual Text change resets the repeated-result count.
+
+## 12. OpenAI text-only Face-up checkpoint
+
+Only after the Codex transfer gate passes:
+
+```text
+switch to OpenAI image generation
+input appearance specification = YURA_VISUAL_TEXT.md only
+image reference = NONE
+initial output = Face-up Pilot 1
+```
+
+The first OpenAI Face-up is still diagnostic. It tests whether the Visual Text behavior transfers to the final generator without relying on the existing Face Reference image.
+
+Do not silently add image references or generator-specific appearance corrections merely to obtain a pass.
+
+## 13. Current application order
+
+```text
+1. Visual Ambiguity Protocol = fixed
+2. Codex text-only generation using YURA_VISUAL_TEXT.md
+3. inspect each generated image
+4. tolerate minor unrelated awkwardness, but require meaningful ear-visibility-compensation suppression
+5. obtain repeated qualifying results under unchanged Visual Text
+6. switch to OpenAI text-only Face-up Pilot 1
+7. inspect generator-transfer behavior
+8. resolve / freeze ear ACTUAL / VISIBLE / OCCLUSION specification
+9. resolve rear-hair / back-view mass / silhouette / layer-order specification
+10. promote corrected reference material only after author review and later stability validation
+```
+
+No formal Visual Authority promotion is implied by a Codex or OpenAI diagnostic image alone.
