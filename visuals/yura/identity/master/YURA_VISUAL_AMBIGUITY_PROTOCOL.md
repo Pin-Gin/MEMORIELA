@@ -2,6 +2,8 @@
 
 Status: **AUTHOR-APPROVED / ACTIVE WORK PROTOCOL / NOT BY ITSELF VISUAL AUTHORITY**
 
+This protocol is the newest author-approved sequencing rule for ambiguous-structure work. Where an older Face-phase document says to proceed directly to Face measurement, this protocol inserts the ambiguity-validation and diagnostic multi-view steps first.
+
 ## 1. Purpose
 
 This protocol governs any YURA feature whose actual structure, visible appearance, or camera-dependent presentation can diverge because of occlusion, overlap, perspective, or generative visibility compensation.
