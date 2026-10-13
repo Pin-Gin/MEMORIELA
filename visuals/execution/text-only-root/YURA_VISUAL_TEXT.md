@@ -28,7 +28,8 @@ YURAは、銀白色のスーパーロングヘアを持つ、繊細で透明感�
 中顔面は短め。
 目から口までの距離を長くしない。
 下顔面はコンパクト。
-顎は小さく、先端は細くしすぎず柔らかく丸い。
+顎は小さく、先端は細めに収束するが、鋭く尖らせない。
+顎先にはごく小さな丸みを残す。
 頬から顎へは急激なV字ではなく、なだらかに細くなる。
 頬骨は強調しない。
 横幅を削って縦長に見せない。
@@ -42,15 +43,26 @@ NOT long chin.
 NOT sharp V-line face.
 NOT mature model-like facial proportions.
 
+When `YURA_FACE_REFERENCE.png` is supplied, exact facial geometry and internal facial proportions follow the Face Reference.
+The Face text describes YURA identity intent and must not redesign, average, beautify, enlarge, or otherwise reinterpret the referenced face.
+**FACE REFERENCE HAS PRIORITY FOR FACE GEOMETRY.**
+This priority does not apply to ear geometry, ear visibility, or ear prominence; the Ear section below controls those items.
+
 ## Eyes / Expression
 瞳は淡いブルーグレー。
-目は横長寄りの繊細なアニメ目。
+目は大きめだが、縦方向へ丸く見開かない。
+横幅優位の浅いアーモンド型を基準とする。
+縦方向の開きは控えめに保つ。
+上まぶたはなだらかで、丸い見開き目にしない。
 つり目すぎず、たれ目すぎない。
 目・鼻・口を縦方向へ間延びさせない。
 表情は落ち着いた無表情寄り。
 口は小さく控えめ。
 鼻は主張を強くしない、簡潔な2Dアニメ表現。
 眉は細めでやわらかい印象。
+
+NOT round wide-open eyes.
+NOT vertically enlarged eyes.
 
 ## Skin
 肌は明るい色白。
@@ -205,6 +217,15 @@ EAR SMALLNESS MUST INCLUDE SHORT VERTICAL HEIGHT.
 NOT narrow-but-tall ears.
 NOT vertically stretched ear silhouette.
 
+### Placement landmarks
+耳の付け根の上側は、おおむね目の高さを基準とする。
+耳の付け根の下側は、おおむね鼻下の高さを基準とする。
+耳全体の上端は眉付近を上限目安とする。
+
+ただし、これらの基準線の間を埋めるために耳を縦へ伸ばしてはならない。
+これは位置の基準であり、耳の高さを最大化するための範囲ではない。
+YURAでは既存の小型・縦方向コンパクト規則を優先する。
+
 ### Shape
 耳を縦長にしない。
 耳を横方向へ広げない。
@@ -252,7 +273,13 @@ NOT vertically stretched ear silhouette.
 正面視で左右の耳を対称に完全露出させない。
 耳が頭部の左右へ大きく張り出したシルエットにしない。
 
-耳を描写する必要がある場合でも、髪の隙間から部分的に見える程度を優先する。
+正面視で見える耳は、細い一部分だけでよい。
+耳の外周全体を見せる必要はない。
+髪の隙間からごく一部だけ見える状態を優先する。
+髪によって耳が完全に見えなくても正常とする。
+
+NO VISIBLE EAR IS ACCEPTABLE IN FRONT VIEW.
+DO NOT EXPOSE THE EAR FOR READABILITY.
 
 ### Fail-safe
 耳の可視性と自然なサイズが両立しない場合は、耳を大きくして見せるのではなく、髪で隠す。
