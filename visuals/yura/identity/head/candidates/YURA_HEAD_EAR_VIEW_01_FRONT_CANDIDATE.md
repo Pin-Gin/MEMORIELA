@@ -58,11 +58,16 @@ SHA256:
 
 ```text
 EAR ACTUAL HEIGHT TARGET
-= 20–22% of face / head vertical used in this construction measurement
+= 20–22% of face vertical
 
 HARD MAX
-= 23%
+= 23% of face vertical
 ```
+
+このAUTHOR OVERRIDEの正式分母は `face vertical` である。
+
+今回のVIEW 01画像上では、髪を外した構造Candidateの診断値として `crown → chin` の `head vertical` も別途計測する。
+この診断値を正式な `face vertical` 条件と同一視しない。
 
 ### TEST / HYPOTHESIS
 
@@ -80,7 +85,7 @@ HARD MAX
 計測は生成画像上の可視輪郭を使用する。
 アンチエイリアスおよび耳付け根の読み取りに数px程度の不確実性を含む。
 
-### Head vertical
+### Head vertical — construction diagnostic only
 
 ```text
 CROWN Y ≈ 28 px
@@ -88,29 +93,41 @@ CHIN Y ≈ 837 px
 HEAD VERTICAL ≈ 809 px
 ```
 
+この `HEAD VERTICAL` はVIEW 01構造Candidate上の診断分母であり、正式な `face vertical` の代替定義ではない。
+
 ### Ear actual vertical span
 
 可視輪郭の変曲点を耳上端・下端の構造境界として読み取った。
 
 ```text
 IMAGE-LEFT EAR
-≈ 170 px
-≈ 21.0% of head vertical
+≈ 168 px
+≈ 20.8% of HEAD vertical
 
 IMAGE-RIGHT EAR
-≈ 170 px
-≈ 21.0% of head vertical
+≈ 167 px
+≈ 20.6% of HEAD vertical
 ```
 
 結果：
 
 ```text
-TARGET 20–22% = PASS
-HARD MAX 23% = PASS
 LEFT / RIGHT HEIGHT CONSISTENCY = PASS
+VERTICAL COMPACTNESS = PASS
 ```
 
-左右耳高の計測差は実質0%である。
+左右耳高の計測差は約1 px、約0.6%であり、構造上の大きな左右差は確認されない。
+
+重要：
+
+```text
+20.8% / 20.6% of HEAD vertical
+!=
+formal 20–22% of FACE vertical test
+```
+
+したがって、このhead-vertical診断値だけを根拠に正式TARGET / HARD MAXの数値PASSを主張しない。
+正式条件との整合は、耳が縦長化していないこと、左右Actual Geometryが安定していること、作者承認を含む総合構造評価として保持する。
 
 ### Horizontal face balance
 
