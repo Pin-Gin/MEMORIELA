@@ -1,8 +1,23 @@
 {
-  "benchmark_version": 8,
-  "purpose": "YURA current full-body Master-generation paid route: sealed Git authority bundle -> Codex prompt compile -> OpenAI Image API -> QA/batch",
+  "benchmark_version": 9,
+  "purpose": "YURA post-promotion full-body recovery/regeneration route: current Git authorities -> sealed bundle -> Codex prompt compile -> OpenAI Image API -> QA. The route is frozen until explicit author reauthorization.",
+  "route_state": "FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION",
+  "paid_generation_allowed": false,
+  "full_body_master": {
+    "primary_path": "visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png",
+    "body_copy_path": "visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png",
+    "promotion_commit": "3ce89e33193effa627ea794e803d9a3b50cb085b",
+    "sha256": "CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1",
+    "role": "OFFICIAL INTEGRATED FULL-BODY VISUAL MASTER"
+  },
+  "body_geometry_guide": {
+    "path": "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
+    "sha256": "C23D1D2C348102B4ED9D75C422E1C2323800565B94E27A7FF13AF7C624EBDF95",
+    "role": "CURRENT 7.0-HEAD BODY-GEOMETRY SUPPORT / RECOVERY GUIDE ONLY"
+  },
   "authority_order": [
     "visuals/yura/identity/master/YURA_VISUAL_TEXT.md",
+    "visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png",
     "visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md",
     "visuals/yura/identity/face/YURA_FACE_UP_MASTER.md",
     "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
@@ -11,6 +26,7 @@
     "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png"
   ],
   "image_reference_order": [
+    "visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png",
     "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
     "visuals/yura/identity/face/YURA_FACE_REFERENCE.png"
   ],
@@ -28,18 +44,25 @@
     "visuals/yura/identity/master/YURA_VISUAL_TEXT.md",
     "visuals/yura/identity/face/YURA_FACE_UP_MASTER.md",
     "visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md",
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
     "visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md",
     "visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png",
+    "visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png",
     "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png"
   ],
   "current_repository_state_facts": [
-    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png is the repository-promoted current author-approved Face Reference.",
+    "visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png is the current author-approved repository-promoted official integrated Full-body Visual Master.",
+    "visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png is a synchronized body-directory copy of the same Full-body Master binary and is not an independent competing Authority.",
+    "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png is the current 7.0-head body-geometry support / recovery guide only; it must not override the official Full-body Master.",
+    "The validation camisole and shorts visible in the Full-body Master are validation presentation, not permanent wardrobe Authority.",
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png is the repository-promoted current author-approved Face Reference and controls face-local identity / geometry.",
     "Any older transition-status sentence saying the Face Reference has not yet been replaced is stale operational state text and must not deactivate the current promoted Face Reference; this does not modify face geometry.",
     "visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png is the author-approved repository-promoted ear geometry reference.",
-    "Any older transition-status sentence saying final ear geometry will be confirmed later is stale operational state text and must not reopen ear geometry; this does not modify ear geometry."
+    "Any older transition-status sentence saying final ear geometry will be confirmed later is stale operational state text and must not reopen ear geometry; this does not modify ear geometry.",
+    "The paid-generation phase that produced the current Full-body Master is complete and currently frozen."
   ],
   "execution_constraints": {
-    "purpose": "Current author-approved full-body validation condition. Operational only; it must not rewrite face, ear, or body authority.",
+    "purpose": "Recovery/regeneration constraint set only. Operational; it must not rewrite the promoted Full-body Master, face, ear, or body Authorities.",
     "head_ratio_target_range": [
       7.0,
       7.2
@@ -112,10 +135,12 @@
       "do not lengthen, widen, move outward, rotate toward camera, or expose ears for readability"
     ],
     "body_execution_lock": [
+      "official YURA_FULL_BODY_MASTER.png is the primary integrated full-body visual baseline",
       "body definition in YURA_VISUAL_TEXT.md is locked",
+      "YURA_BODY_GEOMETRY_GUIDE.png is support only and must not override the official Full-body Master",
       "do not rewrite or improvise body geometry",
       "slender overall frame but not excessively frail",
-      "preserve current chest-to-frame relationship exactly as current Visual Text defines it",
+      "preserve current chest-to-frame relationship exactly as current Visual Text and promoted Master define it",
       "do not satisfy head ratio by face elongation, torso-only elongation, leg-only elongation, shoulder widening, ribcage enlargement, or tall model-like body conversion"
     ],
     "skin_execution_lock": [
@@ -125,7 +150,8 @@
       "not sickly pale",
       "retain very subtle natural blood color"
     ],
-    "calibration_note": "The latest author-PASS free GPT full-body image is a human-review balance indicator only. It is not a Git Authority and is not automatically passed to the paid Image API."
+    "master_role_note": "The official Full-body Master is now a Git Authority. Its validation clothing is not a permanent wardrobe Authority and may be replaced only when an explicit derivative-generation request supplies different clothing.",
+    "calibration_note": "Earlier free GPT calibration and paid candidates are historical process records. The repository-promoted YURA_FULL_BODY_MASTER.png is the current integrated full-body visual baseline."
   },
   "codex": {
     "executable": "codex",
@@ -154,13 +180,14 @@
     "interval_pass_policy": "FULL_INTERVAL_MUST_BE_INSIDE_CURRENT_GATE",
     "review_overlap_policy": "REVIEW",
     "legacy_internal_body_percentages": "NOT_ACTIVE_HARD_GATES_UNLESS_EXPLICITLY_REAUTHORIZED",
-    "body_visual_authority": "YURA_VISUAL_TEXT.md + active Body Geometry Guide image; numeric QA must not rewrite body geometry"
+    "body_visual_authority": "official YURA_FULL_BODY_MASTER.png + current YURA_VISUAL_TEXT.md; YURA_BODY_GEOMETRY_GUIDE.png is 7.0-head recovery support only"
   },
   "batch": {
     "single_run_first": true,
-    "runs_after_single": 10,
+    "runs_after_single": 5,
     "max_total_cost_per_run_usd_for_auto_batch": 1.0,
-    "require_authoritative_cost_or_explicit_override": true
+    "require_authoritative_cost_or_explicit_override": true,
+    "current_batch_authorized": false
   },
   "pricing_snapshot": {
     "as_of": "2026-10-04",
