@@ -34,7 +34,32 @@ The current focused ear rules are:
 
 `visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md`
 
-First create a hairless structural ear Master; then use that approved geometry when creating the normal-hair Face-up Master.
+The final hairless ear-geometry candidate received explicit author **PASS** on 2026-10-17.
+
+Approval record:
+
+`project-management/yura-visual/EAR_GEOMETRY_MASTER_APPROVAL.md`
+
+Approved target path:
+
+`visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
+
+Approved source SHA-256:
+
+`8949c5febef99850f7cccd849064c9dfe774e3b722f1658c967b0ecf2c5c7b50`
+
+Accepted ear-stage geometry includes:
+
+- ear size = PASS;
+- ear position = PASS;
+- no visibility-driven vertical elongation;
+- no visibility-driven outward projection;
+- the final slightly compacted upper-cranium result is accepted;
+- the approved current face geometry / eyes / cheeks / chin remain the reference state for this structural Master.
+
+The author approval itself is fixed. The exact approved PNG still must be present at the target repository path before repository binary promotion is considered complete.
+
+After binary promotion, use the approved Ear Geometry Master when creating the normal-hair Face-up Master.
 
 ## Body / chest decision
 
