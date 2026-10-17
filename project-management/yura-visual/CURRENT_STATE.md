@@ -1,162 +1,162 @@
 # YURA Visual Work — CURRENT STATE
 
-Status: **ACTIVE / EAR GEOMETRY MASTER PROMOTED / NORMAL-HAIR FACE-UP CANDIDATE NEXT**
+Status: **ACTIVE / FACE-UP MASTER PROMOTED / FREE FULL-BODY CALIBRATION PASS / PAID FULL-BODY ROUTE REBUILT**
 
 ## Current objective
 
-Rebuild the YURA visual pipeline around the current author-approved face design and the current `YURA_VISUAL_TEXT.md`, while removing old paid-generation outputs and old experimental records from the active visual layer.
+Create the new YURA full-body Master from the current repository-promoted Face-up Master and current `YURA_VISUAL_TEXT.md`.
 
-## Current authority state
+Current author-directed sequence:
 
 ```text
-YURA_VISUAL_TEXT.md
-= ACTIVE / HIGHEST YURA VISUAL TEXT AUTHORITY / MUST FOLLOW
+Ear Geometry Master = DONE
+Face-up Master = DONE
+Face-up descriptive MD = DONE
+free GPT full-body balance calibration = PASS
+paid full-body route rebuild = DONE
+free paid-route preflight = NEXT
+one paid seed run = AFTER PREFLIGHT
+7.0–7.2 head-ratio QA + author visual QA
+PASS -> full-body Master promotion
+```
 
-YURA_FACE_REDESIGN_SPEC.md
-= CURRENT AUTHOR-APPROVED FACE DETAIL SPEC / NEW FACE DIRECTION
+## Current visual authority state
 
-YURA_EAR_BASIC_RULES.md
-= SUPPORTING RULE FOR EAR / FACE-UP WORK
+```text
+visuals/yura/identity/master/YURA_VISUAL_TEXT.md
+= ACTIVE / HIGHEST YURA VISUAL TEXT AUTHORITY
 
-YURA_EAR_GEOMETRY_MASTER.png
+visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+= AUTHOR-PASS / REPOSITORY-PROMOTED CURRENT FACE REFERENCE
+
+visuals/yura/identity/face/YURA_FACE_UP_MASTER.md
+= ACTIVE CURRENT FACE-UP TEXT AUTHORITY
+
+visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
 = AUTHOR-PASS / VERIFIED / REPOSITORY PROMOTED
+
+visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md
+= ACTIVE EAR SUPPORTING RULE
+
+visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
+= BODY-GEOMETRY SUPPORT IMAGE; CURRENT VISUAL TEXT WINS ON CONFLICT
 ```
 
-## Current face decision
+## Locked domains
 
-The face selected in the 2026-10-17 redesign work is the current formal face direction.
-
-Do not restore the legacy Face Reference geometry by averaging, blending, or fallback.
-
-Do not lengthen the face, lengthen the midface, lengthen the chin, narrow the cheeks, shrink the eyes, or otherwise reinterpret the approved face to satisfy later body or generation constraints.
-
-The legacy Face Reference file remains at its old visual-layer path only because the protected Visual Text still names that path. It is not a geometry source for the current face redesign.
-
-## Current Ear Geometry Master decision
-
-The final hairless ear-geometry candidate received explicit author **PASS** and has been promoted to the repository.
-
-Approval record:
-
-`project-management/yura-visual/EAR_GEOMETRY_MASTER_APPROVAL.md`
-
-Promoted path:
-
-`visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
-
-Approved source SHA-256:
-
-`8949c5febef99850f7cccd849064c9dfe774e3b722f1658c967b0ecf2c5c7b50`
-
-Repository evidence:
+The following must not be rewritten merely to make paid generation pass:
 
 ```text
-promotion commit = c0878854937103236a2902abf80912182f191ead
-Git blob SHA      = efba2f34097c4fa6e3f2a45e66a235da57253e3f
+Face Geometry / facial parts
+Eye shape / size / placement
+C2 baseline -> 0.3% inward
+Pupil bilateral symmetry
+Ear Geometry / no visibility compensation
+Body definition
+Current chest-to-frame relationship
 ```
 
-Accepted result:
-
-- ear size and position = PASS;
-- no visibility-driven vertical elongation;
-- no visibility-driven outward projection;
-- current face geometry / eyes / cheeks / chin retained;
-- slightly compacted upper cranium accepted.
-
-The Ear Geometry Master phase is complete.
-
-## Current body / chest decision
-
-The body definition in `YURA_VISUAL_TEXT.md` remains active.
-
-The chest relationship must remain the current author-approved design:
+## Current full-body target
 
 ```text
-slender overall frame
-+
-chest moderately fuller relative to that frame
-+
-natural soft rounded bowl-like silhouette
-+
-compact / relatively high-set volume
-+
-no flattening merely because the body is slender
-+
-no exaggerated enlargement
+TARGET HEAD COUNT RANGE = 7.0–7.2
+TARGET HEIGHT IMPRESSION = 152–153 cm
 ```
 
-This is treated as **character-design / body-balance validation**, not as sexual emphasis.
+Do not satisfy the range by face elongation, torso-only elongation, leg-only elongation, shoulder widening, ribcage enlargement, or tall model-like conversion.
 
-Do not add age-category wording as a workaround for chest or body generation.
+## Current free GPT calibration result
 
-The current visual-layer Body Geometry Guide remains physically present because `YURA_VISUAL_TEXT.md` still names it. It is not used in the current ear / Face-up phases. Before the later full-body phase, its role must be resolved from the then-current Visual Text and explicit author direction. This project-management file does not supersede the Visual Text.
+The latest free GPT full-body validation image received author **PASS**.
 
-## Current generation state
+Its role is:
 
 ```text
-paid YURA route        = DISABLED / REBUILD REQUIRED
-hairless ear candidate = AUTHOR PASS
-Ear Geometry Master    = AUTHOR PASS / VERIFIED / REPOSITORY PROMOTED
-normal-hair Face-up    = NEXT
-active Face-up Master  = NONE
-active full-body Master for new route = NONE
+balance / presentation calibration indicator
 ```
 
-The old full-body Master has been removed from the active visual layer and archived under tools.
+It is **not** a Git Authority and is not automatically passed to the paid Image API.
+
+Accepted current presentation condition includes:
+
+```text
+front-facing full body
+completely upright
+arms down
+legs near together
+both feet flat / heels down / full sole contact
+barefoot
+pure white background
+centered
+plain opaque matte camisole
+plain undecorated shorts
+silver-white straight-dominant super-long hair ending around waist
+white-leaning skin without over-whitening
+true neutral expression
+```
+
+## Current paid route state
+
+```text
+legacy paid route = RETIRED
+current sealed-bundle paid route = REBUILT
+author paid-generation permission = YES
+billable call before current preflight = DENIED
+```
+
+Current operational documents:
+
+```text
+tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md
+tools/YURA_MASTER_GENERATION_CURRENT_STATE.md
+tools/YURA_MASTER_GENERATION_WORKLOG.md
+tools/yura-master-benchmark/PAID_ROUTE_STATUS.md
+tools/yura-master-benchmark/README.md
+```
+
+Current architecture:
+
+```text
+current Git main
+-> local Python Authority/hash verification
+-> sealed Authority bundle
+-> Codex prompt compile
+-> runner manifest / invariant verification
+-> OpenAI Image API
+-> result.png
+-> head-ratio QA
+-> author QA
+```
+
+## Retired active-route numeric gates
+
+Historical paid-route values below are not current hard gates:
+
+```text
+7.1–7.3
+89% occupancy
+88–90%
+5–6% margins
+legacy Test 5 contract
+legacy composition percentage postprocess
+```
+
+Historical records remain under `tools/**` for audit only.
 
 ## Next exact task
 
-Use free GPT image generation to create the **normal-hair Face-up candidate** using:
+Sync local repository to current `main`, then run:
 
-```text
-visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
-visuals/yura/identity/master/YURA_VISUAL_TEXT.md
-visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
-visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md
+```powershell
+python tools/yura-master-benchmark/run_once.py --preflight-only
 ```
 
-Requirements for this stage:
-
-- restore YURA's normal silver-white super-long hair from the Visual Text;
-- preserve the approved Ear Geometry Master head / face / ear structural geometry;
-- natural hair occlusion may hide the ears;
-- do not expose, lengthen, enlarge, move, or rotate the ears for readability;
-- do not alter face geometry, eye placement, cheeks, jaw, chin, nose, or neutral-expression baseline;
-- do not use the legacy Face Reference, Body Geometry Guide, or archived full-body Master as an image input.
-
-After generation:
-
-1. author review;
-2. PASS -> promote to `YURA_FACE_UP_MASTER.png`;
-3. create `YURA_FACE_UP_MASTER.md` from the approved image;
-4. only then proceed to the full-body generation phase.
-
-## Promotion sequence
+Required preflight result:
 
 ```text
-Hairless ear-geometry candidate
--> AUTHOR PASS [DONE]
--> YURA_EAR_GEOMETRY_MASTER.png [PROMOTED / VERIFIED]
-
-Ear Geometry Master + YURA Visual Text + current Face Spec
--> normal-hair Face-up candidate [NEXT]
--> author PASS
--> YURA_FACE_UP_MASTER.png
--> create YURA_FACE_UP_MASTER.md
-
-then
--> full-body generation phase
+status = PREFLIGHT_OK
+paid_model_calls = 0
+head_ratio_gate = 7.0–7.2
 ```
 
-## Forbidden fallback
-
-Do not use:
-
-- legacy Face Reference as new-face geometry;
-- archived old full-body Master;
-- rejected generations;
-- novel/story/manuscript appearance;
-- memory-derived appearance;
-- old Git history as active appearance authority.
-
-Historic assets remain available under the tools archive for audit only.
+Only after reviewing that preflight should exactly one paid seed run be executed.
