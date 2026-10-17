@@ -1,103 +1,130 @@
-# YURA MASTER GENERATION — CURRENT WORKLOG / HANDOFF
+# YURA MASTER GENERATION — COMPLETION WORKLOG / HANDOFF
 
-Status: **CURRENT PAID FULL-BODY ROUTE REBUILT / AUTHOR AUTHORIZED / PREFLIGHT NOT YET RECORDED**
+Status: **FULL-BODY MASTER PROMOTED / PAID PHASE COMPLETED / RECOVERY ROUTE FROZEN**
 
 This file is operational history, not Visual Authority.
 
-## 1. Current objective
+## 1. Outcome
 
-Generate a new YURA full-body Master candidate using the repository-promoted new Face-up Master and current `YURA_VISUAL_TEXT.md`, then target **7.0–7.2 heads** without changing face, ear, or body definitions.
-
-Current author-approved sequence:
+The current YURA full-body Master-generation phase completed successfully.
 
 ```text
-free GPT full-body balance calibration = PASS
--> rebuild paid route for current Face / Visual Text
--> free sealed preflight
--> one paid seed run
--> QA
--> independent batch runs if justified
--> explicit author PASS
--> Master promotion
+free GPT full-body balance calibration = COMPLETED
+paid route rebuild = COMPLETED
+free sealed preflight = COMPLETED
+paid seed iterations = COMPLETED
+image-based head-ratio QA = COMPLETED
+explicit author selection = PASS
+Full-body Master promotion = COMPLETED
+paid batch = NOT EXECUTED / NOT REQUIRED
+paid generation = STOPPED BY AUTHOR
 ```
 
-## 2. Architecture retained from the successful historical benchmark
+Official promoted Master:
 
-The reliable architecture is retained:
+```text
+visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+promotion commit = 3ce89e33193effa627ea794e803d9a3b50cb085b
+SHA-256 = CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1
+```
+
+Synchronized body-directory copy:
+
+```text
+visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png
+```
+
+## 2. Architecture used
+
+The paid-generation phase used the sealed-bundle architecture:
 
 ```text
 current Git
--> Python runner verifies current configured sources
+-> Python runner verifies configured sources
 -> SHA-256
 -> sealed Authority bundle
 -> Codex prompt compiler
 -> runner validates manifest and prompt invariants
 -> OpenAI Image API
 -> result / usage / cost / QA artifacts
+-> image-based head-ratio review
+-> author visual review
 ```
 
-Codex does not independently wander through the repository.
+Codex did not independently wander through the repository.
+The Python runner owned Git/file verification and passed a sealed current-source bundle to Codex.
 
-The Python runner owns Git/file verification and passes a sealed current-source bundle to Codex.
-
-## 3. Current Authority migration
-
-Legacy active inputs were removed from the paid route.
-
-Current configured sources:
+## 3. Final current Authority basis
 
 ```text
 YURA_VISUAL_TEXT.md
+= highest current YURA visual text authority
+
+YURA_FULL_BODY_MASTER.png
+= official integrated full-body visual Master
+
 YURA_FACE_REDESIGN_SPEC.md
 YURA_FACE_UP_MASTER.md
 YURA_FACE_REFERENCE.png
+= current face-local Authority set
+
 YURA_EAR_BASIC_RULES.md
 YURA_EAR_GEOMETRY_MASTER.png
+= current ear-local Authority set
+
 YURA_BODY_GEOMETRY_GUIDE.png
+= current 7.0-head body-geometry support / recovery guide only
 ```
 
-The current Face Reference is the repository-promoted new face.
+The Body Geometry Guide must not override the official Full-body Master.
 
-Legacy Face Reference rules are not part of the active bundle.
+## 4. Final / recovery image-reference routing
 
-There is no active `BODY_GEOMETRY_GUIDE.md` in the current visual body directory, so the current route does not pretend that missing legacy text file is still live Authority.
-
-## 4. Current image-reference routing
-
-OpenAI Image API receives:
+If a future Full-body Master regeneration phase is explicitly reopened, the configured Image API reference order is:
 
 ```text
-1. YURA_BODY_GEOMETRY_GUIDE.png
-2. YURA_FACE_REFERENCE.png
+1. YURA_FULL_BODY_MASTER.png
+2. YURA_BODY_GEOMETRY_GUIDE.png
+3. YURA_FACE_REFERENCE.png
 ```
 
-Role separation is mandatory.
+Role separation remains mandatory.
 
-Ear Geometry Master is hash-verified in the sealed bundle but is not passed as a third full-body image reference.
+```text
+Full-body Master
+= primary integrated full-body visual reference
 
-## 5. Current head-count condition
+Body Geometry Guide
+= 7.0-head proportion / recovery support only
 
-Historical:
+Face Reference
+= face identity and face-local geometry only
+```
+
+The validation camisole / shorts visible in the Full-body Master are validation presentation, not permanent wardrobe Authority.
+
+## 5. Current full-body standard
+
+Historical paid target:
 
 ```text
 7.2 target
 7.1–7.3 acceptable
 ```
 
-Current:
+Current final standard:
 
 ```text
-7.0–7.2 required range
+7.0–7.2 heads
 152–153 cm height impression
 ```
 
 Face Geometry must not be changed to reach the range.
+The structural skull top, not visible outer hair volume, defines head measurement.
 
-The structural skull top, not visible hair volume, defines the head measurement.
+## 6. Retired composition rules
 
-## 6. Legacy composition migration
-
-Retired from the active prompt gate:
+Retired from the current active standard:
 
 ```text
 89% occupancy
@@ -106,7 +133,7 @@ Retired from the active prompt gate:
 legacy deterministic composition percentage postprocess
 ```
 
-Current presentation rule comes from current Visual Text + author-fixed full-body validation condition:
+Current validation presentation remains qualitative:
 
 ```text
 full body
@@ -118,31 +145,28 @@ centered
 head and feet not cropped
 ```
 
-Image request canvas size remains an operational API setting, not an anatomy rule.
+Image request canvas size is an operational API setting, not an anatomy rule.
 
-## 7. Current full-body execution locks
-
-Locked, not tunable through paid-route optimization:
+## 7. Locked domains
 
 ```text
-face geometry / face parts
-eye geometry and 0.3% inward placement
-pupil bilateral symmetry
-ear geometry and ear suppression
-body definition
-current chest-to-frame relationship
+Official Full-body Master integrated proportions
+Face Geometry / face parts
+Eye Geometry and C2 baseline -> 0.3% inward placement
+Pupil bilateral symmetry
+Ear Geometry / no visibility compensation
+Body definition
+Current chest-to-frame relationship
 ```
 
-Generation text may optimize execution clarity only.
+Future recovery prompt optimization may improve execution clarity only; it must not silently rewrite these domains.
 
-## 8. Current validation clothing / pose
+## 8. Validation presentation used during the phase
 
 ```text
 plain opaque matte camisole
 plain undecorated shorts
-no drawstring or decoration
 barefoot
-
 front-facing
 completely upright
 arms down
@@ -154,7 +178,7 @@ no contrapposto
 white background
 ```
 
-## 9. Current skin / hair
+Skin / hair baseline:
 
 ```text
 skin = clearly white-leaning pale
@@ -168,37 +192,48 @@ around waist
 not substantially below waist
 ```
 
-## 10. Batch policy
+The validation clothing is not a permanent wardrobe Authority.
 
-The historical experiment design remains:
+## 9. Ear-suppression finding
+
+Multiple paid iterations showed that complete elimination of visibility-seeking ear behavior was not reliably achieved by prompt reinforcement alone.
+The author elected not to continue spending paid runs solely for that issue.
+The current ear rules remain authoritative; the final Full-body Master was selected on overall author approval and integrated balance.
+
+## 10. Batch history
+
+A multi-run paid batch was considered but not executed.
+The author ended the paid phase before batch execution.
 
 ```text
-one paid run first
--> inspect technical success and cost
--> then independent 10-run batch if appropriate
+planned batch after acceptable seed = 5 independent runs
+actual batch execution = NONE
 ```
 
-The batch does not request ten opaque images in one call. Each run has its own sealed bundle, compiled prompt, image, cost, and QA record.
-
-## 11. Current status
+## 11. Current paid-route state
 
 ```text
-paid route author authorization = YES
-paid route code rebuild = CURRENT
-sealed current-authority architecture = CURRENT
-legacy paid condition = RETIRED
-free preflight on rebuilt route = NOT YET RECORDED
-first rebuilt paid seed run = NOT YET
-batch = NOT YET
-final full-body Master = NOT YET
+legacy paid route = RETIRED
+rebuilt sealed-bundle route = RETAINED AS RECOVERY TOOLING
+PAID_GENERATION_ALLOWED = NO
+current batch authorized = NO
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
 ```
 
-## 12. Next exact action
+A successful future preflight does not authorize a billable call.
+Explicit author reauthorization is required.
 
-After syncing the local repository to current `main`:
+## 12. Next normal use
 
-```powershell
-python tools/yura-master-benchmark/run_once.py --preflight-only
+There is no active Master-generation task.
+For normal derivative full-body work, use:
+
+```text
+primary integrated reference
+= visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+
+7.0-head recovery support when materially useful
+= visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
 ```
 
-Do not start a batch before this preflight and one reviewed paid seed run.
+If the author later reopens Master regeneration, follow `tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md`, run a free preflight, and reauthorize paid execution explicitly before any billable call.
