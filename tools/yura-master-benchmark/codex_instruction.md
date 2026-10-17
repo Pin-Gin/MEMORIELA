@@ -42,6 +42,10 @@ TARGET HEIGHT IMPRESSION = 152–153 cm.
 ONE HEAD = actual structural crown / skull top to chin.
 VISIBLE HAIR VOLUME != SKULL HEIGHT.
 FACE GEOMETRY IS LOCKED.
+FACE GEOMETRY LOCK DOES NOT LOCK WHOLE-HEAD PHYSICAL SCALE RELATIVE TO THE BODY.
+THE COMPLETE APPROVED HEAD MAY BE UNIFORMLY SCALED AS ONE INTACT UNIT RELATIVE TO THE FULL BODY TO ACHIEVE 7.0–7.2 HEADS.
+DO NOT CHANGE INTERNAL FACE GEOMETRY WHEN ADJUSTING WHOLE-HEAD PHYSICAL SCALE.
+DO NOT LENGTHEN OR STRETCH THE BODY TO COMPENSATE FOR AN OVERSIZED HEAD.
 EYE PLACEMENT = C2 baseline -> 0.3% inward.
 PUPILS MUST BE BILATERALLY SYMMETRIC IN SIZE, SHAPE, DARKNESS, AND EDGE SOFTNESS.
 EAR VISIBILITY IS NOT REQUIRED.
@@ -68,6 +72,10 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 - ONE HEAD = actual structural crown / skull top to chin.
 - Visible outer hair volume does not define skull height.
 - Face geometry is locked and must not be changed to solve body proportion.
+- Face Geometry lock applies to internal facial shape, proportions, eyes, midface, lower face, jaw, chin, and approved face-local geometry; it does not freeze the whole approved head as an oversized full-body scale unit.
+- The complete approved head may be uniformly scaled as one intact unit relative to the body when necessary to achieve 7.0–7.2 heads.
+- Whole-head physical scale adjustment must preserve all internal face geometry exactly; no non-uniform scaling, stretching, squashing, redrawing, or feature relocation is allowed.
+- If the head is too large relative to the body, correct the whole-head-to-body physical scale relationship rather than elongating the torso, elongating the legs, widening the shoulders, enlarging the ribcage, or converting the body into a tall model-like build.
 - Do not lengthen face, midface, lower face, or chin.
 - Eye shape, size, placement, and Face Identity are locked to the current Face Reference / Face-up Master.
 - Eye placement remains C2 baseline -> 0.3% inward.
@@ -105,7 +113,8 @@ The Image API receives reference images in the exact `image_reference_order`.
 - `YURA_BODY_GEOMETRY_GUIDE.png`: body-geometry support only. It must not change face identity, eye design, hair identity, clothing, expression, skin, or rendering.
 - `YURA_FACE_REFERENCE.png`: current repository-promoted face identity / face-local geometry only. It must not define full-body head count, height, body scale, shoulder width, torso length, leg length, or canvas occupancy.
 
-Never rescale or stretch facial geometry to reconcile the two references.
+Do not non-uniformly rescale, stretch, squash, or reinterpret facial geometry to reconcile the two references.
+Uniform whole-head physical scale relative to the body is a separate full-body integration variable and may be adjusted only as one intact unit to satisfy the active 7.0–7.2 head-count range while preserving face geometry exactly.
 Current `YURA_VISUAL_TEXT.md` wins over a conflicting legacy visual implication.
 
 ## Composition rule
