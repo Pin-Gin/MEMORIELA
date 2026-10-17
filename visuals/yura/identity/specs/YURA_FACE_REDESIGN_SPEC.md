@@ -1,31 +1,31 @@
 # YURA FACE REDESIGN SPEC
 
-Status: PROVISIONAL / AUTHOR-DIRECTED DESIGN SPEC / NOT YET VISUAL AUTHORITY
+Status: **AUTHOR-APPROVED FACE DESIGN / TEXT SPEC ACTIVE FOR REDESIGN / FACE IMAGE AUTHORITY REPLACEMENT PENDING**
 
 ## Purpose
 
-This document defines the new YURA face redesign exploration path without modifying the current active Face Authority or the current `YURA_VISUAL_TEXT.md`.
+This document defines the author-selected YURA face redesign specification.
 
-The current active Face Reference and current Visual Text remain frozen while this redesign is tested.
+The face design was selected through part-by-part comparison testing and an author-selected face-up candidate in the 2026-10-17 design session.
+
+The repository file `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` has not yet been replaced by that selected candidate. Therefore the legacy Face Reference must not be mixed into this redesign path as a source of face geometry.
+
+Until the repository Face Reference image is explicitly replaced/promoted, this document and the author-selected redesign candidate define the intended new face design for redesign work.
 
 ## Core identity direction
 
-YURA's face redesign will use **愛嬌** as the persistent expressive core.
+YURA's face uses **愛嬌** as the persistent expressive core.
 
-The goal is not to hard-code one fixed word combination. Instead, each expression may add attributes that reinforce the intended balance of:
+Whole-face priority:
 
-- strong cuteness
-- youthful / adolescent impression
-- not excessively childlike
-- not primarily beautiful / elegant / glamorous
+1. 愛嬌
+2. 可愛さ
+3. youthful / adolescent impression
+4. limited local refinement only
 
-Examples of expression-direction combinations:
+The face must not read primarily as beautiful, elegant, glamorous, mature, or model-like.
 
-- neutral: 愛嬌 + attributes that strengthen cuteness and youthfulness, such as 愛らしい / あどけない / 童顔
-- smile: 愛嬌 + attributes such as 無邪気 / 天真爛漫
-- sad: 愛嬌 + attributes such as 儚い / 幼気
-
-These are design directions, not fixed mandatory prompt formulas.
+Selective local beauty is allowed only as a subordinate element. Individual features, especially the eyes, may contain approximately 20–30% of a refined / beautiful quality provided the full face still reads primarily as cute and youthful.
 
 ## Age-impression policy
 
@@ -33,127 +33,259 @@ Do not explicitly state a numeric age in generation prompts or final visual iden
 
 Target impression:
 
-- approximately mid-teen in apparent age
-- not excessively young or childlike
+- youthful / adolescent
+- not excessively childlike
+- not infantile
 - not adult-looking
 - not mature-model-like
 
-The intended age impression must be achieved through face geometry, feature scale, feature placement, expression, and overall balance rather than explicit age wording.
+Age impression must be achieved through face geometry, feature scale, feature placement, and overall balance rather than explicit age wording.
 
-## Beauty / prettiness balance
+## Neutral-expression baseline
 
-The overall face must not be designed around "beautiful", "pretty woman", "elegant beauty", or mature attractiveness.
+The base face is a true neutral expression.
 
-Primary whole-face priority:
+- mouth closed
+- no open-mouth expression unless explicitly directed by the author
+- no smile by default
+- no sad expression by default
+- no fragile / wistful / melancholic expression by default
+- no worried eyebrows
+- no expression-driven reinterpretation of the approved face parts
 
-1. 愛嬌
-2. 可愛さ
-3. youthful / adolescent impression
+Expression attributes may be added only when the author explicitly requests an expression variant.
 
-Selective local beauty is allowed only as a subordinate element.
+## Approved face geometry
 
-Individual features, especially the eyes, may contain approximately 20–30% of a refined / beautiful quality when useful, provided the full face still reads primarily as cute and youthful rather than beautiful or mature.
+### Face contour — selected A
 
-## Face-part selection workflow
+- soft rounded / short-vertical face impression
+- youthful and cute without becoming infantile
+- not long-faced
+- not a narrow elongated oval
+- retain soft lateral fullness rather than narrowing the face vertically
 
-The redesign will proceed part-by-part, beginning with the face contour.
+### Cheeks — selected A2
 
-Recommended selection order:
+- moderately full / naturally soft cheeks
+- visible youthful softness without exaggerated baby-face fullness
+- do not emphasize cheekbones
+- do not hollow the cheeks
 
-1. face contour / overall face aspect
-2. cheeks
-3. jaw
-4. chin
-5. eye size
-6. eye shape
-7. eye spacing
-8. eyelid / inner-corner / outer-corner structure
-9. eyelashes
-10. eyebrows
-11. nose
-12. mouth
-13. vertical and horizontal feature placement
-14. forehead / bangs relationship
-15. ears
-16. face-local hair structure
-17. colors
-18. expression variants
+### Jaw / chin — selected B2
 
-During comparison tests, vary as few factors as practical so that the author can identify which part caused the improvement or regression.
+- short lower-face impression
+- small chin
+- natural rounded chin tip
+- gentle taper from cheeks to chin
+- not a sharp V-line
+- not long or pointed
 
-## Reference-image policy for redesign exploration
+## Approved eyes
 
-The images generated in the current redesign discussion using combinations such as:
+### Eye size — selected C2
 
-- 愛嬌がある × あどけない
-- 愛嬌がある × 無邪気
-- 愛嬌がある × 童顔
-- 愛嬌がある × 愛らしい
-- 愛嬌がある × 愛くるしい
+- clearly large, but not maximally enlarged
+- cute and youthful while avoiding infantile or chibi proportions
+- do not vertically exaggerate the eye opening
 
-may be used as exploratory comparison references.
+### Eye placement
 
-They are not automatically YURA canon, not active Face Authority, and not final identity references.
+Selected C2 comparison baseline with the eyes moved **0.3% inward**.
 
-Use them only to compare specific design properties such as contour, eye impression, or expression quality until explicitly promoted by the author.
+This is an author-selected test-relative placement value and must not be reinterpreted into a different absolute measurement system without a new author decision.
 
-## Final intended hair direction
+Do not widen the eye spacing from the selected placement.
 
-Final hairstyle target:
+### Eye shape
+
+Use the author-selected face-up image as the shape reference.
+
+- soft almond / softly rounded anime eye
+- moderate horizontal width
+- not round wide-open
+- not strongly upturned
+- not strongly downturned
+- upper eyelid curve is soft and controlled
+- retain natural cute softness
+
+### Double eyelid
+
+Double eyelids are present.
+
+Keep the crease subtle and integrated into the anime rendering. Do not turn the eyelid crease into a heavy realistic line.
+
+### Eyelashes
+
+- dark gray close to black, not pure black
+- clearly present but not sharply inked
+- slightly softened / diffused edges
+- do not make eyelashes dense, heavy, glamorous, or makeup-like
+
+## Approved iris / pupil / highlight system — G1
+
+### Iris color
+
+- gray-blue
+- gray is stronger than blue
+- restrained saturation
+- no vivid jewel-blue dominance
+
+### Iris information density
+
+Keep iris information deliberately low.
+
+- no radial line pattern
+- no dense internal spokes
+- no decorative star / flower / geometric pattern
+- no high-frequency jewel texture
+
+### Iris gradient
+
+Use a soft vertical gradient:
+
+- upper iris slightly darker
+- lower iris slightly lighter
+- smooth transition
+- soft anime transparency rather than realistic iris fiber detail
+
+### Pupil
+
+- small
+- true circular pupil
+- dark but not harsh pure-black dominance
+- clean and simple
+
+### Highlights
+
+- one primary highlight, relatively large
+- one small secondary highlight
+- simple rounded / soft shapes
+- do not overcrowd the iris with sparkle points
+
+Overall eye impression:
+
+**cute + straightforward + slightly youthful + soft transparency**
+
+## Eyebrows
+
+Maintain the selected current eyebrow treatment from the adopted face-up image.
+
+- thin
+- soft
+- neutral
+- approximately natural / gently horizontal
+- not worried eyebrows
+- do not raise the inner brow to create sadness or fragility
+
+## Nose
+
+Maintain the selected current nose treatment from the adopted face-up image.
+
+- minimal 2D anime nose
+- small and understated
+- no realistic bridge modeling
+- no strong sculptural nose presence
+
+## Mouth
+
+Maintain the selected current mouth treatment from the adopted face-up image.
+
+- small
+- closed
+- neutral
+- restrained line weight
+- no open mouth unless explicitly directed by the author
+- do not turn the mouth corners into an unintended smile, sadness, or worry
+
+## Ears
+
+Ear design follows the author-supplied placement rule rather than copying the legacy Face Reference ear geometry.
+
+Placement landmarks:
+
+- upper attachment approximately at eye height
+- lower attachment approximately at the height below the nose / nose-base region
+- overall ear top approximately around eyebrow height as an upper landmark
+
+Additional constraints:
+
+- ears must be vertically compact
+- suppress the previously over-long ear impression
+- do not enlarge ears for visibility
+- do not make ears prominent
+- hair occlusion is allowed
+
+Exact final ear geometry will be confirmed later with a hairless head reference. Until then, these placement and compactness rules control.
+
+## Skin
+
+- lighter than standard anime skin tone
+- pale but not pure white or unhealthy
+- retain only subtle natural blood color
+- matte surface impression
+- strongly anime-rendered rather than realistic
+- no pores or photographic skin texture
+- no oily / wet / plastic gloss
+
+## Hair
+
+Final hairstyle target remains:
 
 - silver-white hair
 - primarily straight
 - SUPER-LONG
-- clearly reaches the waist region in full-body integration
+- clearly reaches beyond the chest and to approximately the waist region in full-body integration
+- must not extend substantially below the waist
+- thin / light bangs
+- forehead slightly visible through the bangs
+- narrow natural face-framing strands
+- no hair ornaments
 
-Face-up tests may simplify or constrain hair presentation when necessary for feature comparison, but the final integrated YURA hairstyle remains SUPER-LONG.
+Hair color must read as **silver-white**, not beige-blonde, pink-blonde, or warm cream-blonde.
 
-## Eye color
+## Face-up framing
 
-Final intended eye color:
+Reference face-up generation should use:
 
-- gray-blue
-- gray should be stronger than blue
-- restrained saturation
-- avoid vivid / jewel-like blue dominance
-
-## Eyelashes
-
-Final intended eyelash treatment:
-
-- dark gray, close to black but not pure black
-- not sharply inked
-- slightly softened / diffused edge impression
-- still visibly present
-
-## Face test framing
-
-Face comparison images should use:
-
-- square canvas
+- exactly one YURA
+- one person per image
+- square canvas when used for identity comparison
 - front-facing orientation
-- neutral upright pose
-- stable framing between candidates where practical
-- no full-body proportion inference from the face crop itself
+- upright head / no head tilt
+- shoulder-up framing
+- entire head visible inside the canvas
+- stable centered composition
+- neutral expression baseline
 
-The face crop controls face geometry and identity comparison only.
+Face-up crop and canvas occupancy do not define full-body head scale.
+
+## Rendering
+
+- strong 2D anime direction
+- strong matte impression
+- fine but readable linework
+- soft anime shading
+- bright / clean presentation
+- no photorealism
+- no semi-photorealism
+- no realistic portrait treatment
+- no CGI / 3D rendering
 
 ## Full-body integration target
 
 The final goal is integration with the existing YURA body design.
 
-New author-approved full-body target for this redesign:
+Author-approved redesign target:
 
 - body height impression: approximately 152–153 cm
 - target head-to-body ratio: 7.0–7.2 heads
 
-This supersedes the previous 7.2 target / 7.1–7.3 acceptable range for the redesign path once this redesign is promoted.
-
 Important separation:
 
-- Face Geometry must not be reshaped to satisfy the head-count target.
-- The physical scale of the completed head is adjusted on the BODY / full-body integration side.
-- Face Reference crop size, canvas occupancy, or pixel dimensions must not define head-to-body ratio.
+- approved Face Geometry must not be reshaped to satisfy the head-count target
+- physical scale of the completed head is adjusted on the BODY / full-body integration side
+- Face Reference crop size, canvas occupancy, or pixel dimensions must not define head-to-body ratio
 
 Required principle:
 
@@ -162,10 +294,12 @@ HEAD PHYSICAL SCALE IN FULL BODY = adjusted by BODY integration
 TARGET FULL-BODY RATIO = 7.0–7.2 heads
 TARGET HEIGHT IMPRESSION = 152–153 cm
 
-## Promotion rule
+## Change control
 
-This document is PROVISIONAL.
+The items above are the author-selected redesign specification.
 
-Nothing generated under this specification becomes YURA Face Authority automatically.
+Do not replace, average, beautify, mature, or reinterpret an approved part without explicit author instruction.
 
-Promotion requires explicit author approval after part-by-part selection and integrated validation.
+Do not import face geometry from earlier generated images except the author-selected redesign reference/candidates explicitly identified for this redesign.
+
+A future repository Face Reference image replacement requires explicit author approval and a separate image-authority update.
