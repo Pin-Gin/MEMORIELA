@@ -1,102 +1,193 @@
 # YURA Visual Work — START HERE
 
-Status: **CURRENT HANDOFF ENTRYPOINT / PROJECT-MANAGEMENT ONLY / NOT VISUAL AUTHORITY**
+Status: **CURRENT CROSS-CHAT HANDOFF / FULL-BODY MASTER PROMOTED / PAID ROUTE FROZEN**
 
-## Purpose
+This directory is the project-management handoff layer for YURA visual work. It does not define appearance; current appearance authority remains under `visuals/**`.
 
-This directory is the current cross-chat handoff and progress-management layer for YURA visual work.
+## 1. Purpose
 
-It exists so a new chat can recover:
+A new chat should be able to recover, without relying on chat memory:
 
-- the current objective;
-- the current approved method;
-- which visual sources are active for the current stage;
-- which old sources are forbidden;
-- what stage is next;
-- what must not be changed.
+- what has already been completed;
+- which files are the current Authorities;
+- the method used to reach the current state;
+- the current validation standards;
+- what is normal future use versus recovery-only tooling;
+- what must not be reopened or changed by default.
 
-This directory does **not** define YURA appearance. Visual appearance authority remains under `visuals/`.
+Novel/story material is never a fallback visual source for YURA.
 
-## Repository layer separation
+## 2. Completion state
 
 ```text
-Novel / story layer
-  characters/**
-  story/**
-  manuscript/**
-  rules/**
-
-Visual specification layer
-  visuals/**
-  YURA appearance authority -> visuals/yura/**
-
-Paid generation / experiment layer
-  tools/**
-  YURA paid-generation history / code / results -> tools/yura-master-benchmark/**
-
-Progress / handoff layer
-  project-management/yura-visual/**
+Ear Geometry Master            = DONE / AUTHOR PASS / PROMOTED
+Face-up Master                  = DONE / AUTHOR PASS / PROMOTED
+Face-up descriptive MD          = DONE / ACTIVE
+Full-body generation            = DONE
+7.0–7.2 head-ratio validation   = PASS on promoted result
+Official Full-body Master       = DONE / AUTHOR PASS / PROMOTED
+7.0-head Body Geometry Guide    = DONE / SUPPORT-ONLY RECOVERY REFERENCE
+paid batch                      = NOT EXECUTED / NOT REQUIRED
+paid generation                 = STOPPED BY AUTHOR
+recovery paid route             = FROZEN / FAIL-CLOSED
+recovery preflight              = VERIFIED PASS / 0 paid model calls
 ```
 
-Novel material must not be used as a fallback source for YURA image generation.
+The latest verified recovery preflight was run against Git commit:
 
-## Current active YURA visual authority
+`690218017a0c3dedba7f34907b97454a53643e41`
 
-Highest authority:
+with:
+
+```text
+status = PREFLIGHT_OK
+paid_model_calls = 0
+paid_generation_allowed = false
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
+authority_count = 8
+```
+
+## 3. Current visual Authority map
+
+Highest YURA visual text authority:
 
 `visuals/yura/identity/master/YURA_VISUAL_TEXT.md`
 
-Current face detail specification required by that Visual Text:
+Primary integrated full-body visual Master:
 
-`visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md`
+`visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png`
 
-Current focused ear support rule for the next stage:
+Body-directory synchronized copy:
 
-`visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md`
+`visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png`
 
-The author-selected 2026-10-17 face redesign is the current formal face direction.
-
-The legacy Face Reference is not a geometry source for the new face redesign.
-
-The existing visual-layer Body Geometry Guide is still named inside the protected `YURA_VISUAL_TEXT.md`. It is **not needed for the current ear / Face-up phases**. Its role for the later full-body phase must be resolved against the then-current Visual Text before generation; this project-management layer must not override that Visual Text decision.
-
-The old full-body Master is archived under tools and is not a current generation reference.
-
-## Current restart read order
-
-For a new chat continuing the current YURA visual work, read:
+Face-local Authorities:
 
 ```text
-1. project-management/yura-visual/CURRENT_STATE.md
-2. project-management/yura-visual/DECISIONS.md
-3. project-management/yura-visual/WORKFLOW.md
-4. visuals/yura/identity/master/YURA_VISUAL_TEXT.md
-5. visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
-6. visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md   [when doing ear/face work]
+visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+visuals/yura/identity/face/YURA_FACE_UP_MASTER.md
+visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
 ```
 
-Then read only the additional visual files required by the active stage.
+Ear-local Authorities:
 
-## Frozen legacy sequencing documents
+```text
+visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
+visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md
+```
 
-Some older repository documents contain historical read orders / phase sequences. By author instruction, those documents are preserved without editing or deletion in this cleanup even when they contain stale historical paths.
+Body recovery support only:
 
-They are **not** allowed to override the current Visual Text or this current handoff state.
+`visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
 
-Do not repair those frozen files by silently editing them.
+The Body Geometry Guide is not a replacement for the official Full-body Master and must not override the Master, Face Authorities, Ear Authorities, or current Visual Text.
 
-## Paid generation state
+## 4. Verified promoted assets
 
-The old paid YURA runner is not the current route and must not be used for a new paid generation condition.
+Official Full-body Master:
 
-Read:
+```text
+promotion commit = 3ce89e33193effa627ea794e803d9a3b50cb085b
+SHA-256 = CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1
+```
 
-`tools/yura-master-benchmark/PAID_ROUTE_STATUS.md`
+Current 7.0-head Body Geometry Guide:
 
-Paid generation remains disabled until the current free ear/face Master sequence is completed and the author explicitly instructs reconstruction of the paid route.
+```text
+SHA-256 = C23D1D2C348102B4ED9D75C422E1C2323800565B94E27A7FF13AF7C624EBDF95
+```
 
-## Promotion rule
+## 5. Current standard
 
-Generated images are candidates only.
+```text
+TARGET HEAD COUNT RANGE = 7.0–7.2 heads
+TARGET HEIGHT IMPRESSION = 152–153 cm
+ONE HEAD = structural skull top / crown to chin
+VISIBLE HAIR VOLUME != SKULL HEIGHT
+```
 
-No image becomes a Master, Face-up Master, Ear Geometry Master, or other Visual Authority without explicit author PASS and repository registration.
+Do not solve head ratio by face elongation, torso-only elongation, leg-only elongation, shoulder widening, ribcage enlargement, or conversion to a tall model-like body.
+
+Face Geometry, eye geometry and placement, pupil bilateral symmetry, ear geometry, body definition, chest-to-frame relationship, and the promoted integrated Full-body Master proportions remain locked.
+
+## 6. Normal future use
+
+For ordinary full-body derivative work such as temporary clothing changes:
+
+```text
+primary reference = visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+```
+
+The camisole and shorts shown in the Master are validation clothing, not permanent wardrobe Authority. Preserve the approved body / identity and replace clothing only as explicitly requested.
+
+Use the Body Geometry Guide only when proportion / recovery support is actually needed.
+
+## 7. Recovery / regeneration method
+
+The retained recovery route is:
+
+```text
+current Git main
+-> verify current Authority paths and SHA-256
+-> verify primary Full-body Master and body-directory copy match
+-> verify current Body Geometry Guide hash
+-> build sealed Authority bundle
+-> Codex prompt compile
+-> manifest / invariant validation
+-> OpenAI Image API
+-> direct structural-crown / chin / soles head-ratio QA
+-> explicit author visual QA
+```
+
+Current Image API recovery reference order is:
+
+```text
+1. visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+2. visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
+3. visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+```
+
+Paid execution is currently unauthorized. A future preflight may verify recovery integrity, but a successful preflight does not authorize a billable call.
+
+## 8. Paid route state
+
+```text
+PAID_GENERATION_ALLOWED = NO
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
+```
+
+Do not run paid generation unless the author explicitly reopens a Master-regeneration phase and the frozen config is deliberately reauthorized.
+
+## 9. New-chat read order
+
+For a new chat, read in this order:
+
+```text
+1. project-management/yura-visual/START_HERE.md
+2. project-management/yura-visual/CURRENT_STATE.md
+3. project-management/yura-visual/DECISIONS.md
+4. project-management/yura-visual/WORKFLOW.md
+5. visuals/yura/identity/master/YURA_VISUAL_TEXT.md
+6. visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+7. visuals/yura/identity/face/YURA_FACE_UP_MASTER.md
+8. visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+9. visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md
+10. visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
+11. visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png   [when body proportion / recovery is relevant]
+```
+
+For paid-route recovery implementation only, additionally read:
+
+```text
+tools/yura-master-benchmark/CURRENT_HANDOFF.md
+tools/yura-master-benchmark/PAID_ROUTE_STATUS.md
+tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md
+tools/YURA_MASTER_GENERATION_CURRENT_STATE.md
+tools/YURA_MASTER_GENERATION_WORKLOG.md
+tools/yura-master-benchmark/config.json
+tools/yura-master-benchmark/codex_instruction.md
+```
+
+## 10. Promotion rule
+
+Generated images are candidates only. No candidate becomes a Master or visual Authority without explicit author PASS and repository promotion.
