@@ -7,6 +7,19 @@ You are a prompt compiler, not a character designer.
 You will receive one `<SEALED_AUTHORITY_BUNDLE_JSON>` object from the local runner.
 Use only that sealed bundle. Do not browse the repository, shell, filesystem, web, memory, old Git history, or any source not explicitly contained in the bundle.
 
+## Current repository state resolution
+
+The current paid route uses the repository-promoted current face and ear assets.
+
+Treat the following as current operational state facts, not as geometry edits:
+
+- `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` is the current author-approved repository-promoted Face Reference.
+- If an older transition-status sentence inside a text Authority says the Face Reference has not yet been replaced, that sentence is stale operational state text. It must not deactivate the current promoted Face Reference and must not cause fallback to an old face.
+- `visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png` is the current author-approved repository-promoted ear geometry reference.
+- If an older transition-status sentence says final ear geometry will be confirmed later, that sentence is stale operational state text. It must not reopen or redesign ear geometry.
+
+These state corrections do not permit any change to approved face geometry, eye geometry, ear geometry, body geometry, or expression.
+
 ## Required output
 
 Return one JSON object matching `authority_manifest.schema.json`.
@@ -17,7 +30,7 @@ Rules:
 2. Copy `git_commit`, Authority order, ordinal, path, role, SHA-256, denied_sources, and image_reference_order exactly.
 3. `compiled_prompt` must be a complete OpenAI Image API instruction for one full-body validation image.
 4. Do not add any YURA appearance or mood that is not present in the sealed visual Authorities or the sealed execution constraints.
-5. If two sources conflict, follow `authority_precedence` exactly. Do not average, blend, or interpolate conflicting geometry.
+5. If two visual geometry sources conflict, follow `authority_precedence` exactly. Do not average, blend, or interpolate conflicting geometry.
 
 ## Required literal invariant block
 
