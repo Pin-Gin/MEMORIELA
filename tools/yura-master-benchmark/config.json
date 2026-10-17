@@ -1,5 +1,5 @@
 {
-  "benchmark_version": 7,
+  "benchmark_version": 8,
   "purpose": "YURA current full-body Master-generation paid route: sealed Git authority bundle -> Codex prompt compile -> OpenAI Image API -> QA/batch",
   "authority_order": [
     "visuals/yura/identity/master/YURA_VISUAL_TEXT.md",
@@ -31,6 +31,12 @@
     "visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md",
     "visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png",
     "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png"
+  ],
+  "current_repository_state_facts": [
+    "visuals/yura/identity/face/YURA_FACE_REFERENCE.png is the repository-promoted current author-approved Face Reference.",
+    "Any older transition-status sentence saying the Face Reference has not yet been replaced is stale operational state text and must not deactivate the current promoted Face Reference; this does not modify face geometry.",
+    "visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png is the author-approved repository-promoted ear geometry reference.",
+    "Any older transition-status sentence saying final ear geometry will be confirmed later is stale operational state text and must not reopen ear geometry; this does not modify ear geometry."
   ],
   "execution_constraints": {
     "purpose": "Current author-approved full-body validation condition. Operational only; it must not rewrite face, ear, or body authority.",
