@@ -1,27 +1,70 @@
 # YURA PAID ROUTE STATUS
 
-Status: **AUTHOR-AUTHORIZED / CURRENT ROUTE REBUILT / FREE PREFLIGHT REQUIRED BEFORE PAID CALL**
+Status: **MASTER PROMOTED / PAID GENERATION COMPLETED / ROUTE FROZEN**
 
 ## Permission
 
 ```text
-PAID_GENERATION_ALLOWED = YES
+PAID_GENERATION_ALLOWED = NO
 ```
 
-This authorization applies only to the rebuilt current full-body route described by:
+The author ended the current paid-generation phase after promoting the official YURA Full-body Master.
+No billable Codex / OpenAI Image API generation is authorized from this route unless the author explicitly reopens a regeneration phase.
+
+## Current promoted result
 
 ```text
-tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md
-tools/YURA_MASTER_GENERATION_WORKLOG.md
-tools/YURA_MASTER_GENERATION_CURRENT_STATE.md
-tools/yura-master-benchmark/README.md
-tools/yura-master-benchmark/config.json
-tools/yura-master-benchmark/codex_instruction.md
+visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+= OFFICIAL INTEGRATED FULL-BODY VISUAL MASTER
+
+promotion commit
+= 3ce89e33193effa627ea794e803d9a3b50cb085b
+
+SHA-256
+= CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1
 ```
 
-The archived pre-rebuild runner remains historical audit material.
+Body-directory synchronized copy:
 
-## Current route
+```text
+visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png
+```
+
+Current recovery / proportion support:
+
+```text
+visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
+= CURRENT 7.0-HEAD BODY GEOMETRY GUIDE / SUPPORT ONLY
+
+SHA-256
+= C23D1D2C348102B4ED9D75C422E1C2323800565B94E27A7FF13AF7C624EBDF95
+```
+
+## Current Authority basis
+
+```text
+YURA_VISUAL_TEXT.md
+= highest YURA visual text authority
+
+YURA_FULL_BODY_MASTER.png
+= primary integrated full-body visual authority
+
+YURA_FACE_REFERENCE.png + YURA_FACE_UP_MASTER.md
+= face-local identity / geometry authority
+
+YURA_EAR_GEOMETRY_MASTER.png + YURA_EAR_BASIC_RULES.md
+= ear-local authority
+
+YURA_BODY_GEOMETRY_GUIDE.png
+= 7.0-head proportion / recovery support only
+```
+
+The Body Geometry Guide must not override the official Full-body Master or face / ear local Authorities.
+The validation clothing visible in the Full-body Master is not a permanent wardrobe Authority.
+
+## Route architecture retained for recovery
+
+The sealed-bundle architecture remains in the repository as recovery tooling:
 
 ```text
 current Git
@@ -34,27 +77,16 @@ current Git
 -> author decision
 ```
 
-## Current Authority basis
+However, the route is currently frozen and paid execution must fail closed while `PAID_GENERATION_ALLOWED = NO`.
 
-```text
-current YURA_VISUAL_TEXT.md
-current Face Redesign Spec
-current Face-up Master MD
-repository-promoted current Face Reference
-current ear rules / Ear Geometry Master
-current visual-layer Body Geometry Guide
-```
-
-Do not restore the old Face Reference, old full-body Master, or archived runner assumptions.
-
-## Current full-body target
+## Current full-body standard
 
 ```text
 HEAD COUNT = 7.0–7.2
 HEIGHT IMPRESSION = 152–153 cm
 ```
 
-Face, ear and body definitions are locked.
+Face, eye placement, ear geometry, body definition, chest-to-frame relationship, and official integrated full-body proportions remain locked.
 
 ## Retired active-route gates
 
@@ -67,48 +99,24 @@ legacy Test 5 prompt contract
 legacy composition percentage postprocess
 ```
 
-Historical files may retain those values for audit, but the rebuilt current runner must not compile them into the active paid prompt.
+Historical files may retain those values for audit only.
 
-## Required preflight
+## Reactivation procedure
 
-Before the first billable call:
-
-```powershell
-python tools/yura-master-benchmark/run_once.py --preflight-only
-```
-
-Required:
+If the author explicitly requests future Full-body Master regeneration:
 
 ```text
-PREFLIGHT_OK
-paid_model_calls = 0
+1. sync current Git main
+2. verify current Full-body Master / Face / Ear / Body Guide Authorities
+3. review and, if necessary, update the frozen recovery config
+4. run free preflight
+5. review preflight
+6. only then explicitly reauthorize a paid seed run
 ```
 
-## First paid execution
+A successful preflight alone does not authorize a billable call.
 
-Only after preflight review:
+## Historical generation artifacts
 
-```powershell
-python tools/yura-master-benchmark/run_once.py
-```
-
-Exactly one seed run first.
-
-## Batch
-
-Only after the seed run and its cost/technical artifacts have been reviewed.
-
-Each batch item is an independent run.
-
-## Promotion
-
-Every generated result starts:
-
-```text
-QA_PENDING
-master_promotion = NO
-```
-
-Explicit author PASS is mandatory for Master promotion.
-
-All process artifacts remain under `tools/**`.
+Paid-run prompts, manifests, costs, traces, candidates and QA remain under `tools/**` for audit / reproduction history.
+They are not Visual Authority.
