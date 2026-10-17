@@ -344,6 +344,15 @@ gray > blue
 - 輪郭は少し柔らかい
 - 純黒で強く抜かない
 - グレーブルーの虹彩へ自然に馴染ませる
+- 左右の瞳孔は対称性を維持する
+- 左右で、瞳孔の大きさ・真円形状・暗さ・輪郭のぼかし強度を同等にする
+- 片側だけ瞳孔を薄く、弱く、小さく、または強くぼかさない
+- 光やハイライトの影響で、片側の瞳孔の存在感だけが弱く見える状態も避ける
+
+```text
+PUPILS MUST BE BILATERALLY SYMMETRIC IN SIZE, SHAPE, DARKNESS, AND EDGE SOFTNESS.
+DO NOT WEAKEN ONE PUPIL RELATIVE TO THE OTHER.
+```
 
 瞳孔を縦長・楕円・装飾形状へ変更しない。
 
