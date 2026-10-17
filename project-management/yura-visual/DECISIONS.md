@@ -40,13 +40,20 @@ Approval record:
 
 `project-management/yura-visual/EAR_GEOMETRY_MASTER_APPROVAL.md`
 
-Approved target path:
+Promoted Master path:
 
 `visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
 
 Approved source SHA-256:
 
 `8949c5febef99850f7cccd849064c9dfe774e3b722f1658c967b0ecf2c5c7b50`
+
+Repository promotion is complete and verified.
+
+```text
+promotion commit = c0878854937103236a2902abf80912182f191ead
+Git blob SHA      = efba2f34097c4fa6e3f2a45e66a235da57253e3f
+```
 
 Accepted ear-stage geometry includes:
 
@@ -57,9 +64,7 @@ Accepted ear-stage geometry includes:
 - the final slightly compacted upper-cranium result is accepted;
 - the approved current face geometry / eyes / cheeks / chin remain the reference state for this structural Master.
 
-The author approval itself is fixed. The exact approved PNG still must be present at the target repository path before repository binary promotion is considered complete.
-
-After binary promotion, use the approved Ear Geometry Master when creating the normal-hair Face-up Master.
+The next normal-hair Face-up candidate must use this promoted Ear Geometry Master together with the current Visual Text and face specification.
 
 ## Body / chest decision
 
