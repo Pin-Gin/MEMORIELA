@@ -10,18 +10,23 @@ from pathlib import Path
 
 TOOL_DIR = Path(__file__).resolve().parent
 CONFIG = json.loads((TOOL_DIR / "config.json").read_text(encoding="utf-8"))
+CURRENT_ROUTE_STATUS = "CURRENT_AUTHOR_AUTHORIZED_FULL_BODY_PAID_ROUTE"
 
 
 def newest_run() -> Path | None:
     runs = TOOL_DIR / "runs"
     if not runs.exists():
         return None
-    dirs = [p for p in runs.iterdir() if p.is_dir() and (p / "cost.json").exists()]
+    dirs = [
+        p
+        for p in runs.iterdir()
+        if p.is_dir() and (p / "cost.json").exists() and (p / "run_meta.json").exists()
+    ]
     return max(dirs, key=lambda p: p.stat().st_mtime) if dirs else None
 
 
-def load_cost(run_dir: Path) -> dict:
-    return json.loads((run_dir / "cost.json").read_text(encoding="utf-8"))
+def load_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def estimate_full_run_cost(cost: dict) -> float | None:
@@ -55,8 +60,6 @@ def estimate_full_run_cost(cost: dict) -> float | None:
 def eligible_cost(cost: dict, allow_estimate: bool) -> tuple[float, str]:
     authoritative = cost.get("run_specific_authoritative_cost_usd")
     if authoritative is None:
-        # Backward compatibility: this legacy field is populated by the corrected cost
-        # query only when isolated-project-day attribution was explicitly asserted.
         authoritative = cost.get("authoritative_total_project_cost_usd")
     if authoritative is not None:
         return float(authoritative), "authoritative-run-cost"
@@ -67,40 +70,66 @@ def eligible_cost(cost: dict, allow_estimate: bool) -> tuple[float, str]:
             return estimate, "codex-plus-image-estimate"
 
     raise RuntimeError(
-        "No authoritative run-specific cost is available. The OpenAI Costs API is daily-granularity. "
-        "Use a deliberately isolated project/day for authoritative attribution, or pass --allow-estimate "
-        "to explicitly accept the Codex + Image run estimate."
+        "No authoritative run-specific cost is available. "
+        "Use an isolated project/day for authoritative attribution, "
+        "or pass --allow-estimate to explicitly accept the stored pricing snapshot estimate."
     )
 
 
+def validate_seed(seed: Path) -> None:
+    meta = load_json(seed / "run_meta.json")
+    if meta.get("route_status") != CURRENT_ROUTE_STATUS:
+        raise RuntimeError(
+            "Seed run is not from the current rebuilt YURA paid route. "
+            "Generate a new current-route single run first."
+        )
+    if meta.get("head_ratio_gate") != "7.0–7.2":
+        raise RuntimeError("Seed run does not use the current 7.0–7.2 head-ratio gate")
+    if not (seed / "compiled_prompt.sha256").exists():
+        raise RuntimeError("Seed run has no compiled_prompt.sha256")
+    if not (seed / str(CONFIG["image_api"].get("result_filename", "result.png"))).exists():
+        raise RuntimeError("Seed run has no generated result image")
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Run independent current-route YURA paid generations after one reviewed seed run."
+    )
     parser.add_argument("--seed-run", type=Path, default=None)
     parser.add_argument("--runs", type=int, default=CONFIG["batch"]["runs_after_single"])
     parser.add_argument("--allow-estimate", action="store_true")
     parser.add_argument(
-        "--query-costs",
+        "--confirm-seed-reviewed",
         action="store_true",
-        help=(
-            "Query project daily cost metadata after each run when admin credentials are set. "
-            "Current UTC-day runs remain pending until that daily bucket closes."
-        ),
+        help="Required: confirms the single paid seed run and its cost/technical artifacts were reviewed.",
     )
+    parser.add_argument("--query-costs", action="store_true")
     parser.add_argument("--cost-wait-seconds", type=int, default=30)
     args = parser.parse_args()
+
+    if not args.confirm_seed_reviewed:
+        raise RuntimeError("Batch requires --confirm-seed-reviewed")
+
+    if args.runs < 1:
+        raise RuntimeError("--runs must be >= 1")
 
     seed = args.seed_run.resolve() if args.seed_run else newest_run()
     if seed is None:
         raise RuntimeError("No seed run found. Execute run_once.py first.")
-    seed_cost = load_cost(seed)
+
+    validate_seed(seed)
+
+    seed_cost = load_json(seed / "cost.json")
     run_cost, cost_source = eligible_cost(seed_cost, args.allow_estimate)
     threshold = float(CONFIG["batch"]["max_total_cost_per_run_usd_for_auto_batch"])
     if run_cost >= threshold:
-        raise RuntimeError(f"Seed run cost ${run_cost:.6f} is not below batch threshold ${threshold:.2f}")
+        raise RuntimeError(
+            f"Seed run cost ${run_cost:.6f} is not below batch threshold ${threshold:.2f}"
+        )
 
     produced: list[Path] = []
     for index in range(1, args.runs + 1):
-        print(f"[{index}/{args.runs}] running YURA benchmark...", flush=True)
+        print(f"[{index}/{args.runs}] running current YURA paid benchmark...", flush=True)
         p = subprocess.run(
             [sys.executable, str(TOOL_DIR / "run_once.py")],
             cwd=TOOL_DIR,
@@ -111,6 +140,7 @@ def main() -> int:
         sys.stderr.write(p.stderr)
         if p.returncode != 0:
             raise RuntimeError(f"run_once.py failed at batch item {index}")
+
         try:
             payload = json.loads(p.stdout[p.stdout.rfind("{"):])
             run_dir = Path(payload["run_dir"])
@@ -120,7 +150,11 @@ def main() -> int:
                 raise RuntimeError("Could not resolve generated run directory")
         produced.append(run_dir)
 
-        if args.query_costs and os.environ.get("OPENAI_ADMIN_KEY") and os.environ.get("OPENAI_PROJECT_ID"):
+        if (
+            args.query_costs
+            and os.environ.get("OPENAI_ADMIN_KEY")
+            and os.environ.get("OPENAI_PROJECT_ID")
+        ):
             q = subprocess.run(
                 [
                     sys.executable,
@@ -135,27 +169,32 @@ def main() -> int:
             if q.returncode != 0:
                 print(f"WARNING: cost query failed for {run_dir.name}", file=sys.stderr)
 
-    prompt_hashes = []
-    authoritative_costs = []
+    prompt_hashes: list[str] = []
+    authoritative_costs: list[float] = []
     author_pass = 0
-    auto_pass = 0
+    head_ratio_pass = 0
+
     for d in produced:
         sha_file = d / "compiled_prompt.sha256"
         if sha_file.exists():
             prompt_hashes.append(sha_file.read_text(encoding="ascii").strip())
-        cost = load_cost(d)
+
+        cost = load_json(d / "cost.json")
         run_authoritative = cost.get("run_specific_authoritative_cost_usd")
         if run_authoritative is not None:
             authoritative_costs.append(float(run_authoritative))
+
         qa_path = d / "qa.json"
         if qa_path.exists():
-            qa = json.loads(qa_path.read_text(encoding="utf-8"))
+            qa = load_json(qa_path)
             if qa.get("author_pass") is True:
                 author_pass += 1
-            if qa.get("auto_pass") is True:
-                auto_pass += 1
+            if qa.get("head_ratio_pass") is True:
+                head_ratio_pass += 1
 
     summary = {
+        "route": CURRENT_ROUTE_STATUS,
+        "head_ratio_gate": "7.0–7.2",
         "seed_run": str(seed),
         "seed_cost_usd": run_cost,
         "seed_cost_source": cost_source,
@@ -164,17 +203,20 @@ def main() -> int:
         "completed_runs": len(produced),
         "run_dirs": [str(x) for x in produced],
         "compiled_prompt_sha256_counts": dict(Counter(prompt_hashes)),
-        "manifest_stable": len(set(prompt_hashes)) <= 1 if prompt_hashes else False,
-        "authoritative_run_costs_available": len(authoritative_costs),
-        "authoritative_batch_cost_usd": round(sum(authoritative_costs), 8) if authoritative_costs else None,
-        "auto_pass_count": auto_pass,
+        "compiled_prompt_stable": len(set(prompt_hashes)) <= 1 if prompt_hashes else False,
+        "head_ratio_pass_count": head_ratio_pass,
         "author_pass_count": author_pass,
+        "authoritative_run_costs_available": len(authoritative_costs),
+        "authoritative_batch_cost_usd": (
+            round(sum(authoritative_costs), 8) if authoritative_costs else None
+        ),
         "note": (
-            "OpenAI Costs API is daily-granularity. authoritative_batch_cost_usd is populated only "
-            "from run-specific authoritative costs that were isolated; author_pass_count stays zero "
-            "until qa.json is explicitly approved by the author."
+            "Each batch item is an independent run. "
+            "A generated image remains QA_PENDING until manual head-ratio QA and explicit author review. "
+            "The latest free GPT PASS image is calibration context only and is not automatically reused as a paid image reference."
         ),
     }
+
     out = TOOL_DIR / "runs" / "latest_batch_summary.json"
     out.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
