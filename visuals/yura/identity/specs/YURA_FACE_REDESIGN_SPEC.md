@@ -122,7 +122,9 @@ Keep the crease subtle and integrated into the anime rendering. Do not turn the 
 - slightly softened / diffused edges
 - do not make eyelashes dense, heavy, glamorous, or makeup-like
 
-## Approved iris / pupil / highlight system — G1
+## Approved iris / pupil / highlight system
+
+Do not depend on comparison labels such as `G1` to interpret this specification. The explicit structure below is the authority.
 
 ### Iris color
 
@@ -135,30 +137,36 @@ Keep the crease subtle and integrated into the anime rendering. Do not turn the 
 
 Keep iris information deliberately low.
 
-- no radial line pattern
+- soft vertical gradient
+- very faint radial pattern only
 - no dense internal spokes
 - no decorative star / flower / geometric pattern
 - no high-frequency jewel texture
 
-### Iris gradient
+### Iris pattern
 
-Use a soft vertical gradient:
+Use **柔らかい上下グラデーション＋ごく薄い放射状模様**.
 
 - upper iris slightly darker
 - lower iris slightly lighter
 - smooth transition
-- soft anime transparency rather than realistic iris fiber detail
+- radial lines must remain extremely faint and subordinate to the gradient
+- do not turn the radial pattern into strongly visible iris fibers or dense spokes
 
 ### Pupil
 
-- small
-- true circular pupil
+Use **小さめ真円・輪郭ややぼかし**.
+
+- small circular pupil
+- edge slightly softened / diffused
 - dark but not harsh pure-black dominance
-- clean and simple
+- simple and integrated with the gray-blue iris
 
 ### Highlights
 
-- one primary highlight, relatively large
+Use **中サイズ主光1＋小さい副光1**.
+
+- one medium-size primary highlight
 - one small secondary highlight
 - simple rounded / soft shapes
 - do not overcrowd the iris with sparkle points
@@ -257,49 +265,3 @@ Reference face-up generation should use:
 - entire head visible inside the canvas
 - stable centered composition
 - neutral expression baseline
-
-Face-up crop and canvas occupancy do not define full-body head scale.
-
-## Rendering
-
-- strong 2D anime direction
-- strong matte impression
-- fine but readable linework
-- soft anime shading
-- bright / clean presentation
-- no photorealism
-- no semi-photorealism
-- no realistic portrait treatment
-- no CGI / 3D rendering
-
-## Full-body integration target
-
-The final goal is integration with the existing YURA body design.
-
-Author-approved redesign target:
-
-- body height impression: approximately 152–153 cm
-- target head-to-body ratio: 7.0–7.2 heads
-
-Important separation:
-
-- approved Face Geometry must not be reshaped to satisfy the head-count target
-- physical scale of the completed head is adjusted on the BODY / full-body integration side
-- Face Reference crop size, canvas occupancy, or pixel dimensions must not define head-to-body ratio
-
-Required principle:
-
-FACE GEOMETRY = preserved after approval
-HEAD PHYSICAL SCALE IN FULL BODY = adjusted by BODY integration
-TARGET FULL-BODY RATIO = 7.0–7.2 heads
-TARGET HEIGHT IMPRESSION = 152–153 cm
-
-## Change control
-
-The items above are the author-selected redesign specification.
-
-Do not replace, average, beautify, mature, or reinterpret an approved part without explicit author instruction.
-
-Do not import face geometry from earlier generated images except the author-selected redesign reference/candidates explicitly identified for this redesign.
-
-A future repository Face Reference image replacement requires explicit author approval and a separate image-authority update.
