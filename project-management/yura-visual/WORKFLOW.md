@@ -30,6 +30,8 @@ YURA_FACE_REDESIGN_SPEC.md
 YURA_EAR_BASIC_RULES.md
 ```
 
+Do not attach the legacy Face Reference or Body Geometry Guide in this phase.
+
 Hairless presentation is allowed only to inspect the complete ear geometry. It must not alter the approved face.
 
 PASS requires, at minimum:
@@ -97,7 +99,9 @@ Rules:
 
 Only after Face-up Master and its descriptive MD are complete.
 
-The new full-body route must start from the current Visual Text and current approved face assets, not from the archived legacy full-body Master or legacy Body Guide.
+The new full-body route must start from the current Visual Text and current approved face assets, not from the archived old full-body Master.
+
+Before any full-body generation, explicitly re-resolve the visual-layer Body Geometry Guide because the protected `YURA_VISUAL_TEXT.md` currently names that asset. Do not use the archived tools copy as an automatic reference. If the author changes the Body Geometry route before this phase, update the active specification deliberately rather than letting project-management prose override Visual Text.
 
 Mandatory preserved design constraints include:
 

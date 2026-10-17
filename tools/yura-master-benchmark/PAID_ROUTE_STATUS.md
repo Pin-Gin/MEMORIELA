@@ -6,7 +6,7 @@ Status: **DISABLED / REBUILD REQUIRED / NO PAID RUN AUTHORIZED**
 
 The historical YURA paid benchmark route must not be used for a new generation condition.
 
-The old runner/configuration was built around legacy Face Reference / Body Guide / full-body Master assumptions and old numeric gates. Those assumptions are no longer the active YURA visual route.
+The old runner/configuration was built around legacy Face Reference / Body Guide / full-body Master assumptions and old numeric gates. Those assumptions must not be silently reused as the current paid route.
 
 Current paid-generation permission:
 
@@ -46,9 +46,11 @@ Do not rebuild until the author explicitly instructs it after the current Face-u
 When rebuilt:
 
 - resolve only current visual authority;
-- do not silently restore archived Face Reference / Body Guide / old full-body Master;
+- use the current `YURA_VISUAL_TEXT.md` as the controlling visual text;
+- do not silently restore archived Face Reference, archived Body Guide, or archived old full-body Master;
+- if the then-current Visual Text still names the visual-layer Body Geometry Guide, resolve that live visual-layer asset explicitly rather than using the tools archive copy;
 - keep face identity independent from body-proportion solving;
-- use the current `YURA_VISUAL_TEXT.md` body target, not obsolete hard-coded targets;
+- use the current Visual Text body target, not obsolete hard-coded paid-run targets;
 - preserve the current chest-to-frame design as non-sexual character-design validation;
 - do not add age-category wording as a generation workaround;
 - store prompts, manifests, hypotheses, costs, QA, candidate metadata, and paid outputs under `tools/`;

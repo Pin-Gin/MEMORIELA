@@ -10,6 +10,8 @@ This file records decisions so a new chat does not re-open settled direction by 
 
 It remains unchanged by this repository cleanup.
 
+Project-management documents may not override it.
+
 ## Face decision
 
 The face selected in the 2026-10-17 redesign work is the current formal face direction.
@@ -21,6 +23,8 @@ The detailed current specification remains:
 Legacy Face Reference geometry is not current face authority and must not be blended back into the new design.
 
 Face geometry must not be altered to solve later body, proportion, ear, or generation problems.
+
+The legacy Face Reference file remains physically present at its visual-layer path only because the protected Visual Text still names that path. Its presence is not permission to use it as geometry for the current face redesign.
 
 ## Ear decision
 
@@ -34,9 +38,9 @@ First create a hairless structural ear Master; then use that approved geometry w
 
 ## Body / chest decision
 
-The current chest specification inside `YURA_VISUAL_TEXT.md` is retained.
+The current body and chest specification inside `YURA_VISUAL_TEXT.md` is retained.
 
-Key design intent:
+Key chest design intent:
 
 ```text
 slender body
@@ -53,6 +57,23 @@ This is character-design and body-balance verification.
 Do not add age-category wording to generation instructions as a workaround for this body-design requirement.
 
 Do not sexualize the presentation, pose, camera, clothing, or QA focus.
+
+## Body Geometry Guide status
+
+The current protected Visual Text still explicitly names:
+
+`visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
+
+Therefore this progress layer does **not** declare that asset deleted, superseded, or inactive for every future purpose.
+
+Current decision is narrower:
+
+- it is not an input for the current hairless ear phase;
+- it is not an input for the current normal-hair Face-up phase;
+- an audit copy is stored under tools for provenance;
+- before full-body generation, its role must be resolved from the then-current Visual Text and explicit author instruction.
+
+Do not use the archived tools copy as a shortcut or alternate Authority.
 
 ## Body proportion decision
 
@@ -87,9 +108,9 @@ novel/story layer
 
 ## Legacy decision
 
-The previous Face Reference, Body Guide, Sample-9 full-body Master, measurement records, audits, and candidate records are historical only.
+The previous full-body Master, old measurement records, audits, and candidate records are historical only and are archived under tools.
 
-They may be kept under tools for audit / provenance but are denied as current visual-generation authority.
+Legacy Face Reference and Body Guide audit copies also exist under tools for provenance, but their visual-layer compatibility copies are handled only according to the protected Visual Text and current stage rules above.
 
 ## Protected old sequencing documents
 

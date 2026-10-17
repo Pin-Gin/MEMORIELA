@@ -10,7 +10,7 @@ It exists so a new chat can recover:
 
 - the current objective;
 - the current approved method;
-- which visual sources are active;
+- which visual sources are active for the current stage;
 - which old sources are forbidden;
 - what stage is next;
 - what must not be changed.
@@ -56,7 +56,11 @@ Current focused ear support rule for the next stage:
 
 The author-selected 2026-10-17 face redesign is the current formal face direction.
 
-Old Face Reference / old Body Guide / old full-body Master assets are legacy material and are not current generation references.
+The legacy Face Reference is not a geometry source for the new face redesign.
+
+The existing visual-layer Body Geometry Guide is still named inside the protected `YURA_VISUAL_TEXT.md`. It is **not needed for the current ear / Face-up phases**. Its role for the later full-body phase must be resolved against the then-current Visual Text before generation; this project-management layer must not override that Visual Text decision.
+
+The old full-body Master is archived under tools and is not a current generation reference.
 
 ## Current restart read order
 
