@@ -20,6 +20,8 @@ INSTRUCTION_PATH = TOOL_DIR / "codex_instruction.md"
 AUTHORITY_ROLES: dict[str, str] = {
     "visuals/yura/identity/master/YURA_VISUAL_TEXT.md":
         "HIGHEST YURA VISUAL TEXT AUTHORITY",
+    "visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png":
+        "OFFICIAL REPOSITORY-PROMOTED INTEGRATED FULL-BODY VISUAL MASTER",
     "visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md":
         "CURRENT FACE DETAIL SPECIFICATION",
     "visuals/yura/identity/face/YURA_FACE_UP_MASTER.md":
@@ -31,7 +33,7 @@ AUTHORITY_ROLES: dict[str, str] = {
     "visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png":
         "AUTHOR-APPROVED EAR GEOMETRY REFERENCE; METADATA-ONLY FOR FULL-BODY API ROUTE",
     "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png":
-        "BODY GEOMETRY SUPPORT ONLY; CURRENT VISUAL TEXT WINS ON CONFLICT",
+        "CURRENT 7.0-HEAD BODY-GEOMETRY SUPPORT / RECOVERY GUIDE ONLY; FULL-BODY MASTER WINS ON CONFLICT",
 }
 
 REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
@@ -40,6 +42,7 @@ REQUIRED_PROMPT_INVARIANTS: tuple[str, ...] = (
     "ONE HEAD = actual structural crown / skull top to chin.",
     "VISIBLE HAIR VOLUME != SKULL HEIGHT.",
     "FACE GEOMETRY IS LOCKED.",
+    "FACE IDENTITY BASELINE = CHARM + CUTENESS + APPROPRIATE YOUTHFULNESS.",
     "EYE PLACEMENT = C2 baseline -> 0.3% inward.",
     "PUPILS MUST BE BILATERALLY SYMMETRIC IN SIZE, SHAPE, DARKNESS, AND EDGE SOFTNESS.",
     "EAR VISIBILITY IS NOT REQUIRED.",
@@ -187,18 +190,23 @@ def validate_runtime_config(config: dict[str, Any]) -> None:
     expected_authorities = list(AUTHORITY_ROLES)
     if config.get("authority_order") != expected_authorities:
         raise RuntimeError(
-            "config authority_order must exactly match the current YURA paid-route authority set"
+            "config authority_order must exactly match the current YURA recovery authority set"
         )
 
-    image_order = config.get("image_reference_order")
     expected_images = [
+        "visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png",
         "visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png",
         "visuals/yura/identity/face/YURA_FACE_REFERENCE.png",
     ]
-    if image_order != expected_images:
+    if config.get("image_reference_order") != expected_images:
         raise RuntimeError(
-            "current full-body image_reference_order must be Body Geometry Guide then current Face Reference"
+            "recovery image_reference_order must be Full-body Master, Body Geometry Guide, then Face Reference"
         )
+
+    if config.get("route_state") != "FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION":
+        raise RuntimeError("unexpected YURA recovery route_state")
+    if not isinstance(config.get("paid_generation_allowed"), bool):
+        raise RuntimeError("paid_generation_allowed must be a boolean")
 
     constraints = config.get("execution_constraints") or {}
     if constraints.get("head_ratio_target_range") != [7.0, 7.2]:
@@ -220,6 +228,36 @@ def validate_runtime_config(config: dict[str, Any]) -> None:
         )
 
 
+def validate_promoted_assets(
+    root: Path,
+    config: dict[str, Any],
+    local_hashes: dict[str, str],
+) -> None:
+    master_cfg = config.get("full_body_master") or {}
+    master_rel = str(master_cfg.get("primary_path", ""))
+    body_copy_rel = str(master_cfg.get("body_copy_path", ""))
+    master_expected = str(master_cfg.get("sha256", "")).lower()
+
+    if master_rel not in local_hashes:
+        raise RuntimeError("official Full-body Master is missing from authority_order")
+    if local_hashes[master_rel].lower() != master_expected:
+        raise RuntimeError("official Full-body Master SHA-256 does not match config")
+
+    body_copy = root / body_copy_rel
+    if not body_copy.exists():
+        raise RuntimeError("body-directory Full-body Master synchronized copy is missing")
+    if sha256_file(body_copy).lower() != local_hashes[master_rel].lower():
+        raise RuntimeError("body-directory Full-body Master copy does not match primary Master")
+
+    guide_cfg = config.get("body_geometry_guide") or {}
+    guide_rel = str(guide_cfg.get("path", ""))
+    guide_expected = str(guide_cfg.get("sha256", "")).lower()
+    if guide_rel not in local_hashes:
+        raise RuntimeError("current Body Geometry Guide is missing from authority_order")
+    if local_hashes[guide_rel].lower() != guide_expected:
+        raise RuntimeError("current Body Geometry Guide SHA-256 does not match config")
+
+
 def validate_compiled_prompt(run_dir: Path, compiled_prompt: str) -> None:
     missing = [x for x in REQUIRED_PROMPT_INVARIANTS if x not in compiled_prompt]
     forbidden = [x for x in FORBIDDEN_LEGACY_LITERALS if x in compiled_prompt]
@@ -230,7 +268,7 @@ def validate_compiled_prompt(run_dir: Path, compiled_prompt: str) -> None:
         "missing": missing,
         "forbidden_legacy_literals": list(FORBIDDEN_LEGACY_LITERALS),
         "forbidden_present": forbidden,
-        "image_api_allowed": passed,
+        "image_api_prompt_gate_pass": passed,
         "head_ratio_gate": "7.0–7.2",
         "legacy_composition_percentage_gate": "RETIRED",
     }
@@ -288,9 +326,11 @@ def build_sealed_bundle(
         entries.append(entry)
 
     return {
-        "bundle_version": 7,
-        "bundle_mode": "SEALED_CURRENT_YURA_FULL_BODY",
+        "bundle_version": 8,
+        "bundle_mode": "SEALED_CURRENT_YURA_FULL_BODY_RECOVERY",
         "git_commit": head,
+        "route_state": config["route_state"],
+        "paid_generation_allowed": config["paid_generation_allowed"],
         "authority_order": entries,
         "authority_precedence": list(config["authority_precedence"]),
         "denied_sources": list(config["denied_sources"]),
@@ -307,13 +347,16 @@ def build_sealed_bundle(
             "legacy_archived_runner_is_authority": False,
             "legacy_composition_percentage_gates_active": False,
             "current_head_ratio_hard_gate": "7.0–7.2",
+            "official_full_body_master_is_primary_integrated_reference": True,
+            "body_geometry_guide_is_support_only": True,
+            "paid_generation_allowed": config["paid_generation_allowed"],
         },
     }
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Current YURA paid full-body route using sealed current Git Authorities."
+        description="Frozen YURA full-body recovery route using sealed current Git Authorities."
     )
     parser.add_argument(
         "--preflight-only",
@@ -335,8 +378,9 @@ def main() -> int:
         )
 
     authority_paths = [str(x) for x in config["authority_order"]]
+    dirty_paths = [*authority_paths, str(config["full_body_master"]["body_copy_path"])]
     dirty = run(
-        ["git", "status", "--porcelain", "--", *authority_paths],
+        ["git", "status", "--porcelain", "--", *dirty_paths],
         root,
     ).stdout.strip()
     if dirty:
@@ -348,6 +392,8 @@ def main() -> int:
         if not path.exists():
             raise RuntimeError(f"required current Authority missing: {rel}")
         local_hashes[rel] = sha256_file(path)
+
+    validate_promoted_assets(root, config, local_hashes)
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     runs_dir = root / str(config["runs_dir"])
@@ -378,7 +424,8 @@ def main() -> int:
         "authority_sha256": local_hashes,
         "sealed_authority_bundle_sha256": bundle_sha,
         "preflight_only": args.preflight_only,
-        "route_status": "CURRENT_AUTHOR_AUTHORIZED_FULL_BODY_PAID_ROUTE",
+        "route_status": config["route_state"],
+        "paid_generation_allowed": config["paid_generation_allowed"],
         "head_ratio_gate": "7.0–7.2",
         "legacy_composition_percentage_gates": "RETIRED",
     }
@@ -405,6 +452,8 @@ def main() -> int:
                 {
                     "status": "PREFLIGHT_OK",
                     "paid_model_calls": 0,
+                    "paid_generation_allowed": config["paid_generation_allowed"],
+                    "route_state": config["route_state"],
                     "run_dir": str(run_dir),
                     "git_commit": head,
                     "authority_count": len(authority_paths),
@@ -414,13 +463,22 @@ def main() -> int:
                     "height_impression_cm": "152–153",
                     "image_reference_order": config["image_reference_order"],
                     "legacy_composition_percentage_gates": "RETIRED",
-                    "next": "Review this preflight, then run run_once.py without --preflight-only for exactly one paid image.",
+                    "next": (
+                        "Recovery preflight verified. Paid generation remains frozen. "
+                        "Do not run a billable call until explicit author reauthorization and config update."
+                    ),
                 },
                 ensure_ascii=False,
                 indent=2,
             )
         )
         return 0
+
+    if config.get("paid_generation_allowed") is not True:
+        raise RuntimeError(
+            "Paid YURA generation is frozen after Full-body Master promotion. "
+            "Explicit author reauthorization and config update are required before any Codex/Image API call."
+        )
 
     if not os.environ.get("OPENAI_API_KEY"):
         raise RuntimeError("OPENAI_API_KEY is required for paid Codex/Image API execution.")
@@ -569,10 +627,11 @@ def main() -> int:
         "result_image": result_name,
         "head_ratio_target_range": [7.0, 7.2],
         "height_impression_cm_range": [152, 153],
-        "head_ratio_status": "PENDING_MANUAL_STRUCTURAL_CROWN_MEASUREMENT",
+        "head_ratio_status": "PENDING_IMAGE_MEASUREMENT",
         "auto_pass": False,
         "author_pass": None,
         "required_author_review": {
+            "full_body_master_integrated_balance": "PENDING",
             "face_identity_and_geometry": "PENDING",
             "eye_shape_size_placement": "PENDING",
             "pupil_bilateral_symmetry": "PENDING",
@@ -586,7 +645,7 @@ def main() -> int:
             "white_background_centering": "PENDING",
         },
         "note": (
-            "Run body_geometry_qa.py using the structural skull-top interval, chin, and soles. "
+            "Measure head ratio from the generated image using structural skull top, chin, and soles. "
             "Author PASS remains mandatory. Legacy composition occupancy/margin percentages are not active gates."
         ),
     }
@@ -601,14 +660,15 @@ def main() -> int:
                 "status": "PAID_RUN_COMPLETE_QA_PENDING",
                 "run_dir": str(run_dir),
                 "git_commit": head,
+                "route_state": config["route_state"],
                 "sealed_authority_bundle_sha256": bundle_sha,
                 "compiled_prompt_sha256": prompt_sha,
                 "result_image_path": str(result_path),
                 "head_ratio_target": "7.0–7.2",
                 "image_estimated_cost_usd": image_estimate,
                 "next": (
-                    "Review result.png, then run body_geometry_qa.py. "
-                    "Do not promote to Master until explicit author PASS."
+                    "Measure head ratio from result.png and perform author visual review. "
+                    "Do not promote or replace the current Master until explicit author PASS."
                 ),
             },
             ensure_ascii=False,
