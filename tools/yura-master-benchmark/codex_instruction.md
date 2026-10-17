@@ -110,7 +110,9 @@ Current `YURA_VISUAL_TEXT.md` wins over a conflicting legacy visual implication.
 
 ## Composition rule
 
-Do not import the retired legacy composition gates (89% occupancy, 88–90%, 5–6% margins, or equivalent old percentage targets) into the compiled prompt.
+Do not import any retired legacy numeric composition targets into the compiled prompt.
+Do not reproduce retired numeric composition targets even in negative, explanatory, historical, or parenthetical wording.
+Use only the current qualitative composition requirements.
 
 The current composition requirement is qualitative and explicit:
 full body visible, centered, pure white background, upright, both feet fully planted, no crop of head or feet.
