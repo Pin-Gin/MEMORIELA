@@ -1,25 +1,28 @@
 # YURA FACE-UP MASTER
 
-Status: **AUTHOR-APPROVED FACE-UP MASTER / ACTIVE TEXT AUTHORITY / FACE PNG REPLACEMENT PENDING**
+Status: **AUTHOR-APPROVED FACE-UP MASTER / ACTIVE TEXT AUTHORITY / REPOSITORY PROMOTED / VERIFIED**
 
 ## Purpose
 
 この文書は、作者が正式PASSとした現在のYURA Face-up画像を、YURAの正式な顔・頭部・目・表情・Face-up時の髪と耳の見え方の基準として固定する。
 
-正式Face-up画像の配置先:
+正式Face-up画像:
 
 `visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
 
-今回作者PASSとなったFace-up画像の検証情報:
+Repository-promoted Face-up Master verification:
 
 ```text
-width   = 1145 px
-height  = 1374 px
-mode    = RGBA
-SHA-256 = c2e247de089d12aa551727944195c124907e2c59b134690b370210d2fa84c3f7
+width     = 1145 px
+height    = 1374 px
+mode      = RGBA
+size      = 1,922,890 bytes
+SHA-256   = c71111887ff96ebabd47b6ef9318a41b6fa50b060eafdeabdebf75382dc48e09
+Git blob  = 496d7da8a1769808917383598624d3c03fa18163
+commit    = 0b8a8a106593688928870ffd1a6340d8034d5818
 ```
 
-このSHA-256と一致するPNGを `YURA_FACE_REFERENCE.png` として配置した時点で、Face-up Masterのrepository binary promotionを完了とする。
+上記PNGは作者PASS済みFace-up Masterとしてrepositoryへ正式昇格済みである。
 
 耳の実Geometryについては、以下の正式Masterを併用する。
 
@@ -615,12 +618,17 @@ PRESERVE THE AUTHOR-APPROVED FACE-UP IMAGE.
 
 Author approval for this Face-up design is complete.
 
-Repository binary replacement remains pending until the exact approved PNG with SHA-256 below is placed at:
+Repository binary promotion is also complete and verified.
+
+Canonical repository asset:
 
 `visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
 
 ```text
-SHA-256 = c2e247de089d12aa551727944195c124907e2c59b134690b370210d2fa84c3f7
+SHA-256 = c71111887ff96ebabd47b6ef9318a41b6fa50b060eafdeabdebf75382dc48e09
+size    = 1,922,890 bytes
+Git blob = 496d7da8a1769808917383598624d3c03fa18163
+commit   = 0b8a8a106593688928870ffd1a6340d8034d5818
 ```
 
-After replacement and hash verification, this Face-up image becomes the repository-promoted canonical Face Reference.
+This Face-up image is the repository-promoted canonical Face Reference.
