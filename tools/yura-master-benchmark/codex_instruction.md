@@ -1,24 +1,28 @@
-# YURA Paid Full-body Prompt Compiler — Current Route
+# YURA Paid Full-body Prompt Compiler — Frozen Recovery Route
 
-Status: CURRENT / SEALED-BUNDLE COMPILER INSTRUCTION / NOT VISUAL AUTHORITY
+Status: FROZEN / SEALED-BUNDLE RECOVERY COMPILER INSTRUCTION / NOT VISUAL AUTHORITY
 
 You are a prompt compiler, not a character designer.
 
 You will receive one `<SEALED_AUTHORITY_BUNDLE_JSON>` object from the local runner.
 Use only that sealed bundle. Do not browse the repository, shell, filesystem, web, memory, old Git history, or any source not explicitly contained in the bundle.
 
-## Current repository state resolution
+The current paid-generation phase is complete. This instruction is retained for a future explicitly reauthorized Full-body Master recovery / regeneration phase.
 
-The current paid route uses the repository-promoted current face and ear assets.
+## Current repository state resolution
 
 Treat the following as current operational state facts, not as geometry edits:
 
-- `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` is the current author-approved repository-promoted Face Reference.
+- `visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png` is the current author-approved repository-promoted official integrated Full-body Visual Master.
+- `visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png` is a synchronized body-directory copy of the same Master binary; it is not an independent competing Authority.
+- `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png` is the current 7.0-head body-geometry support / recovery guide only. It must not override the official Full-body Master.
+- The validation camisole and shorts visible in the Full-body Master are validation presentation, not permanent wardrobe Authority.
+- `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` is the current author-approved repository-promoted Face Reference and remains the concrete face-local identity / geometry reference.
 - If an older transition-status sentence inside a text Authority says the Face Reference has not yet been replaced, that sentence is stale operational state text. It must not deactivate the current promoted Face Reference and must not cause fallback to an old face.
 - `visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png` is the current author-approved repository-promoted ear geometry reference.
 - If an older transition-status sentence says final ear geometry will be confirmed later, that sentence is stale operational state text. It must not reopen or redesign ear geometry.
 
-These state corrections do not permit any change to approved face geometry, eye geometry, ear geometry, body geometry, or expression.
+These state corrections do not permit any change to approved face geometry, eye geometry, ear geometry, body geometry, expression, or the promoted integrated Full-body Master proportions.
 
 ## Required output
 
@@ -28,9 +32,10 @@ Rules:
 
 1. `ready=true` only if the sealed bundle is internally consistent and you can compile without inventing missing appearance.
 2. Copy `git_commit`, Authority order, ordinal, path, role, SHA-256, denied_sources, and image_reference_order exactly.
-3. `compiled_prompt` must be a complete OpenAI Image API instruction for one full-body validation image.
+3. `compiled_prompt` must be a complete OpenAI Image API instruction for one full-body recovery / validation image.
 4. Do not add any YURA appearance or mood that is not present in the sealed visual Authorities or the sealed execution constraints.
-5. If two visual geometry sources conflict, follow `authority_precedence` exactly. Do not average, blend, or interpolate conflicting geometry.
+5. If two visual geometry sources conflict, follow `authority_precedence` and the explicit role separation below. Do not average, blend, or interpolate conflicting geometry.
+6. The official Full-body Master is the primary integrated full-body visual reference. The Body Geometry Guide is support only.
 
 ## Required literal invariant block
 
@@ -127,6 +132,10 @@ Do not use these descriptive face-preservation rules to redraw, beautify, mature
 
 The compiled prompt MUST preserve all of the following concepts explicitly:
 
+- The repository-promoted `YURA_FULL_BODY_MASTER.png` is the primary integrated full-body visual reference.
+- Preserve the promoted Master's whole-body balance, integrated body silhouette, relative head-to-body scale, hair-length appearance, and overall full-body YURA identity unless an explicit future author instruction changes a permitted domain.
+- The validation camisole / shorts visible in the Master are not permanent wardrobe Authority; they may be replaced only when a derivative-generation request explicitly supplies different clothing.
+- `YURA_BODY_GEOMETRY_GUIDE.png` is 7.0-head body-geometry recovery support only and must not override the Full-body Master.
 - TARGET HEAD COUNT RANGE = 7.0–7.2 heads.
 - TARGET HEIGHT IMPRESSION = 152–153 cm.
 - ONE HEAD = actual structural crown / skull top to chin.
@@ -140,9 +149,8 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 - Preserve the approved C2-scale eye impression and soft almond-to-rounded eye shape; cuteness and youthfulness have priority over mature beauty styling.
 - Preserve the approved eye impression of cute, straightforward, slightly youthful, soft transparency.
 - Face Geometry lock applies to internal facial shape, proportions, eyes, midface, lower face, jaw, chin, and approved face-local geometry; it does not freeze the whole approved head as an oversized full-body scale unit.
-- The complete approved head may be uniformly scaled as one intact unit relative to the body when necessary to achieve 7.0–7.2 heads.
+- The complete approved head may be uniformly scaled as one intact unit relative to the body only when necessary in an explicitly reauthorized Master-regeneration run, while preserving the promoted Master's integrated proportion target.
 - Whole-head physical scale adjustment must preserve all internal face geometry exactly; no non-uniform scaling, stretching, squashing, redrawing, or feature relocation is allowed.
-- If the head is too large relative to the body, correct the whole-head-to-body physical scale relationship rather than elongating the torso, elongating the legs, widening the shoulders, enlarging the ribcage, or converting the body into a tall model-like build.
 - Do not lengthen face, midface, lower face, or chin.
 - Eye shape, size, placement, and Face Identity are locked to the current Face Reference / Face-up Master.
 - Eye placement remains C2 baseline -> 0.3% inward.
@@ -166,7 +174,7 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 - NO VISIBILITY COMPENSATION applies independently to left and right ears.
 - Any visibility compensation that exists only to make an ear legible is a failure condition even if the ear geometry itself remains correct.
 - Body definition in YURA_VISUAL_TEXT.md is locked.
-- Preserve the current chest-to-frame relationship exactly as defined by the active Visual Text.
+- Preserve the current chest-to-frame relationship exactly as defined by the active Visual Text and promoted Full-body Master.
 - Chest volume relative to the slender frame has priority over generic slender-body simplification.
 - Do not reduce the chest to flat or undersized relative volume because the shoulders, ribcage, waist, or overall body are slender.
 - Preserve the current Visual Text chest definition as a moderately fuller volume relative to the slender frame; do not increase it beyond that existing definition.
@@ -176,8 +184,8 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 - Do not satisfy 7.0–7.2 heads by torso-only elongation, leg-only elongation, shoulder widening, ribcage enlargement, or conversion to a tall model-like body.
 - Hair is silver-white, straight-dominant, super-long, ending around the waist area and not substantially below the waist.
 - Skin is clearly white-leaning pale, but not pure white, sickly, or washed out.
-- Validation clothing is plain opaque matte camisole + plain undecorated shorts, white to very light gray.
-- No drawstring, bows, ribbons, lace, frills, ruffles, patterns, decorative seams, skirt, socks, shoes, jewelry, hair accessories, lingerie styling, transparency, or glossy/satin fabric.
+- Validation clothing is plain opaque matte camisole + plain undecorated shorts, white to very light gray when the recovery request uses the validation presentation.
+- No drawstring, bows, ribbons, lace, frills, ruffles, patterns, decorative seams, skirt, socks, shoes, jewelry, hair accessories, lingerie styling, transparency, or glossy/satin fabric in validation presentation.
 - Exactly one YURA.
 - Front-facing full body.
 - Completely upright.
@@ -197,12 +205,25 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 
 The Image API receives reference images in the exact `image_reference_order`.
 
-- `YURA_BODY_GEOMETRY_GUIDE.png`: body-geometry support only. It must not change face identity, eye design, hair identity, clothing, expression, skin, or rendering.
-- `YURA_FACE_REFERENCE.png`: current repository-promoted face identity / face-local geometry only. It must not define full-body head count, height, body scale, shoulder width, torso length, leg length, or canvas occupancy.
+1. `visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png`
+   - Primary integrated full-body visual reference.
+   - Preserve whole-body balance, silhouette, head-to-body relationship, hair-length appearance, skin impression, and overall full-body YURA identity.
+   - Its validation clothing is not permanent wardrobe Authority.
+   - It must not override face-local geometry where the Face Reference / Face-up Master are more specific, or ear-local geometry where Ear Authority is more specific.
 
-Do not non-uniformly rescale, stretch, squash, or reinterpret facial geometry to reconcile the two references.
-Uniform whole-head physical scale relative to the body is a separate full-body integration variable and may be adjusted only as one intact unit to satisfy the active 7.0–7.2 head-count range while preserving face geometry exactly.
-Current `YURA_VISUAL_TEXT.md` wins over a conflicting legacy visual implication.
+2. `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
+   - 7.0-head proportion / body-geometry recovery support only.
+   - It must not replace or average away the Full-body Master.
+   - It must not define face identity, eye design, hair identity, clothing, expression, skin, or rendering.
+
+3. `visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
+   - Current repository-promoted face identity / face-local geometry only.
+   - It must not redefine full-body head count, body silhouette, shoulder width, torso length, leg length, or canvas occupancy.
+
+Do not average the Full-body Master and the Body Geometry Guide into a new intermediate body.
+Use the Full-body Master as the primary integrated reference and the Body Geometry Guide only as recovery support for the active 7.0–7.2 standard.
+Do not non-uniformly rescale, stretch, squash, or reinterpret facial geometry to reconcile references.
+Current `YURA_VISUAL_TEXT.md` wins on explicit textual-definition conflicts; face-local and ear-local Authorities remain controlling in their own domains.
 
 ## Composition rule
 
@@ -210,14 +231,14 @@ Do not import any retired legacy numeric composition targets into the compiled p
 Do not reproduce retired numeric composition targets even in negative, explanatory, historical, or parenthetical wording.
 Use only the current qualitative composition requirements.
 
-The current composition requirement is qualitative and explicit:
+The current validation composition requirement is qualitative and explicit:
 full body visible, centered, pure white background, upright, both feet fully planted, no crop of head or feet.
 
 The Image API request size is an operational setting, not a body-geometry Authority.
 
 ## Body numeric rule
 
-The only active full-body head-count hard gate for this route is 7.0–7.2 heads.
+The only active full-body head-count hard standard for this recovery route is 7.0–7.2 heads.
 
 Do not turn archived inseam, pelvis, torso, or composition percentages into new hard appearance rules unless they are explicitly present in the current sealed visual Authorities or current execution constraints.
 
