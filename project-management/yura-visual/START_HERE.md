@@ -4,6 +4,13 @@ Status: **CURRENT CROSS-CHAT HANDOFF / FULL-BODY MASTER PROMOTED / PAID ROUTE FR
 
 This directory is the project-management handoff layer for YURA visual work. It does not define appearance; current appearance authority remains under `visuals/**`.
 
+**ACTIVE NEXT TASK (2026-10-18):** YURAの表情差分17種（E01〜E17）のFace-up画像マスター制作。新規チャットは、下記の**作者確定3感情要素・17種一覧・品質ゲート・DoD**の引継ぎ仕様を、画像生成前に必ず全文読む。
+
+`project-management/yura-visual/YURA_EXPRESSION_VARIATIONS_17_HANDOFF.md`
+
+E00の真顔は既存Face Referenceであり新規生成対象外。表情定義はE00〜E17の18種、**新規制作する画像は17種**。感情定義は17/17確定、画像は現時点で0/17作者PASS。正式Face GeometryとMatte Natural Animeの品質は変更禁止。
+
+
 ## 1. Purpose
 
 A new chat should be able to recover, without relying on chat memory:
