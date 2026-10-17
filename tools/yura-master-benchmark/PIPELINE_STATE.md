@@ -1,185 +1,89 @@
 # YURA Master / Production Pipeline State
 
-Status: **FORMAL SAMPLE 9 MASTER / FULL-BODY PIXEL V1 COMPLETE / SHARED TEXT-ONLY VALIDATION ROUTE ACTIVE**
+Status: **CURRENT PAID FULL-BODY ROUTE REBUILT / AUTHOR AUTHORIZED / PREFLIGHT NEXT**
 
-This file records operational state. It is not Visual Authority.
+This file records operational state only. It is not Visual Authority.
 
-## Fixed baseline
-
-```text
-Formal full-body Master = visuals/yura/identity/master/YURA_VISUAL_MASTER.png
-Master SHA256 = 81ac67b8395d5e3b49abcd75db77d420aa9cab94bcff4b582eaaed13bfeaf94d
-full-body pixel measurement V1 = COMPLETE
-
-Face Reference = visuals/yura/identity/face/YURA_FACE_REFERENCE.png
-Face Git blob SHA = 4c96c4ec42f996807248be1aff60ec8a090fd570
-Face SHA256 = 3f7fddee8c08087484ca1bd48b8ba9eb1acf8221727ef396001091f531c4f030
-known issue = current Face Reference has overlong-ear tendency
-```
-
-These image assets remain authority / audit context but are not supplied to the current Codex text-only generation test.
-
-## Repository route boundary
+## Current completed stages
 
 ```text
-visuals/execution/text-only-root/**
-= shared temporary free / text-only validation workspace
-
-visuals/yura/identity/**
-= YURA formal Visual Authority / final consolidation target
-
-tools/yura-master-benchmark/**
-= paid-generation execution route after text-only PASS
+Ear Geometry Master = PASS / repository promoted
+Face-up Master = PASS / repository promoted
+Face-up descriptive MD = active
+free GPT full-body balance validation = PASS
+YURA_VISUAL_TEXT.md skin / pupil refinements = current
 ```
 
-Current shared free-phase rule:
-
-`visuals/execution/text-only-root/TEXT_ONLY_DIAGNOSTIC_PROTOCOL.md`
-
-Current YURA ambiguity interpretation:
-
-`visuals/yura/identity/master/YURA_VISUAL_AMBIGUITY_PROTOCOL.md`
-
-The paid runner/spec/config under `tools/yura-master-benchmark` remain inactive until the text-only gate passes.
-
-## Current fixed condition
-
-Temporary execution appearance source:
+## Current paid route state
 
 ```text
-visuals/execution/text-only-root/YURA_VISUAL_TEXT.md
-blob SHA = b5565b10c1ba68bed3720fbc5360f0f7925799e9
+legacy paid route = RETIRED
+current sealed-bundle route = REBUILT
+author paid-generation permission = YES
+free preflight on rebuilt route = NOT YET RECORDED
+first paid seed run = NOT YET
+batch = NOT YET
+full-body Master = NOT YET
 ```
 
-Generator boundary:
+## Current target
 
 ```text
-Codex-native image generation = REQUIRED when testing
-paid OpenAI generation = NOT USED in this phase
-YURA image reference = NONE
+head ratio = 7.0–7.2
+height impression = 152–153 cm
 ```
 
-If Codex-native generation is unavailable after source verification:
+## Current source boundary
+
+Current paid bundle resolves only the source set in `tools/yura-master-benchmark/config.json`.
+
+Novel/story/manuscript, archived paid results, rejected candidates, old Git history, and Memory-derived appearance are denied.
+
+## Current image references
 
 ```text
-state = ENVIRONMENT_BLOCKED
-Visual Text quality = NOT TESTED
-qualification count = unchanged
+1. YURA_BODY_GEOMETRY_GUIDE.png
+2. YURA_FACE_REFERENCE.png
 ```
 
-Do not append appearance rescue wording outside the active Visual Text.
-
-## Baseline five-view route
-
-One generated image at a time:
+## Current execution presentation
 
 ```text
-01 FRONT
-02 FRONT_3Q
-03 SIDE
-04 REAR_3Q
-05 BACK
+front full-body
+upright
+arms down
+legs near together
+feet fully planted / heels down
+barefoot
+pure white background
+plain opaque matte camisole
+plain undecorated shorts
+hair around waist
+white-leaning skin without over-whitening
+true neutral expression
 ```
 
-All generated outputs are:
+## Current numeric migration
+
+Inactive legacy paid-route hard gates:
 
 ```text
-DIAGNOSTIC / CANDIDATE ONLY
-AUTHORITY PROMOTION = NO
+7.1–7.3
+89%
+88–90%
+5–6%
 ```
 
-Primary YURA observations:
+Current numeric full-body hard gate:
 
 ```text
-text-only YURA identity
-view control
-ear elongation / inflation
-ear outward projection
-visibility compensation
-hair-clearing-for-ear behavior
-naturalness
-rear-hair behavior for rear views
+7.0–7.2
 ```
 
-## YURA repeatability gate
+## Next
 
-Current working transfer threshold:
-
-```text
-3 qualifying FRONT_3Q results under unchanged Visual Text
-+ SIDE result with no major ear elongation / outward-projection failure
+```powershell
+python tools/yura-master-benchmark/run_once.py --preflight-only
 ```
 
-A material Visual Text edit resets the count to zero and begins a new fixed condition.
-
-If a generated result exposes a real weakness, strengthen `YURA_VISUAL_TEXT.md` at the specification level and rerun. Do not patch a single image with ad-hoc rescue wording.
-
-## Paid transfer gate
-
-Only after Codex repeatability passes:
-
-```text
-TEXT-ONLY GATE = PASS
--> activate tools/yura-master-benchmark paid-generation route
--> appearance input = YURA_VISUAL_TEXT.md only
--> image reference = NONE
--> initial paid test = Face-up Pilot 1
-```
-
-The paid route is not yet active.
-
-Do not use the older image-reference ambiguity runner to bypass the text-only gate.
-
-## Ear state
-
-Current working rule remains:
-
-```text
-ear actual height target = 20–22% face vertical dimension
-HARD MAX = 23%
-ear visibility lower priority than natural size / placement
-no visibility compensation
-```
-
-Detailed ACTUAL / VISIBLE / HAIR OCCLUSION measurement/freeze follows the paid generator-transfer checkpoint.
-
-## Hair state
-
-Current AUTHOR_OVERRIDE:
-
-```text
-SUPER-LONG mandatory
-must clearly reach waist area
-ordinary-long / mid-back = FAIL
-modestly longer than Sample 9
-not substantially below waist
-```
-
-Rear-hair / back-view structure remains unresolved and follows detailed ear work.
-
-## Current execution state
-
-```text
-Formal Sample 9 Master                   = COMPLETE
-Full-body pixel measurement V1           = COMPLETE
-YURA Visual Ambiguity Protocol           = ACTIVE / AUTHOR APPROVED
-Shared text-only diagnostic protocol     = ACTIVE
-Shared execution YURA Visual Text        = STAGED
-Last Codex FRONT attempt                 = ENVIRONMENT_BLOCKED / NOT EXECUTED
-Codex FRONT qualifying result            = NOT YET
-Codex FRONT_3Q qualifying results        = 0 / 3
-Codex SIDE qualifying result             = NOT YET
-Codex REAR_3Q baseline                   = NOT YET
-Codex BACK baseline                      = NOT YET
-TEXT-ONLY GATE                           = NOT YET
-Paid tools route                         = AFTER TEXT-ONLY PASS
-Paid text-only Face-up Pilot 1           = NOT YET
-Detailed ear correction                  = AFTER TRANSFER CHECKPOINT
-Rear-hair / back-view correction         = AFTER EAR
-Formal Face Master                       = NOT YET
-Production Visual MD                     = NOT YET
-```
-
-## Cleanup rule
-
-The shared execution root is temporary. Once YURA's relevant Master / part specifications are stable, consolidate accepted rules into `visuals/yura/identity/**` and remove the obsolete YURA temporary execution copy.
+Then exactly one paid seed run after reviewing the preflight.
