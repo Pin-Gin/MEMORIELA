@@ -1,34 +1,45 @@
-# YURA Master Workflow — Current Paid Full-body Reproduction Runbook
+# YURA Master Workflow — Frozen Recovery / Regeneration Runbook
 
-Status: **CURRENT OPERATIONAL RUNBOOK / AUTHOR-AUTHORIZED PAID ROUTE / NOT VISUAL AUTHORITY**
+Status: **FULL-BODY MASTER PROMOTED / PAID ROUTE FROZEN / NOT VISUAL AUTHORITY**
 
-Purpose: current YURA full-body Master候補を、現在のGit Visual Authorityだけから再現可能に生成する。
+Purpose: preserve a reproducible recovery path for YURA Full-body Master regeneration using only the current Git Visual Authorities. The current Master-generation phase is complete; no billable call is authorized unless the author explicitly reopens the phase.
 
-This document replaces the legacy paid-route procedure for current execution. Historical Test 2/3/5/6 material remains audit-only under `tools/` and must not silently become current Authority.
+Historical Test 2/3/5/6 material remains audit-only under `tools/` and must not silently become current Authority.
 
 ---
 
-## 1. Current objective
-
-Current sequence:
+## 1. Current state
 
 ```text
-current Git main
--> local runner verifies current Authority files and hashes
--> sealed Authority bundle
--> Codex prompt compile
--> runner manifest / invariant verification
--> OpenAI Image API
--> result.png
--> head-ratio QA (7.0–7.2)
--> author visual QA
--> PASS candidate
--> explicit Master promotion
+Ear Geometry Master = PROMOTED
+Face-up Master = PROMOTED
+Full-body Master = PROMOTED
+7.0-head Body Geometry Guide = PROMOTED AS SUPPORT
+paid generation = COMPLETED / STOPPED BY AUTHOR
+paid batch = NOT EXECUTED
+PAID_GENERATION_ALLOWED = NO
 ```
 
-The latest free GPT full-body PASS image is used by the author/GPT as a **balance calibration indicator only**.
+Official Full-body Master:
 
-It is not a Git Authority and is not automatically passed to the paid Image API.
+```text
+visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+promotion commit = 3ce89e33193effa627ea794e803d9a3b50cb085b
+SHA-256 = CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1
+```
+
+Body-directory synchronized copy:
+
+```text
+visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png
+```
+
+Current Body Geometry Guide:
+
+```text
+visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
+SHA-256 = C23D1D2C348102B4ED9D75C422E1C2323800565B94E27A7FF13AF7C624EBDF95
+```
 
 ---
 
@@ -38,52 +49,70 @@ Configured in `tools/yura-master-benchmark/config.json`.
 
 ```text
 1. visuals/yura/identity/master/YURA_VISUAL_TEXT.md
-2. visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
-3. visuals/yura/identity/face/YURA_FACE_UP_MASTER.md
-4. visuals/yura/identity/face/YURA_FACE_REFERENCE.png
-5. visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md
-6. visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
-7. visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
+2. visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+3. visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
+4. visuals/yura/identity/face/YURA_FACE_UP_MASTER.md
+5. visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+6. visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md
+7. visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
+8. visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
 ```
 
-Highest text authority:
+Role separation:
 
 ```text
-visuals/yura/identity/master/YURA_VISUAL_TEXT.md
+YURA_VISUAL_TEXT.md
+= highest YURA visual text authority
+
+YURA_FULL_BODY_MASTER.png
+= primary integrated full-body visual authority
+
+YURA_FACE_REFERENCE.png / YURA_FACE_UP_MASTER.md
+= face-local identity / geometry authority
+
+YURA_EAR_GEOMETRY_MASTER.png / YURA_EAR_BASIC_RULES.md
+= ear-local authority
+
+YURA_BODY_GEOMETRY_GUIDE.png
+= 7.0-head body-geometry recovery support only
 ```
 
-The current repository-promoted Face Reference is the active face image. Do not restore old Face Reference geometry.
-
-The Body Geometry Guide is body-geometry support only. If a legacy visual implication conflicts with current `YURA_VISUAL_TEXT.md`, current Visual Text wins.
+The Body Geometry Guide must not override or be averaged with the official Full-body Master.
+The validation camisole / shorts visible in the Full-body Master are validation presentation, not permanent wardrobe Authority.
 
 ---
 
-## 3. Image reference order sent to OpenAI Image API
+## 3. Recovery image-reference order
+
+If the author explicitly reopens Full-body Master regeneration, the Image API reference order is:
 
 ```text
-1. YURA_BODY_GEOMETRY_GUIDE.png
-2. YURA_FACE_REFERENCE.png
+1. YURA_FULL_BODY_MASTER.png
+2. YURA_BODY_GEOMETRY_GUIDE.png
+3. YURA_FACE_REFERENCE.png
 ```
 
 Roles:
 
 ```text
+Full-body Master
+= primary integrated full-body body / silhouette / balance reference
+= validation clothing is not permanent wardrobe Authority
+
 Body Geometry Guide
-= body geometry support only
+= 7.0-head proportion / body-geometry recovery support only
 = NOT face / hair / expression / clothing / skin Authority
 
 Face Reference
 = face identity and face-local geometry only
-= NOT body scale / head count / torso length / leg length / canvas occupancy Authority
+= NOT body scale / torso length / leg length / canvas occupancy Authority
 ```
 
-`YURA_EAR_GEOMETRY_MASTER.png` is sealed and hash-verified as active ear Authority, but is not directly sent as a third full-body Image API reference. Ear behavior is enforced through the current ear text rules + Face-up authority to avoid visibility-driven ear exposure or bald-head contamination.
+Ear Authority remains sealed and hash-verified; ear behavior is controlled by the current ear text / geometry Authorities.
 
 ---
 
-## 4. Current full-body fixed condition
-
-Hard target:
+## 4. Current full-body standard
 
 ```text
 TARGET HEAD COUNT RANGE = 7.0–7.2 heads
@@ -101,6 +130,7 @@ Do not use outer hair volume as skull height.
 Locked:
 
 ```text
+official integrated Full-body Master proportions
 Face Geometry
 eye shape / size / placement
 C2 baseline -> 0.3% inward
@@ -110,7 +140,7 @@ body definition
 current chest-to-frame relationship
 ```
 
-Never solve the head-count target by:
+Never solve the head-count standard by:
 
 ```text
 face elongation
@@ -124,7 +154,9 @@ tall model-like conversion
 
 ---
 
-## 5. Current validation presentation
+## 5. Validation presentation
+
+The promoted Master uses this validation presentation:
 
 ```text
 exactly one YURA
@@ -134,7 +166,6 @@ completely upright
 head not tilted
 arms naturally down
 legs near together
-
 both feet flat on ground
 heels down
 full sole contact
@@ -142,35 +173,11 @@ no tiptoe
 no heel lift
 no crossed legs
 no contrapposto
-
 barefoot
 pure white background
 centered
-```
-
-Validation clothing:
-
-```text
 plain opaque matte camisole
 plain undecorated shorts
-white to very light gray
-```
-
-Forbidden clothing additions:
-
-```text
-drawstring
-bows / ribbons
-lace / frills / ruffles
-patterns
-decorative seams
-skirt
-socks / shoes
-jewelry
-hair accessories
-lingerie styling
-transparency
-satin / glossy fabric
 ```
 
 Hair:
@@ -190,7 +197,6 @@ clearly white-leaning pale
 do not over-whiten
 not pure white
 not sickly pale
-retain very subtle natural blood color
 ```
 
 Expression:
@@ -199,13 +205,13 @@ Expression:
 TRUE NEUTRAL
 ```
 
-No mood reinterpretation.
+The validation camisole / shorts are not a permanent wardrobe definition. For derivative clothing generation, preserve the official Master body / identity and apply only the requested clothing change.
 
 ---
 
 ## 6. Retired legacy numeric gates
 
-The current route does **not** use these legacy paid-route hard gates:
+The recovery route does **not** use these historical hard gates:
 
 ```text
 7.1–7.3 heads
@@ -213,45 +219,92 @@ The current route does **not** use these legacy paid-route hard gates:
 88–90% occupancy
 5–6% top/bottom margins
 legacy Test 5 wording
-legacy Composition postprocess percentage gates
+legacy composition postprocess percentage gates
 ```
 
-Current head-count hard gate is only:
+Current head-count standard:
 
 ```text
 7.0–7.2
 ```
 
-Legacy inseam/pelvis/torso percentages remain historical audit information, but are not active hard gates unless the author explicitly reauthorizes them.
-
-This prevents the paid runner from silently rewriting the currently locked body design.
+Legacy inseam / pelvis / torso percentages remain historical audit information only unless the author explicitly reauthorizes them.
 
 ---
 
-## 7. Safe Git sync before execution
+## 7. Normal derivative use
 
-Repository root:
+For ordinary future full-body generation such as temporary clothing changes, do **not** reopen the paid Master-generation route by default.
 
-```powershell
-git status
-git fetch origin main
-git rev-parse HEAD
-git rev-parse origin/main
+Primary reference:
+
+```text
+visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
 ```
 
-The paid runner requires:
+Use current Face / Ear / Visual Text Authorities as needed for local consistency.
+Use the Body Geometry Guide only when 7.0-head body recovery / proportion support is materially useful.
+
+---
+
+## 8. Recovery preflight
+
+A free recovery preflight is permitted and makes no paid model call:
+
+```powershell
+python tools/yura-master-benchmark/run_once.py --preflight-only
+```
+
+Expected core output:
+
+```text
+status = PREFLIGHT_OK
+paid_model_calls = 0
+paid_generation_allowed = false
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
+head_ratio_gate = 7.0–7.2
+```
+
+Preflight verifies:
 
 ```text
 HEAD == origin/main
+Authority files exist and are clean
+Full-body Master SHA-256
+body-directory Master copy matches primary Master
+Body Geometry Guide SHA-256
+Authority order
+image-reference order
+sealed bundle construction
+current execution constraints
 ```
 
-Do not use `git reset --hard` or force-push as part of this workflow.
-
-Do not expose API keys in Git or chat.
+A successful preflight does not authorize a billable call.
 
 ---
 
-## 8. Local syntax check
+## 9. Paid reactivation rule
+
+Current paid execution must fail closed.
+
+To reopen Master regeneration, all of the following are required:
+
+```text
+1. explicit author instruction to reopen paid generation
+2. review current Git Authorities
+3. update route_state / paid_generation_allowed deliberately
+4. syntax check runner
+5. free preflight
+6. author review of preflight
+7. exactly one paid seed first
+```
+
+Do not silently flip `paid_generation_allowed` to true.
+Do not start a batch because a preflight passes.
+
+---
+
+## 10. Syntax check after any future reactivation edit
 
 ```powershell
 python -m py_compile tools/yura-master-benchmark/run_raw_once.py
@@ -260,109 +313,14 @@ python -m py_compile tools/yura-master-benchmark/run_batch.py
 python -m py_compile tools/yura-master-benchmark/body_geometry_qa.py
 ```
 
-Install dependencies when needed:
-
-```powershell
-python -m pip install -r tools/yura-master-benchmark/requirements.txt
-```
-
 ---
 
-## 9. Free preflight
+## 11. Future candidate QA
 
-Before any paid model call:
-
-```powershell
-python tools/yura-master-benchmark/run_once.py --preflight-only
-```
-
-Required result:
+If a future regeneration phase is explicitly reopened, review at minimum:
 
 ```text
-status = PREFLIGHT_OK
-paid_model_calls = 0
-head_ratio_gate = 7.0–7.2
-legacy_composition_percentage_gates = RETIRED
-```
-
-Preflight verifies:
-
-```text
-current Git HEAD
-Authority existence
-Authority clean state
-SHA-256
-Authority order
-image-reference order
-sealed bundle construction
-current execution constraints
-```
-
-No paid Codex or Image API call is made in preflight mode.
-
----
-
-## 10. Exactly one paid seed run first
-
-After preflight review:
-
-```powershell
-python tools/yura-master-benchmark/run_once.py
-```
-
-Pipeline:
-
-```text
-sealed bundle
--> Codex compile
--> manifest verification
--> prompt invariant verification
--> OpenAI Image API
--> result.png
--> qa.json = QA_PENDING
-```
-
-A generated image is never automatically a Master.
-
----
-
-## 11. Head-ratio QA
-
-After visually locating the actual structural crown, chin, and soles:
-
-```powershell
-python tools/yura-master-benchmark/body_geometry_qa.py <RUN_DIR> `
-  --structural-crown-min-y <Y> `
-  --structural-crown-best-y <Y> `
-  --structural-crown-max-y <Y> `
-  --chin-y <Y> `
-  --soles-y <Y> `
-  --confirm-measurement-reviewed
-```
-
-Optional:
-
-```text
---visible-hair-crown-y
-```
-
-This is diagnostic only. Outer hair crown is not used as skull height.
-
-PASS requires the complete reviewed head-ratio interval to remain inside:
-
-```text
-7.0–7.2
-```
-
-This numeric QA does not rewrite body geometry.
-
----
-
-## 12. Author visual QA
-
-At minimum review:
-
-```text
+official Full-body Master balance preservation
 Face Identity / Face Geometry
 eye shape / size / C2 0.3% inward placement
 pupil bilateral symmetry
@@ -371,68 +329,18 @@ body definition / overall balance
 current chest-to-frame relationship
 hair length around waist
 white-leaning skin without over-whitening
-validation clothing
+requested / validation clothing correctness
 upright pose
 heels down / full sole contact
 white background / centering
-7.0–7.2 head count
+7.0–7.2 head count measured from the image
 ```
 
-Only explicit author PASS can promote a candidate.
+Only explicit author PASS may replace the current official Full-body Master.
 
 ---
 
-## 13. Ten-run batch
+## 12. Historical artifacts
 
-Run a batch only after:
-
-```text
-single paid seed run completed
-seed technical artifacts reviewed
-cost checked
-current route confirmed
-```
-
-Example:
-
-```powershell
-python tools/yura-master-benchmark/run_batch.py `
-  --seed-run tools/yura-master-benchmark/runs/<RUN_DIR> `
-  --runs 10 `
-  --confirm-seed-reviewed `
-  --allow-estimate
-```
-
-If authoritative run-specific cost attribution is available, omit `--allow-estimate`.
-
-Each batch item is an independent run with its own:
-
-```text
-Git commit
-Authority hashes
-sealed bundle
-Codex trace
-compiled prompt + SHA-256
-image result
-cost data
-QA data
-```
-
----
-
-## 14. Promotion rule
-
-```text
-FAIL
--> not Authority
--> not Master
--> never feed back automatically
-
-PASS
--> explicit author approval required
--> then promote to current full-body Master path chosen by author
-```
-
-All paid-run process artifacts stay under `tools/**`.
-
-Only author-approved final visual assets belong under `visuals/**`.
+Paid-run prompts, manifests, cost records, traces, candidates, rejected outputs and QA remain under `tools/**`.
+They are implementation / audit history and are not current Visual Authority.
