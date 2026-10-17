@@ -1,6 +1,6 @@
 # YURA Visual Work — CURRENT STATE
 
-Status: **ACTIVE / EAR GEOMETRY MASTER AUTHOR-PASS / BINARY PROMOTION PENDING**
+Status: **ACTIVE / EAR GEOMETRY MASTER PROMOTED / NORMAL-HAIR FACE-UP CANDIDATE NEXT**
 
 ## Current objective
 
@@ -16,7 +16,10 @@ YURA_FACE_REDESIGN_SPEC.md
 = CURRENT AUTHOR-APPROVED FACE DETAIL SPEC / NEW FACE DIRECTION
 
 YURA_EAR_BASIC_RULES.md
-= SUPPORTING RULE FOR CURRENT EAR MASTER WORK
+= SUPPORTING RULE FOR EAR / FACE-UP WORK
+
+YURA_EAR_GEOMETRY_MASTER.png
+= AUTHOR-PASS / VERIFIED / REPOSITORY PROMOTED
 ```
 
 ## Current face decision
@@ -31,19 +34,26 @@ The legacy Face Reference file remains at its old visual-layer path only because
 
 ## Current Ear Geometry Master decision
 
-The final hairless ear-geometry candidate has received explicit author **PASS**.
+The final hairless ear-geometry candidate received explicit author **PASS** and has been promoted to the repository.
 
 Approval record:
 
 `project-management/yura-visual/EAR_GEOMETRY_MASTER_APPROVAL.md`
 
-Approved target path:
+Promoted path:
 
 `visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
 
 Approved source SHA-256:
 
 `8949c5febef99850f7cccd849064c9dfe774e3b722f1658c967b0ecf2c5c7b50`
+
+Repository evidence:
+
+```text
+promotion commit = c0878854937103236a2902abf80912182f191ead
+Git blob SHA      = efba2f34097c4fa6e3f2a45e66a235da57253e3f
+```
 
 Accepted result:
 
@@ -53,7 +63,7 @@ Accepted result:
 - current face geometry / eyes / cheeks / chin retained;
 - slightly compacted upper cranium accepted.
 
-Author approval is fixed. Repository binary promotion is still pending until the exact approved PNG is present at the target path and verified.
+The Ear Geometry Master phase is complete.
 
 ## Current body / chest decision
 
@@ -86,36 +96,53 @@ The current visual-layer Body Geometry Guide remains physically present because 
 ```text
 paid YURA route        = DISABLED / REBUILD REQUIRED
 hairless ear candidate = AUTHOR PASS
-Ear Geometry Master    = AUTHOR APPROVED / BINARY PROMOTION PENDING
+Ear Geometry Master    = AUTHOR PASS / VERIFIED / REPOSITORY PROMOTED
+normal-hair Face-up    = NEXT
+active Face-up Master  = NONE
 active full-body Master for new route = NONE
-active Face-up Master   = NONE
 ```
 
 The old full-body Master has been removed from the active visual layer and archived under tools.
 
 ## Next exact task
 
-1. Place and verify the exact approved binary as:
-   `visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
-2. Then use the approved Ear Geometry Master + current `YURA_VISUAL_TEXT.md` + current face specification to create the **normal-hair Face-up candidate** with free GPT image generation.
-3. Author PASS -> promote to `YURA_FACE_UP_MASTER.png`.
-4. Create `YURA_FACE_UP_MASTER.md` from the approved Face-up image.
-5. Only then proceed to the full-body generation phase.
+Use free GPT image generation to create the **normal-hair Face-up candidate** using:
 
-For the Face-up stage, do not use the legacy Face Reference, Body Geometry Guide, or archived full-body Master as an image input.
+```text
+visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
+visuals/yura/identity/master/YURA_VISUAL_TEXT.md
+visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
+visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md
+```
+
+Requirements for this stage:
+
+- restore YURA's normal silver-white super-long hair from the Visual Text;
+- preserve the approved Ear Geometry Master head / face / ear structural geometry;
+- natural hair occlusion may hide the ears;
+- do not expose, lengthen, enlarge, move, or rotate the ears for readability;
+- do not alter face geometry, eye placement, cheeks, jaw, chin, nose, or neutral-expression baseline;
+- do not use the legacy Face Reference, Body Geometry Guide, or archived full-body Master as an image input.
+
+After generation:
+
+1. author review;
+2. PASS -> promote to `YURA_FACE_UP_MASTER.png`;
+3. create `YURA_FACE_UP_MASTER.md` from the approved image;
+4. only then proceed to the full-body generation phase.
 
 ## Promotion sequence
 
 ```text
 Hairless ear-geometry candidate
 -> AUTHOR PASS [DONE]
--> YURA_EAR_GEOMETRY_MASTER.png [BINARY PROMOTION PENDING]
+-> YURA_EAR_GEOMETRY_MASTER.png [PROMOTED / VERIFIED]
 
-Ear Geometry Master + YURA Visual Text
--> normal-hair Face-up candidate
+Ear Geometry Master + YURA Visual Text + current Face Spec
+-> normal-hair Face-up candidate [NEXT]
 -> author PASS
 -> YURA_FACE_UP_MASTER.png
--> create YURA_FACE_UP_MASTER.md from the approved image
+-> create YURA_FACE_UP_MASTER.md
 
 then
 -> full-body generation phase
