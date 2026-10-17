@@ -51,6 +51,13 @@ PUPILS MUST BE BILATERALLY SYMMETRIC IN SIZE, SHAPE, DARKNESS, AND EDGE SOFTNESS
 EAR VISIBILITY IS NOT REQUIRED.
 DO NOT EXPOSE EARS FOR READABILITY.
 BODY DEFINITION IS LOCKED.
+CHEST VOLUME RELATIVE TO BODY HAS PRIORITY OVER SLENDER-BODY SIMPLIFICATION.
+PRESERVE THE CURRENT CHEST-TO-FRAME RELATIONSHIP FROM YURA_VISUAL_TEXT.md.
+NOT FLAT CHEST.
+NOT UNDERSIZED CHEST RELATIVE TO THE BODY.
+NOT REDUCED CHEST BECAUSE THE BODY IS SLENDER.
+VALIDATION CLOTHING MUST NOT FLATTEN OR COMPRESS THE CHEST SILHOUETTE.
+DO NOT EXAGGERATE CHEST BEYOND THE CURRENT YURA_VISUAL_TEXT.md DEFINITION.
 VALIDATION CLOTHING = plain opaque matte camisole + plain undecorated shorts.
 BOTH FEET FLAT ON THE GROUND.
 HEELS DOWN.
@@ -86,6 +93,12 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 - Do not lengthen, widen, move outward, rotate toward camera, or clear hair around ears for readability.
 - Body definition in YURA_VISUAL_TEXT.md is locked.
 - Preserve the current chest-to-frame relationship exactly as defined by the active Visual Text.
+- Chest volume relative to the slender frame has priority over generic slender-body simplification.
+- Do not reduce the chest to flat or undersized relative volume because the shoulders, ribcage, waist, or overall body are slender.
+- Preserve the current Visual Text chest definition as a moderately fuller volume relative to the slender frame; do not increase it beyond that existing definition.
+- Preserve the current rounded, compact, natural chest silhouette and current high-set relationship defined by YURA_VISUAL_TEXT.md; do not redesign chest geometry.
+- Validation clothing must follow the natural body silhouette and must not flatten, compress, hide, or visually erase the current chest-to-frame relationship.
+- Do not exaggerate chest size, spread, projection, or shape beyond the active YURA_VISUAL_TEXT.md definition.
 - Do not satisfy 7.0–7.2 heads by torso-only elongation, leg-only elongation, shoulder widening, ribcage enlargement, or conversion to a tall model-like body.
 - Hair is silver-white, straight-dominant, super-long, ending around the waist area and not substantially below the waist.
 - Skin is clearly white-leaning pale, but not pure white, sickly, or washed out.
