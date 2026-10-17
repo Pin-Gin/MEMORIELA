@@ -10,7 +10,7 @@ from pathlib import Path
 
 TOOL_DIR = Path(__file__).resolve().parent
 CONFIG = json.loads((TOOL_DIR / "config.json").read_text(encoding="utf-8"))
-CURRENT_ROUTE_STATUS = "CURRENT_AUTHOR_AUTHORIZED_FULL_BODY_PAID_ROUTE"
+CURRENT_ROUTE_STATUS = str(CONFIG.get("route_state", "UNKNOWN_ROUTE_STATE"))
 
 
 def newest_run() -> Path | None:
@@ -80,8 +80,8 @@ def validate_seed(seed: Path) -> None:
     meta = load_json(seed / "run_meta.json")
     if meta.get("route_status") != CURRENT_ROUTE_STATUS:
         raise RuntimeError(
-            "Seed run is not from the current rebuilt YURA paid route. "
-            "Generate a new current-route single run first."
+            "Seed run does not match the current configured YURA recovery route state. "
+            "Generate a new seed only after the route is explicitly reauthorized."
         )
     if meta.get("head_ratio_gate") != "7.0–7.2":
         raise RuntimeError("Seed run does not use the current 7.0–7.2 head-ratio gate")
@@ -93,7 +93,7 @@ def validate_seed(seed: Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Run independent current-route YURA paid generations after one reviewed seed run."
+        description="Run independent YURA recovery-route paid generations only after explicit reauthorization."
     )
     parser.add_argument("--seed-run", type=Path, default=None)
     parser.add_argument("--runs", type=int, default=CONFIG["batch"]["runs_after_single"])
@@ -107,15 +107,24 @@ def main() -> int:
     parser.add_argument("--cost-wait-seconds", type=int, default=30)
     args = parser.parse_args()
 
+    if CONFIG.get("paid_generation_allowed") is not True:
+        raise RuntimeError(
+            "Paid YURA generation is frozen after Full-body Master promotion. "
+            "Explicit author reauthorization and config update are required before batch execution."
+        )
+    if (CONFIG.get("batch") or {}).get("current_batch_authorized") is not True:
+        raise RuntimeError(
+            "YURA batch generation is not currently authorized. "
+            "Set current_batch_authorized only after explicit author authorization."
+        )
     if not args.confirm_seed_reviewed:
         raise RuntimeError("Batch requires --confirm-seed-reviewed")
-
     if args.runs < 1:
         raise RuntimeError("--runs must be >= 1")
 
     seed = args.seed_run.resolve() if args.seed_run else newest_run()
     if seed is None:
-        raise RuntimeError("No seed run found. Execute run_once.py first.")
+        raise RuntimeError("No seed run found. Execute an explicitly reauthorized run_once.py first.")
 
     validate_seed(seed)
 
@@ -129,7 +138,7 @@ def main() -> int:
 
     produced: list[Path] = []
     for index in range(1, args.runs + 1):
-        print(f"[{index}/{args.runs}] running current YURA paid benchmark...", flush=True)
+        print(f"[{index}/{args.runs}] running reauthorized YURA paid recovery benchmark...", flush=True)
         p = subprocess.run(
             [sys.executable, str(TOOL_DIR / "run_once.py")],
             cwd=TOOL_DIR,
@@ -212,8 +221,8 @@ def main() -> int:
         ),
         "note": (
             "Each batch item is an independent run. "
-            "A generated image remains QA_PENDING until manual head-ratio QA and explicit author review. "
-            "The latest free GPT PASS image is calibration context only and is not automatically reused as a paid image reference."
+            "A generated image remains QA_PENDING until image-based head-ratio QA and explicit author review. "
+            "The repository-promoted Full-body Master is the primary integrated visual baseline."
         ),
     }
 
