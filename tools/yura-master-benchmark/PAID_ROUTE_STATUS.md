@@ -1,65 +1,114 @@
 # YURA PAID ROUTE STATUS
 
-Status: **DISABLED / REBUILD REQUIRED / NO PAID RUN AUTHORIZED**
+Status: **AUTHOR-AUTHORIZED / CURRENT ROUTE REBUILT / FREE PREFLIGHT REQUIRED BEFORE PAID CALL**
 
-## Current rule
-
-The historical YURA paid benchmark route must not be used for a new generation condition.
-
-The old runner/configuration was built around legacy Face Reference / Body Guide / full-body Master assumptions and old numeric gates. Those assumptions must not be silently reused as the current paid route.
-
-Current paid-generation permission:
+## Permission
 
 ```text
-PAID_GENERATION_ALLOWED = NO
+PAID_GENERATION_ALLOWED = YES
 ```
 
-## Why disabled
-
-The current author direction is now:
+This authorization applies only to the rebuilt current full-body route described by:
 
 ```text
-new face redesign = formal direction
-YURA_VISUAL_TEXT.md = highest visual text authority
-free hairless Ear Geometry Master first
-free normal-hair Face-up Master second
-Face-up descriptive MD third
-full-body generation after those steps
+tools/YURA_MASTER_REPRODUCTION_RUNBOOK.md
+tools/YURA_MASTER_GENERATION_WORKLOG.md
+tools/YURA_MASTER_GENERATION_CURRENT_STATE.md
+tools/yura-master-benchmark/README.md
+tools/yura-master-benchmark/config.json
+tools/yura-master-benchmark/codex_instruction.md
 ```
 
-Therefore the old paid route must not be used to bypass the free ear / face sequence.
+The archived pre-rebuild runner remains historical audit material.
 
-## Historical runner
+## Current route
 
-Original pre-rebuild runner files are preserved under:
+```text
+current Git
+-> local Python verification
+-> sealed current Authority bundle
+-> Codex prompt compile
+-> runner verification
+-> OpenAI Image API
+-> QA
+-> author decision
+```
 
-`tools/yura-master-benchmark/archive/legacy-runner/`
+## Current Authority basis
 
-The root `run_once.py` and `run_raw_once.py` are intentionally fail-closed stubs during this rebuild period.
+```text
+current YURA_VISUAL_TEXT.md
+current Face Redesign Spec
+current Face-up Master MD
+repository-promoted current Face Reference
+current ear rules / Ear Geometry Master
+current visual-layer Body Geometry Guide
+```
 
-Historic config, Test 2/3/5/6 records, QA tools, and cost tools remain audit material unless explicitly selected during the future paid-route rebuild.
+Do not restore the old Face Reference, old full-body Master, or archived runner assumptions.
 
-## Future paid-route rebuild requirements
+## Current full-body target
 
-Do not rebuild until the author explicitly instructs it after the current Face-up Master work.
+```text
+HEAD COUNT = 7.0–7.2
+HEIGHT IMPRESSION = 152–153 cm
+```
 
-When rebuilt:
+Face, ear and body definitions are locked.
 
-- resolve only current visual authority;
-- use the current `YURA_VISUAL_TEXT.md` as the controlling visual text;
-- do not silently restore archived Face Reference, archived Body Guide, or archived old full-body Master;
-- if the then-current Visual Text still names the visual-layer Body Geometry Guide, resolve that live visual-layer asset explicitly rather than using the tools archive copy;
-- keep face identity independent from body-proportion solving;
-- use the current Visual Text body target, not obsolete hard-coded paid-run targets;
-- preserve the current chest-to-frame design as non-sexual character-design validation;
-- do not add age-category wording as a generation workaround;
-- store prompts, manifests, hypotheses, costs, QA, candidate metadata, and paid outputs under `tools/`;
-- do not place paid-run process/result records back under `visuals/`;
-- run a free preflight before any billable call;
-- start with exactly one paid run when the route is eventually authorized.
+## Retired active-route gates
 
-## Current handoff
+```text
+7.1–7.3
+89% occupancy
+88–90%
+5–6% margins
+legacy Test 5 prompt contract
+legacy composition percentage postprocess
+```
 
-Read:
+Historical files may retain those values for audit, but the rebuilt current runner must not compile them into the active paid prompt.
 
-`project-management/yura-visual/START_HERE.md`
+## Required preflight
+
+Before the first billable call:
+
+```powershell
+python tools/yura-master-benchmark/run_once.py --preflight-only
+```
+
+Required:
+
+```text
+PREFLIGHT_OK
+paid_model_calls = 0
+```
+
+## First paid execution
+
+Only after preflight review:
+
+```powershell
+python tools/yura-master-benchmark/run_once.py
+```
+
+Exactly one seed run first.
+
+## Batch
+
+Only after the seed run and its cost/technical artifacts have been reviewed.
+
+Each batch item is an independent run.
+
+## Promotion
+
+Every generated result starts:
+
+```text
+QA_PENDING
+master_promotion = NO
+```
+
+Explicit author PASS is mandatory for Master promotion.
+
+All process artifacts remain under `tools/**`.
