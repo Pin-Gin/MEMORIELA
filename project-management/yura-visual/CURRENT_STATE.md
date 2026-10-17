@@ -1,28 +1,30 @@
 # YURA Visual Work — CURRENT STATE
 
-Status: **ACTIVE / FULL-BODY MASTER PROMOTED / PAID GENERATION COMPLETED / RECOVERY ROUTE FROZEN**
+Status: **FULL-BODY MASTER PROMOTED / RECOVERY VERIFIED / PAID ROUTE FROZEN**
 
-## Current objective
+## Purpose
 
-Maintain the repository-promoted YURA visual Authorities and use the official Full-body Master as the integrated full-body reference for future derived generation such as temporary clothing changes.
+Maintain the repository-promoted YURA visual Authorities, use the official Full-body Master as the integrated full-body baseline for future derivative generation, and retain a verified but frozen recovery route in case Full-body Master regeneration is ever explicitly reopened.
 
-The full-body Master-generation phase is complete.
+The Full-body Master-generation phase itself is complete.
 
-Current author-directed state:
+## Completion state
 
 ```text
-Ear Geometry Master = DONE / PROMOTED
-Face-up Master = DONE / PROMOTED
-Face-up descriptive MD = DONE / ACTIVE
-free GPT full-body calibration = COMPLETED
-paid full-body generation = COMPLETED / STOPPED BY AUTHOR
-7.0–7.2 head-ratio validation = PASS on promoted result
-Full-body Master = DONE / PROMOTED
-new 7.0-head Body Geometry Guide = DONE / SUPPORT ONLY
-paid batch = NOT EXECUTED / NOT REQUIRED
+Ear Geometry Master            = DONE / PROMOTED
+Face-up Master                  = DONE / PROMOTED
+Face-up descriptive MD          = DONE / ACTIVE
+free GPT full-body calibration  = COMPLETED
+paid full-body generation       = COMPLETED / STOPPED BY AUTHOR
+7.0–7.2 head-ratio validation   = PASS on promoted result
+Official Full-body Master       = DONE / PROMOTED
+7.0-head Body Geometry Guide    = DONE / SUPPORT ONLY
+paid batch                      = NOT EXECUTED / NOT REQUIRED
+recovery route                  = FROZEN / FAIL-CLOSED
+recovery preflight              = VERIFIED PASS / 0 PAID MODEL CALLS
 ```
 
-## Current visual authority state
+## Current visual Authority state
 
 ```text
 visuals/yura/identity/master/YURA_VISUAL_TEXT.md
@@ -40,6 +42,9 @@ visuals/yura/identity/face/YURA_FACE_REFERENCE.png
 visuals/yura/identity/face/YURA_FACE_UP_MASTER.md
 = ACTIVE CURRENT FACE-UP TEXT AUTHORITY
 
+visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
+= CURRENT FACE DETAIL SPECIFICATION
+
 visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png
 = AUTHOR-PASS / VERIFIED / REPOSITORY PROMOTED
 
@@ -50,46 +55,66 @@ visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
 = CURRENT 7.0-HEAD BODY-GEOMETRY SUPPORT / RECOVERY GUIDE ONLY
 ```
 
-Official Full-body Master promotion commit:
+## Verified promoted assets
+
+Official Full-body Master:
 
 ```text
-3ce89e33193effa627ea794e803d9a3b50cb085b
+promotion commit = 3ce89e33193effa627ea794e803d9a3b50cb085b
+SHA-256 = CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1
 ```
 
-Official Full-body Master SHA-256:
+Current Body Geometry Guide:
 
 ```text
-CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1
+SHA-256 = C23D1D2C348102B4ED9D75C422E1C2323800565B94E27A7FF13AF7C624EBDF95
 ```
 
-Current Body Geometry Guide SHA-256:
+## Method that produced the current state
 
 ```text
-C23D1D2C348102B4ED9D75C422E1C2323800565B94E27A7FF13AF7C624EBDF95
+Ear Geometry isolation / approval
+-> Face-up integration / approval
+-> Face-up descriptive Authority
+-> free full-body balance calibration
+-> sealed-bundle paid route rebuild
+-> iterative one-seed paid generation and targeted prompt corrections
+-> direct image head-ratio measurement using structural crown / chin / soles
+-> explicit author PASS
+-> Full-body Master promotion
+-> replacement 7.0-head Body Geometry Guide generation
+-> route freeze
+-> recovery preflight verification
 ```
 
-## Authority role separation
+Paid-route architecture retained for recovery:
 
 ```text
-YURA_VISUAL_TEXT.md
-= textual definition
-
-YURA_FULL_BODY_MASTER.png
-= primary integrated full-body visual reference
-
-YURA_FACE_REFERENCE.png / YURA_FACE_UP_MASTER.md
-= face-local identity / geometry authority
-
-YURA_EAR_GEOMETRY_MASTER.png / YURA_EAR_BASIC_RULES.md
-= ear-local geometry / visibility rules
-
-YURA_BODY_GEOMETRY_GUIDE.png
-= 7.0-head proportion and body-geometry recovery support only
+current Git main
+-> local Python verifies Authority paths / SHA-256
+-> verify official Full-body Master and synchronized body copy
+-> verify Body Geometry Guide hash
+-> sealed Authority bundle
+-> Codex prompt compile
+-> manifest / invariant verification
+-> OpenAI Image API
+-> result image
+-> direct structural-crown / chin / soles QA
+-> explicit author visual QA
 ```
 
-The Body Geometry Guide must not override the official Full-body Master, Face Authority, Ear Authority, or current Visual Text.
+## Current full-body standard
 
-The validation camisole / shorts visible in the Full-body Master are validation presentation, not a permanent wardrobe Authority. For temporary clothing changes, the official Full-body Master may be used as the integrated body/identity reference while the requested clothing is supplied separately.
+```text
+TARGET HEAD COUNT RANGE = 7.0–7.2 heads
+TARGET HEIGHT IMPRESSION = 152–153 cm
+ONE HEAD = actual structural crown / skull top to chin
+VISIBLE HAIR VOLUME != SKULL HEIGHT
+```
+
+Do not satisfy the range by face elongation, torso-only elongation, leg-only elongation, shoulder widening, ribcage enlargement, or tall model-like conversion.
+
+Whole-head physical scale relative to the body may be adjusted only as one intact unit during regeneration; internal face geometry must remain unchanged.
 
 ## Locked domains
 
@@ -104,14 +129,48 @@ Current chest-to-frame relationship
 Official Full-body Master integrated proportions
 ```
 
-## Current full-body standard
+## Authority role separation
 
 ```text
-TARGET HEAD COUNT RANGE = 7.0–7.2
-TARGET HEIGHT IMPRESSION = 152–153 cm
+YURA_VISUAL_TEXT.md
+= textual definition
+
+YURA_FULL_BODY_MASTER.png
+= primary integrated full-body visual reference
+
+YURA_FACE_REFERENCE.png / YURA_FACE_UP_MASTER.md / YURA_FACE_REDESIGN_SPEC.md
+= face-local identity / geometry authority
+
+YURA_EAR_GEOMETRY_MASTER.png / YURA_EAR_BASIC_RULES.md
+= ear-local geometry / visibility authority
+
+YURA_BODY_GEOMETRY_GUIDE.png
+= 7.0-head proportion and body-geometry recovery support only
 ```
 
-The promoted Full-body Master is the concrete integrated visual baseline. Do not regenerate this standard by face elongation, torso-only elongation, leg-only elongation, shoulder widening, ribcage enlargement, or tall model-like conversion.
+The Body Geometry Guide must not override the official Full-body Master, Face Authority, Ear Authority, or current Visual Text.
+
+## Full-body Master presentation note
+
+The current Master uses the validation presentation:
+
+```text
+front-facing
+full body
+upright
+arms down
+legs near together
+both feet flat / heels down / full sole contact
+barefoot
+pure white background
+centered
+plain opaque matte camisole
+plain undecorated shorts
+```
+
+The camisole and shorts are validation clothing, not permanent wardrobe Authority.
+
+For temporary clothing changes, preserve the approved body / identity from the Full-body Master and replace clothing only as explicitly requested.
 
 ## Paid route state
 
@@ -120,23 +179,56 @@ legacy paid route = RETIRED
 rebuilt sealed-bundle route = COMPLETED FOR THIS MASTER PHASE
 paid generation = STOPPED BY AUTHOR
 PAID_GENERATION_ALLOWED = NO
-recovery/regeneration route = FROZEN
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
 ```
 
-No billable generation should occur unless the author explicitly reauthorizes a new regeneration phase.
+No billable generation is authorized unless the author explicitly reopens a regeneration phase.
 
-Current operational documents remain under `tools/**` as implementation history and recovery tooling.
+## Verified recovery preflight
+
+Latest verified recovery preflight was run against:
+
+```text
+git_commit = 690218017a0c3dedba7f34907b97454a53643e41
+status = PREFLIGHT_OK
+paid_model_calls = 0
+paid_generation_allowed = false
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
+authority_count = 8
+sealed_authority_bundle_sha256 = dfa026cc8049c238fa553e2adac01fd422f399ec747082a01bee11fc2d3dd068
+codex_input_sha256 = 8a82a534da6ce227bf5ea961c260926671ae1971eb530c7ab42d13a47ffd9553
+head_ratio_gate = 7.0–7.2
+height_impression_cm = 152–153
+```
+
+Verified recovery image-reference order:
+
+```text
+1. visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+2. visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
+3. visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+```
+
+A future successful preflight verifies recovery integrity only. It does not authorize a paid call.
 
 ## Next normal use
 
-For future full-body derivative generation, including temporary clothing changes:
+No paid-generation action is pending.
+
+For ordinary future full-body derivative generation:
 
 ```text
-primary integrated visual reference
+primary integrated reference
 = visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
 
-supporting 7.0-head recovery guide
+optional body proportion / recovery support
 = visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
 ```
 
-Do not treat the Body Geometry Guide as YURA Face Identity or as a replacement for the official Full-body Master.
+## New-chat entrypoint
+
+A new chat should start with:
+
+`project-management/yura-visual/START_HERE.md`
+
+Then follow the read order recorded there. Do not reopen completed ear, face, body, or Master decisions unless the author explicitly requests a redesign or regeneration phase.
