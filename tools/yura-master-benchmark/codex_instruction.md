@@ -42,6 +42,13 @@ TARGET HEIGHT IMPRESSION = 152–153 cm.
 ONE HEAD = actual structural crown / skull top to chin.
 VISIBLE HAIR VOLUME != SKULL HEIGHT.
 FACE GEOMETRY IS LOCKED.
+FACE IDENTITY BASELINE = CHARM + CUTENESS + APPROPRIATE YOUTHFULNESS.
+PRESERVE CHARM AND CUTENESS AS THE PRIMARY WHOLE-FACE IMPRESSION.
+DO NOT DRIFT TOWARD A MATURE BEAUTY OR MODEL-LIKE FACE.
+DO NOT MAKE THE FACE OVERLY INFANTILE.
+THE WHOLE FACE PRIORITIZES CUTENESS AND YOUTHFULNESS; REFINED BEAUTY ELEMENTS ARE SECONDARY AND LIMITED.
+REFINED BEAUTY ELEMENTS MAY APPEAR ONLY AS LIMITED SECONDARY ELEMENTS, ROUGHLY 20–30% IN SELECTED FEATURES SUCH AS THE EYE AREA.
+EYES MUST PRIORITIZE CUTE, STRAIGHTFORWARD, SLIGHTLY YOUTHFUL, SOFT TRANSPARENCY.
 FACE GEOMETRY LOCK DOES NOT LOCK WHOLE-HEAD PHYSICAL SCALE RELATIVE TO THE BODY.
 THE COMPLETE APPROVED HEAD MAY BE UNIFORMLY SCALED AS ONE INTACT UNIT RELATIVE TO THE FULL BODY TO ACHIEVE 7.0–7.2 HEADS.
 DO NOT CHANGE INTERNAL FACE GEOMETRY WHEN ADJUSTING WHOLE-HEAD PHYSICAL SCALE.
@@ -82,6 +89,40 @@ DO NOT OVER-WHITEN.
 
 Do not alter punctuation or substitute synonyms for these gate lines.
 
+## Face identity / charm / cuteness preservation
+
+This section mirrors the active `YURA_VISUAL_TEXT.md` face intent. It is a preservation rule, not permission to redesign approved geometry.
+The current repository-promoted Face Reference remains the concrete face-geometry authority, and the current Face-up Master remains the active face text authority.
+
+The compiled prompt MUST preserve all of the following:
+
+- YURA's whole-face baseline identity is **charm + cuteness + appropriate youthfulness**.
+- The overall face must prioritize cuteness and youthfulness rather than mature beauty, elegance, or a model-like facial impression.
+- Do not make the face overly infantile or baby-like.
+- Refined / beautiful elements are secondary only and may occupy roughly 20–30% of selected local features such as the eye area; they must not become the primary whole-face identity.
+- Preserve a soft, rounded, short-vertical facial impression.
+- Do not make the face long, vertically elongated, or a narrow elongated oval.
+- Preserve natural horizontal softness; do not reduce face width excessively.
+- Preserve the approved slightly plump, natural cheek roundness without making the face extremely round or baby-like.
+- Do not emphasize cheekbones and do not hollow the cheeks.
+- Preserve the compact lower face and the short, small, naturally rounded chin.
+- Preserve the gentle taper from cheeks to chin; do not create a sharp V-line, long chin, or pointed chin.
+- Do not lengthen the midface or create excess vertical distance from eyes to mouth.
+- Do not reinterpret the whole face toward mature, elegant, beauty-model proportions.
+- Eye size remains the approved C2 impression: clearly large enough to support cuteness and youthfulness, but not maximal, not infantile, and not extremely deformed.
+- Eye shape remains the approved soft almond-to-rounded anime shape with clear horizontal width and restrained vertical opening.
+- Do not turn the eyes into round wide-open eyes, vertically enlarged eyes, strongly upturned eyes, or strongly downturned eyes.
+- Preserve the approved gray-blue iris with gray dominance and restrained saturation.
+- Preserve the approved pupil structure: small circular pupils, slightly soft edges, bilateral symmetry in size, circularity, darkness, and edge softness.
+- Preserve the approved highlights: one medium primary highlight plus one small secondary highlight per eye.
+- The eye impression must prioritize **cute, straightforward, slightly youthful, soft transparency**.
+- Brows remain thin, soft, neutral, and naturally horizontal; do not create worried brows or inner-brow lift.
+- Nose remains small and understated in 2D anime treatment; do not redesign it toward a realistic or prominent beauty nose.
+- Mouth remains small, closed, and neutral.
+- Expression baseline remains true neutral: no smile, sadness, wistfulness, melancholy, fragility, or worried expression.
+
+Do not use these descriptive face-preservation rules to redraw, beautify, mature, or otherwise alter the approved Face Reference geometry.
+
 ## Current full-body hard gate
 
 The compiled prompt MUST preserve all of the following concepts explicitly:
@@ -91,6 +132,13 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 - ONE HEAD = actual structural crown / skull top to chin.
 - Visible outer hair volume does not define skull height.
 - Face geometry is locked and must not be changed to solve body proportion.
+- Face identity must preserve charm + cuteness + appropriate youthfulness as the primary whole-face impression.
+- Do not allow the whole face to drift toward mature beauty, elegance, or model-like proportions.
+- Do not make the face overly infantile.
+- Refined beauty elements remain secondary and limited; they must not replace YURA's charm/cuteness baseline.
+- Preserve the approved soft, rounded, short-vertical face impression, natural cheek roundness, compact lower face, short rounded chin, and non-elongated midface.
+- Preserve the approved C2-scale eye impression and soft almond-to-rounded eye shape; cuteness and youthfulness have priority over mature beauty styling.
+- Preserve the approved eye impression of cute, straightforward, slightly youthful, soft transparency.
 - Face Geometry lock applies to internal facial shape, proportions, eyes, midface, lower face, jaw, chin, and approved face-local geometry; it does not freeze the whole approved head as an oversized full-body scale unit.
 - The complete approved head may be uniformly scaled as one intact unit relative to the body when necessary to achieve 7.0–7.2 heads.
 - Whole-head physical scale adjustment must preserve all internal face geometry exactly; no non-uniform scaling, stretching, squashing, redrawing, or feature relocation is allowed.
