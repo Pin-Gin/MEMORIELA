@@ -123,6 +123,13 @@ NOT mature model-like facial proportions.
 真円を維持する。
 輪郭はわずかに柔らかくぼかす。
 純黒で強く抜かず、全体のグレーブルーへ馴染む暗さとする。
+左右の瞳孔は対称性を維持する。
+左右で、瞳孔の大きさ・真円形状・暗さ・輪郭のぼかし強度を同等にする。
+片側だけ瞳孔を薄く、弱く、小さく、または強くぼかさない。
+光やハイライトの影響で、片側の瞳孔の存在感だけが弱く見える状態も避ける。
+
+PUPILS MUST BE BILATERALLY SYMMETRIC IN SIZE, SHAPE, DARKNESS, AND EDGE SOFTNESS.
+DO NOT WEAKEN ONE PUPIL RELATIVE TO THE OTHER.
 
 ハイライトは**中サイズ主光1＋小さい副光1**。
 主ハイライトは中サイズを1つ。
