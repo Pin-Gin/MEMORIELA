@@ -1,127 +1,181 @@
 # YURA Visual Work — WORKFLOW
 
-Status: **AUTHOR-DIRECTED CURRENT WORKFLOW / PROJECT-MANAGEMENT ONLY / NOT VISUAL AUTHORITY**
+Status: **CURRENT POST-PROMOTION WORKFLOW / PROJECT-MANAGEMENT ONLY / NOT VISUAL AUTHORITY**
 
 ## Governing principle
 
-`visuals/yura/identity/master/YURA_VISUAL_TEXT.md` is the absolute YURA visual text authority.
+`visuals/yura/identity/master/YURA_VISUAL_TEXT.md` is the highest YURA visual text authority.
 
-This workflow controls sequencing only. It must not redefine appearance.
+The official integrated full-body visual baseline is:
 
-## Phase 1 — Ear Geometry Master / free GPT
+`visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png`
 
-Goal: remove ear visibility-compensation behavior before normal hair is involved.
+This workflow controls sequencing and operational method only. It must not redefine appearance.
 
-Generation type:
+## 1. Completed production sequence
 
-```text
-free GPT image generation
-single image
-face-up / front
-hairless diagnostic presentation
-neutral expression
-```
-
-Required visual sources:
+The current YURA visual sequence has completed through Full-body Master promotion:
 
 ```text
-YURA_VISUAL_TEXT.md
-YURA_FACE_REDESIGN_SPEC.md
-YURA_EAR_BASIC_RULES.md
+Ear Geometry Master
+-> Face-up Master
+-> Face-up descriptive MD
+-> free full-body calibration
+-> rebuilt paid full-body route
+-> iterative paid seed generation / QA
+-> author-selected candidate
+-> direct 7.0–7.2 head-ratio validation
+-> explicit author PASS
+-> Full-body Master promotion
+-> replacement 7.0-head Body Geometry Guide creation
+-> paid route freeze
+-> recovery preflight verification
 ```
 
-Do not attach the legacy Face Reference or Body Geometry Guide in this phase.
+The paid batch stage was not executed and is not required for the current promoted Master.
 
-Hairless presentation is allowed only to inspect the complete ear geometry. It must not alter the approved face.
+## 2. Method used
 
-PASS requires, at minimum:
+### Ear / face stages
+
+Ear geometry was isolated and verified before normal-hair face integration. Ear visibility compensation was treated as failure; zero visibility under natural hair is acceptable.
+
+Face-up work preserved the approved face geometry and produced the current repository-promoted Face Reference / Face-up text Authority.
+
+### Full-body stage
+
+Full-body work used the current Visual Text, current face and ear Authorities, and body constraints. Head-ratio correction was handled as whole-head physical scale relative to the body, not by changing internal face geometry or vertically stretching body regions.
+
+Paid-route architecture:
 
 ```text
-approved face identity preserved
-ear actual height within target / hard max
-ear vertically compact
-ear close to head
-no outward flare
-no camera-facing rotation
-no geometry added merely for readability
+current Git
+-> verify configured Authority files / hashes
+-> sealed Authority bundle
+-> Codex prompt compile
+-> runner manifest / invariant verification
+-> OpenAI Image API
+-> generated candidate
+-> direct image QA
+-> explicit author decision
 ```
 
-A PASS image is promoted only by explicit author instruction to:
+### Head-ratio QA method
 
-`visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
-
-## Phase 2 — Face-up Master / free GPT
-
-Only after the Ear Geometry Master is approved.
-
-Generate the normal YURA face-up with hair restored.
-
-Inputs:
+Measure directly from the generated image:
 
 ```text
-YURA_VISUAL_TEXT.md
-YURA_FACE_REDESIGN_SPEC.md
-YURA_EAR_BASIC_RULES.md
-YURA_EAR_GEOMETRY_MASTER.png
+structural skull top / crown -> chin = one head
+structural skull top / crown -> soles = full body
+head count = full-body height / head height
 ```
 
-Primary ear behavior:
+Visible outer hair volume must not be used as skull height.
+
+The current promoted result passed the intended 7.0–7.2 range before Master promotion.
+
+## 3. Current standards
 
 ```text
-correct actual geometry
-natural hair occlusion
-no visibility compensation
-partial or zero visible ear is acceptable
+TARGET HEAD COUNT RANGE = 7.0–7.2 heads
+TARGET HEIGHT IMPRESSION = 152–153 cm
 ```
 
-Face geometry must remain unchanged from the approved face design.
-
-A PASS image is promoted only by explicit author instruction to:
-
-`visuals/yura/identity/face/YURA_FACE_UP_MASTER.png`
-
-## Phase 3 — Face-up descriptive MD
-
-After `YURA_FACE_UP_MASTER.png` is approved, visually inspect the approved image and create:
-
-`visuals/yura/identity/face/YURA_FACE_UP_MASTER.md`
-
-Rules:
-
-- describe only what is actually visible in the approved Face-up Master;
-- do not invent hidden geometry;
-- do not import novel settings;
-- do not import rejected candidates;
-- do not override `YURA_VISUAL_TEXT.md`;
-- if a description conflicts with Visual Text, stop and report the conflict.
-
-## Phase 4 — Full-body generation
-
-Only after Face-up Master and its descriptive MD are complete.
-
-The new full-body route must start from the current Visual Text and current approved face assets, not from the archived old full-body Master.
-
-Before any full-body generation, explicitly re-resolve the visual-layer Body Geometry Guide because the protected `YURA_VISUAL_TEXT.md` currently names that asset. Do not use the archived tools copy as an automatic reference. If the author changes the Body Geometry route before this phase, update the active specification deliberately rather than letting project-management prose override Visual Text.
-
-Mandatory preserved design constraints include:
+Locked domains:
 
 ```text
-face geometry unchanged
-compact / petite overall impression
-7.0–7.2 head target from current Visual Text
-no whole-body vertical stretching
-no torso-only or leg-only elongation
-slender but not excessively frail body
-current chest-to-frame relationship preserved
+Face Geometry / facial parts
+Eye shape / size / placement
+C2 baseline -> 0.3% inward
+Pupil bilateral symmetry
+Ear actual geometry / no visibility compensation
+Body definition
+Current chest-to-frame relationship
+Official integrated Full-body Master proportions
 ```
 
-The chest specification is evaluated as body-design silhouette / volume balance only. Do not turn the generation or QA into sexual emphasis.
+Never solve proportion by:
 
-The generation engine for this full-body phase is chosen later by the author.
+```text
+face / midface / chin elongation
+torso-only elongation
+leg-only elongation
+shoulder widening
+ribcage enlargement
+tall model-like conversion
+```
 
-If a paid route is used, every run, prompt compile, hypothesis, cost artifact, candidate record, and result belongs under `tools/`, not under `visuals/`.
+## 4. Body Geometry Guide role
 
-## Rejection rule
+Current support reference:
+
+`visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
+
+Purpose:
+
+```text
+7.0-head proportion reference
+body-geometry recovery support
+insurance for future Master regeneration
+```
+
+It is subordinate to the official Full-body Master and current Visual Text. It must not become Face Identity Authority and must not override face / ear local Authorities.
+
+## 5. Normal future derivative workflow
+
+For ordinary derivative work such as temporary clothing changes:
+
+```text
+1. read current YURA Visual Text
+2. use official YURA_FULL_BODY_MASTER.png as the primary integrated visual reference
+3. preserve face / body / hair / proportion identity
+4. change only the explicitly requested derivative variable
+5. do not treat validation camisole / shorts as permanent wardrobe
+6. review the result as a candidate; do not auto-promote
+```
+
+The Body Geometry Guide is optional support, not the primary reference for ordinary derivative work.
+
+## 6. Future Full-body Master regeneration workflow
+
+Only if the author explicitly reopens regeneration:
+
+```text
+1. sync current Git main
+2. verify current Authority set and hashes
+3. verify primary and body-directory Full-body Master copies match
+4. verify current Body Geometry Guide
+5. review frozen recovery config
+6. run free recovery preflight
+7. confirm PREFLIGHT_OK and 0 paid model calls
+8. explicitly reauthorize paid generation
+9. update paid_generation_allowed deliberately
+10. run exactly one paid seed first
+11. direct head-ratio QA from generated image
+12. explicit author visual QA
+13. promote only after explicit PASS
+```
+
+Current recovery Image API reference order:
+
+```text
+1. YURA_FULL_BODY_MASTER.png
+2. YURA_BODY_GEOMETRY_GUIDE.png
+3. YURA_FACE_REFERENCE.png
+```
+
+A preflight PASS alone never authorizes billing.
+
+## 7. Current paid state
+
+```text
+PAID_GENERATION_ALLOWED = NO
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
+```
+
+The runner is intentionally fail-closed before Codex / Image API paid execution while this flag remains false.
+
+## 8. Rejection rule
 
 A FAIL image:
 
@@ -132,6 +186,6 @@ is not a future identity reference
 must not be fed back automatically
 ```
 
-## One change at a time
+## 9. One change at a time
 
 When diagnosing a specific failure, change only the minimum intended variable. Do not combine face redesign, ear correction, body correction, rendering change, and composition correction into one uncontrolled test.
