@@ -1,18 +1,27 @@
 # YURA VISUAL TEXT — TEXT-ONLY BOOTSTRAP
 
-Status: **AUTHOR-APPROVED / STEP 1**
+Status: **AUTHOR-APPROVED / FACE REDESIGN TEXT UPDATED**
 
-Purpose: YURAを画像参照なしのTEXT_ONLYで新規生成するための初期Visual定義。
+Purpose: YURAをTEXT_ONLYでも再現できるようにするVisual定義。
 
-この文書は旧YURA Master画像・旧Visual Text・過去生成画像を参照して作らない。
-この段階ではYURAの全身Master画像は存在しない。
+顔に関しては、2026-10-17に作者が選定したFace Redesign仕様を反映する。
+顔の詳細仕様は以下を併用する。
+
+`visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md`
+
+現行 `visuals/yura/identity/face/YURA_FACE_REFERENCE.png` は、今回採用した新Face画像へまだ置換されていない。
+そのため、新Face Redesign作業では旧Face Referenceの顔Geometryを混入させない。
+新しいFace Reference画像が作者承認のうえ正式に置換されるまでは、本テキストと `YURA_FACE_REDESIGN_SPEC.md` を新Face設計のテキスト基準とする。
 
 ## Overall
-YURAは、銀白色のスーパーロングヘアを持つ、繊細で透明感のある少女として描く。
+YURAは、銀白色のスーパーロングヘアを持つ、愛嬌と可愛さを基底にした若々しい少女として描く。
+幼すぎる印象にはせず、大人びた美人・モデル顔を主軸にしない。
+顔全体は可愛さと若さを優先し、目元など一部のパーツに限って20〜30%程度の整った美人要素を許容する。
 高品質な2Dアニメ表現のみを基準とし、写実・半写実・3D・CGI方向へ寄せない。
 
 ## Hair
-髪色は銀白色。
+髪色は**銀白色**。
+ベージュブロンド、ピンクブロンド、暖色クリーム系へ寄せない。
 髪型はストレート主体のスーパーロングを基準とする。
 長さは胸下を越え、腰付近まで届く程度とする。
 過度に長くせず、腰より大きく下へ伸ばさない。
@@ -21,19 +30,31 @@ YURAは、銀白色のスーパーロングヘアを持つ、繊細で透明感�
 髪飾りは付けない。
 
 ## Face
-顔は小さめで、縦方向がやや短い柔らかな卵型。
+顔の基底Identityは**愛嬌 + 可愛さ + 適度な若さ**。
+数値年齢は生成指示・最終Visual Identity Textへ明記しない。
+幼児的にはせず、成人女性的・大人びたモデル顔にも寄せない。
+
+採用輪郭は比較候補 **A**。
+縦方向を長く見せない、柔らかく丸みのある短めの顔印象とする。
 面長にしない。
-顔幅は細すぎず、頬にわずかな横方向の柔らかさを残す。
-額から顎までを長く見せない。
-中顔面は短め。
-目から口までの距離を長くしない。
+細長い卵型にしない。
+顔幅を削りすぎず、自然な横方向の柔らかさを残す。
+
+頬は比較候補 **A2**。
+ややふっくらした自然な頬の丸みを持たせる。
+幼さと可愛さを残すが、過度な赤ちゃん顔・極端な丸顔にはしない。
+頬骨を強調しない。
+頬をこけさせない。
+
+顎・下顔面は比較候補 **B2**。
 下顔面はコンパクト。
-顎は小さく、先端は細めに収束するが、鋭く尖らせない。
-顎先にはごく小さな丸みを残す。
-頬から顎へは急激なV字ではなく、なだらかに細くなる。
-頬骨は強調しない。
-横幅を削って縦長に見せない。
-大人びたモデル顔にしない。
+顎は短めで小さく、自然な丸みを残す。
+頬から顎へはなだらかに収束させる。
+鋭いV字、長い顎、尖った顎にしない。
+
+中顔面を長くしない。
+目から口までを縦方向へ間延びさせない。
+顔全体を美人・エレガント・成熟方向へ再解釈しない。
 
 NOT long face.
 NOT vertically elongated face.
@@ -43,31 +64,132 @@ NOT long chin.
 NOT sharp V-line face.
 NOT mature model-like facial proportions.
 
-When `YURA_FACE_REFERENCE.png` is supplied, exact facial geometry and internal facial proportions follow the Face Reference.
-The Face text describes YURA identity intent and must not redesign, average, beautify, enlarge, or otherwise reinterpret the referenced face.
-**FACE REFERENCE HAS PRIORITY FOR FACE GEOMETRY.**
-This priority does not apply to ear geometry, ear visibility, or ear prominence; the Ear section below controls those items.
+### New face redesign authority handling
+新Face Redesignでは、今回の作者選定仕様を優先する。
+旧 `YURA_FACE_REFERENCE.png` は新Face画像へ未置換のため、新Face RedesignのGeometry Sourceとして使用しない。
+旧Face Referenceを平均化・混合して新Faceへ戻さない。
+
+新Face Reference画像が正式に置換・昇格された後は、その新Reference画像と本テキストを相互に整合させる。
 
 ## Eyes / Expression
-瞳は淡いブルーグレー。
-目は大きめだが、縦方向へ丸く見開かない。
-横幅優位の浅いアーモンド型を基準とする。
-縦方向の開きは控えめに保つ。
-上まぶたはなだらかで、丸い見開き目にしない。
+
+### Eye size / placement
+目サイズは比較候補 **C2**。
+明確に大きめだが、最大級にはしない。
+可愛さと若さを強く出しつつ、幼児的・極端なデフォルメ目にはしない。
+縦方向へ丸く見開かない。
+
+目位置は選定C2基準から**0.3%内側**。
+この0.3%は今回の比較テスト基準に対する作者選定値であり、別の絶対測定系へ勝手に換算しない。
+選定位置より目の間隔を広げない。
+
+### Eye shape
+採用Face-up画像の目形状を基準とする。
+柔らかなアーモンド〜丸みを含むアニメ目。
+横幅を保ちつつ、縦方向の開きは過剰にしない。
 つり目すぎず、たれ目すぎない。
-目・鼻・口を縦方向へ間延びさせない。
-表情は落ち着いた無表情寄り。
-口は小さく控えめ。
-鼻は主張を強くしない、簡潔な2Dアニメ表現。
-眉は細めでやわらかい印象。
+上まぶたはなだらかな曲線。
+丸く見開いた目にしない。
+
+### Double eyelid
+二重あり。
+二重線は繊細で、アニメ表現へ自然に馴染ませる。
+写実的で強い二重線にしない。
+
+### Eyelashes
+まつげは黒寄りの濃いグレー。
+純黒で強くインク化しない。
+輪郭を少しぼかし、柔らかく馴染ませる。
+存在は明確に残すが、濃密・華美・メイク的にしない。
+
+### Iris color
+瞳色は**グレーブルー**。
+ブルーよりグレー感を強くする。
+彩度は控えめ。
+鮮やかな宝石色の青へ寄せない。
+
+### Iris / pupil / highlight — selected G1
+瞳セットは **G1**。
+瞳内部の情報量は少なめにする。
+
+虹彩は柔らかな上下グラデーション。
+上部をわずかに暗く、下部をわずかに明るくする。
+自然に滑らかにつなげる。
+放射状の線模様を入れない。
+細密なスポーク・虹彩繊維・星・花・幾何模様を入れない。
+
+瞳孔は小さめの真円。
+黒一色で強く抜かず、全体のグレーブルーへ馴染む暗さとする。
+
+ハイライトは、やや大きめの主ハイライト1つ + 小さな副ハイライト1つ。
+形は単純で柔らかな丸形を基本とする。
+細かな光点を大量に入れない。
+
+瞳全体は、可愛い・素直・少し幼い・柔らかな透明感を優先する。
+
+### Eyebrows
+眉は採用Face-up画像の現状を維持する。
+細めで柔らかい。
+ニュートラルで自然な横方向を基準とする。
+困り眉にしない。
+眉頭を持ち上げて悲しさ・儚さを作らない。
+
+### Nose
+鼻は採用Face-up画像の現状を維持する。
+小さく控えめな2Dアニメ表現。
+鼻筋・鼻梁を写実的に強調しない。
+立体的な美人鼻へ再設計しない。
+
+### Mouth
+口は採用Face-up画像の現状を維持する。
+小さく、閉じた口。
+真顔ではニュートラル。
+作者の明示指示なしに口を開けない。
+口角を勝手に上げたり下げたりせず、笑顔・悲しみ・困り顔へ変えない。
+
+### Neutral expression baseline
+基準表情は**真顔**。
+笑顔ではない。
+悲しい表情ではない。
+儚い・物憂げ・困った表情を基準へ混ぜない。
+困り眉は禁止。
+作者が表情差分を明示した場合のみ、表情属性を追加する。
 
 NOT round wide-open eyes.
 NOT vertically enlarged eyes.
+NOT worried eyebrows in neutral baseline.
+NOT fragile / wistful / melancholic neutral expression.
+NOT open mouth in neutral baseline.
+
+## Face-up framing baseline
+フェイスアップ基準生成は以下とする。
+
+Exactly one YURA.
+1人1枚。
+正面。
+直立。
+頭を傾けない。
+肩から上。
+頭部全体をキャンバス内へ完全に収める。
+頭頂を切らない。
+人物を中央に配置する。
+真顔。
+口は閉じる。
+正方形キャンバスを基準とする。
+
+フェイスアップ画像のキャンバス占有率・トリミング・余白・ピクセル寸法から、全身時の頭部物理スケールや頭身を推定してはならない。
 
 ## Skin
-肌は明るい色白。
+肌は標準より白寄りの明るい色白。
+真っ白・病的な白さにはしない。
 ごく薄い自然な血色感を残す。
-表面はなめらかな2Dアニメ調とし、写実的な肌テクスチャを使わない。
+赤み・黄みを強くしすぎない。
+
+質感は**マット感強め + アニメ調強め**。
+表面はなめらかな2Dアニメ調とする。
+写実的な毛穴・肌テクスチャを使わない。
+濡れ感・油脂感・プラスチック的な強い光沢を出さない。
+鼻・頬のハイライトは立体感を補助する程度に抑える。
 
 ## Body
 全体として細身だが、極端に華奢にはしない。
@@ -76,16 +198,19 @@ NOT vertically enlarged eyes.
 太腿・ふくらはぎ・足首を極端に細くしない。
 
 ### Body proportion / head-to-body ratio
-全身は **7.2頭身** をTARGETとする。
+全身統合時の作者指定TARGETは **7.0〜7.2頭身** とする。
+身長感は **152〜153cm程度** を目標とする。
 
-頭頂から顎先までの頭部高を1.0とした場合、頭頂から足裏までの全身高は **7.2** を基準とする。
-**TARGET = 7.2 heads**
-**ACCEPTABLE RANGE = 7.1〜7.3 heads**
+頭頂から顎先までの頭部高を1.0とした場合、頭頂から足裏までの全身高は **7.0〜7.2** の範囲を基準とする。
+**TARGET RANGE = 7.0〜7.2 heads**
+**TARGET HEIGHT IMPRESSION = 152〜153 cm**
 
-7.2頭身は、YURAの全身における頭部と身体の相対比率として扱う。
+7.0〜7.2頭身は、YURAの全身における頭部と身体の相対比率として扱う。
 フェイスアップ画像のキャンバス内サイズ、トリミング、余白、画面占有率から頭身・身長・BODYサイズを推定してはならない。
 
-7.2頭身を成立させるために、胴体・脚・肩幅・腰幅・胸郭・四肢を不自然に大型化しない。
+7.0〜7.2頭身を成立させるために、Face Geometryを変更しない。
+完成Faceの頭部全体の物理スケールをBODY統合側で調整する。
+胴体・脚・肩幅・腰幅・胸郭・四肢を不自然に大型化しない。
 脚だけを不自然に長くしない。
 胴だけを不自然に長くしない。
 肩幅や骨格を大きくしない。
@@ -93,22 +218,25 @@ NOT vertically enlarged eyes.
 
 DO NOT INFER BODY PROPORTION FROM FACE REFERENCE CROP OR SCALE.
 DO NOT USE FACE REFERENCE CANVAS OCCUPANCY AS BODY GEOMETRY.
-DO NOT CREATE A TALL MODEL-LIKE BODY TO SATISFY 7.2 HEADS.
+DO NOT CREATE A TALL MODEL-LIKE BODY TO SATISFY 7.0–7.2 HEADS.
 DO NOT INCREASE SHOULDER WIDTH OR BODY MASS TO SATISFY THE RATIO.
 
 ### Face identity / body geometry authority separation
 顔Identityと全身Geometryは別Authorityとして扱う。
 
-予定されたフェイス画像:
+現行フェイス画像:
 `visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
 
-予定されたBODY Geometryガイド画像:
+現行BODY Geometryガイド画像:
 `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
 
-フェイス画像は、顔Identity・顔内部比率・目・眉・鼻・口・頬・顎・顔まわりの髪のIdentityを確認するために使用する。
+ただし、現行フェイス画像は今回採用した新Face画像へ未置換である。
+新Face Redesignでは旧Face画像のGeometryを新Faceへ混入させない。
+
+新しいフェイス画像が正式置換された後、その画像は顔Identity・顔内部比率・目・眉・鼻・口・頬・顎・顔まわりの髪のIdentity確認に使用する。
 フェイス画像は、頭身・BODYサイズ・身長感・肩幅・胴長・脚長・全身キャンバス占有率のAuthorityではない。
 
-BODY Geometryガイドは、7.2頭身・頭部と身体の相対スケール・全身Geometryを規定するために使用する。
+BODY Geometryガイドは、頭部と身体の相対スケール・全身Geometryを規定するために使用する。
 BODY Geometryガイドは、顔内部の造形・目・眉・鼻・口・頬・顎のIdentityを変更するAuthorityではない。
 
 **FACE_REFERENCE -> BODY_PROPORTION = DENIED**
@@ -117,7 +245,7 @@ BODY Geometryガイドは、顔内部の造形・目・眉・鼻・口・頬・�
 **BODY_GEOMETRY_GUIDE -> FACE_GEOMETRY = DENIED**
 **BODY_GEOMETRY_GUIDE -> FACE_IDENTITY = DENIED**
 
-FACE GEOMETRY IS LOCKED.
+FACE GEOMETRY IS LOCKED AFTER AUTHOR APPROVAL.
 顔の縦横比を変更しない。
 目の大きさ・形・間隔を変更しない。
 眉・鼻・口の相対位置を変更しない。
@@ -128,9 +256,8 @@ FACE GEOMETRY IS LOCKED.
 顔を面長化しない。
 顔を横長化しない。
 
-旧方式の「約5.8頭身から7.2頭身へ補正するため頭部を80〜81%へ縮小する」という数値補正は使用しない。
 顔画像の見かけ上の頭部サイズを基準に、頭部またはBODYを機械的に拡大・縮小しない。
-7.2頭身はBODY Geometryガイド上の全身配置として成立させる。
+7.0〜7.2頭身はBODY Geometry側の全身配置として成立させる。
 
 BODY Geometryガイド画像が存在しない場合、フェイス画像をその代替として使用してはならない。
 
@@ -190,9 +317,14 @@ NOT excessively low breast contour.
 耳はYURAの視覚的特徴として強調しない。
 耳はやや小さめを基準とし、頭部側面に近く沿わせる。
 耳の存在感は弱く保つ。
+現在の生成で見られた長めの耳傾向は抑制する。
 
 EAR SIZE AND NATURAL PLACEMENT HAVE PRIORITY OVER EAR VISIBILITY.
 耳の可視性より、耳の小ささ・自然な位置・自然な向きを優先する。
+
+### Ear geometry status
+耳の最終Geometryは、後に作成する髪なし頭部画像で確定する。
+現段階では位置基準・縦方向コンパクトさ・低い存在感を固定し、髪ありFace-up画像だけから最終寸法を断定しない。
 
 ### Ear size ratio
 顔の縦寸法を100%とする。
@@ -224,7 +356,7 @@ NOT vertically stretched ear silhouette.
 
 ただし、これらの基準線の間を埋めるために耳を縦へ伸ばしてはならない。
 これは位置の基準であり、耳の高さを最大化するための範囲ではない。
-YURAでは既存の小型・縦方向コンパクト規則を優先する。
+YURAでは小型・縦方向コンパクト規則を優先する。
 
 ### Shape
 耳を縦長にしない。
@@ -321,6 +453,8 @@ Exactly one YURA.
 
 ## Rendering
 高品質な2Dアニメ表現。
+アニメ調を強く保つ。
+マット感を強めにする。
 全体に明るく高キー。
 線は細く繊細だが、消えるほど薄くしない。
 陰影はやわらかく、アニメ的なまとまりを保つ。
