@@ -1,159 +1,210 @@
 # YURA Visual Work — DECISIONS
 
-Status: **CURRENT AUTHOR DECISIONS / PROJECT-MANAGEMENT RECORD / NOT VISUAL AUTHORITY**
+Status: **CURRENT AUTHOR DECISIONS / POST-PROMOTION HANDOFF / NOT VISUAL AUTHORITY**
 
-This file records decisions so a new chat does not re-open settled direction by default.
+This file records settled author decisions so a new chat does not reopen completed direction by default.
 
-## Authority decision
+## 1. Authority decision
 
-`visuals/yura/identity/master/YURA_VISUAL_TEXT.md` is the active, highest-priority YURA visual text authority and must be followed.
+`visuals/yura/identity/master/YURA_VISUAL_TEXT.md` is the active highest-priority YURA visual text authority.
 
-It remains unchanged by this repository cleanup.
+The current official integrated full-body visual Master is:
 
-Project-management documents may not override it.
+`visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png`
 
-## Face decision
+Project-management documents may not override these visual Authorities.
 
-The face selected in the 2026-10-17 redesign work is the current formal face direction.
+## 2. Full-body Master decision
 
-The detailed current specification remains:
+The author explicitly promoted the current Full-body Master.
 
-`visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md`
+```text
+path = visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+promotion commit = 3ce89e33193effa627ea794e803d9a3b50cb085b
+SHA-256 = CCBE315659DAC02169C833F8140096322725E85250FAB73214D30FBBC835EDF1
+```
 
-Legacy Face Reference geometry is not current face authority and must not be blended back into the new design.
+Synchronized body-directory copy:
 
-Face geometry must not be altered to solve later body, proportion, ear, or generation problems.
+`visuals/yura/identity/body/YURA_FULL_BODY_MASTER.png`
 
-The legacy Face Reference file remains physically present at its visual-layer path only because the protected Visual Text still names that path. Its presence is not permission to use it as geometry for the current face redesign.
+The two files are the same Master binary and are not competing Authorities.
 
-## Ear decision
+The validation camisole / shorts visible in the Master are not permanent wardrobe Authority.
 
-Ear visibility must never be improved by making the ear longer, larger, farther outward, more camera-facing, or by clearing natural hair.
+## 3. Face decision
 
-The current focused ear rules are:
+Current face image Authority:
 
-`visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md`
+`visuals/yura/identity/face/YURA_FACE_REFERENCE.png`
 
-The final hairless ear-geometry candidate received explicit author **PASS** on 2026-10-17.
+Current face text Authorities:
 
-Approval record:
+```text
+visuals/yura/identity/face/YURA_FACE_UP_MASTER.md
+visuals/yura/identity/specs/YURA_FACE_REDESIGN_SPEC.md
+```
 
-`project-management/yura-visual/EAR_GEOMETRY_MASTER_APPROVAL.md`
+The current Face Reference is repository-promoted and active. Do not fall back to older face geometry from archived candidates or Git history.
 
-Promoted Master path:
+Face geometry must not be altered to solve body ratio, ear visibility, or generation problems.
+
+Current eye placement remains:
+
+```text
+C2 baseline -> 0.3% inward
+```
+
+Pupil bilateral symmetry remains required.
+
+## 4. Ear decision
+
+Current ear image Authority:
 
 `visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
 
-Approved source SHA-256:
+Current supporting rule:
+
+`visuals/yura/identity/ears/YURA_EAR_BASIC_RULES.md`
+
+Approved Ear Geometry Master SHA-256:
 
 `8949c5febef99850f7cccd849064c9dfe774e3b722f1658c967b0ecf2c5c7b50`
 
-Repository promotion is complete and verified.
+Ear visibility is not required. Natural hair may fully hide one or both ears.
+
+Do not improve readability by lengthening, widening, moving outward, rotating, exposing, or clearing hair around the ear.
+
+## 5. Body / chest decision
+
+The body and chest definition in `YURA_VISUAL_TEXT.md` remains locked.
+
+Key intent:
 
 ```text
-promotion commit = c0878854937103236a2902abf80912182f191ead
-Git blob SHA      = efba2f34097c4fa6e3f2a45e66a235da57253e3f
-```
-
-Accepted ear-stage geometry includes:
-
-- ear size = PASS;
-- ear position = PASS;
-- no visibility-driven vertical elongation;
-- no visibility-driven outward projection;
-- the final slightly compacted upper-cranium result is accepted;
-- the approved current face geometry / eyes / cheeks / chin remain the reference state for this structural Master.
-
-The next normal-hair Face-up candidate must use this promoted Ear Geometry Master together with the current Visual Text and face specification.
-
-## Body / chest decision
-
-The current body and chest specification inside `YURA_VISUAL_TEXT.md` is retained.
-
-Key chest design intent:
-
-```text
-slender body
-chest moderately fuller relative to the frame
+slender overall frame, not excessively frail
+relatively narrow shoulders / waist
+natural soft hips / thighs
+chest moderately fuller relative to the slender frame
 natural soft bowl-like rounded form
-compact / relatively high-set volume
-upper-chest volume retained
+compact / centered
+slightly high-set with natural upper volume
 not flattened because the body is slender
 not exaggerated oversized
 ```
 
-This is character-design and body-balance verification.
+This is character-design and body-balance verification. Do not sexualize pose, camera, clothing, or QA focus.
 
-Do not add age-category wording to generation instructions as a workaround for this body-design requirement.
+## 6. Body Geometry Guide decision
 
-Do not sexualize the presentation, pose, camera, clothing, or QA focus.
+The previous obsolete Body Geometry Guide was removed and replaced by a newly generated 7.0-head mannequin reference aligned with current YURA body intent.
 
-## Body Geometry Guide status
-
-The current protected Visual Text still explicitly names:
+Current path:
 
 `visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png`
 
-Therefore this progress layer does **not** declare that asset deleted, superseded, or inactive for every future purpose.
+Current SHA-256:
 
-Current decision is narrower:
+`C23D1D2C348102B4ED9D75C422E1C2323800565B94E27A7FF13AF7C624EBDF95`
 
-- it is not an input for the current hairless ear phase;
-- it is not an input for the current normal-hair Face-up phase;
-- an audit copy is stored under tools for provenance;
-- before full-body generation, its role must be resolved from the then-current Visual Text and explicit author instruction.
+Its role is deliberately limited to:
 
-Do not use the archived tools copy as a shortcut or alternate Authority.
+```text
+7.0-head proportion reference
+body-geometry recovery support
+insurance for future Full-body Master regeneration
+```
 
-## Body proportion decision
+It is not the primary YURA visual reference and must not override the official Full-body Master, Visual Text, Face Authorities, or Ear Authorities.
 
-Do not solve head-to-body ratio by stretching the entire body.
+## 7. Body proportion decision
 
-Do not:
+Current target:
 
-- lengthen the face;
-- shrink or redesign the approved face;
-- lengthen only the torso;
-- lengthen only the legs;
-- enlarge shoulders / skeleton / ribcage merely to reach a ratio;
-- create a tall model-like silhouette.
+```text
+7.0–7.2 heads
+152–153 cm height impression
+```
 
-Follow the current `YURA_VISUAL_TEXT.md` target and preserve the compact YURA impression.
+Head measurement uses structural skull top / crown to chin. Visible hair volume is not skull height.
 
-## Layer ownership decision
+Do not reach the ratio by:
+
+- lengthening the face, midface, lower face, or chin;
+- torso-only elongation;
+- leg-only elongation;
+- enlarging shoulders, skeleton, or ribcage;
+- tall model-like conversion.
+
+Whole-head physical scale relative to the body may be adjusted only as one intact unit when regeneration requires it; internal face geometry must remain unchanged.
+
+## 8. Full-body QA decision
+
+For head-count QA, measure directly from the generated image using:
+
+```text
+structural crown / skull top
+chin
+soles
+```
+
+Do not require `body_geometry_qa.json` merely to decide head count when the image itself can be measured directly.
+
+The promoted Full-body Master passed the intended 7.0–7.2 range before author promotion.
+
+## 9. Paid generation decision
+
+The Full-body Master-generation phase is complete and the author stopped further paid generation.
+
+```text
+PAID_GENERATION_ALLOWED = NO
+route_state = FROZEN_AFTER_FULL_BODY_MASTER_PROMOTION
+```
+
+No paid batch was executed.
+
+The recovery runner remains in Git only as frozen regeneration tooling and must fail closed before billable Codex / Image API execution while authorization is false.
+
+A future successful preflight does not itself authorize billing.
+
+## 10. Recovery method decision
+
+If the author explicitly reopens Master regeneration, the current recovery reference order is:
+
+```text
+1. visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
+2. visuals/yura/identity/body/YURA_BODY_GEOMETRY_GUIDE.png
+3. visuals/yura/identity/face/YURA_FACE_REFERENCE.png
+```
+
+The route must verify current Git, hashes, Authority order, sealed bundle, prompt invariants, and the synchronized body-directory Master copy before any generation.
+
+## 11. Normal derivative-use decision
+
+For temporary clothing changes or other ordinary full-body derivatives, use the official Full-body Master as the primary integrated visual reference.
+
+Change only the explicitly requested derivative variable. Do not use the Body Geometry Guide alone as a substitute for YURA identity.
+
+## 12. Layer ownership decision
 
 ```text
 visuals/**
 = current visual specifications and author-approved visual Masters
 
 tools/**
-= paid generation code, runs, prompts, hypotheses, QA experiments, costs, historic generation outputs
+= paid generation code, runs, prompts, QA, costs, historical and recovery tooling
 
 project-management/yura-visual/**
-= current progress, sequencing, handoff, settled decisions
+= current progress, decisions, workflow, cross-chat handoff
 
 novel/story layer
 = never a YURA visual fallback
 ```
 
-## Legacy decision
+## 13. Promotion / rejection decision
 
-The previous full-body Master, old measurement records, audits, and candidate records are historical only and are archived under tools.
+Generated images are candidates only.
 
-Legacy Face Reference and Body Guide audit copies also exist under tools for provenance, but their visual-layer compatibility copies are handled only according to the protected Visual Text and current stage rules above.
+Explicit author PASS and repository registration are mandatory for promotion.
 
-## Protected old sequencing documents
-
-Older files that encode repository read order / phase sequence are intentionally left byte-identical when protected by the author's instruction.
-
-They may contain stale historical references after the cleanup.
-
-Do not treat those stale references as permission to reactivate archived visual assets or old paid routes.
-
-Do not edit or delete those protected sequencing documents without a new explicit author instruction.
-
-## Paid generation decision
-
-The old paid route must remain disabled until the current free ear / Face-up Master sequence is complete and the author explicitly requests a new paid-route build.
-
-Do not pay for a run merely because old runner scripts still exist in Git history or archive.
+A rejected image is not Authority, not a Master, and must not be automatically fed back as identity reference.
