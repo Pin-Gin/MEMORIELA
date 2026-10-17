@@ -52,9 +52,16 @@ EAR VISIBILITY IS NOT REQUIRED.
 EAR VISIBILITY SHORTAGE IS NOT A FAILURE.
 NO VISIBILITY COMPENSATION.
 EARS MAY BE FULLY HIDDEN BY NATURAL HAIR.
+FULL HAIR OCCLUSION OF EITHER EAR IS FULLY ACCEPTABLE.
 DO NOT EXPOSE EARS FOR READABILITY.
 DO NOT REVEAL OR PRESERVE A SMALL EAR FRAGMENT FOR READABILITY.
+DO NOT PRESERVE ANY EAR FRAGMENT FOR READABILITY.
+DO NOT CREATE OR PRESERVE A SKIN-COLORED EAR SLIVER THROUGH A GAP IN THE HAIR.
 DO NOT CLEAR, PART, SHIFT, OR THIN HAIR TO SHOW EARS.
+DO NOT BEND, PART, ARC, OR ROUTE HAIR AROUND THE EAR TO KEEP ANY PORTION OF THE EAR VISIBLE.
+IF NATURAL HAIR OCCLUSION COVERS THE EAR, ALLOW COMPLETE OCCLUSION WITHOUT CORRECTION.
+A COMPLETELY HIDDEN EAR IS PREFERRED OVER ANY VISIBILITY-COMPENSATED EAR FRAGMENT.
+NO EAR-SHAPED GAP OR NOTCH IN THE HAIR FOR READABILITY.
 BODY DEFINITION IS LOCKED.
 CHEST VOLUME RELATIVE TO BODY HAS PRIORITY OVER SLENDER-BODY SIMPLIFICATION.
 PRESERVE THE CURRENT CHEST-TO-FRAME RELATIONSHIP FROM YURA_VISUAL_TEXT.md.
@@ -98,13 +105,18 @@ The compiled prompt MUST preserve all of the following concepts explicitly:
 - Ear visibility shortage is not a failure condition.
 - One ear, both ears, or either side may be partially visible, reduced to a tiny natural fragment, asymmetrically visible, or fully hidden by natural hair.
 - Fully hidden ears are fully acceptable and require no correction.
+- Full natural hair occlusion of either ear is fully acceptable and must not be treated as missing information.
 - Natural hair occlusion is preferred over any attempt to make the ears readable.
+- A completely hidden ear is preferred over any visibility-compensated ear fragment.
 - Do not lengthen, widen, enlarge, move outward, rotate toward camera, or otherwise modify an ear to make it more visible.
-- Do not clear, part, shift, lift, thin, or rearrange hair around an ear to reveal it.
+- Do not clear, part, shift, lift, thin, bend, arc, route, or rearrange hair around an ear to reveal or preserve any visible portion of the ear.
 - Do not create, preserve, or strengthen a small visible ear fragment merely so the ear remains readable.
-- If natural hair covers an ear, keep the natural occlusion; do not compensate for the missing visibility.
+- Do not create or preserve a skin-colored ear sliver through a gap in the hair.
+- Do not create an ear-shaped gap, notch, opening, contour break, or hair-routing pattern for readability.
+- If natural hair covers an ear, keep the natural occlusion and allow complete occlusion without correction.
 - Do not enforce bilateral ear visibility or symmetry of visibility.
 - NO VISIBILITY COMPENSATION applies independently to left and right ears.
+- Any visibility compensation that exists only to make an ear legible is a failure condition even if the ear geometry itself remains correct.
 - Body definition in YURA_VISUAL_TEXT.md is locked.
 - Preserve the current chest-to-frame relationship exactly as defined by the active Visual Text.
 - Chest volume relative to the slender frame has priority over generic slender-body simplification.
