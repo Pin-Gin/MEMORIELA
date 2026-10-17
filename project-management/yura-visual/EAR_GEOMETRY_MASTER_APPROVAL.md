@@ -1,6 +1,6 @@
 # YURA Ear Geometry Master — Author Approval Record
 
-Status: **AUTHOR-PASS / APPROVED CANDIDATE / BINARY REPOSITORY PROMOTION PENDING**
+Status: **AUTHOR-PASS / REPOSITORY PROMOTED / VERIFIED**
 
 ## Purpose
 
@@ -51,11 +51,24 @@ Hairlessness is diagnostic only and does not redefine YURA hair identity.
 
 The next normal-hair Face-up must use the approved Ear Geometry Master together with the current `YURA_VISUAL_TEXT.md` and current face specification. It must not use the legacy Face Reference geometry as fallback.
 
-## Binary promotion rule
+## Repository promotion verification
 
-The repository binary must be the exact approved source bytes above, unless the author explicitly approves a byte-different replacement.
+Repository promotion is complete.
 
-Until the PNG exists at the target repository path and its content is verified, repository binary promotion remains pending even though author approval is already fixed.
+Verified repository path:
+
+`visuals/yura/identity/ears/YURA_EAR_GEOMETRY_MASTER.png`
+
+Verification evidence:
+
+```text
+local SHA-256 verification = 8949c5febef99850f7cccd849064c9dfe774e3b722f1658c967b0ecf2c5c7b50
+GitHub promotion commit     = c0878854937103236a2902abf80912182f191ead
+Git blob SHA                = efba2f34097c4fa6e3f2a45e66a235da57253e3f
+GitHub file size            = 1506744 bytes
+```
+
+The author verified the local repository file against the approved SHA-256 before commit/push, and the promoted path is present on GitHub `main`.
 
 Do not silently substitute:
 
@@ -64,3 +77,17 @@ Do not silently substitute:
 - a crop;
 - a regenerated approximation;
 - an earlier candidate.
+
+## Next stage
+
+The Ear Geometry Master phase is complete.
+
+Next stage:
+
+```text
+YURA_EAR_GEOMETRY_MASTER.png
++ YURA_VISUAL_TEXT.md
++ YURA_FACE_REDESIGN_SPEC.md
+-> normal-hair Face-up candidate
+-> author review
+```
