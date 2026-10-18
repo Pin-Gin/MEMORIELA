@@ -6,7 +6,7 @@ Author approval: 2026-10-18
 ## Reference image
 
 `YURA_CHIGNON_MASTER.png`  
-SHA-256: `9850cdc6b5cd2322bdda967af73fba0da17e6aa59e42186fb6417f170e9b19b4`
+SHA-256: `92ae2bfea00bf8a6119f39c91277eb9905d2961a9c3766310ef8bffbc290ea7f`
 
 This is the author-selected image for **YURA's chignon hairstyle**. Do not substitute preceding candidates.
 
