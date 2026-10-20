@@ -188,6 +188,14 @@ For temporary clothing changes or other ordinary full-body derivatives, use the 
 
 Change only the explicitly requested derivative variable. Do not use the Body Geometry Guide alone as a substitute for YURA identity.
 
+### 2026-10-21: Default for 「ラフな服装」
+
+Author selected home-casual B outfit as the **default clothing specification for subsequent generations** using the unqualified prompt 「ラフな服装」. Full detail and explicit material choices are recorded in:
+
+`visuals/yura/generation/profiles/YURA_HOME_CASUAL_B_PROFILE.md`
+
+Key choices: loose long open-front ice-blue **lightweight cotton-knit** cardigan (hem above shorts hem); **opaque white sleeveless cotton** top with soft frill and small pale-blue bow; **soft woven-fabric pale-blue half-pants** with thin white piping; **bare feet**. Palette: blue + white. User-specific costume details override this default. Design remains **provisional / no promoted outfit Master**. Body, face, hair identity, chest placement and proportion Authorities remain unchanged.
+
 ## 12. Layer ownership decision
 
 ```text
