@@ -194,7 +194,7 @@ Author selected home-casual B outfit as the **default clothing specification for
 
 `visuals/yura/generation/profiles/YURA_HOME_CASUAL_B_PROFILE.md`
 
-Key choices: loose long open-front ice-blue **lightweight cotton-knit** cardigan (hem above shorts hem); **opaque white sleeveless cotton** top with soft frill and small pale-blue bow; **soft woven-fabric pale-blue half-pants** with thin white piping; **bare feet**. Palette: blue + white. User-specific costume details override this default. Design remains **provisional / no promoted outfit Master**. Body, face, hair identity, chest placement and proportion Authorities remain unchanged.
+Key choices: loose long open-front ice-blue **lightweight cotton-knit** cardigan (hem above shorts hem); **opaque white sleeveless cotton** top with soft frill and small pale-blue bow; **soft woven-fabric pale-blue sport-/loungewear-style shorter shorts**, relaxed elastic waist, curved hems and thin white piping; **bare feet**. The author accepted the revised mannequin depiction on 2026-10-21 ("それです"). With these shorter shorts, the cardigan hem appears slightly lower than the shorts hem; the shorts remain visible in front. This updated relative hem placement supersedes the older hem-above-pants constraint. Only outfit design changes; no Master promotion. Palette: blue + white. User-specific costume details override this default. Design remains **provisional / no promoted outfit Master**. Body, face, hair identity, chest placement and proportion Authorities remain unchanged.
 
 ## 12. Layer ownership decision
 
