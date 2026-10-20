@@ -136,7 +136,7 @@ For ordinary derivative image generation, read:
 
 `visuals/yura/generation/profiles/YURA_HOME_CASUAL_B_PROFILE.md`
 
-This is the author's selected **home-casual outfit B default** (light ice-blue long loose open cotton-knit cardigan, white opaque sleeveless cotton top with subtle frill and small blue bow, pale-blue woven-fabric half-pants with white piping, barefoot). Apply it to **clothing only** whenever the user says 「ラフな服装」 without another outfit specification. Preserve the official YURA body and identity; explicit user overrides take priority. The outfit is currently a generation default / provisional design, **not** a promoted outfit Master image. This entrypoint must be read in future chats before interpreting that outfit request.
+This is the author's selected **home-casual outfit B default** (light ice-blue long loose open cotton-knit cardigan, white opaque sleeveless cotton top with subtle frill and small blue bow, **shorter pale-blue sport-/loungewear-style woven shorts** with soft curved hems and thin white piping, barefoot). In the 2026-10-21 author-accepted updated mannequin depiction, the cardigan hem sits **slightly below** the shorter shorts hem while the shorts remain visible through the open front. Apply it to **clothing only** whenever the user says 「ラフな服装」 without another outfit specification. Preserve the official YURA body and identity; explicit user overrides take priority. The outfit is currently a generation default / provisional design, **not** a promoted outfit Master image. This entrypoint must be read in future chats before interpreting that outfit request.
 
 Use the Body Geometry Guide only when proportion / recovery support is actually needed.
 
