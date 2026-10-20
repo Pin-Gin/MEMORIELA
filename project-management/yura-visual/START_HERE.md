@@ -1,5 +1,8 @@
 # YURA Visual Work — START HERE
 
+
+> **2026-10-20 AUTHOR CORRECTION — GIT MASTER BINARY MISMATCH / MIGRATION PENDING.** The author has designated an exact original Full-body Master PNG with SHA-256 `07e26596642f4953393f1f09d3d5a0923627f532c8ff1b8b85595ae9058503e3` as canonical. Git currently holds the old `CCBE315...` binary at both full-body paths. Until the two PNGs are actually replaced and docs/config reconciled, **do not mistake the old Git PNG, old preflight PASS, or older promotion status for verification of the newly designated original**. READ FIRST: `project-management/yura-visual/FULL_BODY_MASTER_HASH_CORRECTION_PENDING.md`. Paid route remains frozen; do not trigger billable generation.
+
 Status: **CURRENT CROSS-CHAT HANDOFF / FULL-BODY MASTER PROMOTED / PAID ROUTE FROZEN**
 
 This directory is the project-management handoff layer for YURA visual work. It does not define appearance; current appearance authority remains under `visuals/**`.
