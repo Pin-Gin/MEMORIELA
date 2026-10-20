@@ -130,6 +130,14 @@ primary reference = visuals/yura/identity/master/YURA_FULL_BODY_MASTER.png
 
 The camisole and shorts shown in the Master are validation clothing, not permanent wardrobe Authority. Preserve the approved body / identity and replace clothing only as explicitly requested.
 
+### Default when the author says 「ラフな服装」 (2026-10-21)
+
+For ordinary derivative image generation, read:
+
+`visuals/yura/generation/profiles/YURA_HOME_CASUAL_B_PROFILE.md`
+
+This is the author's selected **home-casual outfit B default** (light ice-blue long loose open cotton-knit cardigan, white opaque sleeveless cotton top with subtle frill and small blue bow, pale-blue woven-fabric half-pants with white piping, barefoot). Apply it to **clothing only** whenever the user says 「ラフな服装」 without another outfit specification. Preserve the official YURA body and identity; explicit user overrides take priority. The outfit is currently a generation default / provisional design, **not** a promoted outfit Master image. This entrypoint must be read in future chats before interpreting that outfit request.
+
 Use the Body Geometry Guide only when proportion / recovery support is actually needed.
 
 ## 7. Recovery / regeneration method
